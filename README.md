@@ -1,4 +1,4 @@
-<h1>Hola, bienvenido a mi repositorio en Git Hub 👋</h1>
+<h1 aling="center">Hola, bienvenido a mi repositorio en Git Hub 👋</h1>
 
 <!--
 **Osc57/Osc57** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
