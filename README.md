@@ -4,9 +4,7 @@
 
 -Soy un estudiante con interes en el mundo de la informática, ahora estoy aprendiendo pero algún día sabré.
 
-**Osc57/Osc57** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
+Mas datos:
 
 - 🏫 IES Segundo De Chomón
 - 🌱 I’m currently learning ...
