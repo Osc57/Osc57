@@ -11,7 +11,7 @@
 
 <h2>Seguimiento: </h2>
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=osc57&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact"
-    alt="Osc57" /></p>
+    alt="Osc57 Stats" /></p>
 <br>
 <br>
 <p><img align="center"
