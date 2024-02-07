@@ -7,3 +7,4 @@
 Más datos:
 
 - 🏫 IES Segundo De Chomón
+- ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?Osc57=anuraghazra&hide=contribs,prs)
