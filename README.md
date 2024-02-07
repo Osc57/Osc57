@@ -14,5 +14,5 @@ Más datos:
     bg_color=#808080/></p>
 <br>
 <br>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Osc57&layout=compact&theme=dark&bg_color=0A0A0A" alt="Osc57 Top Languages"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=osc57&layout=compact&theme=dark&bg_color=0A0A0A" alt="Osc57 Top Languages"/>
 <br />
