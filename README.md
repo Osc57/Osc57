@@ -12,12 +12,6 @@ Más datos:
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=osc57&theme=dark&show_icons=false&locale=en&bg_color=0d1117&text_color=808080&repo=convoychat"
     alt="Osc57" /></p>
 <br>
-
-<p><img align="center"
-    src="https://github-readme-stats.vercel.app/api/top-langs?username=osc57&show_icons=true&locale=en&bg_color=0d1117&layout=compact"
-    alt="Osc57" 
-    bg_color=#808080/></p>
-<br>
 <br>
 <p><img align="center"
        src="https://github-readme-stats.vercel.app/api/top-langs/?username=osc57&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact"
