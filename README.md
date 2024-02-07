@@ -9,7 +9,7 @@ Más datos:
 - 🏫 IES Segundo De Chomón
 
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=osc57&show_icons=true&locale=en&bg_color=0d1117&text_color=ffffff&repo=convoychat"
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=osc57&show_icons=true&locale=en&bg_color=0d1117&repo=convoychat"
     alt="Osc57" /></p>
 <br>
 
