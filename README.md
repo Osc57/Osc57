@@ -4,7 +4,7 @@
 
 -Soy un estudiante con interes en el mundo de la informática, ahora estoy aprendiendo pero algún día sabré.
 
-Más datos:
+<h2>Más datos:</h2>
 
 - 🏫 IES Segundo De Chomón
 
