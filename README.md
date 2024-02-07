@@ -19,6 +19,7 @@ Más datos:
     bg_color=#808080/></p>
 <br>
 <br>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=osc57&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+<p><img align="center"
+       src="https://github-readme-stats.vercel.app/api/top-langs/?username=osc57&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact"</p>
 
 <br />
