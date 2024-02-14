@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3988325f-7fde-4f5f-98f6-2eb2d789f995" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Ciclista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Equipos/Movistar.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Equipos/TeamVisma.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Equipos/UAE Team Emirates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2bxdwJOpKP5hzmaR5xl65HnYHOV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Users/dam1/Desktop/DAM-Òscar Úbeda/Programacion/java-23-24-Osc57/Ejercicio_Java_Tratamiento_Ficheros"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\dam1\Desktop\DAM-Òscar Úbeda\Programacion\java-23-24-Osc57\Ejercicio_Java_Tratamiento_de_Ficheros_Estructura_Datos\Equipos" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3988325f-7fde-4f5f-98f6-2eb2d789f995" name="Changes" comment="" />
+      <created>1707160900834</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707160900834</updated>
+    </task>
+    <servers />
+  </component>
+</project>
