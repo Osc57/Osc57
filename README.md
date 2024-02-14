@@ -17,9 +17,9 @@
  
 </p>
 <p>
- <p align="center">
-    <b><em>Now listening to:</em></b> <br/>
-    <img src="https://spotify-github-profile.vercel.app/api/view?uid=Bhargavi-hash&cover_image=true&theme=novatorem" alt="Now Listenting to" />
-  </p>
-</a>
+<p align= "center">
+  <img height= "150" src="https://github-readme-stats.vercel.app/api?username=BrantLauro&theme=react&show_icons=true&include_all_commits=true" />
+  <img height= "150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=BrantLauro&theme=react&layout=compact" />
 </p>
+
+
