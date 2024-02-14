@@ -11,7 +11,7 @@
 
 <h2>Seguimiento: </h2>
 <p>
-   <img height= "250" src="https://github-readme-stats.vercel.app/api?username=Osc57&theme=react&show_icons=true&include_all_commits=true" />
+   <img height= "200" src="https://github-readme-stats.vercel.app/api?username=Osc57&theme=react&show_icons=true&include_all_commits=true" />
 </p>
 
 <p>
