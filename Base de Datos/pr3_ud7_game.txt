@@ -1,0 +1,23 @@
+SHOW TABLES;
+DESCRIBE juego;
+DESCRIBE p_tiene_j;
+DESCRIBE plataforma;
+SELECT fecha FROM juego WHERE fecha > '2012-01-19';
+SELECT nombre, rating FROM juego WHERE rating < 5;
+SELECT fecha, nombre FROM juego WHERE fecha >= '2013-04-20' AND fecha <= '2015-10-03';
+SELECT nombre FROM plataforma WHERE nombre LIKE ('V%');
+SELECT nombre FROM plataforma WHERE nombre BETWEEN 'x' AND 'zz';
+SELECT id_plataforma, id_juego FROM p_tiene_j WHERE id_juego = ('17852');
+SELECT nombre, fecha FROM juego WHERE nombre LIKE ('Mario%') AND fecha < ('2000-01-1') ORDER BY RAND();
+SELECT id_juego, nombre FROM juego WHERE id_juego >= 3000 AND id_juego <= 12000;
+SELECT id_plataforma, nombre FROM plataforma WHERE nombre LIKE ('%Wii%');
+SELECT nombre, rating FROM juego WHERE rating IS NOT NULL;
+SELECT id_juego FROM p_tiene_j WHERE id_plataforma IN (36, 87, 139);
+SELECT nombre, fecha FROM juego WHERE fecha < ('1990-01-1') AND nombre LIKE ('a%');
+SELECT nombre, rating, fecha FROM juego WHERE rating IS NULL AND fecha > ('2005-01-1');
+SELECT nombre, fecha FROM plataforma WHERE (nombre LIKE ('%x') OR nombre LIKE ('%c')) AND fecha > ('1995-01-1');
+
+
+
+
+

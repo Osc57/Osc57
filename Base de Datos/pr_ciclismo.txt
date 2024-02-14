@@ -1,0 +1,55 @@
+SELECT * FROM maillot;
+SELECT dorsal, nombre FROM ciclista WHERE edad < 25;
+SELECT nompuerto, altura FROM puerto WHERE categoria LIKE ('E');
+SELECT netapa FROM etapa WHERE ciudad = salida;
+SELECT COUNT(nombre) FROM ciclista;
+SELECT COUNT(nombre) FROM ciclista WHERE edad > 25;
+SELECT COUNT(nomeq) FROM equipo;
+SELECT AVG(edad) FROM ciclista;
+SELECT MIN(altura) AS 'Altura Minima', MAX(altura) AS 'Altura Maxima' FROM puerto;
+SELECT nombre, nomeq FROM ciclista;
+SELECT nombre FROM ciclista WHERE nomeq LIKE ('Banesto');
+SELECT COUNT(nomeq) FROM ciclista WHERE nomeq LIKE ('Amore Vita');
+SELECT AVG(edad) FROM ciclista WHERE nomeq LIKE ('TVM');
+SELECT nombre FROM ciclista WHERE nomeq LIKE ('Banesto') AND nombre <> ('Miguel Indurain');
+SELECT nombre FROM ciclista WHERE dorsal IN (SELECT dorsal FROM etapa);
+//SELECT nombre FROM ciclista WHERE dorsal IN (SELECT dorsal FROM llevar WHERE codigo = (SELECT codigo FROM maillot WHERE tipo = ('General')));
+//SELECT DISTINCT ciclista.nombre,llevar.dorsal,maillot.codigo FROM ciclista, llevar, maillot WHERE ciclista.dorsal=llevar.dorsal AND maillot.codigo=llevar.codigo AND tipo = 'General';
+SELECT nombre FROM ciclista WHERE edad IN (SELECT MIN(edad) FROM ciclista);
+SELECT nomeq, COUNT(nombre) FROM ciclista GROUP BY nomeq;
+SELECT nomeq, COUNT(nombre) FROM ciclista GROUP BY nomeq HAVING COUNT(nombre) > 5;
+SELECT dorsal, COUNT(*) AS puertos_ganados FROM puerto GROUP BY dorsal;
+//SELECT nombre FROM ciclista WHERE dorsal IN (SELECT dorsal FROM puerto GROUP BY dorsal HAVING count(dorsal) > 1);
+///SELECT ciclista.nombre,equipo.director FROM ciclista,equipo WHERE ciclista.nomeq=equipo.nomeq AND edad > '33';
+SELECT nombre FROM ciclista WHERE nomeq NOT IN ('Kelme');
+SELECT nombre FROM ciclista WHERE dorsal NOT IN (SELECT dorsal FROM etapa);
+SELECT nombre FROM ciclista WHERE dorsal NOT IN (SELECT dorsal FROM puerto);
+SELECT nombre FROM ciclista WHERE dorsal IN (SELECT dorsal FROM puerto);
+SELECT nombre FROM ciclista WHERE dorsal IN (SELECT dorsal FROM llevar WHERE codigo IN (SELECT codigo FROM llevar WHERE dorsal IN (SELECT dorsal FROM ciclista WHERE nombre = 'Miguel Indurain')));
+SELECT MAX(edad) AS edad_maxima_equipos,MIN(edad) AS edad_minima_equipos, AVG(edad) AS edad_media_de_equipos, nomeq FROM ciclista GROUP BY nomeq;
+SELECT nombre FROM ciclista WHERE edad >=25 AND edad <=30 AND nomeq != ('Kelme') AND nomeq != ('Banesto');
+//SELECT nombre FROM ciclista WHERE dorsal IN (SELECT dorsal FROM etapa WHERE salida = 'Zamora');
+//SELECT ciclista.nombre,etapa.dorsal FROM ciclista, etapa WHERE ciclista.dorsal=etapa.dorsal AND salida='Zamora';
+SELECT nompuerto, categoria FROM puerto WHERE dorsal IN (SELECT dorsal FROM ciclista WHERE nomeq = 'Banesto');
+///SELECT puerto.nompuerto,etapa.netapa,etapa.km FROM puerto,etapa WHERE puerto.netapa=etapa.netapa;
+//SELECT DISTINCT ciclista.nombre,llevar.dorsal,maillot.color FROM ciclista, llevar, maillot WHERE ciclista.dorsal=llevar.dorsal AND maillot.codigo=llevar.codigo;
+SELECT netapa, salida FROM etapa WHERE netapa NOT IN (SELECT netapa FROM puerto);
+SELECT AVG(edad) FROM ciclista WHERE dorsal IN (SELECT dorsal FROM etapa);
+SELECT nompuerto FROM puerto WHERE altura > (SELECT AVG(altura) FROM puerto);
+SELECT salida, llegada FROM etapa WHERE netapa = (SELECT netapa FROM puerto WHERE pendiente IN (SELECT MAX(pendiente) FROM puerto));
+SELECT netapa FROM etapa WHERE netapa IN (SELECT netapa FROM puerto WHERE altura > '700');
+SELECT nomeq, director FROM equipo WHERE nomeq IN (SELECT nomeq FROM ciclista WHERE edad > '20');
+//SELECT ciclista.dorsal, ciclista.nombre, etapa.km FROM ciclista, etapa WHERE ciclista.dorsal=etapa.dorsal AND km >'170';
+//SELECT maillot.codigo,maillot.color,ciclista.nomeq FROM maillot,llevar,ciclista WHERE maillot.codigo=llevar.codigo AND llevar.dorsal=ciclista.dorsal GROUP BY maillot.codigo HAVING COUNT(DISTINCT ciclista.nomeq) <= 1;
+//SELECT equipo.director,equipo.nomeq FROM equipo,ciclista WHERE equipo.nomeq=ciclista.nomeq GROUP BY equipo.nomeq HAVING COUNT(ciclista.dorsal) >3 AND AVG(ciclista.edad)<30;
+//SELECT equipo.nomeq, AVG(edad) AS edad_maxima FROM equipo,ciclista WHERE equipo.nomeq=ciclista.nomeq GROUP BY equipo.nomeq HAVING edad_maxima=MAX(edad);
+SELECT nombre, dorsal FROM ciclista WHERE dorsal IN (SELECT dorsal FROM llevar WHERE codigo IN (SELECT codigo FROM llevar WHERE dorsal='2'));
+
+53//SELECT nomeq, AVG(edad) AS media FROM ciclista GROUP BY nomeq HAVING media >= ALL(SELECT AVG(edad) AS media FROM ciclista GROUP BY nomeq);
+
+
+
+
+
+
+

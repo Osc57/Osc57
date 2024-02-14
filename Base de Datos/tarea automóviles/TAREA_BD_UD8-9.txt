@@ -1,0 +1,5 @@
+SELECT nombre AS concesionario, color FROM ventas v, concesionarios c WHERE v.cifc=c.cifc AND nombre='acar';
+SELECT c.nombre,c.apellido,co.modelo,v.color FROM clientes c, ventas v, coches co WHERE c.dni=v.dni AND v.codcoche=co.codcoche AND modelo='gti' AND color='blanco';
+SELECT nombre,apellido FROM clientes WHERE dni IN (SELECT dni FROM ventas WHERE cifc IN (SELECT cifc FROM distribucion WHERE cantidad > 0 AND codcoche IN (SELECT codcoche FROM coches WHERE modelo='gti')));
+SELECT nombre,apellido FROM clientes WHERE nombre LIKE("A%") AND (dni > ANY(SELECT dni FROM clientes WHERE ciudad='Madrid') OR dni < ALL(SELECT dni FROM clientes WHERE ciudad='Valencia'));
+SELECT cifc FROM distribucion GROUP BY cifc HAVING AVG(cantidad)>10;

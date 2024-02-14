@@ -1,0 +1,23 @@
+CREATE DATABASE gestionEventos;
+USE gestionEventos;
+CREATE TABLE clientes(dni CHAR(9) PRIMARY KEY NOT NULL, nombre VARCHAR(15) NOT NULL, apellidos VARCHAR(30) NOT NULL, telefono INT(9), email VARCHAR(30), fecha_nacimiento DATE NOT NULL);
+CREATE TABLE eventos(id_evento INT AUTO_INCREMENT PRIMARY KEY NOT NULL, fecha DATE NOT NULL, hora_celebracion TIME NOT NULL, tipo_evento VARCHAR(25) NOT NULL, precio_entradas FLOAT NOT NULL, cantidad_entradas INT NOT NULL );
+CREATE TABLE compra(entrada INT, dni_cliente CHAR(9), id_eventos_compra INT, PRIMARY KEY(dni_cliente, id_eventos_compra), FOREIGN KEY (dni_cliente) REFERENCES clientes(dni), FOREIGN KEY (id_eventos_compra) REFERENCES eventos(id_evento));
+CREATE TABLE lugar(id_lugar INT AUTO_INCREMENT PRIMARY KEY, localizacion VARCHAR(20) NOT NULL, aforo INT NOT NULL);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

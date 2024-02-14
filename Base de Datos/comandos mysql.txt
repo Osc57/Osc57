@@ -1,0 +1,28 @@
+•CREAR DATABASE:
+ CREATE DATABASE nombre de database;
+
+•CREAR TABLA:
+CREATE TABLE nombre de la tabla (dato CHAR (numero) PRIMARY KEY, dato VARCHAR (numero));
+
+•HACER FORANEAS
+CREATE TABLE materia (dni_alumno CHAR (9), id_asignatura_materia INT, nota INT, PRIMARY KEY(dni_alumno, id_asignatura_materia), FOREIGN KEY (dni_alumno) REFERENCES alumno(dni), FOREIGN KEY (id_asignatura_materia) REFERENCES asignatura(id_asignatura));
+
+•ORDENAR ALFABETICAMENTE
+SELECT Name FROM city ORDER BY Name ASC;
+
+
+
+•COMANDO PARA CREAR USUARIO EN MYSQL:
+CREATE USER 'usuario_que_quieras_crear'@localhost IDENTIFIED BY 'contraseña_usuario';
+
+•ELIMINAR USUARIO EN MYSQL:
+DROP USER 'nombre del usuario';
+
+•COMANDO PARA DAR TODOS LO PERMISOS A UN USUARIO EN MYSQL:
+GRANT ALL PRIVILEGES ON *.* TO 'nombre usuario'@'%';
+
+•ELIMINAR TODOS LO PERMISOS DE UN USUARIO EN MYSQL:
+REVOKE ALL PRIVILEGES ON *.* FROM nombre de usuario;
+
+•MIRAR SI UN USUARIO TIENE PERMISOS EN MYSQL:
+SHOW GRANTS FOR nombre de usuario;

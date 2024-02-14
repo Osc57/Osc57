@@ -1,0 +1,11 @@
+•HACER COPIA DE SEGURIDAD (USAR EN CMD):
+mysqldump -u root -p "nombre de la database" > "nombre que le quieres dar".sql
+
+•CARGAR LA DATABASE A UN NUEVO DISPOSITIVO (SI ESTAS EN LA CARPETA EN EL CMD):
+mysql -u root -p "nombre de la copia de la database" < "nombre de la copia de seguridad de la database".sql
+
+•SI NO ESTAS EN LA CARPETA (TENER EN CUENTA QUE "nombre de la copia de la database" HAY QUE CREARLO EN MYSQL):
+mysqldump -u root -p "nombre de la copia de la database" > "RUTA DE LOCOALIZACION DE LA CARPETA"\"nombre de la copia de seguridad de la database".sql
+
+•COPIAR LA ESTRUCTURA DE LA DB 
+mysqldump -u root -p --no-data "nombre de la base de datos" "RUTA CARPETA DE BACKUPS"\"nombre de la copia de seguridad".sql
