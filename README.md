@@ -10,11 +10,11 @@
 
 
 <h2>Seguimiento: </h2>
-<p align="center">
+<p>
    <img height= "150" src="https://github-readme-stats.vercel.app/api?username=Osc57&theme=react&show_icons=true&include_all_commits=true" />
 </p>
 
-<p align= "center">
+<p>
   <img height= "150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Osc57&theme=react&layout=compact" />
 </p>
 
