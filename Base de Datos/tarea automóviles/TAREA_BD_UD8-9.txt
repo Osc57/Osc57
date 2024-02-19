@@ -5,3 +5,4 @@ SELECT nombre,apellido FROM clientes WHERE nombre LIKE("A%") AND (dni > ANY(SELE
 SELECT cifc FROM distribucion GROUP BY cifc HAVING AVG(cantidad)>10;
 SELECT clientes.dni, CONCAT(clientes.nombre,clientes.apellido) AS cliente,concesionarios.cifc FROM clientes JOIN ventas ON ventas.dni=clientes.dni JOIN concesionarios ON concesionarios.cifc = ventas.cifc ORDER BY clientes.dni DESC;
 SELECT cifc,AVG(cantidad) AS stock FROM distribucion WHERE cifc IN (SELECT cifc FROM concesionarios WHERE ciudad !='Madrid') GROUP BY cifc HAVING MAX(cantidad) ORDER BY stock DESC LIMIT 1;
+SELECT COUNT(nombre) AS nombre ,modelo FROM coches GROUP BY modelo;

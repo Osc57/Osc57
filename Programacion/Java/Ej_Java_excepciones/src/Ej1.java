@@ -7,18 +7,19 @@ public class Ej1 {
 
         System.out.println("Vamos a dividir");
         System.out.print("Introduce un número: ");
-        float num1 = scanner.nextInt();
+        int num1 = scanner.nextInt();
 
         System.out.print("Introduce otro número: ");
-        float num2 = scanner.nextInt();
+        int num2 = scanner.nextInt();
 
         try {
-            float division = num1/num2;
+            int division = num1/num2;
             System.out.println("La división de " + num1 + " y " + num2 + " es: " + division);
 
         }catch (ArithmeticException e){
             if ( num2 == 0){
-                System.out.println("No puedes dividir entre 0");
+                System.out.println("ERROR: No puedes dividir entre 0");
+                e.printStackTrace();
             }
 
         }finally {
