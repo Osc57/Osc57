@@ -9,11 +9,13 @@ public class Ej2 {
         BufferedWriter bufferedWriter = null;
         try {
             System.out.println("Este es el archivo actual");
+            System.out.println("-------------------------");
             bufferedReader = new BufferedReader(new FileReader(file));
             String linea = "";
             while ((linea = bufferedReader.readLine()) != null) {
                 System.out.println(linea);
             }
+            System.out.println("-------------------------");
             System.out.print("Quieres escribir en el (Y/N): ");
             String si_no = scanner.nextLine();
 
@@ -23,7 +25,7 @@ public class Ej2 {
                 bufferedReader.close();
                 bufferedWriter = new BufferedWriter(new FileWriter(file, true));
                 bufferedWriter.write("\n" + frase);
-
+                
             } else if (si_no.equals("N") || si_no.equals("n")) {
                 System.out.println("Has decidido no escribir en el archivo");
             }else {
@@ -39,6 +41,7 @@ public class Ej2 {
             if (bufferedWriter != null) {
                 bufferedWriter.close();
             }
+            scanner.close();
 
         }
     }
