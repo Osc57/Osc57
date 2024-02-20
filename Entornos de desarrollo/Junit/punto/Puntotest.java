@@ -10,10 +10,10 @@ import static org.junit.Assert.assertTrue;
 import java.beans.Transient;
 
 class Puntotest {
-
+    Punto p1;
     @BeforeEach
     void nuevopunto(){
-        Punto p1 = new Punto(3, 2);
+        p1 = new Punto(3, 2);
     }
 
     @Test
