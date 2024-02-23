@@ -1,0 +1,1 @@
+SELECT CONCAT(profesores.nombre," ",profesores.apellido1," ", profesores.apellido2) AS nombre, SUM(numhoras)as horas_totales FROM cursos,profesores WHERE cursos.profesor=profesores.dni GROUP BY profesor HAVING horas_totales= (SELECT SUM(numhoras)as horas_totales FROM cursos GROUP BY profesor ORDER BY horas_totales ASC LIMIT 1);
