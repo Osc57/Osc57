@@ -1,4 +1,4 @@
-package TallerÓscarÚbeda;
+package POO.src.TallerÓscarÚbeda;
 
 import java.util.List;
 
@@ -8,6 +8,15 @@ public class Taller {
     String propietario;
     List<String>clientes;
     List<String>vehiculos;
+
+    public Taller(String nombre, String direccion, String propietario, List<String> clientes, List<String> vehiculos) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.propietario = propietario;
+        this.clientes = clientes;
+        this.vehiculos = vehiculos;
+    }
+
     public String getNombre() {
         return nombre;
     }
