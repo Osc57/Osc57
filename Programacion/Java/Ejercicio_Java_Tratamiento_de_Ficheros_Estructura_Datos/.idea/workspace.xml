@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3988325f-7fde-4f5f-98f6-2eb2d789f995" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Ciclista.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Equipos/Movistar.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Equipos/TeamVisma.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Equipos/UAE Team Emirates.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Base de Datos/practica examen/practica_para_examen.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Base de Datos/practica examen/practica_para_examen.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Base de Datos/practica examen/práctica para examen.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Base de Datos/practica examen/práctica para examen.docx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -39,7 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Users/dam1/Desktop/DAM-Òscar Úbeda/Programacion/java-23-24-Osc57/Ejercicio_Java_Tratamiento_Ficheros"
+    "last_opened_file_path": "D:/Users/dam1/Desktop/DAM-Òscar Úbeda/Osc57/Programacion/Java/Ejercicio_Java_Tratamiento_Ficheros"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -21,7 +21,7 @@ public class Ej3 {
 
         //El valor esta presente?
         compruebaSiEstaPresente(enteros);
-        compruebaSiEstaPresente(enteros);
+
 
         System.out.println(enteros.contains(4)); //Compruebo si está el número 4
         System.out.println(enteros.contains(3)); //Compruebo si está el número 3
@@ -30,10 +30,10 @@ public class Ej3 {
     }
 
     private static void compruebaSiEstaPresente(TreeSet<Integer> enteros) {
-        int valor = 1;
-        if (enteros.contains(1)){
+        int valor = 3;
+        if (enteros.contains(3)){
             System.out.println("El valor " + valor + " está presente");
         }else
-            System.out.println("El valor " + valor + " está presente");
+            System.out.println("El valor " + valor + " no está presente");
     }
 }
