@@ -1,0 +1,6 @@
+SELECT jugadores.nombre, SUM(estadisticas.puntos_por_partido) as puntos_totales FROM jugadores JOIN estadisticas ON jugadores.codigo = estadisticas.jugador GROUP BY jugadores.nombre ORDER BY puntos_totales DESC LIMIT 10;
+SELECT SUM(estadisticas.puntos_por_partido) AS puntos_totales FROM equipos,jugadores,estadisticas WHERE equipos.nombre=jugadores.nombre_equipo AND jugadores.codigo=estadisticas.jugador AND jugadores.procedencia='Spain' AND equipos.ciudad='Toronto' GROUP BY jugadores.nombre;
+SELECT jugadores.nombre, SUM(estadisticas.puntos_por_partido) AS puntos_totales FROM equipos,jugadores,estadisticas WHERE equipos.nombre=jugadores.nombre_equipo AND jugadores.codigo=estadisticas.jugador AND jugadores.procedencia='Spain' AND equipos.ciudad='Toronto' GROUP BY jugadores.nombre;
+SELECT partidos.equipo_local, partidos.equipo_visitante, (puntos_visitante-puntos_local) AS diferencia FROM partidos WHERE puntos_visitante > puntos_local ORDER BY diferencia DESC LIMIT 10;
+SELECT equipo_local, AVG(puntos_local) AS medialocal,temporada FROM partidos WHERE temporada IN ('00/01','01/02','02/03') GROUP BY equipo_local,temporada ORDER BY medialocal DESC LIMIT 10;
+
