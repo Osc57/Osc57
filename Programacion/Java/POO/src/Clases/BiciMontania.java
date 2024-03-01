@@ -28,7 +28,9 @@ public class BiciMontania extends Bicicleta {
 
     @Override
     public String toString(){
-        return "BiciMontania{" + "TIPO='" + TIPO + super.toString() + '}';
+        return "BiciMontania{" +
+                "TIPO='" + TIPO + '\'' + super.toString() +
+                '}';
     }
 
     @Override

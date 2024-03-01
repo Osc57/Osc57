@@ -27,7 +27,7 @@ public class Main {
         bm1.aumentarMarcha();
         bm2.bajarMarcha();
 
-        System.out.println(listaDeBicicletas);
+        System.out.println(listaDeBicicletas.toString());
 
     }
 }
