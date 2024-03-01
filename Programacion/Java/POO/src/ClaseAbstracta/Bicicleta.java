@@ -3,9 +3,6 @@ package ClaseAbstracta;
 import Interf.Vehiculo;
 
 public abstract class Bicicleta implements Vehiculo {
-
-
-
     private String color;
     private double precio;
 

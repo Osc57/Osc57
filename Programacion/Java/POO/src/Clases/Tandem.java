@@ -9,7 +9,7 @@ public class Tandem extends Bicicleta {
 
     public Tandem(String color, double precio, int numeroAsientos) {
         super(color, precio);
-        if (numeroAsientos != 2 || numeroAsientos != 3){
+        if (numeroAsientos != 2 && numeroAsientos != 3){
             throw new RuntimeException("Solo se permiten 2 o 3 asientos");
         }
         this.numeroAsientos = numeroAsientos;
