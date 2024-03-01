@@ -8,8 +8,8 @@ public class Main {
         Taller miTaller = new Taller();
         Propietario propietario;
 
-            propietario = new Propietario("18444555A", "Pepe");
-
+        propietario = new Propietario("18444555A", "Pepe");
+        propietario.setDireccion("CAsa del propietario");
 
 
         miTaller.setPropietario(propietario);
