@@ -10,7 +10,7 @@ public class Persona implements Identificacion{
 
     @Override
     public String identificate(){
-        return "Mi DNI es" + this.getDni() + ", mi nombre es " + this.getNombre();
+        return "Soy persona, mi DNI es" + this.getDni() + ", mi nombre es " + this.getNombre();
     }
 
     public Persona(String dni, String nombre) throws Exception {

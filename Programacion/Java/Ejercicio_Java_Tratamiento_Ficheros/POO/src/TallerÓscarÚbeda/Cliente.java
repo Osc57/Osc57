@@ -1,4 +1,4 @@
-package POO.src.TallerÓscarÚbeda;
+package TallerÓscarÚbeda;
 
 import java.util.ArrayList;
 
