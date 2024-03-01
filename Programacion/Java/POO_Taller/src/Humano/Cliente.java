@@ -1,5 +1,7 @@
 package Humano;
 
+import Maquina.Vehiculo;
+
 import java.util.ArrayList;
 
 public class Cliente extends Persona{

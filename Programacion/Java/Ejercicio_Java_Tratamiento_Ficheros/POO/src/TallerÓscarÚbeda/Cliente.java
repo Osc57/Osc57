@@ -2,7 +2,7 @@ package POO.src.TallerÓscarÚbeda;
 
 import java.util.ArrayList;
 
-public class Cliente extends Persona{
+public class Cliente extends POO.src.TallerÓscarÚbeda.Persona {
     int telefono;
     ArrayList<String>lista_vehiculos = new ArrayList<>();
     public Cliente(String DNI, String nombre, String apellido) {
