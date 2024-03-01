@@ -31,6 +31,14 @@ public abstract class Bicicleta implements Vehiculo {
         this.precio = precio;
     }
 
+    @Override
+    public String toString() {
+        return "Bicicleta{" +
+                "color='" + color + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
+
     public void pintar(String color){
         double costePintar = 90.0;
         this.precio = this.precio + costePintar;
