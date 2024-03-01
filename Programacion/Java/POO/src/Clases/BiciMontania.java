@@ -4,10 +4,17 @@ import ClaseAbstracta.Bicicleta;
 
 public class BiciMontania extends Bicicleta {
 
-    final String TIPO = "Bicicleta de Montaña";
 
-    public BiciMontania(String color, double precio) {
+    enum Marcha{
+        PRIMERA, SEGUNDA, TERCERA, CUARTA, QUINTA, SEXTA;
+
+    }
+    final String TIPO = "Bicicleta de Montaña";
+    private Marcha marcha;
+
+    public BiciMontania(String color, double precio, Marcha marcha) {
         super(color, precio);
+        this.marcha = marcha;
     }
 
     @Override
@@ -20,5 +27,9 @@ public class BiciMontania extends Bicicleta {
     @Override
     public void pintar(String color) {
 
+    }
+
+    public String getTIPO() {
+        return TIPO;
     }
 }
