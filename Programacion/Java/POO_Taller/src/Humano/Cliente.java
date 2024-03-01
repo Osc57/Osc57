@@ -9,6 +9,11 @@ public class Cliente extends Persona{
     private ArrayList<Vehiculo>vehiculos;
     public Cliente(String dni, String nombre) throws Exception {
         super(dni, nombre);
+        vehiculos = new ArrayList<>();
+    }
+
+    public boolean addVehiculo(Vehiculo vehiculo){
+        return vehiculos.add(vehiculo);
     }
 
     public String getTelefono() {

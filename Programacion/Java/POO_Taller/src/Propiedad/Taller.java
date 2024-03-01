@@ -11,6 +11,11 @@ public class Taller {
     private Propietario propietario;
     private ArrayList<Cliente>clientes;
 
+
+    public Taller() {
+        clientes = new ArrayList<>();
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -41,5 +46,18 @@ public class Taller {
 
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
+    }
+
+    @Override
+    public String toString() {
+        return "Taller{" +
+                "nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", propietario=" + propietario.identificate() +
+                ", clientes=" + clientes +
+                '}';
+    }
+    public  boolean addCliente(Cliente cliente){
+        return clientes.add(cliente);
     }
 }
