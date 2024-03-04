@@ -12,4 +12,5 @@ public abstract class Legislador extends Persona{
 
     public  abstract String getCamaraEnQueTrabaja();
 
+    public abstract String getCamaraEnQueTrabaja(String camara);
 }

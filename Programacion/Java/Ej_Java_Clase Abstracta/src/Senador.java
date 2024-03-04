@@ -8,9 +8,15 @@ public class Senador extends Legislador{
     }
 
     @Override
+    public String getCamaraEnQueTrabaja(String camara) {
+        return "Trabaja en la camara " + camara;
+    }
+    @Override
     public String getCamaraEnQueTrabaja() {
         return null;
     }
+
+
 
     @Override
     public String toString() {

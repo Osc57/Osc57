@@ -13,11 +13,17 @@ public class Diputado extends Legislador{
     }
 
     @Override
+    public String getCamaraEnQueTrabaja(String camara) {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "Diputado{" +
                 "provinciaQueRepresenta='" + provinciaQueRepresenta + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
+                ", Camara en la que trabaja=" + getCamaraEnQueTrabaja() +
                 '}';
     }
 }

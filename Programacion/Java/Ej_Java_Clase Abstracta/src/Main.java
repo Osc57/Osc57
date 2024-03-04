@@ -9,7 +9,11 @@ public class Main {
         listaLegisladores.add(diputado);
         listaLegisladores.add(senador);
 
+
+        diputado.getCamaraEnQueTrabaja(diputado.getCamaraEnQueTrabaja("camara de gas"));
+
         System.out.println(listaLegisladores);
+
 
 
     }
