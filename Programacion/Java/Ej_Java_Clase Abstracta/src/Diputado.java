@@ -8,12 +8,12 @@ public class Diputado extends Legislador{
     }
 
     @Override
-    public String getCamaraEnQueTrabaja() {
-        return null;
+    public String getCamaraEnQueTrabaja(String camara) {
+        return camara;
     }
 
     @Override
-    public String getCamaraEnQueTrabaja(String camara) {
+    public String getCamaraEnQueTrabaja() {
         return null;
     }
 
@@ -23,7 +23,6 @@ public class Diputado extends Legislador{
                 "provinciaQueRepresenta='" + provinciaQueRepresenta + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
-                ", Camara en la que trabaja=" + getCamaraEnQueTrabaja() +
                 '}';
     }
 }
