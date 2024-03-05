@@ -1,26 +1,18 @@
 public class Diputado extends Legislador{
-    public Diputado(String nombre, String DNI) {
-        super(nombre, DNI);
-    }
 
-    public Diputado(String nombre, String DNI, String provinciaQueRepresenta) {
-        super(nombre, DNI, provinciaQueRepresenta);
-    }
-
-    @Override
-    public String getCamaraEnQueTrabaja(String camara) {
-        return camara;
+    public Diputado() {
     }
 
     @Override
     public String getCamaraEnQueTrabaja() {
-        return null;
+        return "Soy un ladrón y mi sede es el Congreso";
     }
 
     @Override
     public String toString() {
         return "Diputado{" +
                 "provinciaQueRepresenta='" + provinciaQueRepresenta + '\'' +
+                ", partidoPolitico='" + partidoPolitico + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
                 '}';

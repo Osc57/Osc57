@@ -7,6 +7,9 @@ String DNI;
         this.DNI = DNI;
     }
 
+    public Persona() {
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -21,5 +24,13 @@ String DNI;
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", DNI='" + DNI + '\'' +
+                '}';
     }
 }

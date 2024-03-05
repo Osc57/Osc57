@@ -1,16 +1,32 @@
 public abstract class Legislador extends Persona{
     String provinciaQueRepresenta;
+    String partidoPolitico;
 
-    public Legislador(String nombre, String DNI) {
-        super(nombre, DNI);
+    public abstract String getCamaraEnQueTrabaja();
+
+    public String getProvinciaQueRepresenta() {
+        return provinciaQueRepresenta;
     }
 
-    public Legislador(String nombre, String DNI, String provinciaQueRepresenta) {
-        super(nombre, DNI);
+    public void setProvinciaQueRepresenta(String provinciaQueRepresenta) {
         this.provinciaQueRepresenta = provinciaQueRepresenta;
     }
 
-    public  abstract String getCamaraEnQueTrabaja();
+    public String getPartidoPolitico() {
+        return partidoPolitico;
+    }
 
-    public abstract String getCamaraEnQueTrabaja(String camara);
+    public void setPartidoPolitico(String partidoPolitico) {
+        this.partidoPolitico = partidoPolitico;
+    }
+
+    @Override
+    public String toString() {
+        return "Legislador{" +
+                "provinciaQueRepresenta='" + provinciaQueRepresenta + '\'' +
+                ", partidoPolitico='" + partidoPolitico + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", DNI='" + DNI + '\'' +
+                '}';
+    }
 }

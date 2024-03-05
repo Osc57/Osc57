@@ -1,27 +1,15 @@
 public class Senador extends Legislador{
-    public Senador(String nombre, String DNI) {
-        super(nombre, DNI);
-    }
 
-    public Senador(String nombre, String DNI, String provinciaQueRepresenta) {
-        super(nombre, DNI, provinciaQueRepresenta);
-    }
-
-    @Override
-    public String getCamaraEnQueTrabaja(String camara) {
-        return "Trabaja en la camara " + camara;
-    }
     @Override
     public String getCamaraEnQueTrabaja() {
-        return null;
+        return "Yo ni aparezco por el senado";
     }
-
-
 
     @Override
     public String toString() {
         return "Senador{" +
                 "provinciaQueRepresenta='" + provinciaQueRepresenta + '\'' +
+                ", partidoPolitico='" + partidoPolitico + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
                 '}';
