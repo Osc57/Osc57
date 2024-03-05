@@ -1,0 +1,24 @@
+Diputado:
+Abalos
+17452215Y
+PSOE
+Valencia
+
+Diputado:
+Tania Sanchez
+15468595Y
+Potemos
+Madrid
+
+Diputado:
+Herminio Sancho
+18444555H
+PSOE
+Teruel
+
+Senador:
+Pedro Manuel Rollán Ojeda
+30269645T
+PP
+No lo sé
+
