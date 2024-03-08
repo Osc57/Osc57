@@ -13,7 +13,7 @@ public class MainEj2 {
         BufferedWriter bufferedWriter = null;
 
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("ladronesEj3.txt"));
+            bufferedWriter = new BufferedWriter(new FileWriter("ladrones.txt"));
 
             for (Legislador legislador : list) {
                 //System.out.println(legislador.toString());

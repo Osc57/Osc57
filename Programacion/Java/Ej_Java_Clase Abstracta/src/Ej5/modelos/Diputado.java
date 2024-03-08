@@ -8,15 +8,18 @@ public class Diputado {
     String fechaAlta;
     String getFechaBaja;
 
+    String lista;
+
     public Diputado() {
     }
 
-    public Diputado(String nombre, String grupo, String provincia, String fechaAlta, String getFechaBaja) {
+    public Diputado(String nombre, String grupo, String provincia,String lista, String fechaAlta, String getFechaBaja) {
         this.nombre = nombre;
         this.grupo = grupo;
         this.provincia = provincia;
         this.fechaAlta = fechaAlta;
         this.getFechaBaja = getFechaBaja;
+        this.lista = lista;
     }
 
     public String getNombre() {
@@ -57,5 +60,25 @@ public class Diputado {
 
     public void setGetFechaBaja(String getFechaBaja) {
         this.getFechaBaja = getFechaBaja;
+    }
+
+    public String getLista() {
+        return lista;
+    }
+
+    public void setLista(String lista) {
+        this.lista = lista;
+    }
+
+    @Override
+    public String toString() {
+        return "Diputado{" +
+                "nombre='" + nombre + '\'' +
+                ", grupo='" + grupo + '\'' +
+                ", provincia='" + provincia + '\'' +
+                ", fechaAlta='" + fechaAlta + '\'' +
+                ", getFechaBaja='" + getFechaBaja + '\'' +
+                ", lista='" + lista + '\'' +
+                '}';
     }
 }
