@@ -1,7 +1,6 @@
 package Ej5;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -17,6 +16,13 @@ public class MainEj5 {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }finally {
+            try {
+                assert bufferedReader != null;
+                bufferedReader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

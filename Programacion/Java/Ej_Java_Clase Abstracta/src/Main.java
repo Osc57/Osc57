@@ -40,6 +40,36 @@ public class Main {
 
         listaLegisladores.add(senador);
 
+        legisladores(listaLegisladores);
+
+
+    }
+
+    private static void legisladores(ArrayList<Legislador> listaLegisladores) {
+        BufferedWriter bufferedWriter = null;
+
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter("ladrones.txt"));
+
+            for (Legislador legislador : listaLegisladores) {
+                System.out.println(legislador.toString());
+                bufferedWriter.write(legislador.toString());
+                bufferedWriter.newLine();
+            }
+
+            bufferedWriter.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException();
+        } finally {
+            if (bufferedWriter != null) {
+                try {
+                    bufferedWriter.close();
+                } catch (IOException e) {
+                    throw new RuntimeException();
+                }
+            }
+        }
     }
 }
 
