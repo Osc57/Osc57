@@ -1,8 +1,6 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
@@ -42,33 +40,8 @@ public class Main {
 
         listaLegisladores.add(senador);
 
-        System.out.println(listaLegisladores);
-
-        CrearLegisladoresEnFichero(listaLegisladores);
-
-    }
-
-    public static void CrearLegisladoresEnFichero(ArrayList<Legislador> listaLegisladores) {
-        File archivo = new File("ladrones.txt");
-
-        try {
-            FileWriter fileWriter = new FileWriter(archivo);
-
-            for (Legislador legislador : listaLegisladores) {
-                fileWriter.write(String.valueOf(legislador.getClass()).replace("class", "").trim() + ":" + "\n");
-                fileWriter.write(legislador.getNombre() + "\n");
-                fileWriter.write(legislador.getDNI() + "\n");
-                fileWriter.write(legislador.getPartidoPolitico() + "\n");
-                fileWriter.write(legislador.getProvinciaQueRepresenta()+ "\n");
-                fileWriter.write("\n");
-
-            }
-            fileWriter.close();
-
-        } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo: " + e.getMessage());
-        }
-
-
     }
 }
+
+
+
