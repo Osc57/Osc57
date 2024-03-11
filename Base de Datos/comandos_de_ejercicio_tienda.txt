@@ -1,0 +1,15 @@
+1. INSERT INTO fabricante (codigo,nombre) VALUES ( null,'Poco');
+2. INSERT INTO fabricante (nombre) VALUES ('Apple');
+3. INSERT INTO producto (codigo,nombre,precio,codigo_fabricante)VALUES (null, 'Memoria RAM DDR5 16 GB', 89.99, 7);
+4. INSERT INTO producto (nombre,precio,codigo_fabricante)VALUES ('GeForce GTX 3060Ti', 289.99, 8);
+5. INSERT INTO fabricantes_producto (nombre_producto,nombre_fabricante,precio) SELECT producto.nombre AS nombre_producto,fabricante.nombre AS nombre_fabricante,producto.precio FROM producto,fabricante WHERE producto.codigo_fabricante=fabricante.codigo;
+6. CREATE VIEW vista_fabricantes_productos AS SELECT nombre_fabricante,nombre_producto,precio FROM fabricantes_producto;
+7. 
+
+
+
+
+
+
+
+

@@ -10,5 +10,6 @@ public class Ej5 {
             System.out.println(i);
         }
         System.out.println("Acabó la cuenta regresiva");
+        scanner.close();
     }
 }

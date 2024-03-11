@@ -16,7 +16,7 @@ public class Ej4 {
             intentos++;
             int numero = scanner.nextInt();
             if (numeroAleatorio==numero){
-                System.out.println("HAS ACERTADO EL NÚMERO EN " + intentos + " ACIERTOS");
+                System.out.println("HAS ACERTADO EL NÚMERO EN " + intentos + " INTENTOS");
                 break;
             } else if (numero < numeroAleatorio){
                 System.out.println("El número es mayor");

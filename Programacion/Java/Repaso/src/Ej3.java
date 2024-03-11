@@ -3,7 +3,7 @@ public class Ej3 {
         int fibo1 =1;
         int fibo2=1;
 
-        System.out.print(fibo1 + " ");
+
         for(int i=2;i<=20;i++){
             System.out.print(fibo2 + " ");
             fibo2 = fibo1 + fibo2;
