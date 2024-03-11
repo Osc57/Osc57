@@ -22,7 +22,7 @@ public class Ej3 {
         System.out.print("Introduce un número que no sea el 6: ");
         int opcion = scanner.nextInt();
         if (opcion == 6){
-            throw new MiExcepcionNoVerificada("Esto es una excepción verificáda");
+            throw new MiExcepcionNoVerificada("Esto es una excepción no verificáda");
         }
     }
 
