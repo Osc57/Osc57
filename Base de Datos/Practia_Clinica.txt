@@ -1,0 +1,18 @@
+CREATE DATABASE clinica;
+USE clinica;
+CREATE TABLE clinica(cif CHAR(9) PRIMARY KEY, nombre VARCHAR(15), direccion VARCHAR(100),distancia_teruel  INT);
+CREATE TABLE tratamiento(tipo_tratamiento VARCHAR(100) PRIMARY KEY, precio_intervencion INT,numero_consultas INT,precio_consulta INT);
+CREATE TABLE oferta(cif_oferta CHAR(9),tipo_tratamiento_tratamiento VARCHAR(100), PRIMARY KEY(cif_oferta,tipo_tratamiento_tratamiento), FOREIGN KEY (cif_oferta) REFERENCES clinica(cif),FOREIGN KEY (tipo_tratamiento_tratamiento) REFERENCES tratamiento(tipo_tratamiento));
+CREATE TABLE colaboran(cif_colaboran CHAR(9), cif_clinica CHAR(9), PRIMARY KEY(cif_colaboran,cif_clinica),FOREIGN KEY (cif_clinica) REFERENCES clinica(cif));
+INSERT INTO clinica(cif,nombre,direccion,distancia_teruel) VALUES ('12345678R','Clinica Juan','C\Los Arbustos',25);
+
+
+
+
+
+
+
+
+
+
+
