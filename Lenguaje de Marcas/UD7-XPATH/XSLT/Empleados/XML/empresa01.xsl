@@ -24,9 +24,16 @@
                                     <th>Sueldo</th>
                                 </tr>
                                 <tr>
-                                    <td>Juan Díaz</td>
-                                    <td>Analista</td>
-                                    <td class="number">2000.00</td>
+                                <!-- Nombre del primer empleado -->
+                                    <td>
+                                        <xsl:value-of select="empresa/departamento/empleado[1]/nombre"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="empresa/departamento/empleado[1]/trabajo"/>
+                                    </td>
+                                    <td class="number">
+                                        <xsl:value-of select="empresa/departamento/empleado[1]/sueldo"/>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
