@@ -4,7 +4,46 @@ CREATE TABLE clinica(cif CHAR(9) PRIMARY KEY, nombre VARCHAR(15), direccion VARC
 CREATE TABLE tratamiento(tipo_tratamiento VARCHAR(100) PRIMARY KEY, precio_intervencion INT,numero_consultas INT,precio_consulta INT);
 CREATE TABLE oferta(cif_oferta CHAR(9),tipo_tratamiento_tratamiento VARCHAR(100), PRIMARY KEY(cif_oferta,tipo_tratamiento_tratamiento), FOREIGN KEY (cif_oferta) REFERENCES clinica(cif),FOREIGN KEY (tipo_tratamiento_tratamiento) REFERENCES tratamiento(tipo_tratamiento));
 CREATE TABLE colaboran(cif_colaboran CHAR(9), cif_clinica CHAR(9), PRIMARY KEY(cif_colaboran,cif_clinica),FOREIGN KEY (cif_clinica) REFERENCES clinica(cif));
+
 INSERT INTO clinica(cif,nombre,direccion,distancia_teruel) VALUES ('12345678R','Clinica Juan','C\Los Arbustos',25);
+INSERT INTO clinica(cif,nombre,direccion,distancia_teruel) VALUES ('11111111A','Clinica Alvario','C\Kawasaqui',45);
+INSERT INTO clinica(cif,nombre,direccion,distancia_teruel) VALUES ('22222222B','Clinica Josefa','C\Camaron de la Guantera',225);
+INSERT INTO clinica(cif,nombre,direccion,distancia_teruel) VALUES ('33333333C','Clinica El Nano','C\Fernado Alonso',33);
+INSERT INTO clinica(cif,nombre,direccion,distancia_teruel) VALUES ('44444444D','Clinica Babiera','C\Me Gustan los Tomates',1500);
+
+UPDATE clinica SET cif='55555555E' WHERE cif='12345678R';
+
+INSERT INTO colaboran(cif_colaboran,cif_clinica) VALUES ('55555555E','11111111A');
+INSERT INTO colaboran(cif_colaboran,cif_clinica) VALUES ('44444444D','33333333C');
+INSERT INTO colaboran(cif_colaboran,cif_clinica) VALUES ('11111111A','22222222B');
+INSERT INTO colaboran(cif_colaboran,cif_clinica) VALUES ('33333333C','55555555E');
+INSERT INTO colaboran(cif_colaboran,cif_clinica) VALUES ('22222222B','44444444D');
+
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_capilar','1500','6',50);
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_termonuclear','5500','3',60);
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_interbraquial','250','10',30);
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_pulmonar','100','7',5);
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_fungico','30','4',0);
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_antiparaguayo','0','7',0);
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Tratamiento_dental','70','1',25);
+
+INSERT INTO oferta VALUES('22222222B','Tratamiento_craneoencefalico'); //Error
+
+INSERT INTO tratamiento(tipo_tratamiento,precio_intervencion,numero_consultas,precio_consulta) VALUES ('Crecimiento_capilar','1000','5',100);
+
+INSERT INTO oferta VALUE('11111111A','Crecimiento_capilar');
+INSERT INTO oferta VALUE('22222222B','Crecimiento_capilar');
+INSERT INTO oferta VALUE('33333333C','Crecimiento_capilar');
+INSERT INTO oferta VALUE('44444444D','Crecimiento_capilar');
+INSERT INTO oferta VALUE('55555555E','Crecimiento_capilar');
+
+SELECT cif FROM clinica WHERE cif IN (SELECT cif_colaboran FROM colaboran WHERE cif_clinica='55555555E');
+
+SELECT COUNT(tipo_tratamiento) AS Tratamientos FROM tratamiento;
+
+
+
+
 
 
 
