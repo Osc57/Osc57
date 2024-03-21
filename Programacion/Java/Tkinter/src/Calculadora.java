@@ -9,7 +9,7 @@ public class Calculadora {
 
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();
-        panel1.setLayout(new GridLayout(1,2));
+        panel1.setLayout(new GridLayout(4,6));
         panel2.setLayout(new GridLayout(4,4));
 
         JTextField textField = new JTextField();
