@@ -13,6 +13,7 @@ public class Calculadora {
         panel2.setLayout(new GridLayout(4,4));
 
         JTextField textField = new JTextField();
+        textField.setPreferredSize(new Dimension(150,35));
 
         panel1.add(textField);
 
