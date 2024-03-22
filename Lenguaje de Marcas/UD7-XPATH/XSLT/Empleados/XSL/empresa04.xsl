@@ -40,13 +40,18 @@
                                     </xsl:when>
                                 </xsl:choose>
                                     <td>
+                                    <xsl:if test="@nacionalidad">
+                                        <span class="nationality">
+                                            <xsl:value-of select="@nacionalidad"/>
+                                        </span>
+                                    </xsl:if>
                                         <xsl:value-of select="nombre"/>
                                     </td>
                                     <td>
                                         <xsl:value-of select="trabajo"/>
                                     </td>
                                     <td class="number">
-                                        <xsl:value-of select="sueldo"/>
+                                        <xsl:value-of select="format-number(sueldo, '#.00')"/>
                                     </td>
                                 </tr>
      
