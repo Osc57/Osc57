@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Calculadora {
     static int botonPorDefecto = 0;
@@ -10,6 +12,8 @@ public class Calculadora {
         JFrame frame = new JFrame("Calculadora");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(350, 500);
+
+        ArrayList<String> listaNumeros = new ArrayList<>();
 
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();
@@ -27,8 +31,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 7;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button7);
@@ -39,8 +44,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 8;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button8);
@@ -51,8 +57,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 9;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button9);
@@ -73,8 +80,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 4;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button4);
@@ -85,8 +93,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 5;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button5);
@@ -97,8 +106,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 6;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button6);
@@ -120,8 +130,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 1;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
 
@@ -131,8 +142,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 2;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button2);
@@ -144,8 +156,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 3;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
 
@@ -177,8 +190,9 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado){
                     botonPorDefecto = 0;
+                    listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
-                System.out.println(botonPorDefecto);
+                System.out.println(listaNumeros);
             }
         });
         panel2.add(button);
@@ -206,7 +220,6 @@ public class Calculadora {
         frame.setLayout(new BorderLayout());
         frame.add(panel1, BorderLayout.NORTH);
         frame.add(panel2, BorderLayout.CENTER);
-
 
         frame.setVisible(true);
 
