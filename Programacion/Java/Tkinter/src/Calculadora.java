@@ -3,11 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Calculadora {
     static int botonPorDefecto = 0;
     static boolean botonPresionado = false;
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculadora");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -17,11 +17,11 @@ public class Calculadora {
 
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();
-        panel1.setLayout(new GridLayout(1,1));
-        panel2.setLayout(new GridLayout(4,4));
+        panel1.setLayout(new GridLayout(1, 1));
+        panel2.setLayout(new GridLayout(4, 4));
 
         JTextField textField = new JTextField();
-        textField.setPreferredSize(new Dimension(150,150));
+        textField.setPreferredSize(new Dimension(150, 150));
 
         panel1.add(textField);
 
@@ -29,7 +29,7 @@ public class Calculadora {
         button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 7;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -42,7 +42,7 @@ public class Calculadora {
         button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 8;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -55,7 +55,7 @@ public class Calculadora {
         button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 9;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -68,7 +68,7 @@ public class Calculadora {
         dividir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                 }
             }
         });
@@ -78,7 +78,7 @@ public class Calculadora {
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 4;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -91,7 +91,7 @@ public class Calculadora {
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 5;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -104,7 +104,7 @@ public class Calculadora {
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 6;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -117,7 +117,7 @@ public class Calculadora {
         multiplicar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                 }
             }
         });
@@ -128,7 +128,7 @@ public class Calculadora {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 1;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -140,7 +140,7 @@ public class Calculadora {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 2;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -154,7 +154,7 @@ public class Calculadora {
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 3;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -166,7 +166,7 @@ public class Calculadora {
         restar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
 
                 }
             }
@@ -178,7 +178,7 @@ public class Calculadora {
         coma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
 
                 }
             }
@@ -188,7 +188,7 @@ public class Calculadora {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
                     botonPorDefecto = 0;
                     listaNumeros.add(String.valueOf(botonPorDefecto));
                 }
@@ -201,7 +201,7 @@ public class Calculadora {
         igual.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado){
+                if (!botonPresionado) {
 
                 }
             }
