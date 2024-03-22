@@ -28,7 +28,7 @@
                         <xsl:for-each select="empresa/departamento/empleado">
                             <!-- Ordeno todos los empleados descendientemente por nombre -->
                             <xsl:sort select="nombre" order="descending" />
-                                <tr class="gt-2700">
+                                <tr>
                                 <!-- Si el sueldo es mayor de 2700, pongo la clase gt-2700 al tr
                                 si no, pongo la clase lt-2700 al tr -->
                                 <xsl:choose>
