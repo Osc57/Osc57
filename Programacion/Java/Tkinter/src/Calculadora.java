@@ -150,10 +150,26 @@ public class Calculadora {
         });
 
         JButton restar = new JButton("-");
+        restar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!botonPresionado){
+
+                }
+            }
+        });
         panel2.add(restar);
 
 
         JButton coma = new JButton(",");
+        coma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!botonPresionado){
+
+                }
+            }
+        });
         panel2.add(coma);
         JButton button = new JButton("0");
         button.addActionListener(new ActionListener() {
@@ -174,7 +190,6 @@ public class Calculadora {
                 if (!botonPresionado){
 
                 }
-
             }
         });
         panel2.add(igual);
