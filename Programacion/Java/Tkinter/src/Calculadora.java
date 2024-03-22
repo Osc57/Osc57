@@ -23,6 +23,8 @@ public class Calculadora {
         JTextField textField = new JTextField();
         textField.setPreferredSize(new Dimension(150, 150));
         textField.setEditable(false);
+        Font font = new Font("Calibri", Font.BOLD,70);
+        textField.setFont(font);
 
         panel1.add(textField);
 
@@ -32,7 +34,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 7;
-                    listaNumeros.add(Integer.valueOf(String.valueOf(botonPorDefecto)));
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -45,7 +47,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 8;
-                    listaNumeros.add(Integer.valueOf(String.valueOf(botonPorDefecto)));
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -59,6 +61,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 9;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -82,6 +85,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 4;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -95,6 +99,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 5;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -108,6 +113,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 6;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -132,6 +138,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 1;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -144,6 +151,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 2;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -158,6 +166,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 3;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -192,6 +201,7 @@ public class Calculadora {
                 if (!botonPresionado) {
                     botonPorDefecto = 0;
                     listaNumeros.add(botonPorDefecto);
+                    textField.setText(textField.getText() + botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
