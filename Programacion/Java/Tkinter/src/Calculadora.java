@@ -13,7 +13,7 @@ public class Calculadora {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(350, 500);
 
-        ArrayList<String> listaNumeros = new ArrayList<>();
+        ArrayList<Integer> listaNumeros = new ArrayList<>();
 
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();
@@ -22,6 +22,7 @@ public class Calculadora {
 
         JTextField textField = new JTextField();
         textField.setPreferredSize(new Dimension(150, 150));
+        textField.setEditable(false);
 
         panel1.add(textField);
 
@@ -31,7 +32,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 7;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(Integer.valueOf(String.valueOf(botonPorDefecto)));
                 }
                 System.out.println(listaNumeros);
             }
@@ -44,7 +45,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 8;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(Integer.valueOf(String.valueOf(botonPorDefecto)));
                 }
                 System.out.println(listaNumeros);
             }
@@ -57,7 +58,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 9;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -80,7 +81,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 4;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -93,7 +94,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 5;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -106,7 +107,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 6;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -130,7 +131,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 1;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -142,7 +143,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 2;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -156,7 +157,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 3;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
@@ -190,7 +191,7 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 0;
-                    listaNumeros.add(String.valueOf(botonPorDefecto));
+                    listaNumeros.add(botonPorDefecto);
                 }
                 System.out.println(listaNumeros);
             }
