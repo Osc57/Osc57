@@ -72,7 +72,7 @@ public class Calculadora2 extends JFrame implements ActionListener{
         String textoDelBoton = boton.getText();
         //Si se presiona un número, tendré que escribirlo en el TextField
         if (textoDelBoton.matches("[0-9]")){
-            textField.setText(textField.getText() + textoDelBoton);
+            textField.setText(textField.getText() + textoDelBoton);//pasar numero a ventana
         }
         //Sí se presiona un operador(+-*/) --> Calcular
         else if (textoDelBoton.matches("[+\\-*/]")) {
