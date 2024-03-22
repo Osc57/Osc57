@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Calculadora {
-    static int botonPorDefecto = 0;
     static boolean botonPresionado = false;
+    static int botonPorDefecto = 0;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculadora");
