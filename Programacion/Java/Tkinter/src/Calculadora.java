@@ -58,7 +58,8 @@ public class Calculadora {
         dividir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if (!botonPresionado){
+                }
             }
         });
         panel2.add(dividir);
