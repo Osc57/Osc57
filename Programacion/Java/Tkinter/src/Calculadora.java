@@ -143,6 +143,9 @@ public class Calculadora {
         JButton restar = new JButton("-");
         panel2.add(restar);
 
+
+        JButton coma = new JButton(",");
+        panel2.add(coma);
         JButton button = new JButton("0");
         button.addActionListener(new ActionListener() {
             @Override
@@ -154,9 +157,6 @@ public class Calculadora {
             }
         });
         panel2.add(button);
-
-        JButton coma = new JButton(",");
-        panel2.add(coma);
 
         JButton igual = new JButton("=");
         igual.addActionListener(new ActionListener() {
