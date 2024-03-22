@@ -28,7 +28,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 7;
                 }
-                System.out.println("boton7");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button7);
@@ -40,7 +40,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 8;
                 }
-                System.out.println("boton8");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button8);
@@ -52,7 +52,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 9;
                 }
-                System.out.println("boton9");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button9);
@@ -74,7 +74,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 4;
                 }
-                System.out.println("boton4");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button4);
@@ -86,7 +86,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 5;
                 }
-                System.out.println("boton5");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button5);
@@ -98,7 +98,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 6;
                 }
-                System.out.println("boton6");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button6);
@@ -121,7 +121,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 1;
                 }
-                System.out.println("boton1");
+                System.out.println(botonPorDefecto);
             }
         });
 
@@ -132,7 +132,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 2;
                 }
-                System.out.println("boton2");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button2);
@@ -145,7 +145,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 3;
                 }
-                System.out.println("boton3");
+                System.out.println(botonPorDefecto);
             }
         });
 
@@ -162,7 +162,7 @@ public class Calculadora {
                 if (!botonPresionado){
                     botonPorDefecto = 0;
                 }
-                System.out.println("boton0");
+                System.out.println(botonPorDefecto);
             }
         });
         panel2.add(button);
