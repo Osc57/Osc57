@@ -7,54 +7,55 @@
         <html lang="es">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                    <title>
+                <title>
                     <xsl:value-of select="empresa/@nombre"/>
-                    </title>
-                    <link rel="stylesheet" href="../CSS/estilos.css" />
-                    </head>
-                    
-                    <body>
-                        <div class="info">Datos del primer primer empleado</div>
-                        <table>
-                            <caption>El Corte Inglés</caption>
-                            <tbody>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Trabajo</th>
-                                    <th>Sueldo</th>
-                                </tr>
-                                <tr>
-                                <!-- Recorro todos los empleados -->
-                                <xsl:for-each select="empresa/departamento/empleado">
-                                    
-                                </xsl:for-each>
-                                    <td>
-                                        <xsl:value-of select="nombre"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="trabajo"/>
-                                    </td>
-                                    <td class="number">
-                                        <xsl:value-of select="sueldo"/>
-                                    </td>
-                                </tr>
-                                <!-- Fin Recorro -->
-
-                                <tr>
-                                    <td colspan="2">TOTAL DE SUELDOS</td>
-                                    <td class="number">
-                                        <xsl:value-of select="format-number(sum(empresa/departamento/empleado/sueldo),'#.00')"/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </title>
+                <link rel="stylesheet" href="../CSS/estilos.css" />
+            </head>
+            
+            <body>
+                <div class="info">Datos del primer primer empleado</div>
+                <table>
+                    <caption>El Corte Inglés</caption>
+                    <tbody>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Trabajo</th>
+                            <th>Sueldo</th>
+                        </tr>
                         
-                    </body>
-                    
-                    
-                </html>
-            </xsl:template>
+                        <!-- Recorro todos los empleados -->
+                        <xsl:for-each select="empresa/departamento/empleado">
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="nombre"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="trabajo"/>
+                                </td>
+                                <td class="number">
+                                    <xsl:value-of select="sueldo"/>
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+                        
+                        <!-- Fin Recorro -->
+                        
+                        <tr>
+                            <td colspan="2">TOTAL DE SUELDOS</td>
+                            <td class="number">
+                                <xsl:value-of select="format-number(sum(empresa/departamento/empleado/sueldo),'#.00')"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </body>
             
             
-            
-        </xsl:stylesheet>
+        </html>
+    </xsl:template>
+    
+    
+    
+</xsl:stylesheet>
