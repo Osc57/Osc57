@@ -3,10 +3,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Calculadora {
     static boolean botonPresionado = false;
     static int botonPorDefecto = 0;
+
+    static String botonOperacion;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculadora");
@@ -73,6 +76,8 @@ public class Calculadora {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
+                    botonOperacion = "/";
+                    textField.setText(textField.getText() + botonOperacion);
                 }
             }
         });
