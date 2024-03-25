@@ -41,6 +41,23 @@ SELECT cif FROM clinica WHERE cif IN (SELECT cif_colaboran FROM colaboran WHERE 
 
 SELECT COUNT(tipo_tratamiento) AS Tratamientos FROM tratamiento;
 
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('11111111A','Tratamiento_antiparaguayo');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('11111111A','Tratamiento_dental');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('22222222B','Tratamiento_pulmonar');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('33333333C','Tratamiento_fungico');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('33333333C','Tratamiento_termonuclear');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('33333333C','Tratamiento_dental');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('44444444D','Tratamiento_interbraquial');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('55555555E', 'Tratamiento_antiparaguayo');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('55555555E', 'Tratamiento_fungico');
+INSERT INTO oferta(cif_oferta,tipo_tratamiento_tratamiento) VALUES ('55555555E', 'Tratamiento_termonuclear');
+
+SELECT tipo_tratamiento,precio_intervencion FROM clinica,oferta,tratamiento WHERE clinica.cif=oferta.cif_oferta AND oferta.tipo_tratamiento_tratamiento=tratamiento.tipo_tratamiento AND clinica.cif="33333333C";
+
+SELECT direccion,tipo_tratamiento FROM clinica,oferta,tratamiento WHERE clinica.cif=oferta.cif_oferta AND oferta.tipo_tratamiento_tratamiento=tratamiento.tipo_tratamiento AND tratamiento.tipo_tratamiento='Tratamiento_antiparaguayo';
+
+SELECT nombre, MAX(distancia_teruel) AS clinica_con_mayor_distancia FROM clinica;
+
 
 
 
