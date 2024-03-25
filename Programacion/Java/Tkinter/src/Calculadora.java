@@ -2,28 +2,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Calculadora {
+public class Calculadora extends JFrame implements ActionListener{
     static boolean botonPresionado = false;
     static int botonPorDefecto = 0;
+    static JButton[] botonOperacion;
+    private String operando1;
+    private String operacion;
+    private static JTextField textField;
+    private String ultimateclaPresionada = "";
+    
 
-    static String botonOperacion;
+    public Calculadora() {
+        //JFrame frame = new JFrame("Calculadora");
+        this.setTitle("Calculadora");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(350, 500);
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Calculadora");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(350, 500);
 
-        ArrayList<Integer> listaNumeros = new ArrayList<>();
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+        JPanel panel3 = new JPanel();
 
-        Panel panel1 = new Panel();
-        Panel panel2 = new Panel();
         panel1.setLayout(new GridLayout(1, 1));
-        panel2.setLayout(new GridLayout(4, 4));
+        panel2.setLayout(new GridLayout(4, 3));
+        panel3.setLayout(new GridLayout(5,1));
 
-        JTextField textField = new JTextField();
+        textField = new JTextField();
         textField.setPreferredSize(new Dimension(150, 150));
         textField.setEditable(false);
         Font font = new Font("Calibri", Font.BOLD,70);
@@ -39,7 +44,7 @@ public class Calculadora {
                     botonPorDefecto = 7;
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
+
             }
         });
         panel2.add(button7);
@@ -52,7 +57,7 @@ public class Calculadora {
                     botonPorDefecto = 8;
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
+
             }
         });
         panel2.add(button8);
@@ -63,25 +68,13 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 9;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
+
             }
         });
         panel2.add(button9);
 
-        JButton dividir = new JButton("/");
-        dividir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado) {
-                    botonOperacion = "/";
-                    textField.setText(textField.getText() + botonOperacion);
-                }
-            }
-        });
-        panel2.add(dividir);
 
         JButton button4 = new JButton("4");
         button4.addActionListener(new ActionListener() {
@@ -89,10 +82,8 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 4;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
         panel2.add(button4);
@@ -103,10 +94,8 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 5;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
         panel2.add(button5);
@@ -117,23 +106,12 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 6;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
         panel2.add(button6);
 
-        JButton multiplicar = new JButton("*");
-        multiplicar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado) {
-                }
-            }
-        });
-        panel2.add(multiplicar);
 
         JButton button1 = new JButton("1");
         panel2.add(button1);
@@ -142,10 +120,8 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 1;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
 
@@ -155,10 +131,8 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 2;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
         panel2.add(button2);
@@ -170,74 +144,105 @@ public class Calculadora {
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 3;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
 
-        JButton restar = new JButton("-");
-        restar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado) {
-
-                }
-            }
-        });
-        panel2.add(restar);
-
-
-        JButton coma = new JButton(",");
-        coma.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado) {
-
-                }
-            }
-        });
-        panel2.add(coma);
+        JButton vacio = new JButton();
+        panel2.add(vacio);
         JButton button = new JButton("0");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!botonPresionado) {
                     botonPorDefecto = 0;
-                    listaNumeros.add(botonPorDefecto);
                     textField.setText(textField.getText() + botonPorDefecto);
                 }
-                System.out.println(listaNumeros);
             }
         });
         panel2.add(button);
+        JButton vacio2 = new JButton();
+        panel2.add(vacio2);
 
-        JButton igual = new JButton("=");
-        igual.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!botonPresionado) {
+        this.setLayout(new BorderLayout());
+        this.add(panel1, BorderLayout.NORTH);
+        this.add(panel2, BorderLayout.CENTER);
+        this.add(panel3, BorderLayout.EAST);
 
-                }
+        crearBotonesDeOperaciones(panel3, this);
+
+    }
+
+    private static void crearBotonesDeOperaciones(JPanel panel3, Calculadora calculadora) {
+        botonOperacion = new JButton[5];
+        botonOperacion[0] = new JButton("/");
+        botonOperacion[1] = new JButton("*");
+        botonOperacion[2] = new JButton("-");
+        botonOperacion[3] = new JButton("+");
+        botonOperacion[4] = new JButton("=");
+
+        for (int i = 0; i < botonOperacion.length; i++) {
+            panel3.add(botonOperacion[i]);
+            botonOperacion[i].addActionListener((ActionListener) calculadora);
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //Obtener el botón presionado:
+        JButton button = (JButton) e.getSource();
+        String buttonText = button.getText();
+
+        //Si se presiona un número, tendré que escribirlo en el TextField
+        if (buttonText.matches("[0-9]")){
+            if (ultimateclaPresionada.equals("=")){
+                textField.setText("");
             }
-        });
-        panel2.add(igual);
+            ultimateclaPresionada = buttonText;
+            textField.setText(textField.getText() + buttonText);
+        }
+        //Sí se presiona un operador (+-*/) --> Calcular
+        else if (buttonText.matches("[+\\-*/]")) {
+            ultimateclaPresionada = buttonText;
+            operando1 = textField.getText();
+            textField.setText(operando1 + buttonText);
+            operacion = buttonText;
+        } else if (buttonText.equals("=")) {
+            //guardarme el numero de la pantalla.
+            ultimateclaPresionada = buttonText;
+            String operando2 = textField.getText();
 
-        JButton sumar = new JButton("+");
-        sumar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+            operando2 = operando2.replace(operando1 + operacion, "");
+            textField.setText("");
+            int resultado = 0;
+            if (operacion.equals("+")) {
+                ultimateclaPresionada = buttonText;
+                resultado = Integer.parseInt(operando1) + Integer.parseInt(operando2);
+                textField.setText("" + resultado);
             }
-        });
-        panel2.add(sumar);
+            else if (operacion.equals("-")){
+                ultimateclaPresionada = buttonText;
+                resultado = Integer.parseInt(operando1) - Integer.parseInt(operando2);
+                textField.setText("" + resultado);
+            }else  if (operacion.equals("*")){
+                ultimateclaPresionada = buttonText;
+                resultado = Integer.parseInt(operando1) * Integer.parseInt(operando2);
+                textField.setText("" + resultado);
+            }else  if (operacion.equals("/")){
+                ultimateclaPresionada = buttonText;
+                resultado = Integer.parseInt(operando1) / Integer.parseInt(operando2);
+                textField.setText("" + resultado);
+            }
+            // Limpiar los valores de los operandos y la operación
+            operando1 = "";
+            operando2 = "";
+            operacion = "";
+        }
+    }
 
-        frame.setLayout(new BorderLayout());
-        frame.add(panel1, BorderLayout.NORTH);
-        frame.add(panel2, BorderLayout.CENTER);
-
-        frame.setVisible(true);
-
+    public static void main(String[] args) {
+        Calculadora calculadora = new Calculadora();
+        calculadora.setVisible(true);
     }
 }
