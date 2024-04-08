@@ -41,10 +41,26 @@ public class VentanaConMenu extends JFrame {
            }
        });
 
+       JMenuItem acercaDeItem2 = new JMenuItem("Acerca De...");
+       acercaDeItem2.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               //Crear y mostrar un JDialog como ventana emergente
+               JDialog dialog = new JDialog(VentanaConMenu.this, "Acerca de...  titulo",true);
+               dialog.setSize(300,300);
+               //Centrar en la pantalla:
+               dialog.setLocationRelativeTo(VentanaConMenu.this);
+               dialog.setVisible(true);
+
+
+           }
+       });
+
        archivoMenu.add(abrirItem);
        archivoMenu.add(cerrarItem);
 
        ayudaMenu.add(acercaDeItem);
+       ayudaMenu.add(acercaDeItem2);
 
        menuBar.add(archivoMenu);
        menuBar.add(ayudaMenu);
