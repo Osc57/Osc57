@@ -13,6 +13,7 @@ public class VentanaConMenu extends JFrame {
        JMenuBar menuBar = new JMenuBar();
 
        JMenu archivoMenu = new JMenu("Archivo");
+       JMenu ayudaMenu = new JMenu("Ayuda");
 
        JMenuItem abrirItem = new JMenuItem("Abrir");
        abrirItem.addActionListener(new ActionListener() {
@@ -30,19 +31,23 @@ public class VentanaConMenu extends JFrame {
            }
        });
 
-       JMenuItem ayudaItem = new JMenuItem("Ayuda");
-       ayudaItem.addActionListener(new ActionListener() {
+       JMenuItem acercaDeItem = new JMenuItem("Acerca De");
+       acercaDeItem.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               
+               JOptionPane.showInternalMessageDialog(acercaDeItem, "Programa realizado por DAM1",
+                       "Info del Programa",JOptionPane.INFORMATION_MESSAGE);
+
            }
        });
 
        archivoMenu.add(abrirItem);
        archivoMenu.add(cerrarItem);
-       archivoMenu.add(ayudaItem);
+
+       ayudaMenu.add(acercaDeItem);
 
        menuBar.add(archivoMenu);
+       menuBar.add(ayudaMenu);
 
        setJMenuBar(menuBar);
 
