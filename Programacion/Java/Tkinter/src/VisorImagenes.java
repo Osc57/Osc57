@@ -30,6 +30,10 @@ public class VisorImagenes extends JFrame{
         visorDeImagenes = new JLabel();
         add(visorDeImagenes, BorderLayout.CENTER);
 
+        //Creamos el botón para pasar
+        JButton siguienteImagen = new JButton("->");
+        add(siguienteImagen, BorderLayout.EAST);
+
 
         abrir.addActionListener(new ActionListener() {
             @Override
@@ -45,6 +49,18 @@ public class VisorImagenes extends JFrame{
                     mostrarImagen();
 
                 }
+            }
+        });
+
+        //Programamos el clic al boton de pasar
+        siguienteImagen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                indiceImagenActual = (indiceImagenActual + 1);
+                if (indiceImagenActual > imagenes.size()){
+                    indiceImagenActual = 0;
+                }
+                mostrarImagen();
             }
         });
 
