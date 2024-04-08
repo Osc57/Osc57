@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class VentanaConMenu extends JFrame {
 
@@ -19,7 +20,15 @@ public class VentanaConMenu extends JFrame {
        abrirItem.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               System.out.println("Has hecho click en abrir");
+               //Creo el JFileChooser
+               JFileChooser fileChooser = new JFileChooser();
+               int valorRetornado = fileChooser.showOpenDialog(VentanaConMenu.this);
+               //System.out.println(valorRetornado);
+               if (valorRetornado == JFileChooser.APPROVE_OPTION){
+                   File archivoSeleccionado = fileChooser.getSelectedFile();
+                   System.out.println(archivoSeleccionado.getAbsolutePath());
+               }
+
            }
        });
 
@@ -48,6 +57,19 @@ public class VentanaConMenu extends JFrame {
                //Crear y mostrar un JDialog como ventana emergente
                JDialog dialog = new JDialog(VentanaConMenu.this, "Acerca de...  titulo",true);
                dialog.setSize(300,300);
+               dialog.setLayout(new BorderLayout());
+               JLabel text = new JLabel("<html><center>Esta es una aplicación de ejemplo <br> Versión 1.0</center></html>");
+               dialog.add(text,BorderLayout.CENTER);
+
+               JButton okButton = new JButton("Ok");
+               okButton.addActionListener(new ActionListener() {
+                   @Override
+                   public void actionPerformed(ActionEvent e) {
+                       dialog.dispose();
+                   }
+               });
+
+               dialog.add(okButton, BorderLayout.SOUTH);
                //Centrar en la pantalla:
                dialog.setLocationRelativeTo(VentanaConMenu.this);
                dialog.setVisible(true);
