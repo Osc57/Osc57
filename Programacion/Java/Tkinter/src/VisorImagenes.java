@@ -52,7 +52,7 @@ public class VisorImagenes extends JFrame{
             }
         });
 
-        //Programamos el clic al boton de pasar
+        //Programamos el clic al botón de pasar
         siguienteImagen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
