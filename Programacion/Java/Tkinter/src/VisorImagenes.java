@@ -56,10 +56,8 @@ public class VisorImagenes extends JFrame{
         siguienteImagen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                indiceImagenActual = (indiceImagenActual + 1);
-                if (indiceImagenActual >= imagenes.size()){
-                    indiceImagenActual = 0;
-                }
+                indiceImagenActual = (indiceImagenActual + 1) % imagenes.size();
+
                 mostrarImagen();
             }
         });
