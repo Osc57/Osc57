@@ -6,9 +6,12 @@ h1{
 
 <script setup>
   const nombre = "Óscar";
+  const estilo = "color: blue";
+  const activo = true;
 </script>
 
 <template>
-  <h1>Hola {{ nombre }}</h1>
-  <h2>Hola a toda la clase de DAM 1</h2>
+  <h1>Hola {{ nombre.toUpperCase() }}</h1>
+  <h2 v-bind:style="estilo"> Hola a toda la clase de DAM 1. Soy azul</h2>
+  <h2>{{ activo ? "Estoy activo" : "Estoy inactivo"}}</h2>
 </template>
