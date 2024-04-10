@@ -8,10 +8,12 @@ h1{
   const nombre = "Óscar";
   const estilo = "color: blue";
   const activo = true;
+  const colores = ["blue","red","green"];
 </script>
 
 <template>
   <h1>Hola {{ nombre.toUpperCase() }}</h1>
   <h2 v-bind:style="estilo"> Hola a toda la clase de DAM 1. Soy azul</h2>
   <h2>{{ activo ? "Estoy activo" : "Estoy inactivo"}}</h2>
+  <h2>{{ colores }}</h2>
 </template>
