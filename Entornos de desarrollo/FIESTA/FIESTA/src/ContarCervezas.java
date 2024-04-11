@@ -1,6 +1,8 @@
 /*ejercicio: renombrar variable n a nCervezas, clase PruebaDepurar
  a ContarCervezas y extraer método While*/
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContarCervezas {
 	//programa que va sumando cervezas hasta que lleve 5, entonces da un mensaje de que pare de beber
@@ -9,7 +11,7 @@ public class ContarCervezas {
 		
 		
 		int nCervezas=0;
-				
+		
 		cuentabirras(nCervezas);
 		
 		System.out.println("Estás bebido, tira para casa");
@@ -17,19 +19,27 @@ public class ContarCervezas {
 	}
 
 	private static void cuentabirras(int nCervezas) {
+		float precioCerveza = (float) 1.50;
 		while (nCervezas<6) {
 			if (nCervezas==5){
 				System.out.println("No bebas más");
 				System.out.println(" ");
+				float total = precioCerveza*nCervezas;
+				System.out.println("Te has gastado " + total + " euros");
+				break;
+				
 				
 			} else{
 				System.out.println("Llevas " + nCervezas);
 				System.out.println(" ");
+				System.out.println("Echa otra");
+				
 					
 			}
 			
+			
 		nCervezas +=1;
-		System.out.println("Echa otra");
+		
 		
 		
 		}
