@@ -1,8 +1,6 @@
 /*ejercicio: renombrar variable n a nCervezas, clase PruebaDepurar
  a ContarCervezas y extraer método While*/
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContarCervezas {
 	//programa que va sumando cervezas hasta que lleve 5, entonces da un mensaje de que pare de beber
