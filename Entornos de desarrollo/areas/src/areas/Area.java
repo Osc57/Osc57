@@ -6,6 +6,10 @@ import java.util.Scanner;
 public class Area {
 	public static Scanner entrada = new Scanner(System.in);
 
+	
+	/** 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		int opcion = -1;
 		double b = 0, a = 0, r = 0;

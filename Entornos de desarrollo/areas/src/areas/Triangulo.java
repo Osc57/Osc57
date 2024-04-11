@@ -14,6 +14,10 @@ public class Triangulo {
         this.altura = altura2;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double CalcularAreaTriangulo() {
         double resultado = ((base * altura) / 2);
         return resultado;

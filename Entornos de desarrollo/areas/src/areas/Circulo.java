@@ -13,6 +13,10 @@ public class Circulo {
 
     }
 
+    
+    /** 
+     * @return double
+     */
     public double CalcularAreaCirculo() {
         double resultado = Math.PI * (Math.pow(radio, 2));
         return resultado;

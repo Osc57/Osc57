@@ -14,6 +14,10 @@ public class Rectangulo {
         this.altura = altura2;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double CalcularAreaRectangulo() {
         double resultado = (base * altura);
         return resultado;

@@ -13,6 +13,10 @@ public class Cuadrado {
 
     }
 
+    
+    /** 
+     * @return double
+     */
     public double CalcularAreaCuadrado() {
         double resultado = (base * base);
         return resultado;
