@@ -26,7 +26,6 @@ public class ContarCervezas {
 				System.out.println("Te has gastado " + total + " euros");
 				break;
 				
-				
 			} else{
 				System.out.println("Llevas " + nCervezas);
 				System.out.println(" ");
