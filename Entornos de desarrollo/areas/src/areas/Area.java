@@ -74,7 +74,7 @@ public class Area {
 		System.out.println("3-Area de un circulo");
 		System.out.println("4-Area de un trinagulo");
 		System.out.println("0-Salir");
-		System.out.println("Selecciona una opción");
+		System.out.print("Selecciona una opción: ");
 		while (opcion < 0) {
 			try {
 				opcion = entrada.nextInt();
