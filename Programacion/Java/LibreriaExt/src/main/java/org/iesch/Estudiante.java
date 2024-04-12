@@ -89,7 +89,7 @@ public class Estudiante {
             String json = objectMapper.writeValueAsString(estudiante);
             System.out.println(json);
 
-            //File file = new File("texto.txt");
+            //File file = new File("texto.json");
             //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             //bufferedWriter.write(json);
             //bufferedWriter.close();
