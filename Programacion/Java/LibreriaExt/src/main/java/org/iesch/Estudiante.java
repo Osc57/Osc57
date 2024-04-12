@@ -3,6 +3,10 @@ package org.iesch;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.runtime.ObjectMethods;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +85,14 @@ public class Estudiante {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             String json = objectMapper.writeValueAsString(estudiante);
-        } catch (JsonProcessingException e) {
+            System.out.println(json);
+
+            File file = new File("texto.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            bufferedWriter.write(json);
+            bufferedWriter.close();
+
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 

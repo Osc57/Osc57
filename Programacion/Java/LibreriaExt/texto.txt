@@ -1,0 +1,1 @@
+{"nombre":"Juan","edad":20,"asignaturas":["Matematicas","Fisica","Quimica"],"aprobado":true}
