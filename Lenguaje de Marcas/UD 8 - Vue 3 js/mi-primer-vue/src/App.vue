@@ -15,5 +15,5 @@ h1{
   <h1>Hola {{ nombre.toUpperCase() }}</h1>
   <h2 v-bind:style="estilo"> Hola a toda la clase de DAM 1. Soy azul</h2>
   <h2>{{ activo ? "Estoy activo" : "Estoy inactivo"}}</h2>
-  <h2>{{ colores }}</h2>
+  <h2 v-bind:style="'color : ${colores[2]}'"></h2>
 </template>
