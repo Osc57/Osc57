@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.runtime.ObjectMethods;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,11 +89,15 @@ public class Estudiante {
             String json = objectMapper.writeValueAsString(estudiante);
             System.out.println(json);
 
-            File file = new File("texto.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-            bufferedWriter.write(json);
-            bufferedWriter.close();
-            
+            //File file = new File("texto.txt");
+            //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            //bufferedWriter.write(json);
+            //bufferedWriter.close();
+
+            objectMapper.writeValue(Paths.get("estudiante.json").toFile(), estudiante);
+
+            File file = new File("estudianteFichero.json");
+            objectMapper.writeValue(file, estudiante);
 
 
         } catch (IOException e) {
