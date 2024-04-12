@@ -1,5 +1,6 @@
 package org.iesch;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.lang.runtime.ObjectMethods;
@@ -78,6 +79,12 @@ public class Estudiante {
         System.out.println(estudiante);
 
         ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String json = objectMapper.writeValueAsString(estudiante);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
