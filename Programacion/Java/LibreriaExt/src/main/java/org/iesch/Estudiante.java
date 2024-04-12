@@ -91,6 +91,8 @@ public class Estudiante {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             bufferedWriter.write(json);
             bufferedWriter.close();
+            
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);
