@@ -81,7 +81,7 @@ public class Estudiante {
         estudiante.setEdad(20);
         estudiante.setAsignaturas(asignaturas);
         estudiante.setAprobado(true);
-
+/*
         System.out.println(estudiante);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -103,6 +103,18 @@ public class Estudiante {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+*/
+
+        //Deserializar
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Estudiante estudiante1 = objectMapper.readValue(new File("estudiante.json"), Estudiante.class);
+            System.out.println(estudiante1);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
