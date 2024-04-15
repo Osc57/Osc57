@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        Book book = new Book("Las increíbles aventuras de Peter","Julian Vargallo",1996);
+        Book book = new Book("Las increíbles aventuras de Peter","Julian Margallo",1996);
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
