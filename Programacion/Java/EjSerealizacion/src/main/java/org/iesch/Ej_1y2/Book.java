@@ -1,4 +1,4 @@
-package org.ieschEj_1y2;
+package org.iesch.Ej_1y2;
 
 public class Book {
     private String title;
