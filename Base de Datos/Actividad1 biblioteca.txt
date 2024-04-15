@@ -1,0 +1,51 @@
+1.
+DELIMITER //
+CREATE PROCEDURE aumentaprecio10(IN aeditorial VARCHAR(20))
+BEGIN
+	UPDATE libros SET precio=precio+(precio*0.1) WHERE editorial=aeditorial;
+END//
+DELIMITER ;
+CALL aumentaprecio10('Planeta');
+
+2.
+DELIMITER //
+CREATE PROCEDURE cambiaprecio(IN aeditorial VARCHAR(20), IN incremento INT(2))
+BEGIN
+	UPDATE libros SET precio=precio+(precio*incremento/100) WHERE editorial=aeditorial;
+END//
+DELIMITER ;
+
+CALL cambiaprecio('Planeta',-10);
+
+3.
+DELIMITER //
+CREATE PROCEDURE insertalibro(IN title VARCHAR(40),IN aut VARCHAR(30),IN
+aeditorial VARCHAR(20), IN prec FLOAT(5,2))
+BEGIN
+IF prec=null THEN
+	insert into libros values (title,aut,aeditorial,15);
+ELSE
+	insert into libros values (title,aut,aeditorial,prec);
+END IF;
+END//
+DELIMITER ;
+CALL insertalibro('bla','blabla','blablabla',null);
+CALL insertalibro('bla','blabla','blablabla',28);
+
+4.
+DELIMITER //
+CREATE PROCEDURE dtoxeditorial(IN aeditorial VARCHAR(20))
+BEGIN
+IF aeditorial='Planeta' THEN
+	UPDATE libros SET precio=precio+(precio*0.05) WHERE editorial=aeditorial;
+ELSEIF aeditorial='Nuevo Siglo' THEN
+	UPDATE libros SET precio=precio+(precio*0.1) WHERE editorial=aeditorial;
+ELSE
+	UPDATE libros SET precio=precio+(precio*0.02) WHERE editorial=aeditorial;
+END IF;
+END//
+DELIMITER ;
+CALL dtoxeditorial('planeta');
+CALL dtoxeditorial('NuevoSiglo');
+CALL dtoxeditorial('blablabla');
+
