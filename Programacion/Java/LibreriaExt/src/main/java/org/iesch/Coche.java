@@ -1,5 +1,8 @@
 package org.iesch;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Coche {
     private String marca;
     private String modelo;
