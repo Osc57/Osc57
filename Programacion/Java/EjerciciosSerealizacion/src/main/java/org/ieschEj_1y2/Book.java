@@ -1,6 +1,4 @@
-package org.iesch;
-
-import java.util.Date;
+package org.ieschEj_1y2;
 
 public class Book {
     private String title;

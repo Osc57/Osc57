@@ -1,8 +1,8 @@
-package org.iesch.Ej1;
+package org.ieschEj_1y2;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -19,9 +19,13 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        //Deserializar
+        try {
+            Book book1 = objectMapper.readValue(new File("Libro.json"), Book.class);
+            System.out.println(book1);
 
-
-
-
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
