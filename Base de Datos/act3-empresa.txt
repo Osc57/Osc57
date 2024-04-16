@@ -1,0 +1,60 @@
+1.
+================================================================
+A)
+DELIMITER //
+CREATE PROCEDURE insercionEmpleado(IN dni CHAR(9), IN nom VARCHAR(20), IN ape VARCHAR(20), IN f_nac DATE, IN telef VARCHAR(20), IN depart INT)
+BEGIN
+	INSERT INTO empleados (dni,nombre,apellidos,fecha_nacimiento,telefono,departamento) VALUES (dni,nom,ape,f_nac,telef,depart);
+END//
+DELIMITER ;
+CALL insercionEmpleado();
+================================================================
+B)
+DELIMITER //
+CREATE PROCEDURE subidaDeSalario(IN depart INT, IN porcentaje INT)
+BEGIN
+	SELECT departamento,salario+((salario*porcentaje)/100)  AS salario FROM empleados WHERE departamento=depart;
+END//
+DELIMITER ;
+CALL subidaDeSalario();
+================================================================
+C)
+DELIMITER //
+CREATE PROCEDURE asignacionTarea(IN tarea VARCHAR(20),IN emple VARCHAR(9))
+BEGIN
+	INSERT INTO tareas(nombre,empleado) VALUES (tarea,emple);
+END//
+DELIMITER ;
+CALL asignacionTarea();
+================================================================
+D)
+DELIMITER //
+CREATE PROCEDURE migracionDepartamento(IN persona CHAR(9), IN d_destino INT)
+BEGIN
+	UPDATE empleados SET departamento=d_destino WHERE DNI=persona;
+END//
+DELIMITER ;
+CALL migracionDepartamento();
+================================================================
+
+2.
+================================================================
+A)
+================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
