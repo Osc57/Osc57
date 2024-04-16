@@ -1,7 +1,6 @@
 package org.iesch.Ej_3y4;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.iesch.Ej_1y2.Book;
 
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    @JsonProperty
     private List<Book> listaLibros;
 
     public  Library() {
