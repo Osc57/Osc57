@@ -12,7 +12,7 @@ SET @edad='20';
 SELECT CONCAT(@nombre, ' tiene ', @edad, ' años.') AS edad;
 
 4.
-
+========================================================================
 DELIMITER //
 CREATE PROCEDURE limpiar()
 BEGIN
@@ -22,12 +22,13 @@ BEGIN
 END//
 DELIMITER ;
 CALL limpiar();
+========================================================================
 
 ALTER TABLE ventas AUTO_INCREMENT = 1;
 ALTER TABLE zapatos AUTO_INCREMENT = 1;
 
 5.
-======================================================================
+========================================================================
 DELIMITER //
 CREATE PROCEDURE insertar_clientes(IN dni CHAR(9), IN nombre VARCHAR(20), IN telef VARCHAR(12))
 BEGIN
@@ -35,27 +36,53 @@ BEGIN
 END//
 DELIMITER ;
 CALL insertar_clientes();
-=======================================================================
-DELIMITER //
-CREATE PROCEDURE insertar_ventas(IN fecha DATE, IN import FLOAT, IN dni CHAR(9))
-BEGIN
-	INSERT INTO ventas (fecha, importe_total, dni_cliente) VALUES (fecha, import, dni);
-END//
-DELIMITER ;
-CALL insertar_ventas();
 ========================================================================
 DELIMITER //
-CREATE PROCEDURE insertar_zapatos(IN talla INT, IN color VARCHAR(10), IN precio FLOAT, IN ticket INT)
+CREATE PROCEDURE insertar_zapatos(IN talla INT, IN color VARCHAR(10), IN precio FLOAT)
 BEGIN
-	INSERT INTO zapatos (talla,color,precio,id_ticket) VALUES (talla, color, precio, ticket);	
+	INSERT INTO zapatos (talla,color,precio) VALUES (talla, color, precio);	
 END//
 DELIMITER ;
 CALL insertar_zapatos();
 ========================================================================
+
 6.
 ========================================================================
-	
+DELIMITER //
+CREATE PROCEDURE insertar_ventas(IN dni CHAR(9), IN id_zapato1 INT)
+BEGIN
+	SET @fecha_actual= CURDATE();
+	INSERT INTO ventas (fecha, dni_cliente) values (@fecha_actual, dni);
+	SET @id_ticket= (select id_venta from ventas order by fecha desc limit 1);
+	UPDATE zapatos SET id_ticket=@id_ticket where id_zapato=id_zapato1;
+END//
+DELIMITER ;
+CALL insertar_ventas();
+========================================================================
 
+7.
+========================================================================
+DELIMITER //
+CREATE PROCEDURE descuento()
+BEGIN
+	SET @contador=(SELECT MIN(id_venta) FROM ventas);
+	SET @ticket_maximo=(SELECT MAX(id_venta) FROM ventas);
+	
+	WHILE (@contador <= @ticket_maximo) DO
+		SET @precio_total=(SELECT importe_total FROM ventas WHERE id_venta=@contador);
+		
+		IF @precio_total > 200 THEN
+			UPDATE ventas SET importe_total= importe_total*0.9 WHERE id_venta=@contador;
+
+		ELSEIF (@precio_total > 100 AND @precio_total < 200) THEN
+			UPDATE ventas SET importe_total= importe_total*0.95 WHERE id_venta=@contador;
+		END IF;
+		
+		SET @contador= @contador+1;
+	END WHILE;
+END//
+DELIMITER ;
+========================================================================
 
 
 
