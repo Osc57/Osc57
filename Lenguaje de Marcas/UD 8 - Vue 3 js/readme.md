@@ -213,6 +213,7 @@ Incorrecto:
 ### v-for
 
 - La directiva v-for se usa para iterar sobre una lista de elementos.
+- De manera opcional podemos introducir un 2º argumento (index, i, value..) que nos devuelve la posición que se está recorriendo en el momento.
 - Para darle a Vue una pista para que pueda rastrear la identidad de cada nodo y, por lo tanto, reutilizar y reordenar los elementos existentes, debe proporcionar un atributo key único para cada elemento.
 
 ```vue
@@ -226,6 +227,60 @@ Incorrecto:
     <ul>
         <li v-for="(fruta, index) in arrayFrutas" :key="index">
             {{ fruta }}
+        </li>
+    </ul>
+</template>
+```
+
+```vue
+<script setup>
+    const name = "Vue 3";
+    const arrayFrutas = [
+        {
+            name: "Manzana",
+            price: "$1.00",
+            description: "Una manzana",
+        },
+        {
+            name: "Pera",
+            price: "$2.00",
+            description: "Una pera",
+        },
+        {
+            name: "Naranja",
+            price: "$3.00",
+            description: "Una naranja",
+        },
+    ];
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <ul>
+        <li v-for="fruta in arrayFrutas" :key="name">
+            {{ fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
+        </li>
+    </ul>
+</template>
+```
+
+### v-for con Objetos
+```vue
+<script setup>
+    const name = "Vue 3";
+
+    const fruta = {
+        name: "Naranja",
+        price: "$3.00",
+        description: "Una naranja",
+    };
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <ul>
+        <li v-for="(value, propiedad) in fruta">
+            {{ propiedad }} : {{ value }}
         </li>
     </ul>
 </template>
@@ -261,3 +316,199 @@ Vamos a recorrer el arrayFrutas usando como key su nombre
     <!-- Realiza el ejercicio aquí-->
 </template>
 ```
+
+### v-for con v-if
+
+- Cuando existen en el mismo nodo, **v-if** tiene una prioridad **más alta que v-for.**
+- Eso significa que la condición **v-if** no tendrá acceso a las variables del alcance de **v-for:**
+
+```vue
+<script setup>
+const name = "Vue 3";
+const arrayFrutas = [
+    {
+        name: "Manzana",
+        price: "$1.00",
+        description: "Una manzana",
+        stock: 0,
+    },
+    {
+        name: "Pera",
+        price: "$2.00",
+        description: "Una pera",
+        stock: 10,
+    },
+    {
+        name: "Naranja",
+        price: "$3.00",
+        description: "Una naranja",
+        stock: 20,
+    },
+];
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <ul>
+        <li
+            v-for="fruta in arrayFrutas"
+            :key="fruta.name"
+            v-if="fruta.stock > 0"
+        >
+            {{ fruta }}
+        </li>
+    </ul>
+</template>
+```````
+Solución:
+```vue
+<ul>
+    <template v-for="fruta in arrayFrutas" :key="fruta.name">
+        <li v-if="fruta.stock > 0">
+            {{ fruta }}
+        </li>
+    </template>
+</ul>
+```
+
+## 6 - Eventos
+- Podemos usar la directiva v-on, que normalmente acortamos al símbolo @, para escuchar eventos DOM y ejecutar JavaScript cuando se activan. El uso sería **v-on:click="handler"** o con el atajo, **@click="handler"**.
+
+```vue
+<script setup>
+    const name = "Vue 3";
+
+    // método handleClick
+    const handleClick = () => {
+        console.log("me diste click");
+    };
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <button v-on:click="handleClick">Click aquí</button>
+    <button @click="handleClick">Click aquí</button>
+</template>
+```
+
+Parámetros:
+```vue
+<script setup>
+    const name = "Vue 3";
+
+    const handleClick = (message) => {
+        console.log(message);
+    };
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <button @click="handleClick('Mensaje desde botón')">Click aquí</button>
+</template>
+```
+
+Doc Modificadores:
+´´´vue
+<button @click.right.prevent="handleClick('Mensaje desde botón')">
+    Click right
+</button>
+<button @click.middle="handleClick('Mensaje desde botón')">
+    Click middle
+</button>
+```
+
+## 7 - Programación Reactiva - Variables
+
+Siguiendo el ejemplo:
+ ```vue
+<script setup>
+const name = "Vue 3";
+
+let counter = 0;
+
+const increment = () => {
+    counter++;
+    // efectivamente aumentar
+    console.log(counter);
+};
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <h2>{{ counter }}</h2>
+    <button @click="increment">Click incremet</button>
+</template>
+```
+
+### Descubrimiento de ref()
+
+- **ref** es una forma de trabajar con la reactividad de Vue 3.
+- **ref:** Es una referencia reactiva, en nuestro ejemplo necesitamos un entero que sea "rastreable", por ende utilizaremos ref, una forma de trabajar con la reactividad de Vue 3.
+- **ref** toma el argumento y lo devuelve envuelto dentro de un objeto con una value propiedad, que luego puede usarse para acceder o mutar el valor de la variable reactiva.
+- DOM: Cuando muta el estado reactivo, **el DOM se actualiza automaticamente.**
+- En el template no es necesario acceder al **.value,** ya que el valor de la variable reactiva se puede acceder directamente.
+
+### Ejercicio Práctico:
+
+- Agrega un botón para disminuir el contador.
+- Agrega un botón para resetear el contador.
+- Pinta el contador en rojo cuando el valor sea menor a cero.
+- Pinta el contador en verde cuando el valor sea mayor a cero.
+
+```vue
+<script setup>
+import { ref } from "vue";
+
+const name = "Vue 3";
+
+// Crea tus métodos aquí
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    // Realiza el ejercicio aqui
+</template>
+
+<style>
+
+ crea aqui las clases
+</style>
+```
+
+## 8 - Propiedades Computadas
+
+- Las propiedades computadas nos sirven para generar calculos en nuestros componentes, por ejemplo no se recomienda colocar demasiada lógica en nuestras plantillas HTML, ya que dificulta la interpretación de nuestros componentes.
+- Por eso, para la lógica compleja que incluye datos reactivos, se recomienda utilizar una propiedad calculada
+
+```vue
+<script setup>
+import { ref, computed } from "vue";
+
+const name = "Vue 3";
+
+const counter = ref(0);
+
+const increment = () => {
+    counter.value++;
+};
+
+const decrement = () => {
+    counter.value--;
+};
+
+const reset = () => {
+    counter.value = 0;
+};
+
+const classCounter = computed(() => {
+    if (counter.value === 0) {
+        return "zero";
+    }
+    return counter.value > 0 ? "positive" : "negative";
+});
+
+</script>
+
+```
+
+falta código
