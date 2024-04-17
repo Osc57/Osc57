@@ -38,6 +38,7 @@
 
 </template>
   -->
+<!--
   <script setup>
       const nombre = "Vue 3"
       const arrayFrutas =["🍎","🍌","🍉","🍓","🍒"];
@@ -45,6 +46,9 @@
 <template>
   <h1>Hola {{ nombre }}</h1>
   <ul>
+  -->
+    <!-- El :key ha de ser algo que no se repita en el elemento -->
+    <!-- 
     <li v-for = " (fruta, index) in arrayFrutas"
         :key="index"
     >
@@ -57,6 +61,37 @@
     color: red;
   }
 </style>
+-->
+<script setup>
+    const name = "Vue 3";
+    const arrayFrutas = [
+        {
+            name: "Manzana",
+            price: "$1.00",
+            description: "Una manzana",
+        },
+        {
+            name: "Pera",
+            price: "$2.00",
+            description: "Una pera",
+        },
+        {
+            name: "Naranja",
+            price: "$3.00",
+            description: "Una naranja",
+        },
+    ];
+</script>
+
+<template>
+    <h1>Hola {{ name }}!</h1>
+    <ul>
+        <li v-for="fruta in arrayFrutas" :key="name">
+            {{ fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
+        </li>
+    </ul>
+</template>
+
 
 
 
