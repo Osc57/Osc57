@@ -86,8 +86,10 @@
 <template>
     <h1>Hola {{ name }}!</h1>
     <ul>
-        <li v-for="fruta in arrayFrutas" :key="name">
-            {{ fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
+        <li v-for = " (fruta, index) in arrayFrutas"
+          :key="index"
+        >
+        {{ fruta.name }} - {{ fruta.description }} - {{ fruta.price }}
         </li>
     </ul>
 </template>
