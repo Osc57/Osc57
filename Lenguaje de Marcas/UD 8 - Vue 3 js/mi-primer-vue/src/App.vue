@@ -23,7 +23,7 @@
   <p>{{ if (activo) { return contador} }}</p>-->
 
   
-  <p v-if="nombre==='Alberto'">Mi nombre es Alberto</p>
+  <p v-if="nombre==='Oscar'">Mi nombre es Óscar</p>
 
   <h1 v-show="contador===1">El contador el igual a 1</h1>
 
