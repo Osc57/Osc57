@@ -22,7 +22,7 @@
   Esto no se puede hacer
   <p>{{ if (activo) { return contador} }}</p>-->
 
-  
+  <!-- 
   <p v-if="nombre==='Oscar'">Mi nombre es Óscar</p>
 
   <h1 v-show="contador===1">El contador el igual a 1</h1>
@@ -33,7 +33,28 @@
   </div>
   <p v-else-if="estado === false">Hola NO estoy activo</p>
   <p v-else>Hola, aquí no voy a entrar NUNCA</p>
+  -->
 </template>
+  <script setup>
+      const nombre = "Vue 3"
+      const arrayFutas = {"🍎","🍌","🍉","🍓","🍒"}
+  </script>
+<template>
+  <h1>Hola {{ nombre }}</h1>
+  <ul>
+    <li v-for = " (fruta, index) in arrayFrutas">
+      {{ index + 1 }} - {{ fruta }}
+    </li>
+  </ul>
+</template>
+<style>
+  h1 {
+    color: red;
+  }
+</style>
+
+
+
 
 
 
