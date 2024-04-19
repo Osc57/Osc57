@@ -98,6 +98,7 @@
 </template>
 ----------------------------------------------------------------------------------------
 -->
+<!--
 <script setup>
     const nombre = "Vue 3";
 
@@ -122,7 +123,45 @@
   }
 </style>
 ----------------------------------------------------------------------------------------
+-->
+<script setup>
+import { ref } from 'vue';
+const nombre = "Vue 3"
 
+  const contador = ref(0);
+
+  const incrementar = () => {
+    //contador++
+    contador.value++;
+  }
+  const decrementar = () => {
+    contador.value--;
+  }
+
+  const resetear = () => {
+    contador.value = 0;
+  }
+
+
+</script>
+<template>
+  <h1>Hola {{ nombre }}</h1>
+  <h2 :class="contador >= 0 ? 'positive' : 'negative'">{{ contador }}</h2>
+  <button @click="incrementar">Incrementar</button>
+  <button @click="decrementar">Decrementar</button>
+  <button @click="resetear">Resetear</button>
+</template>
+<style>
+  h1{
+    color: red;
+  }
+  .negative{
+    color: red;
+  }
+  .positive{
+    color: green;
+  }
+</style>
 
 
 
