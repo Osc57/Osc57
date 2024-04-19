@@ -33,4 +33,5 @@ public class LibraryCatalog {
     public void setCatalog(Map<Author, Book> catalog) {
         this.catalog = catalog;
     }
+
 }
