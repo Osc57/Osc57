@@ -3,7 +3,9 @@ package org.iesch.Ej_9;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import org.iesch.Ej_5.Book;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.List;
 @XmlRootElement
@@ -30,7 +32,8 @@ public class Publisher {
     public void setAddress(String address) {
         this.address = address;
     }
-
+    @XmlElement(name = "book")
+    @XmlJavaTypeAdapter(BookTitleAdapter.class)
     public List<Book> getBooks() {
         return books;
     }

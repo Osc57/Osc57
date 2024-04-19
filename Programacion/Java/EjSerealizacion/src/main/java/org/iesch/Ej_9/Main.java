@@ -3,7 +3,12 @@ package org.iesch.Ej_9;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.iesch.Ej_5.Book;
+import org.iesch.Ej_8.Bookstore;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
 import java.util.Arrays;
 
 public class Main {
@@ -22,6 +27,16 @@ public class Main {
             String json = objectMapper.writeValueAsString(publisher);
             System.out.println(json);
         } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            JAXBContext context = JAXBContext.newInstance(Publisher.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(publisher, System.out);
+        } catch (PropertyException e) {
+            throw new RuntimeException(e);
+        } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
 
