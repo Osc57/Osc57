@@ -4,7 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.iesch.Ej_5.Book;
 import org.iesch.Ej_7.Author;
+import org.iesch.Ej_9.Publisher;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +38,17 @@ public class Main {
             String json = objectMapper.writeValueAsString(libraryCatalog);
             System.out.println(json);
         } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            JAXBContext context = JAXBContext.newInstance(LibraryCatalog.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(libraryCatalog, System.out);
+        } catch (PropertyException e) {
+            throw new RuntimeException(e);
+        } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
 

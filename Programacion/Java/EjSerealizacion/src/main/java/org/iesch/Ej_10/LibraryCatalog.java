@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import org.iesch.Ej_1y2.Book;
 import org.iesch.Ej_7.Author;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.HashMap;
 import java.util.Map;
 @XmlRootElement
@@ -33,5 +35,9 @@ public class LibraryCatalog {
     public void setCatalog(Map<Author, Book> catalog) {
         this.catalog = catalog;
     }
-
+    @XmlElement
+    @XmlJavaTypeAdapter(CatalogoAdapter.class)
+    public Map<Author, Book> getRawCatalog(){
+        return  catalog;
+    }
 }
