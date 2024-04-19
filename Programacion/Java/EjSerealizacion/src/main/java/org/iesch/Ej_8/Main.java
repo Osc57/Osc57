@@ -28,16 +28,16 @@ public class Main {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String json = objectMapper.writeValueAsString(author);
+            String json = objectMapper.writeValueAsString(bookstore);
             System.out.println(json);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
         try {
-            JAXBContext context = JAXBContext.newInstance(Author.class);
+            JAXBContext context = JAXBContext.newInstance(Bookstore.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(author, System.out);
+            marshaller.marshal(bookstore, System.out);
         } catch (PropertyException e) {
             throw new RuntimeException(e);
         } catch (JAXBException e) {
