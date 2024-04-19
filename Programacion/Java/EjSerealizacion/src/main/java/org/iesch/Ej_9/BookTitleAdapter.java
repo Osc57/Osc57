@@ -8,11 +8,13 @@ public class BookTitleAdapter extends XmlAdapter<String, Book> {
 
     @Override
     public Book unmarshal(String s) throws Exception {
-        return null;
+        Book libro = new Book();
+        libro.setTitle(s);
+        return libro;
     }
 
     @Override
     public String marshal(Book book) throws Exception {
-        return null;
+        return book.getTitle();
     }
 }

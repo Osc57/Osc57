@@ -2,7 +2,7 @@ package org.iesch.Ej_5;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-public class Book {
+public class Book extends org.iesch.Ej_1y2.Book {
 
     private String title;
     private String author;
