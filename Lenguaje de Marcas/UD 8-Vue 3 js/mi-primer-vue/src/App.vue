@@ -172,7 +172,7 @@ const nombre = "Vue 3"
   <button @click="incrementar">Incrementar</button>
   <button @click="decrementar">Decrementar</button>
   <button @click="resetear">Resetear</button>
-  <button @click="anadir":diabled="bloquearBotonAdd">Añadir</button>
+  <button @click="anadir":disabled="bloquearBotonAdd">Añadir</button>
   
   <ul>
     <li
