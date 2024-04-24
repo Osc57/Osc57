@@ -154,6 +154,16 @@ const nombre = "Vue 3"
     return contador.value > 0 ? 'positive' : 'negative';
   });
 
+  const bloquearBotonAdd = computed( () => {
+    const numSearch = arrayFavoritos.value.find((num) => num === contador.value );
+    //console.log(numSearch);
+    //if (numSearch === 0) return true;
+
+    //return numSearch ? true : false;
+    return numSearch || numSearch === 0;
+    
+  })
+
 
 </script>
 <template>
@@ -162,7 +172,7 @@ const nombre = "Vue 3"
   <button @click="incrementar">Incrementar</button>
   <button @click="decrementar">Decrementar</button>
   <button @click="resetear">Resetear</button>
-  <button @click="anadir":diabled="false">Añadir</button>
+  <button @click="anadir":diabled="bloquearBotonAdd">Añadir</button>
   {{ arrayFavoritos }}
 </template>
 <style>
