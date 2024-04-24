@@ -131,6 +131,8 @@ const nombre = "Vue 3"
 //Voy a convertir el contador en una variable reactiva
   const contador = ref(0);
 
+  const arrayFavoritos = ref([]);
+
   const incrementar = () => {
     //contador++
     contador.value++;
@@ -141,6 +143,10 @@ const nombre = "Vue 3"
 
   const resetear = () => {
     contador.value = 0;
+  }
+
+  const anadir = () => {
+    arrayFavoritos.value.push(contador.value);
   }
 
   const claseContador = computed(()=>{
@@ -156,6 +162,8 @@ const nombre = "Vue 3"
   <button @click="incrementar">Incrementar</button>
   <button @click="decrementar">Decrementar</button>
   <button @click="resetear">Resetear</button>
+  <button @click="anadir":diabled="false">Añadir</button>
+  {{ arrayFavoritos }}
 </template>
 <style>
   h1{
