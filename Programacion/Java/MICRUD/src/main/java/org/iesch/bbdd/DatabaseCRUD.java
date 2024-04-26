@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-public class DatabaseConnector {
+public class DatabaseCRUD {
 
     private final String url = "jdbc:mysql://localhost:3306/personas";
     private final String user = "root";
@@ -47,6 +47,8 @@ public class DatabaseConnector {
                 p.setApellidos(apellidos);
                 p.setSexo(sexo);
                 p.setAltura(altura);
+
+                listaPersonas.add(p);
             }
             resultSet.close();
             statement.close();
