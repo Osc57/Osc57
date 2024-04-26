@@ -62,4 +62,31 @@ public class DatabaseCRUD {
 
         return listaPersonas;
     }
+    public int inserta(Persona persona){
+        int numeroFilas;
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERTO INTO persona (dni, nombre, apellidos, sexo, altura, peso)" +
+                            "VALUES (?,?,?,?,?,?)");
+            preparedStatement.setString(1, persona.getDni());
+            preparedStatement.setString(2, persona.getNombre());
+            preparedStatement.setString(3, persona.getApellidos());
+            preparedStatement.setString(4, persona.getSexo());
+            preparedStatement.setInt(5, persona.getAltura());
+            preparedStatement.setFloat(6, persona.getPeso());
+
+            //Ejecutamos la consulta
+            numeroFilas = preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            connection.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroFilas;
+    }
+
 }
