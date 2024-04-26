@@ -11,9 +11,14 @@ public class Main {
     public static void main(String[] args) {
 
         DatabaseCRUD bdcrud = new DatabaseCRUD();
-        List<Persona> listPersonas = bdcrud.obtenerTodo();
 
+        //READ
+        List<Persona> listPersonas = bdcrud.obtenerTodo();
         System.out.println(listPersonas);
+
+        //INSERT
+        Persona persona = new Persona("18446777A","Antonio","Lopez","poco",180,70.5F);
+        bdcrud.inserta(persona);
 
     }
 }
