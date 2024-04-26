@@ -35,7 +35,7 @@ public class DatabaseCRUD {
             while (resultSet.next()) {
                 Persona p = new Persona();
                 float peso = resultSet.getFloat("peso");
-                String dni = resultSet.getString("dni");
+                int dni = resultSet.getInt("dni");
                 String nombre = resultSet.getString("nombre");
                 String apellidos = resultSet.getString("apellidos");
                 String sexo = resultSet.getString("sexo");
@@ -63,18 +63,63 @@ public class DatabaseCRUD {
         return listaPersonas;
     }
     public int inserta(Persona persona){
-        int numeroFilas;
+        int numeroFilas = 0;
         try {
             Connection connection = connect();
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERTO INTO persona (dni, nombre, apellidos, sexo, altura, peso)" +
+                    "INSERT INTO persona(dni, nombre, apellidos, sexo, altura, peso)" +
                             "VALUES (?,?,?,?,?,?)");
-            preparedStatement.setString(1, persona.getDni());
+            preparedStatement.setInt(1, persona.getDni());
             preparedStatement.setString(2, persona.getNombre());
             preparedStatement.setString(3, persona.getApellidos());
             preparedStatement.setString(4, persona.getSexo());
             preparedStatement.setInt(5, persona.getAltura());
             preparedStatement.setFloat(6, persona.getPeso());
+
+            //Ejecutamos la consulta
+            numeroFilas = preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            connection.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroFilas;
+    }
+    public int borra(Persona persona){
+        int numeroFilas = 0;
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM persona WHERE dni= ?");
+            preparedStatement.setInt(1, persona.getDni());
+
+            //Ejecutamos la consulta
+            numeroFilas = preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            connection.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroFilas;
+    }
+    public int actualiza(Persona persona){
+        int numeroFilas = 0;
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE persona SET nombre = ?, apellidos=?, sexo=?, altura=?, peso=? WHERE dni= ?");
+
+            preparedStatement.setString(1, persona.getNombre());
+            preparedStatement.setString(2, persona.getApellidos());
+            preparedStatement.setString(3, persona.getSexo());
+            preparedStatement.setInt(4, persona.getAltura());
+            preparedStatement.setFloat(5, persona.getPeso());
+            preparedStatement.setInt(6, persona.getDni());
 
             //Ejecutamos la consulta
             numeroFilas = preparedStatement.executeUpdate();

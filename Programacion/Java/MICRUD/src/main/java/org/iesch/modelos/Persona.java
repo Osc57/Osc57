@@ -1,7 +1,7 @@
 package org.iesch.modelos;
 
 public class Persona {
-    private String dni;
+    private int dni;
     private String nombre;
     private String apellidos;
     private  String sexo;
@@ -11,7 +11,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String dni, String nombre, String apellidos, String sexo, int altura, float peso) {
+    public Persona(int dni, String nombre, String apellidos, String sexo, int altura, float peso) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -20,11 +20,11 @@ public class Persona {
         this.peso = peso;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
