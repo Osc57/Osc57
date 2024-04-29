@@ -49,7 +49,7 @@ public class Editar extends JFrame{
                 String nombre = nombreField.getText();
                 String apellidos = apellidosField.getText();
                 String direccion = direccionField.getText();
-                
+
                 try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/alumnos", "root", "1234")) {
                     String query = "UPDATE alumno SET nombre = ?, apellidos=?, direccion=? WHERE id= ?";
                     PreparedStatement pstmt = conn.prepareStatement(query);
