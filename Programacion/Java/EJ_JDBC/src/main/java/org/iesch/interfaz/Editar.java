@@ -19,7 +19,7 @@ public class Editar extends JFrame{
         this.setLayout(new FlowLayout());
         this.setTitle("Editar Alumno");
 
-        JLabel idLabel = new JLabel("Id: ");
+        JLabel idLabel = new JLabel("Id:             ");
         this.add(idLabel);
         idField = new JTextField(20);
         this.add(idField);
@@ -39,7 +39,7 @@ public class Editar extends JFrame{
         direccionField = new JTextField(20);
         this.add(direccionField);
 
-        JButton insertarButton = new JButton("Insertar");
+        JButton insertarButton = new JButton("Editar");
         this.add(insertarButton);
 
         insertarButton.addActionListener(new ActionListener() {
@@ -49,13 +49,14 @@ public class Editar extends JFrame{
                 String nombre = nombreField.getText();
                 String apellidos = apellidosField.getText();
                 String direccion = direccionField.getText();
-                //UPDATE persona SET nombre = ?, apellidos=?, sexo=?, altura=?, peso=? WHERE dni= ?
+                
                 try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/alumnos", "root", "1234")) {
-                    String query = "INSERT INTO alumno (id, nombre, apellidos, direccion) VALUES (?,?,?)";
+                    String query = "UPDATE alumno SET nombre = ?, apellidos=?, direccion=? WHERE id= ?";
                     PreparedStatement pstmt = conn.prepareStatement(query);
                     pstmt.setString(1, nombre);
                     pstmt.setString(2, apellidos);
                     pstmt.setString(3, direccion);
+                    pstmt.setInt(4, id);
                     pstmt.executeUpdate();
 
                     JOptionPane.showMessageDialog(Editar.this, "Estudiante editado correctamente");
@@ -65,13 +66,14 @@ public class Editar extends JFrame{
             }
         });
 
-        this.setSize(325, 150);
+        this.setSize(350, 200);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
+
     }
 
     public static void main(String[] args) {
-        new Insertar();
+        Editar editar = new Editar();
+        editar.setVisible(true);
     }
 }
