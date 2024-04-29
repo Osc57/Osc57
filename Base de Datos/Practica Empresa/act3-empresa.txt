@@ -40,9 +40,39 @@ CALL migracionDepartamento();
 2.
 ================================================================
 A)
+DELIMITER //
+CREATE FUNCTION mayor_edad() RETURNS VARCHAR(20)
+BEGIN
+SET @mayor=(SELECT nombre FROM empleados WHERE fecha_nacimiento=(SELECT MIN(fecha_nacimiento) FROM empleados));
+RETURN @mayor;
+END//
+DELIMITER ;
+
+SELECT mayor_edad();
 ================================================================
+B)
+DELIMITER //
+CREATE FUNCTION mayor_salario() RETURNS VARCHAR(20)
+BEGIN
+SET @m_salario=(SELECT nombre FROM empleados WHERE salario=(SELECT MAX(salario) FROM empleados));
+RETURN @m_salario;
+END//
+DELIMITER ;
 
+SELECT mayor_salario();
+================================================================
+C)
+DELIMITER //
+CREATE FUNCTION depart_num() RETURNS VARCHAR(20)
+BEGIN
+SET @n_emple=(SELECT COUNT(DNI) AS emple FROM empleados GROUP BY departamento ORDER BY emple DESC LIMIT 1);
+SET @dep_num=(SELECT departamento FROM empleados GROUP BY departamento HAVING COUNT(DNI)=@n_emple LIMIT 1);
+RETURN @dep_num;
+END//
+DELIMITER ;
 
+SELECT depart_num();
+================================================================
 
 
 
