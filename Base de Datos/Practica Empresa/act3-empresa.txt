@@ -73,6 +73,47 @@ DELIMITER ;
 
 SELECT depart_num();
 ================================================================
+D)
+DELIMITER //
+CREATE FUNCTION tarea_urgent() RETURNS VARCHAR(20)
+BEGIN
+SET @t_urgent=(SELECT nombre FROM tareas WHERE fecha_fin=(SELECT MIN(fecha_fin) FROM tareas));
+RETURN @t_urgent;
+END//
+DELIMITER ;
+
+SELECT tarea_urgent();
+================================================================
+
+3.
+================================================================
+A)
+DELIMITER //
+CREATE TRIGGER asigna_fecha
+BEFORE INSERT ON tareas FOR EACH ROW
+BEGIN
+
+SET @product=(SELECT productividad FROM empleados WHERE empleados.dni=NEW.empleado);
+
+IF @product=1 THEN
+	SET NEW.fecha_fin=DATE_ADD(NEW.fecha_inicio, INTERVAL 30 DAY);
+END IF;
+IF @product=2 THEN
+	SET NEW.fecha_fin=DATE_ADD(NEW.fecha_inicio, INTERVAL 15 DAY);
+END IF;
+IF @product=3 THEN
+	SET NEW.fecha_fin=DATE_ADD(NEW.fecha_inicio, INTERVAL 7 DAY);
+END IF;
+END//
+DELIMITER ;
+
+INSERT INTO tareas (nombre,fecha_inicio,empleado) VALUES ('Tarea 56','2024-04-16','B');
+================================================================
+B)
+DELIMITER //
+CREATE TRIGGER cambiar_depart
+BEFORE UPDATE ON empleados FOR EACH ROW
+BEGIN
 
 
 
