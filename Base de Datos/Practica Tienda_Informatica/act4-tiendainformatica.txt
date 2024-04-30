@@ -11,3 +11,17 @@ DELIMITER ;
 
 SELECT masCaro();
 ================================================================
+B)
+DELIMITER //
+CREATE FUNCTION devolverIVA(id_iva INT) RETURNS VARCHAR(20)
+BEGIN
+SET @iva=(SELECT precio+(precio*0.21) FROM productos WHERE id=id_iva);
+RETURN @iva;
+END//
+DELIMITER ;
+
+SELECT devolverIVA();
+================================================================
+
+
+
