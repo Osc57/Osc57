@@ -114,6 +114,12 @@ DELIMITER //
 CREATE TRIGGER cambiar_depart
 BEFORE UPDATE ON empleados FOR EACH ROW
 BEGIN
+	SET @personaProductiva= (SELECT dni FROM empleados WHERE departamento=OLD.departamento AND productividad=(SELECT MAX(productividad) FROM empleados WHERE departamento=OLD.departamento));
+        UPDATE tareas SET empleado=@personaProductiva WHERE empleado=OLD.dni;
+END//
+DELIMITER ;
+================================================================
+
 
 
 
