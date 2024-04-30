@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Insertar extends JFrame {
     private JTextField nombreField;
@@ -44,6 +41,9 @@ public class Insertar extends JFrame {
                 String direccion = direccionField.getText();
 
                 try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/alumnos", "root", "1234")) {
+                    Statement stmt = conn.createStatement();
+                    stmt.executeUpdate("ALTER TABLE alumno AUTO_INCREMENT=1");
+
                     String query = "INSERT INTO alumno (nombre, apellidos, direccion) VALUES (?,?,?)";
                     PreparedStatement pstmt = conn.prepareStatement(query);
                     pstmt.setString(1, nombre);
