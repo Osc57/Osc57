@@ -1,0 +1,13 @@
+1.
+================================================================
+A)
+DELIMITER //
+CREATE FUNCTION masCaro() RETURNS VARCHAR(20)
+BEGIN
+SET @caro=(SELECT id FROM productos WHERE precio=(SELECT MAX(precio) FROM productos));
+RETURN @caro;
+END//
+DELIMITER ;
+
+SELECT masCaro();
+================================================================
