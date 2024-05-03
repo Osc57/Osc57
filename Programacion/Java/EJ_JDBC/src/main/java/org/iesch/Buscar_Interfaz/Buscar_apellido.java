@@ -30,7 +30,7 @@ public class Buscar_apellido extends JFrame {
 
                 try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/alumnos", "root", "1234")) {
                     PreparedStatement pstmt = connection.prepareStatement("SELECT nombre, apellidos FROM alumno WHERE apellidos LIKE ?");
-                    pstmt.setString(1, apellido );
+                    pstmt.setString(1, "%" + apellido + "%");
                     ResultSet resultSet = pstmt.executeQuery();
 
                     if (resultSet.next()) {
