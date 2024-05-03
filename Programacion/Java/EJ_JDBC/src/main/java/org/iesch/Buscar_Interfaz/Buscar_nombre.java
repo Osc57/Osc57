@@ -39,6 +39,8 @@ public class Buscar_nombre extends JFrame {
 
 
                         JOptionPane.showMessageDialog(null, "Nombre: " + nombre + "\nApellidos: " + apellidos);
+                        pstmt.close();
+                        connection.close();
                     } else {
                         JOptionPane.showMessageDialog(null, "No se encontró alumno con el ID " + nombre);
                     }

@@ -38,6 +38,8 @@ public class Eliminar extends JFrame{
                     pstmt.executeUpdate();
 
                     JOptionPane.showMessageDialog(Eliminar.this, "Estudiante eliminado correctamente");
+                    pstmt.close();
+                    conn.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(Eliminar.this, "Error al eliminar el estudiante: " + ex.getMessage());
                 }

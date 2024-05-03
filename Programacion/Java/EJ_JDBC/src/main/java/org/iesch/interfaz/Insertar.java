@@ -52,6 +52,8 @@ public class Insertar extends JFrame {
                     pstmt.executeUpdate();
 
                     JOptionPane.showMessageDialog(Insertar.this, "Estudiante insertado correctamente");
+                    pstmt.close();
+                    conn.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(Insertar.this, "Error al insertar estudiante: " + ex.getMessage());
                 }

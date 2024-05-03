@@ -60,6 +60,8 @@ public class Editar extends JFrame{
                     pstmt.executeUpdate();
 
                     JOptionPane.showMessageDialog(Editar.this, "Estudiante editado correctamente");
+                    pstmt.close();
+                    conn.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(Editar.this, "Error al editar el estudiante: " + ex.getMessage());
                 }

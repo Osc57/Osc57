@@ -26,6 +26,8 @@ public class Listar {
 
                 System.out.println(id + "\t" + nombre + "\t\t" + apellidos + "\t\t" + direccion);
             }
+            resultSet.close();
+            connection.close();
 
         } catch (SQLException e) {
             System.err.println("Error connecting to the database");
