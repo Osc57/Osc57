@@ -80,6 +80,20 @@ DELIMITER ;
 CALL precio_iva();
 ================================================================
 
+3.
+================================================================
+A)
+DELIMITER //
+CREATE TRIGGER precio_iva_iva
+BEFORE INSERT ON productos FOR EACH ROW
+BEGIN
+	SET NEW.precio_iva = NEW.precio*1.21;
+END//
+DELIMITER ;
+================================================================
+B)
+
+
 
 
 	
