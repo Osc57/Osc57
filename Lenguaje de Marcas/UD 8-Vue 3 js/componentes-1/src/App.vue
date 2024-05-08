@@ -1,7 +1,7 @@
 <script setup>
-  import ButtonCounter from './components/ButtonCounter.vue';
   import BlogPost from './components/BlogPost.vue';
-
+  import ButtonCounter from './components/ButtonCounter.vue';
+  
 </script>
 
 <template>
@@ -9,7 +9,7 @@
     <h1>Componentes</h1>
     <ButtonCounter/>
     <BlogPost/>
-    
+
   </div>
   
 
