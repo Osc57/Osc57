@@ -11,7 +11,7 @@
     { titulo: 'Post 05', id: 5, body:'descripcion 05'},
     { titulo: 'Post 06', id: 6,},
 
-  ])
+  ]);
   
 </script>
 
