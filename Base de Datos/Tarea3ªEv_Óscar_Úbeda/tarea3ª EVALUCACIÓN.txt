@@ -1,0 +1,35 @@
+CREATE DATABSE mensajeria;
+USE mensajeria;
+CREATE TABLE usuario(id_usuario INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(50), constrasena VARCHAR(100), fecha_cumple DATE, nick VARCHAR(50), foto VARCHAR(20), estado VARCHAR(30), fecha_creacion DATE);
+CREATE TABLE amigos(user1 INT, user2 INT, PRIMARY KEY(user1, user2), FOREIGN KEY (user1) REFERENCES usuario(id_usuario), FOREIGN KEY (user2) REFERENCES usuario(id_usuario));
+CREATE TABLE mensaje(id_mensaje INT AUTO_INCREMENT, texto VARCHAR(10000), fecha_envio DATE, PRIMARY KEY(id_mensaje), FOREIGN KEY (id_mensaje) REFERENCES usuario(id_usuario));
+CREATE TABLE grupo(id_grupo INT AUTO_INCREMENT, nombre VARCHAR(20), foto VARCHAR(20), PRIMARY KEY(id_grupo), FOREIGN KEY (id_grupo) REFERENCES mensaje(id_mensaje));
+CREATE TABLE pertenece(id_usuario_pertenece INT, id_grupo_pertenece INT, PRIMARY KEY(id_usuario_pertenece, id_grupo_pertenece), FOREIGN KEY (id_usuario_pertenece) REFERENCES usuario(id_usuario), FOREIGN KEY(id_grupo_pertenece) REFERENCES grupo(id_grupo));
+
+==========================================================================
+DELIMITER //
+CREATE PROCEDURE insertar_usuario(IN mail VARCHAR(50),IN passw VARCHAR(100),IN f_cump DATE,IN nombre VARCHAR(50), IN photo VARCHAR(20), IN estado VARCHAR(30), IN f_creacion DATE)
+BEGIN
+	INSERT INTO usuario(email,constrasena,fecha_cumple,nick,foto,estado,fecha_creacion) VALUES (mail,passw,f_cump,nombre,photo,estado,f_creacion);
+END//
+DELIMITER ;
+
+CALL insertar_usuario('paquitojuan@gmail.com','soypaquito123','1995-04-23','paquitoneito','imagen.jpg','En la playa','2010-04-25');
+CALL insertar_usuario('mario123@gmail.com','asdedfae1234','2000-10-01','xXmarioXx','imagen.jpg','Jugando Play','2015-07-14');
+CALL insertar_usuario('juan56magan45@gmail.com','contraseña1234','1978-11-30','juanmagan','imagen.jpg','Haciendo remix','1995-10-02');
+CALL insertar_usuario('pedritosanchez@gmail.com','hundimosespaña123','1972-02-29','pedrito56','imagen.jpg','Hundiendo España','1995-03-17');
+==========================================================================
+DELIMITER //
+CREATE PROCEDURE insertar_grupo(IN name VARCHAR(20), IN photo VARCHAR(20))
+BEGIN
+	INSERT INTO grupo(nombre,foto) VALUES (name,photo);
+END//
+DELIMITER ;
+
+CALL insertar_grupo();
+==========================================================================
+
+
+
+
+
