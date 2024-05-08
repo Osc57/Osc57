@@ -7,7 +7,7 @@
 <template>
   <div class="container">
     <h1>Componentes</h1>
-    <ButtonCounter/>
+    <ButtonCounter></ButtonCounter>
     <BlogPost titulo="Post 01" :id="1" body="Esto es mi descripción 01" colorText="primary"/>
     <BlogPost titulo="Post 02" :id="2" body="Esto es mi descripción 02" colorText="warning"/>
     <BlogPost titulo="Post 03" :id="3" body="Esto es mi descripción 03" colorText="danger"/>
