@@ -1,12 +1,13 @@
 <script setup>
 
+defineProps(['titulo', 'body', 'id','colorText']);
 </script>
 
 <template>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Titulo de la Card</h5>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat, officiis!</p>
+            <h5 class="card-title" :class="'text-${colorText}'">{{ id }} - {{ titulo }}</h5>
+            <p>{{ body }}</p>
         </div>
     </div>
 </template>
