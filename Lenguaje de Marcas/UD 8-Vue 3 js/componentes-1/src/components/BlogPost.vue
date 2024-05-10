@@ -17,6 +17,7 @@ defineProps({
             <!--<h5 class="card-title" :class="`text-${colorText}`">{{ id }} - {{ titulo }}</h5>-->
             <h5>{{ id }} - {{ titulo }}</h5>
             <p>{{ body }}</p>
+            <button class="btn btn-outline-primary">Favorito</button>
         </div>
     </div>
 </template>
