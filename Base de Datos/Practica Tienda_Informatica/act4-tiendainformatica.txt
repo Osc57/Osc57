@@ -92,6 +92,14 @@ END//
 DELIMITER ;
 ================================================================
 B)
+DELIMITER //
+CREATE TRIGGER before_update BEFORE UPDATE ON productos FOR EACH ROW
+BEGIN
+	SET NEW.precio_iva=NEW.precio*1.21
+END//
+DELIMITER ;
+
+
 
 
 

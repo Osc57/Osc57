@@ -1,9 +1,9 @@
-CREATE DATABSE mensajeria;
+CREATE DATABASE mensajeria;
 USE mensajeria;
 CREATE TABLE usuario(id_usuario INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(50), constrasena VARCHAR(100), fecha_cumple DATE, nick VARCHAR(50), foto VARCHAR(20), estado VARCHAR(30), fecha_creacion DATE);
 CREATE TABLE amigos(user1 INT, user2 INT, PRIMARY KEY(user1, user2), FOREIGN KEY (user1) REFERENCES usuario(id_usuario), FOREIGN KEY (user2) REFERENCES usuario(id_usuario));
-CREATE TABLE mensaje(id_mensaje INT AUTO_INCREMENT, texto VARCHAR(10000), fecha_envio DATE, PRIMARY KEY(id_mensaje), FOREIGN KEY (id_mensaje) REFERENCES usuario(id_usuario));
-CREATE TABLE grupo(id_grupo INT AUTO_INCREMENT, nombre VARCHAR(20), foto VARCHAR(20), PRIMARY KEY(id_grupo), FOREIGN KEY (id_grupo) REFERENCES mensaje(id_mensaje));
+CREATE TABLE mensaje(id_mensaje INT PRIMARY KEY AUTO_INCREMENT, texto VARCHAR(10000), fecha_envio DATE, id_user_mensaje INT, FOREIGN KEY (id_user_mensaje) REFERENCES usuario(id_usuario));
+CREATE TABLE grupo(id_grupo INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(20), foto VARCHAR(20), id_mensaje_group INT, FOREIGN KEY (id_mensaje_group) REFERENCES mensaje(id_mensaje));
 CREATE TABLE pertenece(id_usuario_pertenece INT, id_grupo_pertenece INT, PRIMARY KEY(id_usuario_pertenece, id_grupo_pertenece), FOREIGN KEY (id_usuario_pertenece) REFERENCES usuario(id_usuario), FOREIGN KEY(id_grupo_pertenece) REFERENCES grupo(id_grupo));
 
 ==========================================================================
@@ -28,6 +28,24 @@ DELIMITER ;
 
 CALL insertar_grupo();
 ==========================================================================
+DELIMITER //
+CREATE PROCEDURE crear_mensaje(IN text VARCHAR(10000), IN fecha DATE, IN id_user INT)
+BEGIN
+	INSERT INTO mensaje(texto,fecha_envio,id_user_mensaje) VALUES (text,fecha,id_user);
+END//
+DELIMITER ;
+
+CALL crear_mensaje();
+==========================================================================
+ALTER TABLE mensaje CHANGE id_user_mensaje id_user_envio INT;
+
+ALTER TABLE mensaje ADD COLUMN id_grupo_envio INT;
+ALTER TABLE mensaje ADD COLUMN id_user_recibe INT;
+ALTER TABLE mensaje ADD COLUMN id_grupo_recibe INT;
+
+ALTER TABLE mensaje ADD FOREIGN KEY (id_grupo_recibe) REFERENCES grupo(id_grupo);
+ALTER TABLE mensaje ADD FOREIGN KEY (id_usuario_recibe) REFERENCES usuario(id_usuario);
+ALTER TABLE mensaje ADD FOREIGN KEY (id_grupo_recibe) REFERENCES grupo(id_grupo);
 
 
 
