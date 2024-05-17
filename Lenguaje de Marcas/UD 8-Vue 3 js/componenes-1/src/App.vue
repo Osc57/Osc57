@@ -14,7 +14,7 @@ import BlogPost from './components/BlogPost.vue';
 
   fetch('https://jsonplaceholder.typicode.com/posts')
     .then( res => res.json() )
-    .then( (data) => posts.value.log(data));
+    .then( (data) => console.log(data));
 </script>
 
 <template>
@@ -29,7 +29,7 @@ import BlogPost from './components/BlogPost.vue';
     -->
     <BlogPost v-for="post in posts" 
       :key="post.id" 
-      :titulo="post.title" 
+      :titulo="post.titulo" 
       :id="post.id" 
       :body="post.body"
       @cambiarNombreFavorito="cambiarFavorito"/>
