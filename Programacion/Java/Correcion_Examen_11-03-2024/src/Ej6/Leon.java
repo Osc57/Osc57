@@ -2,13 +2,12 @@ package Ej6;
 
 public class Leon extends Animal implements Carnivoro{
     @Override
-    public void comunicarse() {
+    public Object comunicarse() {
         return null;
     }
 
     @Override
     public void dieta() {
-        return null;
     }
 
     @Override

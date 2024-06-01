@@ -3,6 +3,6 @@ package Ej6;
 public abstract class Animal {
     String nombre;
 
-    public  abstract void comunicarse();
+    public  abstract Object comunicarse();
     public  abstract void dieta();
 }
