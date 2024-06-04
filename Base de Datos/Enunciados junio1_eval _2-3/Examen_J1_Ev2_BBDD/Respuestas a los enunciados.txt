@@ -2,6 +2,10 @@
 SELECT restaurantes.nombre, restaurantes.calle, restaurantes.codigo_postal, horarios.hora_cierre FROM restaurantes,horarios,areascobertura WHERE restaurantes.codigo=horarios.codRes AND restaurantes.codigo=areascobertura.codigoRes AND horarios.dia_semana="V" AND horarios.hora_cierre > "00:00:00"  AND areascobertura.codigoRes IN (SELECT codigoRes FROM areascobertura WHERE codigoPostal=(SELECT codigoPostal FROM clientes WHERE nombre="Pedro" AND apellido="Pérez")) GROUP BY restaurantes.codigo;
 
 2.
-SELECT TIMESTAMPDIFF(MINUTE,fecha_hora_pedido,fecha_hora_entrega) AS minutos,COUNT(DISTINCT contiene.restaura) AS restaurantes ,COUNT(DISTINCT contiene.plato) AS numero_platos FROM contiene,pedidos WHERE contiene.pedido=pedidos.codigo GROUP BY contiene.pedido HAVING minutos < 30;
+SELECT pedidos.codigo,COUNT(contiene.plato) AS platos,COUNT(DISTINCT contiene.restaura) AS restaurantes FROM pedidos,contiene WHERE pedidos.codigo=contiene.pedido AND TIMESTAMPDIFF(MINUTE,fecha_hora_pedido,fecha_hora_entrega)<30 AND estado="ENTREGADO" GROUP BY pedidos.codigo;
 
 3.
+SELECT restaurantes.codigo,restaurantes.nombre,COUNT(DISTINCT pedidos.cliente) AS clientes FROM restaurantes LEFT JOIN contiene ON restaurantes.codigo=contiene.restaura LEFT JOIN pedidos ON contiene.pedido=pedidos.codigo GROUP BY restaurantes.codigo;
+
+4.
+SELECT platos.nombrePlato FROM platos JOIN contiene ON platos.nombrePlato=contiene.plato JOIN pedidos ON contiene.pedido=pedidos.codigo;
