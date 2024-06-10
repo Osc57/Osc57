@@ -1,0 +1,27 @@
+1.
+DELIMITER //
+CREATE PROCEDURE cur_precio_con_comision()
+BEGIN
+	DECLARE var_comision FLOAT;
+	DECLARE var_precio FLOAT;
+	DECLARE var_plato VARCHAR(20);
+	DECLARE var_restaura INT;
+	DECLARE done BOOL DEFAULT 0;
+	DECLARE cursor1 CURSOR FOR SELECT platos.nombrePlato,restaurantes.codigo,restaurantes.comision,platos.precio FROM restaurantes JOIN platos ON restaurantes.codigo=platos.resCod;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+	OPEN cursor1;
+	1_cursor: LOOP
+	FETCH cursor1 INTO var_comision,var_precio,var_plato,var_restaura;
+	UPDATE contiene SET precio_con_comision=(((comison*precio)/100)+precio) WHERE nombrePlato=var_plato;
+	IF done=1 THEN
+	LEAVE 1_cursor;
+END IF;
+END LOOP 1_cursor;
+CLOSE cursor1;
+END;//
+DELIMITER ;
+
+CALL cur_precio_con_comision();
+
+SELECT platos.nombrePlato,restaurantes.codigo,(((restaurantes.comision*platos.precio)/100) + platos.precio) AS precio_comision FROM restaurantes JOIN platos ON restaurantes.codigo=platos.resCod;
+restaurantes.comision*platos.precio)/100) + platos.precio
