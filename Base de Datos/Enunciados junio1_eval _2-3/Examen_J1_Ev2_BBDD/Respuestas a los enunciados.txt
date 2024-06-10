@@ -8,4 +8,11 @@ SELECT pedidos.codigo,COUNT(contiene.plato) AS platos,COUNT(DISTINCT contiene.re
 SELECT restaurantes.codigo,restaurantes.nombre,COUNT(DISTINCT pedidos.cliente) AS clientes FROM restaurantes LEFT JOIN contiene ON restaurantes.codigo=contiene.restaura LEFT JOIN pedidos ON contiene.pedido=pedidos.codigo GROUP BY restaurantes.codigo;
 
 4.
-SELECT platos.nombrePlato FROM platos JOIN contiene ON platos.nombrePlato=contiene.plato JOIN pedidos ON contiene.pedido=pedidos.codigo;
+SELECT platos.resCod,contiene.plato,contiene.pedido,platos.precio FROM contiene,platos WHERE contiene.plato=platos.nombrePlato AND contiene.restaura=platos.resCod AND contiene.pedido=(SELECT DISTINCT pedidos.codigo AS precio FROM platos JOIN contiene ON platos.nombrePlato=contiene.plato JOIN pedidos ON contiene.pedido=pedidos.codigo WHERE pedidos.estado != "CANCEL" AND pedidos.estado != "RECHAZADO" AND pedidos.cliente="45678901Y" AND pedidos.importe_total=(SELECT MAX(importe_total) FROM pedidos WHERE cliente="45678901Y")) AND platos.precio=(SELECT MAX(precio) FROM contiene,platos WHERE contiene.plato=platos.nombrePlato AND contiene.restaura=platos.resCod AND contiene.pedido=(SELECT DISTINCT pedidos.codigo AS precio FROM platos JOIN contiene ON platos.nombrePlato=contiene.plato JOIN pedidos ON contiene.pedido=pedidos.codigo WHERE pedidos.estado != "CANCEL" AND pedidos.estado != "RECHAZADO" AND pedidos.cliente="45678901Y" AND pedidos.importe_total=(SELECT MAX(importe_total) FROM pedidos WHERE cliente="45678901Y")));
+
+5.
+SELECT pedidos.codigo,pedidos.importe_total,COUNT(DISTINCT contiene.plato) AS platos,(SUM(contiene.unidades*platos.precio)/SUM(contiene.unidades))AS precioMedio FROM contiene JOIN pedidos ON contiene.pedido=pedidos.codigo JOIN platos ON contiene.plato=platos.nombrePlato AND contiene.restaura=platos.resCod WHERE pedidos.estado != "CANCEL" AND pedidos.estado != "RECHAZADO" GROUP BY contiene.pedido HAVING precioMedio BETWEEN 8 AND 20 AND platos > 1;ç
+
+6.
+SELECT CONCAT(areascobertura.codigoPostal,"-",horarios.dia_semana) as areas_por_día,COUNT(areascobertura.codigoRes) AS restaurantes FROM areascobertura JOIN restaurantes ON areascobertura.codigoRes=restaurantes.codigo JOIN horarios ON restaurantes.codigo=horarios.codRes GROUP BY areascobertura.codigoPostal,horarios.dia_semana ORDER BY areascobertura.codigoPostal ASC;
+
