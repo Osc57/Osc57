@@ -1,0 +1,19 @@
+=====================================================================
+DELIMITER //
+mysql> CREATE PROCEDURE country_host (IN con CHAR(20))
+    -> BEGIN
+    -> SELECT name, population FROM country WHERE continent=con;
+    -> END//
+
+DELIMITER ;
+CALL country_host('Asia');
+======================================================================
+DELIMITER //
+mysql> CREATE PROCEDURE paiseshab (IN con CHAR(20), IN cant int (9))
+    -> BEGIN
+    -> SELECT name, population FROM country WHERE continent =con AND population < cant;
+    -> END//
+
+DELIMITER ;
+CALL paiseshab ('Europe', 10000)
+=====================================================================

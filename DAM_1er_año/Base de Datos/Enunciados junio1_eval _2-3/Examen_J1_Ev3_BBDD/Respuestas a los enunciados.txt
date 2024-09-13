@@ -1,0 +1,71 @@
+1.
+DELIMITER //
+CREATE PROCEDURE cur_precio_con_comision()
+BEGIN
+	DECLARE var_plato VARCHAR(20);
+	DECLARE var_restaura INT;
+	DECLARE var_comision FLOAT;
+	DECLARE var_precio FLOAT;
+	DECLARE done BOOL DEFAULT 0;
+	DECLARE cursor1 CURSOR FOR SELECT platos.nombrePlato,restaurantes.codigo,restaurantes.comision,platos.precio FROM restaurantes JOIN platos ON restaurantes.codigo=platos.resCod;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+	OPEN cursor1;
+	1_cursor: LOOP
+	FETCH cursor1 INTO var_plato,var_restaura,var_comision,var_precio;
+	UPDATE contiene SET precio_con_comision=(((var_comision*var_precio)/100)+var_precio) WHERE plato=var_plato;
+	IF done=1 THEN
+	LEAVE 1_cursor;
+END IF;
+END LOOP 1_cursor;
+CLOSE cursor1;
+END//
+DELIMITER ;
+
+CALL cur_precio_con_comision();
+============================================================================================================================================================
+DROP PROCEDURE cur_precio_con_comision;
+============================================================================================================================================================
+SELECT platos.nombrePlato,restaurantes.codigo,restaurantes.comision,platos.precio FROM restaurantes JOIN platos ON restaurantes.codigo=platos.resCod;
+SELECT platos.nombrePlato,restaurantes.codigo,(((restaurantes.comision*platos.precio)/100) + platos.precio) AS precio_comision FROM restaurantes JOIN platos ON restaurantes.codigo=platos.resCod;
+============================================================================================================================================================
+
+2.
+ALTER TABLE pedidos ADD COLUMN precio_con_descuento FLOAT;
+============================================================================================================================================================
+DELIMITER //
+CREATE FUNCTION precio_con_descuento(p INT) VARCHAR(100)
+BEGIN
+	SET @porcentaje_descuento = SELECT descuentos.porcentaje_descuento FROM descuentos JOIN pedidos ON  descuentos.codigodescuento=pedidos.codigodescuento WHERE pedidos.codigo=p;
+	SET @precio_total_pedido = SELECT SUM(contiene.precio_con_comision*contiene.unidades) AS precio_pedidos FROM contiene GROUP BY contiene.pedido;
+	SET @precio_descuento = 
+
+
+RETURN
+END//
+DELIMITER ;
+
+SELECT precio_con_descuento();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

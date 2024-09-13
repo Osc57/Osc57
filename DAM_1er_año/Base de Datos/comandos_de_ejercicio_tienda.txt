@@ -1,0 +1,21 @@
+1. INSERT INTO fabricante (codigo,nombre) VALUES ( null,'Poco');
+2. INSERT INTO fabricante (nombre) VALUES ('Apple');
+3. INSERT INTO producto (codigo,nombre,precio,codigo_fabricante) VALUES (null, 'Memoria RAM DDR5 16 GB', 89.99, 7);
+4. INSERT INTO producto (nombre,precio,codigo_fabricante)VALUES ('GeForce GTX 3060Ti', 289.99, 8);
+5. CREATE TABLE fabricantes_producto(Id INT AUTO_INCREMENT PRIMARY KEY,nombre_producto VARCHAR(100),nombre_fabricante VARCHAR(100), precio DOUBLE);
+5. INSERT INTO fabricantes_producto (nombre_producto,nombre_fabricante,precio) SELECT producto.nombre AS nombre_producto,fabricante.nombre AS nombre_fabricante,producto.precio FROM producto,fabricante WHERE producto.codigo_fabricante=fabricante.codigo;
+6. CREATE VIEW vista_fabricantes_productos AS SELECT nombre_fabricante,nombre_producto,precio FROM fabricantes_producto;
+7. DELETE FROM fabricante WHERE nombre='Asus';
+7. UPDATE producto SET codigo_fabricante=3 WHERE codigo_fabricante=1;
+8. DELETE FROM fabricante WHERE nombre='Xiaomi';
+9. UPDATE fabricante SET codigo=20 WHERE nombre='Lenovo';
+10. UPDATE fabricante SET codigo=30 WHERE nombre='Huawei';
+11. UPDATE producto SET precio=precio+5;
+12. DELETE FROM producto WHERE nombre LIKE '%impresora%' AND precio<200;
+
+
+
+
+
+
+

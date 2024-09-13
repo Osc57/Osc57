@@ -1,0 +1,78 @@
+CREATE DATABASE mensajeria;
+USE mensajeria;
+CREATE TABLE usuario(id_usuario INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(50), constrasena VARCHAR(100), fecha_cumple DATE, nick VARCHAR(50), foto VARCHAR(20), estado VARCHAR(30), fecha_creacion DATE);
+CREATE TABLE amigos(user1 INT, user2 INT, PRIMARY KEY(user1, user2), FOREIGN KEY (user1) REFERENCES usuario(id_usuario), FOREIGN KEY (user2) REFERENCES usuario(id_usuario));
+CREATE TABLE mensaje(id_mensaje INT PRIMARY KEY AUTO_INCREMENT, texto VARCHAR(10000), fecha_envio DATE, id_user_mensaje INT, FOREIGN KEY (id_user_mensaje) REFERENCES usuario(id_usuario));
+CREATE TABLE grupo(id_grupo INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(20), foto VARCHAR(20), id_mensaje_group INT, FOREIGN KEY (id_mensaje_group) REFERENCES mensaje(id_mensaje));
+CREATE TABLE pertenece(id_usuario_pertenece INT, id_grupo_pertenece INT, PRIMARY KEY(id_usuario_pertenece, id_grupo_pertenece), FOREIGN KEY (id_usuario_pertenece) REFERENCES usuario(id_usuario), FOREIGN KEY(id_grupo_pertenece) REFERENCES grupo(id_grupo));
+
+==========================================================================
+DELIMITER //
+CREATE PROCEDURE insertar_usuario(IN mail VARCHAR(50),IN passw VARCHAR(100),IN f_cump DATE,IN nombre VARCHAR(50), IN photo VARCHAR(20), IN estado VARCHAR(30), IN f_creacion DATE)
+BEGIN
+	INSERT INTO usuario(email,constrasena,fecha_cumple,nick,foto,estado,fecha_creacion) VALUES (mail,passw,f_cump,nombre,photo,estado,f_creacion);
+END//
+DELIMITER ;
+
+CALL insertar_usuario('paquitojuan@gmail.com','soypaquito123','1995-04-23','paquitoneito','imagen.jpg','En la playa','2010-04-25');
+CALL insertar_usuario('mario123@gmail.com','asdedfae1234','2000-10-01','xXmarioXx','imagen.jpg','Jugando Play','2015-07-14');
+CALL insertar_usuario('juan56magan45@gmail.com','contraseña1234','1978-11-30','juanmagan','imagen.jpg','Haciendo remix','1995-10-02');
+CALL insertar_usuario('pedritosanchez@gmail.com','hundimosespaña123','1972-02-29','pedrito56','imagen.jpg','Hundiendo España','1995-03-17');
+==========================================================================
+DELIMITER //
+CREATE PROCEDURE insertar_grupo(IN name VARCHAR(100), IN photo VARCHAR(20))
+BEGIN
+	INSERT INTO grupo(nombre,foto) VALUES (name,photo);
+END//
+DELIMITER ;
+
+CALL insertar_grupo();
+CALL insertar_grupo('Los Tigres de Albacete','imagen.jpg');
+==========================================================================
+DELIMITER //
+CREATE PROCEDURE crear_mensaje(IN text VARCHAR(10000), IN fecha DATE, IN id_user INT, IN id_grup_e INT, IN id_user_r INT, IN id_grup_r INT)
+BEGIN
+	INSERT INTO mensaje(texto,fecha_envio,id_user_envio,id_grupo_envio,id_user_recibe,id_grupo_recibe) VALUES (text,fecha,id_user,id_grup_e,id_user_r,id_grup_r);
+END//
+DELIMITER ;
+
+CALL crear_mensaje();
+==========================================================================
+ALTER TABLE mensaje CHANGE id_user_mensaje id_user_envio INT;
+
+ALTER TABLE mensaje ADD COLUMN id_grupo_envio INT;
+ALTER TABLE mensaje ADD COLUMN id_user_recibe INT;
+ALTER TABLE mensaje ADD COLUMN id_grupo_recibe INT;
+
+ALTER TABLE mensaje ADD FOREIGN KEY (id_grupo_recibe) REFERENCES grupo(id_grupo);
+ALTER TABLE mensaje ADD FOREIGN KEY (id_usuario_recibe) REFERENCES usuario(id_usuario);
+ALTER TABLE mensaje ADD FOREIGN KEY (id_grupo_recibe) REFERENCES grupo(id_grupo);
+
+SHOW CREATE TABLE grupo;
+ALTER TABLE grupo DROP FOREIGN KEY grupo_ibfk_1;
+ALTER TABLE grupo DROP COLUMN id_mensaje_group;
+==========================================================================
+1.
+A)
+SELECT COUNT(id_usuario_pertenece) AS usuarios,id_grupo_pertenece AS grupo FROM pertenece GROUP BY grupo;
+
+B)
+
+==========================================================================
+2.
+A)
+B)
+DELIMITER //
+CREATE PROCEDURE users_a_grupo(IN user_id INT, IN group_id INT)
+BEGIN
+INSERT INTO pertenece (id_usuario_pertenece,id_grupo_pertenece) VALUES (user_id,group_id);
+END//
+DELIMITER ;
+
+CALL users_a_grupo();
+
+
+
+
+
+

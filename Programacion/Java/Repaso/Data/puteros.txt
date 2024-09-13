@@ -1,3 +1,0 @@
-Putero{nombre='Javier', DNI='45859665E', Telefono=635566998}
-Putero{nombre='Pedro', DNI='12345678A', Telefono=666668986}
-Putero{nombre='Maria', DNI='12345678B', Telefono=666666666}

@@ -1,8 +1,0 @@
-SELECT nombre,pais_nac FROM persona GROUP BY nombre HAVING(pais_nac)='ES';
-SELECT persona.nombre,pelicula.titulo,pelicula.pais FROM persona,dirige,pelicula WHERE persona.id_persona = dirige.id_persona AND dirige.id_pelicula = pelicula.id_pelicula GROUP BY nombre HAVING(pais)='ES';
-//SELECT persona.nombre,pelicula.titulo,pelicula.anyo FROM persona,actua,pelicula WHERE persona.id_persona=actua.id_persona AND actua.id_pelicula=pelicula.id_pelicula GROUP BY nombre HAVING(anyo)>'1987-01-01';
-SELECT persona.nombre,pelicula.titulo,pelicula.anyo FROM persona,actua,pelicula WHERE persona.id_persona=actua.id_persona AND actua.id_pelicula=pelicula.id_pelicula AND anyo > '1987-01-01';
-SELECT persona.nombre,COUNT(pelicula.titulo) AS pelicula FROM persona,actua,pelicula WHERE persona.id_persona=actua.id_persona AND actua.id_pelicula=pelicula.id_pelicula GROUP BY nombre HAVING(pelicula)>='2';
-**SELECT persona.nombre,COUNT(pelicula.titulo) AS pelicula FROM persona,actua,pelicula WHERE persona.id_persona=actua.id_persona AND actua.id_pelicula=pelicula.id_pelicula GROUP BY persona.id_persona HAVING(pelicula)>='2';
-SELECT persona.nombre,COUNT(pelicula.titulo) AS pelicula FROM persona,dirige,pelicula WHERE persona.id_persona=dirige.id_persona AND dirige.id_pelicula=pelicula.id_pelicula GROUP BY persona.id_persona HAVING(pelicula)>='1';
-SELECT COUNT(persona.nombre) AS nombre,pelicula.titulo AS pelicula FROM persona,actua,pelicula WHERE persona.id_persona=actua.id_persona AND actua.id_pelicula=pelicula.id_pelicula GROUP BY nombre;

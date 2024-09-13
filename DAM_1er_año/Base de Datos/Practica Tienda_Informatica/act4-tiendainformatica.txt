@@ -1,0 +1,124 @@
+1.
+================================================================
+A)
+DELIMITER //
+CREATE FUNCTION masCaro() RETURNS VARCHAR(20)
+BEGIN
+SET @caro=(SELECT id FROM productos WHERE precio=(SELECT MAX(precio) FROM productos));
+RETURN @caro;
+END//
+DELIMITER ;
+
+SELECT masCaro();
+================================================================
+B)
+DELIMITER //
+CREATE FUNCTION devolverIVA(id_iva INT) RETURNS VARCHAR(20)
+BEGIN
+SET @iva=(SELECT precio+(precio*0.21) FROM productos WHERE id=id_iva);
+RETURN @iva;
+END//
+DELIMITER ;
+
+SELECT devolverIVA();
+================================================================
+
+2.
+================================================================
+A)
+DELIMITER //
+CREATE PROCEDURE descuento(IN product VARCHAR(500),IN porcentaje INT)
+BEGIN
+	SELECT nombre, precio-((precio*porcentaje)/100) AS Descuento FROM productos WHERE nombre=product;
+END//
+DELIMITER ;
+
+CALL descuento();
+================================================================
+B)
+DELIMITER //
+CREATE PROCEDURE insertar_product(IN name_product VARCHAR(500), IN precio_product FLOAT)
+BEGIN
+	INSERT INTO productos (nombre, precio) VALUES (name_product,precio_product);
+END//
+DELIMITER ;
+
+CALL insertar_product();
+================================================================
+C)
+DELIMITER //
+CREATE PROCEDURE eliminar_product(IN id_product INT)
+BEGIN
+	DELETE FROM productos WHERE id=id_product;
+	ALTER TABLE productos AUTO_INCREMENT=1;
+END//
+DELIMITER ;
+
+CALL eliminar_product();
+================================================================
+D)
+DELIMITER //
+CREATE PROCEDURE precio_iva()
+BEGIN
+	DECLARE var_id INT;
+	DECLARE var_precio FLOAT;
+	DECLARE done BOOL DEFAULT 0;
+	DECLARE cursor1 CURSOR FOR SELECT id,precio FROM productos;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+	OPEN cursor1;
+	1_cursor: LOOP
+	FETCH cursor1 INTO var_id,var_precio;
+	UPDATE productos set precio_iva=precio*1.21 where id=var_id;
+	IF done=1 THEN
+	LEAVE 1_cursor;
+END IF;
+END LOOP 1_cursor;
+CLOSE cursor1;
+END;//
+DELIMITER ;
+
+CALL precio_iva();
+================================================================
+
+3.
+================================================================
+A)
+DELIMITER //
+CREATE TRIGGER precio_iva_iva
+BEFORE INSERT ON productos FOR EACH ROW
+BEGIN
+	SET NEW.precio_iva = NEW.precio*1.21;
+END//
+DELIMITER ;
+================================================================
+B)
+DELIMITER //
+CREATE TRIGGER before_update BEFORE UPDATE ON productos FOR EACH ROW
+BEGIN
+	SET NEW.precio_iva=NEW.precio*1.21
+END//
+DELIMITER ;
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

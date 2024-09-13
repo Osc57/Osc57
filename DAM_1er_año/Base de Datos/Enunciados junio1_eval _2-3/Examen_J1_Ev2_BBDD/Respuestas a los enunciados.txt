@@ -1,0 +1,18 @@
+1.
+SELECT restaurantes.nombre, restaurantes.calle, restaurantes.codigo_postal, horarios.hora_cierre FROM restaurantes,horarios,areascobertura WHERE restaurantes.codigo=horarios.codRes AND restaurantes.codigo=areascobertura.codigoRes AND horarios.dia_semana="V" AND horarios.hora_cierre > "00:00:00"  AND areascobertura.codigoRes IN (SELECT codigoRes FROM areascobertura WHERE codigoPostal=(SELECT codigoPostal FROM clientes WHERE nombre="Pedro" AND apellido="Pérez")) GROUP BY restaurantes.codigo;
+
+2.
+SELECT pedidos.codigo,COUNT(contiene.plato) AS platos,COUNT(DISTINCT contiene.restaura) AS restaurantes FROM pedidos,contiene WHERE pedidos.codigo=contiene.pedido AND TIMESTAMPDIFF(MINUTE,fecha_hora_pedido,fecha_hora_entrega)<30 AND estado="ENTREGADO" GROUP BY pedidos.codigo;
+
+3.
+SELECT restaurantes.codigo,restaurantes.nombre,COUNT(DISTINCT pedidos.cliente) AS clientes FROM restaurantes LEFT JOIN contiene ON restaurantes.codigo=contiene.restaura LEFT JOIN pedidos ON contiene.pedido=pedidos.codigo GROUP BY restaurantes.codigo;
+
+4.
+SELECT platos.resCod,contiene.plato,contiene.pedido,platos.precio FROM contiene,platos WHERE contiene.plato=platos.nombrePlato AND contiene.restaura=platos.resCod AND contiene.pedido=(SELECT DISTINCT pedidos.codigo AS precio FROM platos JOIN contiene ON platos.nombrePlato=contiene.plato JOIN pedidos ON contiene.pedido=pedidos.codigo WHERE pedidos.estado != "CANCEL" AND pedidos.estado != "RECHAZADO" AND pedidos.cliente="45678901Y" AND pedidos.importe_total=(SELECT MAX(importe_total) FROM pedidos WHERE cliente="45678901Y")) AND platos.precio=(SELECT MAX(precio) FROM contiene,platos WHERE contiene.plato=platos.nombrePlato AND contiene.restaura=platos.resCod AND contiene.pedido=(SELECT DISTINCT pedidos.codigo AS precio FROM platos JOIN contiene ON platos.nombrePlato=contiene.plato JOIN pedidos ON contiene.pedido=pedidos.codigo WHERE pedidos.estado != "CANCEL" AND pedidos.estado != "RECHAZADO" AND pedidos.cliente="45678901Y" AND pedidos.importe_total=(SELECT MAX(importe_total) FROM pedidos WHERE cliente="45678901Y")));
+
+5.
+SELECT pedidos.codigo,pedidos.importe_total,COUNT(DISTINCT contiene.plato) AS platos,(SUM(contiene.unidades*platos.precio)/SUM(contiene.unidades))AS precioMedio FROM contiene JOIN pedidos ON contiene.pedido=pedidos.codigo JOIN platos ON contiene.plato=platos.nombrePlato AND contiene.restaura=platos.resCod WHERE pedidos.estado != "CANCEL" AND pedidos.estado != "RECHAZADO" GROUP BY contiene.pedido HAVING precioMedio BETWEEN 8 AND 20 AND platos > 1;ç
+
+6.
+SELECT CONCAT(areascobertura.codigoPostal,"-",horarios.dia_semana) as areas_por_día,COUNT(areascobertura.codigoRes) AS restaurantes FROM areascobertura JOIN restaurantes ON areascobertura.codigoRes=restaurantes.codigo JOIN horarios ON restaurantes.codigo=horarios.codRes GROUP BY areascobertura.codigoPostal,horarios.dia_semana ORDER BY areascobertura.codigoPostal ASC;
+

@@ -1,0 +1,11 @@
+SELECT CONCAT(profesores.nombre," ",profesores.apellido1," ", profesores.apellido2) AS nombre, SUM(numhoras)as horas_totales FROM cursos,profesores WHERE cursos.profesor=profesores.dni GROUP BY profesor HAVING horas_totales= (SELECT SUM(numhoras)as horas_totales FROM cursos GROUP BY profesor ORDER BY horas_totales ASC LIMIT 1);
+SELECT sexo, MIN(pruebaA), MAX(pruebaA), AVG(pruebaA), MIN(pruebaB),MAX(pruebaB),AVG(pruebaB) FROM matriculas,alumnos WHERE alumnos.dni=matriculas.dnialumno GROUP BY sexo ORDER BY AVG(pruebaA) ASC;
+SELECT CONCAT(nombre,' ', apellido1,' ',apellido2) AS Nombre_Completo, nombrecurso, inscripcion FROM (alumnos a INNER JOIN matriculas m ON a.dni=m.dnialumno) INNER JOIN cursos c ON m.codcurso=c.codigocurso WHERE tipo='oficial';
+SELECT CONCAT(nombre,' ',apellido1,' ',apellido2) AS Nombre_Completo, COUNT(codcurso) num_cursos FROM alumnos, matriculas WHERE alumnos.dni=matriculas.dnialumno GROUP BY dni HAVING num_cursos>1;
+SELECT CONCAT(a.nombre,' ',a.apellido1) AS alumno, c.nombrecurso, p.nombre FROM alumnos a LEFT JOIN matriculas m ON a.dni=m.dnialumno LEFT JOIN cursos c ON m.codcurso=c.codigocurso LEFT JOIN profesores p ON c.profesor=p.dni ORDER BY c.nombrecurso, alumno;
+SELECT CONCAT(nombre,' ',apellido1,' ',apellido2) AS Nombre_Completo, nombrecurso, pruebaA, pruebaB FROM alumnos a, matriculas m, cursos c WHERE a.dni=m.dnialumno AND m.codcurso=c.codigocurso AND nombrecurso='La Constitucion' AND (pruebaA+pruebaB)/2>25;
+SELECT SUM(precio)*0.75 AS precio_rebajado FROM manuales WHERE referencia IN (SELECT DISTINCT referencia FROM curso_manual WHERE codcurso IN (SELECT codcurso FROM matriculas WHERE dnialumno =(SELECT dni FROM alumnos WHERE nombre ='Ana' AND apellido1='Padilla'))) AND fechapub > '2002/12/31';
+
+
+
+

@@ -1,7 +1,0 @@
-.contenedor div{
-    background-color: aqua;
-    padding: 1em;
-}
-.contenedor:hover{
-    border: 1px solid blue;
-}
