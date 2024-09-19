@@ -1,0 +1,137 @@
+Ej1
+Proceso MayorQueSegundo
+	definir n1,n2 int;
+	escribir "¿Dime el primer número?";
+	leer n1;
+	escribir "¿Dime el segundo número?";
+	leer n2;
+	si n1>n2 entonces
+		escribir "El "n1 "es mayor que "n2;
+	sino
+		escribir "El "n2 "es mayor que "n1;
+	finsi
+Fin Proceso
+
+Ej2
+Proceso PositivoNegativo
+	definir n1 entero;
+	escribir "¿Dime el primer número?";
+	leer n1;
+	si n1=0 entonces
+		escribir "El numero "n1 "es 0";
+	sino
+		si num>0 entonces
+			escribir "El número "n1 "es positivo";
+		sino
+			escribir "El número "n1 "es negativo";
+		finsi
+	finsi
+Fin Proceso
+
+Ej3
+Proceso ParOImpar
+	definir n1 entero;
+	escribir "¿Dime un número?";
+	si n1%2==0 entonces
+		escribir "El número es par";
+	sino
+		escribir "El número es impar";
+	finsi
+Fin Proceso
+
+Ej4
+Proceso División
+	definir dividendo,divisor como entero;
+	escribir "Dime el número 1";
+	leer dividendo;
+	escribir "Dime el número 2";
+	leer divisor;
+	si divisor=0 entonces
+		Escribir 'No puedes dividir por 0';
+	sino
+		Escribir 'La división es ',dividendo/divisor;
+	finsi
+Fin Proceso
+	
+Ej5
+Proceso UsuarioContrasena
+	definir usuario,passwd Cadena;
+	escribir "¿Dime tu usuario?";
+	leer usuario;
+	escribir "¿Dime tu contraseña?";
+	leer passwd;
+	si usuario="pepe" Y passwd="asdasd"
+		escribir "Has entrado en el sistema";
+	sino
+		escribir "Error, introduce correctamente el usuario y la contraseña"
+	finsi
+Fin Proceso
+
+Ej6
+Proceso CadenaMayuscula
+	definir palabra cadena;
+	escribir "¿Introduce una palabra?";
+	leer palabra;
+	si palabra=Mayusculas(palabra) entonces
+		Escribir "La palabra es mayúsculas";
+	sino
+		Escribir "La palabra no es mayúsculas";
+	finsi
+Fin Proceso
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

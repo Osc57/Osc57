@@ -183,18 +183,89 @@ Fin Proceso
 Ej16
 Proceso Vehículos
 	definir v1,v2,distancia,tiempo como int;
-	escribir Sin Saltar "Dime la velocidad del coche 1 (km/h):";
-	leer velocidad1;
-	escribir Sin Saltar "Dime la velocidad del coche 2 (más pequeña)(km/h):";
-	leer velocidad2;
-	escribir Sin Saltar "Dime la distancia entre los coches (km):";
+	escribir "Dime la velocidad del coche 1 (km/h):";
+	leer v1;
+	escribir "Dime la velocidad del coche 2 (más pequeña)(km/h):";
+	leer v2;
+	escribir "Dime la distancia entre los coches (km):";
 	leer distancia;
-	tiempo <- distancia / (velocidad1 - velocidad2);
+	tiempo <- distancia / (v1 - v2);
 	tiempo<- tiempo * 60;
 	escribir "Lo alcanza en ",tiempo, " minutos.";
 Fin Proceso
 
+Ej17
+Proceso Ciclista
+	definir horapartida, minpartida, segpartida, seginicial, segfinal,segviaje, horallegada, minllegada, segllegada Como int;
+	escribir "Hora de salida:";
+	leer horapartida;
+	escribir Sin Saltar "Minutos de salida:";
+	leer minpartida;
+	escribir Sin Saltar "Segundos de salida:";
+	leer segpartida;
+	escribir Sin Saltar "Tiempo que has tardado en segundos:";
+	leer segviaje;
+	
+	seginicial <- horapartida * 3600 + minpartida*60 + segpartida;
+	
+	segfinal <- seginicial + segviaje;
+	
+	horallegada <- trunc(segfinal / 3600);
+	minllegada <- trunc((segfinal % 3600) / 60);
+	segllegada <- (segfinal % 3600) % 60;
+	
+	Escribir "Hora de llegada";
+	Escribir horallegada,":",minllegada,":",segllegada;
+Fin Programa
 
+Ej18
+Proceso MostrarIniciales
+	definir nombre,apellido1,apellido2,inicial como char;
+	escribir "¿Dime tu nombre?";
+	leer nombre;
+	escribir "¿Dime tu primer apellido?";
+	leer apellido1;
+	escribir "¿Dime tu segundo apellido?";
+	leer apellido2;
+	inicial<-subcadena(nombre,0,0);
+	inicial<-concatenar(inicial,subcadena(apellido1,0,0));
+	inicial<-concatenar(inicial,subcadena(apellido2,0,0));
+	inicial<-Mayúsculas(inicial);
+	escribir "Las iniciales son: ",inicial;
+Fin Proceso
+
+Ej19
+Proceso AlgoritmoNotaFinal
+	definir correctas, incorrectas, puntos como int;
+	escribir "¿Dime cantidad de respuestas correctas?";
+	leer correctas;
+	escribir "¿Dime cantidad de respuestas incorrectas?";
+	leer incorrectas;
+	puntos <- correctas * 5 + incorrectas * (-1);
+	escribir "Puntos: ",puntos;
+Fin Proceso
+
+Ej20
+Proceso Dinero
+	definir moneda2,moneda1,moneda05,moneda02,moneda01 int;
+	definir totalEuros,totalCentimos int;
+	escribir "¿Dime cuantas monedas de 2€ tienes?";
+	leer moneda2;
+	escribir "¿Dime cuantas monedas de 1€ tienes?";
+	leer moneda1;
+	escribir "¿Dime cuantas monedas de 0,50€ tienes?";
+	leer moneda05;
+	escribir "¿Dime cuantas monedas de 0,20€ tienes?";
+	leer moneda02;
+	escribir "¿Dime cuantas monedas de 0,10€ tienes?";
+	leer monedas01;
+	totalEuros <- moneda2*2+moneda1;
+	totalCentimos <- moneda05*0,50+moneda02*0,20+moneda01*0,10;
+	escribir "El total de euros es: "totalEuros;
+	escribir "El total de céntimos es: "totalCentimos;
+Fin Proceso
+	
+ 
 	
 	
 	
