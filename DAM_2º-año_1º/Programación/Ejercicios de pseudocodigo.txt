@@ -167,6 +167,33 @@ Proceso NúmeroInvertido
 Fin Proceso
 
 Ej15
+Proceso Variables
+	definir varA,varB,aux int;
+	escribir "¿Introduce un valor?";
+	leer varA;
+	escribir "¿Introduce otro valor?";
+	leer varB;
+	aux <- A
+	varA <-B
+	varB <- aux
+	escribir "El primer valor ahora vale: "varA
+	escribir "El segundo valor ahora vale: "varB
+Fin Proceso
+
+Ej16
+Proceso Vehículos
+	definir v1,v2,distancia,tiempo como int;
+	escribir Sin Saltar "Dime la velocidad del coche 1 (km/h):";
+	leer velocidad1;
+	escribir Sin Saltar "Dime la velocidad del coche 2 (más pequeña)(km/h):";
+	leer velocidad2;
+	escribir Sin Saltar "Dime la distancia entre los coches (km):";
+	leer distancia;
+	tiempo <- distancia / (velocidad1 - velocidad2);
+	tiempo<- tiempo * 60;
+	escribir "Lo alcanza en ",tiempo, " minutos.";
+Fin Proceso
+
 
 	
 	
