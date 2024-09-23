@@ -79,6 +79,10 @@ Proceso CadenaMayuscula
 	finsi
 Fin Proceso
 
+Ej7
+Proceso Potencia
+	definir 
+
 
 
 
