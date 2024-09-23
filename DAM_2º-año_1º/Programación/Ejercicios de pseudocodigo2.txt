@@ -81,8 +81,141 @@ Fin Proceso
 
 Ej7
 Proceso Potencia
-	definir 
+	definir base,exponente Entero;
+	escribir "Ingresa la base";
+	leer base;
+	escribir "Ingresa la potencia";
+	leer exponente;
+	si exponente>0 Entonces
+		Escribir "La potencia es ",base^exponente;
+	sino
+		Si exponente=0 Entonces
+			escribir "La potencia es 1";
+		sino
+			escribir "La potencia es ",1/(base^abs(exponente));
+		finsi
+	finsi
+Fin Proceso
 
+Ej8
+Proceso Notas
+	definir nota,edad Entero;
+	definir sexo Cadena;
+	escribir "Ingresa tu nota";
+	leer nota;
+	escribir "Ingresa tu edad";
+	leer edad;
+	escribir "Ingrasa tu sexo M/F";
+	leer sexo;
+	Si nota>=5 Y edad>=18 Entonces
+		Si sexo="F" Entonces
+			escribir "ACEPTADA";
+		SiNo
+			Si sexo="M" Entonces
+				escibir "POSIBLE";
+			SiNo
+				escribir "NO ACEPTADA";
+			FinSi
+		FinSi
+	SiNo
+		Escribir "NO ACEPTADA";
+	FinSi
+FinProceso
+
+Ej9
+Proceso Ordenar
+	Definir n1,n2,n3 Entero;
+	Escribir "Ingresa un número";
+	Leer n1;
+	Escribir "Ingresa el segundo número";
+	Leer n2;
+	Escribir "Ingresa el tercer número";
+	Leer n3;
+	Si n1>n2 Y n1>n3 Entonces
+		Si n2>n3 Entonces
+			Escribir n1," ",n2," ",n3;
+		SiNo
+			Escribir n1," ",n3," ",n2;
+		FinSi
+	FinSi
+	Si n2>n1 Y n2>n3 Entonces
+		Si n1>n3 Entonces
+			Escribir n2," ",n1," ",n3;
+		SiNo
+			Escribir n2," ",n3," ",n1;
+		FinSi
+	FinSi
+	Si n3>=n1 Y n3>=n2 Entonces
+		Si n1>n2 Entonces
+			Escribir n3," ",n1," ",n2;
+		SiNo
+			Escribir n3," ",n2," ",n1;
+		FinSi
+	FinSi
+FinProceso
+
+Ej10
+Proceso Puntos
+	Definir x1,y1,x2,y2,r1,r2 Como Real;
+	Definir distancia Como Real;
+	Escribir "Dime coordenada x primera circunferencia:";
+	Leer x1;
+	Escribir "Dime coordenada y primera circunferencia:";
+	Leer y1;
+	Escribir "Dime radio primera circunferencia:";
+	Leer r1;
+	Escribir "Dime coordenada x segunda circunferencia:";
+	Leer x2;
+	Escribir "Dime coordenada y segunda circunferencia:";
+	Leer y2;
+	Escribir "Dime radio segunda circunferencia:";
+	Leer r2;
+	distancia <- raiz((x2-x1)^2 + (y2-y1)^2);
+	Si distancia> (r1 + r2) Entonces
+		Escribir "Circunferencias exteriores";
+	FinSi
+	Si distancia = (r1 + r2) Entonces
+		Escribir "Circunferencias tangentes exteriores";
+	FinSi
+	Si distancia < (r1 + r2) Y distancia > abs(r1-r2) Entonces
+		Escribir "Circunferencias secantes";
+	FinSi
+	Si distancia = abs(r1-r2) Entonces
+		Escribir "Circunferencias tangentes interiores";
+	FinSi
+	Si distancia>0 Y distancia<abs(r1-r2) Entonces
+		Escribir "Circunferencias interiores";
+	FinSi
+	Si distancia=0 Entonces
+		Escribir "Circunferencias concétricas";
+	FinSi
+FinProceso
+
+Ej11
+Proceso Triangulo
+	Definir a,b,c Entero;
+	Escribir "Dime la longitud del lado A"
+	Leer a;
+	Escribir "Dime la longitud del lado B";
+	Leer b;
+	Escribir "Dime la longitud del lado C";
+	Leer c;
+	Si a^2+b^2 = c^2 | b^2+c^2 = a^2 | c^2+a^2 = b^2 Entonces
+		Escribir "El triangulo es rectángulo";
+	FinSi
+	Si (a=b Y a<>c)|(b=c Y b<>a)|(c=a Y c<>b) Entonces
+		Escribir "El triangulo es isósceles"
+	SiNo
+		Si a=b Y a=c Entonces
+			Escribir "El triangulo es equilátero";
+		Sino
+			Escribir "El triangulo es escaleno";
+		FinSi
+	FinSi
+FinProceso
+
+Ej12
+	
 
 
 
