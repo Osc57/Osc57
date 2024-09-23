@@ -215,7 +215,16 @@ Proceso Triangulo
 FinProceso
 
 Ej12
-	
+Proceso AñoBisiesto
+	Definir año Entero;
+	Escribir "Dime un año";
+	leer año:
+	Si año%4=0 Y NO (año%100=0))|año%400=0 Entonces
+		Escribir "El año es bisiesto";
+	SiNo
+		Escribir "El año no es bisiesto";
+	FinSi
+FinProceso
 
 
 
