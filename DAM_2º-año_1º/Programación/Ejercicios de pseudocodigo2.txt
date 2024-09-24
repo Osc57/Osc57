@@ -194,7 +194,7 @@ FinProceso
 Ej11
 Proceso Triangulo
 	Definir a,b,c Entero;
-	Escribir "Dime la longitud del lado A"
+	Escribir "Dime la longitud del lado A";
 	Leer a;
 	Escribir "Dime la longitud del lado B";
 	Leer b;
@@ -226,6 +226,35 @@ Proceso AñoBisiesto
 	FinSi
 FinProceso
 
+Ej13
+Proceso Fecha
+	Definir dia,mes,año Entero;
+	Definir diasDelMes Entero;
+	Escribir "Dime un dia";
+	Leer dia;
+	Escribir "Dime un mes";
+	Leer mes;
+	Escribir "Dime un año";
+	Leer año;
+	Según mes Entonces
+		1,3,5,7,8,10,12:
+			diasDelMes<-31;
+		4,6,9,11:
+			diasDelMes<-30;
+		2:
+			Si (año % 4 = 0 Y NO (año % 100 = 0)) | año % 400 = 0 Entonces
+				diasDelMes <- 29;
+			SiNo
+				diasDelMes <- 28;
+			FinSi
+		De Otro Modo:
+				Escribir "Fecha incorrecta";
+		FinSegun
+		Si dia<0 | dia>diasDelMes Entonces
+			Escribir "Fecha incorrecta";
+		SiNo
+			Escribir "Fecha correcta";
+		FinSi
 
 
 
