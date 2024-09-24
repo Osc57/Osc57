@@ -248,13 +248,58 @@ Proceso Fecha
 				diasDelMes <- 28;
 			FinSi
 		De Otro Modo:
-				Escribir "Fecha incorrecta";
+			Escribir "Fecha incorrecta";
 		FinSegun
 		Si dia<0 | dia>diasDelMes Entonces
 			Escribir "Fecha incorrecta";
 		SiNo
 			Escribir "Fecha correcta";
 		FinSi
+FinProceso
+
+Ej14
+Proceso AsociacionVinicultores
+	Definir tipo Como Caracter;
+	Definir tamano Como Caracter;
+	Definir precio_inicial,precio_final Como Real;
+	Definir kilos Como Entero;
+	Escribir Sin Saltar "Introduce el precio inicial por kilos de la UVA (centimos):";
+	Leer precio_inicial;
+	Escribir Sin Saltar "Introduce cuantos kilos has vendido:";
+	Leer kilos;
+	Escribir Sin Saltar "Introduce el tipo de la UVA (A/B):";
+	Leer tipo;
+	
+	Si Mayusculas(tipo)<>"A" Y Mayusculas(tipo)<>"B" Entonces
+		Escribir "Tipo incorrecto";
+	SiNo
+		Escribir Sin Saltar "Introduce el tamaño de la UVA (1/2):";
+		Leer tamano;
+		Si tamano<>"1" Y tamano<>"2" Entonces
+			Escribir "Tamaño incorrecto";
+		SiNo
+			Si Mayusculas(tipo)="A" Entonces
+				Si tamano="1" Entonces
+					precio_inicial<-precio_inicial+20;
+				SiNo
+					precio_inicial<-precio_inicial+30;
+				FinSi
+			SiNo
+				Si tamano="1" Entonces
+					precio_inicial<-precio_inicial-20;
+				SiNo
+					precio_inicial<-precio_inicial-30;
+				FinSi
+			FinSi
+			precio_final<-precio_inicial * kilos;
+			Escribir "La ganancia es ",precio_final/100, " euros.";
+			
+		FinSi
+	FinSi
+FinProceso
+
+
+
 
 
 
