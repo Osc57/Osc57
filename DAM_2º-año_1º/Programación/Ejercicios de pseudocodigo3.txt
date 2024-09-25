@@ -34,15 +34,60 @@ Proceso AdivinarNumero
     	Si num_secreto=num_ingresado Entonces
         	Escribir "Exacto! Usted adivino en ",11-intentos," intentos.";
     	Sino
-        	Escribir "El numero era: ",num_secreto;
+        	Escribir "El numero era: ",rNum;
     	FinSi
 FinProceso
 
 Ej3
+Proceso PedirNúmeros
+	Definir num,suma,cont,media Entero;
+	Escribir "Dime un número";
+	Leer numero;
+	cont<-0;
+	suma<-0;
+	Mientras num<>0 Hacer
+		suma <- suma + num;
+		cont <- cont + 1;
+		Leer num;
+	FinMientras
+	Si cont>0 Entonces
+		media <- suma/cont;
+	SiNo
+		media <-0;
+	FinSi
+	Escribir "La suma es: " suma;
+	Escribir "La media es: " media;
+FinProceso
 
+Ej4
+Proceso AlgoritmoDeNumeros
+	Definir num Como Entero;
+	Definir cantidad_num,i Como Entero;
+	Definir cont_negativos,cont_positivos,cont_ceros Como Entero;
+	cont_negativos <- 0;
+	cont_positivos <- 0;
+	cont_ceros <- 0;
+	Escribir "¿Cuántos números vas a introducir?:";
+	Leer cantidad_num;
+	Para i<-1 Hasta cantidad_num Hacer
+		Escribir "Número ",i,":" ;
+		Leer num;
+		Si num>0 Entonces
+			cont_positivos <- cont_positivos + 1;
+		Sino 
+			Si num<0 Entonces
+				cont_negativos <- cont_negativos + 1;
+			SiNo
+				cont_ceros <- cont_ceros + 1;
+			FinSi
+		FinSi
+	FinPara
+	Escribir "Números positivos:",cont_positivos;
+	Escribir "Números negativos:",cont_negativos;
+	Escribir "Números igual a 0:",cont_ceros;
+FinProceso
 
-
-
+Ej5
 
 
 
