@@ -299,6 +299,174 @@ Proceso AsociacionVinicultores
 FinProceso
 
 Ej15
+Proceso ViajeEstudios
+	Definir num_alumnos Como Entero;
+	Definir coste_por_alumno como Real;
+	Definir coste_autobus como Entero;
+	Escribir Sin Saltar "¿Cuántos alumnos participan en la actividad?:";
+	Leer num_alumnos;
+	Si num_alumnos>=100 Entonces
+		coste_por_alumno<-65;
+	FinSi
+	Si num_alumnos>=50 Y num_alumnos<=99 Entonces
+		coste_por_alumno<-70;
+	FinSi
+	Si num_alumnos>=30 Y num_alumnos<=49 Entonces
+		coste_por_alumno<-95;
+	FinSi
+	Si num_alumnos<30 Y num_alumnos>0 Entonces
+		coste_por_alumno<-4000/num_alumnos;
+	FinSi
+	Si num_alumnos>0 Entonces
+		coste_autobus<-num_alumnos*coste_por_alumno;
+		Escribir "El coste por alumno es ",coste_por_alumno," euros.";
+		Escribir "El coste del autobús es ",coste_autobus," euros.";
+	SiNo
+		Escribir "El número de alumnos debe ser un valor positivo.";
+	FinSi
+FinProceso
+
+Ej16
+Proceso CompañiaTelefonica
+	Definir tiempo Como Entero;
+	Definir es_domingo Como Caracter;
+	Definir turno Como Caracter;
+	Definir coste Como Entero;
+	Escribir "¿Cuánto tiempo es la llamada?:";
+	Leer tiempo;
+	Escribir "¿Es Domingo? (S/N):";
+	Leer es_domingo;
+	Si Mayusculas(es_domingo)="N" Entonces
+		Escribir "¿Qué turno: Mañana o Tarde? (M/T)?:";
+		Leer turno;
+	FinSi
+	Si tiempo<5 Entonces
+		coste<-tiempo*100;
+	SiNo
+		Si tiempo<8 Entonces
+			coste<-(tiempo-5)*80+500;
+		SiNo
+			Si tiempo<10 Entonces
+				coste<-(tiempo-8)*70+240+500;
+			SiNo
+				coste<-(tiempo-10)*50+140+240+500;
+			FinSi
+		FinSi
+	FinSi
+	Si Mayusculas(es_domingo)="S" Entonces
+		coste<-coste+coste*0.03;
+	SiNo
+		Si Mayusculas(turno)="M" Entonces
+			coste<-coste+coste*0.15;
+		SiNo
+			coste<-coste+coste*0.10;
+		FinSi
+	FinSi
+	Escribir "El coste de la llamada:", coste/100," euros.";
+FinProceso
+
+Ej17
+Proceso Dado
+	Definir cara Entero;
+	Escribir "Dime la cara de tu dado";
+	Leer cara;
+	Según cara Hacer
+		1:
+			Escribir "SEIS";
+		2:
+			Escribir "CINCO";
+		3:
+			Escribir "CUATRO";
+		4:
+			Escribir "TRES";
+		5:
+			Escribir "DOS";
+		6:
+			Escribir "UNO";
+		De Otro Modo:
+			Escribir "Error: número incorrecto.";
+	FinSegun
+FinProceso
+
+Ej18
+Proceso DiaSemana
+	Definir dia Entero;
+	Escribir "Dime un dia de la semana del 1 al 7";
+	Leer dia;
+	Según dia Hacer
+		1:
+			Escribir "Lunes";
+		2:
+			Escribir "Martes";
+		3:
+			Escribir "Miércoles";
+		4:
+			Escribir "Jueves";
+		5:
+			Escribir "Viernes";
+		6:
+			Escribir "Sábado";
+		7:
+			Escribir "Domingo";
+		De Otro Modo:
+			Escribir "Error: número incorrecto"
+	FinSegun
+FinProceso
+
+Ej19
+Proceso Mes
+	Definir mes Como Entero;
+	Escribir "Introduce el número de mes (1-12):";
+	Leer mes;
+	Segun mes hacer
+		1,3,5,7,8,10,12:
+			Escribir "31 días";
+		2:
+			Escribir "28 o 29 días";
+		4,6,9,11:
+			Escribir "30 días";
+		De Otro Modo:
+			Escribir "Mes incorrecto";
+			
+	FinSegun
+FinProceso
+
+Ej20
+Proceso CompañiaTransporte
+	Definir peso Como Entero;
+	Definir zona Como Entero;
+	Escribir Sin Saltar "¿Qué peso tiene el paquete (en gramos)?:";
+	Leer peso;
+	Si peso>0 Y peso<=5000 Entonces
+		Escribir "1.- América del Norte";
+		Escribir "2.- América Central";
+		Escribir "3.- América del Sur";
+		Escribir "4.- Europa";
+		Escribir "5.- Asia";
+		Escribir Sin Saltar "A que zona se reparte (1-5):";
+		Leer zona;
+		Segun zona Hacer
+			1:
+				Escribir "Coste: ",peso*24, " euros.";
+			2:
+				Escribir "Coste: ",peso*20, " euros.";
+			3:
+				Escribir "Coste: ",peso*21, " euros.";
+			4:
+				Escribir "Coste: ",peso*10, " euros.";
+			5:
+				Escribir "Coste: ",peso*18, " euros.";
+			De Otro Modo:
+				Escribir "Zona incorrecta.";
+				
+		FinSegun
+	SiNo
+		Escribir "Peso incorrecto (no podemos transportar paquetes de más de 5Kg).";
+	FinSi
+FinProceso	
+	
+	
+	
 
 
 
