@@ -14,3 +14,78 @@ Proceso Factorial
 FinProceso
 
 Ej2
+Proceso AdivinarNumero
+	Definir num,rNum,cont Entero;
+	Escribir "Adivina el número (1-100)";
+	Leer num;
+	rNum <- Aleatorio(1-100);
+
+	Mientras rNum <> num Hacer
+		Si num > rNum Entonces
+			Escribir "El número es menor"
+		SiNo
+			Escribir "El número es mayor"
+		FinSi
+		cont <- cont-1;
+		 Escribir "Le quedan ",intentos," intentos:";
+        	Leer num;
+    	FinMientras
+    
+    	Si num_secreto=num_ingresado Entonces
+        	Escribir "Exacto! Usted adivino en ",11-intentos," intentos.";
+    	Sino
+        	Escribir "El numero era: ",num_secreto;
+    	FinSi
+FinProceso
+
+Ej3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
