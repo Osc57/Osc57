@@ -1,0 +1,4 @@
+un conjunto de eventos ordenados de forma que
+suceden de forma secuencial en el tiempo,
+Un programa informático no es más que una serie de órdenes que se llevan a cabo
+secuencialmente, aplicadas sobre un conjunto de datos.
