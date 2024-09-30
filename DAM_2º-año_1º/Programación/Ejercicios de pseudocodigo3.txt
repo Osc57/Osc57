@@ -88,8 +88,146 @@ Proceso AlgoritmoDeNumeros
 FinProceso
 
 Ej5
+Proceso Caracteres
+	Definir car Como Caracter;
+	Repetir
+		Repetir
+			Escribir "Introduce un carácter:";
+			Leer car;
+		Hasta que Longitud(car)=1;
+		Si car<>" " Entonces
+			Si Mayusculas(car)="A" o Mayusculas(car)="E" o Mayusculas(car)="I" o Mayusculas(car)="O" o Mayusculas(car)="U" Entonces
+				Escribir "VOCAL";
+			SiNO
+				Escribir "NO VOCAL";
+			FinSi
+		FinSi
+	Hasta Que car=" ";
+FinProceso
 
+Ej6
+Proceso NúmerosPares
+	Definir num,num1,num2 Como Entero;
+	Escribir "Introduce el número 1:";
+	Leer num1;
+	Escribir "Introduce el número 2:";
+	Leer num2;
+	Si num1 % 2 = 1 Entonces
+		num1<-num1+1;
+	FinSi
+	Para num<-num1 Hasta num2 Con Paso 2 Hacer
+			Escribir num," ";
+	FinPara 
+FinProceso
 
+Ej7
+Proceso TablaMultiplicar
+	Definir tabla,i Como Entero;
+	Escribir "¿De qué número quieres mostrar la tabla de multiplicar?:";
+	Leer tabla;
+	Para num<-1 hasta 10 Hacer
+		Escribir num," * ",tabla," = ",num*tabla;
+	FinPara
+FinProceso
+
+Ej8
+Proceso Limite
+	Definir lim_inf, lim_sup como Entero;
+	Definir num como Entero;
+	Definir suma_dentro_intervalo Como Entero;
+	Definir cont_fuera_intervalo Como Entero;
+	Definir igual_limites Como Logico;
+	suma_dentro_intervalo <- 0;
+	cont_fuera_intervalo <- 0;
+	igual_limites <- Falso;
+	Repetir
+		Escribir "Introduce el límite inferior del intervalo:";
+		Leer lim_inf;
+		Escribir "Introduce el límite superior del intervalo:";
+		Leer lim_sup;
+		Si lim_inf>lim_sup Entonces
+			Escribir "ERROR: El límite inferior debe ser menor que el superior.";
+		FinSi
+	Hasta Que lim_inf<=lim_sup;
+	
+	Escribir Sin Saltar "Introduce un número (0, para salir):";
+	Leer num;
+	Mientras num<>0 Hacer
+		//Pertenece al intervalo
+		Si num>lim_inf Y num<lim_sup Entonces
+			suma_dentro_intervalo <- suma_dentro_intervalo + num;
+		SiNo
+			//No pertenece al intervalo
+			cont_fuera_intervalo <- cont_fuera_intervalo + 1;
+		FinSi
+		//Número igual a alguno de los límites
+		Si num=lim_inf O num=lim_sup Entonces
+			igual_limites <- Verdadero;
+		FinSi
+		Escribir Sin Saltar "Introduce un número (0, para salir):";
+		Leer num;
+	FinMientras
+	Escribir "La suma de los número dentro del intervalo es ",suma_dentro_intervalo;
+	Escribir "La cantidad de números fuera del intervalo es ",cont_fuera_intervalo;
+	Si igual_limites Entonces
+		Escribir "Se ha introducido algún número igual a los límites del intervalo.";
+	SiNo
+		Escribir "No se ha introducido ningún número igual a los límites del intervalo.";
+	FinSi
+FinProceso
+
+Ej9
+Proceso Potencia
+	Definir base, potencia Como Real;
+	Definir exponente Como Entero;
+	Definir i Como Entero;
+	Escribir Sin Saltar "Dame la base de la potencia:";
+	Leer base;
+	Repetir
+		Escribir Sin Saltar "Dame el exponente de la potencia:";
+		Leer exponente;
+		Si exponente<0 Entonces
+			Escribir "ERROR: El exponente debe ser positivo";
+		FinSi
+	Hasta Que exponente >= 0;
+	potencia <- 1;
+	Para i<-1 hasta exponente Hacer
+		potencia <- potencia * base;
+	FinPara
+	Escribir "Potencia:",potencia;
+FinProceso
+
+Ej10
+Proceso AlgoritmoMultiplicar
+	Definir tabla,num Como Entero;
+	Para tabla<-1 hasta 5 Hacer
+		Para num<-1 hasta 10 Hacer
+			Escribir tabla," * ",num," = ", tabla*num;
+		FinPara
+		Esperar Tecla;
+	FinPara
+FinProceso
+
+Ej11
+Proceso PrimoONo
+	Definir numero_es_primo,num Como Entero;
+	Definir es_primo Como Logico;
+	es_primo<-Verdadero;
+	Escribir "Introduce un número para comprobar si es primo:";
+	Leer numero_es_primo;
+	Para num<-2 hasta rc(numero_es_primo) Hacer
+		Si numero_es_primo % num = 0 Entonces
+			es_primo <- Falso;
+		FinSi
+	FinPara
+	Si es_primo Entonces
+		Escribir "Es Primo";
+	SiNo
+		Escribir "No es Primo";
+	FinSi
+FinProceso
+
+Ej12
 
 
 
