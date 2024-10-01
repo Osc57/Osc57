@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas en HTML</title>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <h1>Tablas en HTML</h1>
+   <table style="width: 100%;">
+        <tr>
+            <th>Empresa</th>
+            <th>Email</th>
+            <th>País</th>
+        </tr>
+        <tr>
+            <td>RONAL Iberia S.L</td>
+            <td>ronal@ronal.es</td>
+            <td>España</td>
+        </tr>
+        <tr>
+            <td>PROSEGUR S.L</td>
+            <td>admin@prosegur.es</td>
+            <td>España</td>
+        </tr>
+        <tr>
+            <td>Amazon S.L</td>
+            <td>elonmusk@amazon.com</td>
+            <td>EEUU</td>
+        </tr>
+   </table>
+   <br>
+   <br>
+   <h2>Tablas Personalizadas</h2>
+   <table style="width: 75%;">
+        <tr>
+            <th>Lunes</th>
+            <th>Martes</th>
+        </tr>
+        <tr>
+            <td>BBDD</td>
+            <td rowspan="2">Sistemas Informáticos</td>
+        </tr>
+        <tr>
+            <td>Inglés</td>
+           
+        </tr>
+        <tr>
+            <td>Programación</td>
+            <td>Entornos de Desarrollo</td>
+        </tr>
+        <tr>
+            <td colspan="2">Recreo</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Programación</td>
+            <td>Programación</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Lenguaje de Marcas</td>
+        </tr>
+        <tr>
+            <td>Sistemas</td>
+        </tr>
+    
+       
+   </table>
+   
+</body>
+</html>
