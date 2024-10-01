@@ -228,7 +228,194 @@ Proceso PrimoONo
 FinProceso
 
 Ej12
+Proceso Ahorra
+	Definir cant_mensual Como Real;
+	Definir ahorro_acum como Real;
+	Definir mes Como Entero;
+	ahorro_acum<-0;
+	Para mes<-1 hasta 12 Hacer
+		Escribir "¿Cuánto has ahorrado en el mes ",mes,"?:";
+		Leer cant_mensual;
+		ahorro_acum <- ahorro_acum + cant_mensual;
+		Escribir "En el mes ",mes," llevas ahorrado ",ahorro_acum;
+	FinPara 
+FinProceso
 
+Ej13
+Proceso HorasDeTrabajo
+	Definir sueldo_por_hora Como Real;
+	Definir horas,horas_acum como Entero;
+	Definir dia Como Entero;
+	horas_acum<-0;
+	Escribir "Introduce el sueldo por hora:";
+	Leer sueldo_por_hora;
+	Para dia<-1 hasta 6 Hacer
+		Escribir "¿Cuántas horas has trabajado el día ",dia,"?:";
+		Leer horas;
+		horas_acum <- horas_acum + horas;
+	FinPara
+	Escribir "Horas acumuladas en la semana:",horas_acum;
+	Escribir "Sueldo:",sueldo_por_hora*horas_acum;
+FinProceso
+
+Ej14
+Proceso Kilometros
+	Definir km1,km2 Como Entero;
+	km1<-70;
+	km2<-150;
+	Mientras km1<>km2 Hacer
+		km1<-km1+1;
+		km2<-km2-1;
+	FinMientras
+	
+	Escribir "Se encuentran en el km:",km1;
+FinProceso
+
+Ej15
+Proceso PagarMensualmente
+	Definir pago, pago_acum Como Real;
+	Definir mes Como Entero;
+	pago_acum<-0;
+	pago<-10;
+	Para mes <- 1 Hasta 20 Hacer
+		pago_acum<-pago_acum+pago;
+		pago<-pago*2;
+	FinPara
+	Escribir "Al final de los 20 meses tuvo que pagar: ",pago_acum;
+FinProceso
+
+Ej16
+Proceso SueldoSemanal
+	Definir horas_por_semana, horas_acum Como Entero;
+	Definir sueldo_por_hora Como Real;
+	Definir trabajadores,trabajador como Entero;
+	horas_acum<-0;
+	Escribir "¿Cuántos trabajadores tiene la empresa?:";
+	Leer trabajadores;
+	Escribir "Sueldo por hora:";
+	Leer sueldo_por_hora;
+	Para trabajador<-1 hasta trabajadores Hacer
+		Escribir "¿Cuántas horas ha trabajado el trabajador ",trabajador," ?";
+		Leer horas_por_semana;
+		horas_acum<-horas_acum+horas_por_semana;
+		Escribir "El trabajador ",trabajador," tiene de sueldo ",horas_por_semana*sueldo_por_hora; 
+	FinPara
+	Escribir "El pago a los ",trabajadores," trabajadores es: ",horas_acum*sueldo_por_hora;
+FinProceso
+
+Ej17
+Proceso PagoEmpresa
+	Definir dias,horas Como Entero;
+	Definir horas_por_trabajador,horas_acum Como Entero;
+	Definir dia, trabajador Como Entero;
+	Definir sueldo_por_hora Como Real;
+	Definir trabajadores como Entero;
+	
+	Escribir "¿Cuántos trabajadores tiene la empresa?:";
+	Leer trabajadores;
+	Escribir "Sueldo por hora:";
+	Leer sueldo_por_hora;
+	horas_acum<-0;
+	Para trabajador<-1 hasta trabajadores Hacer
+		horas_por_trabajador<-0;
+		Escribir "¿Cuántos dí­as ha trabajado el trabajador ",trabajador," ?";
+		Leer dias;
+		Para dia<-1 hasta dias Hacer
+			Escribir "¿Cuántas horas ha trabajado el trabajador ",trabajador," el día ",dia,"?:";
+			Leer horas;
+			horas_por_trabajador<-horas_por_trabajador+horas;
+		FinPara
+		Escribir "El trabajador ",trabajador," tiene de sueldo ",horas_por_trabajador*sueldo_por_hora; 
+		horas_acum<-horas_acum+horas_por_trabajador;
+	FinPara
+	Escribir "El pago a los ",trabajadores," trabajadores es :",horas_acum*sueldo_por_hora;
+FinProceso
+
+Ej18
+Proceso Cronometro
+	Definir hora,minuto,segundo como Entero;
+	Para hora <- 0 hasta 23 con paso 1 hacer 
+		Para minuto <- 0 hasta 59 con paso 1 hacer 
+			Para segundo <- 0 hasta 59 con paso 1 hacer 
+				Limpiar Pantalla;
+				Escribir hora,":",minuto,":",segundo;
+				Esperar 1 Segundo;
+			finpara 
+		finpara
+	finpara
+FinProceso
+
+Ej19
+Proceso Menu
+	Definir opcion Como Entero;
+    Repetir
+        Limpiar Pantalla;
+        Escribir "Menú de recomendaciones";
+        Escribir "   1. Literatura";
+        Escribir "   2. Cine";
+        Escribir "   3. Música";
+        Escribir "   4. Videojuegos";
+        Escribir "   5. Salir";
+        Escribir "Elija una opción (1-5): ";
+        Leer opcion;
+        Segun opcion Hacer
+            1:
+                Escribir "Lecturas recomendables:";
+                Escribir " + Esperándolo a Tito y otros cuentos de fúbol (Eduardo Sacheri)";
+                Escribir " + El juego de Ender (Orson Scott Card)";
+                Escribir " + El sueño de los héroes (Adolfo Bioy Casares)";
+            2:
+                Escribir "Películas recomendables:";
+                Escribir " + Matrix (1999)";
+                Escribir " + El último samuray (2003)";
+                Escribir " + Cars (2006)";
+            3:
+                Escribir "Discos recomendables:";
+                Escribir " + Despedazado por mil partes (La Renga, 1996)";
+                Escribir " + Búfalo (La Mississippi, 2008)";
+                Escribir " + Gaia (Mägo de Oz, 2003)";
+            4:
+                Escribir "Videojuegos clásicos recomendables";
+                Escribir " + Día del tentáculo (LucasArts, 1993)";
+                Escribir " + Terminal Velocity (Terminal Reality/3D Realms, 1995)";
+                Escribir " + Death Rally (Remedy/Apogee, 1996)";
+            5:
+                Escribir "Gracias, vuelva prontos";
+            De otro modo:
+                Escribir "Opción no válida";
+        FinSegun
+        Escribir "Presione enter para continuar";
+        Esperar Tecla;
+    Hasta Que opcion=5
+FinProceso
+
+Ej20
+Fin PrimerosNumerosPrimosHastaN
+	Definir cant_a_mostrar,num,cant_mostrados,divisor Como Entero;
+    Definir es_primo Como Logico;
+    Repetir
+		Escribir "Ingrese la cantidad de números primos a mostrar:";
+		Leer cant_a_mostrar;
+		Hasta que cant_a_mostrar>0;
+    
+    Escribir "1: 2"; 
+    cant_mostrados <- 1;
+    num<-3;                
+    Mientras cant_mostrados<cant_a_mostrar Hacer
+        es_primo <- Verdadero; 
+        Para divisor<-3 hasta rc(num) con paso 2 Hacer 
+            Si num % divisor = 0 entonces // si la división da exacta...
+                es_primo <- Falso;  
+            FinSi
+        FinPara
+		
+        Si es_primo Entonces
+            cant_mostrados <- cant_mostrados + 1;
+            Escribir cant_mostrados, ": ",num;
+        FinSi
+		num <- num + 2 ;
+    FinMientras
+FinProceso
 
 
 
