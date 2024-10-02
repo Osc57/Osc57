@@ -20,7 +20,7 @@ Proceso VectorCadenaCaracteres
 	tam_vector1<-5;
 	tam_vector2<-5;
 	Para indicador1<-0 hasta tam_vector1-1 hacer
-		Escribir Sin Saltar "Dame la cadena ",indicador1+1,":";
+		Escribir "Dame la cadena ",indicador1+1,":";
 		Leer vector1[indicador1];
 	FinPara
 	indicador2<-0;
