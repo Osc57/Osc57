@@ -1,0 +1,74 @@
+Ej1
+Proceso DefinirVectores
+	Definir vector_numeros Como Entero;
+	Dimension vector_numeros[10];
+	Definir indice Como Entero;
+	Para indice<-0 hasta 9 hacer
+		vector_numeros[indice]<-aleatorio(1,10);
+	FinPara
+	Para indice<-0 hasta 9 hacer
+		Escribir vector_numeros[indice]," ",vector_numeros[indice]^2," ",vector_numeros[indice]^3;
+	FinPara
+FinProceso
+
+Ej2
+Proceso VectorCadenaCaracteres
+	Definir vector1,vector2 Como Cadenas;
+	Dimension vector1[5],vector2[5];
+	Definir indicador1,indicador2 Como Entero;
+	Definir tam_vector1,tam_vector2 Como Entero;
+	tam_vector1<-5;
+	tam_vector2<-5;
+	Para indicador1<-0 hasta tam_vector1-1 hacer
+		Escribir "Dame la cadena ",indicador1+1,":";
+		Leer vector1[indicador1];
+	FinPara
+	indicador2<-0;
+	Para indicador1<-tam_vector1-1 hasta 0 con paso -1 hacer
+		vector2[indicador2]<-vector1[indicador1];
+		indicador2<-indicador2+1;
+	FinPara
+	Para indicador2<-0 hasta tam_vector2-1 hacer
+		Escribir "La cadena ",indicador2+1,": ",vector2[indicador2];
+	FinPara
+FinProceso
+
+Ej3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

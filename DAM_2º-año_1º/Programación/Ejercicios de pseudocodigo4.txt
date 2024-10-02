@@ -44,6 +44,160 @@ Proceso ApareceCaracter
 FinProceso
 
 Ej4
+Proceso ContarPalabras
+	Definir cad Como Caracter;
+	Definir posicion,cont Como Entero;
+	cont<-0;
+	posicion<-0;
+	Escribir Sin Saltar "Introduce una cadena:";
+	Leer cad;
+	Mientras Subcadena(cad,posicion,posicion)=" " Hacer
+		posicion<-posicion+1;
+	FinMientras
+	
+	Para posicion<-posicion hasta Longitud(cad)-1 Hacer
+		Si Subcadena(cad,posicion,posicion)=" " Entonces
+			cont<-cont+1;
+				Mientras Subcadena(cad,posicion,posicion)=" " Y posicion<=Longitud(cad) Hacer
+				posicion<-posicion+1;
+			FinMientras
+		FinSi
+	FinPara
+	
+	Si subcadena(cad,Longitud(cad)-1,Longitud(cad)-1)<>" " Entonces
+		cont<-cont+1;
+	FinSi
+	Escribir "La frase tiene ",cont," palabras.";
+FinProceso
+
+Ej5
+Proceso InicialesMayusculas
+	Definir cad Como Caracter;
+	Definir posicion Como Entero;
+	Definir iniciales Como Caracter;
+	iniciales <- "";
+	posicion<-0;
+	Escribir "Introduce una cadena:";
+	Leer cad;
+	Mientras Subcadena(cad,posicion,posicion)=" " Hacer
+		posicion<-posicion+1;
+	FinMientras
+	
+	iniciales<-concatenar(iniciales,subcadena(cad,posicion,posicion));
+	
+	Para posicion<-posicion hasta Longitud(cad)-1 Hacer
+		Si Subcadena(cad,posicion,posicion)=" " Entonces
+			Mientras Subcadena(cad,posicion,posicion)=" " Y posicion<=Longitud(cad) Hacer
+				posicion<-posicion+1;
+			FinMientras
+			iniciales<-concatenar(iniciales,subcadena(cad,posicion,posicion));
+		FinSi
+	FinPara
+	Escribir "Iniciales:",Mayusculas(iniciales);
+FinProceso
+
+
+Ej6
+Proceso CadenaInvertida
+	Definir cad,invertida Como Caracter;
+	Definir car como Entero;
+	invertida<-"";
+	Escribir "Introduce una cadena:";
+	Leer cad;
+
+	Para car<-Longitud(cad)-1 hasta 0 Con Paso -1 Hacer
+		invertida<-concatenar(invertida,Subcadena(cad,car,car));
+	FinPara
+	Escribir "La cadena invertida es:",invertida;
+FinProceso
+
+Ej7
+Proceso SustituirCaracterPorSegundoCaracter
+	Definir cad,newcad, car_buscar,car_sustituir Como Caracter;
+	Definir posicion Como Entero;
+	newcad<-"";
+	Escribir "Introduce una cadena:";
+	Leer cad;
+	Repetir
+		Escribir "Introduce un caracter a buscar:";
+		Leer car_buscar;
+	Hasta Que Longitud(car_buscar)=1;
+	Repetir
+		Escribir "Introduce un caracter para sustituir:";
+		Leer car_sustituir;
+	Hasta Que Longitud(car_sustituir)=1;
+	
+	
+	Para posicion<-0 hasta Longitud(cad)-1 Hacer
+		Si Subcadena(cad,posicion,posicion)=car_buscar Entonces
+			newcad<-concatenar(newcad,car_sustituir);
+		SiNo
+			newcad<-concatenar(newcad,Subcadena(cad,posicion,posicion));
+		FinSi
+	FinPara
+	Escribir "La cadena modificada es ",newcad;
+FinProceso
+
+Ej8
+Proceso ConvertirMayusculasMinusculasViceversa
+	Definir cad,newcad Como Caracter;
+	Definir posicion Como Entero;
+	newcad<-"";
+	Escribir "Introduce una cadena:";
+	Leer cad;
+		
+	Para posicion<-0 hasta Longitud(cad)-1 Hacer
+		Si Subcadena(cad,posicion,posicion)=Mayusculas(Subcadena(cad,posicion,posicion)) Entonces
+			newcad<-concatenar(newcad,Minusculas(Subcadena(cad,posicion,posicion)));
+		FinSi
+		Si Subcadena(cad,posicion,posicion)=Minusculas(Subcadena(cad,posicion,posicion)) Entonces
+			newcad<-concatenar(newcad,Mayusculas(Subcadena(cad,posicion,posicion)));
+		FinSi
+	FinPara
+	Escribir "La cadena convertida es: ",newcad;
+FinProceso
+
+Ej9
+Proceso ContieneSubcadena
+	Definir cad, subcad Como Caracter;
+	Definir num_subcadenas,nsubc Como Entero;
+	Definir indicador Como Logico;
+	indicador<-Falso;
+	Escribir "Introduce una cadena:";
+	Leer cad;
+	Escribir "Introduce una subcadena:";
+	Leer subcad;
+	num_subcadenas<- Longitud(cad)-Longitud(subcad)+1;
+	Para nsubc<-0 hasta num_subcadenas-1 Hacer
+		Si Subcadena(cad,nsubc,nsubc+Longitud(subcad)-1)=subcad Entonces
+			indicador<-Verdadero;
+		FinSi
+	FinPara
+	Si indicador Entonces
+		Escribir "La cadena contiene la subcadena.";
+	SiNo
+		Escribir "La cadena no contiene la subcadena.";
+	FinSi
+FinProceso
+
+Ej10
+Proceso Palíndromo
+	Definir cad1,cad2 Como Caracter;
+	Definir posicion Como Entero;
+	cad2 <- "";
+	Escribir "Introduce una cadena:";
+	Leer cad1;
+	Para posicion<-Longitud(cad1)-1 Hasta 0 Con Paso -1 Hacer
+		cad2 <- Concatenar(cad2,Subcadena(cad1,posicion,posicion));
+	FinPara
+	Si cad1=cad2 Entonces
+		Escribir "Es un palíndromo";
+	SiNo
+		Escribir "No es un palíndromo";
+	FinSi
+FinProceso
+
+
 
 	
 
