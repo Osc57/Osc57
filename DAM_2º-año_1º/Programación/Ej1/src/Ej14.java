@@ -2,7 +2,7 @@
 //y queremos conocer este tiempo expresado en horas, minutos y segundos.
 public class Ej14 {
     public static void main(String[] args) {
-        int t = 25000;
+        int t = 3600;
 
         int min = t/60;
         int horas = min/60;
