@@ -10,7 +10,7 @@ public class Ej12 {
          b.
 
          boolean adivina = (97 == ‘a’ == true);
-         System.out.println(adivina);
+         System.out.println(adivina); --> Funciona
          **/
     }
 }
