@@ -9,7 +9,7 @@ public class Ej10 {
          {
          int numero=2, <-- aqui
          cuad=numero * número; <-- aqui
-         System.out.println(“EL CUADRADO DE “+NUMERO+” ES: “ + cuad);
+         System.out.println(“EL CUADRADO DE “+NUMERO+” ES: “ + cuad); <-- aqui "NOMBRE"
          }
          }
          **/

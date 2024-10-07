@@ -12,7 +12,7 @@ public class Ej6 {
 
          c.
          double pi = 3,14;
-         System.out.println(pi); //Si compilara
+         System.out.println(pi); //No compilara
 
          d.
 

@@ -18,7 +18,7 @@ public class Ej3 {
         System.out.println(k);
         int l = 36/2;
         System.out.println(k==l);
-        boolean b = k==l;
+        boolean b = (k==l);
         k=0;
         System.out.println(b);
     }
