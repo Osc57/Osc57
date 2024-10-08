@@ -76,7 +76,106 @@ Proceso VectorNotas
 FinProceso
 
 Ej4
+Proceso VectorDeElementosEnteros
+	Definir vector como Entero;
+	Dimensión vector[10];
+	Definir tamañoVector,num,indice como Entero;
+	índice <- 0;
+	tamañoVector <- 10; 
+	
+	Repetir
+		Escribir "Introduce un número en el vector: ", indice+1;
+		Leer vector[indice];
+		indice <- índice +1;
+	Hasta Que indice=tam_vector O vector[indice-1]<0;
+	indice<-0;
+	Escribir "Elementos del vector";
+	Mientras indice<tam_vector-1 Y vector[indice]>=0 Hacer
+		Escribir vector[indice]," ";
+		indice<-indice+1;
+	FinMientras
+FinProceso
 
+Ej5
+Proceso OrdenarMayorAMenorVectoresAleatorios
+	Definir vector Como Entero;
+	Dimension vector[10];
+	Definir cambios,aux Como Entero;
+	Definir indice Como Entero;
+	Definir tam_vector Como Entero;
+	tam_vector<-10;
+	Para indice<-0 hasta tam_vector-1 hacer
+		vector[indice]<-aleatorio(1,10);
+	FinPara
+	Repetir 
+		cambios<-0;
+		Para indice<-0 hasta tam_vector-2 Hacer
+			Si vector[indice]>vector[indice+1] Entonces
+				aux<-vector[indice];
+				vector[indice]<-vector[indice+1];
+				vector[indice+1]<-aux;
+				cambios<-cambios+1;
+			FinSi
+		FinPara
+	Hasta Que cambios=0;
+	Para indice<-0 hasta tam_vector-1 Hacer
+		Escribir Sin Saltar vector[indice]," ";
+	FinPara
+FinProceso 
+
+Ej6
+Proceso VectoresParaMeses
+	Definir días como Entero;
+	Dimensión días[12];
+	Definir nombre_mes Como Caracter;
+	Dimension nombre_mes[12];
+	Definir mes como Entero;
+	
+	dias[0]<-31;
+	dias[1]<-28;
+	dias[2]<-31;
+	dias[3]<-30;
+	dias[4]<-31;
+	dias[5]<-30;
+	dias[6]<-31;
+	dias[7]<-31;
+	dias[8]<-30;
+	dias[9]<-31;
+	dias[10]<-30;
+	dias[11]<-31;
+
+	nombre_mes[0];
+	nombre_mes[1];
+	nombre_mes[2];
+	nombre_mes[3];
+	nombre_mes[4];
+	nombre_mes[5];
+	nombre_mes[6];
+	nombre_mes[7];
+	nombre_mes[8];
+	nombre_mes[9];
+	nombre_mes[10];
+	nombre_mes[11];
+	
+	Repetir
+		Escribir Sin Saltar "Introduce un mes (1-12):";
+		Leer mes;
+		Si mes < 1 o mes > 12 Entonces
+			Escribir "Error: mes incorrecto.";
+		FinSi
+	Hasta Que mes>=1 y mes<=12;
+	Escribir "El mes de ",nombre_mes[mes-1]," tiene ",dias[mes-1]," días.";
+FinProceso
+
+Ej7
+Proceso DeclararVectoresDe5Enteros
+	
+	
+
+	
+
+
+	
 
 
 
