@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Elige tu pizza</h1>
+    <form>
+        <fieldset>
+            <legend>Nombre completo:</legend>
+            <label for="nombre">Escribe tu nombre:</label>
+            <input type="text" name="nombreCompleto" id="nombre" placeholder="Nombre completo">
+        </fieldset>
+        <fieldset>
+
+            <legend>Elige tu tamaño:</legend>
+            <input type="radio" name="tamano" id="pequeno" value="Pequeña">
+            <label for="pequeno">Pequeña</label>
+            <br>
+            <input type="radio" name="tamano" id="mediana" value="Mediana">
+            <label for="mediana">Mediana</label>
+            <br>
+            <input type="radio" name="tamano" id="grande" value="Grande">
+            <label for="grande">Grande</label>
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Tipo de masa:</legend>
+            <input type="radio" name="tipoMasa" id="fina" value="Fina">
+            <label for="fina">Fina</label>
+            <br>
+            <input type="radio" name="tipoMasa" id="clasica" value="Clasica">
+            <label for="clasica">Clásica</label>
+            <br>
+            <input type="radio" name="tipoMasa" id="pan" value="Pan">
+            <label for="pan">Pan</label>
+
+        </fieldset>
+        <fieldset>
+            <legend>Selecciona los ingredientes:</legend>
+            <input type="checkbox" name="queso" id="queso" value="queso">
+            <label for="queso">Extra de Queso</label>
+            <br>
+            <input type="checkbox" name="bacon" id="bacon" value="bacon">
+            <label for="bacon">Bacon</label>
+            <br>
+            <input type="checkbox" name="york" id="york" value="york">
+            <label for="york">Jamón York</label>
+            <br>
+            <input type="checkbox" name="champi" id="champi" value="champi">
+            <label for="champi">Champiñones</label>
+            <br>
+            <input type="checkbox" name="cebolla" id="cebolla" value="cebolla">
+            <label for="cebolla">Cebolla</label>
+
+        </fieldset>
+        <br>
+        <textarea name="obser" id="" placeholder="Observaciones" rows="4" cols="40"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Pagar">
+    </form>
+</body>
+
+</html>
