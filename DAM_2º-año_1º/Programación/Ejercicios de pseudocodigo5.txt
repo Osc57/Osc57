@@ -169,7 +169,7 @@ FinProceso
 
 Ej7
 Proceso DeclararVectoresDe5Enteros
-	
+	Definir vector1,vector2,vector3
 	
 
 	
