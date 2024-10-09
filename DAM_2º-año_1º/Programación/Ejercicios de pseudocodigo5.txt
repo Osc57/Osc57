@@ -169,8 +169,127 @@ FinProceso
 
 Ej7
 Proceso DeclararVectoresDe5Enteros
-	Definir vector1,vector2,vector3
+	Definir vector1,vector2,vector3 como Entero;
+	Dimension vector1[5],vector2[5],vector3[5];
+	Definir tam_vector como Entero;
+	tam_vector<-5;
+	Definir indice Como Entero;
+	Para indice<-0 hasta tam_vector-1 Hacer
+		Escribir Sin Saltar "Introduce el elemento ",indice+1," del vector1:";
+		Leer vector1[indice];
+	FinPara
+	Para indice<-0 hasta tam_vector-1 Hacer
+		Escribir sin Saltar "Introduce el elemento ",indice+1," del vector2:";
+		Leer vector2[indice];
+	FinPara
+	Para indice<-0 hasta tam_vector-1 Hacer
+		vector3[indice]<-vector1[indice]+vector2[indice];
+	FinPara
+	Escribir "La suma de los vectores es:";
+	Para indice<-0 hasta tam_vector-1 Hacer
+		Escribir sin Saltar vector3[indice]," ";
+	FinPara
+FinProceso
 	
+Ej8
+Proceso GuardadAlumnos
+	Definir edad Como Entero;
+	Dimension edad[30];
+	Definir nombre Como Caracter;
+	Dimension nombre[30];
+	Definir edad_max como Entero;
+	Definir indice,tam_vector como Entero;
+	indice<-0;
+	tam_vector<-30;
+	Repetir
+		Escribir "Dime tu nombre";
+		Leer nombre[indice];
+		Si nombre[indice]<>"*" Entonces
+			Escribir sin saltar "Dime su edad:";
+			Leer edad[indice];
+		FinSi
+		indice<-indice+1;
+	Hasta Que nombre[indice-1]="*" o indice=tam_vector;
+	indice<-0;
+	edad_max<-edad[0];
+	Mientras indice<tam_vector Y nombre[indice]<>"*"  Hacer
+		Si edad[indice]>edad_max Entonces
+			edad_max<-edad[indice];
+		FinSi
+		indice<-indice+1;
+	FinMientras
+	indice<-0;
+	Escribir "Alumnos mayores de edad";
+	Escribir "=======================";
+	Mientras indice<tam_vector Y nombre[indice]<>"*" Hacer
+		Si edad[indice]>=18 Entonces
+			Escribir nombre[indice];
+		FinSi
+		indice<-indice+1;
+	FinMientras
+	indice<-0;
+	Escribir "Alumnos mayores";
+	Escribir "===============";
+	Mientras indice<tam_vector Y nombre[indice]<>"*" Hacer
+		Si edad[indice]=edad_max Entonces
+			Escribir nombre[indice];
+		FinSi
+		indice<-indice+1;
+	FinMientras
+FinProceso
+
+Ej9
+Proceso TempMaxYTempMin
+	Definir temperatura Como Real;
+	Dimension temperatura[5,2];
+	Definir existe_temperatura Como Logico;
+	Definir indice,cant_dias como Entero;
+	Definir temp_max, temp_min como Entero;
+	cant_dias<-5;
+		Para indice<-0 Hasta cant_dias-1 Hacer
+		Escribir Sin Saltar "Día ",(indice+1),". Temperatura mínima:";
+		Leer temperatura[indice,0];
+		Escribir Sin Saltar "Día ",(indice+1),". Temperatura máxima:";
+		Leer temperatura[indice,1];
+	FinPara
+	Escribir "Temperaturas medias";
+	Escribir "===================";
+	Para indice<-0 Hasta cant_dias-1 Hacer
+		Escribir "Día ",(indice+1),". Temperatura media:",(temperatura[indice,0]+temperatura[indice,1])/2;
+	FinPara
+	temp_min<-temperatura[0,0];
+	Para indice<-0 Hasta cant_dias-1 Hacer
+		Si temperatura[indice,0]<temp_min Entonces
+			temp_min<-temperatura[indice,0];
+		FinSi
+	FinPara
+	Escribir "Días con menos temperatura";
+	Escribir "==========================";
+	Para indice<-0 Hasta cant_dias-1 Hacer
+		Si temperatura[indice,0]=temp_min Entonces
+			Escribir "Día ",(indice+1);
+		FinSi
+	FinPara
+	existe_temperatura<-Falso;
+	Escribir "Días con temperatura máxima";
+	Escribir "===========================";
+	Escribir sin saltar "Introduce una temperatura:";
+	Leer temp_max;
+	Para indice<-0 Hasta cant_dias-1 Hacer
+		Si temperatura[indice,1]=temp_max Entonces
+			Escribir "Día ",(indice+1);
+			existe_temperatura<-Verdadero;
+		FinSi
+	FinPara
+	Si no existe_temperatura Entonces
+		Escribir "No hay ningún día con dicha temperatura.";
+	FinSi
+FinProceso
+	
+Ej10
+Proceso Algoritmo
+	 	
+ 
 
 	
 
