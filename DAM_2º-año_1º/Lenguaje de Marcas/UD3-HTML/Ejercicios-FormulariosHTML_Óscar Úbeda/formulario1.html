@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante el Centollo</title>
+</head>
+
+<body>
+    <h1>Restaurante el centollo</h1>
+    <h3>Haz tu reserva</h3>
+    <form>
+        <li>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="name">
+        </li>
+        <li>
+            <label for="email">Correo electrónico:</label>
+            <input type="text" id="email">
+        </li>
+        <li>
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="tlfno">
+        </li>
+        <li>
+            <label for="reservDate">Fecha de reserva</label>
+            <input type="date" id="reservDate" name="fechaReserva">
+        </li>
+        <li>
+            <label for="franjaHoraria">Franja Horaria</label>
+            <input type="time" id="franjaHoraria" name="franjHoraria">
+        </li>
+        <li>
+            <label for="comensales">Comensales (min1,max10):</label>
+            <input type="text" id="comensales" name="comensals" size="2" min="1" max="10">
+        </li>
+        <li>
+            <label for="colorMantel">Color del mantel</label>
+            <input type="color" id="colorMantel" name="colorMantel">
+        </li>
+        <li>
+            <label for="demandas">Demandas especiales</label>
+            <br>
+            <textarea id="demandas" name="demandasEsp" placeholder="alergias, tronas,..."></textarea>
+        </li>
+        <li></li>
+        <li class="button">
+            <button type="submit">Enviar</button>
+        </li>
+
+    </form>
+</body>
+
+</html>

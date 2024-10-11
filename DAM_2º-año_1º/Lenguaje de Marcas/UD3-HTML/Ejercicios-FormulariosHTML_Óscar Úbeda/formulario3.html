@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Foro</title>
+</head>
+
+<body>
+    <fieldset>
+        <h2>Bienvenido al registro de usuarios de nuestro foro</h2>
+        <form>
+            <fieldset>
+                <legend>Introduzca su nombre de usaurio y contraseña</legend>
+                <p>
+                    <label for="usuario">Usuario  </label>
+                    <input type="text">
+                <p>
+                <p>
+                    <label for="pass">Contraseña</label>
+                    <input type="password" name="pass" id="pass">
+                    <label for="r-pass">Repita Contraseña</label>
+                    <input type="password" name="r-pass" id="r-pass">
+                </p>
+            </fieldset>
+            <br>
+            <p>
+                <label for="interes">Describa  a continuación sus intereses:</label>
+                <br>
+                <textarea name="ta" id="ta" cols="50" rows="4"></textarea>
+            </p>
+            <br>
+            <p>
+                <label for="so">Por último seleccione el sistema operativo de su ordenador:</label>
+                <select name="menu">
+                    <option>Linux</option>
+                    <option>Windows</option>
+                    <option>Mac OS</option>
+                  </select>
+            </p>
+            <p>
+                <label for="privacidad">Estoy conforme con la politica de privacidad de la página</label>
+                <input type="checkbox" name="registro" id="reg">
+                <button type="submit">Registrarme</button>
+            </p>
+
+        </form>
+    </fieldset>
+</body>
+
+</html>
