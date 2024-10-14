@@ -18,9 +18,11 @@ public class Ej6 {
         int n2 = scanner.nextInt();
 
         int mayor = Math.max(n1,n2);
-        boolean comprobar = (n1%n2==0);
+        int menor = Math. min(n1,n2);
+        boolean comprobar = (mayor%menor==0);
 
         System.out.println("El número mayor de " + n1 + " y " + n2 + " es: " + mayor);
-        System.out.println(comprobar);
+        System.out.println("El número menor de " + n1 + " y " + n2 + " es: " + menor);
+        System.out.println("¿Son múltiplos?: " + comprobar);
     }
 }
