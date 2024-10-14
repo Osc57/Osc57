@@ -29,6 +29,20 @@ public class Ej5 {
         System.out.println("Número aleatorio entre 0 y el número elegido: " + aleatorio3);
         System.out.println("Número aleatorio entre 0 y el número elegido: " + aleatorio4);
 
+        System.out.print("Dime un número: ");
+        int n1 = scanner.nextInt();
+
+        System.out.print("Dime otro número: ");
+        int n2 = scanner.nextInt();
+
+        int valorEntero1 = (int) (Math.floor(Math.random()*(n1-n2+1)+n2));
+        int valorEntero2 = (int) (Math.floor(Math.random()*(n1-n2+1)+n2));
+        int valorEntero3 = (int) (Math.floor(Math.random()*(n1-n2+1)+n2));
+
+        System.out.println("Número entero aleatorio entre " + n1 + " y " + n2 + ": " + valorEntero1);
+        System.out.println("Número entero aleatorio entre " + n1 + " y " + n2 + ": " + valorEntero2);
+        System.out.println("Número entero aleatorio entre " + n1 + " y " + n2 + ": " + valorEntero3);
+
 
 
 
