@@ -12,16 +12,13 @@ public class Ej3 {
         System.out.print("Dime un número entre 65 y 90 o del 97 al 122: ");
         int numero = scanner.nextInt();
 
-        char letra = 0;
-        if (numero >= 65 && numero <=90){
-            letra = (char)numero;
-        } else if ((numero)>= 97 && numero <=122) {
-            letra =(char)numero;
-        }else {
-            System.out.println("ERROR: Me has dado un número que no es el que me tienes que dar");
-            scanner.close();
-        }
-        System.out.println("La letra es: " + letra);
+        char letra = (char)numero;
+        boolean vocal=false;
+
+        vocal = letra==65 || letra==65 || letra==73 || letra==79 || letra==85 || letra==97 || letra==101 || letra==105 || letra==111 || letra==117;
+
+        System.out.println("La letra es: " + letra +
+                "\n"+"Es vocal: " + vocal);
 
 
 

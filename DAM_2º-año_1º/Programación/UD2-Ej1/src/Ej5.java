@@ -13,8 +13,8 @@ import java.util.Random;
  * **/
 public class Ej5 {
     public static void main(String[] args) {
-        double aleatorio = Math.random();
+        double aleatorio = (int) (Math.random()*100)+1;
 
-        
+
     }
 }
