@@ -42,6 +42,6 @@ public class Ej5 {
         System.out.println("Número entero aleatorio entre " + n1 + " y " + n2 + ": " + valorEntero1);
         System.out.println("Número entero aleatorio entre " + n1 + " y " + n2 + ": " + valorEntero2);
         System.out.println("Número entero aleatorio entre " + n1 + " y " + n2 + ": " + valorEntero3);
-        
+
     }
 }
