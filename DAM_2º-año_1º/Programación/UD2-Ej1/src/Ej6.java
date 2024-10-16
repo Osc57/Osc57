@@ -24,5 +24,7 @@ public class Ej6 {
         System.out.println("El número mayor de " + n1 + " y " + n2 + " es: " + mayor);
         System.out.println("El número menor de " + n1 + " y " + n2 + " es: " + menor);
         System.out.println("¿Son múltiplos?: " + comprobar);
+
+        scanner.close();
     }
 }
