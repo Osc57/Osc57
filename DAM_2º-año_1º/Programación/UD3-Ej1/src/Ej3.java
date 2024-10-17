@@ -9,18 +9,22 @@ public class Ej3 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Introduce un carácter: ");
+        String input = scanner.nextLine();
+        
+        if (input.length() != 1) {
+            System.out.println("Por favor, introduce solo un carácter.");
+        } else {
+            char caracter = input.charAt(0);
 
-        if (scanner.hasNext()){
-            if (scanner.hasNextInt()){
+            if (Character.isLetter(caracter)) {
+                System.out.println("Es un carácter alfabético");
+            } else if (Character.isDigit(caracter)) {
                 System.out.println("Es un carácter numérico");
-            } else if (scanner.hasNextLine()) {
-                System.out.println("Es un carácter alfabetico");
-                
-            }else {
+            } else {
                 System.out.println("Es otro carácter");
             }
-
         }
 
+        scanner.close();
     }
 }
