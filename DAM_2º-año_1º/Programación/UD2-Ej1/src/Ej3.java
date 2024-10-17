@@ -15,7 +15,7 @@ public class Ej3 {
         char letra = (char)numero;
         boolean vocal=false;
 
-        vocal = letra==65 || letra==65 || letra==73 || letra==79 || letra==85 || letra==97 || letra==101 || letra==105 || letra==111 || letra==117;
+        vocal = letra==65 || letra==69 || letra==73 || letra==79 || letra==85 || letra==97 || letra==101 || letra==105 || letra==111 || letra==117;
 
         System.out.println("La letra es: " + letra +
                 "\n"+"Es vocal: " + vocal);
