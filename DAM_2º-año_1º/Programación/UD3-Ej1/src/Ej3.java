@@ -9,12 +9,12 @@ public class Ej3 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Introduce un carácter: ");
-        String input = scanner.nextLine();
+        String letra = scanner.nextLine();
         
-        if (input.length() != 1) {
+        if (letra.length() != 1) {
             System.out.println("Por favor, introduce solo un carácter.");
         } else {
-            char caracter = input.charAt(0);
+            char caracter = letra.charAt(0);
 
             if (Character.isLetter(caracter)) {
                 System.out.println("Es un carácter alfabético");
