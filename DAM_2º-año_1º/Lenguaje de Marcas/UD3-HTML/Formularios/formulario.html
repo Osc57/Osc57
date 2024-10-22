@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Formulario de Registro</h1>
+
+    <form>
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <p>
+                <label for="apellido">Apellidos</label>
+                <input type="text" name="apellido" id="apellido" placeholder="Apellidos">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            </p>
+            <p>
+                <label for="nacidoEn">Nacido en</label>
+                <input type="text" name="nacido" id="nacidoEn" placeholder="Población">
+                <label for="provincia">Provicncia</label>
+                <select name="provincia" id="provincia">
+                    <optgroup label="Aragon">
+                        <option value="1">Huesca</option>
+                        <option value="2">Zaragoza</option>
+                        <option value="3">Teruel</option>
+                    </optgroup>
+                    <optgroup label="CValenciana">
+                        <option value="4">Castellón</option>
+                        <option value="5">Valencia</option>
+                        <option value="6">Alicante</option>
+                    </optgroup>
+
+                </select>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Otros datos</legend>
+            <p>
+                <label for="edad">Edad</label>
+                <input type="radio" name="edad" id="mayor">Mayor de edad
+                <input type="radio" name="edad" id="menor">Menor
+            </p>
+            <p>
+                <label for="">DNI (8 digitos sin letras)</label>
+                <input type="text" name="dni" id="dni" pattern="[1-9]{8}[A-Z]{1}" maxlength="9">
+            </p>
+            <p>
+                <label for="pass">Contraseña</label>
+                <input type="password" name="pass" id="passw">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Aficiones</legend>
+            <p>
+                <label for="deporte">Deporte favorito</label>
+                <br>
+                <input type="radio" name="deporte" id="foot" value="foot"><label for="foot">Fútbol</label>
+                <br>
+                <input type="radio" name="deporte" id="bask" value="bask"><label for="bask">Baloncesto</label>
+                <br>
+                <input type="radio" name="deporte" id="pingPong" value="pingPong"><label for="pingPong">Ping-Pong</label>
+            </p>
+            <p>
+                <label for="cartas">Juego de cartas favorito</label>
+                <br>
+                <input type="radio" name="cartas" id="guinote" value="guinote"><label for="guinote">Guiñote</label>
+                <br>
+                <input type="radio" name="cartas" id="poker" value="poker"><label for="poker">Poker</label>
+                <br>
+                <input type="radio" name="cartas" id="mus" value="mus"><label for="mus">Mus</label>
+            </p>
+        </fieldset>
+        <br>
+        <input type="checkbox" name="minombre" id="minombre"><label for="minombre">Mi nombre es Óscar Úbeda y he llegado hasta aqui en el exámen</label>
+        <br>
+        <input type="checkbox" name="politicas" id="politicas"><label for="politicas">Estoy de acuerdo con la política de datos de esta web</label>
+        <br>
+        <br>
+        <button type="submit">Enviar Formulario</button>
+        <button type="reset">Resetear Formulario</button>
+    </form>
+
+</body>
+
+</html>
