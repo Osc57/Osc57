@@ -18,7 +18,7 @@ public class Ej11 {
         System.out.print("Dime otro número: ");
         int n2 = scanner.nextInt();
 
-        for (int i = 0; i > n1; i++) {
+        for (int i = 0; i > n1; i-- ) {
             resta = resta-n2;
         }
         System.out.println(resta);
