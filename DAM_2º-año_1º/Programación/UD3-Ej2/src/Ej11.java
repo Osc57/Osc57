@@ -18,9 +18,10 @@ public class Ej11 {
         System.out.print("Dime otro número: ");
         int n2 = scanner.nextInt();
 
-        for (int i = 0; i > n1; i-- ) {
-            resta = resta-n2;
-        }
+       while (n1 >= n2){
+           n1 -= n2;
+           resta++;
+       }
         System.out.println(resta);
     }
 }
