@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Conversor pesetas – euros. Modifica el programa de manera que el programa
  * pida una cantidad para convertir a euros, muestre el resultado y vuelva a
@@ -9,6 +11,20 @@
  * **/
 public class Ej16 {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        while (true){
+            System.out.print("Dime una cantidad de pesetas y pulsa 0 para finalizar: ");
+            long pesetas = scanner.nextLong();
+            double euros = pesetas/166.368;
+            if (pesetas == 0){
+                System.out.println("Fin programa");
+                break;
+            }else if (pesetas < 0){
+                System.out.println("El valor introducido debe ser mayor a cero");
+            }else {
+                System.out.printf("La cantidad de euros es: %.2f €%n",euros);
+            }
+        }
     }
 }
