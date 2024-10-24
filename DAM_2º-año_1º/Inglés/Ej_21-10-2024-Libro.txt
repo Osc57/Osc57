@@ -9,9 +9,9 @@ Ej3 Página 9
 3
 a) A web desingner creates the techincal structure for websites
 b) A software developer creates software programs
-c) A 
+c) A A programmer writes computer programs
 d) An IT manager coordinates a team of programers/developers and analysts to complete projets
-e) An 
-f) 
-g) 
-h) 
+e) An information security analyst creates system to protect the information on websites from cyberattacks
+f) A helpdesk technician provides technical support and assistance to customers
+g) A Java developer is responsable for the design, development and management of Java-based applications
+h) A database administrator
