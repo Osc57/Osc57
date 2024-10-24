@@ -19,9 +19,9 @@ public class Ej11 {
         int n2 = scanner.nextInt();
 
        while (n1 >= n2){
-           n1 -= n2;
+           n1 = n1 - n2;
            resta++;
        }
-        System.out.println(resta);
+        System.out.println("La division es: " + resta);
     }
 }
