@@ -39,8 +39,8 @@ public class Ej33 {
         /*if (n1%i==0){
             System.out.println(n1 + "|" + i);
             n1 = n1/i;
-            } else if (n1%i!=0) {
-                i++;
-            }*/
+        } else if (n1%i!=0) {
+            i++;
+        }*/
     }
 }
