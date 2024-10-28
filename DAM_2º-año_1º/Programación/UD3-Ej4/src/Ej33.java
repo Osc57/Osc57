@@ -31,17 +31,16 @@ public class Ej33 {
                 System.out.println(n1 + "|" + i);
                 n1=n1/i;
             }
-            /*if (n1%i==0){
-                System.out.println(n1 + "|" + i);
-                n1 = n1/i;
-            } else if (n1%i!=0) {
-                i++;
-            }*/
         }
         if(n1>1){
             System.out.println(n1 + "|" + n1);
         }
         System.out.println(1);
-
+        /*if (n1%i==0){
+            System.out.println(n1 + "|" + i);
+            n1 = n1/i;
+            } else if (n1%i!=0) {
+                i++;
+            }*/
     }
 }
