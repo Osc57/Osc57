@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Tipos de selectores</title>
+    <style>
+        /* Selector de etiqueta */
+        h2, p {
+            color: brown;
+        }
+        footer > p {
+            font-style: italic;
+        }
+        h3 + p {
+            color: blue;
+        }
+
+        /* Selectores de clase 
+        .mi_clase {
+            color: blueviolet;
+        }
+        .otra_clase {
+            font-size: 20px;
+        }
+            */
+        /* Selectores Identificadores 
+        #seccion2 {
+            background-color: bisque;
+            color: chocolate;
+        }
+            */
+
+        a {
+            background-color: aqua;
+            color: blue;
+        }
+        a:hover{
+            background-color: yellow;
+            color: black;
+        }
+        input {
+            background-color: blue;
+        }
+        input:focus {
+            background-color: aquamarine;
+        }
+        button {
+            background-color: pink;
+            color: blue;
+            border-radius: 10px;
+        }
+        button:active {
+            background-color: yellow;
+            color: red;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tipos de Selectores en CSS</h1>
+
+    
+    <nav>
+        <ul>
+            <li><a href="#">Rodri</a></li>
+            <li><a href="#">Vinicius</a></li>
+            <li><a href="#">Bellingham</a></li>
+            <li><a href="#">Carvajal</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <label for="n">Nombre:</label>
+    <input type="text" id="n"><br><br>
+    <label for="a">Apellidos:</label>
+    <input type="text" id="a">
+    <hr>
+    <button type="button">Boton 1</button>
+    <button type="button">Boton 2</button>
+    <button type="button">Boton 3</button>
+    <button type="button">Boton 4</button>
+    <hr>
+    <section id="seccion1">
+        <h2>Selector de etiqueta</h2>
+        <p class="otra_clase">Esto es un parrafo muy pequeño</p>
+        <h2>Selector de clase</h2>
+        <p class="mi_clase otra_clase">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, esse!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis temporibus enim, nihil neque ab expedita.</p>
+        <h2>Identificadores</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, voluptas.</p>
+        <p class="mi_clase">Esto es el ultimo parrafo</p>
+    </section>
+    <hr>
+    <section id="seccion2">
+        <div>
+            <h3>Titulo de la segunda seccion</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis velit ut debitis in incidunt! Voluptatem ullam delectus minus praesentium minima, nihil qui vero suscipit corporis?</p>
+        </div>
+    </section>
+    <footer>
+        <h3>Esto es un h3 dentro de footer</h3>
+        <div>
+            <p>Esto es un parrafo en el pie de pagina</p>
+        </div>
+        <p>Esto es el pie de página</p>
+    </footer>
+</body>
+</html>
