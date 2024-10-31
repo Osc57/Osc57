@@ -20,6 +20,6 @@ public class Ej14 {
 
         int suma = sumaCifras(n1);
 
-        System.out.println(suma);
+        System.out.println("La suma es: " + suma);
     }
 }
