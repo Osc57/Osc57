@@ -1,9 +1,9 @@
 /**
  * Crea un programa que genere un array de 10 números aleatorios entre -10 y
  * 10. El programa mostrará los números contenidos en el array. Después el
- * programa debe mostrar los elementos que se repiten.
+ * programa debe mostrar los elementos que no se repiten.
  * **/
-public class Ej9 {
+public class Ej10 {
     public static void main(String[] args) {
         int [] aleatorios1 = new int[10];
         boolean [] copiaAleatorios = new boolean[10];
@@ -12,6 +12,7 @@ public class Ej9 {
             aleatorios1[i] = (int) (Math.random() * 21) - 10;
             System.out.print(aleatorios1[i] + " ");
         }
+
         System.out.println();
 
         for (int i = 0; i < aleatorios1.length; i++) {
@@ -25,8 +26,8 @@ public class Ej9 {
                     }
                 }
 
-                if (contador > 1) {
-                    System.out.println("El número " + aleatorios1[i] + " se repite " + contador + " veces.");
+                if (contador == 1) {
+                    System.out.println("El número " + aleatorios1[i] + " no se repite");
                 }
             }
         }
