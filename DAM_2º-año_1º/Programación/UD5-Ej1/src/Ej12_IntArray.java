@@ -103,8 +103,7 @@ public class Ej12_IntArray {
         }else {
             System.out.println("Valor no encontrado");
         }
-
-        System.out.println();
+        
         System.out.println("Ejercicio e");
 
 
