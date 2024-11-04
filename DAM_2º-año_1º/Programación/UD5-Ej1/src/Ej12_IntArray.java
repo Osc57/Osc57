@@ -70,10 +70,42 @@ public class Ej12_IntArray {
      * public static int getMin(int[] a);
      * **/
     public static int getMin(int[] a){
+        int menor = a[0];
         for (int i = 0; i < a.length; i++) {
-
+            if (a[i] < menor){
+                menor = a[i];
+            }
         }
+        return menor;
     }
+
+    /**
+     * f) Codifica una función que devuelva el máximo de los datos en el array.
+     *
+     * public static int getMax(int[] a);
+     * **/
+    public static int getMax(int[] a){
+        int mayor = a[0];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] > mayor){
+                mayor = a[i];
+            }
+        }
+        return mayor;
+    }
+    /**
+     * g) Codifica una función que devuelva la suma de los datos en el array.
+     *
+     * public static int getSum(int[] a);
+     * **/
+    public static int getSum(int[] a){
+        int suma = 0;
+        for (int i = 0; i < a.length; i++) {
+            suma = a[i] + suma;
+        }
+        return suma;
+    }
+
     public static void main(String[] args) {
         System.out.println("Ejercicio a");
         int [] a = createRandom(10,5,20);
@@ -89,7 +121,7 @@ public class Ej12_IntArray {
         System.out.println();
         System.out.println("Ejercicio c");
         int [] c = {3,4,5,12,45,67};
-        int encontrar = find(c,13);
+        int encontrar = find(c,4);
 
         if (encontrar != -1){
             System.out.println("Se encuentra en la posicion " + encontrar + " del Array");
@@ -107,6 +139,21 @@ public class Ej12_IntArray {
         }
 
         System.out.println("Ejercicio e");
+        int [] e = {33,45,120,77,49,12};
+        int min = getMin(e);
+        System.out.println("El número menor del Array es: " + min);
+
+        System.out.println("Ejercicio f");
+        int [] f = {33,45,120,77,49,12};
+        int max = getMax(f);
+        System.out.println("El número menor del Array es: " + max);
+
+        System.out.println("Ejercicio g");
+        int [] g = {10,2,31,14};
+        int sum = getSum(g);
+        System.out.println("La suma de los números en el Array es: " + sum);
+
+        System.out.println("Ejercicio h");
 
 
 
