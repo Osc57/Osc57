@@ -31,7 +31,7 @@ public class Ej12_IntArray {
         }
     }
     /**
-     * Codifica una función que busque un valor entre los elementos de un
+     * c) Codifica una función que busque un valor entre los elementos de un
      * array de enteros, el valor de retorno de la función será el primer índice
      * en el que se ha encontrado al número o -1 si no existe en el array.
      *
@@ -70,7 +70,9 @@ public class Ej12_IntArray {
      * public static int getMin(int[] a);
      * **/
     public static int getMin(int[] a){
-        return -1;
+        for (int i = 0; i < a.length; i++) {
+
+        }
     }
     public static void main(String[] args) {
         System.out.println("Ejercicio a");
@@ -103,7 +105,7 @@ public class Ej12_IntArray {
         }else {
             System.out.println("Valor no encontrado");
         }
-        
+
         System.out.println("Ejercicio e");
 
 
