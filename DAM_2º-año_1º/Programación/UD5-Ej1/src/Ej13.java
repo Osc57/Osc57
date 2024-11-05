@@ -14,18 +14,21 @@ public class Ej13 {
         System.out.print("Cuantos nombres quieres meter al Array: ");
         int numero = scanner.nextInt();
 
+        scanner.reset();
         String [] nombres = new String[numero];
 
-        for (int i = 0; i < numero; i++) {
+        for(int i=0; i<numero; i++){
+            //System.out.println("entra");
+            //nombres[i] = "entra";
             System.out.print("Dime un nombre: ");
-            String nombre = scanner.nextLine();
+            String nombre = scanner.next();
             nombres[i] = nombre;
         }
 
-        Arrays.sort(nombres);
-
+       Arrays.sort(nombres);
+        System.out.println("Array ordenado");
         for (String nom : nombres){
-            System.out.println(nom);
+            System.out.print(nom + " ");
         }
 
     }
