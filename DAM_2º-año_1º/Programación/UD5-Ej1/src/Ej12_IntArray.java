@@ -106,6 +106,43 @@ public class Ej12_IntArray {
         return suma;
     }
 
+    /**
+     * h) Codifica una función que devuelva la media aritmética de los datos en
+     * el array.
+     * public static double getAvg(int[] a);
+     * **/
+    public static double getAvg(int[] a){
+        int contador = 0;
+        int suma = 0;
+        for (int i = 0; i < a.length; i++) {
+            suma = a[i] + suma;
+            contador++;
+        }
+        return (double) suma /contador;
+
+    }
+
+    /**
+     * i) Si queremos obtener los datos que devuelven las funciones anteriores
+     * estamos recorriendo el array 4 veces. Esto no es un problema para
+     * pocos valores, pero sería un desperdicio de tiempo para arrays con
+     * muchos datos. Codifica una función que reciba un array de tipo int y
+     * devuelva otro array de longitud 4 y tipo double con los siguientes
+     * valores y en ese orden: suma, media, mínimo, máximo.
+     *
+     * double[] getStats(double[] a);
+     * **/
+    static double[] getStats(int [] a){
+        double [] valores = new double[4];
+
+        valores[0] = getSum(a);
+        valores[1] = getAvg(a);
+        valores[2] = getMin(a);
+        valores [3] = getMax(a);
+
+        return valores;
+    }
+
     public static void main(String[] args) {
         System.out.println("Ejercicio a");
         int [] a = createRandom(10,5,20);
@@ -154,6 +191,17 @@ public class Ej12_IntArray {
         System.out.println("La suma de los números en el Array es: " + sum);
 
         System.out.println("Ejercicio h");
+        int [] h = {17,24,31,43,50};
+        double media = getAvg(h);
+        System.out.println("La media de los números del Array es: " + media);
+
+        System.out.println("Ejercicio i");
+        int [] i = {17,45,32,66,54};
+        double[] estadisticas = getStats(i);
+
+        for (double n : estadisticas){
+            System.out.print(n + " ");
+        }
 
 
 
