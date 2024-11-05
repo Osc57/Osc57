@@ -18,8 +18,6 @@ public class Ej13 {
         String [] nombres = new String[numero];
 
         for(int i=0; i<numero; i++){
-            //System.out.println("entra");
-            //nombres[i] = "entra";
             System.out.print("Dime un nombre: ");
             String nombre = scanner.next();
             nombres[i] = nombre;
