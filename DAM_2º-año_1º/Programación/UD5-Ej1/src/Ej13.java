@@ -24,8 +24,8 @@ public class Ej13 {
 
         Arrays.sort(nombres);
 
-        for (String i : nombres){
-            System.out.println(i);
+        for (String nom : nombres){
+            System.out.println(nom);
         }
 
     }
