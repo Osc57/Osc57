@@ -144,19 +144,19 @@ public class Ej12_IntArray {
     }
 
     public static void main(String[] args) {
-        System.out.println("Ejercicio a");
+        System.out.println("•Ejercicio a");
         int [] a = createRandom(10,5,20);
         for (int n : a){
             System.out.print(n + " ");
         }
 
         System.out.println();
-        System.out.println("Ejercicio b");
+        System.out.println("•Ejercicio b");
         int [] b = {7,8,3,2,7,8,1,12};
         showArray(b);
 
         System.out.println();
-        System.out.println("Ejercicio c");
+        System.out.println("•Ejercicio c");
         int [] c = {3,4,5,12,45,67};
         int encontrar = find(c,4);
 
@@ -166,7 +166,7 @@ public class Ej12_IntArray {
             System.out.println("No se encuentra en el Array");
         }
 
-        System.out.println("Ejercicio d");
+        System.out.println("•Ejercicio d");
         int [] d = {21,54,66,78,8,9};
         int busca = finD(d,66,2);
         if (busca != -1){
@@ -175,32 +175,32 @@ public class Ej12_IntArray {
             System.out.println("Valor no encontrado");
         }
 
-        System.out.println("Ejercicio e");
+        System.out.println("•Ejercicio e");
         int [] e = {33,45,120,77,49,12};
         int min = getMin(e);
         System.out.println("El número menor del Array es: " + min);
 
-        System.out.println("Ejercicio f");
+        System.out.println("•Ejercicio f");
         int [] f = {33,45,120,77,49,12};
         int max = getMax(f);
         System.out.println("El número menor del Array es: " + max);
 
-        System.out.println("Ejercicio g");
+        System.out.println("•Ejercicio g");
         int [] g = {10,2,31,14};
         int sum = getSum(g);
         System.out.println("La suma de los números en el Array es: " + sum);
 
-        System.out.println("Ejercicio h");
+        System.out.println("•Ejercicio h");
         int [] h = {17,24,31,43,50};
         double media = getAvg(h);
         System.out.println("La media de los números del Array es: " + media);
 
-        System.out.println("Ejercicio i");
+        System.out.println("•Ejercicio i");
         int [] i = {17,45,32,66,54};
         double[] estadisticas = getStats(i);
 
         for (double n : estadisticas){
-            System.out.print(n + " ");
+            System.out.print(n + " - ");
         }
 
 
