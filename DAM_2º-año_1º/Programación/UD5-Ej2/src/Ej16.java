@@ -6,7 +6,7 @@
  * **/
 public class Ej16 {
     static int ordenInverso(int n){
-        
+        return 0;
     }
     public static void main(String[] args) {
 
