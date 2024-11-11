@@ -16,7 +16,6 @@ public class Ej22 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         System.out.print("Dime una frase: ");
         String frase = scanner.nextLine().trim();
 
