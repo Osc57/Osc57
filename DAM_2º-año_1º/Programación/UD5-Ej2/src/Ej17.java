@@ -4,7 +4,7 @@
  * **/
 public class Ej17 {
     static String eliminarEspacios(String p){
-        return p.replaceAll("\\s+", "");
+        return p.replaceAll(" ", "");
     }
 
     public static void main(String[] args) {
