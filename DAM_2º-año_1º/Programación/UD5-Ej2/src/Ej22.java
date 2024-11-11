@@ -22,8 +22,8 @@ public class Ej22 {
         String [] frases = devolverPalabras(frase);
 
         for (int i = 0; i < frases.length; i++) {
-            String nuevaFrase = String.valueOf(frases[i].toUpperCase().charAt(0));
-            System.out.print(nuevaFrase + " ");
+            String palabra = String.valueOf(frases[i].toUpperCase().charAt(0));
+            System.out.print(palabra + " ");
         }
         System.out.println();
         System.out.println("Frase en mayúsculas: " + frase.toUpperCase());
