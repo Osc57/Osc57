@@ -24,9 +24,8 @@ public class Ej22 {
         System.out.println("Frase en mayúsculas: " + frase.toUpperCase());
         System.out.println("Frase en minúsculas: " + frase.toLowerCase());
         System.out.print("Primera letra mayúscula de cada frase: ");
-        for (int i = 0; i < frases.length; i++) {
-            String palabra = String.valueOf(frases[i].toUpperCase().charAt(0));
-            System.out.print(palabra + " ");
+        for (String f : frases) {
+            System.out.print(f.substring(0,1).toUpperCase() + f.substring(1).toLowerCase() + " " );
         }
 
 
