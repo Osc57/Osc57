@@ -21,13 +21,18 @@ public class Ej23 {
         String ruta = scanner.nextLine();
 
         int path = ruta.lastIndexOf('/');
+        int extension = ruta.lastIndexOf('.');
 
         if (path > 0){
-            String fichero = ruta.substring(path + 1);
             String direccion = ruta.substring(0, path + 1);
             System.out.println("Path: " + direccion);
-            System.out.println("Nombre del fichero: " + fichero);
         }
+        String fichero = ruta.substring(path + 1,extension);
+        System.out.println("Nombre del fichero: " + fichero);
 
+        if (extension > 0){
+            String exten = ruta.substring(extension + 1);
+            System.out.println("Extensión: " + exten);
+        }
     }
 }
