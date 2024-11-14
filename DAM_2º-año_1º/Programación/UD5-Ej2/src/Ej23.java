@@ -12,7 +12,7 @@ import java.util.Scanner;
  * - path: /home/dam/Documents/
  * - nombre del fichero: UD05_Ejercicios
  * - extensión: pdf
- * **/
+ **/
 public class Ej23 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -23,14 +23,14 @@ public class Ej23 {
         int path = ruta.lastIndexOf('/');
         int extension = ruta.lastIndexOf('.');
 
-        if (path > 0){
+        if (path > 0) {
             String direccion = ruta.substring(0, path + 1);
             System.out.println("Path: " + direccion);
         }
-        String fichero = ruta.substring(path + 1,extension);
+        String fichero = ruta.substring(path + 1, extension);
         System.out.println("Nombre del fichero: " + fichero);
 
-        if (extension > 0){
+        if (extension > 0) {
             String exten = ruta.substring(extension + 1);
             System.out.println("Extensión: " + exten);
         }
