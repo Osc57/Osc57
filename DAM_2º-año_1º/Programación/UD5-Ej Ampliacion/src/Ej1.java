@@ -38,7 +38,5 @@ public class Ej1 {
         for (int n : enteros) {
             System.out.print(n + " ");
         }
-
-
     }
 }
