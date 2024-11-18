@@ -8,19 +8,11 @@ import java.util.Scanner;
  * o minúsculas y de si las vocales llevan a no tildes.
  **/
 public class Ej24 {
-    static String cadenaInversa(String cadena) {
-        String palabraInversa = "";
-        for (int i = cadena.length() - 1; i >= 0; i--) {
-            palabraInversa = palabraInversa + cadena.charAt(i);
-        }
-
-        return palabraInversa;
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String tildes = "àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ";
         String letras = "aaaaaaaceeeeiiiionoooooouuuuyy";
+        String palabraInversa = "";
 
         System.out.print("Dime una palabra para comprobar si es un palindromo: ");
         String palabra = scanner.nextLine().toLowerCase();
@@ -29,8 +21,11 @@ public class Ej24 {
         for (int i = 0; i < tildes.length(); i++) {
             palabraLimpia = palabraLimpia.replace(tildes.charAt(i), letras.charAt(i));
         }
+        for (int i = palabraLimpia.length() - 1; i >= 0; i--) {
+            palabraInversa = palabraInversa + palabraLimpia.charAt(i);
+        }
 
-        if (palabraLimpia.equals(cadenaInversa(palabraLimpia))) {
+        if (palabraLimpia.equals(palabraInversa)) {
             System.out.println("La palabra " + palabra + " es un palindromo");
         } else {
             System.out.println("La palabra " + palabra + " no es un palindromo");
