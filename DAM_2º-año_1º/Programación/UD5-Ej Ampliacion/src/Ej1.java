@@ -17,6 +17,28 @@ public class Ej1 {
 
         String[] numeros = numero.replaceAll(" ", "").split(",");
 
+        int contador = 0;
+        for (String n : numeros) {
+            contador++;
+        }
+
+        int[] enteros = new int[contador];
+
+        for (int i = 0; i < numeros.length; i++) {
+            try {
+                int num = Integer.parseInt(numeros[i]);
+                enteros[i] = num;
+            } catch (Exception e) {
+
+            }
+
+        }
+        Arrays.sort(enteros);
+
+        for (int n : enteros) {
+            System.out.print(n + " ");
+        }
+
 
     }
 }
