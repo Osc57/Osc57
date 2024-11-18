@@ -21,18 +21,19 @@ public class Ej25 {
         }
         return limpiarPalabra(inversa);
     }
+    static void comporbarPalabra(String s){
+        if (limpiarPalabra(s).equals((cadenaInversa(s)))){
+            System.out.println("La palabra " + s + " es un palindromo");
+        }else {
+            System.out.println("La palabra " + s + " no es un palindromo");
+        }
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Dime una palabra para comprobar si es un palindromo: ");
         String palabra = scanner.nextLine().toLowerCase();
 
-        //System.out.println(limpiarPalabra(cadenaInversa(palabra)));
-        if (limpiarPalabra(palabra).equals((cadenaInversa(palabra)))){
-            System.out.println("La palabra " + palabra + " es un palindromo");
-        }else {
-            System.out.println("La palabra " + palabra + " no es un palindromo");
-        }
-
+        comporbarPalabra(palabra);
     }
 }
