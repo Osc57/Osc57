@@ -19,7 +19,7 @@ public class Ej25 {
         for (int i = cadena.length() -1 ; i >= 0; i--) {
             inversa = inversa + cadena.charAt(i);
         }
-        return inversa;
+        return limpiarPalabra(inversa);
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class Ej25 {
         String palabra = scanner.nextLine().toLowerCase();
 
         //System.out.println(limpiarPalabra(cadenaInversa(palabra)));
-        if (limpiarPalabra(palabra).equals(limpiarPalabra(cadenaInversa(palabra)))){
+        if (limpiarPalabra(palabra).equals((cadenaInversa(palabra)))){
             System.out.println("La palabra " + palabra + " es un palindromo");
         }else {
             System.out.println("La palabra " + palabra + " no es un palindromo");
