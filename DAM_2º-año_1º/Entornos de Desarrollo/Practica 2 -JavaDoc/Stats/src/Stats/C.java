@@ -1,9 +1,12 @@
+
 /** Esta es la clase de la práctica 2
-*@author Óscar Úbeda
-*@since 14-11-2024
-*@version 1.0
-**/
-class C {
+ *
+ * @author Óscar Úbeda
+ * @since 14-11-2024
+ * @version 1.0
+ *
+ */
+public class C {
 
     static double getMin(double[] a) {
         double menor = a[0];
@@ -16,8 +19,7 @@ class C {
     }
 
     public static void main(String[] args) {
-        double [] c = {33,45,120,77,49,12};
-        double min = getMin(c);
-        System.out.println(min);
+        double[] c = {33, 45, 120, 77, 49, 12};//Me creo un Array
+        System.out.println(getMin(c));//Llamo al método
     }
 }
