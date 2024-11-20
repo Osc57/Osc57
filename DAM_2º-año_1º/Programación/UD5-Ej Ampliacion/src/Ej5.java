@@ -12,8 +12,8 @@ public class Ej5 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int[] numeros = new int[10];
         int numero;
+        int[] numeros = new int[10];
         int contador = 0;
 
         do {
