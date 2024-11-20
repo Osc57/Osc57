@@ -22,9 +22,11 @@ public class Ej2 {
             }else {
                 if (frase.charAt(i) == '.'){
                     System.out.println("Números de 's' antes del punto: " + contador);
+                }else {
+                    System.out.println("La letra s aparece " + contador + " vez/ces");
                 }
             }
         }
-        System.out.println("La letra s aparece " + contador + " vez/ces");
+
     }
 }
