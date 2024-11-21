@@ -26,8 +26,8 @@ public class Ej5 {
         } while (contador < 10);
 
         Arrays.sort(numeros);
-        for (int i = 0; i < 10; i++) {
-            System.out.printf("%04", numeros[i] + " ");
+        for (int n : numeros) {
+            System.out.printf("%04d\t", n);
         }
     }
 }
