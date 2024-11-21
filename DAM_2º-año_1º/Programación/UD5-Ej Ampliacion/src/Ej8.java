@@ -12,6 +12,14 @@ public class Ej8 {
         System.out.println("Dime un número: ");
         int numero = scanner.nextInt();
 
+        if (numero < 0) {
+            numero = numero * -1;
+        }
+
+        StringBuilder num =  new StringBuilder(numero);
+
         
+
+
     }
 }
