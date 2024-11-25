@@ -6,12 +6,14 @@ import java.util.Scanner;
  * debe ignorar el signo).
  **/
 public class Ej8 {
-    static String cadenaInversa(String cadena){
+    static int numeroInverso(int num){
+        String cadena = String.valueOf(num);
         String inversa = "";
         for (int i = cadena.length() -1 ; i >= 0; i--) {
             inversa = inversa + cadena.charAt(i);
         }
-        return inversa;
+
+        return Integer.parseInt(inversa);
     }
     static int convertirPositivo  (int n){
         if (n < 0){
@@ -24,8 +26,8 @@ public class Ej8 {
 
         System.out.print("Dime un número: ");
         int numero = scanner.nextInt();
-
         
+        System.out.println(convertirPositivo(numero));
 
 
     }
