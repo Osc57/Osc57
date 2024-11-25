@@ -6,17 +6,24 @@ import java.util.Scanner;
  * debe ignorar el signo).
  **/
 public class Ej8 {
+    static String cadenaInversa(String cadena){
+        String inversa = "";
+        for (int i = cadena.length() -1 ; i >= 0; i--) {
+            inversa = inversa + cadena.charAt(i);
+        }
+        return inversa;
+    }
+    static int convertirPositivo  (int n){
+        if (n < 0){
+            n = n * -1;
+        }
+        return n;
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Dime un número: ");
+        System.out.print("Dime un número: ");
         int numero = scanner.nextInt();
-
-        if (numero < 0) {
-            numero = numero * -1;
-        }
-
-        StringBuilder num =  new StringBuilder(numero);
 
         
 
