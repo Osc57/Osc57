@@ -1,6 +1,7 @@
 package Ej1;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
@@ -9,13 +10,13 @@ public class Persona {
     private String apellidos;
     private LocalDate fNacimiento;
     private String dni;
-    private Character sexo;
+    private char sexo;
 
     public Persona(String nombre) {
         this.nombre = nombre;
     }
 
-    public Persona(LocalDate fNacimiento, String nombre) {
+    public Persona(String nombre ,LocalDate fNacimiento) {
         this.fNacimiento = fNacimiento;
         this.nombre = nombre;
     }
@@ -28,16 +29,7 @@ public class Persona {
         this.sexo = sexo;
     }
 
-    public String Saludar(){
-        return "Hola soy " + this.nombre;
-    }
-
-    public long CalcularEdad(){
-        LocalDate hoy = LocalDate.now();
-
-        return ChronoUnit.YEARS.between(fNacimiento, hoy);
-    }
-
+    //Getter and Setter
     public String getNombre() {
         return nombre;
     }
@@ -77,15 +69,18 @@ public class Persona {
     public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
+    public String Saludar(){
+        return "Hola soy " + nombre;
+    }
+
+    public int CalcularEdad(){
+        return Period.between(fNacimiento, LocalDate.now()).getYears();
+    }
+
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", fNacimiento=" + fNacimiento +
-                ", dni='" + dni + '\'' +
-                ", sexo=" + sexo +
-                '}';
+        return "Nombre: " + nombre + ", Apellidos: " + apellidos + ", Fecha de Nacimiento: " + fNacimiento +
+                ", Dni: " + ", Sexo: " + sexo;
     }
 }
