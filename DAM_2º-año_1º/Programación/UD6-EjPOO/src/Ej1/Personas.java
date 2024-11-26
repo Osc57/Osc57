@@ -6,8 +6,13 @@ public class Personas {
     private ArrayList<Persona> listaPersonas;
 
     //Constructor clase personas
+
+
     public Personas() {
-        this.listaPersonas = new ArrayList<>();
+    }
+
+    public Personas(ArrayList<Persona> listaPersonas) {
+        this.listaPersonas = listaPersonas;
     }
 
     public ArrayList<Persona> getListaPersonas() {
