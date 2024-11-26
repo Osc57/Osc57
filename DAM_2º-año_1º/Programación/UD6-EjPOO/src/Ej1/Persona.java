@@ -16,7 +16,7 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public Persona(String nombre ,LocalDate fNacimiento) {
+    public Persona(String nombre, LocalDate fNacimiento) {
         this.fNacimiento = fNacimiento;
         this.nombre = nombre;
     }
@@ -69,11 +69,12 @@ public class Persona {
     public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
-    public String Saludar(){
+
+    public String Saludar() {
         return "Hola soy " + nombre;
     }
 
-    public int CalcularEdad(){
+    public int CalcularEdad() {
         return Period.between(fNacimiento, LocalDate.now()).getYears();
     }
 
