@@ -77,8 +77,7 @@ public class Persona {
     public int CalcularEdad() {
         return Period.between(fNacimiento, LocalDate.now()).getYears();
     }
-
-
+    
     @Override
     public String toString() {
         return "Nombre: " + nombre + ", Apellidos: " + apellidos + ", Fecha de Nacimiento: " + fNacimiento +
