@@ -8,7 +8,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Ticket> listaDeTickets = new ArrayList<>();
 
-        int cont = 0;
         System.out.print("Cuantos objetos vas a comprar: ");
         int compra = scanner.nextInt();
 
@@ -21,7 +20,7 @@ public class Main {
             int unidades = scanner.nextInt();
 
             System.out.print("Dime el precio de el objeto: ");
-            double precio = scanner.nextDouble();
+            float precio = scanner.nextFloat();
 
             System.out.print("Ahora dame el iva: ");
             double iva = scanner.nextDouble();
@@ -32,7 +31,7 @@ public class Main {
             listaDeTickets.add(ticket);
 
             compra--;
-        } while (cont < compra);
+        } while (0 < compra);
 
         CalcularTickets calcularTickets = new CalcularTickets(listaDeTickets);
 

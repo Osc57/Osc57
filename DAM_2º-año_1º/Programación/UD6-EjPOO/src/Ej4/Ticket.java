@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Ticket {
     private String nombreArticulo;
     private int unidades;
-    private double precio;
+    private float precio;
     private double iva;
 
-    public Ticket(String nombreArticulo, int unidades, double precio, double iva) {
+    public Ticket(String nombreArticulo, int unidades, float precio, double iva) {
         this.nombreArticulo = nombreArticulo;
         this.unidades = unidades;
         this.precio = precio;
@@ -35,7 +35,7 @@ public class Ticket {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
