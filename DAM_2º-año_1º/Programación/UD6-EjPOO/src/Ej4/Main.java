@@ -30,14 +30,17 @@ public class Main {
             Ticket ticket = new Ticket(objeto, unidades, precio, iva);
 
             listaDeTickets.add(ticket);
-            
+
             compra--;
         } while (cont < compra);
 
         CalcularTickets calcularTickets = new CalcularTickets(listaDeTickets);
 
-        System.out.printf("%.2f%n", calcularTickets.calcularTicketSinIva());
-        System.out.printf("%.2f%n", calcularTickets.calcularTicketConIva());
+        System.out.print("Precio sin IVA: ");
+        System.out.printf("%.2f%n",calcularTickets.calcularTicketSinIva());
+
+        System.out.print("Precio con IVA: ");
+        System.out.printf("%.2f%n",calcularTickets.calcularTicketConIva());
 
 
     }
