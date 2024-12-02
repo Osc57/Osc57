@@ -37,10 +37,10 @@ public class Main {
         CalcularTickets calcularTickets = new CalcularTickets(listaDeTickets);
 
         System.out.print("Precio sin IVA: ");
-        System.out.printf("%.2f%n",calcularTickets.calcularTicketSinIva());
+        System.out.printf("%.2f%n", calcularTickets.calcularTicketSinIva());
 
         System.out.print("Precio con IVA: ");
-        System.out.printf("%.2f%n",calcularTickets.calcularTicketConIva());
+        System.out.printf("%.2f%n", calcularTickets.calcularTicketConIva());
 
 
     }
