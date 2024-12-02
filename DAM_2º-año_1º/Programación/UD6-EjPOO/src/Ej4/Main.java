@@ -33,7 +33,10 @@ public class Main {
             compra--;
         }while (cont < compra);
 
-        System.out.println(listaDeTickets);
+        CalcularTickets calcularTickets = new CalcularTickets(listaDeTickets);
+
+        System.out.printf("%.2f%n", calcularTickets.calcularTicketConIva());
+
 
 
 
