@@ -49,12 +49,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "nombreArticulo='" + nombreArticulo + '\'' +
-                ", unidades=" + unidades +
-                ", precio=" + precio +
-                ", iva=" + iva +
-                '}';
+        return "Artículo: " + nombreArticulo + ", Unidades: " + unidades + ", Precio: " + precio + ", Iva: " + iva + '}';
     }
 
     public double calcularValorLinea() {
