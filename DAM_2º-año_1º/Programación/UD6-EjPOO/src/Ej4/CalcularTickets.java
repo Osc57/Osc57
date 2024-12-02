@@ -26,7 +26,13 @@ public class CalcularTickets {
         }
         return dinero;
     }
-
+    public double calcularIVA(){
+        double iva = 0;
+        for (Ticket ticket : listaTickets){
+            iva = iva + ticket.getIva();
+        }
+        return iva;
+    }
     public double calcularTicketConIva() {
         double dineroIva = 0;
         for (Ticket ticket : listaTickets) {

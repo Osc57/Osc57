@@ -38,6 +38,9 @@ public class Main {
         System.out.print("Precio sin IVA: ");
         System.out.printf("%.2f%n", calcularTickets.calcularTicketSinIva());
 
+        System.out.print("Total de IVA: ");
+        System.out.printf("%.2f%n", calcularTickets.calcularIVA());
+
         System.out.print("Precio con IVA: ");
         System.out.printf("%.2f%n", calcularTickets.calcularTicketConIva());
 
