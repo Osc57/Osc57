@@ -13,6 +13,7 @@ public class Main {
         int compra = scanner.nextInt();
 
         do {
+
             System.out.print("Que objeto quieres comprar: ");
             String objeto = scanner.next();
 
@@ -26,18 +27,17 @@ public class Main {
             double iva = scanner.nextDouble();
 
             System.out.println();
-            Ticket ticket = new Ticket(objeto,unidades,precio,iva);
+            Ticket ticket = new Ticket(objeto, unidades, precio, iva);
 
             listaDeTickets.add(ticket);
-
+            
             compra--;
-        }while (cont < compra);
+        } while (cont < compra);
 
         CalcularTickets calcularTickets = new CalcularTickets(listaDeTickets);
 
+        System.out.printf("%.2f%n", calcularTickets.calcularTicketSinIva());
         System.out.printf("%.2f%n", calcularTickets.calcularTicketConIva());
-
-
 
 
     }
