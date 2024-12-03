@@ -19,7 +19,7 @@ public class Main {
             System.out.print("Cuantas unidades quieres de ese objeto: ");
             int unidades = scanner.nextInt();
 
-            System.out.print("Dime el precio de el objeto: ");
+            System.out.print("Dime el precio del objeto: ");
             float precio = scanner.nextFloat();
 
             System.out.print("Ahora dame el iva: ");
