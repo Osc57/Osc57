@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios en HTML</title>
+</head>
+<body>
+    <h1>Formularios en HTML</h1>
+    <form>
+        <fieldset>
+            <legend>Formulario de Registro</legend>
+            <p>
+                <label for="name">Nombre: </label>
+                <input type="text" id="name" name="nombre_principal" placeholder="Escribe tu nombre">
+            </p>
+            <p>
+                <label for="apellido">Apellido: </label>
+                <input type="text" id="apellido" name="apellido1" placeholder="Primer apellido">
+            </p>
+            <p>
+                <label for="correo">Correo electrónico: </label>
+                <input type="email" name="email" id="correo" placeholder="E-mail">
+            </p>
+            <p>
+                <label for="contrasena">Contraseña: </label>
+                <input type="password" name="pass" id="contrasena" placeholder="Password">
+            </p>
+            <p>
+                <label for="telefono">Teléfono móvil: </label>
+                <input type="tel" name="tfno" id="telefono"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+            </p>
+            <p>
+                <label for="comentario">Comentario:</label>
+                <textarea name="descripcion" id="comentario" rows="10" cols="50" placeholder="Escribe aquí tu opinión"></textarea>
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.contenedor{
+    background-color: blanchedalmond;
+    padding: 0px;
+
+    display: flex;
+    /* flex-direction: row;
+    flex-wrap: wrap;*/
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    gap: 20px;
+
+}
+.caja {
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+.c1{
+    background-color: lightcoral;
+}
+.c2{
+    background-color: lightgreen;
+}
+.c3{
+    background-color: yellow;
+}
+.c4 {
+    background-color: aquamarine;
+}

@@ -1,34 +1,34 @@
 # Esto es un Título principal
 ## Esto es un título secundario
 ### Esto es un título 3
-### Título 4
-##### Título 5
+#### Titulo 4
+##### Titulo 5
+###### Titulo 6
 
-# Formateo de texto 
+# Formateo de texto
 
 **Esto es un texto en negrita**
 
-*Esto es un texto en cursiva*
+*Esto es un texto en cursivo*
 
 ***Este texto esta en negrita y cursivo***
 
-Markdown NO permite subrayado
+Markdown NO permite subreyado
 
 ~~Este texto me aparecerá tachado~~
 
 De este párrafo me gustaría ==resaltar esto==
 
 ---
-Presentación 1
+Presentacion 1
 ---
 Presentacion 2
 ---
 # Citas
 > La paciencia sin virtud no sirve de nada
-
 # Listas
 - Café
-- Té
+- Te
 - Chuletón madurado
 - Patatas
 - Pizza para Javi
@@ -38,11 +38,11 @@ Presentacion 2
 2. Segundo elemento
 3. Tercer elemento
 
-## listas enlazadas
+## Listas enlazadas
 - Capitulo 1
     - Subcapitulo 1
-        1. Subsubtitulo 1
-        2. Subsubtitulo 2
+        1. Subsubtitulo
+        2. Subsutitulo2
     - Subcapitulo 2
 - Capitulo 2
 

@@ -2,9 +2,10 @@
 - [ ] Tarea 1
 - [ ] Tarea 2
 - [ ] Comprar en el supermercado
-- [X] Comprar hielos para el botellón
-  
-# Imágenes
-![Esto es un paisaje|100](./imagenes/paisaje.jpg)
+- [x] Comprar hielos para el botellón
 
-<img src="./imagenes/paisaje.jpg" width="200px">
+# Imágenes
+![Esto es un paisaje|100](./images/paisaje.jpg)
+
+<img src="images/paisaje.jpg" width="200px">
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+    <h1>Formulario de registro</h1>
+    <form action="" method="">
+        <fieldset>
+            <legend>Registro de usuario</legend>
+            <p>
+                <label for="nombre_principal">Nombre: </label>
+                <input type="text" id="nombre_principal" name="nombre" placeholder="Escribe tu nombre">
+            </p>
+            <p>
+                <label for="apellido1">Apellido:</label>
+                <input type="text" id="apellido1">
+            </p>
+            <p>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" name="correo" id="email">
+            </p>
+            <p>
+                <label for="contrasena">Contraseña: </label>
+                <input type="password" name="pass" id="contrasena">
+            </p>
+            <p>
+                <label for="telefono">Teléfono: +34 </label>
+                <input type="tel" name="tfno" id="telefono" placeholder="123-456-789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}">
+            </p>
+            <p>
+                <label for="matricula">Matrícula: </label>
+                <input type="text" name="mat" id="matricula" placeholder="0000AAA" pattern="[0-9]{4}[A-Z]{3}" size="7" maxlength="7">
+            </p>
+            <p>
+                <label for="comentario">Comentario: </label> <br>
+                <textarea name="coment" id="comentario" rows="8" cols="40" placeholder="Escribe aquí un comentario"></textarea>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Enviar resultado</legend>
+            <!--
+            <input type="submit" value="Enviar formulario">
+            <input type="reset" value="Resetear el Formulario">
+            -->
+            <button type="submit">Enviar</button>
+            <button type="reset">Resereat formulario</button>
+            <input type="button" value="Hacer cualquier cosa" onclick="alert('Hola a DAM 1');">
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Examen</title>
+</head>
+<body>
+    <h1>Formulario de Registro</h1>
+    <form>
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <label for="apellido">Apellidos:</label>
+            <input type="text" name="Apellidos" id="apellido" placeholder="Apellidos">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <br><br>
+            <label for="nacimiento">Nacido en:</label>
+            <input type="text" name="ncto" id="nacimiento" required placeholder="Poblacion">
+            <label for="provincia">Provincia:</label>
+            <select name="provincia" id="provincia">
+                <optgroup label="Aragón">
+                    <option value="Teruel">Teruel</option>
+                    <option value="Zaragoza">Zaragoza</option>
+                    <option value="Huesca">Huesca</option>
+                </optgroup>
+                <optgroup label="Otros">
+                    <option value="Otros">Otra</option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Otros Datos</legend>
+            <label for="edad">Edad:</label>
+            <input type="radio" name="edad" id="edad" value="menor"> Menor de edad
+            <input type="radio" name="edad" id="edad" value="mayor"> Adulto
+            <br>
+            <br>
+            <label for="dni">DNI (8 dígitos sin letra):</label>
+            <input type="number" name="dni" id="dni" maxlength="8" minlength="8">
+            <br><br>
+            <label for="pass">Contraseña:</label>
+            <input type="password" name="pass" id="pass">
+        </fieldset>
+        <fieldset>
+            <legend>Aficiones</legend>
+            <label for="deporte">Deporte Favorito:</label>
+            <br>
+            <input type="radio" name="deporte" id="futbol" value="futbol"><label for="futbol">Fútbol</label><br>
+            <input type="radio" name="deporte" id="baloncesto" value="baloncesto"><label for="baloncesto">Baloncesto</label><br>
+            <input type="radio" name="deporte" id="pingpong" value="pingpong"><label for="pingpong">Ping - Pong</label><br>
+            <br>
+            
+            <label for="cartas">Juego de cartas Favorito:</label>
+            <br>
+            <input type="radio" name="cartas" id="guinote" value="guinote"><label for="guinote">Guiñote Pro</label><br>
+            <input type="radio" name="cartas" id="poker" value="poker"><label for="poker">Poker</label><br>
+            <input type="radio" name="cartas" id="mus" value="mus"><label for="mus">Mus</label><br>
+        </fieldset>
+        <br>
+        <input type="checkbox" name="acuerdonombre" id="acuerdonombre" value="acuerdonombre">Mi nombre es Alberto y he llegado hasta aquí <br>
+        <input type="checkbox" name="politica" id="politica" value="politica">Estoy de acuerdo con la política de datos de esta web
+        <br><br>
+        <input type="submit" value="Enviar Formulario">
+        <input type="reset" value="Resetear Formulario">
+    </form>
+</body>
+</html>

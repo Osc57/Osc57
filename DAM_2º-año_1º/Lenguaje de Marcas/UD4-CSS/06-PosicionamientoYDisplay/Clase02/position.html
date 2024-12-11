@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .container {
+            border: 3px solid black;
+            width: 500px;
+            height: 600px;
+            margin: 150px auto;
+            position: static;
+        }
+        .caja {
+            width: 500px;
+            height: 200px;
+        }
+        .c1{
+            background-color: lightcoral;
+            position: relative;
+
+            z-index: -1;
+        }
+        .c2{
+            background-color: lightblue;
+            /* top left right bottom z-index*/
+        }
+        .c3{
+            background-color: lightgreen;
+            position: relative;
+        }
+        .c4 {
+            height: 30px;
+            position: sticky;
+            top: 0px;
+            background-color: lightgrey;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="caja c4"></div>
+    <div class="container">
+        <div class="caja c1"></div>
+        <div class="caja c2"></div>
+        <div class="caja c3"></div>
+    </div>
+    <div class="caja c1"></div>
+    <div class="caja c1"></div>
+    <div class="caja c1"></div>
+    <div class="caja c1"></div>
+    <div class="caja c1"></div>
+    <div class="caja c1"></div>
+    <div class="caja c1"></div>
+
+</body>
+</html>
