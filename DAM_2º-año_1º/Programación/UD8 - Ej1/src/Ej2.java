@@ -1,4 +1,6 @@
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -16,8 +18,27 @@ public class Ej2 {
         System.out.print("Dime la ruta del directorio de archivos del ordenador: ");
         String ruta = scanner.nextLine();
 
-        File file = new File(ruta);
+        Path path = Paths.get(ruta);
+        File file = path.toFile();
 
-        
+        if (file.exists()){
+            System.out.println("La ruta existe");
+            if (file.isDirectory()){
+                System.out.println("Es un directorio");
+                String[] contenido = file.list();
+                if (contenido != null && contenido.length > 0){
+                    for (String elemento : contenido){
+                        System.out.println("- " + elemento);
+                    }
+                }else {
+                    System.out.println("Directorio vacio");
+                }
+            } else if (file.isFile()) {
+                System.out.println("Es un archivo");
+            }
+        }else {
+            System.out.println("La ruta no existe");
+        }
+
     }
 }
