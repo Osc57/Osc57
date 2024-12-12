@@ -1,6 +1,4 @@
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 /**
@@ -32,9 +30,9 @@ public class Ej1 {
             System.out.println("El archivo no tiene extensión");
         }
 
-        if (file.exists()){
+        if (file.exists()) {
             System.out.println("El archivo existe");
-        }else {
+        } else {
             System.out.println("El archivo no existe");
         }
 
