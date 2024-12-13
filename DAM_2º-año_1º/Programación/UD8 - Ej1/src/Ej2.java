@@ -28,7 +28,7 @@ public class Ej2 {
                 String[] contenido = file.list();
                 if (contenido != null && contenido.length > 0){
                     for (String elemento : contenido){
-                        System.out.println("- " + elemento);
+                        System.out.println(elemento);
                     }
                 }else {
                     System.out.println("Directorio vacio");
