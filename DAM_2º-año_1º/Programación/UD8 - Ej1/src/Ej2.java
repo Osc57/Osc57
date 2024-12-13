@@ -21,22 +21,22 @@ public class Ej2 {
         Path path = Paths.get(ruta);
         File file = path.toFile();
 
-        if (file.exists()){
+        if (file.exists()) {
             System.out.println("La ruta existe");
-            if (file.isDirectory()){
+            if (file.isDirectory()) {
                 System.out.println("Es un directorio");
                 String[] contenido = file.list();
-                if (contenido != null && contenido.length > 0){
-                    for (String elemento : contenido){
+                if (contenido != null && contenido.length > 0) {
+                    for (String elemento : contenido) {
                         System.out.println(elemento);
                     }
-                }else {
+                } else {
                     System.out.println("Directorio vacio");
                 }
             } else if (file.isFile()) {
                 System.out.println("Es un archivo");
             }
-        }else {
+        } else {
             System.out.println("La ruta no existe");
         }
 
