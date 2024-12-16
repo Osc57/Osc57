@@ -52,6 +52,21 @@ public class Ej3 {
 
         String rutaSamples = "Documentos/PRO_UD08_Ej03/docs/samples";
 
+        File archivoSamples = new File(rutaSamples);
+
+        try {
+            Path samples = Path.of(rutaSamples);
+
+            if (archivoSamples.exists()){
+                System.out.println("El archivo se ha copiado");
+            }else {
+                System.out.println("Copiando archivo");
+                Files.copy(samples, Path.of(ruta));
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
