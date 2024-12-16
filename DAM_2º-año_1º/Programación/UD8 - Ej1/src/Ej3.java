@@ -33,7 +33,7 @@ public class Ej3 {
             } else if (archivo.exists()) ;
             System.out.println("El archivo ya existe");
         } catch (IOException e) {
-            System.out.println("Los archivos [Programacion.txt] ya están copiados, ERROR [" + e.getMessage() + "]");
+            System.out.println("Los archivos [Programacion.txt] ya están copiados, ERROR [" + e + "]");
         }
 
         /*
@@ -82,7 +82,7 @@ public class Ej3 {
 
             System.out.println("Archivo copiado correctamente");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("El archivo ya esta copiado en la carpeta /docs/samples, ERROR [" + e + "]");;
         }
 
         /*
@@ -98,7 +98,7 @@ public class Ej3 {
 
             System.out.println("Archivo movido correctamente");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("El archivo ya esta movido a la carpeta /docs/exercises, ERROR [" + e + "]");
         }
 
 
