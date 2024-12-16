@@ -68,5 +68,20 @@ public class Ej3 {
             throw new RuntimeException(e);
         }
 
+        /*
+        e) Mueva el archivo Programacion.txt de /PRO_UD08_Ej03 a la carpeta
+        /PRO_UD08_Ej03/docs/exercises
+         */
+
+        /*
+        f) Renombre el fichero Programacion(+1).txt como Programacion.txt en
+        /PRO_UD08_Ej03
+         */
+
+        /*
+        g) Borre el archivo Programacion(+2).txt que se encuentra en la carpeta
+        /PRO_UD08_Ej03.
+         */
+
     }
 }
