@@ -32,41 +32,45 @@ public class Ej3 {
             } else if (archivo.exists()) ;
             System.out.println("El archivo ya existe");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Los archivos [Programacion.txt] ya están copiados");
         }
 
         /*
         b) Cree dentro de la carpeta PRO_UD08_Ej03 la siguiente estructura de
          carpetas: /docs/samples
          */
+        File carpetaSamples = new File("Documentos/PRO_UD08_Ej03/docs/samples");
+
+        if (!carpetaSamples.exists()){
+            if (carpetaSamples.mkdirs()){
+                System.out.println("Directorio /docs/samples creado");
+            }else {
+                System.out.println("Error al crear el directorio");
+            }
+        }else {
+            System.out.println("Carpetas /docs/samples creada");
+        }
 
         /*
         c) Cree dentro de la carpeta PRO_UD08_Ej03 la siguiente estructura de
            carpetas: /docs/exercises
          */
+        File carpetaExercises = new File("Documentos/PRO_UD08_Ej03/docs/exercises");
+
+        if (!carpetaExercises.exists()){
+            if (carpetaExercises.mkdirs()){
+                System.out.println("Directorio creado /docs/exercises creado");
+            }else {
+                System.out.println("Error al crear el directorio");
+            }
+        }else {
+            System.out.println("Carpetas /docs/exercises creada");
+        }
 
         /*
         d) Copie el archivo Programacion.txt en la carpeta
         /PRO_UD08_Ej03/docs/samples
          */
-
-        String rutaSamples = "Documentos/PRO_UD08_Ej03/docs/samples";
-
-        File archivoSamples = new File(rutaSamples);
-
-        try {
-            Path samples = Path.of(rutaSamples);
-
-            if (archivoSamples.exists()){
-                System.out.println("El archivo se ha copiado");
-            }else {
-                System.out.println("Copiando archivo");
-                Files.copy(samples, Path.of(ruta));
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         /*
         e) Mueva el archivo Programacion.txt de /PRO_UD08_Ej03 a la carpeta
