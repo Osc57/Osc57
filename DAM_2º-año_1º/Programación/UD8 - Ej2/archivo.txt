@@ -1,0 +1,4 @@
+Hola que tal
+Estoy escribiendo en un archivo
+Este archivo va a ser leido por un Buffer
+:)
