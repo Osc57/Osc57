@@ -1,0 +1,3 @@
+Hola que tal
+Soy un archivo de texto
+En el que tengo contenido
