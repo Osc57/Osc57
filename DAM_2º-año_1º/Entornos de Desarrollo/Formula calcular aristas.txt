@@ -1,0 +1,5 @@
+1) V(G) = Número de regiones del grafo
+
+2) V(G) = Aristas – Nodos + 2
+
+3) V(G) = Nodos predicado + 1
