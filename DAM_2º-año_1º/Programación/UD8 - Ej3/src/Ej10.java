@@ -27,10 +27,10 @@ public class Ej10 {
         Pattern patternEspanaPortugal = Pattern.compile(regexEspanaPortual);
         Pattern patternEmailEdu = Pattern.compile(regexEmailEdu);
         Pattern patternEmailYahoo = Pattern.compile(regexEmailYahoo);
-
+        /*
         LocalDate fechaInicio = LocalDate.of(2015,5,1);
         LocalDate fechaFinal = LocalDate.of(2017,2,1);
-
+        */
         String linea = null;
         try {
             reader = new BufferedReader(new FileReader(ruta));
@@ -47,13 +47,15 @@ public class Ej10 {
                 if (patternEmailYahoo.matcher(linea).matches()){
                     System.out.println("Email Yahoo: " + linea);
                 }
-
+                /*
                 //Sin expresión regular, comparación fechas.
                 String[] fila = linea.split(",");
                 LocalDate fechaLogin = LocalDate.parse(fila[9].split("")[0]);
                 if ((fechaLogin.isAfter(fechaInicio)) && fechaLogin.isBefore(fechaFinal)){
                     System.out.println("FechaLogin: " + linea);
                 }
+                */
+                 
             }
 
         } catch (IOException e) {
