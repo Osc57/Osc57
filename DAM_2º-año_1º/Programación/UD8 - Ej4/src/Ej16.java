@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * **/
 public class Ej16 {
     public static boolean fechaValida(String f){
-        String regexFecha = "^(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]| 1[0-2])/\\d{4}$";
+        String regexFecha = "^(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$";
 
         Pattern patternFecha = Pattern.compile(regexFecha);
         Matcher matcherFecha = patternFecha.matcher(f);
