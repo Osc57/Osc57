@@ -10,17 +10,25 @@ import java.util.regex.Pattern;
  * • El año debe ser un número de 4 dígitos.
  * **/
 public class Ej16 {
+    public static boolean fechaValida(String f){
+        String regexFecha = "^(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]| 1[0-2])/\\d{4}$";
+
+        Pattern patternFecha = Pattern.compile(regexFecha);
+        Matcher matcherFecha = patternFecha.matcher(f);
+
+        return matcherFecha.matches();
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Dime una fecha en formato dd/mm/yyyy: ");
         String fecha = scanner.nextLine();
 
-        String regexFecha = "^([0-2][0-9] | 3[0-1])/([0-1][0-9])/(\\d{4})$";
-
-        Pattern patternFecha = Pattern.compile(regexFecha);
-        Matcher matcherFecha = patternFecha.matcher(fecha);
-
-        System.out.println(matcherFecha.group());
+        if (fechaValida(fecha)){
+            System.out.println("La fecha es correcta");
+        }else {
+            System.out.println("La fecha es incorrecta");
+        }
     }
 }
