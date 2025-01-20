@@ -17,21 +17,21 @@ public class Ej1 {
         String ruta = scanner.nextLine();
 
         File file = new File(ruta);
-
-        System.out.println("Directorio raíz: " + file.toPath().getRoot());
-        System.out.println("Nombre del archivo: " + file.getName());
-
-        String archivoNombre = file.getName();
-        int extension = archivoNombre.lastIndexOf('.');
-
-        if (extension > 0 && extension < archivoNombre.length() - 1) {
-            System.out.println("Extensión del archivo: " + archivoNombre.substring(extension + 1));
-        } else {
-            System.out.println("El archivo no tiene extensión");
-        }
-
+        
         if (file.exists()) {
             System.out.println("El archivo existe");
+
+            System.out.println("Directorio raíz: " + file.toPath().getRoot());
+            System.out.println("Nombre del archivo: " + file.getName());
+
+            String archivoNombre = file.getName();
+            int extension = archivoNombre.lastIndexOf('.');
+
+            if (extension > 0 && extension < archivoNombre.length() - 1) {
+                System.out.println("Extensión del archivo: " + archivoNombre.substring(extension + 1));
+            } else {
+                System.out.println("El archivo no tiene extensión");
+            }
         } else {
             System.out.println("El archivo no existe");
         }
