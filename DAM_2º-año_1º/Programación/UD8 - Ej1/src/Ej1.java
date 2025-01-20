@@ -36,5 +36,7 @@ public class Ej1 {
             System.out.println("El archivo no existe");
         }
 
+        scanner.close();
+
     }
 }
