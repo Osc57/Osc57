@@ -1,0 +1,4 @@
+Hola esto es un archivo
+Estoy escribiendo en un archivo
+Para despues contar las palabras
+Hay 17
