@@ -21,7 +21,7 @@ public class Ej22 {
                 contador = contador + palabras.length;
 
             }
-            System.out.println(contador);
+            System.out.println("Hay " + contador + " palabras");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
