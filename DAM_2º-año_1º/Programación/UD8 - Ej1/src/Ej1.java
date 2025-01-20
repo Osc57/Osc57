@@ -17,7 +17,7 @@ public class Ej1 {
         String ruta = scanner.nextLine();
 
         File file = new File(ruta);
-        
+
         if (file.exists()) {
             System.out.println("El archivo existe");
 
