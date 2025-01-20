@@ -17,7 +17,7 @@ public class Ej22 {
 
             int contador = 0;
             while ((linea = bufferedReader.readLine()) != null){
-                String [] palabras = linea.split("\\s+");
+                String [] palabras = linea.split("\\s");
                 contador = contador + palabras.length;
 
             }
