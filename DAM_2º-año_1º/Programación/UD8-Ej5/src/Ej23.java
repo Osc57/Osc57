@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  **/
 public class Ej23 {
     public static void main(String[] args) {
-        String palabraRegex = "\\b(Hh)ola\\b";
+        String palabraRegex = "\\bHola\\b|\\bhola\\b";
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("archivo.txt"));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("archivoNuevo.txt"))) {
 
