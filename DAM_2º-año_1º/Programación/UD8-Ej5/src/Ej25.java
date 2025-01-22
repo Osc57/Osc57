@@ -27,6 +27,7 @@ public class Ej25 {
                 Matcher matcherPalabra = patternPalabra.matcher(linea);
                 if (matcherPalabra.find()){
                     cuentaLineas++;
+                    //System.out.println(matcherPalabra.group());
                 }
             }
 
