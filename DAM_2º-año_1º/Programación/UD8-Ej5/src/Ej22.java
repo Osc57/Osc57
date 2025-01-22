@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
 
 /**
  * Contar las palabras en un archivo. Desarrolla un programa que lea un archivo
