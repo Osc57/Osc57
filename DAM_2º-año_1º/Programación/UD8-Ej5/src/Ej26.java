@@ -19,7 +19,7 @@ public class Ej26 {
         System.out.print("Introduce la longitud de la palabra que desea buscar: ");
         int longitud = scanner.nextInt();
 
-        Pattern patternLongitud = Pattern.compile("\\b\\w{" + longitud + "}\\b");
+        Pattern patternLongitud = Pattern.compile("\\b\\w{"+longitud+"}\\b");
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("archivo.txt"))){
 
