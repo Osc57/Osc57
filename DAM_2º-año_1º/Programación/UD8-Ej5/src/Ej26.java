@@ -19,7 +19,7 @@ public class Ej26 {
         System.out.print("Introduce la longitud de la palabra que desea buscar: ");
         int longitud = scanner.nextInt();
 
-        Pattern patternLongitud = Pattern.compile("{" + longitud + "}");
+        Pattern patternLongitud = Pattern.compile("\\b\\w{" + longitud + "}\\b");
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("archivo.txt"))){
 
@@ -30,9 +30,10 @@ public class Ej26 {
                 Matcher matcherLongitud = patternLongitud.matcher(linea);
                 if (matcherLongitud.find()){
                     cuentaPalabras++;
-                    System.out.println(matcherLongitud.group());
+                    //System.out.println(matcherLongitud.group());
                 }
             }
+            System.out.println("Hay " + cuentaPalabras + " palabras de esa longitud en el archivo");
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
