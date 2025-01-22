@@ -2,5 +2,5 @@ Hola esto es un archivo
 Estoy escribiendo en un archivo
 Para despues contar las palabras
 Hay 17
-ahora hay más porque hola, hola (Estoy diciendo h.o.l.a)
-parangaricutirimicuaro
+Ahora hay más porque hola, hola (Estoy diciendo h.o.l.a)
+Parangaricutirimicuaro
