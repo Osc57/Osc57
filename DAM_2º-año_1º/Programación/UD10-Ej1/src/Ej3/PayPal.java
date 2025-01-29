@@ -3,7 +3,7 @@ package Ej3;
 public class PayPal extends MetodoPago{
 
     @Override
-    public double procesarPago(double monto) {
-        return 0;
+    public String procesarPago(double monto) {
+        return "Pago realizado por Pay Pal: -" + monto + "€";
     }
 }
