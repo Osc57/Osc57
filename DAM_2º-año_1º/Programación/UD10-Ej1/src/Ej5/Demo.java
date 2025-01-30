@@ -6,20 +6,12 @@ import java.util.regex.Pattern;
 
 public class Demo {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Usuario usuario1 = new Usuario("Agustin", "micontraseña123");
 
-        System.out.print("Ingrese: ");
-        String passw = scanner.nextLine();
+        System.out.println(usuario1.verificarContrasena("micontraseña123"));
+        usuario1.cambiarContrasena("MiContraseña123");
+        System.out.println(usuario1.verificarContrasena("micontraseña123"));
+        System.out.println(usuario1.verificarContrasena("MiContraseña123"));
 
-        String regexPass = "\\b[A-Z]\\w[0-9].{8,}\\b";
-
-        Pattern pattern = Pattern.compile(regexPass);
-        Matcher matcher = pattern.matcher(passw);
-
-        if (matcher.find()){
-            System.out.println("si");
-        }else {
-            System.out.println("no");
-        }
     }
 }

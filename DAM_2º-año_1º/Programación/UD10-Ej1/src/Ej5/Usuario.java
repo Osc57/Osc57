@@ -24,9 +24,16 @@ public class Usuario {
     }
 
     public void cambiarContrasena (String nuevaContrasena){
-        String regexPass = "\\b[A-Z]\\w[0-9].{8,}\\b";
+        String regexPass = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
         Pattern patternPass = Pattern.compile(regexPass);
         Matcher matcherPass = patternPass.matcher(nuevaContrasena);
+
+        if (matcherPass.matches()){
+            System.out.println("La contraseña es valida, se cambiara la contraseña");
+            contrasena = nuevaContrasena;
+        }else {
+            System.out.println("No se ha podido cambiar la contraseña");
+        }
     }
 
 
