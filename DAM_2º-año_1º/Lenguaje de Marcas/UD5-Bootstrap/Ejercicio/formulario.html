@@ -10,11 +10,15 @@
 </head>
 <script>
     function muestraAlerta() {
-        document.getElementById('alerta').classList.remove('d-none');
+        document.getElementById('alerta2').classList.remove('d-none');
+    }
+    function muestraAlerta2() {
         document.getElementById('alerta2').classList.remove('d-none');
     }
     function escondeAlerta() {
-        document.getElementById('alerta').classList.add('d-none');
+        document.getElementById('alerta2').classList.remove('d-none');
+    }
+    function escondeAlerta2() {
         document.getElementById('alerta2').classList.remove('d-none');
     }
 </script>
@@ -44,7 +48,7 @@
         </div>
         <div class="alert alert-success alert-dismissible fade show mt-4 d-none" id="alerta2">
             El mensaje ha sido enviado correctamente
-            <button type="button" class="btn-close" onclick="escondeAlerta()"></button>
+            <button type="button" class="btn-close" onclick="escondeAlerta2()"></button>
         </div>
 
         <form>
@@ -80,7 +84,7 @@
         </form>
         <div class="row-cols-4">
             <div class="col-form-label col-sm-4">
-                <button onclick="muestraAlerta()" type="submit" class="btn btn-outline-primary mt-4">Enviar</button>
+                <button onclick="muestraAlerta2()" type="submit" class="btn btn-outline-primary mt-4">Enviar</button>
                 <button onclick="muestraAlerta()" type="submit" class="btn btn-outline-danger mt-4">Enviar Error</button>
             </div>
         </div>
