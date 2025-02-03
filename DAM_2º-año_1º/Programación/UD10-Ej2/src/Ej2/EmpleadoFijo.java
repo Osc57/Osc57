@@ -10,6 +10,11 @@ public class EmpleadoFijo extends Empleado{
     public double calcularSalario() {
         return salario;
     }
+
+    @Override
+    public String mostrarInfo() {
+        return super.mostrarInfo()+ "Fijo: " + nombre + ", Salario: " + salario;
+    }
 }
 
 

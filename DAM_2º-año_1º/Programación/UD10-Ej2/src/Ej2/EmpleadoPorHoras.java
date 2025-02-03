@@ -15,4 +15,9 @@ public class EmpleadoPorHoras extends Empleado{
     public double calcularSalario() {
         return salario+(horasTrabajadas*tarifaPorHoras);
     }
+
+    @Override
+    public String mostrarInfo() {
+        return super.mostrarInfo() + "Por Horas: " + nombre + ", Salario: " + salario + ", Plus: " + horasTrabajadas*tarifaPorHoras;
+    }
 }

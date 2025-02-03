@@ -15,7 +15,7 @@ public class Demo {
 
         for (Empleado e : empleados){
             double salario = e.calcularSalario();
-            System.out.println(e + ", Salario: " + salario);
+            System.out.println(e.mostrarInfo());
             salarioTotal = salarioTotal + salario;
         }
 

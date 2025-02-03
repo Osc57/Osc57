@@ -10,4 +10,8 @@ public abstract class Empleado {
         this.nombre = nombre;
         this.salario = salario;
     }
+
+    public String mostrarInfo(){
+        return "Empleado ";
+    }
 }
