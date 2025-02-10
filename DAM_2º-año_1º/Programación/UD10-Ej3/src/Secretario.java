@@ -4,8 +4,8 @@ public class Secretario extends Empleado{
     private double incrementa = 0.05;
 
 
-    public Secretario(String nombre, String apellidos, String dni, String direccion, int anosAntiguedad, int telefContacto, double salario, boolean despacho, int numFax, double incrementa) {
-        super(nombre, apellidos, dni, direccion, anosAntiguedad, telefContacto, salario);
+    public Secretario(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario, boolean despacho, int numFax, double incrementa) {
+        super(nombre, apellidos, dni, direccion, telefContacto, salario);
         this.despacho = despacho;
         this.numFax = numFax;
         this.incrementa = incrementa;

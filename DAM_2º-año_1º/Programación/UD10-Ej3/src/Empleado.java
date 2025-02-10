@@ -8,12 +8,12 @@ public class Empleado {
     private double salario;
     private Empleado supervisor;
 
-    public Empleado(String nombre, String apellidos, String dni, String direccion, int anosAntiguedad, int telefContacto, double salario) {
+    public Empleado(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.direccion = direccion;
-        this.anosAntiguedad = anosAntiguedad;
+        this.anosAntiguedad = 0;
         this.telefContacto = telefContacto;
         this.salario = salario;
         this.supervisor = null;
