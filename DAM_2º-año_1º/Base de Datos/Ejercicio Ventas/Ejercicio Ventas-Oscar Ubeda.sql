@@ -585,6 +585,29 @@ mysql> SELECT * FROM productos WHERE precio_venta < (SELECT precio_venta FROM pr
 29 rows in set (0.00 sec)
 
 /*Ej34*/
+mysql> SELECT * FROM productos WHERE precio_venta > ALL(SELECT precio_venta FROM productos WHERE id_ca
+tegoria IN (SELECT id_categoria FROM categorias WHERE descripcion='Componentes'));
++-----------------+--------------------------+-------------+--------------+-------+--------------+
+| numero_producto | nombre                   | descripcion | precio_venta | stock | id_categoria |
++-----------------+--------------------------+-------------+--------------+-------+--------------+
+|               2 | Eagle FS-3 Mountain Bike | NULL        |      1800.00 |     8 |            2 |
+|               6 | Viscount Mountain Bike   | NULL        |       635.00 |     5 |            2 |
+|              11 | GT RTS-2 Mountain Bike   | NULL        |      1650.00 |     5 |            2 |
++-----------------+--------------------------+-------------+--------------+-------+--------------+
+3 rows in set (0.00 sec)
+
+/*Ej35*/
+mysql> SELECT * FROM clientes WHERE id_cliente!=1001 AND ciudad IN(SELECT ciudad FROM clientes WHERE id_cliente=1001);
++------------+--------+------------+------------------------+---------+-----------+------------+-------------+----------+
+| id_cliente | nombre | apellidos  | direccion              | ciudad  | provincia | cod_postal | codigo_area | telefono |
++------------+--------+------------+------------------------+---------+-----------+------------+-------------+----------+
+|       1005 | Daniel | Manzanares | Camino Viejo 4110      | Robledo | MADRID    | 28052      |         425 | 555-2506 |
+|       1006 | Juan   | Viescas    | Ronda Noreste, num 383 | Robledo | MADRID    | 28052      |         425 | 555-2511 |
+|       1028 | Javier | Tirado     | Calle Mayor 42         | Robledo | MADRID    | 28052      |         425 | 555-9999 |
++------------+--------+------------+------------------------+---------+-----------+------------+-------------+----------+
+3 rows in set (0.00 sec)
+
+/*Ej36*/
 
 
 
