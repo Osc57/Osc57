@@ -20,7 +20,7 @@ public class Empleado {
     }
 
     public double incrementarSalario(double s) {
-        return this.salario += this.salario * (s / 100);
+        return this.salario = this.salario * (s / 100);
     }
     public Empleado cambiarSupervisor(Empleado nuevoSupervisor){
         return this.supervisor = nuevoSupervisor;
