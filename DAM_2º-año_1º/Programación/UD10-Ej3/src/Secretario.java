@@ -15,6 +15,6 @@ public class Secretario extends Empleado{
     public String imprimir() {
         return super.imprimir() + ", despacho: " + despacho;
     }
-    
+
 
 }
