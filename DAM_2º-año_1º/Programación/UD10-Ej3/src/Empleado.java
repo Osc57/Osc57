@@ -5,7 +5,7 @@ public abstract class Empleado {
     private String direccion;
     private int anosAntiguedad;
     private int telefContacto;
-    private double salario;
+    protected double salario;
     private Empleado supervisor;
 
     public Empleado(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario) {
@@ -19,9 +19,9 @@ public abstract class Empleado {
         this.supervisor = null;
     }
 
-    public double incrementarSalario(double s) {
-        return this.salario = this.salario + this.salario * (s / 100);
-    }
+    public abstract double incrementarSalario();
+
+
     public Empleado cambiarSupervisor(Empleado nuevoSupervisor){
         return this.supervisor = nuevoSupervisor;
     }
@@ -30,6 +30,4 @@ public abstract class Empleado {
         return "Nombre: " + nombre + ", apellidos: " + apellidos + ", dni: " + dni +
                 ", dirección: " + direccion + ", antigüedad: " + anosAntiguedad + ", teléfono: " + telefContacto + ", salario: " + salario;
     }
-
-    public abstract double incrementarSalario();
 }
