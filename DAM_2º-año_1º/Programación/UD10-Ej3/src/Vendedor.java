@@ -10,10 +10,6 @@ public class Vendedor extends Empleado{
     private double porcentaje;
     private double incremento = 10;
 
-    public Vendedor(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario) {
-        super(nombre, apellidos, dni, direccion, telefContacto, salario);
-    }
-
     public Vendedor(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario, String matricula, String marca, String modelo) {
         super(nombre, apellidos, dni, direccion, telefContacto, salario);
         this.matricula = matricula;
