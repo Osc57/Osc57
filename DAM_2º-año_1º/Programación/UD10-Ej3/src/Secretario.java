@@ -17,7 +17,7 @@ public class Secretario extends Empleado{
 
     @Override
     public String imprimir() {
-        return super.imprimir() + ", Puesto: secretario";
+        return super.imprimir() + ", Puesto: secretario, Despacho: " + despacho + ", Fax: " + numFax;
     }
 
 
