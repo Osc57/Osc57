@@ -1,4 +1,4 @@
-public class Empleado {
+public abstract class Empleado {
     private String nombre;
     private String apellidos;
     private String dni;
@@ -20,7 +20,7 @@ public class Empleado {
     }
 
     public double incrementarSalario(double s) {
-        return this.salario = this.salario * (s / 100);
+        return this.salario = this.salario + this.salario * (s / 100);
     }
     public Empleado cambiarSupervisor(Empleado nuevoSupervisor){
         return this.supervisor = nuevoSupervisor;
@@ -31,4 +31,5 @@ public class Empleado {
                 ", dirección: " + direccion + ", antigüedad: " + anosAntiguedad + ", teléfono: " + telefContacto + ", salario: " + salario;
     }
 
+    public abstract double incrementarSalario();
 }
