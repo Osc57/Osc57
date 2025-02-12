@@ -13,10 +13,8 @@ public abstract class Empleado {
         this.apellidos = apellidos;
         this.dni = dni;
         this.direccion = direccion;
-        this.anosAntiguedad = 0;
         this.telefContacto = telefContacto;
         this.salario = salario;
-        this.supervisor = null;
     }
 
     public abstract double incrementarSalario();
@@ -27,7 +25,7 @@ public abstract class Empleado {
     }
 
     public String imprimir(){
-        return "Nombre: " + nombre + ", apellidos: " + apellidos + ", dni: " + dni +
-                ", dirección: " + direccion + ", antigüedad: " + anosAntiguedad + ", teléfono: " + telefContacto + ", salario: " + salario;
+        return "Nombre: " + nombre + ", Apellidos: " + apellidos + ", Dni: " + dni +
+                ", Dirección: " + direccion + ", Teléfono: " + telefContacto + ", Salario: " + salario;
     }
 }
