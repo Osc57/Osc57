@@ -585,8 +585,8 @@ mysql> SELECT * FROM productos WHERE precio_venta < (SELECT precio_venta FROM pr
 29 rows in set (0.00 sec)
 
 /*Ej34*/
-mysql> SELECT * FROM productos WHERE precio_venta > ALL(SELECT precio_venta FROM productos WHERE id_ca
-tegoria IN (SELECT id_categoria FROM categorias WHERE descripcion='Componentes'));
+mysql> SELECT * FROM productos WHERE precio_venta > ALL(SELECT precio_venta FROM productos 
+WHERE id_categoria IN (SELECT id_categoria FROM categorias WHERE descripcion='Componentes'));
 +-----------------+--------------------------+-------------+--------------+-------+--------------+
 | numero_producto | nombre                   | descripcion | precio_venta | stock | id_categoria |
 +-----------------+--------------------------+-------------+--------------+-------+--------------+
@@ -608,6 +608,144 @@ mysql> SELECT * FROM clientes WHERE id_cliente!=1001 AND ciudad IN(SELECT ciudad
 3 rows in set (0.00 sec)
 
 /*Ej36*/
+mysql> SELECT * FROM productos WHERE precio_venta =(SELECT MIN(precio_venta) FROM productos);
++-----------------+--------------------------------+-------------+--------------+-------+--------------+
+| numero_producto | nombre                         | descripcion | precio_venta | stock | id_categoria |
++-----------------+--------------------------------+-------------+--------------+-------+--------------+
+|              15 | ProFormance clip para pedal 2G | NULL        |         4.99 |    40 |            4 |
++-----------------+--------------------------------+-------------+--------------+-------+--------------+
+1 row in set (0,00 sec)
+
+/*Ej37*/
+mysql> SELECT * FROM categorias WHERE id_categoria NOT IN (SELECT id_categoria FROM productos);
++--------------+-------------+
+| id_categoria | descripcion |
++--------------+-------------+
+|            7 | Scooters    |
++--------------+-------------+
+1 row in set (0,00 sec)
+
+/*Multitablas*/
+/*Ej38*/
+mysql> SELECT pedidos.*, empleados.nombre AS nombreEmpleado, clientes.nombre AS nombreCliente FROM pedidos 
+INNER JOIN empleados ON pedidos.id_empleado=empleados.id_empleado 
+INNER JOIN clientes ON pedidos.id_cliente=clientes.id_cliente LIMIT 10;
++---------------+--------------+-------------+------------+-------------+--------------+----------------+---------------+
+| numero_pedido | fecha_pedido | fecha_envio | id_cliente | id_empleado | precio_total | nombreEmpleado | nombreCliente |
++---------------+--------------+-------------+------------+-------------+--------------+----------------+---------------+
+|             6 | 2007-09-01   | 2007-09-05  |       1014 |         702 |      9820.29 | Maria          | Samuel        |
+|            17 | 2007-09-02   | 2007-09-03  |       1014 |         702 |      4834.98 | Maria          | Samuel        |
+|            21 | 2007-09-03   | 2007-09-03  |       1014 |         702 |       709.97 | Maria          | Samuel        |
+|            22 | 2007-09-03   | 2007-09-07  |       1026 |         702 |      6456.16 | Maria          | Luis          |
+|            37 | 2007-09-07   | 2007-09-11  |       1027 |         702 |      1718.78 | Maria          | Lucas         |
+|            38 | 2007-09-07   | 2007-09-11  |       1017 |         702 |       700.00 | Maria          | Manuela       |
+|            56 | 2007-09-09   | 2007-09-12  |       1014 |         702 |      3380.80 | Maria          | Samuel        |
+|            67 | 2007-09-10   | 2007-09-11  |       1025 |         702 |       877.00 | Maria          | Maria         |
+|            68 | 2007-09-11   | 2007-09-12  |       1027 |         702 |       273.54 | Maria          | Lucas         |
+|           103 | 2007-09-15   | 2007-09-16  |       1025 |         702 |      9373.54 | Maria          | Maria         |
++---------------+--------------+-------------+------------+-------------+--------------+----------------+---------------+
+10 rows in set (0,01 sec)
+
+/*Ej39*/Repetido
+
+/*Ej40*/
+mysql> SELECT clientes.id_cliente, clientes.nombre, pedidos.numero_pedido, productos.descripcion FROM pedidos 
+INNER JOIN clientes ON pedidos.id_cliente=clientes.id_cliente INNER JOIN detalles_pedidos ON pedidos.numero_pedido=detalles_pedidos.numero_pedido 
+INNER JOIN productos ON detalles_pedidos.numero_producto=productos.numero_producto ORDER BY clientes.id_cliente LIMIT 10;
++------------+--------+---------------+-------------+
+| id_cliente | nombre | numero_pedido | descripcion |
++------------+--------+---------------+-------------+
+|       1001 | Susana |             2 | NULL        |
+|       1001 | Susana |             2 | NULL        |
+|       1001 | Susana |             7 | NULL        |
+|       1001 | Susana |             7 | NULL        |
+|       1001 | Susana |            16 | NULL        |
+|       1001 | Susana |            16 | NULL        |
+|       1001 | Susana |            16 | NULL        |
+|       1001 | Susana |            16 | NULL        |
+|       1001 | Susana |            16 | NULL        |
+|       1001 | Susana |            16 | NULL        |
++------------+--------+---------------+-------------+
+10 rows in set (0,00 sec)
+
+/*Ej41*/
+mysql> SELECT productos.*, categorias.descripcion FROM productos INNER JOIN categorias ON productos.id_categoria=categorias.id_categoria;
++-----------------+---------------------------------------+-------------+--------------+-------+--------------+--------------------+
+| numero_producto | nombre                                | descripcion | precio_venta | stock | id_categoria | descripcion        |
++-----------------+---------------------------------------+-------------+--------------+-------+--------------+--------------------+
+|               3 | Dog Ear Cyclecomputer                 | NULL        |        75.00 |    20 |            1 | Accesorios         |
+|               5 | Dog Ear Helmet Mount Espejos          | NULL        |         7.45 |    12 |            1 | Accesorios         |
+|               7 | Viscount C-500 Wireless Bike Computer | NULL        |        49.00 |    30 |            1 | Accesorios         |
+|               8 | Kryptonite Advanced 2000 U-Lock       | NULL        |        50.00 |    20 |            1 | Accesorios         |
+|               9 | Nikoma Lok-Tight U-Lock               | NULL        |        33.00 |    12 |            1 | Accesorios         |
+|              10 | Viscount Microshell Casco             | NULL        |        36.00 |    20 |            1 | Accesorios         |
+|              18 | Viscount CardioSport Sport Watch      | NULL        |       179.00 |    12 |            1 | Accesorios         |
+|              19 | Viscount Tru-Beat pulsometro          | NULL        |        47.00 |    20 |            1 | Accesorios         |
+|              20 | Dog Ear Monster guantes               | NULL        |        15.00 |    30 |            1 | Accesorios         |
+|              21 | Dog Ear Aero-Flow Hinchador           | NULL        |        55.00 |    25 |            1 | Accesorios         |
+|              22 | Pro-Sport Dillo Gafas de sol         | NULL        |        82.00 |    18 |            1 | Accesorios         |
+|              25 | King Cobra Casco                      | NULL        |       139.00 |    30 |            1 | Accesorios         |
+|              26 | Glide-O-Matic Cycling Casco           | NULL        |       125.00 |    24 |            1 | Accesorios         |
+|              30 | Clear Shade 85-T Gafas                | NULL        |        45.00 |    14 |            1 | Accesorios         |
+|              31 | True Grip Competition Guantes         | NULL        |        22.00 |    20 |            1 | Accesorios         |
+|              34 | TransPort Bicycle Parrilla            | NULL        |        27.00 |    14 |            1 | Accesorios         |
+|              35 | HP Deluxe Alforjas                    | NULL        |        39.00 |    10 |            1 | Accesorios         |
+|              38 | Cycle-Doc Pro Repair Stand            | NULL        |       166.00 |    12 |            1 | Accesorios         |
+|               2 | Eagle FS-3 Mountain Bike              | NULL        |      1800.00 |     8 |            2 | Bicicletas         |
+|               6 | Viscount Mountain Bike                | NULL        |       635.00 |     5 |            2 | Bicicletas         |
+|              11 | GT RTS-2 Mountain Bike                | NULL        |      1650.00 |     5 |            2 | Bicicletas         |
+|              23 | Ultra-Pro Rain maillot                | NULL        |        85.00 |    30 |            3 | Ropa               |
+|              24 | StaDry Cycling culote                 | NULL        |        69.00 |    22 |            3 | Ropa               |
+|              32 | Kool-Breeze Rocket Top Jersey         | NULL        |        32.00 |    12 |            3 | Ropa               |
+|              33 | Wonder Wool Cycle Calcetines          | NULL        |        19.00 |    30 |            3 | Ropa               |
+|               4 | Victoria Pro All Weather Llantas      | NULL        |        54.95 |    20 |            4 | Componentes        |
+|              12 | Shinoman 105 SC Frenos                | NULL        |        23.50 |    16 |            4 | Componentes        |
+|              13 | Shinoman Dura-Ace Auriculares         | NULL        |        67.50 |    20 |            4 | Componentes        |
+|              14 | Eagle SA-120 Pedales sin clip         | NULL        |       139.95 |    20 |            4 | Componentes        |
+|              15 | ProFormance clip para pedal 2G        | NULL        |         4.99 |    40 |            4 | Componentes        |
+|              16 | ProFormance ATB Pedal todo-terreno    | NULL        |        28.00 |    40 |            4 | Componentes        |
+|              17 | Shinoman Deluxe TX-30 Pedal           | NULL        |        45.00 |    60 |            4 | Componentes        |
+|              36 | Cosmic Elite Road Warrior Ruedas      | NULL        |       165.00 |    22 |            4 | Componentes        |
+|              37 | AeroFlo ATB Ruedas                    | NULL        |       189.00 |    40 |            4 | Componentes        |
+|              39 | Road Warrior soporte para maletero    | NULL        |       175.00 |     6 |            5 | **** para el coche |
+|              40 | Ultimate Export 2G baca para bibileta | NULL        |       180.00 |     8 |            5 | **** para el coche |
+|              27 | X-Pro All Weather Llantas             | NULL        |        24.00 |    20 |            6 | Ruedas             |
+|              28 | Turbo Twin Llantas                    | NULL        |        29.00 |    18 |            6 | Ruedas             |
+|              29 | Ultra-2K Competition Llanta           | NULL        |        34.00 |    22 |            6 | Ruedas             |
++-----------------+---------------------------------------+-------------+--------------+-------+--------------+--------------------+
+39 rows in set (0,00 sec)
+
+/*Ej42*/
+mysql> SELECT pedidos.*, productos.descripcion FROM pedidos 
+INNER JOIN detalles_pedidos ON pedidos.numero_pedido=detalles_pedidos.numero_pedido 
+INNER JOIN productos ON detalles_pedidos.numero_producto=productos.numero_producto LIMIT 10;
++---------------+--------------+-------------+------------+-------------+--------------+-------------+
+| numero_pedido | fecha_pedido | fecha_envio | id_cliente | id_empleado | precio_total | descripcion |
++---------------+--------------+-------------+------------+-------------+--------------+-------------+
+|             6 | 2007-09-01   | 2007-09-05  |       1014 |         702 |      9820.29 | NULL        |
+|           105 | 2007-09-16   | 2007-09-18  |       1005 |         704 |      9345.15 | NULL        |
+|           111 | 2007-09-17   | 2007-09-21  |       1021 |         707 |     11811.15 | NULL        |
+|           152 | 2007-09-28   | 2007-10-02  |       1017 |         704 |      6067.40 | NULL        |
+|           237 | 2007-10-17   | 2007-10-19  |       1027 |         702 |      4732.33 | NULL        |
+|           265 | 2007-10-22   | 2007-10-25  |       1014 |         702 |      8652.58 | NULL        |
+|           356 | 2007-11-10   | 2007-11-14  |       1018 |         702 |      2189.00 | NULL        |
+|           375 | 2007-11-13   | 2007-11-15  |       1004 |         704 |      4392.90 | NULL        |
+|           404 | 2007-11-20   | 2007-11-21  |       1019 |         708 |      8730.00 | NULL        |
+|           469 | 2007-12-05   | 2007-12-05  |       1011 |         708 |      8792.99 | NULL        |
++---------------+--------------+-------------+------------+-------------+--------------+-------------+
+10 rows in set (0,00 sec)
+
+/*Ej43*/
+SELECT pedidos.*, productos.numero_producto, proveedores.nombre FROM pedidos INNER JOIN detalles_pedidos ON pedidos.numero_pedido=detalles_pedidos.numero_pedido
+
+
+
+
+
+
+
+
+
 
 
 
