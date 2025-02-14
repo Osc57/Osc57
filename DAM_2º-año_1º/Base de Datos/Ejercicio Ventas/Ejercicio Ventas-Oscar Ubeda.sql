@@ -736,16 +736,84 @@ INNER JOIN productos ON detalles_pedidos.numero_producto=productos.numero_produc
 10 rows in set (0,00 sec)
 
 /*Ej43*/
-SELECT pedidos.*, productos.numero_producto, proveedores.nombre FROM pedidos INNER JOIN detalles_pedidos ON pedidos.numero_pedido=detalles_pedidos.numero_pedido
+mysql> SELECT DISTINCT detalles_pedidos.numero_producto, proveedores.nombre FROM pedidos 
+INNER JOIN detalles_pedidos ON pedidos.numero_pedido=detalles_pedidos.numero_pedido 
+INNER JOIN productos ON detalles_pedidos.numero_producto=productos.numero_producto 
+INNER JOIN productos_proveedores ON productos.numero_producto=productos_proveedores.numero_producto 
+INNER JOIN proveedores ON productos_proveedores.id_prov=proveedores.id_prov WHERE proveedores.provincia='Madrid';
++-----------------+------------------------+
+| numero_producto | nombre                 |
++-----------------+------------------------+
+|              12 | Shinoman, Incorporated |
+|              13 | Shinoman, Incorporated |
+|              17 | Shinoman, Incorporated |
+|               9 | Nikoma of America      |
+|              11 | Nikoma of America      |
+|              26 | Nikoma of America      |
+|              27 | Nikoma of America      |
+|              28 | Nikoma of America      |
+|              29 | Kona, Incorporated     |
++-----------------+------------------------+
+9 rows in set (0.00 sec)
 
+/*Ej44*/
+ SELECT clientes.id_cliente, empleados.nombre FROM clientes 
+ INNER JOIN pedidos ON clientes.id_cliente=pedidos.id_cliente 
+ INNER JOIN empleados ON pedidos.id_empleado=empleados.id_empleado WHERE pedidos.numero_pedido>1 LIMIT 10;
++------------+--------+
+| id_cliente | nombre |
++------------+--------+
+|       1014 | Maria  |
+|       1014 | Maria  |
+|       1014 | Maria  |
+|       1026 | Maria  |
+|       1027 | Maria  |
+|       1017 | Maria  |
+|       1014 | Maria  |
+|       1025 | Maria  |
+|       1027 | Maria  |
+|       1025 | Maria  |
++------------+--------+
+10 rows in set (0.00 sec)
 
+/*Ej45*/
+mysql> SELECT productos.descripcion FROM productos 
+INNER JOIN productos_proveedores ON productos.numero_producto=productos_proveedores.id_prov 
+INNER JOIN proveedores ON productos_proveedores.id_prov=proveedores.id_prov WHERE proveedores.provincia='Valencia';
++-------------+
+| descripcion |
++-------------+
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
+| NULL        |
++-------------+
+11 rows in set (0.00 sec)
 
-
-
-
-
-
-
+/*Ej46*/
+mysql> SELECT productos.descripcion, productos.stock, pedidos.fecha_pedido FROM productos INNER JOIN detalles_pedidos ON productos.numero_producto=detalles_pedidos.numero_producto INNER JOIN pedidos ON detalles_pedidos.numero_pedido=pedidos.numero_pedido INNER JOIN clientes ON pedidos.id_cliente=clientes.id_cliente WHERE clientes.nombre='Susana' AND clientes.apellidos='Viescas' LIMIT 10;
++-------------+-------+--------------+
+| descripcion | stock | fecha_pedido |
++-------------+-------+--------------+
+| NULL        |    20 | 2007-09-01   |
+| NULL        |     8 | 2007-09-01   |
+| NULL        |    20 | 2007-09-01   |
+| NULL        |    20 | 2007-09-01   |
+| NULL        |    12 | 2007-09-02   |
+| NULL        |    20 | 2007-09-02   |
+| NULL        |    20 | 2007-09-02   |
+| NULL        |    22 | 2007-09-02   |
+| NULL        |    22 | 2007-09-02   |
+| NULL        |    14 | 2007-09-02   |
++-------------+-------+--------------+
+10 rows in set (0.00 sec)
 
 
 
