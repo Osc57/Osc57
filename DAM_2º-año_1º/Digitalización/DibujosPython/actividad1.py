@@ -3,7 +3,7 @@ from turtle import *
 
 speed(0)
 
-color("dark green")
+color("orange")
 for i in range(72):
     for j in range(4):
         forward(100)
