@@ -1,0 +1,49 @@
+Customer: Good morning, Im looking for a new computer, could you please recommend me a good computer?
+
+Salesman: Good morning, sure, Are you looking for an any computer in specific?
+
+Customer: Yes, im looking for a desktop computer.
+
+Salesman: Yeah sure, i'll show this new recently models of computers
+
+Customer: Sure!!
+
+Salesman: This computer is good for do some office applications
+
+Customer: Do you have a computer for do that and program some apps?
+
+Salesman: Yeah, sure, come with me, do you like this computer?
+
+Customer: How much is it?
+
+Salesman: This computer that i have right here cost 700€
+
+Customer: Thats a littel bit expensive, can i have a discount for beeing member?
+
+Salesman: Yeah sure, You have a 5% of discount
+
+Customer: Nice
+
+Salesman:  Ok, so the final price it will be 665€
+
+Customer: Nice, i'll buy it
+
+Salesman: Come with me, do you want some peripherals?
+
+Customer: No thanks, i only want the computer
+
+Salesman: Okay, that Will be 665€
+
+Customer: Can i pay whit card?
+
+Salesman: Yeah sure
+
+Customer: Okay
+
+Salesman: Thanks for your buy
+
+Customer: Your welcome, have a nice day
+
+Salesman: Thanks, you too
+
+Customer: See ya 
