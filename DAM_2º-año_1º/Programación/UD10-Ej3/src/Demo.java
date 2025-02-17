@@ -16,6 +16,5 @@ public class Demo {
         vendedor.incrementarSalario();
         System.out.println(vendedor.imprimir());
 
-
     }
 }
