@@ -13,5 +13,7 @@ public class Demo {
         vendedor.incrementarSalario();
         System.out.println(vendedor.imprimir());
 
+        System.out.println(vendedor.cambiarDeCoche("1458KYT","Mercedes","Benz"));
+        System.out.println(vendedor.imprimir());
     }
 }
