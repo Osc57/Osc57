@@ -6,17 +6,18 @@ public class Vendedor extends Empleado {
     private String modelo;
     private int telefono;
     private String areaVenta;
-    private ArrayList<Cliente> listaClientes;
+    private ArrayList<String> listaClientes = new ArrayList<>();
     private double porcentaje;
     private double incremento = 10;
 
-    public Vendedor(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario, String matricula, String marca, String modelo) {
+    public Vendedor(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario, String matricula, String marca, String modelo, int telefono, String areaVenta) {
         super(nombre, apellidos, dni, direccion, telefContacto, salario);
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
+        this.telefono = telefono;
+        this.areaVenta = areaVenta;
     }
-
 
     @Override
     public double incrementarSalario() {
@@ -25,24 +26,21 @@ public class Vendedor extends Empleado {
 
     @Override
     public String imprimir() {
-        return super.imprimir() + ", Puesto: vendedor" + ", Coche [Marticula: " + matricula + ", Marca: " + marca + ", Modelo: " + modelo + "]";
+        return super.imprimir() + ", Puesto: vendedor" + ", Teléfono Móvil: " + telefono + ", Coche [Marticula: " + matricula + ", Marca: " + marca + ", Modelo: " + modelo + "], Area de Venta: " + areaVenta;
     }
 
-    public void darDeAltaCliente(Cliente cli) {
-        listaClientes.add(cli);
+    public String darDeAltaCliente(String cliente) {
+        listaClientes.add(cliente);
+        return "Cliente añadido";
     }
 
-    public void darDeBajaCliente(Cliente c) {
-        listaClientes.remove(c);
+    public String darDeBajaCliente(String cliente) {
+       if (listaClientes.isEmpty()){
+           return "Lista Vacia";
+       }else {
+           listaClientes.remove(cliente);
+           return "Cliente Borrado";
+       }
     }
 
-}
-class Cliente{
-    private String nombre;
-    private String dni;
-
-    public Cliente(String nombre, String dni) {
-        this.nombre = nombre;
-        this.dni = dni;
-    }
 }
