@@ -10,13 +10,14 @@ public class Vendedor extends Empleado {
     private double porcentaje;
     private double incremento = 10;
 
-    public Vendedor(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario, String matricula, String marca, String modelo, int telefono, String areaVenta) {
+    public Vendedor(String nombre, String apellidos, String dni, String direccion, int telefContacto, double salario, String matricula, String marca, String modelo, int telefono, String areaVenta, double porcentaje) {
         super(nombre, apellidos, dni, direccion, telefContacto, salario);
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
         this.telefono = telefono;
         this.areaVenta = areaVenta;
+        this.porcentaje = porcentaje;
     }
 
     @Override
@@ -26,7 +27,8 @@ public class Vendedor extends Empleado {
 
     @Override
     public String imprimir() {
-        return super.imprimir() + ", Puesto: vendedor" + ", Teléfono Móvil: " + telefono + ", Coche [Marticula: " + matricula + ", Marca: " + marca + ", Modelo: " + modelo + "], Area de Venta: " + areaVenta;
+        return super.imprimir() + ", Puesto: vendedor" + ", Teléfono Móvil: " + telefono +
+                ", Coche [Marticula: " + matricula + ", Marca: " + marca + ", Modelo: " + modelo + "], Area de Venta: " + areaVenta + ", Porcentaje de ventas: " + porcentaje + "%";
     }
 
     public String darDeAltaCliente(String cliente) {

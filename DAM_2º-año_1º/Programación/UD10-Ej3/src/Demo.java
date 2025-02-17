@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Demo {
     public static void main(String[] args) {
         Secretario secretario = new Secretario("Agustin","Peréz","11111111R","C/Direccion",977777777,1500, true, 78421888);
-        Vendedor vendedor = new Vendedor("Manolo","Lama","22222222E", "C/La calle", 444444444, 1850, "4455KLK","Suzuki","Vitara",555555555,"España");
+        Vendedor vendedor = new Vendedor("Manolo","Lama","22222222E", "C/La calle", 444444444, 1850, "4455KLK","Suzuki","Vitara",555555555,"España",10);
 
         System.out.println(secretario.imprimir());
         secretario.incrementarSalario();
