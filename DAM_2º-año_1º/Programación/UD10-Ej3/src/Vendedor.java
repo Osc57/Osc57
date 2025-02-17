@@ -6,7 +6,7 @@ public class Vendedor extends Empleado{
     private String modelo;
     private int telefono;
     private String areaVenta;
-    private ArrayList<String> listaClientes;
+    private ArrayList<Cliente> listaClientes;
     private double porcentaje;
     private double incremento = 10;
 
@@ -25,5 +25,23 @@ public class Vendedor extends Empleado{
     @Override
     public String imprimir() {
         return super.imprimir() + ", Puesto: vendedor" + ", Coche [Marticula: " + matricula + ", Marca: " + marca + ", Modelo: " + modelo + "]";
+    }
+
+    public void darDeAltaCliente(Cliente cli){
+        listaClientes.add(cli);
+    }
+
+    public void darDeBajaCliente(Cliente c){
+        listaClientes.remove(c);
+    }
+
+}
+class Cliente{
+    private String nombre;
+    private String dni;
+
+    public Cliente(String nombre, String dni) {
+        this.nombre = nombre;
+        this.dni = dni;
     }
 }
