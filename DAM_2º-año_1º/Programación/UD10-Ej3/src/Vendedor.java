@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Vendedor extends Empleado{
+public class Vendedor extends Empleado {
     private String matricula;
     private String marca;
     private String modelo;
@@ -19,7 +19,7 @@ public class Vendedor extends Empleado{
 
     @Override
     public double incrementarSalario() {
-        return salario = salario + salario * (incremento/100);
+        return salario = salario + salario * (incremento / 100);
     }
 
     @Override
@@ -27,11 +27,11 @@ public class Vendedor extends Empleado{
         return super.imprimir() + ", Puesto: vendedor" + ", Coche [Marticula: " + matricula + ", Marca: " + marca + ", Modelo: " + modelo + "]";
     }
 
-    public void darDeAltaCliente(Cliente cli){
+    public void darDeAltaCliente(Cliente cli) {
         listaClientes.add(cli);
     }
 
-    public void darDeBajaCliente(Cliente c){
+    public void darDeBajaCliente(Cliente c) {
         listaClientes.remove(c);
     }
 
