@@ -16,7 +16,7 @@ public class Vendedor extends Empleado{
         this.marca = marca;
         this.modelo = modelo;
     }
-
+    
     @Override
     public double incrementarSalario() {
         return salario = salario + salario * (incremento/100);
