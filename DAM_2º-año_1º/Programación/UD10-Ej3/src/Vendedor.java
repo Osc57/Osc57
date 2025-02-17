@@ -43,4 +43,15 @@ public class Vendedor extends Empleado {
        }
     }
 
+    public String cambiarDeCoche(String numberPlate, String marc, String model){
+        if (numberPlate!=null && marc!=null && model!=null){
+            matricula=numberPlate;
+            marca=marc;
+            modelo=model;
+            return "";
+        }else {
+            return "Introduce datos validos";
+        }
+    }
+
 }
