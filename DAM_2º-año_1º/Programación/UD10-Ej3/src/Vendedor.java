@@ -15,7 +15,6 @@ public class Vendedor extends Empleado {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
-        this.listaClientes = listaClientes;
     }
 
 
