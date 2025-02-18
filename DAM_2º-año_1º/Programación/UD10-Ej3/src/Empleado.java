@@ -19,7 +19,6 @@ public abstract class Empleado {
 
     public abstract double incrementarSalario();
 
-
     public Empleado cambiarSupervisor(Empleado nuevoSupervisor){
         return this.supervisor = nuevoSupervisor;
     }
