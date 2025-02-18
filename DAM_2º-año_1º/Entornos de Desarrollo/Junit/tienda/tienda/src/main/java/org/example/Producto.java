@@ -34,7 +34,11 @@ public class Producto {
     }
 
     public void setPrecio(double precio) {
-        this.precio = precio;
+        if(precio>0){
+            this.precio = precio;
+        }else{
+            throw new IllegalArgumentException("El precio no puede ser negativo");
+        }
     }
 
     public void actualizarStock(int cantidad) {
