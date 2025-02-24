@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class Demo extends Registro{
+public class Demo{
     public static void main(String[] args) {
         Registro registro = new Registro();
 
