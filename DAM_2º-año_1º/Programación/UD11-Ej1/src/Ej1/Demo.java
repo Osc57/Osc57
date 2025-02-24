@@ -10,10 +10,10 @@ public class Demo extends Registro{
     public static void main(String[] args) {
         Registro registro = new Registro();
 
-        String regexEspanaPortual=".*,(ES|PT),.*";
+        String regexFrancia=".*,(FR),.*";
         String regexEmailYahoo = ".*,\\w+@yahoo.(\\w+.|\\w+),.*";
 
-        Pattern patternEspanaPortugal = Pattern.compile(regexEspanaPortual);
+        Pattern patternEspanaPortugal = Pattern.compile(regexFrancia);
         Pattern patternEmailYahoo = Pattern.compile(regexEmailYahoo);
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader("DATA.csv"));){
@@ -26,6 +26,7 @@ public class Demo extends Registro{
                 if (patternEmailYahoo.matcher(linea).matches()){
                     registro.anadirEmail(linea);
                 }
+                System.out.println(linea);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
