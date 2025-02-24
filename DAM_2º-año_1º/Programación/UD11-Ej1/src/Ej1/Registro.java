@@ -8,35 +8,24 @@ public class Registro {
     private ArrayList<String> listaLogins = new ArrayList<>();
     private ArrayList<String> listaNombreApe = new ArrayList<>();
 
-    public ArrayList<String> getListaFrancia() {
-        return listaFrancia;
+    public String anadirFrancia(String f){
+        listaFrancia.add(f);
+        return "";
     }
 
-    public void setListaFrancia(ArrayList<String> listaFrancia) {
-        this.listaFrancia = listaFrancia;
+    public String anadirEmail(String e){
+        listaEmails.add(e);
+        return "";
     }
 
-    public ArrayList<String> getListaEmails() {
-        return listaEmails;
+    public String anadirLogins(String l){
+        listaLogins.add(l);
+        return "";
     }
 
-    public void setListaEmails(ArrayList<String> listaEmails) {
-        this.listaEmails = listaEmails;
-    }
-
-    public ArrayList<String> getListaLogins() {
-        return listaLogins;
-    }
-
-    public void setListaLogins(ArrayList<String> listaLogins) {
-        this.listaLogins = listaLogins;
-    }
-
-    public ArrayList<String> getListaNombreApe() {
-        return listaNombreApe;
-    }
-
-    public void setListaNombreApe(ArrayList<String> listaNombreApe) {
-        this.listaNombreApe = listaNombreApe;
+    public String anadirNombreApe(String nombre, String ape){
+        listaNombreApe.add(nombre);
+        listaNombreApe.add(ape);
+        return "";
     }
 }
