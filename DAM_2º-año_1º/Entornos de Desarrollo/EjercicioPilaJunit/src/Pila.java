@@ -2,10 +2,7 @@ import java.util.Stack;
 
 public class Pila {
     private Stack<Integer> pila = new Stack<Integer>();
-
-    public Pila() {
-    }
-
+    
     public String push(int n) {
         if (n % 2 == 0 && n >= 40 && n <= 70) {
             pila.push(n);
