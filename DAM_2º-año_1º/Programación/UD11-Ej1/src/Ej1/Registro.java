@@ -1,11 +1,14 @@
 package Ej1;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Registro {
     private ArrayList<String> listaFrancia = new ArrayList<>();
     private ArrayList<String> listaEmails = new ArrayList<>();
-    private ArrayList<String> listaLogins = new ArrayList<>();
+    private List<String> listaLogins = new ArrayList<>();
     private ArrayList<String> listaNombreApe = new ArrayList<>();
 
     //Francia
@@ -26,22 +29,20 @@ public class Registro {
         return "";
     }
 
-    public String ordenarLogins() {
-        listaLogins.sort((a, b) -> {
-            return -1 * a.compareTo(b);
-        });
-        return "";
+    public void ordenarLogins() {
+        Collections.sort(listaLogins, Comparator.reverseOrder());
     }
 
     public String mostrarLogins() {
         if (listaLogins.isEmpty()) {
             return "Vacia";
-        } else {
-            for (String l : listaLogins) {
-                return l;
-            }
         }
-        return "";
+
+        StringBuilder resultado = new StringBuilder();
+        for (String l : listaLogins) {
+            resultado.append(l).append("\n");
+        }
+        return resultado.toString().trim();
     }
 
     //Nombre y Apellido

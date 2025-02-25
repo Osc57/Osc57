@@ -14,7 +14,7 @@ public class Demo {
 
         String regexFrancia = ".*,(FR),.*";
         String regexEmailYahoo = ".*,\\w+@yahoo.(\\w+.|\\w+),.*";
-        String regexLogin = "201(5-(11|12)|6-\\d{2}|7-01)-\\d{2} \\d{2}:\\d{2}:\\d{2}";
+        String regexLogin = "201[5-7]-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}";
 
         Pattern patternFrancia = Pattern.compile(regexFrancia);
         Pattern patternEmailYahoo = Pattern.compile(regexEmailYahoo);
@@ -38,16 +38,15 @@ public class Demo {
                     }
                     if (matcherLogin.matches()) {
                         registro.anadirLogins(linea);
-                        registro.ordenarLogins();
                     }
                 }
-
-
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        registro.ordenarLogins();
+        System.out.println(registro.mostrarLogins());
     }
 }
