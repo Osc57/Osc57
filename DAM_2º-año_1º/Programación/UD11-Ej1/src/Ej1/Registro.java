@@ -8,22 +8,44 @@ public class Registro {
     private ArrayList<String> listaLogins = new ArrayList<>();
     private ArrayList<String> listaNombreApe = new ArrayList<>();
 
-    public String anadirFrancia(String f){
+    //Francia
+    public String anadirFrancia(String f) {
         listaFrancia.add(f);
         return "";
     }
 
-    public String anadirEmail(String e){
+    //Email
+    public String anadirEmail(String e) {
         listaEmails.add(e);
         return "";
     }
 
-    public String anadirLogins(String l){
+    //Logins
+    public String anadirLogins(String l) {
         listaLogins.add(l);
         return "";
     }
 
-    public String anadirNombreApe(String nombre, String ape){
+    public String ordenarLogins() {
+        listaLogins.sort((a, b) -> {
+            return -1 * a.compareTo(b);
+        });
+        return "";
+    }
+
+    public String mostrarLogins() {
+        if (listaLogins.isEmpty()) {
+            return "Vacia";
+        } else {
+            for (String l : listaLogins) {
+                return l;
+            }
+        }
+        return "";
+    }
+
+    //Nombre y Apellido
+    public String anadirNombreApe(String nombre, String ape) {
         listaNombreApe.add(nombre);
         listaNombreApe.add(ape);
         return "";
