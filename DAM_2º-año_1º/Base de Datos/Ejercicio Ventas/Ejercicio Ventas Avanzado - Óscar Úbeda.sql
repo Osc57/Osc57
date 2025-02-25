@@ -247,14 +247,54 @@ mysql> SELECT nombre FROM productos ORDER BY LENGTH(nombre);
 39 rows in set (0.00 sec)
 
 /*Ej15*/
+mysql> SELECT COUNT(productos.numero_producto) AS productos FROM productos 
+INNER JOIN detalles_pedidos ON productos.numero_producto=detalles_pedidos.numero_producto 
+INNER JOIN pedidos ON detalles_pedidos.numero_pedido=pedidos.numero_pedido 
+INNER JOIN categorias ON productos.id_categoria=categorias.id_categoria 
+WHERE productos.precio_venta > (SELECT AVG(precio_venta) FROM productos) AND categorias.id_categoria IN (SELECT id_categoria FROM categorias WHERE descripcion='componentes');
++-----------+
+| productos |
++-----------+
+|        99 |
++-----------+
+1 row in set (0.00 sec)
 
+/*Ej16*/
+mysql> SELECT nombre,precio_venta*stock AS precioTotal FROM productos 
+WHERE id_categoria IN (SELECT id_categoria FROM categorias WHERE descripcion='ropa');
++-------------------------------+-------------+
+| nombre                        | precioTotal |
++-------------------------------+-------------+
+| Ultra-Pro Rain maillot        |     2550.00 |
+| StaDry Cycling culote         |     1518.00 |
+| Kool-Breeze Rocket Top Jersey |      384.00 |
+| Wonder Wool Cycle Calcetines  |      570.00 |
++-------------------------------+-------------+
+4 rows in set (0.00 sec)
 
+/*Ej17*/
+mysql> SELECT id_cliente, COUNT(fecha_pedido) AS pedidos FROM pedidos 
+WHERE id_cliente IN (SELECT id_cliente FROM clientes WHERE ciudad='Robledo') GROUP BY id_cliente;
++------------+---------+
+| id_cliente | pedidos |
++------------+---------+
+|       1001 |      38 |
+|       1005 |      31 |
+|       1006 |      23 |
++------------+---------+
+3 rows in set (0.00 sec)
 
+/*Ej18*/
+mysql> SELECT SUM(productos.stock) AS totalProductos FROM productos 
+INNER JOIN productos_proveedores ON productos.numero_producto=productos_proveedores.numero_producto 
+INNER JOIN proveedores ON productos_proveedores.id_prov=proveedores.id_prov 
+INNER JOIN categorias ON productos.id_categoria=categorias.id_categoria 
+WHERE proveedores.id_prov IN (SELECT id_prov FROM proveedores WHERE ciudad='Madrid') AND categorias.id_categoria IN (SELECT id_categoria FROM categorias WHERE descripcion='Bicicletas');
++----------------+
+| totalProductos |
++----------------+
+|           NULL |
++----------------+
+1 row in set (0.00 sec)
 
-
-
-
-
-
-
-
+/*Ej19*/
