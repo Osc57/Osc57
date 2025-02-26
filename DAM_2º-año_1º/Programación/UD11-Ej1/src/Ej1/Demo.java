@@ -1,4 +1,5 @@
 package Ej1;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -43,18 +44,22 @@ public class Demo {
             throw new RuntimeException(e);
         }
 
-        registro.mostrarFrancia();
+        //Muestro los registros de Francia
+        /**
+         registro.mostrarFrancia();
+         **/
+
         //Ordeno los emails y los muestro
         /**
-        registro.ordenarEmails();
-        System.out.println(registro.mostrarEmail());
-        **/
+         registro.ordenarEmails();
+         System.out.println(registro.mostrarEmail());
+         **/
 
         //Ordeno los logins y los muestro
         /**
-        registro.ordenarLogins();
-        System.out.println(registro.mostrarLogins());
-        **/
+         registro.ordenarLogins();
+         System.out.println(registro.mostrarLogins());
+         **/
 
     }
 }

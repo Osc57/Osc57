@@ -19,7 +19,7 @@ public class Registro {
 
     public void mostrarFrancia() {
         if (listaEmails.isEmpty()) {
-            System.out.println("vacia");
+            System.out.println("Vacia");
         } else {
             for (String f : listaFrancia) {
                 System.out.println(f);
