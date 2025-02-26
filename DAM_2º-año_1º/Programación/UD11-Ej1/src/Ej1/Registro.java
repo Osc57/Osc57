@@ -72,9 +72,8 @@ public class Registro {
     }
 
     //Nombre y Apellido
-    public String anadirNombreApe(String nombre, String ape) {
+    public String anadirNombreApe(String nombre) {
         listaNombreApe.add(nombre);
-        listaNombreApe.add(ape);
         return "";
     }
 }

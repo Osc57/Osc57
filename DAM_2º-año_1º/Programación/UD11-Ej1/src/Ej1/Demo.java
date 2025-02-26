@@ -43,6 +43,7 @@ public class Demo {
                     }
 
                     if (patternNombreApe.matcher(linea).matches()){
+                        registro.anadirNombreApe(linea);
                         System.out.println(linea);
                     }
                 }
