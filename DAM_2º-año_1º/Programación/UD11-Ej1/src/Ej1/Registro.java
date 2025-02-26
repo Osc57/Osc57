@@ -12,7 +12,6 @@ public class Registro {
     private ArrayList<String> listaEmails = new ArrayList<>();
     private List<String> listaLogins = new ArrayList<>();
     private ArrayList<String> listaNombreApe = new ArrayList<>();
-    private ArrayList<String> listaNombreOrdenarLogins = new ArrayList<>();
 
     //Francia
     public String anadirFrancia(String f) {
@@ -81,12 +80,11 @@ public class Registro {
     }
 
     public void ordenarNombreApe(){
-        listaNombreOrdenarLogins=listaNombreApe;
 
         String regexLogin = "201[0-9]|202[0-9]\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}";
         Pattern patternLogin = Pattern.compile(regexLogin);
 
-        
+
 
     }
 
