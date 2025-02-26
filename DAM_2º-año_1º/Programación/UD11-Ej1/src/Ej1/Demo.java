@@ -69,7 +69,7 @@ public class Demo {
          **/
 
         //Ordeno los logins y muestro los nombres
-        System.out.println(registro.mostrarNombreApe());
+        registro.ordenarNombreApe();
 
     }
 }

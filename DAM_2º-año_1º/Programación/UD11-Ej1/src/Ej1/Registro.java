@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Registro {
     private ArrayList<String> listaFrancia = new ArrayList<>();
@@ -79,7 +81,13 @@ public class Registro {
     }
 
     public void ordenarNombreApe(){
-        Collections.sort(listaNombreApe);
+        listaNombreOrdenarLogins=listaNombreApe;
+
+        String regexLogin = "201[0-9]|202[0-9]\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}";
+        Pattern patternLogin = Pattern.compile(regexLogin);
+
+        
+
     }
 
     public String mostrarNombreApe(){
