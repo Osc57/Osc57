@@ -76,4 +76,20 @@ public class Registro {
         listaNombreApe.add(nombre);
         return "";
     }
+
+    public void ordenarNombreApe(){
+        Collections.sort(listaNombreApe);
+    }
+
+    public String mostrarNombreApe(){
+
+        if (listaNombreApe.isEmpty()) {
+            return "Vacia";
+        }
+
+        StringBuilder nombreApe = new StringBuilder();
+        for (String nA : listaLogins) {
+            nombreApe.append(nA).append("\n");
+        }
+        return nombreApe.toString().trim();}
 }
