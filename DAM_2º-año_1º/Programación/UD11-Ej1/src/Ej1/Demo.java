@@ -44,7 +44,19 @@ public class Demo {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println(registro.mostrarFrancia());
+        //Ordeno los emails y los muestro
+        /**
+        registro.ordenarEmails();
+        System.out.println(registro.mostrarEmail());
+        **/
+
+        //Ordeno los logins y los muestro
+        /**
         registro.ordenarLogins();
         System.out.println(registro.mostrarLogins());
+        **/
+
     }
 }

@@ -17,10 +17,38 @@ public class Registro {
         return "";
     }
 
+    public String mostrarFrancia() {
+        if (listaEmails.isEmpty()) {
+            return "Vacia";
+        }
+
+        StringBuilder francia = new StringBuilder();
+        for (String f : listaEmails) {
+            francia.append(f).append("\n");
+        }
+        return francia.toString().trim();
+    }
+
     //Email
     public String anadirEmail(String e) {
         listaEmails.add(e);
         return "";
+    }
+
+    public void ordenarEmails() {
+        Collections.sort(listaLogins);
+    }
+
+    public String mostrarEmail() {
+        if (listaEmails.isEmpty()) {
+            return "Vacia";
+        }
+
+        StringBuilder email = new StringBuilder();
+        for (String e : listaEmails) {
+            email.append(e).append("\n");
+        }
+        return email.toString().trim();
     }
 
     //Logins
@@ -38,11 +66,11 @@ public class Registro {
             return "Vacia";
         }
 
-        StringBuilder resultado = new StringBuilder();
+        StringBuilder login = new StringBuilder();
         for (String l : listaLogins) {
-            resultado.append(l).append("\n");
+            login.append(l).append("\n");
         }
-        return resultado.toString().trim();
+        return login.toString().trim();
     }
 
     //Nombre y Apellido
