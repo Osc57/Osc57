@@ -88,7 +88,7 @@ public class Registro {
         }
 
         StringBuilder nombreApe = new StringBuilder();
-        for (String nA : listaLogins) {
+        for (String nA : listaNombreApe) {
             nombreApe.append(nA).append("\n");
         }
         return nombreApe.toString().trim();}

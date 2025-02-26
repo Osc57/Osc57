@@ -44,7 +44,6 @@ public class Demo {
 
                     if (patternNombreApe.matcher(linea).matches()) {
                         registro.anadirNombreApe(linea);
-                        System.out.println(linea);
                     }
                 }
             }
@@ -70,7 +69,7 @@ public class Demo {
          **/
 
         //Ordeno los logins y muestro los nombres
-
+        System.out.println(registro.mostrarNombreApe());
 
     }
 }
