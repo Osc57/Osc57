@@ -14,10 +14,13 @@ public class Demo {
         String regexFrancia = ".*,(FR),.*";
         String regexEmailYahoo = ".*,\\w+@yahoo.(\\w+.|\\w+),.*";
         String regexLogin = "201[5-7]-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}";
+        String regexNombreApe= "\\d+,A\\w+,.*";
+
 
         Pattern patternFrancia = Pattern.compile(regexFrancia);
         Pattern patternEmailYahoo = Pattern.compile(regexEmailYahoo);
         Pattern patternLogin = Pattern.compile(regexLogin);
+        Pattern patternNombreApe = Pattern.compile(regexNombreApe);
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("DATA.csv"));) {
             String linea;
@@ -37,6 +40,10 @@ public class Demo {
                     }
                     if (matcherLogin.matches()) {
                         registro.anadirLogins(linea);
+                    }
+
+                    if (patternNombreApe.matcher(linea).matches()){
+                        System.out.println(linea);
                     }
                 }
             }
