@@ -80,9 +80,13 @@ public class Registro {
     }
 
     public void ordenarNombreApe(){
-
         String regexLogin = "201[0-9]|202[0-9]\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}";
         Pattern patternLogin = Pattern.compile(regexLogin);
+
+        while (listaNombreApe != null){
+            Matcher matcherLogin = patternLogin.matcher();
+
+        }
 
 
 
