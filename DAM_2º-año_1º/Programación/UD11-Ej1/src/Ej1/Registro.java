@@ -22,11 +22,7 @@ public class Registro {
             return "Vacia";
         }
 
-        StringBuilder francia = new StringBuilder();
-        for (String f : listaEmails) {
-            francia.append(f).append("\n");
-        }
-        return francia.toString().trim();
+        
     }
 
     //Email
