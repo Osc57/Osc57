@@ -10,6 +10,7 @@ public class Registro {
     private ArrayList<String> listaEmails = new ArrayList<>();
     private List<String> listaLogins = new ArrayList<>();
     private ArrayList<String> listaNombreApe = new ArrayList<>();
+    private ArrayList<String> listaNombreOrdenarLogins = new ArrayList<>();
 
     //Francia
     public String anadirFrancia(String f) {
