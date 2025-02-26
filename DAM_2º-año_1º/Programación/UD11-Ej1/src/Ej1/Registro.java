@@ -17,12 +17,14 @@ public class Registro {
         return "";
     }
 
-    public String mostrarFrancia() {
+    public void mostrarFrancia() {
         if (listaEmails.isEmpty()) {
-            return "Vacia";
+            System.out.println("vacia");
+        } else {
+            for (String f : listaFrancia) {
+                System.out.println(f);
+            }
         }
-
-        
     }
 
     //Email

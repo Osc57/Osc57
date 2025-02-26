@@ -19,7 +19,7 @@ public class Demo {
         Pattern patternLogin = Pattern.compile(regexLogin);
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("DATA.csv"));) {
-            String linea = null;
+            String linea;
             while ((linea = bufferedReader.readLine()) != null) {
 
                 String[] columnas = linea.split(",");
@@ -43,7 +43,7 @@ public class Demo {
             throw new RuntimeException(e);
         }
 
-        System.out.println(registro.mostrarFrancia());
+        registro.mostrarFrancia();
         //Ordeno los emails y los muestro
         /**
         registro.ordenarEmails();
