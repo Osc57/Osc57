@@ -81,7 +81,7 @@ public class Registro {
 
     public void ordenarNombreApe(){
 
-        
+
     }
 
     public String mostrarNombreApe(){
