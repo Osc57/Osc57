@@ -31,4 +31,8 @@ public class Pila {
             return null;
         }
     }
+
+    public  int size(){
+        return pila.size();
+    }
 }
