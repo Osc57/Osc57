@@ -1,6 +1,7 @@
 package Ej4;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Escribe un programa que permita crear una lista de palabras y que, a continuación,
@@ -14,14 +15,14 @@ import java.util.ArrayList;
  * Lista final: “monitor”, “keyboard”, “mouse”, “computer”
  * **/
 public class Ej4 {
-    private static void imprimeLaLista(ArrayList<String> l) {
+    private static void imprimeLaLista(List<String> l) {
         for (String componente : l){
             System.out.print(componente + ", ");
         }
         System.out.println("\n");
     }
     public static void main(String[] args) {
-        ArrayList<String> listaComponentes = new ArrayList<>();
+        List<String> listaComponentes = new ArrayList<>();
 
         listaComponentes.add("monitor");
         listaComponentes.add("keyboard");
@@ -30,11 +31,10 @@ public class Ej4 {
 
         imprimeLaLista(listaComponentes);
 
-        listaComponentes.remove(2);
+        listaComponentes.set(2,"mouse");
+
         imprimeLaLista(listaComponentes);
-        
-        listaComponentes.add(2, "mouse");
-        imprimeLaLista(listaComponentes);
+
 
     }
 }
