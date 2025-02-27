@@ -15,6 +15,6 @@ public class PilaTest {
     public void testPushPila(){
         pila.push(46);
 
-       assertEquals(46, 46);
+       
     }
 }
