@@ -32,7 +32,7 @@ public class Ej4 {
 
         listaComponentes.remove(2);
         imprimeLaLista(listaComponentes);
-
+        
         listaComponentes.add(2, "mouse");
         imprimeLaLista(listaComponentes);
 
