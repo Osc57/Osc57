@@ -298,3 +298,63 @@ WHERE proveedores.id_prov IN (SELECT id_prov FROM proveedores WHERE ciudad='Madr
 1 row in set (0.00 sec)
 
 /*Ej19*/
+mysql> SELECT COUNT(id_empleado) AS empleados FROM empleados WHERE id_empleado IN (SELECT id_empleado FROM pedidos WHERE precio_total IN (SELECT MAX(precio_total) FROM pedidos));
++-----------+
+| empleados |
++-----------+
+|         1 |
++-----------+
+1 row in set (0,01 sec)
+
+/*Ej20*/
+mysql> SELECT descripcion FROM categorias WHERE id_categoria IN (SELECT id_categoria FROM productos WHERE precio_venta IN (SELECT MIN(precio_venta) FROM productos));
++-------------+
+| descripcion |
++-------------+
+| Componentes |
++-------------+
+1 row in set (0,00 sec)
+
+/*Ej21*/
+mysql> SELECT * FROM clientes WHERE id_cliente IN (SELECT id_cliente FROM pedidos WHERE fecha_pedido > '2007-11-20' AND fecha_pedido < '2007-11-23');
++------------+--------+-----------+-----------------+----------+-----------+------------+-------------+----------+
+| id_cliente | nombre | apellidos | direccion       | ciudad   | provincia | cod_postal | codigo_area | telefono |
++------------+--------+-----------+-----------------+----------+-----------+------------+-------------+----------+
+|       1012 | Lisa   | Colomer   | Calle Zurita 13 | Belmonte | MADRID    | 28006      |         425 | 555-2556 |
++------------+--------+-----------+-----------------+----------+-----------+------------+-------------+----------+
+1 row in set (0.00 sec)
+
+/*Ej22*/
+mysql> SELECT * FROM empleados WHERE id_empleado IN (SELECT id_empleado FROM pedidos WHERE fecha_pedido IN (SELECT MAX(fecha_pedido) FROM pedidos));
++-------------+----------+-----------+-------------------------+------------+-----------+------------+-------------+----------+
+| id_empleado | nombre   | apellidos | direccion               | ciudad     | provincia | cod_postal | codigo_area | telefono |
++-------------+----------+-----------+-------------------------+------------+-----------+------------+-------------+----------+
+|         702 | Maria    | Torres    | Calle del Rio 122       | Daganzo    | MADRID    | 28019      |         425 | 555-2516 |
+|         704 | Carol    | Viescas   | Calle bahia 22          | Horcajuelo | MADRID    | 28033      |         425 | 555-2576 |
+|         705 | Pedro    | Donoso    | Avda del Oeste 45       | San Roman  | TOLEDO    | 45284      |         210 | 5552311  |
+|         706 | David    | Viescas   | Cortes 16               | Robledo    | MADRID    | 28052      |         425 | 555-2661 |
+|         707 | Catalina | Pelayo    | Calle del Pez 5 Apt. 2A | Somosierra | MADRID    | 28105      |         206 | 555-2697 |
++-------------+----------+-----------+-------------------------+------------+-----------+------------+-------------+----------+
+5 rows in set (0.02 sec)
+
+/*Ej23*/
+mysql> SELECT COUNT(numero_producto) AS numero_productos,nombre,descripcion,precio_venta,stock,id_categoria FROM productos 
+WHERE precio_venta IN (SELECT MAX(precio_venta) FROM productos) GROUP BY numero_producto;
++------------------+--------------------------+-------------+--------------+-------+--------------+
+| numero_productos | nombre                   | descripcion | precio_venta | stock | id_categoria |
++------------------+--------------------------+-------------+--------------+-------+--------------+
+|                1 | Eagle FS-3 Mountain Bike | NULL        |      1800.00 |     8 |            2 |
++------------------+--------------------------+-------------+--------------+-------+--------------+
+1 row in set (0.00 sec)
+
+/*Ej24*/
+
+
+
+
+
+
+
+
+
+
