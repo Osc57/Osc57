@@ -338,13 +338,15 @@ mysql> SELECT * FROM empleados WHERE id_empleado IN (SELECT id_empleado FROM ped
 5 rows in set (0.02 sec)
 
 /*Ej23*/
-mysql> SELECT COUNT(numero_producto) AS numero_productos,nombre,descripcion,precio_venta,stock,id_categoria FROM productos 
-WHERE precio_venta IN (SELECT MAX(precio_venta) FROM productos) GROUP BY numero_producto;
-+------------------+--------------------------+-------------+--------------+-------+--------------+
-| numero_productos | nombre                   | descripcion | precio_venta | stock | id_categoria |
-+------------------+--------------------------+-------------+--------------+-------+--------------+
-|                1 | Eagle FS-3 Mountain Bike | NULL        |      1800.00 |     8 |            2 |
-+------------------+--------------------------+-------------+--------------+-------+--------------+
+mysql> SELECT productos_proveedores.numero_producto,(precio_venta-productos_proveedores.precio_por_mayor) AS beneficio FROM productos 
+INNER JOIN productos_proveedores ON productos.numero_producto=productos_proveedores.numero_producto 
+WHERE (precio_venta-productos_proveedores.precio_por_mayor)=(SELECT MAX(precio_venta-productos_proveedores.precio_por_mayor) FROM productos INNER JOIN productos_proveedores ON producto
+s.numero_producto=productos_proveedores.numero_producto);
++-----------------+-----------+
+| numero_producto | beneficio |
++-----------------+-----------+
+|              11 |    573.38 |
++-----------------+-----------+
 1 row in set (0.00 sec)
 
 /*Ej24*/
