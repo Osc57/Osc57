@@ -29,6 +29,6 @@ public class Ej7 {
                 System.out.print(list1.get(i)+ ", ");
             }
         }
-
+        
     }
 }
