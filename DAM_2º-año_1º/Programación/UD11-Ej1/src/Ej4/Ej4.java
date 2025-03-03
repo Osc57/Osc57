@@ -35,19 +35,21 @@ public class Ej4 {
         System.out.print("Dime una frase la cuál quieras cambiar: ");
         String frase = scanner.nextLine().toLowerCase();
 
-        for (int i = 0; i < listaComponentes.size(); i++) {
-            if (frase.equals(listaComponentes.get(i))){
-                listaComponentes.remove(listaComponentes.get(i));
-                System.out.print("Por cuál la quieres sustituir: ");
-                String sustituto = scanner.nextLine();
+        if (listaComponentes.contains(frase)){
+            for (int i = 0; i < listaComponentes.size(); i++) {
+                if (frase.equals(listaComponentes.get(i))){
+                    listaComponentes.remove(listaComponentes.get(i));
+                    System.out.print("Por cuál la quieres sustituir: ");
+                    String sustituto = scanner.nextLine();
 
-                listaComponentes.add(i,sustituto);
-            }else {
-                System.out.println("La palabra no está en la lista");
+                    listaComponentes.add(i,sustituto);
+                }
             }
+            imprimeLaLista(listaComponentes);
+        }else {
+            System.out.println("La palabra no esta en la lista");
         }
 
-        imprimeLaLista(listaComponentes);
 
     }
 }
