@@ -20,6 +20,7 @@ public class Ej4 {
         for (String componente : l){
             System.out.print(componente + ", ");
         }
+        System.out.println();
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +32,6 @@ public class Ej4 {
         listaComponentes.add("computer");
 
         imprimeLaLista(listaComponentes);
-        System.out.println();
         System.out.print("Dime una frase la cual quieras cambiar: ");
         String frase = scanner.nextLine();
 
