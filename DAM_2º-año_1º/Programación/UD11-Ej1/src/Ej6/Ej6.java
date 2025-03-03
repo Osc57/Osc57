@@ -14,12 +14,12 @@ public class Ej6 {
         Set<Integer> numeros = new HashSet<>();
 
 
-        while (numeros.size() < 30){
+        while (numeros.size() < 30) {
             int numero = random.nextInt(100);
             numeros.add(numero);
         }
 
         System.out.println(numeros);
-
+        
     }
 }
