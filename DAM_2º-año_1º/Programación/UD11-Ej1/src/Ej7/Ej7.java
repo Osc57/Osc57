@@ -24,7 +24,11 @@ public class Ej7 {
         List<String> list1 = Arrays.asList("Ann", "Carol", "Mary", "Joe", "John", "Kevin", "Jack", "Jack", "Lucy", "Laura", "George", "Ann", "Johnny", "Charlie", "Hillary");
         List<String> list2 = Arrays.asList("Ann", "Martha", "Noel", "Mark", "Pamela", "Elisabeth", "Laura", "Jane", "Mildred", "Laura", "Rue", "Ann", "Jacob", "Sidney", "Sophia", "Tyler");
 
-        
+        for (int i = 0; i < list1.size(); i++) {
+            if (list1.get(i).equals(list2.get(i))) {
+                System.out.print(list1.get(i)+ ", ");
+            }
+        }
 
     }
 }
