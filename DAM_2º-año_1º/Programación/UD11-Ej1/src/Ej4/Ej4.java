@@ -32,13 +32,13 @@ public class Ej4 {
         listaComponentes.add("computer");
 
         imprimeLaLista(listaComponentes);
-        System.out.print("Dime una frase la cual quieras cambiar: ");
+        System.out.print("Dime una frase la cuál quieras cambiar: ");
         String frase = scanner.nextLine();
 
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (frase.equals(listaComponentes.get(i))){
                 listaComponentes.remove(listaComponentes.get(i));
-                System.out.print("Por cual la quieres sustituir: ");
+                System.out.print("Por cuál la quieres sustituir: ");
                 String sustituto = scanner.nextLine();
 
                 listaComponentes.add(i,sustituto);
