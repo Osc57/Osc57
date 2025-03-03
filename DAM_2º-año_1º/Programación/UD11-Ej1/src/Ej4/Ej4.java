@@ -42,6 +42,8 @@ public class Ej4 {
                 String sustituto = scanner.nextLine();
 
                 listaComponentes.add(i,sustituto);
+            }else {
+                System.out.println("La palabra no está en la lista");
             }
         }
 
