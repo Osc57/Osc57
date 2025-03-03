@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Eliminar la palabra:
  * “trackpad”
  * Lista final: “monitor”, “keyboard”, “computer”
- * **/
+ **/
 public class Ej5 {
     private static void imprimeLaLista(List<String> l) {
         for (String componente : l) {
@@ -33,8 +33,7 @@ public class Ej5 {
         imprimeLaLista(listaComponentes);
         System.out.print("Que palabra quieres elminiar de la lista: ");
         String palabra = scanner.nextLine();
-
-
+        
         listaComponentes.remove(palabra);
 
         imprimeLaLista(listaComponentes);
