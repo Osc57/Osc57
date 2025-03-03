@@ -1,5 +1,6 @@
 package Ej8;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -11,12 +12,25 @@ import java.util.Scanner;
 public class Ej8 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> listaCaracteres = new ArrayList<>();
 
         System.out.print("Dime una frase: ");
         String frase = scanner.nextLine().toLowerCase();
 
-        for (int i = 0; i < frase.length(); i++) {
-            
+        char[] letras = frase.toCharArray();
+        int contador = 0;
+        for (char l = 'a';l<='z';l++){
+            listaCaracteres.add(String.valueOf(l));
+        }
+
+        for (String c : listaCaracteres){
+            for (int i = 0; i < letras.length -1; i++) {
+                if (c.equals(String.valueOf(letras[i]))){
+                    contador++;
+                }
+            }
+            System.out.println(c + " aparece " + contador + " veces");
+            contador=0;
         }
     }
 }
