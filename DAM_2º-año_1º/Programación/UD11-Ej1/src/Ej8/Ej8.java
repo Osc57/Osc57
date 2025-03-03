@@ -19,18 +19,18 @@ public class Ej8 {
 
         char[] letras = frase.toCharArray();
         int contador = 0;
-        for (char l = 'a';l<='z';l++){
+        for (char l = 'a'; l <= 'z'; l++) {
             listaCaracteres.add(String.valueOf(l));
         }
 
-        for (String c : listaCaracteres){
-            for (int i = 0; i < letras.length -1; i++) {
-                if (c.equals(String.valueOf(letras[i]))){
+        for (String c : listaCaracteres) {
+            for (int i = 0; i < letras.length - 1; i++) {
+                if (c.equals(String.valueOf(letras[i]))) {
                     contador++;
                 }
             }
             System.out.println(c + " aparece " + contador + " veces");
-            contador=0;
+            contador = 0;
         }
     }
 }
