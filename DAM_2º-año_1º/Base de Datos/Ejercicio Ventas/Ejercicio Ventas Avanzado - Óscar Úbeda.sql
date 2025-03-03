@@ -350,9 +350,18 @@ s.numero_producto=productos_proveedores.numero_producto);
 1 row in set (0.00 sec)
 
 /*Ej24*/
+mysql> SELECT MAX(dias_envio) AS tardaMasProveedor, id_prov FROM productos_proveedores 
+WHERE dias_envio IN (SELECT MAX(dias_envio) FROM productos_proveedores) GROUP BY id_prov;
++-------------------+---------+
+| tardaMasProveedor | id_prov |
++-------------------+---------+
+|                15 |       6 |
+|                15 |       7 |
+|                15 |      10 |
++-------------------+---------+
+3 rows in set (0.00 sec)
 
-
-
+/*Ej25*/
 
 
 
