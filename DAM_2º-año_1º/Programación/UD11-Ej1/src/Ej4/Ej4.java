@@ -2,6 +2,7 @@ package Ej4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Escribe un programa que permita crear una lista de palabras y que, a continuación,
@@ -19,9 +20,9 @@ public class Ej4 {
         for (String componente : l){
             System.out.print(componente + ", ");
         }
-        System.out.println("\n");
     }
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         List<String> listaComponentes = new ArrayList<>();
 
         listaComponentes.add("monitor");
@@ -30,11 +31,21 @@ public class Ej4 {
         listaComponentes.add("computer");
 
         imprimeLaLista(listaComponentes);
+        System.out.println();
+        System.out.print("Dime una frase la cual quieras cambiar: ");
+        String frase = scanner.nextLine();
 
-        listaComponentes.set(2,"mouse");
+        for (int i = 0; i < listaComponentes.size(); i++) {
+            if (frase.equals(listaComponentes.get(i))){
+                listaComponentes.remove(listaComponentes.get(i));
+                System.out.print("Por cual la quieres sustituir: ");
+                String sustituto = scanner.nextLine();
+
+                listaComponentes.add(i,sustituto);
+            }
+        }
 
         imprimeLaLista(listaComponentes);
-
 
     }
 }
