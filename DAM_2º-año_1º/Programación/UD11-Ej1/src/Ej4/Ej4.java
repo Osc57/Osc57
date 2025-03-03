@@ -14,14 +14,15 @@ import java.util.Scanner;
  * Por:
  * “mouse”
  * Lista final: “monitor”, “keyboard”, “mouse”, “computer”
- * **/
+ **/
 public class Ej4 {
     private static void imprimeLaLista(List<String> l) {
-        for (String componente : l){
+        for (String componente : l) {
             System.out.print(componente + ", ");
         }
         System.out.println();
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<String> listaComponentes = new ArrayList<>();
@@ -35,18 +36,18 @@ public class Ej4 {
         System.out.print("Dime una frase la cuál quieras cambiar: ");
         String frase = scanner.nextLine().toLowerCase();
 
-        if (listaComponentes.contains(frase)){
+        if (listaComponentes.contains(frase)) {
             for (int i = 0; i < listaComponentes.size(); i++) {
-                if (frase.equals(listaComponentes.get(i))){
+                if (frase.equals(listaComponentes.get(i))) {
                     listaComponentes.remove(listaComponentes.get(i));
                     System.out.print("Por cuál la quieres sustituir: ");
                     String sustituto = scanner.nextLine();
 
-                    listaComponentes.add(i,sustituto);
+                    listaComponentes.add(i, sustituto);
                 }
             }
             imprimeLaLista(listaComponentes);
-        }else {
+        } else {
             System.out.println("La palabra no esta en la lista");
         }
 
