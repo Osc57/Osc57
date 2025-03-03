@@ -33,7 +33,7 @@ public class Ej5 {
         imprimeLaLista(listaComponentes);
         System.out.print("Que palabra quieres elminiar de la lista: ");
         String palabra = scanner.nextLine();
-        
+
         listaComponentes.remove(palabra);
 
         imprimeLaLista(listaComponentes);
