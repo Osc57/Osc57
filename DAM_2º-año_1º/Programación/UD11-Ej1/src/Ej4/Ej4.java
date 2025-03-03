@@ -33,7 +33,7 @@ public class Ej4 {
 
         imprimeLaLista(listaComponentes);
         System.out.print("Dime una frase la cuál quieras cambiar: ");
-        String frase = scanner.nextLine();
+        String frase = scanner.nextLine().toLowerCase();
 
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (frase.equals(listaComponentes.get(i))){
