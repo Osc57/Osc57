@@ -1,7 +1,17 @@
 from tkinter import *
 
-canva = Canvas(width=640, height=480, bg="white")
+canva = Canvas(width=800, height=600, bg="white")
 canva.pack(expand=YES, fill=BOTH)
-canva.create_oval(200,200,400,400,outline="black",fill="aquamarine",width = 2)
-mainloop()
 
+x1=100
+y1=100
+x2=500
+y2=500
+for i in range(40):
+    canva.create_oval(x1,y1,x2,y2,outline="white",fill="red",width = 1.5)
+    x1+=5
+    y1+=5
+    x2-=5
+    y2-=5
+
+mainloop()
