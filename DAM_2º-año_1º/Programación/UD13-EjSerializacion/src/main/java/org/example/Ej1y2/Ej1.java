@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class Ej1 {
     public static void main(String[] args) {
-        Book book = new Book("Don Quijote de La Mancha","Miguel de Cervantes",1605);
+        Book book = new Book("Don Quijote de La Mancha", "Miguel de Cervantes", 1605);
 
         ObjectMapper objectMapper = new ObjectMapper();
 
