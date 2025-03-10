@@ -13,6 +13,9 @@ public class Ej2 {
         try {
             Book book = objectMapper.readValue(new File("Libro.json"), Book.class);
             System.out.println(book);
+            System.out.println("Nombre: " + book.getTitle());
+            System.out.println("Autor: " + book.getAuthor());
+            System.out.println("Año de Lanzamiento: " + book.getYearPublished());
 
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
