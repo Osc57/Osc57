@@ -2,7 +2,7 @@ package org.example.Ej3y4;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.Ej1y2.Book;
+import org.example.Book;
 
 import java.io.IOException;
 import java.nio.file.Paths;
