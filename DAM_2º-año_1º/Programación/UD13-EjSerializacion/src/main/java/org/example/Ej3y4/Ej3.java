@@ -4,12 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.Ej1y2.Book;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
 public class Ej3 {
     public static void main(String[] args) {
-        Library library = new Library();
+        Library library = new Library(new File("Librería.json"), Library.class);
         library.meterLibro(new Book("Veinte Mil Leguas de Viaje Submarino","Julio Verne",1870));
         library.meterLibro(new Book("Don Quijote de La Mancha", "Miguel de Cervantes", 1605));
 
