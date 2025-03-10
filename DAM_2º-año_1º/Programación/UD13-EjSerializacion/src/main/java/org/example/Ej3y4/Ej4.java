@@ -13,7 +13,7 @@ public class Ej4 {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            Library library = new Library(new File("Librería.json"),Library.class);
+            Library library = objectMapper.readValue(new File("Librería.json"),Library.class);
 
             for (Book b : library.getListaLibros()){
                 System.out.println(b);

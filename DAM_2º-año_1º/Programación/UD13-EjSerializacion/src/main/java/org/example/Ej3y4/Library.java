@@ -9,6 +9,9 @@ import java.util.List;
 public class Library {
     private List<Book> listaLibros;
 
+    public Library() {
+    }
+
     public Library(File file, Class<Library> libraryClass) {
 
         this.listaLibros = new ArrayList<>();
