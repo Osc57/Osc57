@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<library>
+    <listaLibros>
+        <author>Julio Verne</author>
+        <title>Veinte Mil Leguas de Viaje Submarino</title>
+        <yearPublished>1870</yearPublished>
+    </listaLibros>
+    <listaLibros>
+        <author>Miguel de Cervantes</author>
+        <title>Don Quijote de La Mancha</title>
+        <yearPublished>1605</yearPublished>
+    </listaLibros>
+</library>
