@@ -11,6 +11,7 @@ public class Ej3 {
     public static void main(String[] args) {
         Library library = new Library();
         library.meterLibro(new Book("Veinte Mil Leguas de Viaje Submarino","Julio Verne",1870));
+        library.meterLibro(new Book("Don Quijote de La Mancha", "Miguel de Cervantes", 1605));
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
