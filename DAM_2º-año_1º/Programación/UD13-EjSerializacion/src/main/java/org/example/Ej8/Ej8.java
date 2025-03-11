@@ -9,6 +9,7 @@ import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
 public class Ej8 {
     public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class Ej8 {
         author.setName("Julio Verne");
         author.setBooksWritten(Arrays.asList(book,book1));
 
-        bookstore.setAuthors(Arrays.asList(author));
+        bookstore.setAuthors(List.of(author));
         bookstore.setBooks(Arrays.asList(book,book1));
 
         ObjectMapper objectMapper = new ObjectMapper();
