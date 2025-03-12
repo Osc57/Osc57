@@ -11,19 +11,24 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Crear una clase “Bookstore” que contenga una lista de “Book” y una lista de
+ * “Author”. Serializar una instancia de “Bookstore” a JSON y a XML.
+ **/
+
 public class Ej8 {
     public static void main(String[] args) {
         Bookstore bookstore = new Bookstore();
 
-        Book book = new Book("Veinte Mil Leguas de Viaje Submarino","Julio Verne",1870);
+        Book book = new Book("Veinte Mil Leguas de Viaje Submarino", "Julio Verne", 1870);
         Book book1 = new Book("La Vuelta al Mundo en 80 días", "Julio Verne", 1873);
 
         Author author = new Author();
         author.setName("Julio Verne");
-        author.setBooksWritten(Arrays.asList(book,book1));
+        author.setBooksWritten(Arrays.asList(book, book1));
 
         bookstore.setAuthors(List.of(author));
-        bookstore.setBooks(Arrays.asList(book,book1));
+        bookstore.setBooks(Arrays.asList(book, book1));
 
         ObjectMapper objectMapper = new ObjectMapper();
 

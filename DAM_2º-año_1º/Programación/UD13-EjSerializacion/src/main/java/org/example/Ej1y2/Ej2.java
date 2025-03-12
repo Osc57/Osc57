@@ -6,6 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Tomar el JSON producido en el Ejercicio 1 y deserializarlo de nuevo a una
+ * instancia de “Book” usando FasterXML.
+ **/
+
 public class Ej2 {
     public static void main(String[] args) {
 

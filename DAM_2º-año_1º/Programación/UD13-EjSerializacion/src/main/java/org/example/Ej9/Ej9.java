@@ -9,16 +9,23 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
+/**
+ * Crear una clase “Publisher” que contenga un “name”, una “address”, y una lista
+ * de “Book”. Asegurarse de que cuando se serializa una instancia de “Publisher”, la lista de libros
+ * se serializa como una lista de títulos de libros (es decir, no se incluye toda la información del
+ * libro, solo el título). Hacer esto tanto para JSON como para XML.
+ **/
+
 public class Ej9 {
     public static void main(String[] args) {
         Publisher publisher = new Publisher();
         publisher.setNombre("Pierre–Jules Hetzel");
         publisher.setAddress("Mónaco");
 
-        Book book = new Book("Veinte Mil Leguas de Viaje Submarino","Julio Verne",1870);
+        Book book = new Book("Veinte Mil Leguas de Viaje Submarino", "Julio Verne", 1870);
         Book book1 = new Book("La Vuelta al Mundo en 80 días", "Julio Verne", 1873);
 
-        publisher.setBooks(Arrays.asList(book,book1));
+        publisher.setBooks(Arrays.asList(book, book1));
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -26,7 +33,7 @@ public class Ej9 {
             System.out.println(json);
             objectMapper.writeValue(Paths.get("Publisher.json").toFile(), publisher);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         try {

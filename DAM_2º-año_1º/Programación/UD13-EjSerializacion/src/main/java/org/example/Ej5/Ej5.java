@@ -5,6 +5,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 
+/**
+ * Repetir los Ejercicios 1 y 2, pero esta vez serializar a XML usando JAXB.
+ **/
+
 public class Ej5 {
     public static void main(String[] args) {
         Book book = new Book("La Vuelta al Mundo en 80 días", "Julio Verne", 1873);
