@@ -13,6 +13,16 @@
         </entry>
         <entry>
             <key>
+                <name>Julio Verne</name>
+            </key>
+            <value>
+                <author>Julio Verne</author>
+                <title>Veinte Mil Leguas de Viaje Submarino</title>
+                <yearPublished>1870</yearPublished>
+            </value>
+        </entry>
+        <entry>
+            <key>
                 <name>Miguel de Cervantes</name>
             </key>
             <value>
