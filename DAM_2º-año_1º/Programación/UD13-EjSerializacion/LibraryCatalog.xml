@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<libraryCatalog>
+    <bookMap>
+        <entry>
+            <key>
+                <name>Julio Verne</name>
+            </key>
+            <value>
+                <author>Julio Verne</author>
+                <title>Veinte Mil Leguas de Viaje Submarino</title>
+                <yearPublished>1870</yearPublished>
+            </value>
+        </entry>
+        <entry>
+            <key>
+                <name>Miguel de Cervantes</name>
+            </key>
+            <value>
+                <author>Miguel de Cervantes</author>
+                <title>Don Quijote de La Mancha</title>
+                <yearPublished>1605</yearPublished>
+            </value>
+        </entry>
+    </bookMap>
+</libraryCatalog>
