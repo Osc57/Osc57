@@ -23,8 +23,8 @@ public class Ej10 {
         LibraryCatalog libraryCatalog = new LibraryCatalog();
 
         libraryCatalog.anadirLibro(new Author("Julio Verne"), new Book("Veinte Mil Leguas de Viaje Submarino", "Julio Verne", 1870));
-        libraryCatalog.anadirLibro(new Author("Julio Verne"), new Book("La Vuelta al Mundo en 80 días", "Julio Verne", 1870));
         libraryCatalog.anadirLibro(new Author("Miguel de Cervantes"), new Book("Don Quijote de La Mancha", "Miguel de Cervantes", 1605));
+        libraryCatalog.anadirLibro(new Author("Julio Verne"), new Book("La Vuelta al Mundo en 80 días", "Julio Verne", 1870));
 
         ObjectMapper objectMapper = new ObjectMapper();
 
