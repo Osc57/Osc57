@@ -8,4 +8,4 @@ points = [0,200,100,0,200,200]
 
 canvas.create_polygon(points,outline="blue",fill="green", width=2)
 
-turtle.done()
+mainloop()
