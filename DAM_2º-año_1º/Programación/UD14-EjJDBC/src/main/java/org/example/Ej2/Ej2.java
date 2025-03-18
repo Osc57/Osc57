@@ -17,7 +17,9 @@ public class Ej2 {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO alumno (nombre,apellido,direccion) VALUES (?,?,?)");
             ResultSet resultSet = preparedStatement.executeQuery();
 
-
+            while (resultSet.next()){
+                
+            }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
