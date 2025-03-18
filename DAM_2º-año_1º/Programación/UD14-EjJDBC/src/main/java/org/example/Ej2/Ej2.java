@@ -17,17 +17,35 @@ public class Ej2 {
     }
 
     public static void main(String[] args) {
-        try (Connection connection = connect()){
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO alumno (nombre,apellido,direccion) VALUES (?,?,?)");
-            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+        String[][] alumnos = {
+                {"Juan", "Pérez", "Calle 123"},
+                {"María", "Gómez", "Av. Principal 45"},
+                {"Carlos", "Ramírez", "Carrera 78"},
+                {"Ana", "Fernández", "Diagonal 30"},
+                {"Luis", "Hernández", "Calle 50"},
+                {"Sofía", "Díaz", "Av. Secundaria 10"},
+                {"Pedro", "Martínez", "Calle 90"},
+                {"Laura", "Sánchez", "Carrera 25"},
+                {"José", "Rodríguez", "Av. Central 55"},
+                {"Elena", "López", "Calle 70"}
+        };
 
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO alumno (nombre,apellidos,direccion) VALUES (?,?,?)");
+
+
+            for (String[] alumno : alumnos) {
+                preparedStatement.setString(1, alumno[0]);
+                preparedStatement.setString(2, alumno[1]);
+                preparedStatement.setString(3, alumno[2]);
+                preparedStatement.executeUpdate();
             }
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 connect().close();
             } catch (SQLException e) {
