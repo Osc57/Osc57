@@ -28,7 +28,11 @@ public class Ej2 {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }finally {
-
+            try {
+                connect().close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
