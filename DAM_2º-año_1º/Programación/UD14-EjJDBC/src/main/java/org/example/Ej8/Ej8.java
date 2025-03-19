@@ -86,6 +86,36 @@ public class Ej8 extends Conexion {
                 }finally {
                     scanner.close();
                 }
+            case 3:
+                System.out.print("Faciliteme el nombre del alumno: ");
+                String nombre1 = scanner.nextLine();
+                scanner.nextLine();
+
+                System.out.print("Faciliteme ahora el apellido: ");
+                String apellido1 = scanner.nextLine();
+
+                try (Connection connection = connect();
+                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno WHERE nombre LIKE (%?%) OR apellidos LIKE (%?%);")) {
+
+                    preparedStatement.setString(1, nombre1);
+                    preparedStatement.setString(2, apellido1);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+                    while (resultSet.next()) {
+                        int idAl = resultSet.getInt("id");
+                        String nombreAl = resultSet.getString("nombre");
+                        String apellidoAl = resultSet.getString("apellidos");
+                        String direccionAl = resultSet.getString("direccion");
+
+                        System.out.println(idAl + " | " + nombreAl + " | " + apellidoAl + " | " + direccionAl);
+                        System.out.println();
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error al ejecutar el listado del alumno: " + e.getMessage());
+                }finally {
+                    scanner.close();
+                }
 
         }
     }
