@@ -1,9 +1,13 @@
 package org.example.Ej2;
 
-
 import org.example.Conexion;
 
 import java.sql.*;
+
+/**
+ * Una vez diseñada y creada la Base de datos y la respectiva tabla, crea un programa
+ * en Java que introduzca al menos 10 estudiantes.
+ **/
 
 public class Ej2 extends Conexion {
 
