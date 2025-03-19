@@ -6,6 +6,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
+/**
+ * Realiza una pequeña interfaz que te permita borrar un estudiante existente.
+ **/
+
 public class Ej6 extends Conexion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
