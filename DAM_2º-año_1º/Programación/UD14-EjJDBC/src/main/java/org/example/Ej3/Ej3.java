@@ -27,12 +27,6 @@ public class Ej3 extends Conexion {
 
         } catch (Exception e) {
             System.out.println("No se puede introducir los datos debido a que el id es erroneo");
-        } finally {
-            try {
-                connect().close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 }

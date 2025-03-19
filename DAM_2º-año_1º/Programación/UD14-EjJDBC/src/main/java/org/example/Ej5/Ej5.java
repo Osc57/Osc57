@@ -39,12 +39,6 @@ public class Ej5 extends Conexion {
             System.out.println("Datos actualizados correctamente");
         } catch (Exception e) {
             System.out.println("Error en la actualización de los datos: " + e.getMessage());
-        } finally {
-            try {
-                connect().close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        } 
     }
 }

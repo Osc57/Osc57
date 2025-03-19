@@ -37,12 +37,6 @@ public class Ej4 extends Conexion {
             System.out.println("Datos introducidos correctamente");
         } catch (Exception e) {
             System.out.println("Error en la inserción de los datos");
-        } finally {
-            try {
-                connect().close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 }
