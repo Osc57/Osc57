@@ -11,7 +11,7 @@ public class Ej6 extends Conexion {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Introduce datos para eliminar a un alumno");
-        System.out.print("Introduce el id del alumno: ");
+        System.out.print("Introduce el id del alumno que desea eliminar: ");
         int id = scanner.nextInt();
 
         try (Connection connection = connect();
