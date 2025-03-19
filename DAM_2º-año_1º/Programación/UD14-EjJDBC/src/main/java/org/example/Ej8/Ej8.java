@@ -95,10 +95,10 @@ public class Ej8 extends Conexion {
                 String apellido1 = scanner.nextLine();
 
                 try (Connection connection = connect();
-                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno WHERE nombre LIKE (%?%) OR apellidos LIKE (%?%);")) {
+                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno WHERE nombre LIKE ? AND apellidos LIKE ?;")) {
 
-                    preparedStatement.setString(1, nombre1);
-                    preparedStatement.setString(2, apellido1);
+                    preparedStatement.setString(1,"%" +  nombre1 + "%");
+                    preparedStatement.setString(2, "%" + apellido1 + "%");
                     ResultSet resultSet = preparedStatement.executeQuery();
 
                     while (resultSet.next()) {
