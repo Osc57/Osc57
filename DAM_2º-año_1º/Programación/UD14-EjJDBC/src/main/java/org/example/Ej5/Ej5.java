@@ -25,8 +25,9 @@ public class Ej5 extends Conexion {
         System.out.print("Y ahora introduce su dirección: ");
         String direccion = scanner.nextLine();
 
-        try (Connection connection = connect()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE alumno SET nombre=?, apellidos=?, direccion=? WHERE id=?");
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE alumno SET nombre=?, apellidos=?, direccion=? WHERE id=?")) {
+
 
             preparedStatement.setString(1, nombre);
             preparedStatement.setString(2, apellido);
