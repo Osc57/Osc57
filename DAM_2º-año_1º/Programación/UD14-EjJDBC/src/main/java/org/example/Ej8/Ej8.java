@@ -27,6 +27,7 @@ public class Ej8 extends Conexion {
         System.out.println("1 - Para buscar el alumno por id");
         System.out.println("2 - Para buscar el alumno por nombre y por apellido");
         System.out.println("3 - Para buscar por nombre y por apellido pero este puede estar incompleto");
+        System.out.println("0 - Para salir y no realizar ninguna función");
         System.out.print("Introduce la función que desee realizar: ");
         int funcion = scanner.nextInt();
 
@@ -116,7 +117,8 @@ public class Ej8 extends Conexion {
                 }finally {
                     scanner.close();
                 }
-
+            case 0:
+                break;
         }
     }
 }
