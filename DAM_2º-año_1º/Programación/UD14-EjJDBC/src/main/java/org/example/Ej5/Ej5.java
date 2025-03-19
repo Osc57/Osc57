@@ -4,7 +4,6 @@ import org.example.Conexion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Ej5 extends Conexion {
@@ -39,6 +38,6 @@ public class Ej5 extends Conexion {
             System.out.println("Datos actualizados correctamente");
         } catch (Exception e) {
             System.out.println("Error en la actualización de los datos: " + e.getMessage());
-        } 
+        }
     }
 }
