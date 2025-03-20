@@ -2,10 +2,7 @@ package org.example.Ej8;
 
 import org.example.Conexion;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 /**
@@ -54,9 +51,8 @@ public class Ej8 extends Conexion {
 
                 } catch (Exception e) {
                     System.out.println("Error al ejecutar el listado del alumno: " + e.getMessage());
-                }finally {
-                    scanner.close();
                 }
+                break;
             case 2:
                 System.out.print("Faciliteme el nombre del alumno: ");
                 String nombre = scanner.nextLine();
@@ -84,9 +80,8 @@ public class Ej8 extends Conexion {
 
                 } catch (Exception e) {
                     System.out.println("Error al ejecutar el listado del alumno: " + e.getMessage());
-                }finally {
-                    scanner.close();
                 }
+                break;
             case 3:
                 System.out.print("Faciliteme el nombre del alumno: ");
                 String nombre1 = scanner.nextLine();
@@ -98,7 +93,7 @@ public class Ej8 extends Conexion {
                 try (Connection connection = connect();
                      PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno WHERE nombre LIKE ? AND apellidos LIKE ?;")) {
 
-                    preparedStatement.setString(1,"%" +  nombre1 + "%");
+                    preparedStatement.setString(1, "%" + nombre1 + "%");
                     preparedStatement.setString(2, "%" + apellido1 + "%");
                     ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -114,9 +109,8 @@ public class Ej8 extends Conexion {
 
                 } catch (Exception e) {
                     System.out.println("Error al ejecutar el listado del alumno: " + e.getMessage());
-                }finally {
-                    scanner.close();
                 }
+                break;
             case 0:
                 break;
         }
