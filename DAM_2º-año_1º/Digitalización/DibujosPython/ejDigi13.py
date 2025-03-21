@@ -12,5 +12,7 @@ canvas.create_polygon(points,outline="black",fill="brown", width=2)
 canvas.create_line(280,290,230,280, width=3)
 canvas.create_line(320,290,370,280, width=3)
 
+canvas.create_line(280,355,320,355, width=3)
+
 
 mainloop()
