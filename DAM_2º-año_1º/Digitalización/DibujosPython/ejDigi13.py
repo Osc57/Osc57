@@ -14,5 +14,7 @@ canvas.create_line(320,290,370,280, width=3)
 
 canvas.create_line(280,355,320,355, width=3)
 
+points2 = [255,390,300,440,345,390]
+canvas.create_polygon(points2, outline="black", fill="black", width=2)
 
 mainloop()
