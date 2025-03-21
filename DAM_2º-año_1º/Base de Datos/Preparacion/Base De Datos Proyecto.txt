@@ -1,0 +1,32 @@
+•Base De Datos Proyecto
+
+Generar una base de datos de una clínica bucodental, la clínica constara de un jefe, dentistas al cargo del jefe y un/una recepcionista que se encargue de dar citas
+La recepcionista se encargara de dar cita a los clientes/dar de baja y gestionar las llamadas
+Los dentistas harán lo que el jefe haya dictaminado según el tratamiento que el cliente haya hecho
+El jefe gestionara a los demás trabajadores y asignara si al cliente se le debe realizar x tratamiento
+
+•Guardar Datos y Gestionar 
+
+La recepcionista al dar de alta a los clientes estos se deberán registrar en una base de datos
+al darse de baja este cliente será eliminado pero no su expediente
+
+Los dentistas proporcionaran tratamientos a los clientes, y cuando estos hayan terminado el tratamiento se hablara con el jefe
+y este/a dictaminara que tratamiento se le hará la próxima visita
+
+El jefe gestionara que los tratamientos se hayan realizado bien, y les dirá a los dentistas que tratamiento tiene que tener
+el cliente la próxima visita, este tratamiento será comunicado a la recepcionista
+
+Los clientes que no estén dados de alta deberán darse de alta, lo cual equivale a rellenar un formulario 
+y entregárselo a la recepcionista para que introduzca los nuevos datos
+
+A los clientes que ya están dados de alta hace tiempo se les gestionaran mediante un historial los tratamientos que estos han recibido
+cuantas consultas han tenido, y los próximos tratamientos o si se van a dar de baja
+
+•Tablas y posibles entidades
+
+Se generara una entidad de trabajadores y tres entidades mas que será el isa, que se compone de el/la recepcionista, los dentistas y un jefe
+
+Recepcionista da de alta y de baja a clientes (2 relaciones y una entidad) [cliente]<----da alta <----- recepcionista, [cliente]<----da de baja <----- [recepcionista]
+esta seria 1,N ya que la recepcionista puede dar de alta y de baja a muchos clientes
+
+Dentistas 
