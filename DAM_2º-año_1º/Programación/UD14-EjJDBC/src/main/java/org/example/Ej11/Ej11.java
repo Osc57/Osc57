@@ -2,7 +2,6 @@ package org.example.Ej11;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Scanner;
 
 import static org.example.Conexion.connect;
@@ -34,7 +33,8 @@ public class Ej11 {
             System.out.println("Alumno insertado correctamente");
 
         } catch (Exception e) {
-            System.out.println("Error al insertar el alumno al curso: " + e.getMessage());
+            System.out.println("Error al insertar el alumno al curso");
+            System.out.println("No se puede introducir el alumno en un curso en el que ya esta: " + e.getMessage());
         }
     }
 }
