@@ -24,7 +24,7 @@ public class Ej11 {
         int idCurso = scanner.nextInt();
 
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO matriculado (id_alumno, id_curso) VALUES (?,?);");) {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO matriculado (id_alumno, id_curso) VALUES (?,?);")) {
 
             preparedStatement.setInt(1, idAlumno);
             preparedStatement.setInt(2, idCurso);
