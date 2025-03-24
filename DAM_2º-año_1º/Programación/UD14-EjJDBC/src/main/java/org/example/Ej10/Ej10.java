@@ -78,7 +78,7 @@ public class Ej10 {
 
                     preparedStatement.setString(1, nombre1);
                     preparedStatement.setString(2, instructor1);
-                    preparedStatement.setInt(3,idC);
+                    preparedStatement.setInt(3, idC);
 
                     preparedStatement.executeUpdate();
                     System.out.println("Curso actualizado correctamente");
