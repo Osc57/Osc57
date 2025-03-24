@@ -34,7 +34,6 @@ public class Ej13 {
             System.out.println("Alumno cambiado correctamente");
 
         } catch (Exception e) {
-            System.out.println("Error al insertar el alumno al curso");
             System.out.println("No se puede introducir el alumno en un curso en el que ya esta: " + e.getMessage());
         }
     }
