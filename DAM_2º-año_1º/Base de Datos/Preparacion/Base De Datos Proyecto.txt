@@ -8,10 +8,12 @@ El jefe gestionara a los demás trabajadores y asignara si al cliente se le debe
 •Guardar Datos y Gestionar 
 
 La recepcionista al dar de alta a los clientes estos se deberán registrar en una base de datos
-al darse de baja este cliente será eliminado pero no su expediente
+al darse de baja este cliente será eliminado pero no su expediente que este será eliminado en x tiempo por si el cliente decide volver
+seguir teniendo su expediente
 
 Los dentistas proporcionaran tratamientos a los clientes, y cuando estos hayan terminado el tratamiento se hablara con el jefe
-y este/a dictaminara que tratamiento se le hará la próxima visita
+y este/a dictaminara que tratamiento se le hará la próxima visita, los dentistas también podrán ser recepcionistas, depende que dentista este libre,
+si no se asignara un recepcionista
 
 El jefe gestionara que los tratamientos se hayan realizado bien, y les dirá a los dentistas que tratamiento tiene que tener
 el cliente la próxima visita, este tratamiento será comunicado a la recepcionista
