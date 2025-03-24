@@ -31,7 +31,6 @@ public class Ej11 {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             int contador = resultSet.getInt(1);
-            ;
 
             if (contador > 0) {
                 System.out.println("El alumno ya esta matriculado");
@@ -51,10 +50,10 @@ public class Ej11 {
 
             preparedStatement.executeUpdate();
 
-            System.out.println("Curso insertado correctamente");
+            System.out.println("Alumno insertado correctamente");
 
         } catch (Exception e) {
-            System.out.println("Error al insertar el curso: " + e.getMessage());
+            System.out.println("Error al insertar el alumno al curso: " + e.getMessage());
         }
     }
 }
