@@ -88,8 +88,31 @@ public class Ej10 {
                 }
                 break;
             case 4:
+                System.out.print("Faciliteme el id del curso el cuál quiera buscar: ");
+                int id2 = scanner.nextInt();
+
+                try (Connection connection = connect();
+                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cursos WHERE id=?;")) {
+
+                    preparedStatement.setInt(1, id2);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+                    while (resultSet.next()) {
+                        int idCurso = resultSet.getInt("id");
+                        String nombre = resultSet.getString("nombre");
+                        String instructor = resultSet.getString("instructor");
+
+
+                        System.out.println(idCurso + " | " + nombre + " | " + instructor);
+                        System.out.println();
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error al ejecutar el listado del alumno: " + e.getMessage());
+                }
                 break;
             case 0:
+                System.out.println("Saliendo del programa.....");
                 break;
         }
 
