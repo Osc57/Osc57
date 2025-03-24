@@ -2,6 +2,7 @@ package org.example.Ej11;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 import static org.example.Conexion.connect;
@@ -21,6 +22,25 @@ public class Ej11 {
 
         System.out.print("Digame el id del curso: ");
         int idCurso = scanner.nextInt();
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM matriculado;");) {
+
+            preparedStatement.setInt(1, idAlumno);
+            preparedStatement.setInt(2, idCurso);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int contador = resultSet.getInt(1);
+            ;
+
+            if (contador > 0) {
+                System.out.println("El alumno ya esta matriculado");
+                return;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al insertar el alumno al curso: " + e.getMessage());
+        }
 
 
         try (Connection connection = connect();
