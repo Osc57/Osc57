@@ -9,6 +9,9 @@ public class Conexion {
     private static final String user = "root";
     private static final String password = "1234";
 
+    public Conexion() {
+    }
+
     public static Connection connect() {
         try {
             return DriverManager.getConnection(url, user, password);
