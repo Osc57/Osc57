@@ -39,7 +39,7 @@ public class Ej15 {
         scanner.nextLine();
 
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT alumno.nombre, alumno.apellidos FROM alumno INNER JOIN matriculado ON alumno.id=matriculado.id_alumno INNER JOIN cursos ON matriculado.id_curso=cursos.id WHERE matriculado.id_curso=3;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT alumno.nombre, alumno.apellidos FROM alumno INNER JOIN matriculado ON alumno.id=matriculado.id_alumno INNER JOIN cursos ON matriculado.id_curso=cursos.id WHERE matriculado.id_curso=?;")) {
 
             preparedStatement.setInt(1,idAsign);
             ResultSet resultSet = preparedStatement.executeQuery();
