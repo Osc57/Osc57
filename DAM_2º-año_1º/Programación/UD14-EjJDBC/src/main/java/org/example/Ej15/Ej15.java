@@ -32,5 +32,30 @@ public class Ej15 {
         } catch (Exception e) {
             System.out.println("Error al listar los datos: " + e.getMessage());
         }
+
+        System.out.println("Vamos a ver los alumnos matriculados en el curso");
+        System.out.print("Dime el id de la asignatura: ");
+        int idAsign = scanner.nextInt();
+        scanner.nextLine();
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT alumno.nombre, alumno.apellidos FROM alumno INNER JOIN matriculado ON alumno.id=matriculado.id_alumno INNER JOIN cursos ON matriculado.id_curso=cursos.id WHERE matriculado.id_curso=3;")) {
+
+            preparedStatement.setInt(1,idAsign);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                String nombre = resultSet.getString("nombre");
+                String apellidos = resultSet.getString("apellidos");
+
+                System.out.println(nombre + " | " + apellidos);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al listar los datos: " + e.getMessage());
+        }
+
+
     }
 }
