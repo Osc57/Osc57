@@ -8,10 +8,10 @@ El jefe gestionara a los demás trabajadores y asignara si al cliente se le debe
 •Guardar Datos y Gestionar 
 
 La recepcionista al dar de alta a los clientes estos se deberán registrar en el programa
-al darse de baja este cliente será eliminado pero no su expediente que será eliminado en x tiempo por si el cliente decide volver
+al darse de baja este cliente será eliminado pero no su expediente que será eliminado en 'x' tiempo por si el cliente decide volver
 seguir teniendo su expediente
 
-Los dentistas proporcionaran tratamientos a los clientes, y cuando estos hayan terminado el dentista a carago hablara con el jefe
+Los dentistas proporcionaran tratamientos a los clientes, y cuando estos hayan terminado el dentista a cargo hablara con el jefe
 y este/a dictaminara que tratamiento se le hará la próxima visita, los dentistas también podrán ser recepcionistas, depende que dentista este libre,
 si no se asignara un recepcionista
 
@@ -27,6 +27,7 @@ cuantas consultas han tenido, y los próximos tratamientos o si se van a dar de 
 •Tablas y posibles entidades
 
 De los trabajadores se querrán guardar su DNI, nombre, apellidos y teléfono 
+De los clientes se guardara su DNI, nombre, apellidos, teléfono y dirección 
 
 Se generara una entidad de trabajadores y tres entidades mas que será el isa, que se compone de el/la recepcionista, los dentistas y un jefe
 
