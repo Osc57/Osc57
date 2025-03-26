@@ -1,21 +1,21 @@
 •Base De Datos Proyecto
 
-Generar una base de datos de una clínica bucodental, la clínica constara de un jefe, dentistas al cargo del jefe y un/una recepcionista que se encargue de dar citas
-La recepcionista se encargara de dar cita a los clientes/dar de baja y gestionar las llamadas
+Generar una base de datos de una clínica bucodental, la clínica constara de un jefe (el jefe es el jefe), dentistas al cargo del jefe y un/una recepcionista que se encargue de dar citas
+La recepcionista se encargara de dar cita a los clientes/dar de baja y gestionar demás labores 
 Los dentistas harán lo que el jefe haya dictaminado según el tratamiento que el cliente haya hecho
 El jefe gestionara a los demás trabajadores y asignara si al cliente se le debe realizar x tratamiento
 
 •Guardar Datos y Gestionar 
 
-La recepcionista al dar de alta a los clientes estos se deberán registrar en una base de datos
-al darse de baja este cliente será eliminado pero no su expediente que este será eliminado en x tiempo por si el cliente decide volver
+La recepcionista al dar de alta a los clientes estos se deberán registrar en el programa
+al darse de baja este cliente será eliminado pero no su expediente que será eliminado en x tiempo por si el cliente decide volver
 seguir teniendo su expediente
 
-Los dentistas proporcionaran tratamientos a los clientes, y cuando estos hayan terminado el tratamiento se hablara con el jefe
+Los dentistas proporcionaran tratamientos a los clientes, y cuando estos hayan terminado el dentista a carago hablara con el jefe
 y este/a dictaminara que tratamiento se le hará la próxima visita, los dentistas también podrán ser recepcionistas, depende que dentista este libre,
 si no se asignara un recepcionista
 
-El jefe gestionara que los tratamientos se hayan realizado bien, y les dirá a los dentistas que tratamiento tiene que tener
+El jefe gestionara que los tratamientos se hayan realizado bien, y le dirá al dentista a cargo que tratamiento tiene que tener
 el cliente la próxima visita, este tratamiento será comunicado a la recepcionista
 
 Los clientes que no estén dados de alta deberán darse de alta, lo cual equivale a rellenar un formulario 
@@ -26,9 +26,12 @@ cuantas consultas han tenido, y los próximos tratamientos o si se van a dar de 
 
 •Tablas y posibles entidades
 
+De los trabajadores se querrán guardar su DNI, nombre, apellidos y teléfono 
+
 Se generara una entidad de trabajadores y tres entidades mas que será el isa, que se compone de el/la recepcionista, los dentistas y un jefe
 
-Recepcionista da de alta y de baja a clientes (2 relaciones y una entidad) [cliente]<----da alta <----- recepcionista, [cliente]<----da de baja <----- [recepcionista]
-esta seria 1,N ya que la recepcionista puede dar de alta y de baja a muchos clientes
+Recepcionista da de alta y de baja a clientes (1 relaciones y una entidad) [cliente]1,N<---- gestiona <----- 1,N[recepcionista]
+en la relación de gestiona estarían los atributos fecha alta, fecha baja (fecha baja estará null por defecto), esta relación seria N:M, ya que
+un dentista puede gestionar a muchos clientes y muchos clientes pueden ser gestionados por el recepcionista que este a cargo en se momento
 
 Dentistas 
