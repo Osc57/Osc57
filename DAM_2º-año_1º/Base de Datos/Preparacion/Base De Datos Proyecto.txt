@@ -26,13 +26,13 @@ cuantas consultas han tenido, y los próximos tratamientos o si se van a dar de 
 
 •Tablas y posibles entidades
 
-De los trabajadores se querrán guardar su DNI, nombre, apellidos y teléfono 
-De los clientes se guardara su DNI, nombre, apellidos, teléfono y dirección 
-
-Se generara una entidad de trabajadores y tres entidades mas que será el isa, que se compone de el/la recepcionista, los dentistas y un jefe
+Se generara una entidad de trabajadores y tres entidades mas que será el isa, que se compone de el/la recepcionista, los dentistas y un jefe, de los trabajadores se querrán guardar su DNI, nombre, apellidos y teléfono 
 
 Recepcionista da de alta y de baja a clientes (1 relaciones y una entidad) [cliente]1,N<---- gestiona <----- 1,N[recepcionista]
 en la relación de gestiona estarían los atributos fecha alta, fecha baja (fecha baja estará null por defecto), esta relación seria N:M, ya que
-un dentista puede gestionar a muchos clientes y muchos clientes pueden ser gestionados por el recepcionista que este a cargo en se momento
+un dentista puede gestionar a muchos clientes y muchos clientes pueden ser gestionados por el recepcionista que este a cargo en se momento, de los clientes se guardara su DNI, nombre, apellidos, teléfono y dirección 
 
-Dentistas 
+
+Los dentistas proporcionaran tratamientos (1 relacion y una entidad) [tratamientos]1,N<---- proporciona <---- 1,N[dentista], 
+estos tratamientos seran aplicados a los clientes (1 relación y una entidad) [cliente]<---- recive <----[tratamiento],
+de los tratamientos se guardaran el tipo de tratamiento que se ha aplicado, a que cliente se le ha aplicado, que dentista a cargo lo ha gestionado y cuando se ha realizado
