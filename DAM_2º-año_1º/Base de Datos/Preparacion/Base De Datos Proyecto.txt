@@ -1,9 +1,9 @@
 •Base De Datos Proyecto
 
-Generar una base de datos de una clínica bucodental, la clínica constara de un jefe (el jefe es el jefe y solo hay 1), dentistas al cargo del jefe y un/una recepcionista que se encargue de dar citas
+Generar una base de datos de una clínica bucodental, la clínica constara de un jefe (que puede ser ampliado), dentistas al cargo del jefe y un/una recepcionista que se encargue de dar citas
 La recepcionista se encargara de dar cita a los clientes/dar de baja y gestionar demás labores 
 Los dentistas harán lo que el jefe haya dictaminado según el tratamiento que el cliente haya hecho
-El jefe gestionara a los demás trabajadores y asignara si al cliente se le debe realizar x tratamiento
+El jefe gestionara a los demás trabajadores y asignara si al cliente se le debe realizar 'x' tratamiento
 
 •Guardar Datos y Gestionar 
 
@@ -33,6 +33,6 @@ en la relación de gestiona estarían los atributos fecha alta, fecha baja (fech
 un dentista puede gestionar a muchos clientes y muchos clientes pueden ser gestionados por el recepcionista que este a cargo en se momento, de los clientes se guardara su DNI, nombre, apellidos, teléfono y dirección 
 
 
-Los dentistas proporcionaran tratamientos (1 relacion y una entidad) [tratamientos]1,N<---- proporciona <---- 1,N[dentista], 
-estos tratamientos seran aplicados a los clientes (1 relación y una entidad) [cliente]<---- recive <----[tratamiento],
+Los dentistas proporcionaran tratamientos (1 relación y una entidad) [tratamientos]1,N<---- proporciona <---- 1,N[dentista], 
+estos tratamientos serán aplicados a los clientes (1 relación y una entidad) [cliente]<---- recibe <----[tratamiento],
 de los tratamientos se guardaran el tipo de tratamiento que se ha aplicado, a que cliente se le ha aplicado, que dentista a cargo lo ha gestionado y cuando se ha realizado
