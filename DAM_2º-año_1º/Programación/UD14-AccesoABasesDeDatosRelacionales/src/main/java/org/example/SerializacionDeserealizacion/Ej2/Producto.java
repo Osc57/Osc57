@@ -1,5 +1,7 @@
 package org.example.SerializacionDeserealizacion.Ej2;
 
+import com.sun.xml.txw2.annotation.XmlElement;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ public class Producto {
         this.nombre = nombre;
         this.precio = precio;
     }
-
+    @XmlElement
     public int getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class Producto {
     public void setId(int id) {
         this.id = id;
     }
-
+    @XmlElement
     public String getNombre() {
         return nombre;
     }
@@ -34,12 +36,21 @@ public class Producto {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    @XmlElement
     public double getPrecio() {
         return precio;
     }
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                '}';
     }
 }
