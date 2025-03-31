@@ -1,13 +1,14 @@
 package org.example.SerializacionDeserealizacion.Ej2;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement
 public class Producto {
     private int id;
     private String nombre;
     private double precio;
-    private List<Producto> listaProductos = new ArrayList<>();
 
     public Producto() {
     }

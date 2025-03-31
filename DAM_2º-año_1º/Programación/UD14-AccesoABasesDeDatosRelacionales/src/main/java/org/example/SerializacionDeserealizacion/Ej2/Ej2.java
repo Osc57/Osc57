@@ -37,7 +37,7 @@ public class Ej2 {
             JAXBContext context = JAXBContext.newInstance(Productos.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(listaProducto, new File("Producto.xml"));
+            marshaller.marshal(new Productos(listaProducto), new File("Producto.xml"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
