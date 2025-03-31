@@ -1,13 +1,12 @@
 package org.example.SerializacionDeserealizacion.Ej2;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.SerializacionDeserealizacion.Ej1.Persona;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,6 +42,15 @@ public class Ej2 {
             throw new RuntimeException(e);
         }
 
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Productos.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            Productos productos = (Productos) unmarshaller.unmarshal(new File("Producto.xml"));
+            System.out.println(productos.getListaProductos());
+
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
 
     }
 }
