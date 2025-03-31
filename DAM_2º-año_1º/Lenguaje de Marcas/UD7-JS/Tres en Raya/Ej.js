@@ -1,86 +1,60 @@
-let gameBoard = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let gameOver = false;
+const tablero = document.getElementById("tablero");
+const status = document.getElementById("status");
+let celdas = [];
+let jugador = "X";
+let boardState = ["", "", "", "", "", "", "", "", ""];
 
-const cells = document.querySelectorAll('.cell');
+function crearTablero() {
+  tablero.innerHTML = "";
+  boardState = ["", "", "", "", "", "", "", "", ""];
+  jugador = "X";
+  status.textContent = "Turno de: " + jugador;
+  for (let i = 0; i < 9; i++) {
+    let celda = document.createElement("div");
+    celda.classList.add("btn", "btn-outline-dark", "d-flex", "align-items-center", "justify-content-center");
+    celda.style.width = "100px";
+    celda.style.height = "100px";
+    celda.style.fontSize = "2rem";
+    celda.dataset.index = i;
+    celda.addEventListener("click", comprobarMovimiento);
+    tablero.appendChild(celda);
+    celdas[i] = celda;
+  }
+}
 
-function updateBoard() {
-  cells.forEach((cell, index) => {
-    cell.textContent = gameBoard[index];
+function comprobarMovimiento(movimiento) {
+  let indice = movimiento.target.dataset.index;
+  if (boardState[indice] === "") {
+    boardState[indice] = jugador;
+    movimiento.target.textContent = jugador;
+    if (combrobarGanador()) {
+      status.textContent = "Ganador: " + jugador;
+      desactivarTablero();
+      return;
+    }
+    jugador = jugador === "X" ? "O" : "X";
+    status.textContent = "Turno de: " + jugador;
+  }
+}
+
+function combrobarGanador() {
+  const combosGanadores = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+  return combosGanadores.some(combo => {
+    const [a, b, c] = combo;
+    return boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c];
   });
 }
 
-
-function checkWinner() {
-
-  if (
-    (gameBoard[0] === currentPlayer && gameBoard[1] === currentPlayer && gameBoard[2] === currentPlayer) ||
-    (gameBoard[3] === currentPlayer && gameBoard[4] === currentPlayer && gameBoard[5] === currentPlayer) ||
-    (gameBoard[6] === currentPlayer && gameBoard[7] === currentPlayer && gameBoard[8] === currentPlayer)
-  ) {
-    return true;
-  }
-
-  if (
-    (gameBoard[0] === currentPlayer && gameBoard[3] === currentPlayer && gameBoard[6] === currentPlayer) ||
-    (gameBoard[1] === currentPlayer && gameBoard[4] === currentPlayer && gameBoard[7] === currentPlayer) ||
-    (gameBoard[2] === currentPlayer && gameBoard[5] === currentPlayer && gameBoard[8] === currentPlayer)
-  ) {
-    return true;
-  }
-
-  if (
-    (gameBoard[0] === currentPlayer && gameBoard[4] === currentPlayer && gameBoard[8] === currentPlayer) ||
-    (gameBoard[2] === currentPlayer && gameBoard[4] === currentPlayer && gameBoard[6] === currentPlayer)
-  ) {
-    return true;
-  }
-
-  return false;
+function desactivarTablero() {
+  celdas.forEach(celda => celda.removeEventListener("click", handleMove));
 }
 
-
-function switchPlayer() {
-  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+function reiniciarJuego() {
+  crearTablero();
 }
 
-
-function resetGame() {
-  gameBoard = ['', '', '', '', '', '', '', '', ''];
-  currentPlayer = 'X';
-  gameOver = false;
-  updateBoard();
-}
-
-
-cells.forEach((cell, index) => {
-  cell.addEventListener('click', () => {
-
-    if (gameOver || gameBoard[index]) {
-      return;
-    }
-
-    gameBoard[index] = currentPlayer;
-    updateBoard();
-
-
-    if (checkWinner()) {
-      alert(`¡${currentPlayer} ha ganado!`);
-      gameOver = true;
-      return;
-    }
-
-
-    if (!gameBoard.includes('')) {
-      alert('¡Empate!');
-      gameOver = true;
-      return;
-    }
-
-    switchPlayer();
-  });
-});
-
-
-const resetButton = document.getElementById('reset-button');
-resetButton.addEventListener('click', resetGame);
+crearTablero();
