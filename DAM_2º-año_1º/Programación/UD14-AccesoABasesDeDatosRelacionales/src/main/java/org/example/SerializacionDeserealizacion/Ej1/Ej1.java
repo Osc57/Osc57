@@ -19,7 +19,6 @@ public class Ej1 {
         Persona persona = new Persona("Manolo", 17, "manolo123@gmail.com");
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         try {
             String json = objectMapper.writeValueAsString(persona);
             System.out.println(json);
