@@ -8,6 +8,8 @@ package org.example.SerializacionDeserealizacion.Ej2;
 
 public class Ej2 {
     public static void main(String[] args) {
+        Producto producto = new Producto(1,"Batidora",39.99);
 
+        
     }
 }
