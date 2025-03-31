@@ -14,7 +14,7 @@ public class Productos {
     public Productos(List<Producto> listaProductos) {
         this.listaProductos = listaProductos;
     }
-    @XmlElement(name = "producto")
+    @XmlElement
     public List<Producto> getListaProductos() {
         return listaProductos;
     }

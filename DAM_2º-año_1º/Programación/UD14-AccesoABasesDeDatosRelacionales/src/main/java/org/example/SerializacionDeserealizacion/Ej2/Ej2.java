@@ -19,7 +19,9 @@ import java.util.List;
 
 public class Ej2 {
     public static void main(String[] args) {
-        List<Producto> listaProducto = Arrays.asList(new Producto(1,"Batidora",39.99),new Producto(2,"Taladro",49.99),new Producto(3,"Martillo",14.99));
+        List<Producto> listaProducto = Arrays.asList(new Producto(1,"Batidora",39.99),
+                new Producto(2,"Taladro",49.99),
+                new Producto(3,"Martillo",14.99));
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -32,7 +34,7 @@ public class Ej2 {
         }
 
         try {
-            JAXBContext context = JAXBContext.newInstance(Producto.class);
+            JAXBContext context = JAXBContext.newInstance(Productos.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(listaProducto, new File("Producto.xml"));
