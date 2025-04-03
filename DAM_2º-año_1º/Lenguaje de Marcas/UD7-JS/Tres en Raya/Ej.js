@@ -2,19 +2,23 @@ const tablero = document.getElementById("tablero");
 const status = document.getElementById("status");
 let celdas = [];
 let jugador = "X";
-let boardState = ["", "", "", "", "", "", "", "", ""];
+let estadoTablero = ["", "", "", "", "", "", "", "", ""];
 
 function crearTablero() {
   tablero.innerHTML = "";
-  boardState = ["", "", "", "", "", "", "", "", ""];
+  estadoTablero = ["", "", "", "", "", "", "", "", ""];
   jugador = "X";
   status.textContent = "Turno de: " + jugador;
   for (let i = 0; i < 9; i++) {
     let celda = document.createElement("div");
-    celda.classList.add("btn", "btn-outline-dark", "d-flex", "align-items-center", "justify-content-center");
     celda.style.width = "100px";
     celda.style.height = "100px";
-    celda.style.fontSize = "2rem";
+    celda.style.fontSize = "5rem";
+    celda.style.border = "2px solid black";
+    celda.style.display = "flex";
+    celda.style.alignItems = "center";
+    celda.style.justifyContent = "center";
+    celda.style.cursor = "pointer";
     celda.dataset.index = i;
     celda.addEventListener("click", comprobarMovimiento);
     tablero.appendChild(celda);
@@ -24,14 +28,22 @@ function crearTablero() {
 
 function comprobarMovimiento(movimiento) {
   let indice = movimiento.target.dataset.index;
-  if (boardState[indice] === "") {
-    boardState[indice] = jugador;
+  if (estadoTablero[indice] === "") {
+    estadoTablero[indice] = jugador;
     movimiento.target.textContent = jugador;
+
+    if (jugador === "O") {
+      movimiento.target.style.color = "red";
+    } else {
+      movimiento.target.style.color = "black";
+    }
+
     if (combrobarGanador()) {
       status.textContent = "Ganador: " + jugador;
       desactivarTablero();
       return;
     }
+
     jugador = jugador === "X" ? "O" : "X";
     status.textContent = "Turno de: " + jugador;
   }
@@ -45,7 +57,7 @@ function combrobarGanador() {
   ];
   return combosGanadores.some(combo => {
     const [a, b, c] = combo;
-    return boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c];
+    return estadoTablero[a] && estadoTablero[a] === estadoTablero[b] && estadoTablero[a] === estadoTablero[c];
   });
 }
 
