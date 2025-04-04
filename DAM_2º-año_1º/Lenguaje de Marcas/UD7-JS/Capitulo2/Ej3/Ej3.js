@@ -1,13 +1,7 @@
-let a = 0;
-let b = 1;
-let resultado = [a, b];
+let precioProducto = prompt("Dime el precio del producto que quieres comprar: ")
 
-for (let i = 2; i <= 10; i++) {
-    let c = a + b;
-    resultado.push(c)
-    a = b;
-    b = c;
-}
-console.log(resultado.join(","))
+let cantidad = prompt("Cuantas unidades quieres del producto: ")
 
+let precioTotal = precioProducto*cantidad
 
+console.log(`El precio total es ${precioTotal}`)
