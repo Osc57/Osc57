@@ -12,7 +12,7 @@ import static org.example.InterfacesDeFormularios.BBDD.connect;
 public class Ej4 {
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Hola mundo");
-        jFrame.setLayout(new GridLayout(3,2));
+        jFrame.setLayout(new GridLayout(3,1));
         jFrame.setSize(400, 400);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
