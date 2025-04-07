@@ -38,9 +38,11 @@ public class Ej4 {
                     preparedStatement.setString(1, usuario.getText() );
                     preparedStatement.setString(2, contrasena.getText());
 
-                    if (!usuario.getText().isEmpty() || !contrasena.getText().isEmpty()){
+                    if (!usuario.getText().isEmpty() && !contrasena.getText().isEmpty()){
                         preparedStatement.executeUpdate();
                         JOptionPane.showMessageDialog(jFrame,"Usuario insertado correctamente");
+                    }else {
+                        JOptionPane.showMessageDialog(jFrame,"Rellena los datos");
                     }
 
                 } catch (Exception exception) {
