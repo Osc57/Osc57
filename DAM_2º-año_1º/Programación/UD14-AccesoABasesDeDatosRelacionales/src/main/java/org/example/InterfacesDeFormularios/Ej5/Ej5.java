@@ -25,7 +25,6 @@ public class Ej5 {
         modelo.addColumn("Email");
 
         JTable jt = new JTable(modelo);
-        JScrollPane scrollPane = new JScrollPane(jt);
 
         JButton jButton = new JButton("Actualizar");
         jButton.addActionListener(new ActionListener() {
