@@ -35,7 +35,7 @@ public class Ej5 {
 
                     ResultSet resultSet = preparedStatement.executeQuery();
 
-                    while (resultSet.next()){
+                    while (resultSet.next()) {
                         modelo.addRow(new Object[]{
                                 resultSet.getInt("id"),
                                 resultSet.getString("nombre"),
