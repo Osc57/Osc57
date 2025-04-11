@@ -49,7 +49,10 @@ public class InterfazLogin1 extends JFrame {
 
 
         jPasswordField = new JPasswordField();
-        jPanel.add(jPasswordField, BorderLayout.CENTER);
+        jPanel.add(jPasswordField);
+        jPasswordField.setBounds(481, 170, 281, 68);
+        jPanel.add(jPasswordField);
+        jPasswordField.setColumns(15);
 
         //--------------------------------------------------------------------------------------------------------------
         JButton botonIniciar = new JButton("Acceder");
