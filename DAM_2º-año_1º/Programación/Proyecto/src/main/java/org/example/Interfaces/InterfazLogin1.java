@@ -20,13 +20,13 @@ public class InterfazLogin1 extends JFrame {
         this.add(textoLabel);
 
         //--------------------------------------------------------------------------------------------------------------
-        
+
         JPanel panelUsuario = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        JLabel usuario = new JLabel("USUARIO:");
-        panelUsuario.add(usuario, BorderLayout.WEST);
-        usuario.setFont(new Font("Arial", Font.PLAIN, 25));
-        usuario.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
+        JLabel user = new JLabel("USUARIO:");
+        panelUsuario.add(user, BorderLayout.WEST);
+        user.setFont(new Font("Arial", Font.PLAIN, 25));
+        user.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
 
         JTextField usuarioTexto = new JTextField();
         usuarioTexto.setBounds(481, 170, 281, 68);
@@ -45,6 +45,8 @@ public class InterfazLogin1 extends JFrame {
 
         JPasswordField passwordField = new JPasswordField(15);
         panelPass.add(passwordField, BorderLayout.CENTER);
+
+        //--------------------------------------------------------------------------------------------------------------
 
         this.add(panelUsuario);
         this.add(panelPass);
