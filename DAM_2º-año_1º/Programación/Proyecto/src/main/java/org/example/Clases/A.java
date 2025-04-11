@@ -50,11 +50,6 @@ public class A {
 
     @Override
     public String toString() {
-        return "A{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", direccion='" + direccion + '\'' +
-                '}';
+        return id + " - " + nombre + " " + apellido;
     }
 }

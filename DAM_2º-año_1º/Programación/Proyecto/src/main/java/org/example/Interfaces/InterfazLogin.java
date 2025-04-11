@@ -27,6 +27,18 @@ public class InterfazLogin extends JFrame {
         listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane jScrollPane = new JScrollPane(listaNombres);
 
+        JButton btnAcceder = getjButton();
+
+        JPanel panelCentro = new JPanel(new BorderLayout());
+        panelCentro.add(jScrollPane, BorderLayout.CENTER);
+        panelCentro.add(btnAcceder, BorderLayout.SOUTH);
+
+        this.add(panelCentro, BorderLayout.CENTER);
+
+        cargarAlumnos();
+    }
+
+    private JButton getjButton() {
         JButton btnAcceder = new JButton("Acceder");
         btnAcceder.addActionListener(new ActionListener() {
             @Override
@@ -41,14 +53,7 @@ public class InterfazLogin extends JFrame {
                 }
             }
         });
-
-        JPanel panelCentro = new JPanel(new BorderLayout());
-        panelCentro.add(jScrollPane, BorderLayout.CENTER);
-        panelCentro.add(btnAcceder, BorderLayout.SOUTH);
-
-        this.add(panelCentro, BorderLayout.CENTER);
-
-        cargarAlumnos();
+        return btnAcceder;
     }
 
     private void cargarAlumnos() {
