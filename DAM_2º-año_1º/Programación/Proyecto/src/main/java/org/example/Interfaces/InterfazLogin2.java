@@ -10,12 +10,12 @@ import java.sql.*;
 
 import static org.example.BBDD.BBDD.connect;
 
-public class InterfazLogin extends JFrame {
+public class InterfazLogin2 extends JFrame {
 
     private JList<A> listaNombres;
     private DefaultListModel<A> model;
 
-    public InterfazLogin() {
+    public InterfazLogin2() {
         this.setLayout(new GridLayout(3,1));
         this.setTitle("Login");
         this.setSize(500, 700);
@@ -78,7 +78,7 @@ public class InterfazLogin extends JFrame {
     }
 
     public static void main(String[] args) {
-        InterfazLogin login = new InterfazLogin();
+        InterfazLogin2 login = new InterfazLogin2();
         login.setVisible(true);
     }
 }
