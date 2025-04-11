@@ -16,14 +16,16 @@ public class InterfazLogin1 extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JLabel textoLabel = new JLabel("LOGIN ");
-        textoLabel.setFont(new Font("Arial",Font.PLAIN, 60));
+        textoLabel.setFont(new Font("Arial", Font.PLAIN, 60));
         this.add(textoLabel);
 
+        //--------------------------------------------------------------------------------------------------------------
+        
         JPanel panelUsuario = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
         JLabel usuario = new JLabel("USUARIO:");
         panelUsuario.add(usuario, BorderLayout.WEST);
-        usuario.setFont(new Font ("Arial",Font.PLAIN,25));
+        usuario.setFont(new Font("Arial", Font.PLAIN, 25));
         usuario.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
 
         JTextField usuarioTexto = new JTextField();
@@ -37,30 +39,15 @@ public class InterfazLogin1 extends JFrame {
 
         JLabel passw = new JLabel("CONTRASEÑA:");
         panelPass.add(passw, BorderLayout.WEST);
-        passw.setFont(new Font ("Arial",Font.PLAIN,25));
+        passw.setFont(new Font("Arial", Font.PLAIN, 25));
         passw.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
 
 
         JPasswordField passwordField = new JPasswordField(15);
         panelPass.add(passwordField, BorderLayout.CENTER);
 
-        JPanel contentPane = new JPanel();
-
-        JLabel lblNewLabel = new JLabel("Login");
-        lblNewLabel.setForeground(Color.BLACK);
-        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        lblNewLabel.setBounds(423, 13, 273, 93);
-        contentPane.add(lblNewLabel);
-
-        JTextField textField = new JTextField();
-        textField.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        textField.setBounds(481, 170, 281, 68);
-        contentPane.add(textField);
-        textField.setColumns(10);
-
         this.add(panelUsuario);
         this.add(panelPass);
-        this.add(contentPane);
 
     }
 
