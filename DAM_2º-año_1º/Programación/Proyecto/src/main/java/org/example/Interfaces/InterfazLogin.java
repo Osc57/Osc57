@@ -1,0 +1,80 @@
+package org.example.Interfaces;
+
+import org.example.Clases.A;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+
+import static org.example.BBDD.BBDD.connect;
+
+public class InterfazLogin extends JFrame {
+
+    private JList<A> listaNombres;
+    private DefaultListModel<A> model;
+
+    public InterfazLogin() {
+        this.setLayout(new GridLayout(3,1));
+        this.setTitle("Login");
+        this.setSize(500, 700);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        model = new DefaultListModel<>();
+        listaNombres = new JList<>(model);
+        listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane jScrollPane = new JScrollPane(listaNombres);
+
+        JButton btnAcceder = new JButton("Acceder");
+        btnAcceder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                A alumnoSeleccionado = listaNombres.getSelectedValue();
+                if (alumnoSeleccionado != null) {
+                    JOptionPane.showMessageDialog(null,
+                            "Has accedido como: " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un alumno primero.");
+                }
+            }
+        });
+
+        JPanel panelCentro = new JPanel(new BorderLayout());
+        panelCentro.add(jScrollPane, BorderLayout.CENTER);
+        panelCentro.add(btnAcceder, BorderLayout.SOUTH);
+
+        this.add(panelCentro, BorderLayout.CENTER);
+
+        cargarAlumnos();
+    }
+
+    private void cargarAlumnos() {
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno;")) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                A a = new A();
+                a.setId(resultSet.getInt("id"));
+                a.setNombre(resultSet.getString("nombre"));
+                a.setApellido(resultSet.getString("apellidos"));
+                a.setDireccion(resultSet.getString("direccion"));
+
+                model.addElement(a);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void main(String[] args) {
+        InterfazLogin login = new InterfazLogin();
+        login.setVisible(true);
+    }
+}
+
