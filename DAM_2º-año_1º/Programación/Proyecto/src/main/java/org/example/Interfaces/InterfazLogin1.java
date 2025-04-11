@@ -3,6 +3,8 @@ package org.example.Interfaces;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterfazLogin1 extends JFrame {
     private String usuario = "Admin";
@@ -15,7 +17,7 @@ public class InterfazLogin1 extends JFrame {
 
     public InterfazLogin1() {
         this.setTitle("Login");
-        this.setSize(500, 450);
+        this.setSize(500, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,8 +57,23 @@ public class InterfazLogin1 extends JFrame {
 
         jButton = new JButton("Iniciar sesión");
         jButton.setFont(colortextoButton);
-        jButton.setBounds(150, 230, 180, 40);
+        jButton.setBounds(150, 250, 180, 40);
         jPanel.add(jButton);
+
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String password = new String(jPasswordField.getPassword());
+                if (jTextField.getText().equals("Admin") && password.equals("1234")){
+                    JOptionPane.showMessageDialog(null,"Login Correcto");
+                    InterfazLogin2 login2 = new InterfazLogin2();
+                    login2.setVisible(true);
+                    dispose();
+                }else {
+                    JOptionPane.showMessageDialog(null,"Login Incorrecto");
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
