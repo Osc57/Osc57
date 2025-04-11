@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 vertices = np.array([
-    [5, 5, 10],  # Vértice 4
-    [0, 0, 0],  # Vértice 0
-    [10, 0, 0],  # Vértice 1
-    [10, 10, 0],  # Vértice 2
-    [0, 10, 0],  # Vértice 3
+    [5, 5, 10],  # Vértice 0
+    [0, 0, 0],  # Vértice 1
+    [10, 0, 0],  # Vértice 2
+    [10, 10, 0],  # Vértice 3
+    [0, 10, 0],  # Vértice 4
 
 ])
 
