@@ -3,22 +3,64 @@ package org.example.Interfaces;
 import javax.swing.*;
 import java.awt.*;
 
-public class InterfazLogin1 extends JFrame{
+public class InterfazLogin1 extends JFrame {
     private String usuario = "Admin";
     private String password = "1234";
-    private Font colorInsertar = new Font("Arial", Font.PLAIN, 35);
     private Font colortextoButton = new Font("Arial", Font.PLAIN, 18);
 
-    public InterfazLogin1(){
-        this.setLayout(new GridLayout(3,1));
+    public InterfazLogin1() {
+        this.setLayout(new GridLayout(4, 2));
         this.setTitle("Login");
-        this.setSize(500, 700);
+        this.setSize(500, 500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JLabel textoLabel = new JLabel("LOGIN ");
-        textoLabel.setFont(colorInsertar);
+        textoLabel.setFont(new Font("Arial",Font.PLAIN, 60));
         this.add(textoLabel);
+
+        JPanel panelUsuario = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        JLabel usuario = new JLabel("USUARIO:");
+        panelUsuario.add(usuario, BorderLayout.WEST);
+        usuario.setFont(new Font ("Arial",Font.PLAIN,25));
+        usuario.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
+
+        JTextField usuarioTexto = new JTextField();
+        usuarioTexto.setBounds(481, 170, 281, 68);
+        panelUsuario.add(usuarioTexto);
+        usuarioTexto.setColumns(15);
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        JPanel panelPass = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        JLabel passw = new JLabel("CONTRASEÑA:");
+        panelPass.add(passw, BorderLayout.WEST);
+        passw.setFont(new Font ("Arial",Font.PLAIN,25));
+        passw.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
+
+
+        JPasswordField passwordField = new JPasswordField(15);
+        panelPass.add(passwordField, BorderLayout.CENTER);
+
+        JPanel contentPane = new JPanel();
+
+        JLabel lblNewLabel = new JLabel("Login");
+        lblNewLabel.setForeground(Color.BLACK);
+        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+        lblNewLabel.setBounds(423, 13, 273, 93);
+        contentPane.add(lblNewLabel);
+
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        textField.setBounds(481, 170, 281, 68);
+        contentPane.add(textField);
+        textField.setColumns(10);
+
+        this.add(panelUsuario);
+        this.add(panelPass);
+        this.add(contentPane);
 
     }
 

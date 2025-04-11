@@ -16,7 +16,7 @@ public class InterfazLogin2 extends JFrame {
     private DefaultListModel<A> model;
 
     public InterfazLogin2() {
-        this.setLayout(new GridLayout(3,1));
+        this.setLayout(new GridLayout(3, 1));
         this.setTitle("Login");
         this.setSize(500, 700);
         this.setLocationRelativeTo(null);
