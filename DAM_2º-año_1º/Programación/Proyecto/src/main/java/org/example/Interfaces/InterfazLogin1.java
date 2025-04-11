@@ -14,7 +14,6 @@ public class InterfazLogin1 extends JFrame {
     private JPasswordField jPasswordField;
 
     public InterfazLogin1() {
-        this.setLayout(new GridLayout(4, 2));
         this.setTitle("Login");
         this.setSize(500, 450);
         this.setLocationRelativeTo(null);
@@ -25,41 +24,39 @@ public class InterfazLogin1 extends JFrame {
         setContentPane(jPanel);
         jPanel.setLayout(null);
 
-        JLabel textoLabel = new JLabel("LOGIN ");
-        textoLabel.setFont(new Font("Arial", Font.PLAIN, 60));
+        JLabel textoLabel = new JLabel("LOGIN");
+        textoLabel.setFont(new Font("Arial", Font.PLAIN, 40));
+        textoLabel.setBounds(170, 20, 200, 50);
         jPanel.add(textoLabel);
 
         //--------------------------------------------------------------------------------------------------------------
+
         JLabel user = new JLabel("USUARIO:");
-        jPanel.add(user, BorderLayout.WEST);
-        user.setFont(new Font("Arial", Font.PLAIN, 25));
-        user.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
+        user.setFont(new Font("Arial", Font.PLAIN, 20));
+        user.setBounds(50, 100, 150, 30);
+        jPanel.add(user);
 
         jTextField = new JTextField();
-        jTextField.setBounds(481, 170, 281, 68);
+        jTextField.setBounds(200, 100, 200, 30);
         jPanel.add(jTextField);
-        jTextField.setColumns(15);
 
         //--------------------------------------------------------------------------------------------------------------
 
         JLabel passw = new JLabel("CONTRASEÑA:");
+        passw.setFont(new Font("Arial", Font.PLAIN, 20));
+        passw.setBounds(50, 160, 150, 30);
         jPanel.add(passw);
-        passw.setFont(new Font("Arial", Font.PLAIN, 25));
-        passw.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 67));
-
 
         jPasswordField = new JPasswordField();
+        jPasswordField.setBounds(200, 160, 200, 30);
         jPanel.add(jPasswordField);
-        jPasswordField.setBounds(481, 170, 281, 68);
-        jPanel.add(jPasswordField);
-        jPasswordField.setColumns(15);
 
         //--------------------------------------------------------------------------------------------------------------
-        JButton botonIniciar = new JButton("Acceder");
 
-
-        this.add(jPanel);
-
+        jButton = new JButton("Iniciar sesión");
+        jButton.setFont(colortextoButton);
+        jButton.setBounds(150, 230, 180, 40);
+        jPanel.add(jButton);
     }
 
     public static void main(String[] args) {
