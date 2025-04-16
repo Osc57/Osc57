@@ -63,14 +63,14 @@ public class InterfazLogin1 extends JFrame {
         jButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String password = new String(jPasswordField.getPassword());
-                if (jTextField.getText().equals("Admin") && password.equals("1234")){
-                    JOptionPane.showMessageDialog(null,"Login Correcto");
+                String pass = new String(jPasswordField.getPassword());
+                if (jTextField.getText().equalsIgnoreCase(usuario) && pass.equals(password)) {
+                    JOptionPane.showMessageDialog(null, "Login Correcto");
                     InterfazLogin2 login2 = new InterfazLogin2();
                     login2.setVisible(true);
                     dispose();
-                }else {
-                    JOptionPane.showMessageDialog(null,"Login Incorrecto");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login Incorrecto");
                 }
             }
         });
