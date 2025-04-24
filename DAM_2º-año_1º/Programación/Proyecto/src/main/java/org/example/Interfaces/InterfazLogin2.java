@@ -51,6 +51,7 @@ public class InterfazLogin2 extends JFrame {
                 if (alumnoSeleccionado != null) {//Aqui van los recepcionistas acuerdate
                     JOptionPane.showMessageDialog(null,
                             "Has accedido como: " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
+                    //upadateRecepcionista();
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un alumno primero.");
