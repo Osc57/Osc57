@@ -60,6 +60,17 @@ public class InterfazLogin2 extends JFrame {
         return btnAcceder;
     }
 
+    private void upadateRecepcionista(String documento){
+        try (Connection connection = connect();
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE recepcionista SET dni=?")){
+
+            preparedStatement.setString(1,documento);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void cargarAlumnos() {
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno;")) {
