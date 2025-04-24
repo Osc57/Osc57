@@ -23,7 +23,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
 
         jPanel = new JPanel();
         jPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(jPanel);
+        this.setContentPane(jPanel);
         jPanel.setLayout(null);
 
         JLabel textoLabel = new JLabel("LOGIN");//Label del login
