@@ -44,7 +44,7 @@ public class InterfazLogin2 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 A alumnoSeleccionado = listaNombres.getSelectedValue();
-                if (alumnoSeleccionado != null) {
+                if (alumnoSeleccionado != null) {//Aqui van los recepcionistas acuerdate
                     JOptionPane.showMessageDialog(null,
                             "Has accedido como: " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
 
