@@ -20,6 +20,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
         this.setSize(500, 370);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
 
         jPanel = new JPanel();
         jPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
