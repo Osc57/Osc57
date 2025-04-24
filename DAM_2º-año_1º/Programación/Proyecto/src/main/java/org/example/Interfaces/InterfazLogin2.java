@@ -1,6 +1,8 @@
 package org.example.Interfaces;
 
 import org.example.Clases.A;
+import org.example.Clases.Recepcionista;
+import org.example.Clases.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +16,8 @@ public class InterfazLogin2 extends JFrame {
 
     private JList<A> listaNombres;
     private DefaultListModel<A> model;
+    //private JList<Trabajador> listaNombres;
+    //private DefaultListModel<Trabajador> model;
 
     public InterfazLogin2() {
         this.setLayout(new GridLayout(3, 1));
@@ -63,6 +67,7 @@ public class InterfazLogin2 extends JFrame {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+                //Trabajador trabajador = new Recepcionista();
                 A a = new A();
                 a.setId(resultSet.getInt("id"));
                 a.setNombre(resultSet.getString("nombre"));
