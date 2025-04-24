@@ -35,7 +35,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
 
         JLabel user = new JLabel("USUARIO:");//Label de usuario
         user.setFont(new Font("Arial", Font.PLAIN, 20));
-        user.setBounds(50, 100, 150, 30);
+        user.setBounds(50, 100, 150, 30);//Muevo y ajusto el label
         jPanel.add(user);//Lo añado al panel
 
         jTextField = new JTextField();//Me genero el jtextfield
@@ -46,7 +46,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
 
         JLabel passw = new JLabel("CONTRASEÑA:");//Label de contraseña
         passw.setFont(new Font("Arial", Font.PLAIN, 20));
-        passw.setBounds(50, 160, 150, 30);
+        passw.setBounds(50, 160, 150, 30);//Muevo y ajusto el label
         jPanel.add(passw);
 
         jPasswordField = new JPasswordField();//Me genero el jtextfield de contraseña
