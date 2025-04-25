@@ -34,7 +34,12 @@ CREATE TABLE tratamientos (
 	CONSTRAINT fk_tratamiento_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
 	CONSTRAINT fk_tratamiento_odontologo FOREIGN KEY (odontologoACargo) REFERENCES odontologo(dni));
 	
-
+CREATE TABLE proporciona (
+	dni_odontologo CHAR(9),
+	id_tratamiento INT,
+	PRIMARY KEY (dni_odontologo,id_tratamiento),
+	CONSTRAINT fk_proporciona_odon FOREIGN KEY (dni_odontologo) REFERENCES odontologo(dni),
+	CONSTRAINT fk_proporciona_trata FOREIGN KEY (id_tratamiento) REFERENCES tratamiento(id));
 	
 	
 	
