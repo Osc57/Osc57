@@ -21,8 +21,7 @@ public class InterfazLogin2 extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(0, 10));
-
-        // Panel superior con título
+        
         JPanel panelArriba = new JPanel();
         panelArriba.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
         JLabel jLabel = new JLabel("SELECCIONE USUARIO");
@@ -84,7 +83,7 @@ public class InterfazLogin2 extends JFrame {
             int filas = preparedStatement.executeUpdate();
 
             if (filas == 0) {
-                try (PreparedStatement psInsert = connection.prepareStatement ("INSERT INTO recepcionista (dni) VALUES (?)")) {
+                try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO recepcionista (dni) VALUES (?)")) {
                     psInsert.setString(1, documento);
                     psInsert.executeUpdate();
                 }
