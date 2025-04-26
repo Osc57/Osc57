@@ -55,7 +55,7 @@ public class InterfazLogin2 extends JFrame {
     }
 
     private JButton botonAcceder() {
-        JButton btnAcceder = new JButton("Acceder");
+        JButton btnAcceder = new JButton("ACCEDER");
         btnAcceder.setFont(new Font("Arial", Font.BOLD, 50));
         btnAcceder.setPreferredSize(new Dimension(200, 50));
         btnAcceder.setMinimumSize(new Dimension(200, 50));
