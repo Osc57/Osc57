@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
     private String usuario = "Admin";
     private String password = "1234";
-    private Font colortextoButton = new Font("Arial", Font.PLAIN, 18); 
     private JPanel jPanel;
     private JTextField jTextField;
     private JButton jButton;
