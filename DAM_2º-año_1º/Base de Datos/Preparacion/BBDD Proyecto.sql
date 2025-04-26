@@ -57,13 +57,12 @@ CREATE TABLE gestiona (
 	CONSTRAINT fk_gestiona_recepcionista FOREIGN KEY (dni_recepcionista) REFERENCES recepcionista(dni));
 	
 CREATE TABLE historial (
-	id INT AUTO_INCREMENT,
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	dni_cliente CHAR(9) NOT NULL,
 	id_tratamiento INT NOT NULL,
 	fecha_tratamiento DATE NOT NULL,
-	PRIMARY KEY (id, dni_cliente),
-	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cleinte) REFERENCES cliente(dni) ON DELETE CASCADE,
-	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id)));
+	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni) ON DELETE CASCADE,
+	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 
 
 	
