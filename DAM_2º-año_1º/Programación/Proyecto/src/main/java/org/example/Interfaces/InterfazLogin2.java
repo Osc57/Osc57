@@ -16,24 +16,41 @@ public class InterfazLogin2 extends JFrame {
     private DefaultListModel<Recepcionista> model;
 
     public InterfazLogin2() {
-        this.setLayout(new GridLayout(3, 1));
-        this.setTitle("Login");
-        this.setSize(500, 700);
+        this.setTitle("Selección de Usuario - Clínica Dental");
+        this.setSize(500, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setLayout(new BorderLayout(0, 10));
+
+        // Panel superior con título
+        JPanel panelArriba = new JPanel();
+        panelArriba.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
+        JLabel jLabel = new JLabel("SELECCIONE USUARIO");
+        jLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        panelArriba.add(jLabel);
 
         model = new DefaultListModel<>();
         listaNombres = new JList<>(model);
         listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listaNombres.setFont(new Font("Arial", Font.PLAIN, 16));
-        JScrollPane jScrollPane = new JScrollPane(listaNombres);
+        listaNombres.setFont(new Font("Arial", Font.PLAIN, 18));
+        listaNombres.setFixedCellHeight(35);
+        listaNombres.setBackground(new Color(240, 240, 240));
 
+        JScrollPane jScrollPane = new JScrollPane(listaNombres);
+        jScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
+        // Botón acceder (sur)
         JButton btnAcceder = getjButton();
+        btnAcceder.setFont(new Font("Arial", Font.BOLD, 16));
+        btnAcceder.setBackground(new Color(70, 130, 180));
+        btnAcceder.setForeground(Color.WHITE);
 
         JPanel panelCentro = new JPanel(new BorderLayout());
         panelCentro.add(jScrollPane, BorderLayout.CENTER);
         panelCentro.add(btnAcceder, BorderLayout.SOUTH);
+        panelCentro.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 
+        this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
 
         cargarTrabajadores();
