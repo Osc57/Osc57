@@ -62,8 +62,7 @@ public class InterfazLogin2 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Recepcionista recepcionistaSeleccionado = listaNombres.getSelectedValue();
                 if (recepcionistaSeleccionado != null) {
-                    JOptionPane.showMessageDialog(null,
-                            "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
+                    JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     updateRecepcionista(recepcionistaSeleccionado.getDni());
                     dispose();
                     InterfazGestiona interfazGestiona = new InterfazGestiona();
