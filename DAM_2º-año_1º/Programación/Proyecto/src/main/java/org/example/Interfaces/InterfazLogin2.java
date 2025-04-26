@@ -25,6 +25,7 @@ public class InterfazLogin2 extends JFrame {
         model = new DefaultListModel<>();
         listaNombres = new JList<>(model);
         listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listaNombres.setFont(new Font("Arial", Font.PLAIN, 16));
         JScrollPane jScrollPane = new JScrollPane(listaNombres);
 
         JButton btnAcceder = getjButton();
