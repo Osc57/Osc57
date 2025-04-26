@@ -14,10 +14,8 @@ import static org.example.BBDD.BBDD.connect;
 
 public class InterfazLogin2 extends JFrame {
 
-    private JList<A> listaNombres;
-    private DefaultListModel<A> model;
-    //private JList<Recepcionista> listaNombres;
-    //private DefaultListModel<Recepcionista> model;
+    private JList<Recepcionista> listaNombres;
+    private DefaultListModel<Recepcionista> model;
 
     public InterfazLogin2() {
         this.setLayout(new GridLayout(3, 1));
@@ -39,7 +37,7 @@ public class InterfazLogin2 extends JFrame {
 
         this.add(panelCentro, BorderLayout.CENTER);
 
-        cargarAlumnos();
+        cargarTrabajadores();
     }
 
     private JButton getjButton() {
@@ -47,11 +45,11 @@ public class InterfazLogin2 extends JFrame {
         btnAcceder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                A alumnoSeleccionado = listaNombres.getSelectedValue();
-                if (alumnoSeleccionado != null) {//Aqui van los recepcionistas acuerdate
+                Recepcionista recepcionistaSeleccionado = listaNombres.getSelectedValue();
+                if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null,
-                            "Has accedido como: " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
-                    //upadateRecepcionista(recepcionista.getDni());
+                            "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
+                    updateRecepcionista(recepcionistaSeleccionado.getDni());
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un alumno primero.");
@@ -61,32 +59,39 @@ public class InterfazLogin2 extends JFrame {
         return btnAcceder;
     }
 
-    private void upadateRecepcionista(String documento){
+    private void updateRecepcionista(String documento) {
         try (Connection connection = connect();
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE recepcionista SET dni=?")){
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE recepcionista SET dni = ?")) {
 
-            preparedStatement.setString(1,documento);
-            preparedStatement.executeUpdate();
+            preparedStatement.setString(1, documento);
+            int filas = preparedStatement.executeUpdate();
+
+            if (filas == 0) {
+                try (PreparedStatement psInsert = connection.prepareStatement(
+                        "INSERT INTO recepcionista (dni) VALUES (?)")) {
+                    psInsert.setString(1, documento);
+                    psInsert.executeUpdate();
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void cargarAlumnos() {
+    private void cargarTrabajadores() {
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM alumno;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                //Recepcionista trabajador = new Recepcionista();
-                A a = new A();
-                a.setId(resultSet.getInt("id"));
-                a.setNombre(resultSet.getString("nombre"));
-                a.setApellido(resultSet.getString("apellidos"));
-                a.setDireccion(resultSet.getString("direccion"));
+                Recepcionista trabajador = new Recepcionista();
+                trabajador.setDni(resultSet.getString("dni"));
+                trabajador.setNombre(resultSet.getString("nombre"));
+                trabajador.setApellidos(resultSet.getString("apellidos"));
+                trabajador.setTelefono(resultSet.getInt("telefono"));
 
-                model.addElement(a);
+                model.addElement(trabajador);
             }
 
         } catch (SQLException e) {

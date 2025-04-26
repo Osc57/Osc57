@@ -66,6 +66,91 @@ CREATE TABLE historial (
 	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 
 
-	
-	
+/*Procedo a hacer triggers*/
+/*Este trigger introduce el dni del trabajador directamente a la tabla odontologo*/
+DELIMITER //
+CREATE TRIGGER insertar_trabajadores_odontologos
+AFTER INSERT ON trabajadores
+FOR EACH ROW
+BEGIN
+    INSERT INTO odontologo (dni) VALUES (NEW.dni);
+END//
+DELIMITER ;
+
+/*Este trigger limita a 5 trabajadores por clinica*/
+DELIMITER //
+CREATE TRIGGER limite_total_trabajadores
+BEFORE INSERT ON trabajadores  -- Aquí SÍ se controla el límite
+FOR EACH ROW
+BEGIN
+    IF (SELECT COUNT(*) FROM trabajadores) >= 5 THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Solo se permiten 5 trabajadores en esta clinica';
+    END IF;
+END//
+DELIMITER ;
+
+/*Limito que no haya mas de 5 personas en odontologos*/
+DELIMITER //
+DELIMITER //
+CREATE TRIGGER limite_odontologos
+BEFORE INSERT ON odontologo
+FOR EACH ROW
+BEGIN
+    IF (SELECT COUNT(*) FROM odontologo) >= 5 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No puede haber mas 5 odontologos si solo hay 5 trabajadores';
+    END IF;
+END//
+DELIMITER ;
+
+/*Limito a 1 el recepcionista*/
+DELIMITER //
+CREATE TRIGGER limite_recepcionistas
+BEFORE INSERT ON recepcionista
+FOR EACH ROW
+BEGIN
+    DECLARE conteo INT;
+    SELECT COUNT(*) INTO conteo FROM recepcionista;
+    IF conteo >= 1 THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Solo puede haber 1 recepcionista a la vez';
+    END IF;
+END//
+DELIMITER ;
+
+/*Hago un Insert en trabajadores*/
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('12345678A', 'Carlos', 'Gómez Martínez', '600111222', NULL);
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('23456789B', 'Ana', 'López Sánchez', '600222333', '12345678A');
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('34567890C', 'David', 'Pérez Fernández', '600333444', '12345678A');
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('45678901D', 'Elena', 'Ruiz Díaz', '600444555', '12345678A');
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('56789012E', 'Pedro', 'Sanz Jiménez', '600555666', '23456789B');
+
+/*Introduzco los tratamientos*/
+INSERT INTO tratamientos (tipo) VALUES ('Limpieza dental profesional');
+INSERT INTO tratamientos (tipo) VALUES ('Empaste dental');
+INSERT INTO tratamientos (tipo) VALUES ('Selladores de fisuras');
+INSERT INTO tratamientos (tipo) VALUES ('Consulta odontológica');
+INSERT INTO tratamientos (tipo) VALUES ('Revisión dental');
+
+INSERT INTO tratamientos (tipo) VALUES ('Endodoncia');
+INSERT INTO tratamientos (tipo) VALUES ('Extracción dental');
+INSERT INTO tratamientos (tipo) VALUES ('Extracción de muelas del juicio');
+
+INSERT INTO tratamientos (tipo) VALUES ('Blanqueamiento dental');
+INSERT INTO tratamientos (tipo) VALUES ('Carillas dentales');
+INSERT INTO tratamientos (tipo) VALUES ('Ortodoncia invisible');
+
+INSERT INTO tratamientos (tipo) VALUES ('Corona dental');
+INSERT INTO tratamientos (tipo) VALUES ('Puente dental');
+INSERT INTO tratamientos (tipo) VALUES ('Implante dental');
+INSERT INTO tratamientos (tipo) VALUES ('Prótesis dental');
+INSERT INTO tratamientos (tipo) VALUES ('Reconstrucción dental');
+
+INSERT INTO tratamientos (tipo) VALUES ('Tratamiento de gingivitis');
+INSERT INTO tratamientos (tipo) VALUES ('Cirugía periodontal');
+
+INSERT INTO tratamientos (tipo) VALUES ('Ortodoncia metálica');
+
+INSERT INTO tratamientos (tipo) VALUES ('Radiografía dental');
 	
