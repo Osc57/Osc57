@@ -38,8 +38,8 @@ public class InterfazLogin2 extends JFrame {
 
         JScrollPane jScrollPane = new JScrollPane(listaNombres);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
-        
-        JButton btnAcceder = getjButton();
+
+        JButton btnAcceder = botonAcceder();
         btnAcceder.setFont(new Font("Arial", Font.BOLD, 16));
         btnAcceder.setBackground(new Color(70, 130, 180));
         btnAcceder.setForeground(Color.WHITE);
@@ -55,7 +55,7 @@ public class InterfazLogin2 extends JFrame {
         cargarTrabajadores();
     }
 
-    private JButton getjButton() {
+    private JButton botonAcceder() {
         JButton btnAcceder = new JButton("Acceder");
         btnAcceder.addActionListener(new ActionListener() {
             @Override
