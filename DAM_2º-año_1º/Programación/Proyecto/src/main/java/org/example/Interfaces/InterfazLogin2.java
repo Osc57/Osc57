@@ -38,8 +38,7 @@ public class InterfazLogin2 extends JFrame {
 
         JScrollPane jScrollPane = new JScrollPane(listaNombres);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
-
-        // Botón acceder (sur)
+        
         JButton btnAcceder = getjButton();
         btnAcceder.setFont(new Font("Arial", Font.BOLD, 16));
         btnAcceder.setBackground(new Color(70, 130, 180));
