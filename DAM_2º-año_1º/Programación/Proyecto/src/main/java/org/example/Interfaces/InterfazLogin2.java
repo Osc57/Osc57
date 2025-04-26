@@ -1,8 +1,6 @@
 package org.example.Interfaces;
 
-import org.example.Clases.A;
 import org.example.Clases.Recepcionista;
-import org.example.Clases.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,9 +48,12 @@ public class InterfazLogin2 extends JFrame {
                     JOptionPane.showMessageDialog(null,
                             "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     updateRecepcionista(recepcionistaSeleccionado.getDni());
+                    dispose();
+                    InterfazGestiona interfazGestiona = new InterfazGestiona();
+                    interfazGestiona.setVisible(true);
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Selecciona un alumno primero.");
+                    JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
                 }
             }
         });
