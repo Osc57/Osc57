@@ -1,6 +1,7 @@
 /*Crear la Base de Datos para el proyecto intermodular*/
 /*Óscar Úbeda - Base de Datos Clinica Bucodental*/
 
+/*Creo la estructura de la base de datos*/
 CREATE DATABASE IF NOT EXISTS proyectoOscar;
 USE proyectoOscar;
 
@@ -43,7 +44,7 @@ CREATE TABLE proporciona (
 	
 CREATE TABLE cita (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	fechaCita DATE NOT NULL,
+	fechaCita DATETIME NOT NULL,
 	dni_cliente CHAR(9),
 	id_tratamiento INT,
 	CONSTRAINT fk_cita_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
@@ -57,10 +58,10 @@ CREATE TABLE gestiona (
 	CONSTRAINT fk_gestiona_recepcionista FOREIGN KEY (dni_recepcionista) REFERENCES recepcionista(dni));
 	
 CREATE TABLE historial (
-	id INT AUTO_INCREMENT PRIMARY KEY,
 	dni_cliente CHAR(9) NOT NULL,
 	id_tratamiento INT NOT NULL,
-	fecha_tratamiento DATE NOT NULL,
+	fecha_tratamiento DATETIME NOT NULL,
+	PRIMARY KEY (dni_cliente, fecha_tratamiento),
 	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni) ON DELETE CASCADE,
 	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 
