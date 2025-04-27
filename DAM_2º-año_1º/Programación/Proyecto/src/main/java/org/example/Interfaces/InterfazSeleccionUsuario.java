@@ -80,7 +80,7 @@ public class InterfazSeleccionUsuario extends JFrame {
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     updateRecepcionista(recepcionistaSeleccionado.getDni());
-                    controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(),recepcionistaSeleccionado.getApellidos());
+                    controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(), recepcionistaSeleccionado.getApellidos());
                     dispose();
                     InterfazGestiona interfazGestiona = new InterfazGestiona();
                     interfazGestiona.setVisible(true);
@@ -115,7 +115,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         DateTimeFormatter fechaLoggin = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
 
         try (BufferedWriter registro = new BufferedWriter(new FileWriter("registroRecepcionista.txt", true))) {
-            String linea =  "[" + LocalDateTime.now().format(fechaLoggin) + "] " + "Recepcionista: "+ nombre + " " + apellidos + " | " + "DNI: " + dni + "\n";
+            String linea = "[" + LocalDateTime.now().format(fechaLoggin) + "] " + "Recepcionista: " + nombre + " " + apellidos + " | " + "DNI: " + dni + "\n";
 
             registro.write(linea);
         } catch (IOException e) {
