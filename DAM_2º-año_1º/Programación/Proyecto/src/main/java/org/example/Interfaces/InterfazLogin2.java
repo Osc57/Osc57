@@ -57,6 +57,8 @@ public class InterfazLogin2 extends JFrame {
         cargarTrabajadores();
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+
     private JButton botonAcceder() {
         JButton btnAcceder = new JButton("ACCEDER");
         btnAcceder.setFont(new Font("Arial", Font.BOLD, 50));

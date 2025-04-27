@@ -7,6 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
+    private static final Color COLOR_BOTON = new Color(70, 130, 180);
+    private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
+    private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
+    private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
+    private static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
+
     private String usuario = "Admin";
     private String password = "1234";
     private JPanel jPanel;
@@ -27,7 +33,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
         jPanel.setLayout(null);
 
         JLabel textoLabel = new JLabel("LOGIN");//Label del login
-        textoLabel.setFont(new Font("Arial", Font.BOLD, 42));//Le doy un estilo a la letra
+        textoLabel.setFont(FUENTE_TITULO);//Le doy un estilo a la letra 
         textoLabel.setBounds(0, 30, 500, 50);//Le doy un tamaño a esta
         textoLabel.setHorizontalAlignment(SwingConstants.CENTER);//Centro el texto
         jPanel.add(textoLabel);//La añado al panel
@@ -35,33 +41,33 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
 //--------------------------------------------------------------------------------------------------------------
 
         JLabel user = new JLabel("USUARIO:");//Label de usuario
-        user.setFont(new Font("Arial", Font.BOLD, 18));
+        user.setFont(FUENTE_LABEL);
         user.setBounds(50, 110, 150, 30);//Muevo y ajusto el label
         jPanel.add(user);//Lo añado al panel
 
         jTextField = new JTextField();//Me genero el jtextfield
         jTextField.setBounds(200, 110, 250, 35);//Le doy tamaño
-        jTextField.setFont(new Font("Arial", Font.PLAIN, 16));
+        jTextField.setFont(FUENTE_CAMPOS);
         jPanel.add(jTextField);//Lo añado al panel
 
 //--------------------------------------------------------------------------------------------------------------
 
         JLabel passw = new JLabel("CONTRASEÑA:");//Label de contraseña
-        passw.setFont(new Font("Arial", Font.BOLD, 18));
+        passw.setFont(FUENTE_LABEL);
         passw.setBounds(50, 170, 150, 30);//Muevo y ajusto el label
         jPanel.add(passw);
 
         jPasswordField = new JPasswordField();//Me genero el jtextfield de contraseña
         jPasswordField.setBounds(200, 170, 250, 35);//Le doy tamaño
-        jPasswordField.setFont(new Font("Arial", Font.PLAIN, 16));
+        jPasswordField.setFont(FUENTE_CAMPOS);
         jPanel.add(jPasswordField);//Lo añado al panel
 
 //--------------------------------------------------------------------------------------------------------------
 
         jButton = new JButton("INICIAR SESIÓN");//Me genero el botón
-        jButton.setFont(new Font("Arial", Font.BOLD, 18));//Le doy un estilo a la letra que esta dentro del botón
+        jButton.setFont(FUENTE_BOTON);
         jButton.setBounds(150, 250, 200, 45);//Selecciono tamaño y ubicación del botón
-        jButton.setBackground(new Color(70, 130, 180));//Color azul para el botón
+        jButton.setBackground(COLOR_BOTON);//Color azul para el botón
         jButton.setForeground(Color.WHITE);//Texto blanco
         jPanel.add(jButton);//Lo añado al panel
 
@@ -80,9 +86,10 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
             }
         });
     }
-
     public static void main(String[] args) {
         InterfazLogin1 login1 = new InterfazLogin1();
         login1.setVisible(true);
     }
 }
+
+
