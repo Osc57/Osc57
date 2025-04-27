@@ -101,9 +101,9 @@ public class InterfazSeleccionUsuario extends JFrame {
             int filas = preparedStatement.executeUpdate();
 
             if (filas == 0) {
-                try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO recepcionista (dni) VALUES (?)")) {
-                    psInsert.setString(1, documento);
-                    psInsert.executeUpdate();
+                try (PreparedStatement statement = connection.prepareStatement("INSERT INTO recepcionista (dni) VALUES (?)")) {
+                    statement.setString(1, documento);
+                    statement.executeUpdate();
                 }
             }
         } catch (SQLException e) {
