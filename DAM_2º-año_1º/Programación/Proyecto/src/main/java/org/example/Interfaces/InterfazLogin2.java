@@ -11,6 +11,9 @@ import java.sql.*;
 import static org.example.BBDD.BBDD.connect;
 
 public class InterfazLogin2 extends JFrame {
+    private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
+    private static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
+    private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
     private JList<Recepcionista> listaNombres;
     private DefaultListModel<Recepcionista> model;
@@ -33,15 +36,15 @@ public class InterfazLogin2 extends JFrame {
         listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listaNombres.setFont(new Font("Arial", Font.PLAIN, 18));
         listaNombres.setFixedCellHeight(35);
-        listaNombres.setBackground(new Color(240, 240, 240));
+        listaNombres.setBackground(COLOR_FONDO_LISTA);
 
         JScrollPane jScrollPane = new JScrollPane(listaNombres);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
 
         JButton btnAcceder = botonAcceder();
         btnAcceder.setFont(new Font("Arial", Font.BOLD, 16));
-        btnAcceder.setBackground(new Color(70, 130, 180));
-        btnAcceder.setForeground(Color.WHITE);
+        btnAcceder.setBackground(COLOR_BOTON_ACCEDER);
+        btnAcceder.setForeground(COLOR_TEXTO_BOTON);
 
         JPanel panelCentro = new JPanel(new BorderLayout());
         panelCentro.add(jScrollPane, BorderLayout.CENTER);
