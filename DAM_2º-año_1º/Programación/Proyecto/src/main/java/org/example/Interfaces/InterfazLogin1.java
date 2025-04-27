@@ -33,7 +33,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
         jPanel.setLayout(null);
 
         JLabel textoLabel = new JLabel("LOGIN");//Label del login
-        textoLabel.setFont(FUENTE_TITULO);//Le doy un estilo a la letra 
+        textoLabel.setFont(FUENTE_TITULO);//Le doy un estilo a la letra
         textoLabel.setBounds(0, 30, 500, 50);//Le doy un tamaño a esta
         textoLabel.setHorizontalAlignment(SwingConstants.CENTER);//Centro el texto
         jPanel.add(textoLabel);//La añado al panel

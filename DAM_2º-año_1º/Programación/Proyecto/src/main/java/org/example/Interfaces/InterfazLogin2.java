@@ -24,6 +24,7 @@ public class InterfazLogin2 extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(0, 10));
+        this.setResizable(false);
 
         JPanel panelArriba = new JPanel();
         panelArriba.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
