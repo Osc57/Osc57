@@ -19,7 +19,7 @@ public class InterfazLogin2 extends JFrame {
     private DefaultListModel<Recepcionista> model;
 
     public InterfazLogin2() {
-        this.setTitle("Selección de Usuario - Clínica Dental");
+        this.setTitle("Selección de Usuario");
         this.setSize(500, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

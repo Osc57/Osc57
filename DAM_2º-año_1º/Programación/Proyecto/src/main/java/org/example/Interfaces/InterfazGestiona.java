@@ -11,5 +11,7 @@ public class InterfazGestiona extends JFrame {
         this.setSize(500, 700);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+
     }
 }
