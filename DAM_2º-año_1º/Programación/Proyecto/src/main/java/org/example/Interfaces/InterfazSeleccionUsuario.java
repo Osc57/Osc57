@@ -115,7 +115,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         DateTimeFormatter fechaLoggin = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
 
         try (BufferedWriter registro = new BufferedWriter(new FileWriter("registroRecepcionista.txt", true))) {
-            String linea = String.format("[%s] Recepcionista: %s %s | DNI: %s%n", fechaLoggin.format(LocalDateTime.now()), nombre, apellidos, dni);
+            String linea =  "[" + LocalDateTime.now().format(fechaLoggin) + "] " + "Recepcionista: "+ nombre + " " + apellidos + " | " + "DNI: " + dni + "\n";
 
             registro.write(linea);
         } catch (IOException e) {
