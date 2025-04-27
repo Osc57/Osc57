@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
+public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
     private static final Color COLOR_BOTON = new Color(70, 130, 180);
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
     private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
@@ -20,7 +20,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
     private JButton jButton;
     private JPasswordField jPasswordField;
 
-    public InterfazLogin1() {
+    public InterfazLogin() {
         this.setTitle("Login");
         this.setSize(500, 370);
         this.setLocationRelativeTo(null);
@@ -77,7 +77,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
                 String pass = new String(jPasswordField.getPassword());
                 if (jTextField.getText().equalsIgnoreCase(usuario) && pass.equals(password)) {
                     JOptionPane.showMessageDialog(null, "Login Correcto");
-                    InterfazLogin2 login2 = new InterfazLogin2();
+                    InterfazSeleccionUsuario login2 = new InterfazSeleccionUsuario();
                     login2.setVisible(true);
                     dispose();
                 } else {
@@ -87,7 +87,7 @@ public class InterfazLogin1 extends JFrame {//Extiendo JFrame para ya tener un f
         });
     }
     public static void main(String[] args) {
-        InterfazLogin1 login1 = new InterfazLogin1();
+        InterfazLogin login1 = new InterfazLogin();
         login1.setVisible(true);
     }
 }

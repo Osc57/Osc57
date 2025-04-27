@@ -10,7 +10,7 @@ import java.sql.*;
 
 import static org.example.BBDD.BBDD.connect;
 
-public class InterfazLogin2 extends JFrame {
+public class InterfazSeleccionUsuario extends JFrame {
     private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
     private static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
     private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
@@ -18,7 +18,7 @@ public class InterfazLogin2 extends JFrame {
     private JList<Recepcionista> listaNombres;
     private DefaultListModel<Recepcionista> model;
 
-    public InterfazLogin2() {
+    public InterfazSeleccionUsuario() {
         this.setTitle("Selección de Usuario");
         this.setSize(500, 400);
         this.setLocationRelativeTo(null);
@@ -126,7 +126,7 @@ public class InterfazLogin2 extends JFrame {
     }
 
     public static void main(String[] args) {
-        InterfazLogin2 login = new InterfazLogin2();
+        InterfazSeleccionUsuario login = new InterfazSeleccionUsuario();
         login.setVisible(true);
     }
 }
