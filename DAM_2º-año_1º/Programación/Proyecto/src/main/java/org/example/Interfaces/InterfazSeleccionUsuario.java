@@ -29,7 +29,6 @@ public class InterfazSeleccionUsuario extends JFrame {
         this.setSize(500, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout(0, 10));
         this.setResizable(false);
 
         JPanel panelArriba = new JPanel();
