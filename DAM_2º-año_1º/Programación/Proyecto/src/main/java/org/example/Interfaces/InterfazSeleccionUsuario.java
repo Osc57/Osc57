@@ -6,7 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.example.BBDD.BBDD.connect;
 
@@ -74,6 +80,7 @@ public class InterfazSeleccionUsuario extends JFrame {
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     updateRecepcionista(recepcionistaSeleccionado.getDni());
+                    controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(),recepcionistaSeleccionado.getApellidos());
                     dispose();
                     InterfazGestiona interfazGestiona = new InterfazGestiona();
                     interfazGestiona.setVisible(true);
@@ -100,6 +107,18 @@ public class InterfazSeleccionUsuario extends JFrame {
                 }
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void controlRecepcionista(String dni, String nombre, String apellidos) {
+        DateTimeFormatter fechaLoggin = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
+
+        try (BufferedWriter registro = new BufferedWriter(new FileWriter("registroRecepcionista.txt", true))) {
+            String linea = String.format("[%s] Recepcionista: %s %s | DNI: %s%n", fechaLoggin.format(LocalDateTime.now()), nombre, apellidos, dni);
+
+            registro.write(linea);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
