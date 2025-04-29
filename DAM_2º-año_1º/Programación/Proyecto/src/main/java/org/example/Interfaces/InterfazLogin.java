@@ -76,20 +76,37 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
             @Override
             public void actionPerformed(ActionEvent e) {
                 String pass = new String(jPasswordField.getPassword());
-                if (jTextField.getText().equalsIgnoreCase(usuario) && pass.equals(password)) {
-                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-                    InterfazSeleccionUsuario login2 = new InterfazSeleccionUsuario();
-                    login2.setVisible(true);
-                    dispose();
-                } else if (!jTextField.getText().equalsIgnoreCase(usuario) && pass.equals(password)) {
-                    JOptionPane.showMessageDialog(null, "⚠\uFE0F Usuario Incorrecto ⚠\uFE0F");
-                } else if (jTextField.getText().equalsIgnoreCase(usuario) && !pass.equals(password)) {
-                    JOptionPane.showMessageDialog(null, "⚠\uFE0F Contraseña Incorrecta ⚠\uFE0F");
-                } else {
-                    JOptionPane.showMessageDialog(null, "⚠\uFE0F Login Incorrecto ⚠\uFE0F");
+                String user = jTextField.getText();
+
+                //Verifico el login de los usuarios que son recepcionistas
+                if (user.equalsIgnoreCase(usuario)) {
+                    if (pass.equals(password)) {
+                        JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                        InterfazSeleccionUsuario loginUsuario = new InterfazSeleccionUsuario();
+                        loginUsuario.setVisible(true);
+                        dispose();
+                        return;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "⚠\uFE0F Contraseña Incorrecta ⚠\uFE0F");
+                    }
                 }
+
+                //Verfifico el login de el usuario que es jefe
+                if (user.equalsIgnoreCase(administrador)) {
+                    if (pass.equals(password)) {
+                        JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                        InterfazJefe loginJefe = new InterfazJefe();
+                        loginJefe.setVisible(true);
+                        dispose();
+                        return;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "⚠\uFE0F Contraseña Incorrecta ⚠\uFE0F");
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "⚠\uFE0F Usuario Incorrecto ⚠\uFE0F");
             }
         });
+
     }
 
     public static void main(String[] args) {
@@ -97,5 +114,11 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
         login1.setVisible(true);
     }
 }
+
+
+
+
+
+
 
 

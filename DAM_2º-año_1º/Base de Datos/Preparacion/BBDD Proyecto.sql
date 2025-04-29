@@ -77,33 +77,6 @@ BEGIN
 END//
 DELIMITER ;
 
-/*Este trigger limita a 5 trabajadores por clinica*/
-DELIMITER //
-CREATE TRIGGER limite_total_trabajadores
-BEFORE INSERT ON trabajadores  -- Aquí SÍ se controla el límite
-FOR EACH ROW
-BEGIN
-    IF (SELECT COUNT(*) FROM trabajadores) >= 5 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Solo se permiten 5 trabajadores en esta clinica';
-    END IF;
-END//
-DELIMITER ;
-
-/*Limito que no haya mas de 5 personas en odontologos*/
-DELIMITER //
-DELIMITER //
-CREATE TRIGGER limite_odontologos
-BEFORE INSERT ON odontologo
-FOR EACH ROW
-BEGIN
-    IF (SELECT COUNT(*) FROM odontologo) >= 5 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'No puede haber mas 5 odontologos si solo hay 5 trabajadores';
-    END IF;
-END//
-DELIMITER ;
-
 /*Hago un Insert en trabajadores*/
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('12345678A', 'Carlos', 'Gomez Martinez', '600111222', NULL);
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('23456789B', 'Ana', 'Lopez Sanchez', '600222333', '12345678A');
