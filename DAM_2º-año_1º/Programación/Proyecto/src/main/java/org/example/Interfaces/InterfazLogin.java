@@ -91,7 +91,7 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                     }
                 }
 
-                //Verfifico el login de el usuario que es jefe
+                //Verfifico el login de el usuario que es jefe/admin
                 if (user.equalsIgnoreCase(administrador)) {
                     if (pass.equals(password)) {
                         JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
