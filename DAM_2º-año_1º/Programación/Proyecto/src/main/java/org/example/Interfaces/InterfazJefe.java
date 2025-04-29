@@ -23,8 +23,8 @@ public class InterfazJefe extends JFrame {
         JPanel panelBotones = new JPanel(new GridLayout(1, 2, 20, 0));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(40, 60, 50, 60));
 
-        JButton insertar = new JButton("Insertar Trabajador");
-        JButton eliminar = new JButton("Eliminar Trabajador");
+        JButton insertar = new JButton("Dar de alta Trabajador");
+        JButton eliminar = new JButton("Dar de baja Trabajador");
 
         insertar.setFont(FUENTE_BOTONES);
         eliminar.setFont(FUENTE_BOTONES);
