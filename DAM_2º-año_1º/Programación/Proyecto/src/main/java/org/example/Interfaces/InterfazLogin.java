@@ -13,7 +13,8 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
     private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
     private static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
 
-    private String usuario = "Admin";
+    private String administrador = "Admin";
+    private String usuario = "Usuario";
     private String password = "1234";
     private JPanel jPanel;
     private JTextField jTextField;
@@ -76,16 +77,21 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
             public void actionPerformed(ActionEvent e) {
                 String pass = new String(jPasswordField.getPassword());
                 if (jTextField.getText().equalsIgnoreCase(usuario) && pass.equals(password)) {
-                    JOptionPane.showMessageDialog(null, "Login Correcto");
+                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
                     InterfazSeleccionUsuario login2 = new InterfazSeleccionUsuario();
                     login2.setVisible(true);
                     dispose();
+                } else if (!jTextField.getText().equalsIgnoreCase(usuario) && pass.equals(password)) {
+                    JOptionPane.showMessageDialog(null, "⚠\uFE0F Usuario Incorrecto ⚠\uFE0F");
+                } else if (jTextField.getText().equalsIgnoreCase(usuario) && !pass.equals(password)) {
+                    JOptionPane.showMessageDialog(null, "⚠\uFE0F Contraseña Incorrecta ⚠\uFE0F");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Login Incorrecto");
+                    JOptionPane.showMessageDialog(null, "⚠\uFE0F Login Incorrecto ⚠\uFE0F");
                 }
             }
         });
     }
+
     public static void main(String[] args) {
         InterfazLogin login1 = new InterfazLogin();
         login1.setVisible(true);
