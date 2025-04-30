@@ -124,7 +124,7 @@ public class InterfazSeleccionUsuario extends JFrame {
 
     private void cargarTrabajadores() {
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni_jefe IS NOT NULL;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

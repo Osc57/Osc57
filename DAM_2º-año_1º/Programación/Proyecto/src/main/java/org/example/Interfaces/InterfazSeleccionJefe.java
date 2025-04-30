@@ -89,7 +89,7 @@ public class InterfazSeleccionJefe extends JFrame {
 
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
+                    JOptionPane.showMessageDialog(null, "Selecciona jefe");
                 }
             }
         });

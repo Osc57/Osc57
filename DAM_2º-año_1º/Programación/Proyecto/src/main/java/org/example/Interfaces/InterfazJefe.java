@@ -20,8 +20,20 @@ public class InterfazJefe extends JFrame {
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setFont(FUENTE_TITULO);
 
-        JPanel panelBotones = new JPanel(new GridLayout(1, 2, 20, 0));
-        panelBotones.setBorder(BorderFactory.createEmptyBorder(30, 60, 60, 60));
+        JPanel panelBotonesCentro = getjPanel();
+        JPanel panelBotonRetorno = new JPanel();
+
+        JButton botonRetorno = new JButton("⬅\uFE0F");
+        panelBotonRetorno.add(botonRetorno);
+
+        this.add(titulo, BorderLayout.NORTH);
+        this.add(panelBotonesCentro, BorderLayout.CENTER);
+        this.add(panelBotonRetorno, BorderLayout.WEST);
+    }
+
+    private static JPanel getjPanel() {
+        JPanel panelBotonesCentro = new JPanel(new GridLayout(1, 2, 20, 0));
+        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(30, 60, 60, 60));
 
         JButton insertar = new JButton("<html><center>Dar de Alta <br> Trabajador</center><html>");
         JButton eliminar = new JButton("<html><center>Dar de Baja <br> Trabajador</center><html>");
@@ -33,11 +45,9 @@ public class InterfazJefe extends JFrame {
         insertar.setBackground(COLOR_FONDO_BOTON);
         eliminar.setBackground(COLOR_FONDO_BOTON);
 
-        panelBotones.add(insertar);
-        panelBotones.add(eliminar);
-
-        this.add(titulo, BorderLayout.NORTH);
-        this.add(panelBotones, BorderLayout.CENTER);
+        panelBotonesCentro.add(insertar);
+        panelBotonesCentro.add(eliminar);
+        return panelBotonesCentro;
     }
 
 
