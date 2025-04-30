@@ -13,7 +13,7 @@ public class InterfazGestionJefe extends JFrame {
 
     public InterfazGestionJefe() {
         this.setTitle("Administrador");
-        this.setSize(500, 370);
+        this.setSize(500, 350);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -45,8 +45,11 @@ public class InterfazGestionJefe extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazSeleccionJefe().setVisible(true);
-                dispose();
+                if (JOptionPane.showConfirmDialog(InterfazGestionJefe.this, "¿Seguro que quieres volver a atrás?", "Volver a atrás",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    new InterfazSeleccionJefe().setVisible(true);
+                    dispose();
+                }
             }
         });
         return panelBotonRetorno;
@@ -54,7 +57,7 @@ public class InterfazGestionJefe extends JFrame {
 
     private static JPanel getjPanelBotonesCentro() {
         JPanel panelBotonesCentro = new JPanel(new GridLayout(1, 2, 20, 0));
-        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(20, 0, 70, 60));
+        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
 
         JButton insertar = new JButton("<html><center>Dar de Alta<br>Trabajador</center></html>");
         JButton eliminar = new JButton("<html><center>Dar de Baja<br>Trabajador</center></html>");
