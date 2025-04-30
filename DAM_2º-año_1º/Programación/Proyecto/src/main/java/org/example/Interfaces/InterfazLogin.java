@@ -82,8 +82,8 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                 if (user.equalsIgnoreCase(usuario)) {
                     if (pass.equals(password)) {
                         JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-                        InterfazSeleccionUsuario loginUsuario = new InterfazSeleccionUsuario();
-                        loginUsuario.setVisible(true);
+
+                        new InterfazSeleccionUsuario().setVisible(true);
                         dispose();
                         return;
                     } else {
@@ -95,8 +95,8 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                 if (user.equalsIgnoreCase(administrador)) {
                     if (pass.equals(password)) {
                         JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-                        InterfazSeleccionJefe seleccionJefe = new InterfazSeleccionJefe();
-                        seleccionJefe.setVisible(true);
+
+                        new InterfazSeleccionJefe().setVisible(true);
                         dispose();
                         return;
                     } else {

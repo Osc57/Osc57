@@ -80,9 +80,8 @@ public class InterfazSeleccionUsuario extends JFrame {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     updateRecepcionista(recepcionistaSeleccionado.getDni());
                     controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(), recepcionistaSeleccionado.getApellidos());
+                    new InterfazGestiona().setVisible(true);
                     dispose();
-                    InterfazGestiona interfazGestiona = new InterfazGestiona();
-                    interfazGestiona.setVisible(true);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");

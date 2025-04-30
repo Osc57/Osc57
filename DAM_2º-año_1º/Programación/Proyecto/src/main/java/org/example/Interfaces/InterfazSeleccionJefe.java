@@ -1,8 +1,6 @@
 package org.example.Interfaces;
 
 import org.example.Clases.Jefe;
-import org.example.Clases.Recepcionista;
-import org.example.Clases.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,9 +81,9 @@ public class InterfazSeleccionJefe extends JFrame {
                 if (jefeSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + jefeSeleccionado.getNombre() + " " + jefeSeleccionado.getApellidos());
                     controlJefe(jefeSeleccionado.getDni(), jefeSeleccionado.getNombre(), jefeSeleccionado.getApellidos());
+
+                    new InterfazGestionJefe().setVisible(true);
                     dispose();
-                    InterfazJefe interfazJefe = new InterfazJefe();
-                    interfazJefe.setVisible(true);
 
 
                 } else {
