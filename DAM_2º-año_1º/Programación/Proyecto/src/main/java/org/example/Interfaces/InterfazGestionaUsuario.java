@@ -20,7 +20,7 @@ public class InterfazGestionaUsuario extends JFrame {
         this.setResizable(false);
 
         JLabel titulo = new JLabel("Gestiona a los Usuarios");
-        titulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setFont(FUENTE_TITULO);
 
@@ -46,6 +46,7 @@ public class InterfazGestionaUsuario extends JFrame {
         botonRetorno.addActionListener(e -> {
             if (JOptionPane.showConfirmDialog(InterfazGestionaUsuario.this, "¿Seguro que quieres volver?", "Volver a atrás",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                new InterfazSeleccionUsuario().setVisible(true);
                 dispose();
             }
         });
