@@ -2,6 +2,8 @@ package org.example.Interfaces;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterfazGestionaUsuario extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
@@ -59,9 +61,37 @@ public class InterfazGestionaUsuario extends JFrame {
         panelBotonesGestion.setBackground(COLOR_FONDO);
 
         JButton botonAltaCliente = crearEstiloBoton("Dar de Alta");
+        botonAltaCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InterfazDarAltaCliente().setVisible(true);
+                dispose();
+            }
+        });
+
         JButton botonBajaCliente = crearEstiloBoton("Dar de Baja");
+        botonBajaCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         JButton botonDarCiltaCliente = crearEstiloBoton("Dar Cita");
+        botonDarCiltaCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         JButton botonHistorialCliente = crearEstiloBoton("Mostrar Historial");
+        botonHistorialCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         panelBotonesGestion.add(botonAltaCliente);
         panelBotonesGestion.add(botonBajaCliente);
