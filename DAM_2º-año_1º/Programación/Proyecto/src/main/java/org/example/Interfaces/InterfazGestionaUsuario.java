@@ -19,7 +19,7 @@ public class InterfazGestionaUsuario extends JFrame {
         this.getContentPane().setBackground(COLOR_FONDO);
         this.setResizable(false);
 
-        JLabel titulo = new JLabel("Gestiona a los Usuarios");
+        JLabel titulo = new JLabel("Gestiona a los Clientes");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setFont(FUENTE_TITULO);
@@ -58,10 +58,10 @@ public class InterfazGestionaUsuario extends JFrame {
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO);
 
-        JButton botonAltaCliente = crearBotonEstilizado("<html><center>Dar de Alta<br>Cliente</center></html>");
-        JButton botonBajaCliente = crearBotonEstilizado("<html><center>Dar de Baja<br>Cliente</center></html>");
-        JButton botonDarCiltaCliente = crearBotonEstilizado("<html><center>Dar Cita<br>Cliente</center></html>");
-        JButton botonHistorialCliente = crearBotonEstilizado("<html><center>Mostrar Historial<br>Cliente</center></html>");
+        JButton botonAltaCliente = crearBotonEstilizado("Dar de Alta");
+        JButton botonBajaCliente = crearBotonEstilizado("Dar de Baja");
+        JButton botonDarCiltaCliente = crearBotonEstilizado("Dar Cita");
+        JButton botonHistorialCliente = crearBotonEstilizado("Mostrar Historial");
 
         panelBotonesGestion.add(botonAltaCliente);
         panelBotonesGestion.add(botonBajaCliente);
