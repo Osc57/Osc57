@@ -58,10 +58,10 @@ public class InterfazGestionaUsuario extends JFrame {
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO);
 
-        JButton botonAltaCliente = crearBotonEstilizado("Alta");
-        JButton botonBajaCliente = crearBotonEstilizado("Baja");
-        JButton botonDarCiltaCliente = crearBotonEstilizado("Editar");
-        JButton botonHistorialCliente = crearBotonEstilizado("Historial");
+        JButton botonAltaCliente = crearBotonEstilizado("<html><center>Dar de Alta<br>Cliente</center></html>");
+        JButton botonBajaCliente = crearBotonEstilizado("<html><center>Dar de Baja<br>Cliente</center></html>");
+        JButton botonDarCiltaCliente = crearBotonEstilizado("<html><center>Dar Cita<br>Cliente</center></html>");
+        JButton botonHistorialCliente = crearBotonEstilizado("<html><center>Mostrar Historial<br>Cliente</center></html>");
 
         panelBotonesGestion.add(botonAltaCliente);
         panelBotonesGestion.add(botonBajaCliente);
