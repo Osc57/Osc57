@@ -55,23 +55,28 @@ public class InterfazGestionJefe extends JFrame {
         return panelBotonRetorno;
     }
 
-    private static JPanel getjPanelBotonesCentro() {
+    private JPanel getjPanelBotonesCentro() {
         JPanel panelBotonesCentro = new JPanel(new GridLayout(1, 2, 20, 0));
         panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
 
-        JButton insertar = new JButton("<html><center>Dar de Alta<br>Trabajador</center></html>");
-        JButton eliminar = new JButton("<html><center>Dar de Baja<br>Trabajador</center></html>");
-
-        insertar.setFocusPainted(false);
-        eliminar.setFocusPainted(false);
-        insertar.setFont(FUENTE_BOTONES);
-        eliminar.setFont(FUENTE_BOTONES);
-        insertar.setBackground(COLOR_FONDO_BOTON);
-        eliminar.setBackground(COLOR_FONDO_BOTON);
+        JButton insertar = crearEstiloBoton("Dar de Alta");
+        JButton eliminar =  crearEstiloBoton("Dar de Baja");
 
         panelBotonesCentro.add(insertar);
         panelBotonesCentro.add(eliminar);
         return panelBotonesCentro;
+    }
+
+    private JButton crearEstiloBoton(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setFont(FUENTE_BOTONES);
+        boton.setBackground(COLOR_FONDO_BOTON);
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+        ));
+        return boton;
     }
 
 

@@ -23,8 +23,8 @@ public class InterfazSeleccionJefe extends JFrame {
     private static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
     private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
-    private JList<Jefe> listaNombres;
-    private DefaultListModel<Jefe> model;
+    private final JList<Jefe> LISTA_NOMBRES;
+    private final DefaultListModel<Jefe> MODEL;
 
     public InterfazSeleccionJefe() {
         this.setTitle("Selección de Admin");
@@ -39,14 +39,14 @@ public class InterfazSeleccionJefe extends JFrame {
         jLabel.setFont(new Font("Arial", Font.BOLD, 20));
         panelArriba.add(jLabel);
 
-        model = new DefaultListModel<>();
-        listaNombres = new JList<>(model);
-        listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listaNombres.setFont(new Font("Arial", Font.PLAIN, 18));
-        listaNombres.setFixedCellHeight(35);
-        listaNombres.setBackground(COLOR_FONDO_LISTA);
+        MODEL = new DefaultListModel<>();
+        LISTA_NOMBRES = new JList<>(MODEL);
+        LISTA_NOMBRES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        LISTA_NOMBRES.setFont(new Font("Arial", Font.PLAIN, 18));
+        LISTA_NOMBRES.setFixedCellHeight(35);
+        LISTA_NOMBRES.setBackground(COLOR_FONDO_LISTA);
 
-        JScrollPane jScrollPane = new JScrollPane(listaNombres);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
 
         JButton btnAcceder = botonAcceder();
@@ -77,7 +77,7 @@ public class InterfazSeleccionJefe extends JFrame {
         btnAcceder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jefe jefeSeleccionado = listaNombres.getSelectedValue();
+                Jefe jefeSeleccionado = LISTA_NOMBRES.getSelectedValue();
                 if (jefeSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + jefeSeleccionado.getNombre() + " " + jefeSeleccionado.getApellidos());
                     controlJefe(jefeSeleccionado.getDni(), jefeSeleccionado.getNombre(), jefeSeleccionado.getApellidos());
@@ -119,7 +119,7 @@ public class InterfazSeleccionJefe extends JFrame {
                 trabajador.setApellidos(resultSet.getString("apellidos"));
                 trabajador.setTelefono(resultSet.getInt("telefono"));
 
-                model.addElement(trabajador);
+                MODEL.addElement(trabajador);
             }
 
         } catch (SQLException e) {
