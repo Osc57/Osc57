@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class InterfazGestionaUsuario extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
@@ -17,9 +19,14 @@ public class InterfazGestionaUsuario extends JFrame {
         this.setTitle("Gestión");
         this.setSize(500, 400);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(COLOR_FONDO);
         this.setResizable(false);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new InterfazLogin().setVisible(true);
+            }
+        });
 
         JLabel titulo = new JLabel("Gestiona a los Clientes");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
