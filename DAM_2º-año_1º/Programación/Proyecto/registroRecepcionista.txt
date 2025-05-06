@@ -6,3 +6,4 @@
 [2025/05/01 - 19:00:33] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
 [2025/05/04 - 13:17:14] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
 [2025/05/05 - 15:56:06] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
+[2025/05/06 - 19:39:25] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
