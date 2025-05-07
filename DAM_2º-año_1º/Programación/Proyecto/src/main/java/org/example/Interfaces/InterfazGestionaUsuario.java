@@ -27,7 +27,6 @@ public class InterfazGestionaUsuario extends JFrame {
                 if (JOptionPane.showConfirmDialog(InterfazGestionaUsuario.this, "¿Quieres cerrar sesión?", "Cerrar Sesión",
                         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     new InterfazLogin().setVisible(true);
-                    dispose();
                 }
 
             }
