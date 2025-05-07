@@ -24,7 +24,12 @@ public class InterfazGestionaUsuario extends JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new InterfazLogin().setVisible(true);
+                if (JOptionPane.showConfirmDialog(InterfazGestionaUsuario.this, "¿Quieres cerrar sesión?", "Cerrar Sesión",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    new InterfazLogin().setVisible(true);
+                    dispose();
+                }
+
             }
         });
 
@@ -52,9 +57,9 @@ public class InterfazGestionaUsuario extends JFrame {
         botonRetorno.setBackground(COLOR_BOTONES);
         botonRetorno.setFont(FUENTE_EMOJI);
 
-        botonRetorno.addActionListener(e -> {
-            if (JOptionPane.showConfirmDialog(InterfazGestionaUsuario.this, "¿Seguro que quieres volver?", "Volver a atrás",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        botonRetorno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 new InterfazSeleccionUsuario().setVisible(true);
                 dispose();
             }
