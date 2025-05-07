@@ -35,11 +35,11 @@ public class InterfazDarAltaCliente extends JFrame {
 
     private JPanel getjPanelDatosUsuario() {
         JPanel panelDatos = new JPanel();
-        JPanel panelLabel = new JPanel();
-        panelLabel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelDatos.setLayout(new BorderLayout());
 
-        JPanel panelField = new JPanel();
-        panelField.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel panelLabel = new JPanel(new GridLayout(5,1,5,5));
+
+        JPanel panelField = new JPanel(new GridLayout(5,1,5,5));
 
         JLabel dni = estilosLabelDatosCliente("DNI: ");
         JTextField dniField = estilosFieldDatosCliente();
@@ -56,25 +56,24 @@ public class InterfazDarAltaCliente extends JFrame {
         JLabel telefono = estilosLabelDatosCliente("Teléfono: ");
         JTextField telefonoField = estilosFieldDatosCliente();
 
+        int tamanoField = 200;
+
         JButton enviarDatos = new JButton("Enviar");
 
         panelLabel.add(dni);
-        panelField.add(dniField);
-
         panelLabel.add(nombre);
-        panelField.add(nombreField);
-
         panelLabel.add(apellidos);
-        panelField.add(apellidosField);
-
         panelLabel.add(direccion);
-        panelField.add(direccionField);
-
         panelLabel.add(telefono);
+
+        panelField.add(dniField);
+        panelField.add(nombreField);
+        panelField.add(apellidosField);
+        panelField.add(direccionField);
         panelField.add(telefonoField);
 
-        panelDatos.add(panelLabel);
-        panelDatos.add(panelField);
+        panelDatos.add(panelLabel, BorderLayout.WEST);
+        panelDatos.add(panelField, BorderLayout.CENTER);
 
         return panelDatos;
     }
