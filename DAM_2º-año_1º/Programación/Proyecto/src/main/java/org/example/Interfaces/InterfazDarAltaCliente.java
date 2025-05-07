@@ -12,29 +12,34 @@ public class InterfazDarAltaCliente extends JFrame {
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
-        this.setSize(450, 450);
+        this.setSize(450, 500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        /*
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 new InterfazGestionaUsuario().setVisible(true);
             }
         });
-
+        */
         JLabel introducirCliente = new JLabel("•Introduce Los Datos Del Cliente");
-        introducirCliente.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
-        introducirCliente.setHorizontalAlignment(SwingConstants.LEFT);
         introducirCliente.setFont(FUENTE_TITULO);
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
 
+        JButton enviarDatos = new JButton("Enviar");
+
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelDatosUsuario);
+        this.add(enviarDatos, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelDatosUsuario() {
-        JPanel panelDatos = new JPanel(new GridLayout(5, 2, 20, 20));
+        JPanel panelDatos = new JPanel();
+        JPanel panelLabel = new JPanel();
+        JPanel panelField = new JPanel();
 
         JLabel dni = estilosLabelDatosCliente("DNI: ");
         JTextField dniField = estilosFieldDatosCliente();
@@ -44,29 +49,33 @@ public class InterfazDarAltaCliente extends JFrame {
 
         JLabel apellidos = estilosLabelDatosCliente("Apellidos: ");
         JTextField apellidosField = estilosFieldDatosCliente();
-        
+
         JLabel direccion = estilosLabelDatosCliente("Dirección: ");
         JTextField direccionField = estilosFieldDatosCliente();
-        
+
         JLabel telefono = estilosLabelDatosCliente("Teléfono: ");
         JTextField telefonoField = estilosFieldDatosCliente();
 
-        panelDatos.add(dni);
-        panelDatos.add(nombre,nombreField);
-        panelDatos.add(apellidos);
-        panelDatos.add(direccion);
-        panelDatos.add(telefono);
+        panelLabel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelLabel.add(dni, BorderLayout.WEST);
+        panelField.add(dniField);
+
+
+        panelDatos.add(panelLabel);
+        panelDatos.add(panelField);
+
         return panelDatos;
     }
-    private JLabel estilosLabelDatosCliente(String nombre){
+
+    private JLabel estilosLabelDatosCliente(String nombre) {
         JLabel estilosDatosUsuarios = new JLabel(nombre);
         estilosDatosUsuarios.setFont(FUENTE_LABEL);
 
         return estilosDatosUsuarios;
     }
 
-    private JTextField estilosFieldDatosCliente(){
-        JTextField textoDatosUsuario = new JTextField(20);
+    private JTextField estilosFieldDatosCliente() {
+        JTextField textoDatosUsuario = new JTextField(15);
         textoDatosUsuario.setFont(FUENTE_CAMPOS);
 
         return textoDatosUsuario;

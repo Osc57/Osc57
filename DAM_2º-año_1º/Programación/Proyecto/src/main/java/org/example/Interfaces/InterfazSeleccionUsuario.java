@@ -20,8 +20,8 @@ public class InterfazSeleccionUsuario extends JFrame {
     private static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
     private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
-    private JList<Recepcionista> listaNombres;
-    private DefaultListModel<Recepcionista> model;
+    private final JList<Recepcionista> LISTA_NOMBRES;
+    private final DefaultListModel<Recepcionista> MODEL;
 
     public InterfazSeleccionUsuario() {
         this.setTitle("Selección de Usuario");
@@ -36,14 +36,14 @@ public class InterfazSeleccionUsuario extends JFrame {
         jLabel.setFont(new Font("Arial", Font.BOLD, 20));
         panelArriba.add(jLabel);
 
-        model = new DefaultListModel<>();
-        listaNombres = new JList<>(model);
-        listaNombres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listaNombres.setFont(new Font("Arial", Font.PLAIN, 18));
-        listaNombres.setFixedCellHeight(35);
-        listaNombres.setBackground(COLOR_FONDO_LISTA);
+        MODEL = new DefaultListModel<>();
+        LISTA_NOMBRES = new JList<>(MODEL);
+        LISTA_NOMBRES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        LISTA_NOMBRES.setFont(new Font("Arial", Font.PLAIN, 18));
+        LISTA_NOMBRES.setFixedCellHeight(35);
+        LISTA_NOMBRES.setBackground(COLOR_FONDO_LISTA);
 
-        JScrollPane jScrollPane = new JScrollPane(listaNombres);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
 
         JButton btnAcceder = botonAcceder();
@@ -74,7 +74,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         btnAcceder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Recepcionista recepcionistaSeleccionado = listaNombres.getSelectedValue();
+                Recepcionista recepcionistaSeleccionado = LISTA_NOMBRES.getSelectedValue();
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     updateRecepcionista(recepcionistaSeleccionado.getDni());
@@ -133,7 +133,7 @@ public class InterfazSeleccionUsuario extends JFrame {
                 trabajador.setApellidos(resultSet.getString("apellidos"));
                 trabajador.setTelefono(resultSet.getInt("telefono"));
 
-                model.addElement(trabajador);
+                MODEL.addElement(trabajador);
             }
 
         } catch (SQLException e) {
