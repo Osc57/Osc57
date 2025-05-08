@@ -9,9 +9,11 @@ import java.sql.SQLException;
 
 import static org.example.Controlador.Conexion.connect;
 
-public class BBDDJefe {
+public class ControladorJefe {
 
-    public Jefe cargarJefe() {
+    public ControladorJefe() {
+    }
+    public static Jefe cargarJefe() {
         Jefe trabajador = new Jefe();
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni_jefe IS NULL;")) {

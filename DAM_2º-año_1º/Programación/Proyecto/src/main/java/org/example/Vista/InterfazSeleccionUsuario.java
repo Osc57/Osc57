@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static org.example.Controlador.Conexion.connect;
+import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
 
 public class InterfazSeleccionUsuario extends JFrame {
     private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
@@ -59,7 +60,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
 
-        cargarTrabajadores();
+        MODEL.addElement(cargarTrabajadores());
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -77,7 +78,7 @@ public class InterfazSeleccionUsuario extends JFrame {
                 Recepcionista recepcionistaSeleccionado = LISTA_NOMBRES.getSelectedValue();
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
-                    updateRecepcionista(recepcionistaSeleccionado.getDni());
+                    //updateRecepcionista(recepcionistaSeleccionado.getDni());
                     controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(), recepcionistaSeleccionado.getApellidos());
                     new InterfazGestionaUsuario().setVisible(true);
                     dispose();
@@ -90,23 +91,6 @@ public class InterfazSeleccionUsuario extends JFrame {
         return btnAcceder;
     }
 
-    private void updateRecepcionista(String documento) {
-        try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE recepcionista SET dni = ?")) {
-
-            preparedStatement.setString(1, documento);
-            int filas = preparedStatement.executeUpdate();
-
-            if (filas == 0) {
-                try (PreparedStatement statement = connection.prepareStatement("INSERT INTO recepcionista (dni) VALUES (?)")) {
-                    statement.setString(1, documento);
-                    statement.executeUpdate();
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private void controlRecepcionista(String dni, String nombre, String apellidos) {
         DateTimeFormatter fechaLoggin = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
@@ -119,31 +103,14 @@ public class InterfazSeleccionUsuario extends JFrame {
             throw new RuntimeException(e);
         }
     }
-
-    private void cargarTrabajadores() {
-        try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni_jefe IS NOT NULL;")) {
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                Recepcionista trabajador = new Recepcionista();
-                trabajador.setDni(resultSet.getString("dni"));
-                trabajador.setNombre(resultSet.getString("nombre"));
-                trabajador.setApellidos(resultSet.getString("apellidos"));
-                trabajador.setTelefono(resultSet.getInt("telefono"));
-
-                MODEL.addElement(trabajador);
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static void main(String[] args) {
         InterfazSeleccionUsuario login = new InterfazSeleccionUsuario();
         login.setVisible(true);
     }
+
 }
+
+
+
+
 

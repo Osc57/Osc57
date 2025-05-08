@@ -1,4 +1,4 @@
 package org.example.Controlador;
 
-public class BBDDRecepcionista {
+public class ControladorCliente {
 }

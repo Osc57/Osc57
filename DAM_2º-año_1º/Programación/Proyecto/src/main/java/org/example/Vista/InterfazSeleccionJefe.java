@@ -1,7 +1,5 @@
 package org.example.Vista;
 
-import org.example.Controlador.BBDDJefe;
-import org.example.Controlador.Conexion;
 import org.example.Modelo.Jefe;
 
 import javax.swing.*;
@@ -13,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static org.example.Controlador.ControladorJefe.cargarJefe;
 
 public class InterfazSeleccionJefe extends JFrame {
     private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
@@ -57,6 +57,8 @@ public class InterfazSeleccionJefe extends JFrame {
 
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
+
+        MODEL_JEFE.addElement(cargarJefe());
     }
 
     //------------------------------------------------------------------------------------------------------------------
