@@ -2,8 +2,16 @@ package org.example.Interfaces;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.example.BBDD.BBDD.connect;
 
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
@@ -11,6 +19,8 @@ public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 20);
     private static final Color COLOR_BOTONES = new Color(70, 130, 180);
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
+
+    private final Map<String, JTextField> CAMPO_USUARIO = new HashMap<>();
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
@@ -52,8 +62,21 @@ public class InterfazDarAltaCliente extends JFrame {
         panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
 
         JButton btnEnviar = crearEstiloBoton("Enviar");
+        btnEnviar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enviarDatosCliente();
+            }
+        });
 
         JButton btnEliminar = crearEstiloBoton("Eliminar");
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limpiarFormulario();
+            }
+        });
+
 
         panelBotones.add(btnEnviar);
         panelBotones.add(btnEliminar);
@@ -64,10 +87,10 @@ public class InterfazDarAltaCliente extends JFrame {
         return panelPrincipal;
     }
 
-    private JPanel crearFilaDatos(String labelText) {
+    private JPanel crearFilaDatos(String texto) {
         JPanel fila = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 10));
 
-        JLabel label = new JLabel(labelText);
+        JLabel label = new JLabel(texto);
         label.setFont(FUENTE_LABEL);
         label.setPreferredSize(new Dimension(120, 30));
 
@@ -75,11 +98,61 @@ public class InterfazDarAltaCliente extends JFrame {
         field.setFont(FUENTE_CAMPOS);
         field.setPreferredSize(new Dimension(150, 30));
 
+        String clave = texto.trim().replace(":", "").trim();
+        CAMPO_USUARIO.put(clave, field);
+
         fila.add(label);
         fila.add(field);
 
         return fila;
     }
+
+    private void enviarDatosCliente() {
+        String dni = CAMPO_USUARIO.get("DNI").getText();
+        String nombre = CAMPO_USUARIO.get("Nombre").getText();
+        String apellidos = CAMPO_USUARIO.get("Apellidos").getText();
+        String direccion = CAMPO_USUARIO.get("Dirección").getText();
+        String telefono = CAMPO_USUARIO.get("Teléfono").getText();
+        Date fechaActual = new Date(System.currentTimeMillis());
+
+        if (dni.isEmpty() || nombre.isEmpty() || apellidos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!dni.matches("[0-9]{8}[A-Za-z]")){
+            JOptionPane.showMessageDialog(this, "Formato de DNI invalido", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES (?, ?, ?, ?, ?, ?)")) {
+
+            ps.setString(1, dni);
+            ps.setString(2, nombre);
+            ps.setString(3, apellidos);
+            ps.setString(4, direccion);
+            ps.setString(5, telefono);
+            ps.setDate(6, fechaActual);
+
+            int filasAfectadas = ps.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                limpiarFormulario();
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void limpiarFormulario() {
+        for (JTextField field : CAMPO_USUARIO.values()) {
+            field.setText("");
+        }
+    }
+
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);

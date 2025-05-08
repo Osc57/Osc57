@@ -23,8 +23,8 @@ public class InterfazSeleccionJefe extends JFrame {
     private static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
     private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
-    private final JList<Jefe> LISTA_NOMBRES;
-    private final DefaultListModel<Jefe> MODEL;
+    private final JList<Jefe> LISTA_NOMBRES_JEFE;
+    private final DefaultListModel<Jefe> MODEL_JEFE;
 
     public InterfazSeleccionJefe() {
         this.setTitle("Selección de Admin");
@@ -39,14 +39,14 @@ public class InterfazSeleccionJefe extends JFrame {
         jLabel.setFont(new Font("Arial", Font.BOLD, 20));
         panelArriba.add(jLabel);
 
-        MODEL = new DefaultListModel<>();
-        LISTA_NOMBRES = new JList<>(MODEL);
-        LISTA_NOMBRES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        LISTA_NOMBRES.setFont(new Font("Arial", Font.PLAIN, 18));
-        LISTA_NOMBRES.setFixedCellHeight(35);
-        LISTA_NOMBRES.setBackground(COLOR_FONDO_LISTA);
+        MODEL_JEFE = new DefaultListModel<>();
+        LISTA_NOMBRES_JEFE = new JList<>(MODEL_JEFE);
+        LISTA_NOMBRES_JEFE.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        LISTA_NOMBRES_JEFE.setFont(new Font("Arial", Font.PLAIN, 18));
+        LISTA_NOMBRES_JEFE.setFixedCellHeight(35);
+        LISTA_NOMBRES_JEFE.setBackground(COLOR_FONDO_LISTA);
 
-        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_JEFE);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
 
         JButton btnAcceder = botonAcceder();
@@ -62,7 +62,6 @@ public class InterfazSeleccionJefe extends JFrame {
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
 
-        cargarJefe();
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -77,7 +76,7 @@ public class InterfazSeleccionJefe extends JFrame {
         btnAcceder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jefe jefeSeleccionado = LISTA_NOMBRES.getSelectedValue();
+                Jefe jefeSeleccionado = LISTA_NOMBRES_JEFE.getSelectedValue();
                 if (jefeSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + jefeSeleccionado.getNombre() + " " + jefeSeleccionado.getApellidos());
                     controlJefe(jefeSeleccionado.getDni(), jefeSeleccionado.getNombre(), jefeSeleccionado.getApellidos());
@@ -106,26 +105,6 @@ public class InterfazSeleccionJefe extends JFrame {
         }
     }
 
-    private void cargarJefe() {
-        try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni_jefe IS NULL;")) {
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                Jefe trabajador = new Jefe();
-                trabajador.setDni(resultSet.getString("dni"));
-                trabajador.setNombre(resultSet.getString("nombre"));
-                trabajador.setApellidos(resultSet.getString("apellidos"));
-                trabajador.setTelefono(resultSet.getInt("telefono"));
-
-                MODEL.addElement(trabajador);
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static void main(String[] args) {
         InterfazSeleccionJefe login = new InterfazSeleccionJefe();

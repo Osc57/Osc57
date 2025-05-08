@@ -1,8 +1,8 @@
 package org.example.BBDD;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.example.Clases.Jefe;
+
+import java.sql.*;
 
 public class BBDD {
     private static final String URL = "jdbc:mysql://localhost:3306/proyectoOscar";
@@ -19,4 +19,6 @@ public class BBDD {
             throw new RuntimeException(e);
         }
     }
+
+
 }
