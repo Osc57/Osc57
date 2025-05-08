@@ -1,15 +1,13 @@
-package org.example.BBDD;
-
-import org.example.Clases.Jefe;
+package org.example.Controlador;
 
 import java.sql.*;
 
-public class BBDD {
+public class Conectar {
     private static final String URL = "jdbc:mysql://localhost:3306/proyectoOscar";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
 
-    public BBDD() {
+    public Conectar() {
     }
 
     public static Connection connect() {

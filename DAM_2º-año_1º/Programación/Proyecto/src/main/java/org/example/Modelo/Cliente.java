@@ -1,6 +1,5 @@
-package org.example.Clases;
+package org.example.Modelo;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Cliente {

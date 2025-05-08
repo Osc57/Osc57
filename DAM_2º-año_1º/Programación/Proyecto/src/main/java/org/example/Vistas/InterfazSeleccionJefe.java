@@ -1,6 +1,7 @@
-package org.example.Interfaces;
+package org.example.Vistas;
 
-import org.example.Clases.Jefe;
+import org.example.Controlador.BBDDJefe;
+import org.example.Modelo.Jefe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,14 +10,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import static org.example.BBDD.BBDD.connect;
 
 public class InterfazSeleccionJefe extends JFrame {
     private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);

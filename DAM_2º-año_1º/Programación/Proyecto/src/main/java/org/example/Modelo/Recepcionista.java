@@ -1,4 +1,4 @@
-package org.example.Clases;
+package org.example.Modelo;
 
 public class Recepcionista extends Trabajador {
     public Recepcionista() {

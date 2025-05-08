@@ -1,6 +1,6 @@
-package org.example.Interfaces;
+package org.example.Vistas;
 
-import org.example.Clases.Recepcionista;
+import org.example.Modelo.Recepcionista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static org.example.BBDD.BBDD.connect;
+import static org.example.Controlador.Conectar.connect;
 
 public class InterfazSeleccionUsuario extends JFrame {
     private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);

@@ -1,4 +1,4 @@
-package org.example.Clases;
+package org.example.Modelo;
 
 public class Jefe extends Trabajador {
     public Jefe() {

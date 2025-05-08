@@ -1,4 +1,4 @@
-package org.example.Interfaces;
+package org.example.Vistas;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

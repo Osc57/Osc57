@@ -1,4 +1,4 @@
-package org.example.Clases;
+package org.example.Modelo;
 
 public abstract class Trabajador {
     protected String dni;

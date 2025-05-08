@@ -1,4 +1,4 @@
-package org.example.Interfaces;
+package org.example.Vistas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.example.BBDD.BBDD.connect;
+import static org.example.Controlador.Conectar.connect;
 
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
