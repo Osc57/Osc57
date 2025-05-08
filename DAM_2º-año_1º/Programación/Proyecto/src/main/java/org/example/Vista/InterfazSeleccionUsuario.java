@@ -13,7 +13,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static org.example.Controlador.Conectar.connect;
+import static org.example.Controlador.Conexion.connect;
 
 public class InterfazSeleccionUsuario extends JFrame {
     private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);

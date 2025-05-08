@@ -55,7 +55,7 @@ public class InterfazSeleccionJefe extends JFrame {
 
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
-        
+
     }
 
     //------------------------------------------------------------------------------------------------------------------

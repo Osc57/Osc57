@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static org.example.Controlador.Conectar.connect;
+import static org.example.Controlador.Conexion.connect;
 
 public class BBDDJefe {
 
