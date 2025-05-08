@@ -1,5 +1,7 @@
 package org.example.Vista;
 
+import org.example.Controlador.BBDDJefe;
+import org.example.Controlador.Conexion;
 import org.example.Modelo.Jefe;
 
 import javax.swing.*;
@@ -55,7 +57,6 @@ public class InterfazSeleccionJefe extends JFrame {
 
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
-
     }
 
     //------------------------------------------------------------------------------------------------------------------
