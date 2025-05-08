@@ -1,4 +1,4 @@
-package org.example.Vistas;
+package org.example.Vista;
 
 import org.example.Modelo.Recepcionista;
 
