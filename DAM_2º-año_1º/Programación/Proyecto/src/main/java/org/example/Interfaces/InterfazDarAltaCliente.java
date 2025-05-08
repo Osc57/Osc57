@@ -7,12 +7,15 @@ import java.awt.event.WindowEvent;
 
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
-    private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
-    private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
+    private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 20);
+    private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 20);
+    private static final Color COLOR_FONDO = new Color(240, 240, 240);
+    private static final Color COLOR_BOTONES = new Color(70, 130, 180);
+    private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
-        this.setSize(450, 500);
+        this.setSize(420, 600);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -26,6 +29,7 @@ public class InterfazDarAltaCliente extends JFrame {
         */
         JLabel introducirCliente = new JLabel("•Introduce Los Datos Del Cliente");
         introducirCliente.setFont(FUENTE_TITULO);
+        introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 0));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
 
@@ -34,63 +38,63 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     private JPanel getjPanelDatosUsuario() {
+        JPanel panelPrincipal = new JPanel(new BorderLayout());
+
         JPanel panelDatos = new JPanel();
-        panelDatos.setLayout(new BorderLayout());
+        panelDatos.setLayout(new GridLayout(5, 1, 5, 5));
 
-        JPanel panelLabel = new JPanel(new GridLayout(5,1,5,5));
+        panelDatos.add(crearFilaDatos("DNI: "));
+        panelDatos.add(crearFilaDatos("Nombre: "));
+        panelDatos.add(crearFilaDatos("Apellidos: "));
+        panelDatos.add(crearFilaDatos("Dirección: "));
+        panelDatos.add(crearFilaDatos("Teléfono: "));
 
-        JPanel panelField = new JPanel(new GridLayout(5,1,5,5));
+        JPanel panelBotones = new JPanel();
+        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        JLabel dni = estilosLabelDatosCliente("DNI: ");
-        JTextField dniField = estilosFieldDatosCliente();
+        JButton btnEnviar = crearEstiloBoton("Enviar");
 
-        JLabel nombre = estilosLabelDatosCliente("Nombre: ");
-        JTextField nombreField = estilosFieldDatosCliente();
+        JButton btnEliminar = crearEstiloBoton("Eliminar");
 
-        JLabel apellidos = estilosLabelDatosCliente("Apellidos: ");
-        JTextField apellidosField = estilosFieldDatosCliente();
+        panelBotones.add(btnEnviar);
+        panelBotones.add(btnEliminar);
 
-        JLabel direccion = estilosLabelDatosCliente("Dirección: ");
-        JTextField direccionField = estilosFieldDatosCliente();
+        panelPrincipal.add(panelDatos, BorderLayout.CENTER);
+        panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
 
-        JLabel telefono = estilosLabelDatosCliente("Teléfono: ");
-        JTextField telefonoField = estilosFieldDatosCliente();
-
-        int tamanoField = 200;
-
-        JButton enviarDatos = new JButton("Enviar");
-
-        panelLabel.add(dni);
-        panelLabel.add(nombre);
-        panelLabel.add(apellidos);
-        panelLabel.add(direccion);
-        panelLabel.add(telefono);
-
-        panelField.add(dniField);
-        panelField.add(nombreField);
-        panelField.add(apellidosField);
-        panelField.add(direccionField);
-        panelField.add(telefonoField);
-
-        panelDatos.add(panelLabel, BorderLayout.WEST);
-        panelDatos.add(panelField, BorderLayout.CENTER);
-
-        return panelDatos;
+        return panelPrincipal;
     }
 
-    private JLabel estilosLabelDatosCliente(String nombre) {
-        JLabel estilosDatosUsuarios = new JLabel(nombre);
-        estilosDatosUsuarios.setFont(FUENTE_LABEL);
+    private JPanel crearFilaDatos(String labelText) {
+        JPanel fila = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 10));
 
-        return estilosDatosUsuarios;
+        JLabel label = new JLabel(labelText);
+        label.setFont(FUENTE_LABEL);
+        label.setPreferredSize(new Dimension(120, 30));
+
+        JTextField field = new JTextField(15);
+        field.setFont(FUENTE_CAMPOS);
+        field.setPreferredSize(new Dimension(150, 30));
+
+        fila.add(label);
+        fila.add(field);
+
+        return fila;
     }
 
-    private JTextField estilosFieldDatosCliente() {
-        JTextField textoDatosUsuario = new JTextField(15);
-        textoDatosUsuario.setFont(FUENTE_CAMPOS);
-
-        return textoDatosUsuario;
+    private JButton crearEstiloBoton(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setFont(FUENTE_BOTONES);
+        boton.setBackground(COLOR_BOTONES);
+        boton.setFocusPainted(false);
+        boton.setForeground(Color.WHITE);
+        boton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+        ));
+        return boton;
     }
+
 
     public static void main(String[] args) {
         new InterfazDarAltaCliente().setVisible(true);
