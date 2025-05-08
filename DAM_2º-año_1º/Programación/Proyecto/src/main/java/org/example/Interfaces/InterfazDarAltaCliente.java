@@ -9,7 +9,6 @@ public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
     private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 20);
     private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 20);
-    private static final Color COLOR_FONDO = new Color(240, 240, 240);
     private static final Color COLOR_BOTONES = new Color(70, 130, 180);
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
@@ -50,7 +49,7 @@ public class InterfazDarAltaCliente extends JFrame {
         panelDatos.add(crearFilaDatos("Teléfono: "));
 
         JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
 
         JButton btnEnviar = crearEstiloBoton("Enviar");
 
