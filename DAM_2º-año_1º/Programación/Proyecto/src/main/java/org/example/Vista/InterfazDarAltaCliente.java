@@ -1,8 +1,13 @@
 package org.example.Vista;
 
 
+import org.example.Controlador.ControladorCliente;
+import org.example.Modelo.Cliente;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
@@ -37,7 +42,7 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     private JPanel getjPanelDatosUsuario() {
-        JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
+        JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
 
         JPanel panelLabels = new JPanel();
@@ -65,12 +70,40 @@ public class InterfazDarAltaCliente extends JFrame {
 
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 15));
+        panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 0));
 
         JButton btnEliminar = crearEstiloBoton("Eliminar");
-
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtDni.setText("");
+                txtNombre.setText("");
+                txtApellidos.setText("");
+                txtDireccion.setText("");
+                txtTelefono.setText("");
+            }
+        });
 
         JButton btnEnviar = crearEstiloBoton("Enviar");
+        btnEnviar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cliente nuevoCliente = new Cliente();
+                nuevoCliente.setDni(txtDni.getText());
+                nuevoCliente.setNombre(txtNombre.getText());
+                nuevoCliente.setApellidos(txtApellidos.getText());
+                nuevoCliente.setDireccion(txtDireccion.getText());
+                nuevoCliente.setTelefono(Integer.parseInt(txtTelefono.getText()));
 
+                new ControladorCliente().enviarDatosCliente(nuevoCliente);
+
+                txtDni.setText("");
+                txtNombre.setText("");
+                txtApellidos.setText("");
+                txtDireccion.setText("");
+                txtTelefono.setText("");
+            }
+        });
 
         panelBotones.add(btnEliminar);
         panelBotones.add(btnEnviar);

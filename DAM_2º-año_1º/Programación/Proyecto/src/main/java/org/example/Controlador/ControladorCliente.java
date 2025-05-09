@@ -12,14 +12,14 @@ public class ControladorCliente {
     public ControladorCliente() {
     }
 
-    public Cliente enviarDatosCliente(Cliente cliente){
+    public void enviarDatosCliente(Cliente cliente) {
 
-        if (cliente.getDni().isEmpty() || cliente.getNombre().isEmpty() || cliente.getApellidos().isEmpty()){
-            JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error",JOptionPane.ERROR_MESSAGE);
+        if (cliente.getDni().isEmpty() || cliente.getNombre().isEmpty() || cliente.getApellidos().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
 
         }
 
-        if (!cliente.getDni().matches("[0-9]{8}[A-Za-z]")){
+        if (!cliente.getDni().matches("[0-9]{8}[A-Za-z]")) {
             JOptionPane.showMessageDialog(null, "DNI invalido", "Exito", JOptionPane.INFORMATION_MESSAGE);
 
         }
@@ -46,18 +46,6 @@ public class ControladorCliente {
             JOptionPane.showMessageDialog(null, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        return cliente;
     }
-
-    /*
-    * Cliente nuevoCliente = new Cliente();
-            nuevoCliente.setDni(txtDNI.getText());
-            nuevoCliente.setNombre(txtNombre.getText());
-            nuevoCliente.setApellidos(txtApellidos.getText());
-            nuevoCliente.setDireccion(txtDireccion.getText());
-            nuevoCliente.setTelefono(Integer.parseInt(txtTelefono.getText()));
-
-            controladorCliente.enviarDatosCliente(nuevoCliente);
-    * */
 }
 
