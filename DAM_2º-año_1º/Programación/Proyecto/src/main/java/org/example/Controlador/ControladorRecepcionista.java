@@ -52,10 +52,10 @@ public class ControladorRecepcionista {
                 recepcionistas.add(trabajador);
 
             }
-            return recepcionistas;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return recepcionistas;
     }
 }

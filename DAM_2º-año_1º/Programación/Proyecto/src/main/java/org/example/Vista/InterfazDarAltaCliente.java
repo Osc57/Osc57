@@ -1,19 +1,14 @@
 package org.example.Vista;
 
 import org.example.Controlador.ControladorCliente;
+import org.example.Modelo.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.example.Controlador.Conexion.connect;
 
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
@@ -23,7 +18,8 @@ public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
     private final Map<String, JTextField> CAMPO_USUARIO = new HashMap<>();
-    ;
+
+    private final Cliente CLIENTE = new Cliente();
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
@@ -68,12 +64,12 @@ public class InterfazDarAltaCliente extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
+                ControladorCliente controladorCliente = new ControladorCliente();
+                controladorCliente.enviarDatosCliente(CLIENTE);
             }
         });
 
-        JButton btnEliminar = crearEstiloBoton("Eliminar");
+        JButton btnEliminar = crearEstiloBoton("Borrar");
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,6 +100,7 @@ public class InterfazDarAltaCliente extends JFrame {
 
         String clave = texto.trim().replace(":", "").trim();
         CAMPO_USUARIO.put(clave, field);
+
 
         fila.add(label);
         fila.add(field);
