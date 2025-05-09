@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import static org.example.Controlador.Conexion.connect;
 import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
@@ -60,7 +61,10 @@ public class InterfazSeleccionUsuario extends JFrame {
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
 
-        MODEL.addElement(cargarTrabajadores());
+        ArrayList<Recepcionista> recepcionistas = cargarTrabajadores();
+        for (Recepcionista r : recepcionistas){
+            MODEL.addElement(r);
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------

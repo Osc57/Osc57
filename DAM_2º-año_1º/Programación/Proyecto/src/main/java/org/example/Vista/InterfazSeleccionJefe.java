@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorJefe.cargarJefe;
 
@@ -58,7 +59,10 @@ public class InterfazSeleccionJefe extends JFrame {
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
 
-        MODEL_JEFE.addElement(cargarJefe());
+        ArrayList<Jefe> jefes = cargarJefe();
+        for (Jefe j : jefes){
+            MODEL_JEFE.addElement(j);
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------
