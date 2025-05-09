@@ -1,15 +1,8 @@
 package org.example.Vista;
 
-import org.example.Controlador.ControladorCliente;
-import org.example.Modelo.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
@@ -44,11 +37,11 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     private JPanel getjPanelDatosUsuario() {
-        JPanel panelPrincipal = new JPanel(new BorderLayout(10,0));
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 20));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel panelLabels = new JPanel();
-        panelLabels.setLayout(new GridLayout(5,1,10,5));
+        panelLabels.setLayout(new GridLayout(5, 1, 10, 5));
 
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Nombre: "));
@@ -56,7 +49,7 @@ public class InterfazDarAltaCliente extends JFrame {
         panelLabels.add(crearLabels("Dirección: "));
         panelLabels.add(crearLabels("Teléfono: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(5,1,10,5));
+        JPanel panelFields = new JPanel(new GridLayout(5, 1, 5, 5));
 
         JTextField txtDni = crearFields();
         JTextField txtNombre = crearFields();
@@ -64,26 +57,39 @@ public class InterfazDarAltaCliente extends JFrame {
         JTextField txtDireccion = crearFields();
         JTextField txtTelefono = crearFields();
 
-
         panelFields.add(txtDni);
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
         panelFields.add(txtDireccion);
         panelFields.add(txtTelefono);
 
+        JPanel panelBotones = new JPanel();
+        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 45, 15));
+
+        JButton btnEliminar = crearEstiloBoton("Eliminar");
+
+
+        JButton btnEnviar = crearEstiloBoton("Enviar");
+
+
+        panelBotones.add(btnEliminar);
+        panelBotones.add(btnEnviar);
+
         panelPrincipal.add(panelLabels, BorderLayout.WEST);
         panelPrincipal.add(panelFields, BorderLayout.CENTER);
+        panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
         return panelPrincipal;
     }
-    private JTextField crearFields(){
-        JTextField field = new JTextField();
-        field.setPreferredSize(new Dimension(150,20));
-        field.setMaximumSize(new Dimension(150,20));
+
+    private JTextField crearFields() {
+        JTextField field = new JTextField(15);
+        field.setFont(FUENTE_CAMPOS);
+        field.setPreferredSize(new Dimension(150, 30));
 
         return field;
     }
 
-    private JLabel crearLabels(String texto){
+    private JLabel crearLabels(String texto) {
         JLabel label = new JLabel(texto);
         label.setFont(FUENTE_LABEL);
         label.setPreferredSize(new Dimension(120, 30));
