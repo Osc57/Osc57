@@ -1,5 +1,7 @@
 package org.example.Vista;
 
+import org.example.Controlador.ControladorCliente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +23,7 @@ public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
     private final Map<String, JTextField> CAMPO_USUARIO = new HashMap<>();
+    ;
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
@@ -65,7 +68,8 @@ public class InterfazDarAltaCliente extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                enviarDatosCliente();
+
+
             }
         });
 
@@ -107,47 +111,8 @@ public class InterfazDarAltaCliente extends JFrame {
         return fila;
     }
 
-    private void enviarDatosCliente() {
-        String dni = CAMPO_USUARIO.get("DNI").getText();
-        String nombre = CAMPO_USUARIO.get("Nombre").getText();
-        String apellidos = CAMPO_USUARIO.get("Apellidos").getText();
-        String direccion = CAMPO_USUARIO.get("Dirección").getText();
-        String telefono = CAMPO_USUARIO.get("Teléfono").getText();
-        Date fechaActual = new Date(System.currentTimeMillis());
 
-        if (dni.isEmpty() || nombre.isEmpty() || apellidos.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!dni.matches("[0-9]{8}[A-Za-z]")){
-            JOptionPane.showMessageDialog(this, "Formato de DNI invalido", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
-        try (Connection connection = connect();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES (?, ?, ?, ?, ?, ?)")) {
-
-            ps.setString(1, dni);
-            ps.setString(2, nombre);
-            ps.setString(3, apellidos);
-            ps.setString(4, direccion);
-            ps.setString(5, telefono);
-            ps.setDate(6, fechaActual);
-
-            int filasAfectadas = ps.executeUpdate();
-
-            if (filasAfectadas == 0) {
-                JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                limpiarFormulario();
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void limpiarFormulario() {
+    public void limpiarFormulario() {
         for (JTextField field : CAMPO_USUARIO.values()) {
             field.setText("");
         }
@@ -166,7 +131,6 @@ public class InterfazDarAltaCliente extends JFrame {
         ));
         return boton;
     }
-
 
     public static void main(String[] args) {
         new InterfazDarAltaCliente().setVisible(true);

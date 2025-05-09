@@ -23,7 +23,7 @@ public class InterfazSeleccionUsuario extends JFrame {
     private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
     private final JList<Recepcionista> LISTA_NOMBRES;
-    private final DefaultListModel<Recepcionista> MODEL;
+    private final DefaultListModel<Recepcionista> MODEL_USUARIO;
 
     public InterfazSeleccionUsuario() {
         this.setTitle("Selección de Usuario");
@@ -38,8 +38,8 @@ public class InterfazSeleccionUsuario extends JFrame {
         jLabel.setFont(new Font("Arial", Font.BOLD, 20));
         panelArriba.add(jLabel);
 
-        MODEL = new DefaultListModel<>();
-        LISTA_NOMBRES = new JList<>(MODEL);
+        MODEL_USUARIO = new DefaultListModel<>();
+        LISTA_NOMBRES = new JList<>(MODEL_USUARIO);
         LISTA_NOMBRES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         LISTA_NOMBRES.setFont(new Font("Arial", Font.PLAIN, 18));
         LISTA_NOMBRES.setFixedCellHeight(35);
@@ -62,8 +62,8 @@ public class InterfazSeleccionUsuario extends JFrame {
         this.add(panelCentro, BorderLayout.CENTER);
 
         ArrayList<Recepcionista> recepcionistas = cargarTrabajadores();
-        for (Recepcionista r : recepcionistas){
-            MODEL.addElement(r);
+        for (Recepcionista r : recepcionistas) {
+            MODEL_USUARIO.addElement(r);
         }
     }
 
@@ -82,7 +82,6 @@ public class InterfazSeleccionUsuario extends JFrame {
                 Recepcionista recepcionistaSeleccionado = LISTA_NOMBRES.getSelectedValue();
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
-                    //updateRecepcionista(recepcionistaSeleccionado.getDni());
                     controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(), recepcionistaSeleccionado.getApellidos());
                     new InterfazGestionaUsuario().setVisible(true);
                     dispose();
@@ -107,6 +106,7 @@ public class InterfazSeleccionUsuario extends JFrame {
             throw new RuntimeException(e);
         }
     }
+
     public static void main(String[] args) {
         InterfazSeleccionUsuario login = new InterfazSeleccionUsuario();
         login.setVisible(true);

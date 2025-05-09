@@ -9,16 +9,17 @@ public class Cliente {
     private String direccion;
     private int telefono;
     private Date fechaAlta;
-    private Date fechaBaja;
 
-    public Cliente(String dni, String nombre, String apellidos, String direccion, int telefono, Date fechaAlta, Date fechaBaja) {
+    public Cliente() {
+    }
+
+    public Cliente(String dni, String nombre, String apellidos, String direccion, int telefono, Date fechaAlta) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
         this.fechaAlta = fechaAlta;
-        this.fechaBaja = fechaBaja;
     }
 
 
@@ -70,14 +71,6 @@ public class Cliente {
         this.fechaAlta = fechaAlta;
     }
 
-    public Date getFechaBaja() {
-        return fechaBaja;
-    }
-
-    public void setFechaBaja(Date fechaBaja) {
-        this.fechaBaja = fechaBaja;
-    }
-
     @Override
     public String toString() {
         return "Cliente{" +
@@ -87,7 +80,6 @@ public class Cliente {
                 ", direccion='" + direccion + '\'' +
                 ", telefono=" + telefono +
                 ", fechaAlta=" + fechaAlta +
-                ", fechaBaja=" + fechaBaja +
                 '}';
     }
 }

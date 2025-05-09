@@ -21,7 +21,6 @@ public class InterfazSeleccionJefe extends JFrame {
     private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
     private final JList<Jefe> LISTA_NOMBRES_JEFE;
-    private final DefaultListModel<Jefe> MODEL_JEFE;
 
     public InterfazSeleccionJefe() {
         this.setTitle("Selección de Admin");
@@ -36,7 +35,7 @@ public class InterfazSeleccionJefe extends JFrame {
         jLabel.setFont(new Font("Arial", Font.BOLD, 20));
         panelArriba.add(jLabel);
 
-        MODEL_JEFE = new DefaultListModel<>();
+        DefaultListModel<Jefe> MODEL_JEFE = new DefaultListModel<>();
         LISTA_NOMBRES_JEFE = new JList<>(MODEL_JEFE);
         LISTA_NOMBRES_JEFE.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         LISTA_NOMBRES_JEFE.setFont(new Font("Arial", Font.PLAIN, 18));
