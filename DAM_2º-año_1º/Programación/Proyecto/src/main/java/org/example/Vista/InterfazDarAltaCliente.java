@@ -14,7 +14,7 @@ public class InterfazDarAltaCliente extends JFrame {
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
-        this.setSize(420, 600);
+        this.setSize(420, 420);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -37,8 +37,8 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     private JPanel getjPanelDatosUsuario() {
-        JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 20));
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
 
         JPanel panelLabels = new JPanel();
         panelLabels.setLayout(new GridLayout(5, 1, 10, 5));
@@ -64,7 +64,7 @@ public class InterfazDarAltaCliente extends JFrame {
         panelFields.add(txtTelefono);
 
         JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 45, 15));
+        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 15));
 
         JButton btnEliminar = crearEstiloBoton("Eliminar");
 
