@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,9 +18,6 @@ public class InterfazDarAltaCliente extends JFrame {
     private static final Color COLOR_BOTONES = new Color(70, 130, 180);
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
-    private final Map<String, JTextField> CAMPO_USUARIO = new HashMap<>();
-
-    private final Cliente CLIENTE = new Cliente();
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
@@ -46,75 +44,52 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     private JPanel getjPanelDatosUsuario() {
-        JPanel panelPrincipal = new JPanel(new BorderLayout());
+        JPanel panelPrincipal = new JPanel(new BorderLayout(10,0));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
-        JPanel panelDatos = new JPanel();
-        panelDatos.setLayout(new GridLayout(5, 1, 5, 5));
+        JPanel panelLabels = new JPanel();
+        panelLabels.setLayout(new GridLayout(5,1,10,5));
 
-        panelDatos.add(crearFilaDatos("DNI: "));
-        panelDatos.add(crearFilaDatos("Nombre: "));
-        panelDatos.add(crearFilaDatos("Apellidos: "));
-        panelDatos.add(crearFilaDatos("Dirección: "));
-        panelDatos.add(crearFilaDatos("Teléfono: "));
+        panelLabels.add(crearLabels("DNI: "));
+        panelLabels.add(crearLabels("Nombre: "));
+        panelLabels.add(crearLabels("Apellidos: "));
+        panelLabels.add(crearLabels("Dirección: "));
+        panelLabels.add(crearLabels("Teléfono: "));
 
-        JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
+        JPanel panelFields = new JPanel(new GridLayout(5,1,10,5));
 
-        JButton btnEnviar = crearEstiloBoton("Enviar");
-        btnEnviar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ControladorCliente controladorCliente = new ControladorCliente();
-                controladorCliente.enviarDatosCliente(CLIENTE);
-            }
-        });
-
-        JButton btnEliminar = crearEstiloBoton("Borrar");
-        btnEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                limpiarFormulario();
-            }
-        });
+        JTextField txtDni = crearFields();
+        JTextField txtNombre = crearFields();
+        JTextField txtApellidos = crearFields();
+        JTextField txtDireccion = crearFields();
+        JTextField txtTelefono = crearFields();
 
 
-        panelBotones.add(btnEnviar);
-        panelBotones.add(btnEliminar);
+        panelFields.add(txtDni);
+        panelFields.add(txtNombre);
+        panelFields.add(txtApellidos);
+        panelFields.add(txtDireccion);
+        panelFields.add(txtTelefono);
 
-        panelPrincipal.add(panelDatos, BorderLayout.CENTER);
-        panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
-
+        panelPrincipal.add(panelLabels, BorderLayout.WEST);
+        panelPrincipal.add(panelFields, BorderLayout.CENTER);
         return panelPrincipal;
     }
+    private JTextField crearFields(){
+        JTextField field = new JTextField();
+        field.setPreferredSize(new Dimension(150,20));
+        field.setMaximumSize(new Dimension(150,20));
 
-    private JPanel crearFilaDatos(String texto) {
-        JPanel fila = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 10));
+        return field;
+    }
 
+    private JLabel crearLabels(String texto){
         JLabel label = new JLabel(texto);
         label.setFont(FUENTE_LABEL);
         label.setPreferredSize(new Dimension(120, 30));
 
-        JTextField field = new JTextField(15);
-        field.setFont(FUENTE_CAMPOS);
-        field.setPreferredSize(new Dimension(150, 30));
-
-        String clave = texto.trim().replace(":", "").trim();
-        CAMPO_USUARIO.put(clave, field);
-
-
-        fila.add(label);
-        fila.add(field);
-
-        return fila;
+        return label;
     }
-
-
-    public void limpiarFormulario() {
-        for (JTextField field : CAMPO_USUARIO.values()) {
-            field.setText("");
-        }
-    }
-
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);

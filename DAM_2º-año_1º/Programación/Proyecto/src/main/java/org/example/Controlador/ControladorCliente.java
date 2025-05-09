@@ -16,18 +16,18 @@ public class ControladorCliente {
 
         if (cliente.getDni().isEmpty() || cliente.getNombre().isEmpty() || cliente.getApellidos().isEmpty()){
             JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error",JOptionPane.ERROR_MESSAGE);
-            return null;
+
         }
 
         if (!cliente.getDni().matches("[0-9]{8}[A-Za-z]")){
             JOptionPane.showMessageDialog(null, "DNI invalido", "Exito", JOptionPane.INFORMATION_MESSAGE);
-            return null;
+
         }
 
-        java.sql.Date fechaActual = new java.sql.Date(System.currentTimeMillis());
         try (Connection connection = connect();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES (?, ?, ?, ?, ?, ?)")) {
 
+            java.sql.Date fechaActual = new java.sql.Date(System.currentTimeMillis());
 
             ps.setString(1, cliente.getDni());
             ps.setString(2, cliente.getNombre());
@@ -48,5 +48,16 @@ public class ControladorCliente {
 
         return cliente;
     }
+
+    /*
+    * Cliente nuevoCliente = new Cliente();
+            nuevoCliente.setDni(txtDNI.getText());
+            nuevoCliente.setNombre(txtNombre.getText());
+            nuevoCliente.setApellidos(txtApellidos.getText());
+            nuevoCliente.setDireccion(txtDireccion.getText());
+            nuevoCliente.setTelefono(Integer.parseInt(txtTelefono.getText()));
+
+            controladorCliente.enviarDatosCliente(nuevoCliente);
+    * */
 }
 
