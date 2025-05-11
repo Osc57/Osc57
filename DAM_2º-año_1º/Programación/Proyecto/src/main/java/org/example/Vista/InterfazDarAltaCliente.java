@@ -27,7 +27,7 @@ public class InterfazDarAltaCliente extends JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new InterfazGestionaUsuario().setVisible(true);
+                new InterfazGestionaCliente().setVisible(true);
             }
         });
         */

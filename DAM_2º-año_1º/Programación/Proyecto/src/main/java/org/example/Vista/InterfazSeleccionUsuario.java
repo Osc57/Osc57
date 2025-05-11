@@ -9,12 +9,10 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import static org.example.Controlador.Conexion.connect;
 import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
 
 public class InterfazSeleccionUsuario extends JFrame {
@@ -83,7 +81,7 @@ public class InterfazSeleccionUsuario extends JFrame {
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(), recepcionistaSeleccionado.getApellidos());
-                    new InterfazGestionaUsuario().setVisible(true);
+                    new InterfazGestionaCliente().setVisible(true);
                     dispose();
 
                 } else {
