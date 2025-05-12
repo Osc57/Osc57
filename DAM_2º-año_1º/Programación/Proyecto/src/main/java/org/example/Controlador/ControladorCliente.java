@@ -12,7 +12,7 @@ public class ControladorCliente {
     public ControladorCliente() {
     }
 
-    public void enviarDatosCliente(Cliente cliente) {
+    public boolean enviarDatosCliente(Cliente cliente) {
 
         try (Connection connection = connect();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES (?, ?, ?, ?, ?, ?)")) {
@@ -27,13 +27,11 @@ public class ControladorCliente {
             ps.setDate(6, fechaActual);
 
             int filasAfectadas = ps.executeUpdate();
-
-            if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            }
+            return filasAfectadas > 0;
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
 
     }

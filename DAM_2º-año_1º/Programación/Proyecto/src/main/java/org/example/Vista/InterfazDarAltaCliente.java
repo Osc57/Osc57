@@ -16,6 +16,13 @@ public class InterfazDarAltaCliente extends JFrame {
     private static final Color COLOR_BOTONES = new Color(70, 130, 180);
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
+    private ControladorCliente controladorCliente = new ControladorCliente();
+
+    private JTextField txtDni = new JTextField();
+    private JTextField txtNombre = new JTextField();
+    private JTextField txtApellidos = new JTextField();
+    private JTextField txtDireccion = new JTextField();
+    private JTextField txtTelefono = new JTextField();
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
@@ -56,11 +63,11 @@ public class InterfazDarAltaCliente extends JFrame {
 
         JPanel panelFields = new JPanel(new GridLayout(5, 1, 5, 5));
 
-        JTextField txtDni = crearFields();
-        JTextField txtNombre = crearFields();
-        JTextField txtApellidos = crearFields();
-        JTextField txtDireccion = crearFields();
-        JTextField txtTelefono = crearFields();
+        txtDni = crearFields();
+        txtNombre = crearFields();
+        txtApellidos = crearFields();
+        txtDireccion = crearFields();
+        txtTelefono = crearFields();
 
         panelFields.add(txtDni);
         panelFields.add(txtNombre);
@@ -69,18 +76,14 @@ public class InterfazDarAltaCliente extends JFrame {
         panelFields.add(txtTelefono);
 
         JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 55, 15));
+        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 15));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 0));
 
-        JButton btnEliminar = crearEstiloBoton("Eliminar");
+        JButton btnEliminar = crearEstiloBoton("Borrar");
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtDni.setText("");
-                txtNombre.setText("");
-                txtApellidos.setText("");
-                txtDireccion.setText("");
-                txtTelefono.setText("");
+                limpiarCampos();
             }
         });
 
@@ -88,44 +91,39 @@ public class InterfazDarAltaCliente extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (txtDni.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellidos.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                if (!txtDni.getText().matches("[0-9]{8}[A-Za-z]")) {
-                    JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra al final", "Error", JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-
-                String validarTelefono = txtTelefono.getText();
-                if (!validarTelefono.matches("\\d{9}")) {
-                    JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                Cliente nuevoCliente = new Cliente();
-                nuevoCliente.setDni(txtDni.getText());
-                nuevoCliente.setNombre(txtNombre.getText());
-                nuevoCliente.setApellidos(txtApellidos.getText());
-                nuevoCliente.setDireccion(txtDireccion.getText());
-
                 try {
-                    nuevoCliente.setTelefono(Integer.parseInt(txtTelefono.getText()));
+                    if (txtDni.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellidos.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if (!txtDni.getText().matches("[0-9]{8}[A-Za-z]")) {
+                        JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra", "Error", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+
+                    String validarTelefono = txtTelefono.getText();
+                    if (!validarTelefono.matches("\\d{9}")) {
+                        JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    Cliente nuevoCliente = new Cliente();
+                    nuevoCliente.setDni(txtDni.getText());
+                    nuevoCliente.setNombre(txtNombre.getText());
+                    nuevoCliente.setApellidos(txtApellidos.getText());
+                    nuevoCliente.setDireccion(txtDireccion.getText());
+                    nuevoCliente.setTelefono(Integer.parseInt(validarTelefono));
+
+                    if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
+                        JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarCampos();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Error al procesar el teléfono", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error en el formato del teléfono", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-
-                ControladorCliente controladorCliente = new ControladorCliente();
-                controladorCliente.enviarDatosCliente(nuevoCliente);
-
-
-                txtDni.setText("");
-                txtNombre.setText("");
-                txtApellidos.setText("");
-                txtDireccion.setText("");
-                txtTelefono.setText("");
             }
         });
 
@@ -136,6 +134,14 @@ public class InterfazDarAltaCliente extends JFrame {
         panelPrincipal.add(panelFields, BorderLayout.CENTER);
         panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
         return panelPrincipal;
+    }
+
+    private void limpiarCampos() {
+        txtDni.setText("");
+        txtNombre.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
     }
 
     private JTextField crearFields() {
