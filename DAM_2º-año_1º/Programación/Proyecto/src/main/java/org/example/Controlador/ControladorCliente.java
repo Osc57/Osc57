@@ -14,16 +14,6 @@ public class ControladorCliente {
 
     public void enviarDatosCliente(Cliente cliente) {
 
-        if (cliente.getDni().isEmpty() || cliente.getNombre().isEmpty() || cliente.getApellidos().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-
-        }
-
-        if (!cliente.getDni().matches("[0-9]{8}[A-Za-z]")) {
-            JOptionPane.showMessageDialog(null, "DNI invalido", "Exito", JOptionPane.INFORMATION_MESSAGE);
-
-        }
-
         try (Connection connection = connect();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES (?, ?, ?, ?, ?, ?)")) {
 

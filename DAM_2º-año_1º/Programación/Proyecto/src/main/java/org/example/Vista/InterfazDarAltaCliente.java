@@ -88,14 +88,38 @@ public class InterfazDarAltaCliente extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (txtDni.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellidos.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (!txtDni.getText().matches("[0-9]{8}[A-Za-z]")) {
+                    JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra al final", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                String validarTelefono = txtTelefono.getText();
+                if (!validarTelefono.matches("\\d{9}")) {
+                    JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 Cliente nuevoCliente = new Cliente();
                 nuevoCliente.setDni(txtDni.getText());
                 nuevoCliente.setNombre(txtNombre.getText());
                 nuevoCliente.setApellidos(txtApellidos.getText());
                 nuevoCliente.setDireccion(txtDireccion.getText());
-                nuevoCliente.setTelefono(Integer.parseInt(txtTelefono.getText()));
 
-                new ControladorCliente().enviarDatosCliente(nuevoCliente);
+                try {
+                    nuevoCliente.setTelefono(Integer.parseInt(txtTelefono.getText()));
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al procesar el teléfono", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                ControladorCliente controladorCliente = new ControladorCliente();
+                controladorCliente.enviarDatosCliente(nuevoCliente);
+
 
                 txtDni.setText("");
                 txtNombre.setText("");
