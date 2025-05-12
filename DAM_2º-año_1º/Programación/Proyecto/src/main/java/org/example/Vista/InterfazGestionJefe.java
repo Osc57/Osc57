@@ -52,11 +52,9 @@ public class InterfazGestionJefe extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (JOptionPane.showConfirmDialog(InterfazGestionJefe.this, "¿Seguro que quieres volver a atrás?", "Volver a atrás",
-                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    new InterfazSeleccionJefe().setVisible(true);
-                    dispose();
-                }
+                new InterfazSeleccionJefe().setVisible(true);
+                dispose();
+
             }
         });
         return panelBotonRetorno;
@@ -67,7 +65,7 @@ public class InterfazGestionJefe extends JFrame {
         panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
 
         JButton insertar = crearEstiloBoton("Dar de Alta");
-        JButton eliminar =  crearEstiloBoton("Dar de Baja");
+        JButton eliminar = crearEstiloBoton("Dar de Baja");
 
         panelBotonesCentro.add(insertar);
         panelBotonesCentro.add(eliminar);
