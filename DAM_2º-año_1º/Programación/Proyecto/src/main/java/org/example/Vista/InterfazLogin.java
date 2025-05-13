@@ -24,8 +24,6 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
     protected static final Color COLOR_BOTONES_AZUL = new Color(70, 130, 180);
     protected static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
-    protected static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
-
     private String administrador = "Admin";
     private String usuario = "Usuario";
     private String password = "1234";

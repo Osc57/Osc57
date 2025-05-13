@@ -40,7 +40,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         LISTA_NOMBRES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         LISTA_NOMBRES.setFont(new Font("Arial", Font.PLAIN, 18));
         LISTA_NOMBRES.setFixedCellHeight(35);
-        LISTA_NOMBRES.setBackground(COLOR_FONDO_LISTA);
+        LISTA_NOMBRES.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());

@@ -39,7 +39,7 @@ public class InterfazSeleccionJefe extends JFrame {
         LISTA_NOMBRES_JEFE.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         LISTA_NOMBRES_JEFE.setFont(new Font("Arial", Font.PLAIN, 18));
         LISTA_NOMBRES_JEFE.setFixedCellHeight(35);
-        LISTA_NOMBRES_JEFE.setBackground(COLOR_FONDO_LISTA);
+        LISTA_NOMBRES_JEFE.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_JEFE);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
