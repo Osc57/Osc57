@@ -173,7 +173,7 @@ public class InterfazDarAltaCliente extends JFrame {
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setFont(FUENTE_BOTONES);
-        boton.setBackground(COLOR_BOTONES);
+        boton.setBackground(COLOR_BOTON_GRIS_CLARO);
         boton.setFocusPainted(false);
         boton.setForeground(Color.WHITE);
         boton.setBorder(BorderFactory.createCompoundBorder(

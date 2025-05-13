@@ -17,7 +17,7 @@ public class InterfazGestionaCliente extends JFrame {
         this.setTitle("Gestión");
         this.setSize(500, 400);
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(COLOR_FONDO);
+        this.getContentPane().setBackground(COLOR_FONDO_GRIS_CLARO);
         this.setResizable(false);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -48,10 +48,10 @@ public class InterfazGestionaCliente extends JFrame {
         JButton botonRetorno = new JButton("←");
         panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
         panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 0));
-        panelBotonRetorno.setBackground(COLOR_FONDO);
+        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_FONDO_BOTON);
+        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
         botonRetorno.setFont(FUENTE_EMOJI);
 
         botonRetorno.addActionListener(new ActionListener() {
@@ -67,7 +67,7 @@ public class InterfazGestionaCliente extends JFrame {
     private JPanel getjPanlepanelBotonesGestion() {
         JPanel panelBotonesGestion = new JPanel(new GridLayout(2, 2, 15, 15));
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
-        panelBotonesGestion.setBackground(COLOR_FONDO);
+        panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JButton botonAltaCliente = crearEstiloBoton("Dar de Alta");
         botonAltaCliente.addActionListener(new ActionListener() {
@@ -113,7 +113,7 @@ public class InterfazGestionaCliente extends JFrame {
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setFont(FUENTE_BOTON);
-        boton.setBackground(COLOR_FONDO_BOTON);
+        boton.setBackground(COLOR_BOTON_GRIS_CLARO);
         boton.setFocusPainted(false);
         boton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.GRAY, 1),

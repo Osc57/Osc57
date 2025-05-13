@@ -45,7 +45,7 @@ public class InterfazGestionJefe extends JFrame {
         panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 0));
 
         botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_FONDO_BOTON);
+        botonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
         botonRetorno.setFont(FUENTE_EMOJI);
 
         botonRetorno.addActionListener(new ActionListener() {
@@ -74,7 +74,7 @@ public class InterfazGestionJefe extends JFrame {
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setFont(FUENTE_BOTONES);
-        boton.setBackground(COLOR_FONDO_BOTON);
+        boton.setBackground(COLOR_BOTON_GRIS_CLARO);
         boton.setFocusPainted(false);
         boton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.GRAY, 1),

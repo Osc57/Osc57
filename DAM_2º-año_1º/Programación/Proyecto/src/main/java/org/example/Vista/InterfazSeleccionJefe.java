@@ -46,7 +46,7 @@ public class InterfazSeleccionJefe extends JFrame {
 
         JButton btnAcceder = botonAcceder();
         btnAcceder.setFont(new Font("Arial", Font.BOLD, 16));
-        btnAcceder.setBackground(COLOR_BOTON_ACCEDER);
+        btnAcceder.setBackground(COLOR_BOTONES_AZUL);
         btnAcceder.setForeground(COLOR_TEXTO_BOTON);
 
         JPanel panelCentro = new JPanel(new BorderLayout());
