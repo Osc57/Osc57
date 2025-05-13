@@ -3,8 +3,8 @@ package org.example.Vista;
 import javax.swing.*;
 import java.awt.*;
 
-import static org.example.Vista.InterfazLogin.FUENTE_CAMPOS;
-import static org.example.Vista.InterfazLogin.FUENTE_TITULO_2;
+import static org.example.Vista.InterfazLogin.*;
+import static org.example.Vista.InterfazLogin.COLOR_BOTONES;
 
 public class InterfazDarBajaCliente extends JFrame{
 
@@ -36,7 +36,7 @@ public class InterfazDarBajaCliente extends JFrame{
 
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        JButton botonConfirmar = new JButton("Confirmar");
+        JButton botonConfirmar = crearEstiloBoton("Confirmar");
 
         txtDni = crearFields();
 
@@ -54,6 +54,19 @@ public class InterfazDarBajaCliente extends JFrame{
         field.setPreferredSize(new Dimension(150, 30));
 
         return field;
+    }
+
+    private JButton crearEstiloBoton(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setFont(FUENTE_BOTONES);
+        boton.setBackground(COLOR_BOTONES);
+        boton.setFocusPainted(false);
+        boton.setForeground(Color.WHITE);
+        boton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+        ));
+        return boton;
     }
 
     public static void main(String[] args) {

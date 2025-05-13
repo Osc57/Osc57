@@ -33,7 +33,7 @@ public class InterfazGestionaCliente extends JFrame {
         JLabel titulo = new JLabel("Gestiona a los Clientes");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
-        titulo.setFont(FUENTE_TITULO);
+        titulo.setFont(FUENTE_TITULO_2);
 
         JPanel panelBotonesGetion = getjPanlepanelBotonesGestion();
         JPanel panelBotonRetorno = getjPanelBotonRetorno();
@@ -51,7 +51,7 @@ public class InterfazGestionaCliente extends JFrame {
         panelBotonRetorno.setBackground(COLOR_FONDO);
 
         botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_BOTONES);
+        botonRetorno.setBackground(COLOR_FONDO_BOTON);
         botonRetorno.setFont(FUENTE_EMOJI);
 
         botonRetorno.addActionListener(new ActionListener() {
@@ -94,7 +94,7 @@ public class InterfazGestionaCliente extends JFrame {
             }
         });
 
-        JButton botonHistorialCliente = crearEstiloBoton("Mostrar Historial");
+        JButton botonHistorialCliente = crearEstiloBoton("<html>Mostrar <br> Historial</html>");
         botonHistorialCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,8 +112,8 @@ public class InterfazGestionaCliente extends JFrame {
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
-        boton.setFont(FUENTE_BOTONES);
-        boton.setBackground(COLOR_BOTONES);
+        boton.setFont(FUENTE_BOTON);
+        boton.setBackground(COLOR_FONDO_BOTON);
         boton.setFocusPainted(false);
         boton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.GRAY, 1),

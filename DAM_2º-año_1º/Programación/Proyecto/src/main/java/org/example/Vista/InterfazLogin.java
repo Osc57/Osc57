@@ -7,21 +7,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
-    protected static final Color COLOR_BOTON = new Color(70, 130, 180);
     protected static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
     protected static final Font FUENTE_TITULO_2 = new Font("Arial", Font.BOLD, 25);
-    protected static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
-    protected static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
-    protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
-    protected static final Color COLOR_BOTONES = new Color(70, 130, 180);
-    protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
-    protected static final Color COLOR_FONDO_BOTON = new Color(230, 230, 230);
-    protected static final Font FUENTE_EMOJI = new Font("Arial", Font.BOLD, 25);
+
     protected static final Color COLOR_FONDO = new Color(240, 240, 240);
 
-    protected static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
-    protected static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
+    protected static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
+    protected static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
+    protected static final Font FUENTE_EMOJI = new Font("Arial", Font.BOLD, 25);
+
+    protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
+    protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
+
+    protected static final Color COLOR_BOTON_1 = new Color(70, 130, 180);
+    protected static final Color COLOR_BOTONES = new Color(70, 130, 180);
+    protected static final Color COLOR_FONDO_BOTON = new Color(230, 230, 230);
     protected static final Color COLOR_TEXTO_BOTON = Color.WHITE;
+    protected static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
+
+    protected static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
 
     private String administrador = "Admin";
     private String usuario = "Usuario";
@@ -78,7 +82,7 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
         jButton = new JButton("INICIAR SESIÓN");//Me genero el botón
         jButton.setFont(FUENTE_BOTON);
         jButton.setBounds(150, 250, 200, 45);//Selecciono tamaño y ubicación del botón
-        jButton.setBackground(COLOR_BOTON);//Color azul para el botón
+        jButton.setBackground(COLOR_BOTON_1);//Color azul para el botón
         jButton.setForeground(Color.WHITE);//Texto blanco
         jPanel.add(jButton);//Lo añado al panel
 

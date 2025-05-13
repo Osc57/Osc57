@@ -100,11 +100,23 @@ public class InterfazDarAltaCliente extends JFrame {
                         return;
                     }
 
+                    if (!txtNombre.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$")) {
+                        JOptionPane.showMessageDialog(null, "Nombre incorrecto.\nDebe empezar con mayúscula y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if (!txtApellidos.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$")) {
+                        JOptionPane.showMessageDialog(null, "Apellido incorrecto.\nDebe empezar con mayúscula y solo contener letras (1 o 2 apellidos).", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
                     String validarTelefono = txtTelefono.getText();
                     if (!validarTelefono.matches("\\d{9}")) {
                         JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
+
+
 
                     Cliente nuevoCliente = new Cliente();
                     nuevoCliente.setDni(txtDni.getText());
