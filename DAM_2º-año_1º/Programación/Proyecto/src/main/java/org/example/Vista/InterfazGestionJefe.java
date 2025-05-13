@@ -7,11 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import static org.example.Vista.InterfazLogin.*;
+
 public class InterfazGestionJefe extends JFrame {
-    private static final Color COLOR_FONDO_BOTON = new Color(230, 230, 230);
-    private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
-    private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
-    private static final Font FUENTE_EMOJI = new Font("Arial", Font.BOLD, 25);
+
 
     public InterfazGestionJefe() {
         this.setTitle("Administrador");
@@ -28,7 +27,7 @@ public class InterfazGestionJefe extends JFrame {
         JLabel titulo = new JLabel("Gestiona a los Trabajadores");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
-        titulo.setFont(FUENTE_TITULO);
+        titulo.setFont(FUENTE_TITULO_2);
 
         JPanel panelBotonesCentro = getjPanelBotonesCentro();
         JPanel panelBotonRetorno = getjPanelBotonRetorno();

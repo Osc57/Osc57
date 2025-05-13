@@ -3,10 +3,10 @@ package org.example.Vista;
 import javax.swing.*;
 import java.awt.*;
 
-import static org.example.Vista.InterfazDarAltaCliente.FUENTE_CAMPOS;
+import static org.example.Vista.InterfazLogin.FUENTE_CAMPOS;
+import static org.example.Vista.InterfazLogin.FUENTE_TITULO_2;
 
 public class InterfazDarBajaCliente extends JFrame{
-    private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
 
     private JTextField txtDni = new JTextField();
 
@@ -18,7 +18,7 @@ public class InterfazDarBajaCliente extends JFrame{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JLabel introducirCliente = new JLabel("•Introduce el DNI del Cliente");
-        introducirCliente.setFont(FUENTE_TITULO);
+        introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelGestionDni = getjPanelGestionDni();

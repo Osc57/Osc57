@@ -14,11 +14,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorJefe.cargarJefe;
+import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazSeleccionJefe extends JFrame {
-    private static final Color COLOR_FONDO_LISTA = new Color(240, 240, 240);
-    private static final Color COLOR_BOTON_ACCEDER = new Color(70, 130, 180);
-    private static final Color COLOR_TEXTO_BOTON = Color.WHITE;
+
 
     private final JList<Jefe> LISTA_NOMBRES_JEFE;
 

@@ -7,12 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import static org.example.Vista.InterfazLogin.*;
+
 public class InterfazGestionaCliente extends JFrame {
-    private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
-    private static final Color COLOR_FONDO = new Color(240, 240, 240);
-    private static final Color COLOR_BOTONES = new Color(230, 230, 230);
-    private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 16);
-    private static final Font FUENTE_EMOJI = new Font("Arial", Font.BOLD, 25);
+
 
     public InterfazGestionaCliente() {
         this.setLayout(new BorderLayout());

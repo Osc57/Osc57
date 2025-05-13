@@ -9,12 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.Vista.InterfazLogin.*;
+
 public class InterfazDarAltaCliente extends JFrame {
-    private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
-    private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 20);
-    protected static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 20);
-    private static final Color COLOR_BOTONES = new Color(70, 130, 180);
-    private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
+
 
     private ControladorCliente controladorCliente = new ControladorCliente();
 
@@ -39,7 +37,7 @@ public class InterfazDarAltaCliente extends JFrame {
         });
         */
         JLabel introducirCliente = new JLabel("•Introduce Los Datos Del Cliente");
-        introducirCliente.setFont(FUENTE_TITULO);
+        introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
