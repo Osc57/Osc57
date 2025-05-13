@@ -3,6 +3,8 @@ package org.example.Vista;
 import javax.swing.*;
 import java.awt.*;
 
+import static org.example.Vista.InterfazDarAltaCliente.FUENTE_CAMPOS;
+
 public class InterfazDarBajaCliente extends JFrame{
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
 
@@ -22,23 +24,37 @@ public class InterfazDarBajaCliente extends JFrame{
         JPanel panelGestionDni = getjPanelGestionDni();
 
 
-        txtDni.setColumns(10);
 
         this.add(introducirCliente, BorderLayout.NORTH);
-        this.add(txtDni, BorderLayout.CENTER);
+        this.add(panelGestionDni, BorderLayout.CENTER);
     }
 
     private JPanel getjPanelGestionDni(){
-        JPanel panelDNI = new JPanel();
+        JPanel panelPrincipal = new JPanel(new BorderLayout());
+
+        JPanel panelDNI = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         JButton botonConfirmar = new JButton("Confirmar");
 
-        panelDNI.add(txtDni, BorderLayout.CENTER);
-        panelDNI.add(botonConfirmar, BorderLayout.SOUTH);
+        txtDni = crearFields();
 
-        return panelDNI;
+        panelDNI.add(txtDni);
+        panelBoton.add(botonConfirmar);
+        panelPrincipal.add(panelDNI, BorderLayout.CENTER);
+        panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
+
+        return panelPrincipal;
     }
 
+    private JTextField crearFields() {
+        JTextField field = new JTextField(15);
+        field.setFont(FUENTE_CAMPOS);
+        field.setPreferredSize(new Dimension(150, 30));
+
+        return field;
+    }
 
     public static void main(String[] args) {
         new InterfazDarBajaCliente().setVisible(true);

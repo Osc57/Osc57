@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class InterfazDarAltaCliente extends JFrame {
     private static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 25);
     private static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 20);
-    private static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 20);
+    protected static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 20);
     private static final Color COLOR_BOTONES = new Color(70, 130, 180);
     private static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
