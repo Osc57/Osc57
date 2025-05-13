@@ -13,16 +13,15 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
     protected static final Color COLOR_FONDO_GRIS_CLARO = new Color(240, 240, 240);
     protected static final Color COLOR_BOTON_GRIS_CLARO = new Color(230, 230, 230);
 
+    protected static final Color COLOR_BOTONES_AZUL = new Color(70, 130, 180);
+    protected static final Color COLOR_TEXTO_BOTON = Color.WHITE;
+
     protected static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
     protected static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
     protected static final Font FUENTE_EMOJI = new Font("Arial", Font.BOLD, 25);
 
     protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
-
-
-    protected static final Color COLOR_BOTONES_AZUL = new Color(70, 130, 180);
-    protected static final Color COLOR_TEXTO_BOTON = Color.WHITE;
 
     private String administrador = "Admin";
     private String usuario = "Usuario";

@@ -58,7 +58,7 @@ public class InterfazDarBajaCliente extends JFrame{
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setFont(FUENTE_BOTONES);
-        boton.setBackground(COLOR_BOTON_GRIS_CLARO);
+        boton.setBackground(COLOR_BOTONES_AZUL);
         boton.setFocusPainted(false);
         boton.setForeground(Color.WHITE);
         boton.setBorder(BorderFactory.createCompoundBorder(
