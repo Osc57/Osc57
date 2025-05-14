@@ -5,9 +5,12 @@ import org.example.Modelo.Recepcionista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCliente.cargarClientes;
+import static org.example.Controlador.ControladorCliente.eliminarCliente;
 import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
 import static org.example.Vista.InterfazLogin.*;
 
@@ -17,7 +20,7 @@ public class InterfazDarBajaCliente extends JFrame{
 
     public InterfazDarBajaCliente(){
         this.setTitle("Dar de Baja");
-        this.setSize(600, 460);
+        this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,11 +39,17 @@ public class InterfazDarBajaCliente extends JFrame{
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0,15,15,15));
 
-        JPanel panelDNI = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         JPanel panelBoton = new JPanel(new GridLayout(1,2,10,10));
 
         JButton botonConfirmar = crearEstiloBoton("Confirmar");
+        botonConfirmar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seleccionCliente();
+            }
+        });
+
         JButton botonFiltrar = crearEstiloBoton("Filtrar DNI");
 
         MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
@@ -52,20 +61,34 @@ public class InterfazDarBajaCliente extends JFrame{
         LISTA_NOMBRES_CLIENTES.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_CLIENTES);
+        jScrollPane.setBorder(BorderFactory.createEmptyBorder());
+        jScrollPane.setBorder(BorderFactory.createEmptyBorder(0,0,20,10));
 
         ArrayList<Cliente> clientes = cargarClientes();
         for (Cliente c : clientes) {
             MODEL_USUARIO_CLIENTES.addElement(c);
         }
 
-        panelDNI.add(jScrollPane);
         panelBoton.add(botonFiltrar);
         panelBoton.add(botonConfirmar);
 
-        panelPrincipal.add(panelDNI, BorderLayout.CENTER);
+        panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
+    }
+
+    private void seleccionCliente() {
+        Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
+        if (clienteSeleccion != null) {
+            eliminarCliente(clienteSeleccion.getDni());
+            new InterfazDarBajaCliente().setVisible(true);
+            dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
+        }
+
     }
 
     private JTextField crearFields() {

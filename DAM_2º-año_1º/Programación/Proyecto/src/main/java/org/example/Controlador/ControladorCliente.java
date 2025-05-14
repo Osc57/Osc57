@@ -58,9 +58,24 @@ public class ControladorCliente {
 
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(null, "Error al cargar los clientes: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return clientes;
+    }
+
+    public static boolean eliminarCliente(String dni) {
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM cliente WHERE dni=?;")) {
+
+            preparedStatement.setString(1, dni);
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 }
 
