@@ -17,8 +17,6 @@ import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadore
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazSeleccionUsuario extends JFrame {
-
-
     private final JList<Recepcionista> LISTA_NOMBRES;
     private final DefaultListModel<Recepcionista> MODEL_USUARIO;
 

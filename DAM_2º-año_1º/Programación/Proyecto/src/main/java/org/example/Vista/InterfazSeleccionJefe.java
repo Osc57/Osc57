@@ -17,8 +17,6 @@ import static org.example.Controlador.ControladorJefe.cargarJefe;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazSeleccionJefe extends JFrame {
-
-
     private final JList<Jefe> LISTA_NOMBRES_JEFE;
 
     public InterfazSeleccionJefe() {
