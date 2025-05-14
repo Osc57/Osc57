@@ -14,11 +14,11 @@ import static org.example.Controlador.ControladorCliente.eliminarCliente;
 import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
 import static org.example.Vista.InterfazLogin.*;
 
-public class InterfazDarBajaCliente extends JFrame{
+public class InterfazDarBajaCliente extends JFrame {
     private JList<Cliente> LISTA_NOMBRES_CLIENTES;
     private DefaultListModel<Cliente> MODEL_USUARIO_CLIENTES;
 
-    public InterfazDarBajaCliente(){
+    public InterfazDarBajaCliente() {
         this.setTitle("Dar de Baja");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
@@ -35,12 +35,12 @@ public class InterfazDarBajaCliente extends JFrame{
         this.add(panelGestionDni, BorderLayout.CENTER);
     }
 
-    private JPanel getjPanelGestionDni(){
+    private JPanel getjPanelGestionDni() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0,15,15,15));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
 
-        JPanel panelBoton = new JPanel(new GridLayout(1,2,10,10));
+        JPanel panelBoton = new JPanel(new GridLayout(1, 2, 10, 10));
 
         JButton botonConfirmar = crearEstiloBoton("Confirmar");
         botonConfirmar.addActionListener(new ActionListener() {
@@ -62,7 +62,7 @@ public class InterfazDarBajaCliente extends JFrame{
 
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_CLIENTES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder());
-        jScrollPane.setBorder(BorderFactory.createEmptyBorder(0,0,20,10));
+        jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
         ArrayList<Cliente> clientes = cargarClientes();
         for (Cliente c : clientes) {
@@ -81,10 +81,12 @@ public class InterfazDarBajaCliente extends JFrame{
     private void seleccionCliente() {
         Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
-            eliminarCliente(clienteSeleccion.getDni());
-            new InterfazDarBajaCliente().setVisible(true);
-            dispose();
-
+            if (JOptionPane.showConfirmDialog(InterfazDarBajaCliente.this, "¿Quieres eliminar este usuario?", "Eliminar",
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                eliminarCliente(clienteSeleccion.getDni());
+                new InterfazDarBajaCliente().setVisible(true);
+                dispose();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
         }
