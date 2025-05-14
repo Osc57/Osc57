@@ -61,7 +61,6 @@ public class InterfazDarBajaCliente extends JFrame {
         LISTA_NOMBRES_CLIENTES.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_CLIENTES);
-        jScrollPane.setBorder(BorderFactory.createEmptyBorder());
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
         ArrayList<Cliente> clientes = cargarClientes();
@@ -84,6 +83,7 @@ public class InterfazDarBajaCliente extends JFrame {
             if (JOptionPane.showConfirmDialog(InterfazDarBajaCliente.this, "¿Quieres eliminar este usuario?", "Eliminar",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 eliminarCliente(clienteSeleccion.getDni());
+                JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
                 new InterfazDarBajaCliente().setVisible(true);
                 dispose();
             }
@@ -93,6 +93,7 @@ public class InterfazDarBajaCliente extends JFrame {
 
     }
 
+    /*
     private JTextField crearFields() {
         JTextField field = new JTextField(15);
         field.setFont(FUENTE_CAMPOS);
@@ -100,6 +101,7 @@ public class InterfazDarBajaCliente extends JFrame {
 
         return field;
     }
+    */
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
