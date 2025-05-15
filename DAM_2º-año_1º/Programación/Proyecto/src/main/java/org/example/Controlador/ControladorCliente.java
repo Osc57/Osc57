@@ -78,21 +78,24 @@ public class ControladorCliente {
         }
     }
 
-    public static Cliente dniCliente(String dni){
-        Cliente cliente = new Cliente();
+    public static Cliente cargarDniCliente(String dni){
+        Cliente cliente = null;
 
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cliente WHERE dni=?;");
-             ResultSet resultSet = preparedStatement.executeQuery();) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cliente WHERE dni=?;")) {
 
             preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()){
-                cliente.setDni(resultSet.getString(dni));
+            while (resultSet.next()){
+                cliente = new Cliente();
+                cliente.setDni(resultSet.getString("dni"));
+                cliente.setNombre(resultSet.getString("nombre"));
+                cliente.setApellidos(resultSet.getString("apellidos"));;
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al buscar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
         }
         return cliente;

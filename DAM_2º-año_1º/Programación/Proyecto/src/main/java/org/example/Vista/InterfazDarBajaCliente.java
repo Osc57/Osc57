@@ -15,8 +15,8 @@ import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadore
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazDarBajaCliente extends JFrame {
-    private JList<Cliente> LISTA_NOMBRES_CLIENTES;
-    private DefaultListModel<Cliente> MODEL_USUARIO_CLIENTES;
+    protected static JList<Cliente> LISTA_NOMBRES_CLIENTES;
+    protected static DefaultListModel<Cliente> MODEL_USUARIO_CLIENTES;
 
     public InterfazDarBajaCliente() {
         this.setTitle("Dar de Baja");
