@@ -24,7 +24,7 @@ public class InterfazDarAltaCliente extends JFrame {
 
     public InterfazDarAltaCliente() {
         this.setTitle("Formulario");
-        this.setSize(440, 420);
+        this.setSize(440, 450);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -41,9 +41,11 @@ public class InterfazDarAltaCliente extends JFrame {
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
+        JPanel panelBotonRetorno = getjPanelBotonRetorno();
 
         this.add(introducirCliente, BorderLayout.NORTH);
-        this.add(panelDatosUsuario);
+        this.add(panelDatosUsuario, BorderLayout.CENTER);
+        this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelDatosUsuario() {
