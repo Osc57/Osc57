@@ -23,7 +23,7 @@ public class InterfazFiltrarDNI extends JFrame {
         this.setSize(360, 240);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-      
+
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -36,9 +36,7 @@ public class InterfazFiltrarDNI extends JFrame {
         tituloFiltrar.setFont(FUENTE_TITULO_2);
         tituloFiltrar.setBorder(BorderFactory.createEmptyBorder(15, 60, 15, 0));
 
-
         JPanel panelDNI = getjPanelPanelDNI();
-
 
         this.add(tituloFiltrar, BorderLayout.NORTH);
         this.add(panelDNI);
@@ -109,8 +107,9 @@ public class InterfazFiltrarDNI extends JFrame {
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                seleccionCliente();
-                dialogo.dispose();
+                if (seleccionCliente(dialogo)) {
+                    dialogo.dispose();
+                }
             }
         });
 
@@ -127,20 +126,27 @@ public class InterfazFiltrarDNI extends JFrame {
         dialogo.setVisible(true);
     }
 
-    private void seleccionCliente() {
+    private boolean seleccionCliente(JDialog parentDialog) {
         Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
-        int confirmacion = JOptionPane.showConfirmDialog(this, "¿Quieres eliminar este usuario?", "Eliminar", JOptionPane.YES_NO_OPTION);
 
-        if (clienteSeleccion != null) {
-            if (confirmacion == JOptionPane.YES_OPTION) {
-                eliminarCliente(clienteSeleccion.getDni());
-                JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
-                new InterfazDarBajaCliente().setVisible(true);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
+        if (clienteSeleccion == null) {
+            JOptionPane.showMessageDialog(parentDialog, "Selecciona un cliente de la lista", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
 
+        int confirmacion = JOptionPane.showConfirmDialog(parentDialog, "¿Quieres eliminar este usuario?", "Eliminar cliente", JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            if (eliminarCliente(clienteSeleccion.getDni())) {
+                JOptionPane.showMessageDialog(parentDialog, "Cliente eliminado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                new InterfazDarBajaCliente().setVisible(true);
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(parentDialog, "Error al eliminar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return false;
     }
 
     private void limpiarCampos() {

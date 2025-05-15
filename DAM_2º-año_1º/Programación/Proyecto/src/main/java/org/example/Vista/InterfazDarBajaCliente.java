@@ -30,9 +30,11 @@ public class InterfazDarBajaCliente extends JFrame {
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelGestionDni = getjPanelGestionDni();
+        JPanel panelBotonRetorno = getjPanelBotonRetorno();
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelGestionDni, BorderLayout.CENTER);
+        this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelGestionDni() {
@@ -83,6 +85,27 @@ public class InterfazDarBajaCliente extends JFrame {
         return panelPrincipal;
     }
 
+    private JPanel getjPanelBotonRetorno() {
+        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
+        JButton botonRetorno = new JButton("←");
+        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
+        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        botonRetorno.setFocusPainted(false);
+        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
+        botonRetorno.setFont(FUENTE_EMOJI);
+
+        botonRetorno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               new InterfazGestionaCliente().setVisible(true);
+                dispose();
+            }
+        });
+        return panelBotonRetorno;
+    }
+
     private void seleccionCliente() {
         Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
@@ -91,10 +114,9 @@ public class InterfazDarBajaCliente extends JFrame {
                 eliminarCliente(clienteSeleccion.getDni());
                 JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
                 new InterfazDarBajaCliente().setVisible(true);
-                dispose();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
+            JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
         }
 
     }
