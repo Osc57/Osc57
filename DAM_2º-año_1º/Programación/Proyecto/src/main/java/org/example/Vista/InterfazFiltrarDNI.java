@@ -2,7 +2,10 @@ package org.example.Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import static org.example.Controlador.ControladorCliente.dniCliente;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazFiltrarDNI extends JFrame {
@@ -35,12 +38,33 @@ public class InterfazFiltrarDNI extends JFrame {
         JPanel pBoton = new JPanel(new GridLayout(1,1));
         pBoton.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
-        JButton BEnviar = crearEstiloBoton("Filtrar");
+        JButton bEnviar = crearEstiloBoton("Filtrar");
+        bEnviar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (fieldDNI.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Introduzca el DNI", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if (!fieldDNI.getText().matches("[0-9]{8}[A-Za-z]")) {
+                        JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra", "Error", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+
+                    dniCliente(fieldDNI.getText());
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
 
         fieldDNI = crearFields();
 
         pField.add(fieldDNI);
-        pBoton.add(BEnviar);
+        pBoton.add(bEnviar);
 
         panelGuardar.add(pField, BorderLayout.CENTER);
         panelGuardar.add(pBoton, BorderLayout.SOUTH);
