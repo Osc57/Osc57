@@ -39,7 +39,6 @@ public class InterfazDarBajaCliente extends JFrame {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
-
         JPanel panelBoton = new JPanel(new GridLayout(1, 2, 10, 10));
 
         JButton botonConfirmar = crearEstiloBoton("Confirmar");
@@ -51,6 +50,13 @@ public class InterfazDarBajaCliente extends JFrame {
         });
 
         JButton botonFiltrar = crearEstiloBoton("Filtrar DNI");
+        botonFiltrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InterfazFiltrarDNI().setVisible(true);
+                dispose();
+            }
+        });
 
         MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
         LISTA_NOMBRES_CLIENTES = new JList<>(MODEL_USUARIO_CLIENTES);

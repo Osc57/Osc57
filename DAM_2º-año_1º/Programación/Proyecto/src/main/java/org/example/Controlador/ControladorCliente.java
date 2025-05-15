@@ -77,5 +77,25 @@ public class ControladorCliente {
             return false;
         }
     }
+
+    public static Cliente dniCliente(String dni){
+        Cliente cliente = new Cliente();
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cliente WHERE dni=?;");
+             ResultSet resultSet = preparedStatement.executeQuery();) {
+
+            preparedStatement.setString(1, dni);
+
+            if (resultSet.next()){
+                cliente.setDni(resultSet.getString(dni));
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        return cliente;
+    }
 }
 
