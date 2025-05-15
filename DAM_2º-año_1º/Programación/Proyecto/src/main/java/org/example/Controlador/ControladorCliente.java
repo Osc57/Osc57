@@ -78,7 +78,7 @@ public class ControladorCliente {
         }
     }
 
-    public static Cliente cargarDniCliente(String dni){
+    public static Cliente cargarDniCliente(String dni) {
         Cliente cliente = null;
 
         try (Connection connection = connect();
@@ -87,11 +87,12 @@ public class ControladorCliente {
             preparedStatement.setString(1, dni);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 cliente = new Cliente();
                 cliente.setDni(resultSet.getString("dni"));
                 cliente.setNombre(resultSet.getString("nombre"));
-                cliente.setApellidos(resultSet.getString("apellidos"));;
+                cliente.setApellidos(resultSet.getString("apellidos"));
+                ;
             }
 
         } catch (SQLException e) {
@@ -99,6 +100,21 @@ public class ControladorCliente {
 
         }
         return cliente;
+    }
+
+    public static boolean comprobarDNICliente(String dni) {
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cliente WHERE dni=?;")) {
+
+            preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 }
 
