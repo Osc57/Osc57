@@ -25,3 +25,4 @@
 [2025/05/15 - 16:29:08] Recepcionista: Pedro Sanz Jimenez | DNI: 56789012E
 [2025/05/15 - 20:02:27] Recepcionista: David Perez Fernandez | DNI: 34567890C
 [2025/05/15 - 20:03:02] Recepcionista: Pedro Sanz Jimenez | DNI: 56789012E
+[2025/05/15 - 21:13:06] Recepcionista: Pedro Sanz Jimenez | DNI: 56789012E

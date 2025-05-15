@@ -154,6 +154,27 @@ public class InterfazDarAltaCliente extends JFrame {
         txtTelefono.setText("");
     }
 
+    private JPanel getjPanelBotonRetorno() {
+        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
+        JButton botonRetorno = new JButton("←");
+        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
+        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        botonRetorno.setFocusPainted(false);
+        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
+        botonRetorno.setFont(FUENTE_EMOJI);
+
+        botonRetorno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InterfazGestionaCliente().setVisible(true);
+                dispose();
+            }
+        });
+        return panelBotonRetorno;
+    }
+
     private JTextField crearFields() {
         JTextField field = new JTextField(15);
         field.setFont(FUENTE_CAMPOS);
