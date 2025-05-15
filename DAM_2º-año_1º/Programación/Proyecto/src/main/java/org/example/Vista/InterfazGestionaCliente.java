@@ -87,8 +87,8 @@ public class InterfazGestionaCliente extends JFrame {
             }
         });
 
-        JButton botonDarCiltaCliente = crearEstiloBoton("Dar Cita");
-        botonDarCiltaCliente.addActionListener(new ActionListener() {
+        JButton botonDarCitaCliente = crearEstiloBoton("Dar Cita");
+        botonDarCitaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -105,7 +105,7 @@ public class InterfazGestionaCliente extends JFrame {
 
         panelBotonesGestion.add(botonAltaCliente);
         panelBotonesGestion.add(botonBajaCliente);
-        panelBotonesGestion.add(botonDarCiltaCliente);
+        panelBotonesGestion.add(botonDarCitaCliente);
         panelBotonesGestion.add(botonHistorialCliente);
 
         return panelBotonesGestion;

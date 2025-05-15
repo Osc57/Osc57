@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import static org.example.Controlador.ControladorCliente.*;
 import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
@@ -21,7 +23,14 @@ public class InterfazFiltrarDNI extends JFrame {
         this.setSize(360, 240);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+      
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new InterfazDarBajaCliente().setVisible(true);
+            }
+        });
+
 
         JLabel tituloFiltrar = new JLabel("•Introduce un DNI");
         tituloFiltrar.setFont(FUENTE_TITULO_2);
@@ -47,25 +56,21 @@ public class InterfazFiltrarDNI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
                     if (fieldDNI.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Introduzca el DNI", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
-                    if (!fieldDNI.getText().matches("[0-9]{8}[A-Za-z]")) {
+                    } else if (!fieldDNI.getText().matches("[0-9]{8}[A-Za-z]")) {
                         JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                    if (!comprobarDNICliente(fieldDNI.getText())) {
+                    } else if (!comprobarDNICliente(fieldDNI.getText())) {
                         JOptionPane.showMessageDialog(null, "El DNI no se encuentra en el programa", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
+                        limpiarCampos();
+                    } else {
+                        dispose();
+                        listaDNICLienteFiltrado();
                     }
-
-                    dispose();
-                    listaDNICLienteFiltrado();
 
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error al buscar al cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error al buscar al cliente" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -83,7 +88,7 @@ public class InterfazFiltrarDNI extends JFrame {
 
     private void listaDNICLienteFiltrado() {
         JDialog dialogo = new JDialog(this, "Datos del Cliente", true);
-        dialogo.setSize(460, 360);
+        dialogo.setSize(460, 200);
         dialogo.setLocationRelativeTo(this);
         dialogo.setResizable(false);
 
@@ -131,11 +136,15 @@ public class InterfazFiltrarDNI extends JFrame {
                 eliminarCliente(clienteSeleccion.getDni());
                 JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
                 new InterfazDarBajaCliente().setVisible(true);
-                dispose();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
         }
+
+    }
+
+    private void limpiarCampos() {
+        fieldDNI.setText("");
 
     }
 
