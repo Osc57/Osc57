@@ -64,8 +64,8 @@ public class InterfazGestionaCliente extends JFrame {
         botonAltaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazDarAltaCliente().setVisible(true);
                 dispose();
+                new InterfazDarAltaCliente().setVisible(true);
             }
         });
 
@@ -73,8 +73,8 @@ public class InterfazGestionaCliente extends JFrame {
         botonBajaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazDarBajaCliente().setVisible(true);
                 dispose();
+                new InterfazDarBajaCliente().setVisible(true);
             }
         });
 
