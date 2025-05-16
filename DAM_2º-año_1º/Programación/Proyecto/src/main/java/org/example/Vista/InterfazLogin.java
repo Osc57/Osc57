@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import static org.example.Controlador.ControladorJefe.comprobarLogginAdmin;
+import static org.example.Controlador.ControladorRecepcionista.comprobarLogginRecepcionista;
+import static org.example.Controlador.ControladorRecepcionista.updateRecepcionista;
+
 public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
     protected static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
     protected static final Font FUENTE_TITULO_2 = new Font("Arial", Font.BOLD, 25);
@@ -25,9 +29,6 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
     protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
-    private String administrador = "Admin";
-    private String usuario = "Usuario";
-    private String password = "1234";
     private JPanel jPanel;
     private JTextField jTextField;
     private JButton jButton;
@@ -90,32 +91,19 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                 String pass = new String(jPasswordField.getPassword());
                 String user = jTextField.getText();
 
-                //Verifico el login de los usuarios que son recepcionistas
-                if (user.equalsIgnoreCase(usuario)) {
-                    if (pass.equals(password)) {
-                        JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-
-                        new InterfazSeleccionUsuario().setVisible(true);
-                        dispose();
-                        return;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "⚠\uFE0F Contraseña Incorrecta ⚠\uFE0F");
-                    }
+                //Verifico el login de los usuarios que son recepcionistas y de los admins/jefe
+                if (user.equalsIgnoreCase("usuario") && comprobarLogginRecepcionista(user,pass)){
+                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                    dispose();
+                    new InterfazSeleccionUsuario().setVisible(true);
+                } else if (user.equalsIgnoreCase("admin") && comprobarLogginAdmin(user,pass)) {
+                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                    dispose();
+                    new InterfazSeleccionJefe().setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null, "⚠ Usuario o Contraseña Incorrectos ⚠");
                 }
 
-                //Verfifico el login de el usuario que es jefe/admin
-                if (user.equalsIgnoreCase(administrador)) {
-                    if (pass.equals(password)) {
-                        JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-
-                        new InterfazSeleccionJefe().setVisible(true);
-                        dispose();
-                        return;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "⚠\uFE0F Contraseña Incorrecta ⚠\uFE0F");
-                    }
-                }
-                JOptionPane.showMessageDialog(null, "⚠\uFE0F Usuario Incorrecto ⚠\uFE0F");
             }
         });
 
@@ -133,18 +121,15 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                     ventana.dispose();
                     new InterfazLogin().setVisible(true);
                 }
-
-
             }
         });
     }
 
 
-
-public static void main(String[] args) {
-    InterfazLogin login1 = new InterfazLogin();
-    login1.setVisible(true);
-}
+    public static void main(String[] args) {
+        InterfazLogin login1 = new InterfazLogin();
+        login1.setVisible(true);
+    }
 }
 
 

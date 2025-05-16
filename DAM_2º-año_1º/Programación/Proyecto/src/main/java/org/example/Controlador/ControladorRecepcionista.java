@@ -1,7 +1,9 @@
 package org.example.Controlador;
 
+import org.example.Modelo.Cliente;
 import org.example.Modelo.Recepcionista;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +16,25 @@ public class ControladorRecepcionista {
     public ControladorRecepcionista() {
     }
 
-    public Connection updateRecepcionista(String documento) {
+    public static boolean comprobarLogginRecepcionista(String user, String password) {
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM loggin WHERE usuario=? AND contrasena=?;")) {
+
+            preparedStatement.setString(1, user);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        }
+    }
+
+    public static Recepcionista updateRecepcionista(String documento) {
+        Recepcionista recepcionista = null;
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE recepcionista SET dni = ?")) {
 
@@ -30,7 +50,7 @@ public class ControladorRecepcionista {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return connect();
+        return null;
     }
 
     public static ArrayList<Recepcionista> cargarTrabajadores() {
