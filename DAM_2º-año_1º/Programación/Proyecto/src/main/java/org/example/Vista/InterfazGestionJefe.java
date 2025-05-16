@@ -59,7 +59,20 @@ public class InterfazGestionJefe extends JFrame {
         panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
 
         JButton insertar = crearEstiloBoton("Dar de Alta");
+        insertar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         JButton eliminar = crearEstiloBoton("Dar de Baja");
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         panelBotonesCentro.add(insertar);
         panelBotonesCentro.add(eliminar);
