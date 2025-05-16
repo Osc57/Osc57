@@ -90,8 +90,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         });
         return btnAcceder;
     }
-
-
+    
     private void controlRecepcionista(String dni, String nombre, String apellidos) {
         DateTimeFormatter fechaLoggin = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
 
