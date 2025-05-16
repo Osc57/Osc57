@@ -19,16 +19,7 @@ public class InterfazGestionaCliente extends JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(COLOR_FONDO_GRIS_CLARO);
         this.setResizable(false);
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(InterfazGestionaCliente.this, "¿Quieres cerrar sesión?", "Cerrar Sesión",
-                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    new InterfazLogin().setVisible(true);
-                }
-
-            }
-        });
+        configurarCierreVentana(this);
 
         JLabel titulo = new JLabel("Gestiona a los Clientes");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
@@ -40,14 +31,14 @@ public class InterfazGestionaCliente extends JFrame {
 
         this.add(titulo, BorderLayout.NORTH);
         this.add(panelBotonesGetion, BorderLayout.CENTER);
-        this.add(panelBotonRetorno, BorderLayout.WEST);
+        this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelBotonRetorno() {
         JPanel panelBotonRetorno = new JPanel(new BorderLayout());
         JButton botonRetorno = new JButton("←");
         panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 0));
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 60, 20, 320));
         panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         botonRetorno.setFocusPainted(false);
@@ -66,7 +57,7 @@ public class InterfazGestionaCliente extends JFrame {
 
     private JPanel getjPanlepanelBotonesGestion() {
         JPanel panelBotonesGestion = new JPanel(new GridLayout(2, 2, 15, 15));
-        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
+        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(10, 60, 40, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JButton botonAltaCliente = crearEstiloBoton("Dar de Alta");

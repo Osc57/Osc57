@@ -18,3 +18,4 @@
 [2025/05/12 - 18:45:42] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/13 - 18:04:03] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/13 - 18:49:30] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/16 - 16:58:18] Jefe: Carlos Gomez Martinez | DNI: 12345678A

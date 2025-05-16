@@ -17,12 +17,7 @@ public class InterfazGestionJefe extends JFrame {
         this.setSize(500, 350);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                new InterfazLogin().setVisible(true);
-            }
-        });
+        configurarCierreVentana(this);
 
         JLabel titulo = new JLabel("Gestiona a los Trabajadores");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));

@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import static org.example.Vista.InterfazLogin.*;
 
@@ -27,7 +29,9 @@ public class InterfazDarAltaCliente extends JFrame {
         this.setSize(440, 450);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        configurarCierreVentana(this);
+
         /*
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -117,7 +121,6 @@ public class InterfazDarAltaCliente extends JFrame {
                         JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-
 
 
                     Cliente nuevoCliente = new Cliente();

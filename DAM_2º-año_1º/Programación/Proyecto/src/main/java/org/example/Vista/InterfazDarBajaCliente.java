@@ -23,7 +23,7 @@ public class InterfazDarBajaCliente extends JFrame {
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        configurarCierreVentana(this);
 
         JLabel introducirCliente = new JLabel("•Seleccione cliente o Filtre el DNI");
         introducirCliente.setFont(FUENTE_TITULO_2);

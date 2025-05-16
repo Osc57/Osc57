@@ -23,8 +23,8 @@ public class InterfazSeleccionJefe extends JFrame {
         this.setTitle("Selección de Admin");
         this.setSize(500, 450);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
+        configurarCierreVentana(this);
 
         JPanel panelArriba = new JPanel();
         panelArriba.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
