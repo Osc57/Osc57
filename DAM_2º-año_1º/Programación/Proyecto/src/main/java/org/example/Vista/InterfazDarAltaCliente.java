@@ -95,47 +95,40 @@ public class InterfazDarAltaCliente extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String validarTelefono = txtTelefono.getText();
                 try {
                     if (txtDni.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellidos.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
 
-                    if (!txtDni.getText().matches("[0-9]{8}[A-Za-z]")) {
+                    } else if ((!txtDni.getText().matches("[0-9]{8}[A-Za-z]"))) {
                         JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra", "Error", JOptionPane.INFORMATION_MESSAGE);
-                        return;
-                    }
 
-                    if (!txtNombre.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$")) {
+                    } else if (!txtNombre.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$")) {
                         JOptionPane.showMessageDialog(null, "Nombre incorrecto.\nDebe empezar con mayúscula y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
 
-                    if (!txtApellidos.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$")) {
+                    } else if (!txtApellidos.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$")) {
                         JOptionPane.showMessageDialog(null, "Apellido incorrecto.\nDebe empezar con mayúscula y solo contener letras (1 o 2 apellidos).", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
 
-                    String validarTelefono = txtTelefono.getText();
-                    if (!validarTelefono.matches("\\d{9}")) {
+                    } else if (!validarTelefono.matches("\\d{9}")) {
                         JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
 
-
-                    Cliente nuevoCliente = new Cliente();
-                    nuevoCliente.setDni(txtDni.getText());
-                    nuevoCliente.setNombre(txtNombre.getText());
-                    nuevoCliente.setApellidos(txtApellidos.getText());
-                    nuevoCliente.setDireccion(txtDireccion.getText());
-                    nuevoCliente.setTelefono(Integer.parseInt(validarTelefono));
-
-                    if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
-                        JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        limpiarCampos();
                     } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                        Cliente nuevoCliente = new Cliente();
+                        nuevoCliente.setDni(txtDni.getText());
+                        nuevoCliente.setNombre(txtNombre.getText());
+                        nuevoCliente.setApellidos(txtApellidos.getText());
+                        nuevoCliente.setDireccion(txtDireccion.getText());
+                        nuevoCliente.setTelefono(Integer.parseInt(validarTelefono));
+
+                        if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
+                            JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            limpiarCampos();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
+
+
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Error en el formato del teléfono", "Error", JOptionPane.ERROR_MESSAGE);
                 }

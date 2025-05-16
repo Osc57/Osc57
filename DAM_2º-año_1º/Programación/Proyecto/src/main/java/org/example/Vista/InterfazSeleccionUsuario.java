@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
+import static org.example.Controlador.ControladorRecepcionista.updateRecepcionista;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazSeleccionUsuario extends JFrame {
@@ -78,8 +79,9 @@ public class InterfazSeleccionUsuario extends JFrame {
                 if (recepcionistaSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + recepcionistaSeleccionado.getNombre() + " " + recepcionistaSeleccionado.getApellidos());
                     controlRecepcionista(recepcionistaSeleccionado.getDni(), recepcionistaSeleccionado.getNombre(), recepcionistaSeleccionado.getApellidos());
-                    new InterfazGestionaCliente().setVisible(true);
+                    updateRecepcionista(recepcionistaSeleccionado.getDni());
                     dispose();
+                    new InterfazGestionaCliente().setVisible(true);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");

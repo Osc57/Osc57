@@ -33,24 +33,26 @@ public class ControladorRecepcionista {
         }
     }
 
-    public static Recepcionista updateRecepcionista(String documento) {
-        Recepcionista recepcionista = null;
+    public static boolean updateRecepcionista(String dni) {
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE recepcionista SET dni = ?")) {
 
-            preparedStatement.setString(1, documento);
+            preparedStatement.setString(1, dni);
             int filas = preparedStatement.executeUpdate();
 
-            if (filas == 0) {
+            if (filas > 0) {
+                return true;
+
+            }else {
                 try (PreparedStatement statement = connection.prepareStatement("INSERT INTO recepcionista (dni) VALUES (?)")) {
-                    statement.setString(1, documento);
+                    statement.setString(1, dni);
                     statement.executeUpdate();
+                    return true;
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
     public static ArrayList<Recepcionista> cargarTrabajadores() {
