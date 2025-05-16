@@ -34,13 +34,6 @@ CREATE TABLE tratamientos (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	tipo VARCHAR(50) NOT NULL);
 	
-CREATE TABLE proporciona (
-	dni_odontologo CHAR(9),
-	id_tratamiento INT,
-	fecha DATE NOT NULL,
-	PRIMARY KEY (dni_odontologo,id_tratamiento),
-	CONSTRAINT fk_proporciona_odontologo FOREIGN KEY (dni_odontologo) REFERENCES odontologo(dni) ON DELETE CASCADE,
-	CONSTRAINT fk_proporciona_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id) ON DELETE CASCADE);
 	
 CREATE TABLE cita (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,13 +42,6 @@ CREATE TABLE cita (
 	id_tratamiento INT,
 	CONSTRAINT fk_cita_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
 	CONSTRAINT fk_cita_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
-
-CREATE TABLE gestiona (
-	id_cita INT,
-	dni_recepcionista CHAR(9),
-	PRIMARY KEY (id_cita, dni_recepcionista),
-	CONSTRAINT fk_gestiona_cita FOREIGN KEY (id_cita) REFERENCES cita(id),
-	CONSTRAINT fk_gestiona_recepcionista FOREIGN KEY (dni_recepcionista) REFERENCES recepcionista(dni));
 	
 CREATE TABLE historial (
 	dni_cliente CHAR(9) NOT NULL,
@@ -65,6 +51,9 @@ CREATE TABLE historial (
 	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni) ON DELETE CASCADE,
 	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 
+CREATE TABLE loggin (
+	usuario VARCHAR(25),
+	contrasena INT);
 
 /*Procedo a hacer triggers*/
 /*Este trigger introduce el dni del trabajador directamente a la tabla odontologo*/
@@ -76,6 +65,10 @@ BEGIN
     INSERT INTO odontologo (dni) VALUES (NEW.dni);
 END//
 DELIMITER ;
+
+/*Inserto users y sus passwords*/
+INSERT INTO loggin (usuario, contrasena) VALUES ('Usuario', 1234); 
+INSERT INTO loggin (usuario, contrasena) VALUES ('Admin', 1234); 
 
 /*Hago un Insert en trabajadores*/
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('12345678A', 'Carlos', 'Gomez Martinez', '600111222', NULL);
@@ -112,3 +105,25 @@ INSERT INTO tratamientos (tipo) VALUES ('Ortodoncia metalica');
 
 INSERT INTO tratamientos (tipo) VALUES ('Radiografia dental');	
 	
+/*Inserto unos usuarios*/
+INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES 
+('12345678A', 'Juan', 'García Pérez', 'Calle Mayor 123, Madrid', '600111222', '2020-01-15'),
+('23456789B', 'María', 'López Fernández', 'Avenida de la Constitución 45, Barcelona', '611222333', '2020-02-20'),
+('34567890C', 'Carlos', 'Martínez Sánchez', 'Plaza España 7, Valencia', '622333444', '2020-03-10'),
+('45678901D', 'Ana', 'Rodríguez Gómez', 'Calle Gran Vía 89, Sevilla', '633444555', '2020-04-05'),
+('56789012E', 'Pedro', 'Hernández Díaz', 'Paseo de la Castellana 12, Madrid', '644555666', '2020-05-12'),
+('67890123F', 'Laura', 'Gómez Ruiz', 'Calle Sierpes 34, Sevilla', '655666777', '2020-06-18'),
+('78901234G', 'David', 'Fernández López', 'Rambla Catalunya 56, Barcelona', '666777888', '2020-07-22'),
+('89012345H', 'Sofía', 'Sánchez Martínez', 'Calle Colón 78, Valencia', '677888999', '2020-08-30'),
+('90123456I', 'Javier', 'Pérez González', 'Calle Preciados 90, Madrid', '688999000', '2020-09-14'),
+('01234567J', 'Elena', 'Díaz Hernández', 'Avenida Diagonal 123, Barcelona', '699000111', '2020-10-25'),
+('11223344K', 'Miguel', 'Ruiz Gómez', 'Calle Tetuán 45, Sevilla', '610111222', '2021-01-03'),
+('22334455L', 'Isabel', 'González Pérez', 'Paseo de Gracia 67, Barcelona', '621222333', '2021-02-11'),
+('33445566M', 'Francisco', 'Jiménez García', 'Calle San Vicente 89, Valencia', '632333444', '2021-03-19'),
+('44556677N', 'Lucía', 'Moreno Martín', 'Gran Vía 12, Madrid', '643444555', '2021-04-27'),
+('55667788O', 'Antonio', 'Álvarez Rodríguez', 'Calle Trajano 34, Sevilla', '654555666', '2021-05-08'),
+('66778899P', 'Carmen', 'Torres Sánchez', 'Paseo Marítimo 56, Málaga', '665666777', '2021-06-16'),
+('77889900Q', 'Daniel', 'Navarro López', 'Calle Larios 78, Málaga', '676777888', '2021-07-24'),
+('88990011R', 'Patricia', 'Romero Fernández', 'Avenida de América 90, Madrid', '687888999', '2021-08-09'),
+('99001122S', 'Alejandro', 'Molina García', 'Calle Real 123, Sevilla', '698999000', '2021-09-17'),
+('00112233T', 'Raquel', 'Serrano Martínez', 'Paseo de la Reforma 45, Bilbao', '609000111', '2021-10-05');
