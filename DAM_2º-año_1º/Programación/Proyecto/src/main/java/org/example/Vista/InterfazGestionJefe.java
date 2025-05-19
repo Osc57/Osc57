@@ -31,14 +31,14 @@ public class InterfazGestionJefe extends JFrame {
 
         this.add(titulo, BorderLayout.NORTH);
         this.add(panelBotonesCentro, BorderLayout.CENTER);
-        this.add(panelBotonRetorno, BorderLayout.WEST);
+        this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelBotonRetorno() {
         JPanel panelBotonRetorno = new JPanel(new BorderLayout());
         JButton botonRetorno = new JButton("←");
         panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 0));
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 60, 20, 320));
 
         botonRetorno.setFocusPainted(false);
         botonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
@@ -57,10 +57,10 @@ public class InterfazGestionJefe extends JFrame {
 
     private JPanel getjPanelBotonesCentro() {
         JPanel panelBotonesCentro = new JPanel(new GridLayout(1, 2, 20, 0));
-        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 0, 100, 60));
+        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 60, 40, 60));
 
-        JButton insertar = crearEstiloBoton("Dar de Alta");
-        insertar.addActionListener(new ActionListener() {
+        JButton darAlta = crearEstiloBoton("Dar de Alta");
+        darAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -68,8 +68,8 @@ public class InterfazGestionJefe extends JFrame {
             }
         });
 
-        JButton eliminar = crearEstiloBoton("Dar de Baja");
-        eliminar.addActionListener(new ActionListener() {
+        JButton darBaja = crearEstiloBoton("Dar de Baja");
+        darBaja.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -77,8 +77,8 @@ public class InterfazGestionJefe extends JFrame {
             }
         });
 
-        panelBotonesCentro.add(insertar);
-        panelBotonesCentro.add(eliminar);
+        panelBotonesCentro.add(darAlta);
+        panelBotonesCentro.add(darBaja);
         return panelBotonesCentro;
     }
 

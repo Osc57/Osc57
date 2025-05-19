@@ -26,3 +26,7 @@
 [2025/05/19 - 17:32:38] Jefe: Asdsd Asdasd Asdads | DNI: 11111111E
 [2025/05/19 - 18:09:18] Jefe: Carlos Gomez Martinez | DNI: 12345678J
 [2025/05/19 - 18:53:15] Jefe: Javier Domingez Alvarez | DNI: 12345677G
+[2025/05/19 - 19:00:48] Jefe: Javier Domingez Alvarez | DNI: 12345677G
+[2025/05/19 - 19:06:27] Jefe: Javier Domingez Alvarez | DNI: 12345677G
+[2025/05/19 - 19:10:16] Jefe: Javier Domingez Alvarez | DNI: 12345677G
+[2025/05/19 - 19:13:22] Jefe: Carlos Gomez Martinez | DNI: 12345678A
