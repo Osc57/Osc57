@@ -71,8 +71,8 @@ public class InterfazDarBajaTrabajador extends JFrame {
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_TRABAJADORES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
-        String dniJefe = InterfazSeleccionJefe.obtenerDNIJefe();
-        ArrayList<Trabajador> trabajadores = cargarTrabajadores(dniJefe);
+        String dniJefe = InterfazSeleccionJefe.obtenerDNIJefe();//obtenerDNIJefe esta en SeleccionJefe
+        ArrayList<Trabajador> trabajadores = cargarTrabajadores(dniJefe);//Aqui hago que el jefe que haya seleccionado su usuario no salga a la hora de cuando vaya a seleccionar un usuario para eliminar
         for (Trabajador t : trabajadores) {
             MODEL_USUARIO_TRABAJADORES.addElement(t);
         }
