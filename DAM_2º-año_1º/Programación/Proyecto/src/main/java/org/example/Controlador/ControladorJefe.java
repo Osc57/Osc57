@@ -128,7 +128,7 @@ public class ControladorJefe {
         Trabajador trabajador = null;
 
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni=?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni = ?;")) {
 
             preparedStatement.setString(1, dni);
             ResultSet resultSet = preparedStatement.executeQuery();
