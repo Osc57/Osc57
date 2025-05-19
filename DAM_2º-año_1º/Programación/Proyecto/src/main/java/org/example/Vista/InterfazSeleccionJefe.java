@@ -19,6 +19,8 @@ import static org.example.Vista.InterfazLogin.*;
 public class InterfazSeleccionJefe extends JFrame {
     private final JList<Jefe> LISTA_NOMBRES_JEFE;
 
+    protected static Jefe jefeSeleccionado = new Jefe();
+
     public InterfazSeleccionJefe() {
         this.setTitle("Selección de Admin");
         this.setSize(500, 450);
@@ -73,7 +75,7 @@ public class InterfazSeleccionJefe extends JFrame {
         btnAcceder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jefe jefeSeleccionado = LISTA_NOMBRES_JEFE.getSelectedValue();
+                jefeSeleccionado = LISTA_NOMBRES_JEFE.getSelectedValue();
                 if (jefeSeleccionado != null) {
                     JOptionPane.showMessageDialog(null, "Has accedido como: " + jefeSeleccionado.getNombre() + " " + jefeSeleccionado.getApellidos());
                     controlJefe(jefeSeleccionado.getDni(), jefeSeleccionado.getNombre(), jefeSeleccionado.getApellidos());
@@ -99,6 +101,13 @@ public class InterfazSeleccionJefe extends JFrame {
         }
     }
 
+    public static String obtenerDNIJefe(){
+        if (jefeSeleccionado != null){
+            return jefeSeleccionado.getDni();
+        }else {
+            return "";
+        }
+    }
 
     public static void main(String[] args) {
         InterfazSeleccionJefe login = new InterfazSeleccionJefe();

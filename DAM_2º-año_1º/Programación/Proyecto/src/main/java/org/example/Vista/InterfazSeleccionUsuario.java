@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import static org.example.Controlador.ControladorRecepcionista.cargarTrabajadores;
+import static org.example.Controlador.ControladorRecepcionista.cargarRecepcionistas;
 import static org.example.Controlador.ControladorRecepcionista.updateRecepcionista;
 import static org.example.Vista.InterfazLogin.*;
 
@@ -57,7 +57,7 @@ public class InterfazSeleccionUsuario extends JFrame {
         this.add(panelArriba, BorderLayout.NORTH);
         this.add(panelCentro, BorderLayout.CENTER);
 
-        ArrayList<Recepcionista> recepcionistas = cargarTrabajadores();
+        ArrayList<Recepcionista> recepcionistas = cargarRecepcionistas();
         for (Recepcionista r : recepcionistas) {
             MODEL_USUARIO.addElement(r);
         }

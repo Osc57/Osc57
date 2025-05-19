@@ -1,6 +1,6 @@
 package org.example.Modelo;
 
-public abstract class Trabajador {
+public class Trabajador {
     protected String dni;
     protected String nombre;
     protected String apellidos;

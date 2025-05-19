@@ -1,7 +1,6 @@
 package org.example.Vista;
 
-import org.example.Modelo.Cliente;
-import org.example.Modelo.Recepcionista;
+import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,23 +8,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.Controlador.ControladorCliente.cargarClientes;
-import static org.example.Controlador.ControladorCliente.eliminarCliente;
-import static org.example.Controlador.ControladorRecepcionista.cargarRecepcionistas;
+import static org.example.Controlador.ControladorJefe.cargarTrabajadores;
+import static org.example.Controlador.ControladorJefe.eliminarTrabajador;
 import static org.example.Vista.InterfazLogin.*;
+import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
-public class InterfazDarBajaCliente extends JFrame {
-    protected static JList<Cliente> LISTA_NOMBRES_CLIENTES;
-    protected static DefaultListModel<Cliente> MODEL_USUARIO_CLIENTES;
+public class InterfazDarBajaTrabajador extends JFrame {
 
-    public InterfazDarBajaCliente() {
+    private JList<Trabajador> LISTA_NOMBRES_TRABAJADORES;
+    private DefaultListModel<Trabajador> MODEL_USUARIO_TRABAJADORES;
+
+    public InterfazDarBajaTrabajador(){
         this.setTitle("Dar de Baja");
-        this.setSize(460, 460);
+        this.setSize(480, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione cliente o Filtre el DNI");
+        JLabel introducirCliente = new JLabel("•Seleccione trabajador o Filtre el DNI");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -60,20 +60,20 @@ public class InterfazDarBajaCliente extends JFrame {
             }
         });
 
-        MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
-        LISTA_NOMBRES_CLIENTES = new JList<>(MODEL_USUARIO_CLIENTES);
+        MODEL_USUARIO_TRABAJADORES = new DefaultListModel<>();
+        LISTA_NOMBRES_TRABAJADORES = new JList<>(MODEL_USUARIO_TRABAJADORES);
 
-        LISTA_NOMBRES_CLIENTES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        LISTA_NOMBRES_CLIENTES.setFont(new Font("Arial", Font.PLAIN, 18));
-        LISTA_NOMBRES_CLIENTES.setFixedCellHeight(35);
-        LISTA_NOMBRES_CLIENTES.setBackground(COLOR_FONDO_GRIS_CLARO);
+        LISTA_NOMBRES_TRABAJADORES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        LISTA_NOMBRES_TRABAJADORES.setFont(new Font("Arial", Font.PLAIN, 18));
+        LISTA_NOMBRES_TRABAJADORES.setFixedCellHeight(35);
+        LISTA_NOMBRES_TRABAJADORES.setBackground(COLOR_FONDO_GRIS_CLARO);
 
-        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_CLIENTES);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_TRABAJADORES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
-        ArrayList<Cliente> clientes = cargarClientes();
-        for (Cliente c : clientes) {
-            MODEL_USUARIO_CLIENTES.addElement(c);
+        ArrayList<Trabajador> trabajadores = cargarTrabajadores();
+        for (Trabajador t : trabajadores) {
+            MODEL_USUARIO_TRABAJADORES.addElement(t);
         }
 
         panelBoton.add(botonFiltrar);
@@ -99,7 +99,7 @@ public class InterfazDarBajaCliente extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               new InterfazGestionaCliente().setVisible(true);
+                new InterfazGestionJefe().setVisible(true);
                 dispose();
             }
         });
@@ -107,29 +107,20 @@ public class InterfazDarBajaCliente extends JFrame {
     }
 
     private void seleccionCliente() {
-        Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
-        if (clienteSeleccion != null) {
-            if (JOptionPane.showConfirmDialog(InterfazDarBajaCliente.this, "¿Quieres eliminar este usuario?", "Eliminar",
+        Trabajador trabajadorSeleccion = LISTA_NOMBRES_TRABAJADORES.getSelectedValue();
+        if (trabajadorSeleccion != null) {
+            if (JOptionPane.showConfirmDialog(InterfazDarBajaTrabajador.this, "¿Quieres eliminar este usuario?", "Eliminar",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                eliminarCliente(clienteSeleccion.getDni());
+                eliminarTrabajador(trabajadorSeleccion.getDni());
                 JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
-                new InterfazDarBajaCliente().setVisible(true);
+                dispose();
+                new InterfazDarBajaTrabajador().setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
         }
 
     }
-
-    /*
-    private JTextField crearFields() {
-        JTextField field = new JTextField(15);
-        field.setFont(FUENTE_CAMPOS);
-        field.setPreferredSize(new Dimension(150, 30));
-
-        return field;
-    }
-    */
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
@@ -145,6 +136,7 @@ public class InterfazDarBajaCliente extends JFrame {
     }
 
     public static void main(String[] args) {
-        new InterfazDarBajaCliente().setVisible(true);
+        new InterfazDarBajaTrabajador().setVisible(true);
     }
 }
+

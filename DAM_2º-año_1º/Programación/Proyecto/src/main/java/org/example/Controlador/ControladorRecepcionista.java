@@ -51,7 +51,7 @@ public class ControladorRecepcionista {
         }
     }
 
-    public static ArrayList<Recepcionista> cargarTrabajadores() {
+    public static ArrayList<Recepcionista> cargarRecepcionistas() {
 
         ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public class ControladorRecepcionista {
         return recepcionistas;
     }
 
-    public boolean enviarDatosRecepcionista(Recepcionista recepcionista) {
+    public boolean enviarDatosRecepcionista(Recepcionista recepcionista, String dni) {
 
         try (Connection connection = connect();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES (?, ?, ?, ?, ?)")) {
@@ -86,7 +86,7 @@ public class ControladorRecepcionista {
             ps.setString(2, recepcionista.getNombre());
             ps.setString(3, recepcionista.getApellidos());
             ps.setInt(4, recepcionista.getTelefono());
-            ps.setString(5, null);
+            ps.setString(5, dni);
 
             int filasAfectadas = ps.executeUpdate();
             return filasAfectadas > 0;

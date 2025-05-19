@@ -2,10 +2,8 @@ package org.example.Vista;
 
 import org.example.Controlador.ControladorJefe;
 import org.example.Controlador.ControladorRecepcionista;
-import org.example.Modelo.Cliente;
 import org.example.Modelo.Jefe;
 import org.example.Modelo.Recepcionista;
-import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -114,7 +112,7 @@ public class InterfazDarAltaTrabajador extends JFrame {
                                 JOptionPane.showMessageDialog(null, "Jefe registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                                 limpiarCampos();
                             } else {
-                                JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "No se pudo registrar el jefe", "Error", JOptionPane.ERROR_MESSAGE);
                             }
 
                         } else {
@@ -124,15 +122,21 @@ public class InterfazDarAltaTrabajador extends JFrame {
                             nuevoTrabajador.setApellidos(txtApellidos.getText());
                             nuevoTrabajador.setTelefono(Integer.parseInt(validarTelefono));
 
-                            if (new ControladorRecepcionista().enviarDatosRecepcionista(nuevoTrabajador)) {
-                                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            String dniJefe = InterfazSeleccionJefe.obtenerDNIJefe();
+                            if (dniJefe.isEmpty()) {
+                                JOptionPane.showMessageDialog(null, "No se hay un jefe seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+
+                            if (new ControladorRecepcionista().enviarDatosRecepcionista(nuevoTrabajador, dniJefe)) {
+                                JOptionPane.showMessageDialog(null, "Trabajador registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                                 limpiarCampos();
                             } else {
-                                JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "No se pudo registrar el trabajador", "Error", JOptionPane.ERROR_MESSAGE);
                             }
+
                         }
                     }
-
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Error en el formato del teléfono", "Error", JOptionPane.ERROR_MESSAGE);
