@@ -1,40 +1,38 @@
 package org.example.Vista;
 
-
-import org.example.Controlador.ControladorCliente;
+import org.example.Controlador.ControladorJefe;
+import org.example.Controlador.ControladorRecepcionista;
 import org.example.Modelo.Cliente;
+import org.example.Modelo.Jefe;
+import org.example.Modelo.Recepcionista;
+import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import static org.example.Vista.InterfazLogin.*;
 
-public class InterfazDarAltaCliente extends JFrame {
-
-
-    private ControladorCliente controladorCliente = new ControladorCliente();
+public class InterfazDarAltaTrabajador extends JFrame {
 
     private JTextField txtDni = new JTextField();
     private JTextField txtNombre = new JTextField();
     private JTextField txtApellidos = new JTextField();
-    private JTextField txtDireccion = new JTextField();
     private JTextField txtTelefono = new JTextField();
+    private JCheckBox chbJefe = new JCheckBox();
 
-    public InterfazDarAltaCliente() {
+    public InterfazDarAltaTrabajador() {
         this.setTitle("Formulario");
-        this.setSize(440, 450);
+        this.setSize(480, 450);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Introduce Los Datos Del Cliente");
+        JLabel introducirCliente = new JLabel("•Introduce Los Datos Del Trabajador");
         introducirCliente.setFont(FUENTE_TITULO_2);
-        introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
+        introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
         JPanel panelBotonRetorno = getjPanelBotonRetorno();
@@ -54,25 +52,24 @@ public class InterfazDarAltaCliente extends JFrame {
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
-        panelLabels.add(crearLabels("Dirección: "));
         panelLabels.add(crearLabels("Teléfono: "));
+        panelLabels.add(crearLabels("¿Es Jefe?: "));
 
         JPanel panelFields = new JPanel(new GridLayout(5, 1, 5, 5));
 
         txtDni = crearFields();
         txtNombre = crearFields();
         txtApellidos = crearFields();
-        txtDireccion = crearFields();
         txtTelefono = crearFields();
 
         panelFields.add(txtDni);
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
-        panelFields.add(txtDireccion);
         panelFields.add(txtTelefono);
+        panelFields.add(chbJefe);
 
         JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 15));
+        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 70, 15));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 0));
 
         JButton btnEliminar = crearEstiloBoton("Borrar");
@@ -105,18 +102,34 @@ public class InterfazDarAltaCliente extends JFrame {
                         JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
 
                     } else {
-                        Cliente nuevoCliente = new Cliente();
-                        nuevoCliente.setDni(txtDni.getText());
-                        nuevoCliente.setNombre(txtNombre.getText());
-                        nuevoCliente.setApellidos(txtApellidos.getText());
-                        nuevoCliente.setDireccion(txtDireccion.getText());
-                        nuevoCliente.setTelefono(Integer.parseInt(validarTelefono));
 
-                        if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
-                            JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                            limpiarCampos();
+                        if (chbJefe.isSelected()) {
+                            Jefe nevoJefe = new Jefe();
+                            nevoJefe.setDni(txtDni.getText());
+                            nevoJefe.setNombre(txtNombre.getText());
+                            nevoJefe.setApellidos(txtApellidos.getText());
+                            nevoJefe.setTelefono(Integer.parseInt(validarTelefono));
+
+                            if (new ControladorJefe().enviarDatosJefe(nevoJefe)) {
+                                JOptionPane.showMessageDialog(null, "Jefe registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                                limpiarCampos();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+
                         } else {
-                            JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                            Recepcionista nuevoTrabajador = new Recepcionista();
+                            nuevoTrabajador.setDni(txtDni.getText());
+                            nuevoTrabajador.setNombre(txtNombre.getText());
+                            nuevoTrabajador.setApellidos(txtApellidos.getText());
+                            nuevoTrabajador.setTelefono(Integer.parseInt(validarTelefono));
+
+                            if (new ControladorRecepcionista().enviarDatosRecepcionista(nuevoTrabajador)) {
+                                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                                limpiarCampos();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                     }
 
@@ -140,15 +153,15 @@ public class InterfazDarAltaCliente extends JFrame {
         txtDni.setText("");
         txtNombre.setText("");
         txtApellidos.setText("");
-        txtDireccion.setText("");
         txtTelefono.setText("");
+        chbJefe.setSelected(false);
     }
 
     private JPanel getjPanelBotonRetorno() {
         JPanel panelBotonRetorno = new JPanel(new BorderLayout());
         JButton botonRetorno = new JButton("←");
         panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 320));
         panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         botonRetorno.setFocusPainted(false);
@@ -158,15 +171,15 @@ public class InterfazDarAltaCliente extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazGestionaCliente().setVisible(true);
                 dispose();
+                new InterfazGestionJefe().setVisible(true);
             }
         });
         return panelBotonRetorno;
     }
 
     private JTextField crearFields() {
-        JTextField field = new JTextField(15);
+        JTextField field = new JTextField(20);
         field.setFont(FUENTE_CAMPOS);
         field.setPreferredSize(new Dimension(150, 30));
 
@@ -195,6 +208,7 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     public static void main(String[] args) {
-        new InterfazDarAltaCliente().setVisible(true);
+        new InterfazDarAltaTrabajador().setVisible(true);
     }
 }
+

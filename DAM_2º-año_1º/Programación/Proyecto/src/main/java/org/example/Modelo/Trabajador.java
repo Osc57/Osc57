@@ -5,6 +5,7 @@ public abstract class Trabajador {
     protected String nombre;
     protected String apellidos;
     protected int telefono;
+    protected String dni_jefe;
 
     public Trabajador() {
     }
@@ -46,6 +47,14 @@ public abstract class Trabajador {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public String getDni_jefe() {
+        return dni_jefe;
+    }
+
+    public void setDni_jefe(String dni_jefe) {
+        this.dni_jefe = dni_jefe;
     }
 
     @Override

@@ -46,7 +46,7 @@ public class ControladorRecepcionista {
                 insertStatement.executeUpdate();
                 return true;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException("Error al guardar el recepcionista", e);
         }
     }
@@ -75,5 +75,26 @@ public class ControladorRecepcionista {
             throw new RuntimeException(e);
         }
         return recepcionistas;
+    }
+
+    public boolean enviarDatosRecepcionista(Recepcionista recepcionista) {
+
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES (?, ?, ?, ?, ?)")) {
+
+            ps.setString(1, recepcionista.getDni());
+            ps.setString(2, recepcionista.getNombre());
+            ps.setString(3, recepcionista.getApellidos());
+            ps.setInt(4, recepcionista.getTelefono());
+            ps.setString(5, null);
+
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
     }
 }

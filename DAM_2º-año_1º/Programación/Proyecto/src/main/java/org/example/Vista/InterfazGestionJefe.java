@@ -62,7 +62,8 @@ public class InterfazGestionJefe extends JFrame {
         insertar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazDarAltaTrabajador().setVisible(true);
             }
         });
 

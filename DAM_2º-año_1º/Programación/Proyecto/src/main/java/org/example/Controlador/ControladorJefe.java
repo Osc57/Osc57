@@ -1,6 +1,7 @@
 package org.example.Controlador;
 
 import org.example.Modelo.Jefe;
+import org.example.Modelo.Recepcionista;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -55,6 +56,26 @@ public class ControladorJefe {
             return jefes;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+
+    }
+
+    public boolean enviarDatosJefe(Jefe jefe) {
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES (?, ?, ?, ?, ?)")) {
+
+            ps.setString(1, jefe.getDni());
+            ps.setString(2, jefe.getNombre());
+            ps.setString(3, jefe.getApellidos());
+            ps.setInt(4, jefe.getTelefono());
+            ps.setString(5, null);
+
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
 
     }
