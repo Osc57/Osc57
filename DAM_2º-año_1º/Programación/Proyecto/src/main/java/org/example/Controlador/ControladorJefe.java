@@ -1,5 +1,6 @@
 package org.example.Controlador;
 
+import org.example.Modelo.Cliente;
 import org.example.Modelo.Jefe;
 import org.example.Modelo.Recepcionista;
 import org.example.Modelo.Trabajador;
@@ -118,6 +119,45 @@ public class ControladorJefe {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar al trabajador: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public static Trabajador cargarDniTrabajador(String dni) {
+        Trabajador trabajador = null;
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni=?;")) {
+
+            preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                trabajador = new Trabajador();
+                trabajador.setDni(resultSet.getString("dni"));
+                trabajador.setNombre(resultSet.getString("nombre"));
+                trabajador.setApellidos(resultSet.getString("apellidos"));
+
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        return trabajador;
+    }
+
+    public static boolean comprobarDNITrabajador(String dni) {
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni=?;")) {
+
+            preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }

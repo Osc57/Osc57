@@ -1,7 +1,6 @@
 package org.example.Vista;
 
 import org.example.Modelo.Cliente;
-import org.example.Modelo.Recepcionista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCliente.cargarClientes;
 import static org.example.Controlador.ControladorCliente.eliminarCliente;
-import static org.example.Controlador.ControladorRecepcionista.cargarRecepcionistas;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazDarBajaCliente extends JFrame {
@@ -55,7 +53,7 @@ public class InterfazDarBajaCliente extends JFrame {
         botonFiltrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazFiltrarDNI().setVisible(true);
+                new InterfazFiltrarDNICliente().setVisible(true);
                 dispose();
             }
         });

@@ -1,6 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Cliente;
+import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,16 +10,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static org.example.Controlador.ControladorCliente.*;
-import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
-import static org.example.Vista.InterfazDarBajaCliente.MODEL_USUARIO_CLIENTES;
+import static org.example.Controlador.ControladorJefe.*;
+import static org.example.Vista.InterfazDarBajaTrabajador.LISTA_NOMBRES_TRABAJADORES;
+import static org.example.Vista.InterfazDarBajaTrabajador.MODEL_USUARIO_TRABAJADORES;
 import static org.example.Vista.InterfazLogin.*;
 
-public class InterfazFiltrarDNI extends JFrame {
+public class InterfazFiltrarDNITrabajador extends JFrame {
 
     private JTextField fieldDNI = new JTextField();
 
-    public InterfazFiltrarDNI() {
+    public InterfazFiltrarDNITrabajador() {
         this.setTitle("Filtrar DNI");
         this.setSize(360, 240);
         this.setLocationRelativeTo(null);
@@ -27,7 +28,7 @@ public class InterfazFiltrarDNI extends JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new InterfazDarBajaCliente().setVisible(true);
+                new InterfazDarBajaTrabajador().setVisible(true);
             }
         });
 
@@ -59,16 +60,16 @@ public class InterfazFiltrarDNI extends JFrame {
                         JOptionPane.showMessageDialog(null, "Introduzca el DNI", "Error", JOptionPane.ERROR_MESSAGE);
                     } else if (!fieldDNI.getText().matches("[0-9]{8}[A-Za-z]")) {
                         JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else if (!comprobarDNICliente(fieldDNI.getText())) {
+                    } else if (!comprobarDNITrabajador(fieldDNI.getText())) {
                         JOptionPane.showMessageDialog(null, "El DNI no se encuentra en el programa", "Error", JOptionPane.ERROR_MESSAGE);
                         limpiarCampos();
                     } else {
                         dispose();
-                        listaDNICLienteFiltrado();
+                        listaDNITrabajadorFiltrado();
                     }
 
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error al buscar al cliente" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error al buscar al trabajador", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -84,24 +85,24 @@ public class InterfazFiltrarDNI extends JFrame {
         return panelGuardar;
     }
 
-    private void listaDNICLienteFiltrado() {
+    private void listaDNITrabajadorFiltrado() {
         JDialog dialog = new JDialog(this, "Datos del Cliente", true);
         dialog.setSize(460, 200);
         dialog.setLocationRelativeTo(this);
         dialog.setResizable(false);
 
-        Cliente cliente = cargarDniCliente(fieldDNI.getText());
+        Trabajador trabajador = cargarDniTrabajador(fieldDNI.getText());
 
-        MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
+        MODEL_USUARIO_TRABAJADORES = new DefaultListModel<>();
 
-        LISTA_NOMBRES_CLIENTES = new JList<>(MODEL_USUARIO_CLIENTES);
+        LISTA_NOMBRES_TRABAJADORES = new JList<>(MODEL_USUARIO_TRABAJADORES);
 
-        LISTA_NOMBRES_CLIENTES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        LISTA_NOMBRES_CLIENTES.setFont(new Font("Arial", Font.PLAIN, 18));
-        LISTA_NOMBRES_CLIENTES.setFixedCellHeight(35);
-        LISTA_NOMBRES_CLIENTES.setBackground(COLOR_FONDO_GRIS_CLARO);
+        LISTA_NOMBRES_TRABAJADORES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        LISTA_NOMBRES_TRABAJADORES.setFont(new Font("Arial", Font.PLAIN, 18));
+        LISTA_NOMBRES_TRABAJADORES.setFixedCellHeight(35);
+        LISTA_NOMBRES_TRABAJADORES.setBackground(COLOR_FONDO_GRIS_CLARO);
 
-        MODEL_USUARIO_CLIENTES.addElement(cliente);
+        MODEL_USUARIO_TRABAJADORES.addElement(trabajador);
 
         JButton btnEliminar = crearEstiloBoton("Eliminar");
         btnEliminar.addActionListener(new ActionListener() {
@@ -114,7 +115,7 @@ public class InterfazFiltrarDNI extends JFrame {
         });
 
         JPanel panelContenido = new JPanel(new BorderLayout());
-        panelContenido.add(new JScrollPane(LISTA_NOMBRES_CLIENTES), BorderLayout.CENTER);
+        panelContenido.add(new JScrollPane(LISTA_NOMBRES_TRABAJADORES), BorderLayout.CENTER);
         panelContenido.setBorder(BorderFactory.createEmptyBorder());
 
         JPanel panelBoton = new JPanel();
@@ -127,22 +128,22 @@ public class InterfazFiltrarDNI extends JFrame {
     }
 
     private boolean seleccionCliente(JDialog d) {
-        Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
+        Trabajador trabajadorSeleccion = LISTA_NOMBRES_TRABAJADORES.getSelectedValue();
 
-        if (clienteSeleccion == null) {
-            JOptionPane.showMessageDialog(d, "Selecciona un cliente de la lista", "Error", JOptionPane.ERROR_MESSAGE);
+        if (trabajadorSeleccion == null) {
+            JOptionPane.showMessageDialog(d, "Selecciona un trabajador de la lista", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        int confirmacion = JOptionPane.showConfirmDialog(d, "¿Quieres eliminar este usuario?", "Eliminar cliente", JOptionPane.YES_NO_OPTION);
+        int confirmacion = JOptionPane.showConfirmDialog(d, "¿Quieres eliminar este trabajador?", "Eliminar trabajador", JOptionPane.YES_NO_OPTION);
 
         if (confirmacion == JOptionPane.YES_OPTION) {
-            if (eliminarCliente(clienteSeleccion.getDni())) {
-                JOptionPane.showMessageDialog(d, "Cliente eliminado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                new InterfazDarBajaCliente().setVisible(true);
+            if (eliminarTrabajador(trabajadorSeleccion.getDni())) {
+                JOptionPane.showMessageDialog(d, "Trabajador eliminado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                new InterfazDarBajaTrabajador().setVisible(true);
                 return true;
             } else {
-                JOptionPane.showMessageDialog(d, "Error al eliminar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(d, "Error al eliminar el trabajador", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         }
@@ -176,6 +177,7 @@ public class InterfazFiltrarDNI extends JFrame {
     }
 
     public static void main(String[] args) {
-        new InterfazFiltrarDNI().setVisible(true);
+        new InterfazFiltrarDNITrabajador().setVisible(true);
     }
 }
+

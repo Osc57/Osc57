@@ -15,8 +15,8 @@ import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
 public class InterfazDarBajaTrabajador extends JFrame {
 
-    private JList<Trabajador> LISTA_NOMBRES_TRABAJADORES;
-    private DefaultListModel<Trabajador> MODEL_USUARIO_TRABAJADORES;
+    protected static JList<Trabajador> LISTA_NOMBRES_TRABAJADORES;
+    protected static DefaultListModel<Trabajador> MODEL_USUARIO_TRABAJADORES;
 
     public InterfazDarBajaTrabajador(){
         this.setTitle("Dar de Baja");
@@ -55,7 +55,7 @@ public class InterfazDarBajaTrabajador extends JFrame {
         botonFiltrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazFiltrarDNI().setVisible(true);
+                new InterfazFiltrarDNITrabajador().setVisible(true);
                 dispose();
             }
         });
