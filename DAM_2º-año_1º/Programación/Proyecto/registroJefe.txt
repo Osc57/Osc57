@@ -30,3 +30,9 @@
 [2025/05/19 - 19:06:27] Jefe: Javier Domingez Alvarez | DNI: 12345677G
 [2025/05/19 - 19:10:16] Jefe: Javier Domingez Alvarez | DNI: 12345677G
 [2025/05/19 - 19:13:22] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/19 - 19:42:09] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/19 - 19:53:17] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/19 - 20:24:18] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/19 - 20:26:59] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/19 - 20:27:25] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/19 - 20:40:12] Jefe: Carlos Gomez Martinez | DNI: 12345678A

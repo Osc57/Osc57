@@ -71,7 +71,8 @@ public class InterfazDarBajaTrabajador extends JFrame {
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_TRABAJADORES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
-        ArrayList<Trabajador> trabajadores = cargarTrabajadores();
+        String dniJefe = InterfazSeleccionJefe.obtenerDNIJefe();
+        ArrayList<Trabajador> trabajadores = cargarTrabajadores(dniJefe);
         for (Trabajador t : trabajadores) {
             MODEL_USUARIO_TRABAJADORES.addElement(t);
         }

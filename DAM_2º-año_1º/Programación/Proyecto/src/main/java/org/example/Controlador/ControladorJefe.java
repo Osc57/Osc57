@@ -82,13 +82,14 @@ public class ControladorJefe {
 
     }
 
-    public static ArrayList<Trabajador> cargarTrabajadores() {
+    public static ArrayList<Trabajador> cargarTrabajadores(String dni) {
 
         ArrayList<Trabajador> trabajadores = new ArrayList<>();
 
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni != ?;")) {
 
+            preparedStatement.setString(1,dni);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
