@@ -1,6 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Cliente;
+import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCliente.cargarClientes;
 import static org.example.Controlador.ControladorCliente.eliminarCliente;
+import static org.example.Controlador.ControladorJefe.eliminarTrabajador;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
@@ -18,8 +20,10 @@ import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
 
 public class InterfazDarCitaCliente extends JFrame {
 
+    private static Cliente clienteSeleccion = new Cliente();
+
     public InterfazDarCitaCliente() {
-        this.setTitle("Dar de Baja");
+        this.setTitle("Dar Cita");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -48,6 +52,7 @@ public class InterfazDarCitaCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 seleccionCliente();
+
             }
         });
 
@@ -107,18 +112,22 @@ public class InterfazDarCitaCliente extends JFrame {
     }
 
     private void seleccionCliente() {
-        Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
+        clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
-            if (JOptionPane.showConfirmDialog(InterfazDarCitaCliente.this, "¿Quieres eliminar este usuario?", "Eliminar",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                eliminarCliente(clienteSeleccion.getDni());
-                JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
-                new InterfazDarBajaCliente().setVisible(true);
-            }
+            dispose();
+            new InterfazGestionCita().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
-        }
 
+        }
+    }
+
+    public static String obtenerDNICliente(){
+        if (clienteSeleccion != null){
+            return clienteSeleccion.getDni();
+        }else {
+            return "";
+        }
     }
 
     private JButton crearEstiloBoton(String texto) {

@@ -45,3 +45,4 @@
 [2025/05/20 - 15:46:05] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/20 - 15:54:46] Jefe: Maria Lopez Escobar | DNI: 65342212U
 [2025/05/20 - 16:40:27] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/20 - 17:00:11] Jefe: Carlos Gomez Martinez | DNI: 12345678A
