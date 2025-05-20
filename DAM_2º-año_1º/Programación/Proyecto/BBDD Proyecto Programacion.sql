@@ -66,6 +66,32 @@ BEGIN
 END//
 DELIMITER ;
 
+DELIMITER //
+
+-- Trigger para evitar que un DNI de trabajador se use en cliente
+CREATE TRIGGER evitar_trabajador_como_cliente
+BEFORE INSERT ON cliente
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT 1 FROM trabajadores WHERE dni = NEW.dni) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Este DNI pertenece a un trabajador y no puede ser cliente';
+    END IF;
+END//
+
+-- Trigger para evitar que un DNI de cliente se use en trabajador
+CREATE TRIGGER evitar_cliente_como_trabajador
+BEFORE INSERT ON trabajadores
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT 1 FROM cliente WHERE dni = NEW.dni) THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Este DNI pertenece a un cliente y no puede ser trabajador';
+    END IF;
+END//
+
+DELIMITER ;
+
 /*Inserto users y sus passwords*/
 INSERT INTO loggin (usuario, contrasena) VALUES ('Usuario', 1234); 
 INSERT INTO loggin (usuario, contrasena) VALUES ('Admin', 1234); 
@@ -107,23 +133,23 @@ INSERT INTO tratamientos (tipo) VALUES ('Radiografia dental');
 	
 /*Inserto unos usuarios*/
 INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES 
-('12345678A', 'Juan', 'García Pérez', 'Calle Mayor 123, Madrid', '600111222', '2020-01-15'),
-('23456789B', 'María', 'López Fernández', 'Avenida de la Constitución 45, Barcelona', '611222333', '2020-02-20'),
-('34567890C', 'Carlos', 'Martínez Sánchez', 'Plaza España 7, Valencia', '622333444', '2020-03-10'),
-('45678901D', 'Ana', 'Rodríguez Gómez', 'Calle Gran Vía 89, Sevilla', '633444555', '2020-04-05'),
-('56789012E', 'Pedro', 'Hernández Díaz', 'Paseo de la Castellana 12, Madrid', '644555666', '2020-05-12'),
-('67890123F', 'Laura', 'Gómez Ruiz', 'Calle Sierpes 34, Sevilla', '655666777', '2020-06-18'),
-('78901234G', 'David', 'Fernández López', 'Rambla Catalunya 56, Barcelona', '666777888', '2020-07-22'),
-('89012345H', 'Sofía', 'Sánchez Martínez', 'Calle Colón 78, Valencia', '677888999', '2020-08-30'),
-('90123456I', 'Javier', 'Pérez González', 'Calle Preciados 90, Madrid', '688999000', '2020-09-14'),
-('01234567J', 'Elena', 'Díaz Hernández', 'Avenida Diagonal 123, Barcelona', '699000111', '2020-10-25'),
-('11223344K', 'Miguel', 'Ruiz Gómez', 'Calle Tetuán 45, Sevilla', '610111222', '2021-01-03'),
-('22334455L', 'Isabel', 'González Pérez', 'Paseo de Gracia 67, Barcelona', '621222333', '2021-02-11'),
-('33445566M', 'Francisco', 'Jiménez García', 'Calle San Vicente 89, Valencia', '632333444', '2021-03-19'),
-('44556677N', 'Lucía', 'Moreno Martín', 'Gran Vía 12, Madrid', '643444555', '2021-04-27'),
-('55667788O', 'Antonio', 'Álvarez Rodríguez', 'Calle Trajano 34, Sevilla', '654555666', '2021-05-08'),
-('66778899P', 'Carmen', 'Torres Sánchez', 'Paseo Marítimo 56, Málaga', '665666777', '2021-06-16'),
-('77889900Q', 'Daniel', 'Navarro López', 'Calle Larios 78, Málaga', '676777888', '2021-07-24'),
-('88990011R', 'Patricia', 'Romero Fernández', 'Avenida de América 90, Madrid', '687888999', '2021-08-09'),
-('99001122S', 'Alejandro', 'Molina García', 'Calle Real 123, Sevilla', '698999000', '2021-09-17'),
-('00112233T', 'Raquel', 'Serrano Martínez', 'Paseo de la Reforma 45, Bilbao', '609000111', '2021-10-05');
+('12345678A', 'Juan', 'Garcia Perez', 'Calle Mayor 123, Madrid', '600111222', '2020-01-15'),
+('23456789B', 'Maria', 'Lopez Fernandez', 'Avenida de la Constitucion 45, Barcelona', '611222333', '2020-02-20'),
+('34567890C', 'Carlos', 'Martinez Sanchez', 'Plaza Espana 7, Valencia', '622333444', '2020-03-10'),
+('45678901D', 'Ana', 'Rodriguez Gomez', 'Calle Gran Via 89, Sevilla', '633444555', '2020-04-05'),
+('56789012E', 'Pedro', 'Hernandez Diaz', 'Paseo de la Castellana 12, Madrid', '644555666', '2020-05-12'),
+('67890123F', 'Laura', 'Gomez Ruiz', 'Calle Sierpes 34, Sevilla', '655666777', '2020-06-18'),
+('78901234G', 'David', 'Fernandez Lopez', 'Rambla Catalunya 56, Barcelona', '666777888', '2020-07-22'),
+('89012345H', 'Sofia', 'Sanchez Martinez', 'Calle Colon 78, Valencia', '677888999', '2020-08-30'),
+('90123456I', 'Javier', 'Perez Gonzalez', 'Calle Preciados 90, Madrid', '688999000', '2020-09-14'),
+('01234567J', 'Elena', 'Diaz Hernandez', 'Avenida Diagonal 123, Barcelona', '699000111', '2020-10-25'),
+('11223344K', 'Miguel', 'Ruiz Gomez', 'Calle Tetuan 45, Sevilla', '610111222', '2021-01-03'),
+('22334455L', 'Isabel', 'Gonzalez Perez', 'Paseo de Gracia 67, Barcelona', '621222333', '2021-02-11'),
+('33445566M', 'Francisco', 'Jimenez Garcia', 'Calle San Vicente 89, Valencia', '632333444', '2021-03-19'),
+('44556677N', 'Lucia', 'Moreno Martin', 'Gran Via 12, Madrid', '643444555', '2021-04-27'),
+('55667788O', 'Antonio', 'Alvarez Rodriguez', 'Calle Trajano 34, Sevilla', '654555666', '2021-05-08'),
+('66778899P', 'Carmen', 'Torres Sanchez', 'Paseo Maritimo 56, Malaga', '665666777', '2021-06-16'),
+('77889900Q', 'Daniel', 'Navarro Lopez', 'Calle Larios 78, Malaga', '676777888', '2021-07-24'),
+('88990011R', 'Patricia', 'Romero Fernandez', 'Avenida de America 90, Madrid', '687888999', '2021-08-09'),
+('99001122S', 'Alejandro', 'Molina Garcia', 'Calle Real 123, Sevilla', '698999000', '2021-09-17'),
+('00112233T', 'Raquel', 'Serrano Martinez', 'Paseo de la Reforma 45, Bilbao', '609000111', '2021-10-05');

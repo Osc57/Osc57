@@ -82,7 +82,8 @@ public class InterfazGestionaCliente extends JFrame {
         botonDarCitaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazDarCitaCliente().setVisible(true);
             }
         });
 
