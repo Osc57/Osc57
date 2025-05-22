@@ -17,7 +17,7 @@ public class InterfazGestionCita extends JFrame {
 
     private Color COLOR_F = new Color(50, 50, 50);
 
-    public InterfazGestionCita(){
+    public InterfazGestionCita() {
         this.setTitle("Dar Cita");
         this.setSize(500, 500);
         this.setLocationRelativeTo(null);
@@ -42,10 +42,10 @@ public class InterfazGestionCita extends JFrame {
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JPanel panelHoras = new JPanel(new BorderLayout());
-        panelHoras.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
+        panelHoras.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
-        JPanel panelBoton = new JPanel(new GridLayout(1,1,10,10));
-        panelBoton.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
+        JPanel panelBoton = new JPanel(new GridLayout(1, 1, 10, 10));
+        panelBoton.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
         JLabel selecionaHora = crearLabels("Seleccione la hora");
 
