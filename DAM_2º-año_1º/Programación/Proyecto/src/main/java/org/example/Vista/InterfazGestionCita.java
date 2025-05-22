@@ -15,7 +15,7 @@ import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazGestionCita extends JFrame {
 
-    private Color COLOR_F = new Color(50, 50, 50);
+    private final Color COLOR_F = new Color(50, 50, 50);
 
     public InterfazGestionCita() {
         this.setTitle("Dar Cita");
