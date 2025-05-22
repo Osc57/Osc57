@@ -34,30 +34,46 @@ public class InterfazGestionCita extends JFrame {
     }
 
     private JPanel getjPanelPanelCalendario() {
-        JPanel panelPrincipal = new JPanel(new GridLayout(1,1,0,0));
+        JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
+        
         JCalendar calendar = darEstiloCalendario();
-        JComboBox<String> fechas = new JComboBox<>();
-        fechas.addItem("8:00");
-        fechas.addItem("8:15");
-        fechas.addItem("8:30");
-        fechas.addItem("8:45");
-        fechas.addItem("9:00");
-        fechas.addItem("9:15");
-        fechas.addItem("9:30");
-        fechas.addItem("9:45");
-        fechas.addItem("10:00");
-        fechas.addItem("10:15");
-        fechas.addItem("10:30");
-        fechas.addItem("10:45");
-        fechas.addItem("11:00");
-        fechas.addItem("11:15");
-        fechas.addItem("11:30");
-        fechas.addItem("11:45");
+        JComboBox<String> horas = new JComboBox<>();
+        horas.addItem("8:00");
+        horas.addItem("8:15");
+        horas.addItem("8:30");
+        horas.addItem("8:45");
+        horas.addItem("9:00");
+        horas.addItem("9:15");
+        horas.addItem("9:30");
+        horas.addItem("9:45");
+        horas.addItem("10:00");
+        horas.addItem("10:15");
+        horas.addItem("10:30");
+        horas.addItem("10:45");
+        horas.addItem("11:00");
+        horas.addItem("11:15");
+        horas.addItem("11:30");
+        horas.addItem("11:45");
+        horas.addItem("12:00");
+        horas.addItem("12:15");
+        horas.addItem("12:30");
+        horas.addItem("12:45");
+        horas.addItem("13:00");
+        horas.addItem("13:15");
+        horas.addItem("13:30");
+        horas.addItem("13:45");
+        horas.addItem("14:00");
+        horas.addItem("14:15");
+        horas.addItem("14:30");
+        horas.addItem("14:45");
+        horas.addItem("15:00");
+        horas.addItem("15:15");
+        horas.addItem("15:30");
+        horas.addItem("15:45");
 
         panelPrincipal.add(calendar, BorderLayout.CENTER);
-        panelPrincipal.add(fechas, BorderLayout.SOUTH);
+        panelPrincipal.add(horas, BorderLayout.SOUTH);
 
         return panelPrincipal;
     }
