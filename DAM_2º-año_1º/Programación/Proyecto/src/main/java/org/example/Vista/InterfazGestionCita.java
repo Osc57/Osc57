@@ -8,6 +8,8 @@ import com.toedter.calendar.JYearChooser;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static org.example.Vista.InterfazLogin.*;
 
@@ -28,15 +30,17 @@ public class InterfazGestionCita extends JFrame {
 
 
         JPanel panelCalendario = getjPanelPanelCalendario();
+        JPanel panelBotonRetorno = getjPanelBotonRetorno();
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelCalendario, BorderLayout.CENTER);
+        this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelPanelCalendario() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        
+
         JCalendar calendar = darEstiloCalendario();
         JComboBox<String> horas = new JComboBox<>();
         horas.addItem("8:00");
@@ -72,10 +76,34 @@ public class InterfazGestionCita extends JFrame {
         horas.addItem("15:30");
         horas.addItem("15:45");
 
+        JPanel panelBotones = new JPanel();
+
+
         panelPrincipal.add(calendar, BorderLayout.CENTER);
         panelPrincipal.add(horas, BorderLayout.SOUTH);
 
         return panelPrincipal;
+    }
+
+    private JPanel getjPanelBotonRetorno() {
+        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
+        JButton botonRetorno = new JButton("←");
+        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
+        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        botonRetorno.setFocusPainted(false);
+        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
+        botonRetorno.setFont(FUENTE_EMOJI);
+
+        botonRetorno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new InterfazDarCitaCliente().setVisible(true);
+            }
+        });
+        return panelBotonRetorno;
     }
 
     private JCalendar darEstiloCalendario() {
