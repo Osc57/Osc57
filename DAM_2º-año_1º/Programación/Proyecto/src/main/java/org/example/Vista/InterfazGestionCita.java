@@ -38,10 +38,26 @@ public class InterfazGestionCita extends JFrame {
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JCalendar calendar = darEstiloCalendario();
-
-
+        JComboBox<String> fechas = new JComboBox<>();
+        fechas.addItem("8:00");
+        fechas.addItem("8:15");
+        fechas.addItem("8:30");
+        fechas.addItem("8:45");
+        fechas.addItem("9:00");
+        fechas.addItem("9:15");
+        fechas.addItem("9:30");
+        fechas.addItem("9:45");
+        fechas.addItem("10:00");
+        fechas.addItem("10:15");
+        fechas.addItem("10:30");
+        fechas.addItem("10:45");
+        fechas.addItem("11:00");
+        fechas.addItem("11:15");
+        fechas.addItem("11:30");
+        fechas.addItem("11:45");
 
         panelPrincipal.add(calendar, BorderLayout.CENTER);
+        panelPrincipal.add(fechas, BorderLayout.SOUTH);
 
         return panelPrincipal;
     }
@@ -67,7 +83,7 @@ public class InterfazGestionCita extends JFrame {
         JYearChooser yearChooser = calendar.getYearChooser();
         yearChooser.setBackground(COLOR_FONDO_GRIS_CLARO);
         yearChooser.setForeground(COLOR_F);
-        
+
         Font font = new Font("Segoe UI", Font.PLAIN, 12);
         calendar.setFont(font);
 
