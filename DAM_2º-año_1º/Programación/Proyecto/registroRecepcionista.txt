@@ -39,3 +39,4 @@
 [2025/05/19 - 20:42:59] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
 [2025/05/20 - 15:46:40] Recepcionista: Juan Lopez Guerrera | DNI: 78455544Y
 [2025/05/20 - 15:55:42] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
+[2025/05/22 - 19:51:29] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D

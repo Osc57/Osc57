@@ -113,7 +113,7 @@ public class InterfazDarBajaTrabajador extends JFrame {
             if (JOptionPane.showConfirmDialog(InterfazDarBajaTrabajador.this, "¿Quieres eliminar este usuario?", "Eliminar",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 eliminarTrabajador(trabajadorSeleccion.getDni());
-                JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
+                JOptionPane.showMessageDialog(null, "Trabajador eliminado con exito");
                 dispose();
                 new InterfazDarBajaTrabajador().setVisible(true);
             }
