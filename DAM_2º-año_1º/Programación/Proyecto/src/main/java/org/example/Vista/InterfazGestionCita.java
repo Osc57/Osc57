@@ -19,7 +19,7 @@ public class InterfazGestionCita extends JFrame {
 
     public InterfazGestionCita(){
         this.setTitle("Dar Cita");
-        this.setSize(460, 460);
+        this.setSize(500, 500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
@@ -40,6 +40,14 @@ public class InterfazGestionCita extends JFrame {
     private JPanel getjPanelPanelCalendario() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+
+        JPanel panelHoras = new JPanel(new BorderLayout());
+        panelHoras.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
+
+        JPanel panelBoton = new JPanel(new GridLayout(1,1,10,10));
+        panelBoton.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
+
+        JLabel selecionaHora = crearLabels("Seleccione la hora");
 
         JCalendar calendar = darEstiloCalendario();
         JComboBox<String> horas = new JComboBox<>();
@@ -75,12 +83,18 @@ public class InterfazGestionCita extends JFrame {
         horas.addItem("15:15");
         horas.addItem("15:30");
         horas.addItem("15:45");
+        horas.addItem("16:00");
 
-        JPanel panelBotones = new JPanel();
+        JButton btnConfirmar = crearEstiloBoton("Confirmar Cita");
 
+        panelBoton.add(btnConfirmar);
+
+        panelHoras.add(selecionaHora, BorderLayout.NORTH);
+        panelHoras.add(horas, BorderLayout.CENTER);
+        panelHoras.add(panelBoton, BorderLayout.SOUTH);
 
         panelPrincipal.add(calendar, BorderLayout.CENTER);
-        panelPrincipal.add(horas, BorderLayout.SOUTH);
+        panelPrincipal.add(panelHoras, BorderLayout.SOUTH);
 
         return panelPrincipal;
     }
@@ -99,8 +113,8 @@ public class InterfazGestionCita extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new InterfazDarCitaCliente().setVisible(true);
+                dispose();
             }
         });
         return panelBotonRetorno;
@@ -133,6 +147,27 @@ public class InterfazGestionCita extends JFrame {
 
         return calendar;
 
+    }
+
+    private JButton crearEstiloBoton(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setFont(FUENTE_BOTONES);
+        boton.setBackground(COLOR_BOTONES_AZUL);
+        boton.setFocusPainted(false);
+        boton.setForeground(Color.WHITE);
+        boton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+        ));
+        return boton;
+    }
+
+    private JLabel crearLabels(String texto) {
+        JLabel label = new JLabel(texto);
+        label.setFont(FUENTE_LABEL);
+        label.setPreferredSize(new Dimension(120, 30));
+
+        return label;
     }
 
     public static void main(String[] args) {
