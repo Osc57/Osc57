@@ -53,29 +53,21 @@ public class InterfazGestionCita extends JFrame {
         calendar.setDecorationBackgroundColor(Color.WHITE);
         calendar.setDecorationBordersVisible(true);
 
-        // Cambiar colores
         calendar.setBackground(COLOR_FONDO_GRIS_CLARO);
         calendar.setForeground(Color.DARK_GRAY);
 
-        // Personalizar el header
         JDayChooser dayChooser = calendar.getDayChooser();
         dayChooser.setWeekdayForeground(COLOR_BOTONES_AZUL);
         dayChooser.setSundayForeground(Color.RED);
 
-        // Personalizar el mes y año
         JMonthChooser monthChooser = calendar.getMonthChooser();
         monthChooser.setBackground(COLOR_FONDO_GRIS_CLARO);
         monthChooser.setForeground(COLOR_F);
 
-        // Personalizar el año
         JYearChooser yearChooser = calendar.getYearChooser();
         yearChooser.setBackground(COLOR_FONDO_GRIS_CLARO);
         yearChooser.setForeground(COLOR_F);
-
-        // Ocultar botones de navegación si se desea
-        //calendar.setNullDateButtonVisible(false);
-
-        // Cambiar la fuente
+        
         Font font = new Font("Segoe UI", Font.PLAIN, 12);
         calendar.setFont(font);
 
