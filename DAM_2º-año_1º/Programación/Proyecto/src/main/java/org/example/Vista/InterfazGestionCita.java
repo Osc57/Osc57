@@ -134,9 +134,9 @@ public class InterfazGestionCita extends JFrame {
     private void confirmarCita(JCalendar calendar, JComboBox<String> horas, JComboBox<Tratamiento> tratamiento) {
 
         if (tratamiento.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione una hora", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (horas.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione un tratamiento", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (horas.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una hora", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             // Convertir la fecha seleccionada (Date → LocalDate)
             LocalDate fechaSeleccionada = calendar.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

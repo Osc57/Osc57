@@ -40,7 +40,7 @@ CREATE TABLE cita (
 	fechaCita DATETIME NOT NULL UNIQUE,
 	dni_cliente CHAR(9),
 	id_tratamiento INT,
-	CONSTRAINT fk_cita_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
+	CONSTRAINT fk_cita_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni) ON DELETE CASCADE,
 	CONSTRAINT fk_cita_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 	
 CREATE TABLE historial (
@@ -101,7 +101,7 @@ INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('1
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('23456789B', 'Ana', 'Lopez Sanchez', '600222333', '12345678A');
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('34567890C', 'David', 'Perez Fernandez', '600333444', '12345678A');
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('45678901D', 'Elena', 'Ruiz Diaz', '600444555', '12345678A');
-INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('56789012E', 'Pedro', 'Sanz Jimenez', '600555666', '12345678A');
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('56789012E', 'Pedro', 'Sanz Jimenez', '600555666', '23456789B');
 
 /*Introduzco los tratameintos*/
 INSERT INTO tratamientos (tipo) VALUES ('Limpieza dental profesional');

@@ -50,3 +50,6 @@
 [2025/05/22 - 19:48:36] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/22 - 19:48:40] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/23 - 16:12:41] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/23 - 18:19:16] Jefe: Carlos Gomez Martinez | DNI: 12345678A
+[2025/05/23 - 18:22:09] Jefe: Tupu Mae | DNI: 78945615Y
+[2025/05/23 - 18:22:40] Jefe: Carlos Gomez Martinez | DNI: 12345678A
