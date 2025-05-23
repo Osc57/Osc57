@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCliente.cargarClientes;
 import static org.example.Controlador.ControladorCliente.eliminarCliente;
-import static org.example.Controlador.ControladorJefe.eliminarTrabajador;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 

@@ -8,8 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.Controlador.ControladorJefe.cargarTrabajadores;
-import static org.example.Controlador.ControladorJefe.eliminarTrabajador;
+import static org.example.Controlador.ControladorTrabajador.cargarTrabajadores;
+import static org.example.Controlador.ControladorTrabajador.eliminarTrabajador;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 

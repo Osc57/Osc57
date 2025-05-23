@@ -4,7 +4,6 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
-import org.example.Modelo.Trabajador;
 import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
@@ -12,10 +11,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.SimpleBeanInfo;
 import java.text.SimpleDateFormat;
 
-import static org.example.Controlador.ControladorRecepcionista.cargarTratamientos;
+import static org.example.Controlador.ControladorTratamientos.cargarTratamientos;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazGestionCita extends JFrame {

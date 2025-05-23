@@ -10,7 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static org.example.Controlador.ControladorJefe.*;
+import static org.example.Controlador.ControladorTrabajador.cargarDniTrabajador;
+import static org.example.Controlador.ControladorTrabajador.comprobarDNITrabajador;
+import static org.example.Controlador.ControladorTrabajador.eliminarTrabajador;
 import static org.example.Vista.InterfazDarBajaTrabajador.LISTA_NOMBRES_TRABAJADORES;
 import static org.example.Vista.InterfazDarBajaTrabajador.MODEL_USUARIO_TRABAJADORES;
 import static org.example.Vista.InterfazLogin.*;
