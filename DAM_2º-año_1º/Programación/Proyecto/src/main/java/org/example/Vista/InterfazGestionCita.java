@@ -155,14 +155,20 @@ public class InterfazGestionCita extends JFrame {
         Tratamiento tratamientoSeleccionado = (Tratamiento) tratamiento.getSelectedItem();
         int idTratamiento = tratamientoSeleccionado.getId();
 
-        // Intentar registrar la cita
-        if (darCitaClientes(fechaHora, dniCliente, idTratamiento)) {
-            JOptionPane.showMessageDialog(null, "Cita asignada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
-            new InterfazDarCitaCliente().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Hora ocupada: " + fechaHora + ". Por favor, elija otra hora.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (dniCliente != null){
+            // Intentar registrar la cita
+            if (darCitaClientes(fechaHora, dniCliente, idTratamiento)) {
+                JOptionPane.showMessageDialog(null, "Cita asignada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                new InterfazDarCitaCliente().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Hora ocupada: " + fechaHora + ". Por favor, elija otra hora.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+
     }
 
     private JPanel getjPanelBotonRetorno() {

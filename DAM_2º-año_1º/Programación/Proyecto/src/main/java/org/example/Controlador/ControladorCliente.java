@@ -130,7 +130,6 @@ public class ControladorCliente {
             return filasAfectadas > 0;
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al dar cita: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
