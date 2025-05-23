@@ -15,8 +15,6 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
 
 import static org.example.Controlador.ControladorCliente.darCitaClientes;
 import static org.example.Controlador.ControladorTratamientos.cargarTratamientos;

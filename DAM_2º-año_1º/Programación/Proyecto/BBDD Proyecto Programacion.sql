@@ -101,7 +101,7 @@ INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('1
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('23456789B', 'Ana', 'Lopez Sanchez', '600222333', '12345678A');
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('34567890C', 'David', 'Perez Fernandez', '600333444', '12345678A');
 INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('45678901D', 'Elena', 'Ruiz Diaz', '600444555', '12345678A');
-INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('56789012E', 'Pedro', 'Sanz Jimenez', '600555666', '23456789B');
+INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('56789012E', 'Pedro', 'Sanz Jimenez', '600555666', '12345678A');
 
 /*Introduzco los tratameintos*/
 INSERT INTO tratamientos (tipo) VALUES ('Limpieza dental profesional');
