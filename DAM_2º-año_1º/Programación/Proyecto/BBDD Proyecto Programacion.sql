@@ -37,7 +37,7 @@ CREATE TABLE tratamientos (
 	
 CREATE TABLE cita (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	fechaCita DATETIME NOT NULL,
+	fechaCita DATETIME NOT NULL UNIQUE,
 	dni_cliente CHAR(9),
 	id_tratamiento INT,
 	CONSTRAINT fk_cita_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
@@ -133,11 +133,11 @@ INSERT INTO tratamientos (tipo) VALUES ('Radiografia dental');
 	
 /*Inserto unos usuarios*/
 INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) VALUES 
-('12345678A', 'Juan', 'Garcia Perez', 'Calle Mayor 123, Madrid', '600111222', '2020-01-15'),
-('23456789B', 'Maria', 'Lopez Fernandez', 'Avenida de la Constitucion 45, Barcelona', '611222333', '2020-02-20'),
-('34567890C', 'Carlos', 'Martinez Sanchez', 'Plaza Espana 7, Valencia', '622333444', '2020-03-10'),
-('45678901D', 'Ana', 'Rodriguez Gomez', 'Calle Gran Via 89, Sevilla', '633444555', '2020-04-05'),
-('56789012E', 'Pedro', 'Hernandez Diaz', 'Paseo de la Castellana 12, Madrid', '644555666', '2020-05-12'),
+('12345677A', 'Juan', 'Garcia Perez', 'Calle Mayor 123, Madrid', '600111222', '2020-01-15'),
+('23456788B', 'Maria', 'Lopez Fernandez', 'Avenida de la Constitucion 45, Barcelona', '611222333', '2020-02-20'),
+('34567899C', 'Carlos', 'Martinez Sanchez', 'Plaza Espana 7, Valencia', '622333444', '2020-03-10'),
+('45678911D', 'Ana', 'Rodriguez Gomez', 'Calle Gran Via 89, Sevilla', '633444555', '2020-04-05'),
+('56789011E', 'Pedro', 'Hernandez Diaz', 'Paseo de la Castellana 12, Madrid', '644555666', '2020-05-12'),
 ('67890123F', 'Laura', 'Gomez Ruiz', 'Calle Sierpes 34, Sevilla', '655666777', '2020-06-18'),
 ('78901234G', 'David', 'Fernandez Lopez', 'Rambla Catalunya 56, Barcelona', '666777888', '2020-07-22'),
 ('89012345H', 'Sofia', 'Sanchez Martinez', 'Calle Colon 78, Valencia', '677888999', '2020-08-30'),

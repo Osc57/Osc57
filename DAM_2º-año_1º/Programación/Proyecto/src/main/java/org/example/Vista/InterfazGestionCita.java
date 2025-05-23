@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.SimpleBeanInfo;
+import java.text.SimpleDateFormat;
 
 import static org.example.Vista.InterfazLogin.*;
 
@@ -19,7 +21,7 @@ public class InterfazGestionCita extends JFrame {
 
     public InterfazGestionCita() {
         this.setTitle("Dar Cita");
-        this.setSize(500, 500);
+        this.setSize(460, 500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
@@ -41,6 +43,9 @@ public class InterfazGestionCita extends JFrame {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
+        JPanel panelCalendar = new JPanel(new BorderLayout());
+        panelCalendar.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+
         JPanel panelHoras = new JPanel(new BorderLayout());
         panelHoras.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
@@ -50,6 +55,7 @@ public class InterfazGestionCita extends JFrame {
         JLabel selecionaHora = crearLabels("Seleccione la hora");
 
         JCalendar calendar = darEstiloCalendario();
+        
         JComboBox<String> horas = new JComboBox<>();
         horas.addItem("8:00");
         horas.addItem("8:15");
@@ -86,14 +92,23 @@ public class InterfazGestionCita extends JFrame {
         horas.addItem("16:00");
 
         JButton btnConfirmar = crearEstiloBoton("Confirmar Cita");
+        btnConfirmar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
+                String horaSeleccionada = (String) horas.getSelectedItem();
+
+            }
+        });
 
         panelBoton.add(btnConfirmar);
 
+        panelCalendar.add(calendar);
         panelHoras.add(selecionaHora, BorderLayout.NORTH);
         panelHoras.add(horas, BorderLayout.CENTER);
         panelHoras.add(panelBoton, BorderLayout.SOUTH);
 
-        panelPrincipal.add(calendar, BorderLayout.CENTER);
+        panelPrincipal.add(panelCalendar, BorderLayout.CENTER);
         panelPrincipal.add(panelHoras, BorderLayout.SOUTH);
 
         return panelPrincipal;
