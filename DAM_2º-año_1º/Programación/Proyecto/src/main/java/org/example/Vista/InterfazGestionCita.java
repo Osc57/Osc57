@@ -170,7 +170,7 @@ public class InterfazGestionCita extends JFrame {
                     JOptionPane.showMessageDialog(null, "Hora ocupada: " + fechaHora + ". Por favor, elija otra hora.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Seleccione un cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado un cliente", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
