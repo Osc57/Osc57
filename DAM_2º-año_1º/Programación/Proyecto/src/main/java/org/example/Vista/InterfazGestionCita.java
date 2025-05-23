@@ -13,6 +13,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 
 import static org.example.Controlador.ControladorCliente.darCitaClientes;
 import static org.example.Controlador.ControladorTratamientos.cargarTratamientos;
@@ -102,15 +106,11 @@ public class InterfazGestionCita extends JFrame {
         JComboBox<Tratamiento> comboTratamientos = new JComboBox<>(modeloTratamientos);
 
 
-
-
         JButton btnConfirmar = crearEstiloBoton("Confirmar Cita");
         btnConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 confirmarCita(calendar, horas, comboTratamientos);
-
 
             }
         });
@@ -133,19 +133,35 @@ public class InterfazGestionCita extends JFrame {
     }
 
     private void confirmarCita(JCalendar calendar, JComboBox<String> horas, JComboBox<Tratamiento> tratamiento) {
+        // Convertir la fecha seleccionada (Date → LocalDate)
+        LocalDate fechaSeleccionada = calendar.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        // Obtener la fecha actual (sin hora)
+        LocalDate fechaActual = LocalDate.now();
+
+        // Validar que la cita no sea en un día anterior al actual
+        if (fechaSeleccionada.isBefore(fechaActual)) {
+            JOptionPane.showMessageDialog(null, "No se pueden asignar citas en días anteriores al actual.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Formatear fecha y hora para la base de datos (yyyy-MM-dd HH:mm:ss)
         String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
         String horaSeleccionada = (String) horas.getSelectedItem();
-
         String fechaHora = fechaFormateada + " " + horaSeleccionada + ":00";
-        String dniCliente = InterfazDarCitaCliente.obtenerDNICliente();
 
+        // Obtener datos del cliente y tratamiento
+        String dniCliente = InterfazDarCitaCliente.obtenerDNICliente();
         Tratamiento tratamientoSeleccionado = (Tratamiento) tratamiento.getSelectedItem();
         int idTratamiento = tratamientoSeleccionado.getId();
 
-        if (darCitaClientes(fechaHora,dniCliente,idTratamiento)){
-            JOptionPane.showMessageDialog(null, "Cita asignada con exito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        }else {
-            JOptionPane.showMessageDialog(null, "Hora ocupada " + fechaHora + " asigne una nueva hora", "Error", JOptionPane.ERROR_MESSAGE);
+        // Intentar registrar la cita
+        if (darCitaClientes(fechaHora, dniCliente, idTratamiento)) {
+            JOptionPane.showMessageDialog(null, "Cita asignada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            new InterfazDarCitaCliente().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Hora ocupada: " + fechaHora + ". Por favor, elija otra hora.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
