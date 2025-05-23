@@ -148,7 +148,7 @@ public class InterfazGestionCita extends JFrame {
         // Formatear fecha y hora para la base de datos (yyyy-MM-dd HH:mm:ss)
         String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
         String horaSeleccionada = (String) horas.getSelectedItem();
-        String fechaHora = fechaFormateada + " " + horaSeleccionada + ":00";
+        String fechaHora = fechaFormateada + " " + horaSeleccionada + ":00";//Esto lo hago por el formato del date en la BBDD
 
         // Obtener datos del cliente y tratamiento
         String dniCliente = InterfazDarCitaCliente.obtenerDNICliente();
