@@ -4,6 +4,8 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
+import org.example.Modelo.Trabajador;
+import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
 
@@ -13,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.beans.SimpleBeanInfo;
 import java.text.SimpleDateFormat;
 
+import static org.example.Controlador.ControladorRecepcionista.cargarTratamientos;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazGestionCita extends JFrame {
@@ -21,7 +24,7 @@ public class InterfazGestionCita extends JFrame {
 
     public InterfazGestionCita() {
         this.setTitle("Dar Cita");
-        this.setSize(460, 500);
+        this.setSize(490, 500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
@@ -52,10 +55,14 @@ public class InterfazGestionCita extends JFrame {
         JPanel panelBoton = new JPanel(new GridLayout(1, 1, 10, 10));
         panelBoton.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
-        JLabel selecionaHora = crearLabels("Seleccione la hora");
+        JPanel panelCombos = new JPanel(new GridLayout(2, 1, 5, 5));
+        panelCombos.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+        JLabel selecionaHora = crearLabels("Seleccione la hora: ");
+        JLabel selecionaTratamiento = crearLabels("Seleccione tratamiento: ");
 
         JCalendar calendar = darEstiloCalendario();
-        
+
         JComboBox<String> horas = new JComboBox<>();
         horas.addItem("8:00");
         horas.addItem("8:15");
@@ -91,6 +98,10 @@ public class InterfazGestionCita extends JFrame {
         horas.addItem("15:45");
         horas.addItem("16:00");
 
+        DefaultComboBoxModel<Tratamiento> modeloTratamientos = cargarTratamientos();
+        JComboBox<Tratamiento> comboTratamientos = new JComboBox<>(modeloTratamientos);
+
+
         JButton btnConfirmar = crearEstiloBoton("Confirmar Cita");
         btnConfirmar.addActionListener(new ActionListener() {
             @Override
@@ -101,11 +112,15 @@ public class InterfazGestionCita extends JFrame {
             }
         });
 
+        panelCombos.add(selecionaTratamiento);
+        panelCombos.add(comboTratamientos);
+        panelCombos.add(selecionaHora);
+        panelCombos.add(horas);
+
         panelBoton.add(btnConfirmar);
 
-        panelCalendar.add(calendar);
-        panelHoras.add(selecionaHora, BorderLayout.NORTH);
-        panelHoras.add(horas, BorderLayout.CENTER);
+        panelCalendar.add(calendar, BorderLayout.CENTER);
+        panelHoras.add(panelCombos, BorderLayout.CENTER);
         panelHoras.add(panelBoton, BorderLayout.SOUTH);
 
         panelPrincipal.add(panelCalendar, BorderLayout.CENTER);

@@ -2,6 +2,7 @@ package org.example.Controlador;
 
 import org.example.Modelo.Cliente;
 import org.example.Modelo.Recepcionista;
+import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -100,5 +101,28 @@ public class ControladorRecepcionista {
 
     public boolean darCitaClientes(){
         return false;
+    }
+
+    public static DefaultComboBoxModel<Tratamiento> cargarTratamientos(){
+        DefaultComboBoxModel<Tratamiento> tratamientos = new DefaultComboBoxModel<>();
+
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM tratamientos");) {
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()){
+
+                int id = resultSet.getInt("id");
+                String nombre = resultSet.getString("tipo");
+
+                tratamientos.addElement(new Tratamiento(id,nombre));
+            }
+
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los tratamientos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return tratamientos;
     }
 }
