@@ -111,6 +111,7 @@ public class InterfazDarBajaCliente extends JFrame {
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 eliminarCliente(clienteSeleccion.getDni());
                 JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
+                dispose();
                 new InterfazDarBajaCliente().setVisible(true);
             }
         } else {
