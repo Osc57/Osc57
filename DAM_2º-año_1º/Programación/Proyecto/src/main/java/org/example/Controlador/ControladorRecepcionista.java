@@ -99,9 +99,4 @@ public class ControladorRecepcionista {
 
     }
 
-    public boolean darCitaClientes(){
-        return false;
-    }
-
-
 }

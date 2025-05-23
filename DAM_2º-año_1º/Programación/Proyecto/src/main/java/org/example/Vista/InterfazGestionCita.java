@@ -4,6 +4,7 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
+import org.example.Modelo.Trabajador;
 import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
+import static org.example.Controlador.ControladorCliente.darCitaClientes;
 import static org.example.Controlador.ControladorTratamientos.cargarTratamientos;
 import static org.example.Vista.InterfazLogin.*;
 
@@ -100,12 +102,15 @@ public class InterfazGestionCita extends JFrame {
         JComboBox<Tratamiento> comboTratamientos = new JComboBox<>(modeloTratamientos);
 
 
+
+
         JButton btnConfirmar = crearEstiloBoton("Confirmar Cita");
         btnConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
-                String horaSeleccionada = (String) horas.getSelectedItem();
+
+                confirmarCita(calendar, horas, comboTratamientos);
+
 
             }
         });
@@ -125,6 +130,23 @@ public class InterfazGestionCita extends JFrame {
         panelPrincipal.add(panelHoras, BorderLayout.SOUTH);
 
         return panelPrincipal;
+    }
+
+    private void confirmarCita(JCalendar calendar, JComboBox<String> horas, JComboBox<Tratamiento> tratamiento) {
+        String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
+        String horaSeleccionada = (String) horas.getSelectedItem();
+
+        String fechaHora = fechaFormateada + " " + horaSeleccionada + ":00";
+        String dniCliente = InterfazDarCitaCliente.obtenerDNICliente();
+
+        Tratamiento tratamientoSeleccionado = (Tratamiento) tratamiento.getSelectedItem();
+        int idTratamiento = tratamientoSeleccionado.getId();
+
+        if (darCitaClientes(fechaHora,dniCliente,idTratamiento)){
+            JOptionPane.showMessageDialog(null, "Cita asignada con exito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            JOptionPane.showMessageDialog(null, "Hora ocupada " + fechaHora + " asigne una nueva hora", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private JPanel getjPanelBotonRetorno() {

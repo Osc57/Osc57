@@ -2,6 +2,8 @@ package org.example.Controlador;
 
 import org.example.Modelo.Cliente;
 import org.example.Modelo.Recepcionista;
+import org.example.Modelo.Trabajador;
+import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
 import java.sql.*;
@@ -113,6 +115,22 @@ public class ControladorCliente {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public static boolean darCitaClientes(String fecha, String dni, int id){
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES (?, ?, ?)")) {
+
+            ps.setString(1, fecha);
+            ps.setString(2, dni);
+            ps.setInt(3, id);
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al dar cita: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
