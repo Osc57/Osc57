@@ -100,7 +100,7 @@ public class InterfazGestionCita extends JFrame {
         horas.addItem("15:45");
         horas.addItem("16:00");
 
-        DefaultComboBoxModel<Tratamiento> modeloTratamientos = cargarTratamientos();
+        DefaultComboBoxModel<Tratamiento> modeloTratamientos = cargarTratamientos();//Metodo en Controlador Tratamientos
         JComboBox<Tratamiento> comboTratamientos = new JComboBox<>(modeloTratamientos);
 
         horas.setSelectedIndex(-1);
