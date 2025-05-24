@@ -1,5 +1,6 @@
 package org.example.Vista;
 
+import org.example.Controlador.ControladorCliente;
 import org.example.Modelo.Cliente;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.Controlador.ControladorCliente.comprobarDNICliente;
 import static org.example.Controlador.ControladorCliente.editarCliente;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
@@ -25,13 +27,13 @@ public class InterfazEditaCliente extends JFrame {
 
     public InterfazEditaCliente() {
         this.setTitle("Formulario");
-        this.setSize(440, 450);
+        this.setSize(420, 420);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Introduce Los Datos Del Cliente");
+        JLabel introducirCliente = new JLabel("•Edita Los Datos Del Cliente");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -48,31 +50,27 @@ public class InterfazEditaCliente extends JFrame {
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 10));
 
         JPanel panelLabels = new JPanel();
-        panelLabels.setLayout(new GridLayout(5, 1, 10, 5));
+        panelLabels.setLayout(new GridLayout(4, 1, 10, 5));
 
-        panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
         panelLabels.add(crearLabels("Dirección: "));
         panelLabels.add(crearLabels("Teléfono: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(5, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(4, 1, 5, 5));
 
-        txtDni = crearFields();
         txtNombre = crearFields();
         txtApellidos = crearFields();
         txtDireccion = crearFields();
         txtTelefono = crearFields();
 
-        panelFields.add(txtDni);
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
         panelFields.add(txtDireccion);
         panelFields.add(txtTelefono);
 
-        JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 15));
-        panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 0));
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 45, 15));
+        panelBotones.setBorder(BorderFactory.createEmptyBorder(0, 5, 15, 0));
 
         JButton btnEliminar = crearEstiloBoton("Borrar");
         btnEliminar.addActionListener(new ActionListener() {
@@ -86,38 +84,7 @@ public class InterfazEditaCliente extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String validarTelefono = txtTelefono.getText();
-                try {
-
-                    if (!txtNombre.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$")) {
-                        JOptionPane.showMessageDialog(null, "Nombre incorrecto.\nDebe empezar con mayúscula y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
-
-                    } else if (!txtApellidos.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$")) {
-                        JOptionPane.showMessageDialog(null, "Apellido incorrecto.\nDebe empezar con mayúscula y solo contener letras (1 o 2 apellidos).", "Error", JOptionPane.ERROR_MESSAGE);
-
-                    } else if (!validarTelefono.matches("\\d{9}")) {
-                        JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
-
-                    } else {
-                        Cliente clienteEditado = new Cliente();
-                        clienteEditado.setNombre(txtNombre.getText());
-                        clienteEditado.setApellidos(txtApellidos.getText());
-                        clienteEditado.setDireccion(txtDireccion.getText());
-                        clienteEditado.setTelefono(Integer.parseInt(validarTelefono));
-
-                        
-                        if (editarCliente(clienteEditado.getNombre(), clienteEditado.getApellidos(), clienteEditado.getDireccion(), clienteEditado.getTelefono())) {
-                            JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                            limpiarCampos();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-
-
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Error en el formato del teléfono", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+                cambiarCliente();
             }
         });
 
@@ -129,6 +96,25 @@ public class InterfazEditaCliente extends JFrame {
         panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
         return panelPrincipal;
     }
+
+    public void cambiarCliente() {
+        // Ejemplo en un formulario de edición (Vista)
+        String nombre = txtNombre.getText().trim();
+        String apellidos = txtApellidos.getText().trim();
+        String direccion = txtDireccion.getText().trim();
+        Integer telefono = txtTelefono.getText().isEmpty() ? null : Integer.parseInt(txtTelefono.getText());
+
+
+        String dniCliente = InterfazGestionEditaCliente.obtenerDNICliente();
+
+        boolean exito = ControladorCliente.editarCliente(dniCliente, nombre, apellidos, direccion, telefono);
+        if (exito) {
+            JOptionPane.showMessageDialog(null, "Cliente editado con exito");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al editar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     private void limpiarCampos() {
         txtDni.setText("");
@@ -142,7 +128,7 @@ public class InterfazEditaCliente extends JFrame {
         JPanel panelBotonRetorno = new JPanel(new BorderLayout());
         JButton botonRetorno = new JButton("←");
         panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 250));
         panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         botonRetorno.setFocusPainted(false);
@@ -192,3 +178,6 @@ public class InterfazEditaCliente extends JFrame {
         new InterfazEditaCliente().setVisible(true);
     }
 }
+
+
+

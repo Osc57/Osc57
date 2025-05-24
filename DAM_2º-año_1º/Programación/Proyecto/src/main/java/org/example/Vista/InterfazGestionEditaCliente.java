@@ -16,7 +16,7 @@ import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
 public class InterfazGestionEditaCliente extends JFrame {
 
-    private Cliente clienteSeleccion = new Cliente();
+    private static Cliente clienteSeleccion = new Cliente();
 
     public InterfazGestionEditaCliente() {
         this.setTitle("Dar Cita");
@@ -47,6 +47,7 @@ public class InterfazGestionEditaCliente extends JFrame {
         botonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                obtenerDNICliente();
                 seleccionCliente();
 
             }
@@ -118,6 +119,15 @@ public class InterfazGestionEditaCliente extends JFrame {
         }
     }
 
+    public static String obtenerDNICliente() {
+        if (clienteSeleccion != null) {
+            return clienteSeleccion.getDni();
+        } else {
+            return "";
+        }
+
+    }
+
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setFont(FUENTE_BOTONES);
@@ -130,6 +140,7 @@ public class InterfazGestionEditaCliente extends JFrame {
         ));
         return boton;
     }
+
 
     public static void main(String[] args) {
         new InterfazGestionEditaCliente().setVisible(true);

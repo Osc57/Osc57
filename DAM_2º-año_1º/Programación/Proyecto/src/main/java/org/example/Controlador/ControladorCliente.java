@@ -119,7 +119,7 @@ public class ControladorCliente {
         }
     }
 
-    public static boolean darCitaClientes(String fecha, String dni, int id){
+    public static boolean darCitaClientes(String fecha, String dni, int id) {
         try (Connection connection = connect();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES (?, ?, ?)")) {
 
@@ -134,22 +134,23 @@ public class ControladorCliente {
         }
     }
 
-    public static boolean editarCliente(String dni, String name, String surname, String direction, int phone){
-        try (Connection connection = connect();
-             PreparedStatement ps = connection.prepareStatement("UPDATE cliente SET nombre=?, apellidos=?, direccion=?, telefono=? WHERE dni=?")) {
+    public static boolean editarCliente(String dni, String nombre, String apellidos, String direccion, Integer telefono) {
 
-            ps.setString(1,name);
-            ps.setString(2,surname);
-            ps.setString(3,direction);
-            ps.setInt(4,phone);
-            ps.setString(5,dni);
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("UPDATE cliente SET nombre = ?, apellidos = ?, direccion = ?, telefono = ? WHERE dni = ?")) {
+
+            ps.setString(1, nombre);
+            ps.setString(2, apellidos);
+            ps.setString(3, direccion);
+            ps.setObject(4, telefono);
+            ps.setString(5, dni);
 
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
+            System.err.println("[Error] No se pudo actualizar el cliente: " + ex.getMessage());
             return false;
         }
-
     }
 }
 
