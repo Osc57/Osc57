@@ -133,5 +133,23 @@ public class ControladorCliente {
             return false;
         }
     }
+
+    public static boolean editarCliente(String dni, String name, String surname, String direction, int phone){
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("UPDATE cliente SET nombre=?, apellidos=?, direccion=?, telefono=? WHERE dni=?")) {
+
+            ps.setString(1,name);
+            ps.setString(2,surname);
+            ps.setString(3,direction);
+            ps.setInt(4,phone);
+            ps.setString(5,dni);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            return false;
+        }
+
+    }
 }
 

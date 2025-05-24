@@ -1,30 +1,29 @@
 package org.example.Vista;
 
-
-import org.example.Controlador.ControladorCliente;
 import org.example.Modelo.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
+import static org.example.Controlador.ControladorCliente.editarCliente;
 import static org.example.Vista.InterfazLogin.*;
+import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
+import static org.example.Vista.InterfazLogin.COLOR_BOTON_GRIS_CLARO;
+import static org.example.Vista.InterfazLogin.FUENTE_BOTONES;
+import static org.example.Vista.InterfazLogin.FUENTE_CAMPOS;
+import static org.example.Vista.InterfazLogin.FUENTE_EMOJI;
+import static org.example.Vista.InterfazLogin.FUENTE_LABEL;
 
-public class InterfazDarAltaCliente extends JFrame {
-
-
-    private ControladorCliente controladorCliente = new ControladorCliente();
-
+public class InterfazEditaCliente extends JFrame {
     private JTextField txtDni = new JTextField();
     private JTextField txtNombre = new JTextField();
     private JTextField txtApellidos = new JTextField();
     private JTextField txtDireccion = new JTextField();
     private JTextField txtTelefono = new JTextField();
 
-    public InterfazDarAltaCliente() {
+    public InterfazEditaCliente() {
         this.setTitle("Formulario");
         this.setSize(440, 450);
         this.setLocationRelativeTo(null);
@@ -89,13 +88,8 @@ public class InterfazDarAltaCliente extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String validarTelefono = txtTelefono.getText();
                 try {
-                    if (txtDni.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellidos.getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "DNI, Nombre y Apellidos son campos obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
 
-                    } else if ((!txtDni.getText().matches("[0-9]{8}[A-Za-z]"))) {
-                        JOptionPane.showMessageDialog(null, "DNI invalido. Debe tener 8 digitos y una letra", "Error", JOptionPane.INFORMATION_MESSAGE);
-
-                    } else if (!txtNombre.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$")) {
+                    if (!txtNombre.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$")) {
                         JOptionPane.showMessageDialog(null, "Nombre incorrecto.\nDebe empezar con mayúscula y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
 
                     } else if (!txtApellidos.getText().matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$")) {
@@ -105,14 +99,14 @@ public class InterfazDarAltaCliente extends JFrame {
                         JOptionPane.showMessageDialog(null, "Teléfono inválido. Debe tener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
 
                     } else {
-                        Cliente nuevoCliente = new Cliente();
-                        nuevoCliente.setDni(txtDni.getText());
-                        nuevoCliente.setNombre(txtNombre.getText());
-                        nuevoCliente.setApellidos(txtApellidos.getText());
-                        nuevoCliente.setDireccion(txtDireccion.getText());
-                        nuevoCliente.setTelefono(Integer.parseInt(validarTelefono));
+                        Cliente clienteEditado = new Cliente();
+                        clienteEditado.setNombre(txtNombre.getText());
+                        clienteEditado.setApellidos(txtApellidos.getText());
+                        clienteEditado.setDireccion(txtDireccion.getText());
+                        clienteEditado.setTelefono(Integer.parseInt(validarTelefono));
 
-                        if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
+                        
+                        if (editarCliente(clienteEditado.getNombre(), clienteEditado.getApellidos(), clienteEditado.getDireccion(), clienteEditado.getTelefono())) {
                             JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                             limpiarCampos();
                         } else {
@@ -195,6 +189,6 @@ public class InterfazDarAltaCliente extends JFrame {
     }
 
     public static void main(String[] args) {
-        new InterfazDarAltaCliente().setVisible(true);
+        new InterfazEditaCliente().setVisible(true);
     }
 }

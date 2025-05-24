@@ -53,3 +53,4 @@
 [2025/05/24 - 13:03:24] Recepcionista: David Perez Fernandez | DNI: 34567890C
 [2025/05/24 - 13:17:07] Recepcionista: David Perez Fernandez | DNI: 34567890C
 [2025/05/24 - 13:24:34] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
+[2025/05/24 - 13:42:56] Recepcionista: David Perez Fernandez | DNI: 34567890C

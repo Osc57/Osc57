@@ -9,15 +9,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCliente.cargarClientes;
-import static org.example.Controlador.ControladorCliente.eliminarCliente;
+import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
+import static org.example.Vista.InterfazDarBajaCliente.MODEL_USUARIO_CLIENTES;
 import static org.example.Vista.InterfazLogin.*;
+import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
-public class InterfazDarBajaCliente extends JFrame {
-    protected static JList<Cliente> LISTA_NOMBRES_CLIENTES;
-    protected static DefaultListModel<Cliente> MODEL_USUARIO_CLIENTES;
+public class InterfazGestionEditaCliente extends JFrame {
 
-    public InterfazDarBajaCliente() {
-        this.setTitle("Dar de Baja");
+    private Cliente clienteSeleccion = new Cliente();
+
+    public InterfazGestionEditaCliente() {
+        this.setTitle("Dar Cita");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -46,6 +48,7 @@ public class InterfazDarBajaCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 seleccionCliente();
+
             }
         });
 
@@ -105,30 +108,15 @@ public class InterfazDarBajaCliente extends JFrame {
     }
 
     private void seleccionCliente() {
-        Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
+        clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
-            if (JOptionPane.showConfirmDialog(InterfazDarBajaCliente.this, "¿Quieres eliminar este usuario?", "Eliminar",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                eliminarCliente(clienteSeleccion.getDni());
-                JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
-                dispose();
-                new InterfazDarBajaCliente().setVisible(true);
-            }
+            dispose();
+            new InterfazEditaCliente().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
+
         }
-
     }
-
-    /*
-    private JTextField crearFields() {
-        JTextField field = new JTextField(15);
-        field.setFont(FUENTE_CAMPOS);
-        field.setPreferredSize(new Dimension(150, 30));
-
-        return field;
-    }
-    */
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
@@ -144,6 +132,7 @@ public class InterfazDarBajaCliente extends JFrame {
     }
 
     public static void main(String[] args) {
-        new InterfazDarBajaCliente().setVisible(true);
+        new InterfazGestionEditaCliente().setVisible(true);
     }
+
 }

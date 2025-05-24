@@ -61,11 +61,12 @@ public class InterfazModificarCliente extends JFrame {
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 60, 50, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
-        JButton botonEdita = crearEstiloBoton("<html>Edita <br> Cliente</html>");
-        botonEdita.addActionListener(new ActionListener() {
+        JButton botonEditar = crearEstiloBoton("<html>Editar <br> Cliente</html>");
+        botonEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazGestionEditaCliente().setVisible(true);
             }
         });
 
@@ -89,7 +90,7 @@ public class InterfazModificarCliente extends JFrame {
 
 
         panelBotonesGestion.add(botonAltaCliente);
-        panelBotonesGestion.add(botonEdita);
+        panelBotonesGestion.add(botonEditar);
         panelBotonesGestion.add(botonBajaCliente);
 
         return panelBotonesGestion;
