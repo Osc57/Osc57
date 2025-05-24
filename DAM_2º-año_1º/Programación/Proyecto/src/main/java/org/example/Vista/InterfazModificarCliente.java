@@ -6,11 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.Vista.InterfazLogin.*;
+import static org.example.Vista.InterfazLogin.COLOR_BOTON_GRIS_CLARO;
+import static org.example.Vista.InterfazLogin.COLOR_FONDO_GRIS_CLARO;
+import static org.example.Vista.InterfazLogin.FUENTE_BOTON;
+import static org.example.Vista.InterfazLogin.FUENTE_EMOJI;
 
-public class InterfazGestionaCliente extends JFrame {
+public class InterfazModificarCliente extends JFrame {
 
-
-    public InterfazGestionaCliente() {
+    public InterfazModificarCliente() {
         this.setLayout(new BorderLayout());
         this.setTitle("Gestión");
         this.setSize(500, 360);
@@ -19,7 +22,7 @@ public class InterfazGestionaCliente extends JFrame {
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel titulo = new JLabel("Gestiona a los Clientes");
+        JLabel titulo = new JLabel("Seleccione una opción");
         titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setFont(FUENTE_TITULO_2);
@@ -46,7 +49,7 @@ public class InterfazGestionaCliente extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazSeleccionUsuario().setVisible(true);
+                new InterfazGestionaCliente().setVisible(true);
                 dispose();
             }
         });
@@ -58,35 +61,36 @@ public class InterfazGestionaCliente extends JFrame {
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 60, 50, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
-        JButton botonGestiona = crearEstiloBoton("<html>Gestiona <br> Cliente</html>");
-        botonGestiona.addActionListener(new ActionListener() {
+        JButton botonEdita = crearEstiloBoton("<html>Edita <br> Cliente</html>");
+        botonEdita.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        JButton botonAltaCliente = crearEstiloBoton("Dar Alta");
+        botonAltaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazModificarCliente().setVisible(true);
+                new InterfazDarAltaCliente().setVisible(true);
             }
         });
 
-        JButton botonDarCitaCliente = crearEstiloBoton("Dar Cita");
-        botonDarCitaCliente.addActionListener(new ActionListener() {
+        JButton botonBajaCliente = crearEstiloBoton("Dar Baja");
+        botonBajaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazDarCitaCliente().setVisible(true);
+                new InterfazDarBajaCliente().setVisible(true);
             }
         });
 
-        JButton botonHistorialCliente = crearEstiloBoton("<html>Mostrar <br> Historial</html>");
-        botonHistorialCliente.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-
-        panelBotonesGestion.add(botonGestiona);
-        panelBotonesGestion.add(botonDarCitaCliente);
-        panelBotonesGestion.add(botonHistorialCliente);
+        panelBotonesGestion.add(botonAltaCliente);
+        panelBotonesGestion.add(botonEdita);
+        panelBotonesGestion.add(botonBajaCliente);
 
         return panelBotonesGestion;
     }
@@ -105,8 +109,7 @@ public class InterfazGestionaCliente extends JFrame {
 
 
     public static void main(String[] args) {
-        InterfazGestionaCliente gestiona = new InterfazGestionaCliente();
+        InterfazModificarCliente gestiona = new InterfazModificarCliente();
         gestiona.setVisible(true);
     }
 }
-
