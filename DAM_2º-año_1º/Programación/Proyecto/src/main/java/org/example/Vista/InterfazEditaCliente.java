@@ -106,10 +106,9 @@ public class InterfazEditaCliente extends JFrame {
 
 
         String dniCliente = InterfazGestionEditaCliente.obtenerDNICliente();
-
-        boolean exito = ControladorCliente.editarCliente(dniCliente, nombre, apellidos, direccion, telefono);
-        if (exito) {
+        if (ControladorCliente.editarCliente(dniCliente, nombre, apellidos, direccion, telefono)) {
             JOptionPane.showMessageDialog(null, "Cliente editado con exito");
+            limpiarCampos();
         } else {
             JOptionPane.showMessageDialog(null, "Error al editar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
         }
