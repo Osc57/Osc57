@@ -39,4 +39,25 @@ public class ControladorHistorial {
         }
         return historiales;
     }
+
+
+
+    public static String obtenerNombreTratamiento(int idTratamiento) {
+        String nombre = "Tratamiento desconocido";
+
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("SELECT tipo FROM tratamientos WHERE id = ?")) {
+
+            ps.setInt(1, idTratamiento);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    nombre = rs.getString("tipo");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return nombre;
+    }
 }

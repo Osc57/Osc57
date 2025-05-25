@@ -103,7 +103,7 @@ public class InterfazMuestraHistorial extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazGestionaCliente().setVisible(true);
+                new InterfazSeleccionHistorial().setVisible(true);
             }
         });
         return panelBotonRetorno;

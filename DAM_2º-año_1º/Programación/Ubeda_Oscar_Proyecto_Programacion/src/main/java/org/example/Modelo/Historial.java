@@ -2,6 +2,8 @@ package org.example.Modelo;
 
 import java.util.Date;
 
+import static org.example.Controlador.ControladorHistorial.obtenerNombreTratamiento;
+
 public class Historial {
     private String dniCliente;
     private int idTratamiento;
@@ -42,6 +44,7 @@ public class Historial {
 
     @Override
     public String toString() {
-        return dniCliente + " " + idTratamiento + " " + fechaTratamiento;
+        String nombreTratamiento = obtenerNombreTratamiento(this.idTratamiento);
+        return dniCliente + " - " + nombreTratamiento + " - " + fechaTratamiento;
     }
 }
