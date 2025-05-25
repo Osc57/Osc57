@@ -212,7 +212,7 @@ public class InterfazEditaCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazModificarCliente().setVisible(true);
+                new InterfazGestionEditaCliente().setVisible(true);
             }
         });
         return panelBotonRetorno;

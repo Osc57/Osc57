@@ -120,16 +120,6 @@ public class InterfazDarBajaCliente extends JFrame {
 
     }
 
-    /*
-    private JTextField crearFields() {
-        JTextField field = new JTextField(15);
-        field.setFont(FUENTE_CAMPOS);
-        field.setPreferredSize(new Dimension(150, 30));
-
-        return field;
-    }
-    */
-
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setFont(FUENTE_BOTONES);

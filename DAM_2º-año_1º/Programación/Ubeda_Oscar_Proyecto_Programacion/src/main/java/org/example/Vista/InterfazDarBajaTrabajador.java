@@ -115,7 +115,7 @@ public class InterfazDarBajaTrabajador extends JFrame {
                 eliminarTrabajador(trabajadorSeleccion.getDni());
                 JOptionPane.showMessageDialog(null, "Trabajador eliminado con exito");
                 dispose();
-                new InterfazDarBajaTrabajador().setVisible(true);
+                new InterfazGestionJefe().setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");

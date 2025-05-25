@@ -130,7 +130,8 @@ public class InterfazDarAltaTrabajador extends JFrame {
 
                             if (new ControladorRecepcionista().enviarDatosRecepcionista(nuevoTrabajador, dniJefe)) {
                                 JOptionPane.showMessageDialog(null, "Trabajador registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                                limpiarCampos();
+                                dispose();
+                                new InterfazGestionJefe().setVisible(true);
                             } else {
                                 JOptionPane.showMessageDialog(null, "No se pudo registrar el trabajador", "Error", JOptionPane.ERROR_MESSAGE);
                             }
