@@ -34,8 +34,7 @@ public class ControladorHistorial {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Error al cargar el historial: " + e.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Error al cargar el historial: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return historiales;
     }
@@ -55,7 +54,7 @@ public class ControladorHistorial {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            return null;
         }
 
         return nombre;

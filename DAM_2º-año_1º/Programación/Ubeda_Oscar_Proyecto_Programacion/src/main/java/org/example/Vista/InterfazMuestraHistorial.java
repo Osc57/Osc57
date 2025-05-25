@@ -1,15 +1,17 @@
 package org.example.Vista;
 
-import org.example.Modelo.Cliente;
 import org.example.Modelo.Historial;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.example.Controlador.ControladorCliente.cargarClientes;
 import static org.example.Controlador.ControladorHistorial.cargarHistorial;
 import static org.example.Vista.InterfazLogin.*;
 
@@ -25,7 +27,7 @@ public class InterfazMuestraHistorial extends JFrame {
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione cliente o Filtre el DNI");
+        JLabel introducirCliente = new JLabel("•Historial clinico");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -43,22 +45,15 @@ public class InterfazMuestraHistorial extends JFrame {
 
         JPanel panelBoton = new JPanel(new GridLayout(1, 2, 10, 10));
 
-        JButton botonConfirmar = crearEstiloBoton("Confirmar");
+        JButton botonConfirmar = crearEstiloBoton("Descargar Historial");
         botonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //seleccionCliente();
+                descargarHistorial();
             }
         });
 
-        JButton botonFiltrar = crearEstiloBoton("Filtrar DNI");
-        botonFiltrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new InterfazFiltrarDNICliente().setVisible(true);
-                dispose();
-            }
-        });
+
 
         MODEL_USUARIO_HISTORIAL = new DefaultListModel<>();
         LISTA_NOMBRES_HISTORIAL = new JList<>(MODEL_USUARIO_HISTORIAL);
@@ -78,7 +73,6 @@ public class InterfazMuestraHistorial extends JFrame {
             MODEL_USUARIO_HISTORIAL.addElement(h);
         }
 
-        panelBoton.add(botonFiltrar);
         panelBoton.add(botonConfirmar);
 
         panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
@@ -86,6 +80,44 @@ public class InterfazMuestraHistorial extends JFrame {
 
         return panelPrincipal;
 
+    }
+
+    private void descargarHistorial() {
+        if (MODEL_USUARIO_HISTORIAL.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay datos para exportar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setSelectedFile(new File("historial_completo" + "_" + InterfazSeleccionHistorial.obtenerDNICliente() + ".txt"));
+
+        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+
+            String ruta = archivo.getAbsolutePath();
+            if (!ruta.endsWith(".txt")) {
+                archivo = new File(ruta + ".txt");
+            }
+
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+                bw.write("HISTORIAL CLINICO - DNI: " + InterfazSeleccionHistorial.obtenerDNICliente());
+                bw.newLine();
+                bw.write("====================================");
+                bw.newLine();
+                bw.newLine();
+
+                for (int i = 0; i < MODEL_USUARIO_HISTORIAL.size(); i++) {
+                    bw.write(MODEL_USUARIO_HISTORIAL.getElementAt(i).toString());
+                    bw.newLine();
+                }
+
+                JOptionPane.showMessageDialog(this, "Datos exportados correctamente a:\n" + archivo.getAbsolutePath(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                new InterfazGestionaCliente().setVisible(true);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error al guardar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private JPanel getjPanelBotonRetorno() {

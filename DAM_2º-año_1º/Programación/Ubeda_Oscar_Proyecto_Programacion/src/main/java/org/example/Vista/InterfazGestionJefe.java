@@ -67,7 +67,7 @@ public class InterfazGestionJefe extends JFrame {
                 new InterfazDarAltaTrabajador().setVisible(true);
             }
         });
-        
+
         JButton darBaja = crearEstiloBoton("Dar Baja");
         darBaja.addActionListener(new ActionListener() {
             @Override
