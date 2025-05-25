@@ -55,15 +55,6 @@ public class InterfazDarCitaCliente extends JFrame {
             }
         });
 
-        JButton botonFiltrar = crearEstiloBoton("Filtrar DNI");
-        botonFiltrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new InterfazFiltrarDNICliente().setVisible(true);
-                dispose();
-            }
-        });
-
         MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
         LISTA_NOMBRES_CLIENTES = new JList<>(MODEL_USUARIO_CLIENTES);
 
@@ -80,7 +71,6 @@ public class InterfazDarCitaCliente extends JFrame {
             MODEL_USUARIO_CLIENTES.addElement(c);
         }
 
-        panelBoton.add(botonFiltrar);
         panelBoton.add(botonConfirmar);
 
         panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
