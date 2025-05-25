@@ -8,8 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.Controlador.ControladorCliente.comprobarDNICliente;
-import static org.example.Controlador.ControladorCliente.editarCliente;
+import static org.example.Controlador.ControladorCliente.*;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 import static org.example.Vista.InterfazLogin.COLOR_BOTON_GRIS_CLARO;
@@ -98,22 +97,96 @@ public class InterfazEditaCliente extends JFrame {
     }
 
     public void cambiarCliente() {
-        // Ejemplo en un formulario de edición (Vista)
-        String nombre = txtNombre.getText().trim();
-        String apellidos = txtApellidos.getText().trim();
-        String direccion = txtDireccion.getText().trim();
-        Integer telefono = txtTelefono.getText().isEmpty() ? null : Integer.parseInt(txtTelefono.getText());
-
-
         String dniCliente = InterfazGestionEditaCliente.obtenerDNICliente();
-        if (ControladorCliente.editarCliente(dniCliente, nombre, apellidos, direccion, telefono)) {
-            JOptionPane.showMessageDialog(null, "Cliente editado con exito");
-            limpiarCampos();
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al editar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+
+        try {
+            Cliente clienteActual = obtenerClientePorDNI(dniCliente);
+
+            if (clienteActual == null) {
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Cliente datosModificados = new Cliente();
+            datosModificados.setDni(clienteActual.getDni());
+            datosModificados.setNombre(clienteActual.getNombre());
+            datosModificados.setApellidos(clienteActual.getApellidos());
+            datosModificados.setDireccion(clienteActual.getDireccion());
+            datosModificados.setTelefono(clienteActual.getTelefono());
+
+            String nombre = txtNombre.getText().trim();
+            String apellidos = txtApellidos.getText().trim();
+            String direccion = txtDireccion.getText().trim();
+            String telefonoTexto = txtTelefono.getText().trim();
+
+            // Validación de campos
+            boolean datosValidos = true;
+
+            // Validar nombre (solo letras y espacios)
+            if (!nombre.isEmpty()) {
+                if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                    JOptionPane.showMessageDialog(null, "Nombre incorrecto.\nDebe empezar con mayúscula y solo contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+                    datosValidos = false;
+                } else if (!nombre.equals(clienteActual.getNombre())) {
+                    datosModificados.setNombre(nombre);
+                }
+            }
+            
+            if (!apellidos.isEmpty()) {
+                if (!apellidos.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                    JOptionPane.showMessageDialog(null, "Apellido incorrecto.\nDebe empezar con mayúscula y solo contener letras (1 o 2 apellidos).", "Error", JOptionPane.ERROR_MESSAGE);
+                    datosValidos = false;
+                } else if (!apellidos.equals(clienteActual.getApellidos())) {
+                    datosModificados.setApellidos(apellidos);
+                }
+            }
+
+            if (!direccion.isEmpty() && !direccion.equals(clienteActual.getDireccion())) {
+                datosModificados.setDireccion(direccion);
+            }
+
+            if (!telefonoTexto.isEmpty()) {
+                if (!telefonoTexto.matches("\\d+")) {
+                    JOptionPane.showMessageDialog(null, "Error el teléfono solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+                    datosValidos = false;
+                } else if (telefonoTexto.length() != 9) {
+                    JOptionPane.showMessageDialog(null, "Error el teléfoo dee contener 9 digitos", "Error", JOptionPane.ERROR_MESSAGE);
+                    datosValidos = false;
+                } else {
+                    try {
+                        Integer telefono = Integer.parseInt(telefonoTexto);
+                        if (!telefono.equals(clienteActual.getTelefono())) {
+                            datosModificados.setTelefono(telefono);
+                        }
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Error teléfono invalido", "Error", JOptionPane.ERROR_MESSAGE);
+                        datosValidos = false;
+                    }
+                }
+            }
+
+            if (!datosValidos) {
+                JOptionPane.showMessageDialog(null, "Error en los datos proporcionados", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (ControladorCliente.editarCliente(
+                    datosModificados.getDni(),
+                    datosModificados.getNombre(),
+                    datosModificados.getApellidos(),
+                    datosModificados.getDireccion(),
+                    datosModificados.getTelefono())) {
+
+                JOptionPane.showMessageDialog(null, "Cliente editado con éxito");
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al editar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener datos del cliente: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 
     private void limpiarCampos() {
         txtDni.setText("");

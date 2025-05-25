@@ -152,5 +152,27 @@ public class ControladorCliente {
             return false;
         }
     }
+
+    public static Cliente obtenerClientePorDNI(String dni){//Obtengo todos los datos del cliente
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM cliente WHERE dni = ?")) {
+
+            ps.setString(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setDni(rs.getString("dni"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellidos(rs.getString("apellidos"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setTelefono(rs.getInt("telefono"));
+                return cliente;
+            }
+            return null;
+        }catch (SQLException ex){
+            return null;
+        }
+    }
 }
 

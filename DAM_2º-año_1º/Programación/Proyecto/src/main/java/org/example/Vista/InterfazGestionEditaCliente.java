@@ -19,7 +19,7 @@ public class InterfazGestionEditaCliente extends JFrame {
     private static Cliente clienteSeleccion = new Cliente();
 
     public InterfazGestionEditaCliente() {
-        this.setTitle("Dar Cita");
+        this.setTitle("Editar");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
