@@ -113,10 +113,11 @@ public class InterfazDarAltaCliente extends JFrame {
                         nuevoCliente.setTelefono(Integer.parseInt(validarTelefono));
 
                         if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
-                            JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                            limpiarCampos();
+                            JOptionPane.showMessageDialog(null, "Cliente registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            dispose();
+                            new InterfazGestionaCliente().setVisible(true);
                         } else {
-                            JOptionPane.showMessageDialog(null, "No se pudo registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "No se pudo registrar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
 

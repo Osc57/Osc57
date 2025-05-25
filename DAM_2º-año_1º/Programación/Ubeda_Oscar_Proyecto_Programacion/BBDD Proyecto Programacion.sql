@@ -48,7 +48,7 @@ CREATE TABLE historial (
 	id_tratamiento INT NOT NULL,
 	fecha_tratamiento DATETIME NOT NULL,
 	PRIMARY KEY (dni_cliente, fecha_tratamiento),
-	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni) ON DELETE CASCADE,
+	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
 	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 
 CREATE TABLE loggin (
@@ -68,7 +68,7 @@ DELIMITER ;
 
 DELIMITER //
 
--- Trigger para evitar que un DNI de trabajador se use en cliente
+/*Trigger para evitar que un DNI de trabajador se use en cliente*/
 CREATE TRIGGER evitar_trabajador_como_cliente
 BEFORE INSERT ON cliente
 FOR EACH ROW
@@ -79,7 +79,7 @@ BEGIN
     END IF;
 END//
 
--- Trigger para evitar que un DNI de cliente se use en trabajador
+/*Trigger para evitar que un DNI de cliente se use en trabajador*/
 CREATE TRIGGER evitar_cliente_como_trabajador
 BEFORE INSERT ON trabajadores
 FOR EACH ROW
@@ -90,6 +90,22 @@ BEGIN
     END IF;
 END//
 
+DELIMITER ;
+
+/*Trigger para eliminar la cita una vez sea pasada y meterla en el historial*/
+DELIMITER //
+CREATE EVENT auto_limpieza_citas
+ON SCHEDULE EVERY 10 SECOND 
+STARTS CURRENT_TIMESTAMP
+DO
+BEGIN
+    INSERT INTO historial (dni_cliente, id_tratamiento, fecha_tratamiento)
+    SELECT dni_cliente, id_tratamiento, fechaCita
+    FROM cita
+    WHERE fechaCita < NOW(); 
+
+    DELETE FROM cita WHERE fechaCita < NOW();
+END //
 DELIMITER ;
 
 /*Inserto users y sus passwords*/
@@ -153,3 +169,15 @@ INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) V
 ('88990011R', 'Patricia', 'Romero Fernandez', 'Avenida de America 90, Madrid', '687888999', '2021-08-09'),
 ('99001122S', 'Alejandro', 'Molina Garcia', 'Calle Real 123, Sevilla', '698999000', '2021-09-17'),
 ('00112233T', 'Raquel', 'Serrano Martinez', 'Paseo de la Reforma 45, Bilbao', '609000111', '2021-10-05');
+
+/*Inserto citas*/
+INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES
+('2023-11-15 10:00:00', '12345677A', 1),
+('2023-12-20 11:30:00', '12345677A', 3),
+('2023-11-16 09:15:00', '23456788B', 2),
+('2023-12-10 16:45:00', '23456788B', 1),
+('2023-11-17 14:00:00', '34567899C', 4),
+('2023-11-18 10:30:00', '45678911D', 5),
+('2023-12-15 12:00:00', '45678911D', 1),
+('2023-11-20 17:00:00', '56789011E', 3),
+('2023-12-22 09:30:00', '56789011E', 2);

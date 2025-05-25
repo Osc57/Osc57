@@ -178,7 +178,8 @@ public class InterfazEditaCliente extends JFrame {
                     datosModificados.getTelefono())) {
 
                 JOptionPane.showMessageDialog(null, "Cliente editado con éxito");
-                limpiarCampos();
+                dispose();
+                new InterfazGestionaCliente().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Error al editar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
             }
