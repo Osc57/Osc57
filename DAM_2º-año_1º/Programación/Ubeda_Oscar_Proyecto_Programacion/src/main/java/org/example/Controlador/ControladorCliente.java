@@ -94,7 +94,7 @@ public class ControladorCliente {
                 cliente.setDni(resultSet.getString("dni"));
                 cliente.setNombre(resultSet.getString("nombre"));
                 cliente.setApellidos(resultSet.getString("apellidos"));
-                ;
+
             }
 
         } catch (SQLException e) {
@@ -174,5 +174,6 @@ public class ControladorCliente {
             return null;
         }
     }
+
 }
 

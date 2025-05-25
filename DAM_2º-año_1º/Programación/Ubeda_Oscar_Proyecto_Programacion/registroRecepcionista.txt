@@ -58,3 +58,4 @@
 [2025/05/25 - 12:14:01] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
 [2025/05/25 - 12:33:08] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D
 [2025/05/25 - 12:33:38] Recepcionista: Pedro Sanz Jimenez | DNI: 56789012E
+[2025/05/25 - 14:23:51] Recepcionista: Elena Ruiz Diaz | DNI: 45678901D

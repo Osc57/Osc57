@@ -80,7 +80,8 @@ public class InterfazGestionaCliente extends JFrame {
         botonHistorialCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazSeleccionHistorial().setVisible(true);
             }
         });
 

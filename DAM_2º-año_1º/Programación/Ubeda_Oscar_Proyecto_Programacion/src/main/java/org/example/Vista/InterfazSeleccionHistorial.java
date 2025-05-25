@@ -15,9 +15,10 @@ import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
 public class InterfazSeleccionHistorial extends JFrame {
+    private static Cliente clienteSeleccion = new Cliente();
 
     public InterfazSeleccionHistorial() {
-        this.setTitle("Dar de Baja");
+        this.setTitle("Historial");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -98,19 +99,28 @@ public class InterfazSeleccionHistorial extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazModificarCliente().setVisible(true);
+                new InterfazGestionaCliente().setVisible(true);
             }
         });
         return panelBotonRetorno;
     }
 
     private void seleccionCliente() {
-        Cliente clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
+        clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
             dispose();
-            new InterfazGestionaCliente().setVisible(true);
+            new InterfazMuestraHistorial().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
+        }
+
+    }
+
+    public static String obtenerDNICliente() {
+        if (clienteSeleccion != null) {
+            return clienteSeleccion.getDni();
+        } else {
+            return "";
         }
 
     }
