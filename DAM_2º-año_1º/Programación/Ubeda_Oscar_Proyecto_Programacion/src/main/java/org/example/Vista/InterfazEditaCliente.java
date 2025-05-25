@@ -131,7 +131,7 @@ public class InterfazEditaCliente extends JFrame {
                     datosModificados.setNombre(nombre);
                 }
             }
-            
+
             if (!apellidos.isEmpty()) {
                 if (!apellidos.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
                     JOptionPane.showMessageDialog(null, "Apellido incorrecto.\nDebe empezar con mayúscula y solo contener letras (1 o 2 apellidos).", "Error", JOptionPane.ERROR_MESSAGE);
