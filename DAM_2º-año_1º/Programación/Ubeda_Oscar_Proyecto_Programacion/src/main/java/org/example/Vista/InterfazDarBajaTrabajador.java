@@ -135,9 +135,5 @@ public class InterfazDarBajaTrabajador extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazDarBajaTrabajador().setVisible(true);
-    }
 }
 

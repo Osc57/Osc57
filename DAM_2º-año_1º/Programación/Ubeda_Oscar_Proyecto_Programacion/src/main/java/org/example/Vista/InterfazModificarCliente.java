@@ -107,10 +107,4 @@ public class InterfazModificarCliente extends JFrame {
         ));
         return boton;
     }
-
-
-    public static void main(String[] args) {
-        InterfazModificarCliente gestiona = new InterfazModificarCliente();
-        gestiona.setVisible(true);
-    }
 }

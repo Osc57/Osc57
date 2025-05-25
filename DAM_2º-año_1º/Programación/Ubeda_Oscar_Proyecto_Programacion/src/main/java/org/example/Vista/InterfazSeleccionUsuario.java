@@ -103,11 +103,6 @@ public class InterfazSeleccionUsuario extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        InterfazSeleccionUsuario login = new InterfazSeleccionUsuario();
-        login.setVisible(true);
-    }
-
 }
 
 

@@ -93,10 +93,4 @@ public class InterfazGestionJefe extends JFrame {
         ));
         return boton;
     }
-
-
-    public static void main(String[] args) {
-        InterfazGestionJefe interfazJefe = new InterfazGestionJefe();
-        interfazJefe.setVisible(true);
-    }
 }

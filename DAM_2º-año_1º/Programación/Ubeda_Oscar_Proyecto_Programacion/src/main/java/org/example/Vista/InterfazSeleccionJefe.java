@@ -108,10 +108,5 @@ public class InterfazSeleccionJefe extends JFrame {
             return "";
         }
     }
-
-    public static void main(String[] args) {
-        InterfazSeleccionJefe login = new InterfazSeleccionJefe();
-        login.setVisible(true);
-    }
 }
 

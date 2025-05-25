@@ -177,9 +177,5 @@ public class InterfazFiltrarDNITrabajador extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazFiltrarDNITrabajador().setVisible(true);
-    }
 }
 

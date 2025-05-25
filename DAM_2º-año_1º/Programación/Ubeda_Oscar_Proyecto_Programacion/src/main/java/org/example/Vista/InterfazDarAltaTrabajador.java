@@ -211,9 +211,5 @@ public class InterfazDarAltaTrabajador extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazDarAltaTrabajador().setVisible(true);
-    }
 }
 

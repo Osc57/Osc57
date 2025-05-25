@@ -124,12 +124,6 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
             }
         });
     }
-
-
-    public static void main(String[] args) {
-        InterfazLogin login1 = new InterfazLogin();
-        login1.setVisible(true);
-    }
 }
 
 

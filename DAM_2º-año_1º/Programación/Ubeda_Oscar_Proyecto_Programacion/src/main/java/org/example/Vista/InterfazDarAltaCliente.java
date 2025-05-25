@@ -194,8 +194,4 @@ public class InterfazDarAltaCliente extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazDarAltaCliente().setVisible(true);
-    }
 }

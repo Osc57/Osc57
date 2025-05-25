@@ -174,8 +174,4 @@ public class InterfazFiltrarDNICliente extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazFiltrarDNICliente().setVisible(true);
-    }
 }

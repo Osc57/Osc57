@@ -247,8 +247,4 @@ public class InterfazGestionCita extends JFrame {
 
         return label;
     }
-
-    public static void main(String[] args) {
-        new InterfazGestionCita().setVisible(true);
-    }
 }

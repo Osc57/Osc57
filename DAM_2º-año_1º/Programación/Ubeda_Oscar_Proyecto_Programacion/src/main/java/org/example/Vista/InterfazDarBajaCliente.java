@@ -132,8 +132,4 @@ public class InterfazDarBajaCliente extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazDarBajaCliente().setVisible(true);
-    }
 }

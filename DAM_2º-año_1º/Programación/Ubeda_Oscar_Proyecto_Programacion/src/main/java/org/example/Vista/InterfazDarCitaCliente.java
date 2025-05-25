@@ -141,9 +141,5 @@ public class InterfazDarCitaCliente extends JFrame {
         ));
         return boton;
     }
-
-    public static void main(String[] args) {
-        new InterfazDarCitaCliente().setVisible(true);
-    }
 }
 

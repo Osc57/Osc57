@@ -140,10 +140,4 @@ public class InterfazGestionEditaCliente extends JFrame {
         ));
         return boton;
     }
-
-
-    public static void main(String[] args) {
-        new InterfazGestionEditaCliente().setVisible(true);
-    }
-
 }
