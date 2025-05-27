@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
-import static org.example.Controlador.ControladorCliente.darCitaClientes;
+import static org.example.Controlador.ControladorCita.darCitaClientes;
 import static org.example.Controlador.ControladorTratamientos.cargarTratamientos;
 import static org.example.Vista.InterfazLogin.*;
 

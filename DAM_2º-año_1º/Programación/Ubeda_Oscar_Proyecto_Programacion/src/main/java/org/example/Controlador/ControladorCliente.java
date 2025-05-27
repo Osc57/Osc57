@@ -119,20 +119,7 @@ public class ControladorCliente {
         }
     }
 
-    public static boolean darCitaClientes(String fecha, String dni, int id) {
-        try (Connection connection = connect();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES (?, ?, ?)")) {
 
-            ps.setString(1, fecha);
-            ps.setString(2, dni);
-            ps.setInt(3, id);
-            int filasAfectadas = ps.executeUpdate();
-            return filasAfectadas > 0;
-
-        } catch (SQLException ex) {
-            return false;
-        }
-    }
 
     public static boolean editarCliente(String dni, String nombre, String apellidos, String direccion, Integer telefono) {
 
