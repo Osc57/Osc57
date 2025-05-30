@@ -62,3 +62,4 @@
 [2025/05/25 - 19:28:11] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/26 - 20:13:50] Jefe: Carlos Gomez Martinez | DNI: 12345678A
 [2025/05/26 - 20:14:58] Jefe: Jdfs Ldfs | DNI: 12345678P
+[2025/05/27 - 16:07:13] Jefe: Jdfs Ldfs | DNI: 12345678P
