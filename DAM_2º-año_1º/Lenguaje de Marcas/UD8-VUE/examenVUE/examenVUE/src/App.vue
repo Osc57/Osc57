@@ -77,9 +77,7 @@ const tareas = ref([
 
       <div class="text-center">
         <button @click="resetear" class="btn btn-warning mx-2">Resetear</button>
-        <button @click="anadirEquipos" :disabled="bloquearBotonAnadir" class="btn btn-success">
-          Terminar Partido
-        </button>
+        <button @click="anadirEquipos" :disabled="bloquearBotonAnadir" class="btn btn-success">Terminar Partido</button>
       </div>
     </div>
 
