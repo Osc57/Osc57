@@ -1,0 +1,7 @@
+const tareas = ref([
+  { id: 1, texto: 'Preparar actividad de Vue', completada: false },
+  { id: 2, texto: 'Revisar el examen de Lenguaje de Marcas', completada: false },
+  { id: 3, texto: 'Corregir prácticas de Bootstrap', completada: true },
+  { id: 4, texto: 'Subir notas al aula virtual', completada: false },
+  { id: 5, texto: 'Enviar recordatorio a los alumnos', completada: true }
+])

@@ -1,0 +1,22 @@
+const servicios = [
+  {
+    imagen_url: 'https://picsum.photos/300/200',
+    titulo: 'Diseño Web',
+    descripcion: 'Creamos sitios web modernos y adaptativos.',
+    texto_boton: 'Solicitar'
+  },
+  {
+    imagen_url: 'https://picsum.photos/300/200',
+    titulo: 'Mantenimiento',
+  },
+  {
+    imagen_url: 'https://picsum.photos/300/200',
+    titulo: 'Posicionamiento SEO',
+    descripcion: 'Mejoramos la visibilidad en buscadores.',
+    texto_boton: 'Más info'
+  },
+  {
+    imagen_url: 'https://picsum.photos/300/200',
+    titulo: 'Consultoría',
+  }
+]
