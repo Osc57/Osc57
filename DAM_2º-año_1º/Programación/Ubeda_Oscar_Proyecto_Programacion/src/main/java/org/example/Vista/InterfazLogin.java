@@ -1,5 +1,7 @@
 package org.example.Vista;
 
+import org.example.Modelo.Trabajador;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -7,10 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.example.Controlador.ControladorJefe.comprobarLogginAdmin;
 import static org.example.Controlador.ControladorRecepcionista.comprobarLogginRecepcionista;
 import static org.example.Controlador.ControladorRecepcionista.updateRecepcionista;
+import static org.example.Controlador.ControladorTrabajador.resgistroTrabajador;
 
 public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
     protected static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
@@ -91,16 +99,23 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                 String pass = new String(jPasswordField.getPassword());
                 String user = jTextField.getText();
 
-                //Verifico el login de los usuarios que son recepcionistas y de los admins/jefe
-                if (user.equalsIgnoreCase("usuario") && comprobarLogginRecepcionista(user,pass)){
+                if (user.equalsIgnoreCase("admin")) {
+                    if (comprobarLogginAdmin(user, pass)) {
+                        JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                        dispose();
+                        new InterfazSeleccionJefe().setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "⚠ Contraseña Incorrecta ⚠");
+                    }
+                } else if (comprobarLogginRecepcionista(user, pass)) {
+                    Trabajador trabajador = resgistroTrabajador(user);
+
+                    controlTrabajadores(trabajador.getDni(),trabajador.getNombre(),trabajador.getApellidos());
+
                     JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
                     dispose();
-                    new InterfazSeleccionUsuario().setVisible(true);
-                } else if (user.equalsIgnoreCase("admin") && comprobarLogginAdmin(user,pass)) {
-                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-                    dispose();
-                    new InterfazSeleccionJefe().setVisible(true);
-                }else {
+                    new InterfazGestionaCliente().setVisible(true);
+                } else {
                     JOptionPane.showMessageDialog(null, "⚠ Usuario o Contraseña Incorrectos ⚠");
                 }
 
@@ -123,6 +138,18 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                 }
             }
         });
+    }
+
+    private void controlTrabajadores(String dni, String nombre, String apellidos) {
+        DateTimeFormatter fechaLoggin = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
+
+        try (BufferedWriter registro = new BufferedWriter(new FileWriter("registroTrabajadores.txt", true))) {
+            String linea = "[" + LocalDateTime.now().format(fechaLoggin) + "] " + "Trabajador: " + nombre + " " + apellidos + " | " + "DNI: " + dni + "\n";
+
+            registro.write(linea);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

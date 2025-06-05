@@ -68,6 +68,18 @@ DELIMITER ;
 
 DELIMITER //
 
+/*Trigger para que cuando sse inserte un trabajador se le cree un usuario auomaticamente con su dni*/
+DELIMITER //
+CREATE TRIGGER insertar_trabajadores_ususario
+AFTER INSERT ON trabajadores
+FOR EACH ROW
+BEGIN
+    INSERT INTO loggin (usuario,contrasena) VALUES (NEW.dni, '1234');
+END//
+DELIMITER ;
+
+DELIMITER //
+
 /*Trigger para evitar que un DNI de trabajador se use en cliente*/
 CREATE TRIGGER evitar_trabajador_como_cliente
 BEFORE INSERT ON cliente

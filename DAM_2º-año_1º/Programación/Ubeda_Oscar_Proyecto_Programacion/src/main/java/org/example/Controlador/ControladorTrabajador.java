@@ -46,7 +46,7 @@ public class ControladorTrabajador {
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni != ?;")) {
 
-            preparedStatement.setString(1,dni);
+            preparedStatement.setString(1, dni);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -94,5 +94,27 @@ public class ControladorTrabajador {
             JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+    }
+
+    public static Trabajador resgistroTrabajador(String dni) {
+        Trabajador trabajador = null;
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni=?;")) {
+
+            preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                trabajador = new Trabajador(
+                        resultSet.getString("dni"),
+                        resultSet.getString("nombre"),
+                        resultSet.getString("apellidos")
+                );
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return trabajador;
     }
 }
