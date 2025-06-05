@@ -91,7 +91,7 @@ public class InterfazDarCitaCliente extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazGestionaCliente().setVisible(true);
+                new InterfazGestionCita().setVisible(true);
                 dispose();
             }
         });

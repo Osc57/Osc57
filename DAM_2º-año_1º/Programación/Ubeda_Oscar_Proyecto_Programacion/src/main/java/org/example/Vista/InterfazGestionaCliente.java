@@ -33,9 +33,8 @@ public class InterfazGestionaCliente extends JFrame {
 
     private JPanel getjPanlepanelBotonesGestion() {
         JPanel panelBotonesGestion = new JPanel(new GridLayout(1, 3, 15, 15));
-        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 60, 50, 60));
+        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 60, 90, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
-
 
         JButton botonGestiona = crearEstiloBoton("<html>Gestiona <br> Cliente</html>");
         botonGestiona.addActionListener(new ActionListener() {
@@ -51,7 +50,7 @@ public class InterfazGestionaCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazGestionCita().setVisible(true);
+                new InterfazGestionCita().setVisible(true);//dar Cita, modificar Cita, eliminar Cita
             }
         });
 
