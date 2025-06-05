@@ -26,33 +26,10 @@ public class InterfazGestionJefe extends JFrame {
         titulo.setFont(FUENTE_TITULO_2);
 
         JPanel panelBotonesCentro = getjPanelBotonesCentro();
-        JPanel panelBotonRetorno = getjPanelBotonRetorno();
-
 
         this.add(titulo, BorderLayout.NORTH);
         this.add(panelBotonesCentro, BorderLayout.CENTER);
-        this.add(panelBotonRetorno, BorderLayout.SOUTH);
-    }
 
-    private JPanel getjPanelBotonRetorno() {
-        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
-        JButton botonRetorno = new JButton("←");
-        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 60, 20, 320));
-
-        botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
-        botonRetorno.setFont(FUENTE_EMOJI);
-
-        botonRetorno.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new InterfazSeleccionJefe().setVisible(true);
-                dispose();
-
-            }
-        });
-        return panelBotonRetorno;
     }
 
     private JPanel getjPanelBotonesCentro() {

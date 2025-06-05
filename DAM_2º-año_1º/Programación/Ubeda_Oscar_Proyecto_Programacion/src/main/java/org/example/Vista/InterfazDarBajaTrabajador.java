@@ -71,11 +71,11 @@ public class InterfazDarBajaTrabajador extends JFrame {
         JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_TRABAJADORES);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
-        String dniJefe = InterfazSeleccionJefe.obtenerDNIJefe();//obtenerDNIJefe esta en SeleccionJefe
-        ArrayList<Trabajador> trabajadores = cargarTrabajadores(dniJefe);//Aqui hago que el jefe que haya seleccionado su usuario no salga a la hora de cuando vaya a seleccionar un usuario para eliminar
+        ArrayList<Trabajador> trabajadores = cargarTrabajadores();
         for (Trabajador t : trabajadores) {
             MODEL_USUARIO_TRABAJADORES.addElement(t);
         }
+        //MIRAR AQUI
 
         panelBoton.add(botonFiltrar);
         panelBoton.add(botonConfirmar);
@@ -118,7 +118,7 @@ public class InterfazDarBajaTrabajador extends JFrame {
                 new InterfazGestionJefe().setVisible(true);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
+            JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
         }
 
     }

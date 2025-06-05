@@ -103,13 +103,13 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
                     if (comprobarLogginAdmin(user, pass)) {
                         JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
                         dispose();
-                        new InterfazSeleccionJefe().setVisible(true);
+                        new InterfazGestionJefe().setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "⚠ Contraseña Incorrecta ⚠");
                     }
                 } else if (comprobarLogginRecepcionista(user, pass)) {
                     Trabajador trabajador = resgistroTrabajador(user);
-
+                    updateRecepcionista(trabajador.getDni());
                     controlTrabajadores(trabajador.getDni(),trabajador.getNombre(),trabajador.getApellidos());
 
                     JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");

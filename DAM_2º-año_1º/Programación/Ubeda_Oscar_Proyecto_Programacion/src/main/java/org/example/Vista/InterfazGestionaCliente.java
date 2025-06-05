@@ -36,21 +36,22 @@ public class InterfazGestionaCliente extends JFrame {
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 60, 50, 60));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
+
         JButton botonGestiona = crearEstiloBoton("<html>Gestiona <br> Cliente</html>");
         botonGestiona.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazModificarCliente().setVisible(true);
+                new InterfazModificarCliente().setVisible(true);//interfazModificarCliente tiene dar alta, baja y editar al cliente
             }
         });
 
-        JButton botonDarCitaCliente = crearEstiloBoton("Dar Cita");
+        JButton botonDarCitaCliente = crearEstiloBoton("<html>Gestiona <br> Cita</html>");
         botonDarCitaCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazDarCitaCliente().setVisible(true);
+                new InterfazGestionCita().setVisible(true);
             }
         });
 
@@ -80,6 +81,10 @@ public class InterfazGestionaCliente extends JFrame {
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
         return boton;
+    }
+
+    public static void main(String[] args) {
+        new InterfazGestionaCliente().setVisible(true);
     }
 }
 

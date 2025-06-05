@@ -2,8 +2,10 @@ package org.example.Vista;
 
 import org.example.Controlador.ControladorJefe;
 import org.example.Controlador.ControladorRecepcionista;
+import org.example.Controlador.ControladorTrabajador;
 import org.example.Modelo.Jefe;
 import org.example.Modelo.Recepcionista;
+import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +20,6 @@ public class InterfazDarAltaTrabajador extends JFrame {
     private JTextField txtNombre = new JTextField();
     private JTextField txtApellidos = new JTextField();
     private JTextField txtTelefono = new JTextField();
-    private JCheckBox chbJefe = new JCheckBox();
 
     public InterfazDarAltaTrabajador() {
         this.setTitle("Formulario");
@@ -51,7 +52,6 @@ public class InterfazDarAltaTrabajador extends JFrame {
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
         panelLabels.add(crearLabels("Teléfono: "));
-        panelLabels.add(crearLabels("¿Es Jefe?: "));
 
         JPanel panelFields = new JPanel(new GridLayout(5, 1, 5, 5));
 
@@ -64,7 +64,6 @@ public class InterfazDarAltaTrabajador extends JFrame {
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
         panelFields.add(txtTelefono);
-        panelFields.add(chbJefe);
 
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 70, 15));
@@ -101,42 +100,21 @@ public class InterfazDarAltaTrabajador extends JFrame {
 
                     } else {
 
-                        if (chbJefe.isSelected()) {
-                            Jefe nevoJefe = new Jefe();
-                            nevoJefe.setDni(txtDni.getText());
-                            nevoJefe.setNombre(txtNombre.getText());
-                            nevoJefe.setApellidos(txtApellidos.getText());
-                            nevoJefe.setTelefono(Integer.parseInt(validarTelefono));
+                        Trabajador nuevoTrabajador = new Trabajador();
+                        nuevoTrabajador.setDni(txtDni.getText());
+                        nuevoTrabajador.setNombre(txtNombre.getText());
+                        nuevoTrabajador.setApellidos(txtApellidos.getText());
+                        nuevoTrabajador.setTelefono(Integer.parseInt(validarTelefono));
 
-                            if (new ControladorJefe().enviarDatosJefe(nevoJefe)) {
-                                JOptionPane.showMessageDialog(null, "Jefe registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                                limpiarCampos();
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No se pudo registrar el jefe", "Error", JOptionPane.ERROR_MESSAGE);
-                            }
 
+                        if (new ControladorTrabajador().enviarDatosTrabajador(nuevoTrabajador)) {
+                            JOptionPane.showMessageDialog(null, "Trabajador registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            dispose();
+                            new InterfazGestionJefe().setVisible(true);
                         } else {
-                            Recepcionista nuevoTrabajador = new Recepcionista();
-                            nuevoTrabajador.setDni(txtDni.getText());
-                            nuevoTrabajador.setNombre(txtNombre.getText());
-                            nuevoTrabajador.setApellidos(txtApellidos.getText());
-                            nuevoTrabajador.setTelefono(Integer.parseInt(validarTelefono));
-
-                            String dniJefe = InterfazSeleccionJefe.obtenerDNIJefe();
-                            if (dniJefe.isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "No se hay un jefe seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
-                                return;
-                            }
-
-                            if (new ControladorRecepcionista().enviarDatosRecepcionista(nuevoTrabajador, dniJefe)) {
-                                JOptionPane.showMessageDialog(null, "Trabajador registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                                dispose();
-                                new InterfazGestionJefe().setVisible(true);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No se pudo registrar el trabajador", "Error", JOptionPane.ERROR_MESSAGE);
-                            }
-
+                            JOptionPane.showMessageDialog(null, "No se pudo registrar el trabajador", "Error", JOptionPane.ERROR_MESSAGE);
                         }
+
                     }
 
                 } catch (NumberFormatException ex) {
@@ -159,7 +137,6 @@ public class InterfazDarAltaTrabajador extends JFrame {
         txtNombre.setText("");
         txtApellidos.setText("");
         txtTelefono.setText("");
-        chbJefe.setSelected(false);
     }
 
     private JPanel getjPanelBotonRetorno() {

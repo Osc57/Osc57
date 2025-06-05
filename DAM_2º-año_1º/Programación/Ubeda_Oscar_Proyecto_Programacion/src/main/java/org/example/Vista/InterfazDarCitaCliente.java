@@ -1,7 +1,6 @@
 package org.example.Vista;
 
 import org.example.Modelo.Cliente;
-import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCliente.cargarClientes;
-import static org.example.Controlador.ControladorCliente.eliminarCliente;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 
@@ -28,7 +26,7 @@ public class InterfazDarCitaCliente extends JFrame {
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione cliente o Filtre el DNI");
+        JLabel introducirCliente = new JLabel("•Seleccione cliente");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -104,7 +102,7 @@ public class InterfazDarCitaCliente extends JFrame {
         clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
             dispose();
-            new InterfazGestionCita().setVisible(true);
+            new InterfazSeleccionCita().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
 

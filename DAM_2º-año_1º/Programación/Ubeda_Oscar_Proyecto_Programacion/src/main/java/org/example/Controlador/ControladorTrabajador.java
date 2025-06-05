@@ -1,5 +1,6 @@
 package org.example.Controlador;
 
+import org.example.Modelo.Recepcionista;
 import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
@@ -39,14 +40,12 @@ public class ControladorTrabajador {
         return trabajador;
     }
 
-    public static ArrayList<Trabajador> cargarTrabajadores(String dni) {
+    public static ArrayList<Trabajador> cargarTrabajadores() {
 
         ArrayList<Trabajador> trabajadores = new ArrayList<>();
 
         try (Connection connection = connect();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni != ?;")) {
-
-            preparedStatement.setString(1, dni);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores;")) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -116,5 +115,25 @@ public class ControladorTrabajador {
             JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return trabajador;
+    }
+
+    public boolean enviarDatosTrabajador(Trabajador recepcionista) {
+
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES (?, ?, ?, ?, ?)")) {
+
+            ps.setString(1, recepcionista.getDni());
+            ps.setString(2, recepcionista.getNombre());
+            ps.setString(3, recepcionista.getApellidos());
+            ps.setInt(4, recepcionista.getTelefono());
+
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
     }
 }
