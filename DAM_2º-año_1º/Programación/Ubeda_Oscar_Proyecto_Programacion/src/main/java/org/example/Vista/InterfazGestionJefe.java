@@ -34,7 +34,7 @@ public class InterfazGestionJefe extends JFrame {
 
     private JPanel getjPanelBotonesCentro() {
         JPanel panelBotonesCentro = new JPanel(new GridLayout(1, 3, 20, 0));
-        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 60, 40, 60));
+        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(20, 40, 80, 40));
 
         JButton darAlta = crearEstiloBoton("Dar Alta");
         darAlta.addActionListener(new ActionListener() {
@@ -44,6 +44,8 @@ public class InterfazGestionJefe extends JFrame {
                 new InterfazDarAltaTrabajador().setVisible(true);
             }
         });
+
+        JButton editarTrabajador = crearEstiloBoton("<html>Editar <br> Trabajador </html>");
 
         JButton darBaja = crearEstiloBoton("Dar Baja");
         darBaja.addActionListener(new ActionListener() {
@@ -55,6 +57,7 @@ public class InterfazGestionJefe extends JFrame {
         });
 
         panelBotonesCentro.add(darAlta);
+        panelBotonesCentro.add(editarTrabajador);
         panelBotonesCentro.add(darBaja);
         return panelBotonesCentro;
     }
@@ -69,5 +72,9 @@ public class InterfazGestionJefe extends JFrame {
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
         return boton;
+    }
+
+    public static void main(String[] args) {
+        new InterfazGestionJefe().setVisible(true);
     }
 }

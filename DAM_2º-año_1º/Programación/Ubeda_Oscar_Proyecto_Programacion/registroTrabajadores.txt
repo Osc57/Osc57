@@ -1,3 +1,4 @@
 [2025/06/05 - 16:24:55] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
 [2025/06/05 - 16:55:00] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
 [2025/06/05 - 17:09:28] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
+[2025/06/05 - 19:01:36] Trabajador: Carlos Gomez Martinez | DNI: 12345678A

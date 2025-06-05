@@ -46,14 +46,14 @@ public class InterfazDarAltaTrabajador extends JFrame {
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 10));
 
         JPanel panelLabels = new JPanel();
-        panelLabels.setLayout(new GridLayout(5, 1, 10, 5));
+        panelLabels.setLayout(new GridLayout(4, 1, 10, 5));
 
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
         panelLabels.add(crearLabels("Teléfono: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(5, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(4, 1, 5, 5));
 
         txtDni = crearFields();
         txtNombre = crearFields();
@@ -187,6 +187,10 @@ public class InterfazDarAltaTrabajador extends JFrame {
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
         return boton;
+    }
+
+    public static void main(String[] args) {
+        new InterfazDarAltaTrabajador().setVisible(true);
     }
 }
 
