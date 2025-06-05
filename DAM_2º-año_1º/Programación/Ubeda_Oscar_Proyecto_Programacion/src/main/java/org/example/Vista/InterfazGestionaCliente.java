@@ -59,7 +59,7 @@ public class InterfazGestionaCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new InterfazSeleccionHistorial().setVisible(true);
+                new InterfazSeleccionHistorial().setVisible(true);//Mostrar Historial, eliminar historial
             }
         });
 

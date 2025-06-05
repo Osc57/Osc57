@@ -68,7 +68,7 @@ public class InterfazEditaCliente extends JFrame {
         panelFields.add(txtDireccion);
         panelFields.add(txtTelefono);
 
-        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 45, 15));
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 55, 15));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(0, 5, 15, 0));
 
         JButton btnEliminar = crearEstiloBoton("Borrar");
@@ -245,6 +245,10 @@ public class InterfazEditaCliente extends JFrame {
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
         return boton;
+    }
+
+    public static void main(String[] args) {
+        new InterfazEditaCliente().setVisible(true);
     }
 }
 
