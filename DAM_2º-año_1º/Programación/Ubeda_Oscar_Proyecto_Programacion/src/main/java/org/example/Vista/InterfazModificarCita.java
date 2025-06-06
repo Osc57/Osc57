@@ -66,8 +66,12 @@ public class InterfazModificarCita extends JFrame {
 
         String dniCliente = InterfazSeleccionModificarCita.obtenerDNICliente();
         ArrayList<Cita> citas = mostrarCitaCliente(dniCliente);
-        for (Cita c : citas) {
-            MODEL_USUARIO_CITAS.addElement(c);
+        if (citas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Este cliente no tiene citas", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            for (Cita c : citas) {
+                MODEL_USUARIO_CITAS.addElement(c);
+            }
         }
 
         panelBoton.add(botonConfirmar);
@@ -92,7 +96,7 @@ public class InterfazModificarCita extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazGestionCita().setVisible(true);
+                new InterfazSeleccionModificarCita().setVisible(true);
                 dispose();
             }
         });
