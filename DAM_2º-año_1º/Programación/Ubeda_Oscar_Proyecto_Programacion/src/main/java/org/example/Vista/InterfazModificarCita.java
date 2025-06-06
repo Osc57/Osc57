@@ -10,8 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorCita.mostrarCitaCliente;
-import static org.example.Controlador.ControladorCliente.cargarClientes;
-import static org.example.Vista.InterfazDarBajaCliente.*;
+import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.FUENTE_EMOJI;
 
@@ -19,6 +18,7 @@ public class InterfazModificarCita extends JFrame {
 
     protected static JList<Cita> LISTA_NOMBRES_CITAS;
     protected static DefaultListModel<Cita> MODEL_USUARIO_CITAS;
+    private Cita citaSeleccionada = new Cita();
 
     public InterfazModificarCita() {
         this.setTitle("Dar Cita");
@@ -49,7 +49,7 @@ public class InterfazModificarCita extends JFrame {
         botonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                seleccionarCita();
             }
         });
 
@@ -114,6 +114,16 @@ public class InterfazModificarCita extends JFrame {
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
         return boton;
+    }
+
+    public void seleccionarCita(){
+        citaSeleccionada = LISTA_NOMBRES_CITAS.getSelectedValue();
+        if (citaSeleccionada != null) {
+            dispose();
+            new InterfazMuestraHistorial().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una cita");
+        }
     }
 }
 
