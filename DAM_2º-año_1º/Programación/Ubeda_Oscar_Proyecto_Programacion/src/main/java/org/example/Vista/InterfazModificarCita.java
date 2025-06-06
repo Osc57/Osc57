@@ -27,7 +27,7 @@ public class InterfazModificarCita extends JFrame {
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione cliente");
+        JLabel introducirCliente = new JLabel("•Seleccione cita para cambiar");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
