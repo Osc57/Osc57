@@ -61,7 +61,8 @@ public class InterfazGestionCita extends JFrame {
         botonEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazSeleccionModificarCita().setVisible(true);
             }
         });
 

@@ -1,17 +1,21 @@
 package org.example.Modelo;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import static org.example.Controlador.ControladorHistorial.obtenerNombreTratamiento;
 
 public class Cita {
     private int id;
-    private String fechaCita;
+    private LocalDateTime fechaCita;
     private String dniCliente;
     private int idTratamiento;
 
     public Cita() {
     }
 
-    public Cita(int id, String fechaCita, String dniCliente, int idTratamiento) {
+    public Cita(int id, LocalDateTime fechaCita, String dniCliente, int idTratamiento) {
         this.id = id;
         this.fechaCita = fechaCita;
         this.dniCliente = dniCliente;
@@ -26,11 +30,11 @@ public class Cita {
         this.id = id;
     }
 
-    public String getFechaCita() {
+    public LocalDateTime getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(String fechaCita) {
+    public void setFechaCita(LocalDateTime fechaCita) {
         this.fechaCita = fechaCita;
     }
 
@@ -42,17 +46,20 @@ public class Cita {
         this.dniCliente = dniCliente;
     }
 
-    public int getIdTratamineto() {
+    public int getIdTratamiento() {
         return idTratamiento;
     }
 
-    public void setIdTratamineto(int idTratamiento) {
+    public void setIdTratamiento(int idTratamiento) {
         this.idTratamiento = idTratamiento;
     }
 
     @Override
     public String toString() {
         String nombreTratamiento = obtenerNombreTratamiento(this.idTratamiento);
-        return dniCliente + " - "  + nombreTratamiento + fechaCita;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        String fechaFormateada = fechaCita.format(formatter);
+
+        return dniCliente + " - " + nombreTratamiento + " - " + fechaFormateada;
     }
 }
