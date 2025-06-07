@@ -8,3 +8,8 @@
 [2025/06/06 - 11:22:09] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
 [2025/06/06 - 11:58:35] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
 [2025/06/07 - 19:54:22] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
+[2025/06/08 - 00:05:54] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
+[2025/06/08 - 00:07:10] Trabajador: Carlos Gomez Martinez | DNI: 12345678A
+[2025/06/08 - 00:10:05] Trabajador: Pedro Sanz Jimenez | DNI: 56789012E
+[2025/06/08 - 00:16:41] Trabajador: Pedro Sanz Jimenez | DNI: 56789012E
+[2025/06/08 - 00:17:57] Trabajador: Pedro Sanz Jimenez | DNI: 56789012E
