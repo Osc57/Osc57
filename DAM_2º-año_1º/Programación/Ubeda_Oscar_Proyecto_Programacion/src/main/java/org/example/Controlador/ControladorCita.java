@@ -6,6 +6,7 @@ import org.example.Modelo.Trabajador;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import static org.example.Controlador.Conexion.connect;
 
@@ -26,7 +27,7 @@ public class ControladorCita {
         }
     }
 
-    public static ArrayList<Cita> mostrarCitaCliente (String dni){
+    public static ArrayList<Cita> mostrarCitaCliente(String dni) {
         ArrayList<Cita> listaCitas = new ArrayList<>();
 
         try (Connection connection = connect();
@@ -51,4 +52,52 @@ public class ControladorCita {
         }
         return listaCitas;
     }
+
+    public static boolean actualizarCita(Cita cambiar) {
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("UPDATE cita SET fechaCita = ?, dni_cliente = ?, id_tratamiento = ? WHERE id = ?")) {
+
+            ps.setTimestamp(1, Timestamp.valueOf(cambiar.getFechaCita()));
+            ps.setString(2, cambiar.getDniCliente());
+            ps.setInt(3, cambiar.getIdTratamiento());
+            ps.setInt(4, cambiar.getId());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al actualizar la cita", e);
+        }
+    }
+
+    public static boolean citaDuplicada(Cita cita) {
+        try (Connection con = connect();
+             PreparedStatement ps = con.prepareStatement(
+                     "SELECT id FROM cita WHERE fechaCita = ? AND id != ?")) {
+
+            ps.setTimestamp(1, Timestamp.valueOf(cita.getFechaCita()));
+            ps.setInt(2, cita.getId()); // Si es nueva cita (id=0), no excluirá nada
+
+            return ps.executeQuery().next(); // true si existe duplicado
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean eliminarCita(Cita cita) {
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("DELETE FROM cita WHERE id = ?")) {
+
+            ps.setInt(1, cita.getId()); // Obtenemos el ID directamente del objeto
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar la cita con ID: " + cita.getId(), e);
+        }
+    }
+
+
+
+
 }

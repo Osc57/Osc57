@@ -18,10 +18,10 @@ public class InterfazModificarCita extends JFrame {
 
     protected static JList<Cita> LISTA_NOMBRES_CITAS;
     protected static DefaultListModel<Cita> MODEL_USUARIO_CITAS;
-    private Cita citaSeleccionada = new Cita();
+    private static Cita citaSeleccionada = new Cita();
 
     public InterfazModificarCita() {
-        this.setTitle("Dar Cita");
+        this.setTitle("Modificar Cita");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -120,9 +120,25 @@ public class InterfazModificarCita extends JFrame {
         citaSeleccionada = LISTA_NOMBRES_CITAS.getSelectedValue();
         if (citaSeleccionada != null) {
             dispose();
-            new InterfazMuestraHistorial().setVisible(true);
+            new InterfazCambiarCitaDada().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona una cita");
+        }
+    }
+
+    public static int obtenerIDcita() {//Usar este metodo para InterfazModificarCita
+        if (citaSeleccionada != null) {
+            return citaSeleccionada.getId();
+        } else {
+            return 0;
+        }
+    }
+
+    public static String obtenerDNIcita() {//Usar este metodo para InterfazModificarCita
+        if (citaSeleccionada != null) {
+            return citaSeleccionada.getDniCliente();
+        } else {
+            return "";
         }
     }
 }

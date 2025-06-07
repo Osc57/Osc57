@@ -4,27 +4,30 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JMonthChooser;
 import com.toedter.calendar.JYearChooser;
+import org.example.Controlador.ControladorCita;
+import org.example.Modelo.Cita;
 import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
-import static org.example.Controlador.ControladorCita.darCitaClientes;
+import static org.example.Controlador.ControladorCita.*;
 import static org.example.Controlador.ControladorTratamientos.cargarTratamientos;
 import static org.example.Vista.InterfazLogin.*;
 
-public class InterfazSeleccionCita extends JFrame {
+public class InterfazCambiarCitaDada extends JFrame {
 
     private final Color COLOR_F = new Color(50, 50, 50);
 
-    public InterfazSeleccionCita() {
-        this.setTitle("Dar Cita");
+    public InterfazCambiarCitaDada() {
+        this.setTitle("Modificar Cita");
         this.setSize(490, 500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -131,49 +134,63 @@ public class InterfazSeleccionCita extends JFrame {
     }
 
     private void confirmarCita(JCalendar calendar, JComboBox<String> horas, JComboBox<Tratamiento> tratamiento) {
-
+        // Validaciones iniciales
         if (tratamiento.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione un tratamiento", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         } else if (horas.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una hora", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            // Convertir la fecha seleccionada (Date → LocalDate)
-            LocalDate fechaSeleccionada = calendar.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-            // Obtener la fecha actual (sin hora)
-            LocalDate fechaActual = LocalDate.now();
-
-            // Validar que la cita no sea en un día anterior al actual
-            if (fechaSeleccionada.isBefore(fechaActual)) {
-                JOptionPane.showMessageDialog(null, "No se pueden asignar citas en días anteriores al actual.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Formatear fecha y hora para la base de datos (yyyy-MM-dd HH:mm:ss)
-            String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
-            String horaSeleccionada = (String) horas.getSelectedItem();
-            String fechaHora = fechaFormateada + " " + horaSeleccionada + ":00";//Esto lo hago por el formato del date en la BBDD
-
-            // Obtener datos del cliente y tratamiento
-            String dniCliente = InterfazDarCitaCliente.obtenerDNICliente();
-            Tratamiento tratamientoSeleccionado = (Tratamiento) tratamiento.getSelectedItem();
-            int idTratamiento = tratamientoSeleccionado.getId();
-
-            if (dniCliente != null) {
-                // Intentar registrar la cita
-                if (darCitaClientes(fechaHora, dniCliente, idTratamiento)) {
-                    JOptionPane.showMessageDialog(null, "Cita asignada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
-                    new InterfazGestionCita().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Hora ocupada: " + fechaHora + ". Por favor, elija otra hora.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No se ha seleccionado un cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
 
+        // Validación de fecha
+        LocalDate fechaSeleccionada = calendar.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaActual = LocalDate.now();
+        if (fechaSeleccionada.isBefore(fechaActual)) {
+            JOptionPane.showMessageDialog(null, "No se pueden asignar citas en días anteriores al actual.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        // Formateo de fecha y hora
+        String fechaFormateada = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());
+        String horaSeleccionada = (String) horas.getSelectedItem();
+        if (horaSeleccionada.length() == 4) {
+            horaSeleccionada = "0" + horaSeleccionada;
+        }
+
+        // Creación del objeto cita
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime fechaHora = LocalDateTime.parse(fechaFormateada + " " + horaSeleccionada + ":00", formatter);
+
+        String dniCliente = InterfazModificarCita.obtenerDNIcita();
+        int idCita = InterfazModificarCita.obtenerIDcita();
+        Tratamiento tratamientoSeleccionado = (Tratamiento) tratamiento.getSelectedItem();
+        int idTratamiento = tratamientoSeleccionado.getId();
+
+        Cita citaActualizada = new Cita(
+                idCita,
+                fechaHora,
+                dniCliente,
+                idTratamiento
+        );
+
+        if (citaDuplicada(citaActualizada)) {
+            JOptionPane.showMessageDialog(null, "ERROR: Ya existe una cita programada para esta fecha y hora", "Cita duplicada", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Lógica de actualización
+        if (idCita > 0) {
+            if (actualizarCita(citaActualizada)) {
+                JOptionPane.showMessageDialog(null, "Cita modificada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                new InterfazGestionCita().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al modificar la cita.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado un cita", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private JPanel getjPanelBotonRetorno() {
@@ -190,7 +207,7 @@ public class InterfazSeleccionCita extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazDarCitaCliente().setVisible(true);
+                new InterfazModificarCita().setVisible(true);
                 dispose();
             }
         });
@@ -247,3 +264,4 @@ public class InterfazSeleccionCita extends JFrame {
         return label;
     }
 }
+

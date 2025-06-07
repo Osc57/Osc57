@@ -1,8 +1,8 @@
 package org.example.Modelo;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static org.example.Controlador.ControladorHistorial.obtenerNombreTratamiento;
 

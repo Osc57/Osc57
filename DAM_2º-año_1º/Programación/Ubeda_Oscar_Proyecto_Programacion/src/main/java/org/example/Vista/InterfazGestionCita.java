@@ -79,7 +79,8 @@ public class InterfazGestionCita extends JFrame {
         botonEliminarCita.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazSeleccionEliminarCita().setVisible(true);
             }
         });
 

@@ -1,6 +1,7 @@
 package org.example.Vista;
 
-import org.example.Modelo.Cliente;
+import org.example.Controlador.ControladorCita;
+import org.example.Modelo.Cita;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,24 +9,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.Controlador.ControladorCliente.cargarClientes;
-import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
-import static org.example.Vista.InterfazDarBajaCliente.MODEL_USUARIO_CLIENTES;
+import static org.example.Controlador.ControladorCita.mostrarCitaCliente;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
+import static org.example.Vista.InterfazModificarCita.LISTA_NOMBRES_CITAS;
+import static org.example.Vista.InterfazModificarCita.MODEL_USUARIO_CITAS;
 
-public class InterfazSeleccionModificarCita extends JFrame {
+public class InterfazEliminarCita extends JFrame {
 
-    private static Cliente clienteSeleccion = new Cliente();
+    private static Cita citaSeleccionada = new Cita();
 
-    public InterfazSeleccionModificarCita() {
-        this.setTitle("Modificar Cita");
+    public InterfazEliminarCita() {
+        this.setTitle("Eliminar cita");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione cliente");
+        JLabel introducirCliente = new JLabel("•Seleccione cita para eliminar");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -43,29 +44,33 @@ public class InterfazSeleccionModificarCita extends JFrame {
 
         JPanel panelBoton = new JPanel(new GridLayout(1, 2, 10, 10));
 
-        JButton botonConfirmar = crearEstiloBoton("Confirmar");
+        JButton botonConfirmar = crearEstiloBoton("Eliminar Cita");
         botonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                seleccionCliente();
-
+                eliminarCita();
             }
         });
 
-        MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
-        LISTA_NOMBRES_CLIENTES = new JList<>(MODEL_USUARIO_CLIENTES);
+        MODEL_USUARIO_CITAS = new DefaultListModel<>();
+        LISTA_NOMBRES_CITAS = new JList<>(MODEL_USUARIO_CITAS);
 
-        LISTA_NOMBRES_CLIENTES.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        LISTA_NOMBRES_CLIENTES.setFont(new Font("Arial", Font.PLAIN, 18));
-        LISTA_NOMBRES_CLIENTES.setFixedCellHeight(35);
-        LISTA_NOMBRES_CLIENTES.setBackground(COLOR_FONDO_GRIS_CLARO);
+        LISTA_NOMBRES_CITAS.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        LISTA_NOMBRES_CITAS.setFont(new Font("Arial", Font.PLAIN, 18));
+        LISTA_NOMBRES_CITAS.setFixedCellHeight(35);
+        LISTA_NOMBRES_CITAS.setBackground(COLOR_FONDO_GRIS_CLARO);
 
-        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_CLIENTES);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_NOMBRES_CITAS);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
 
-        ArrayList<Cliente> clientes = cargarClientes();
-        for (Cliente c : clientes) {
-            MODEL_USUARIO_CLIENTES.addElement(c);
+        String dniCliente = InterfazSeleccionEliminarCita.obtenerDNICliente();
+        ArrayList<Cita> citas = mostrarCitaCliente(dniCliente);
+        if (citas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Este cliente no tiene citas", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            for (Cita c : citas) {
+                MODEL_USUARIO_CITAS.addElement(c);
+            }
         }
 
         panelBoton.add(botonConfirmar);
@@ -90,30 +95,11 @@ public class InterfazSeleccionModificarCita extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazGestionCita().setVisible(true);
+                new InterfazSeleccionEliminarCita().setVisible(true);
                 dispose();
             }
         });
         return panelBotonRetorno;
-    }
-
-    private void seleccionCliente() {
-        clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
-        if (clienteSeleccion != null) {
-            dispose();
-            new InterfazModificarCita().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
-
-        }
-    }
-
-    public static String obtenerDNICliente() {//Usar este metodo para InterfazModificarCita
-        if (clienteSeleccion != null) {
-            return clienteSeleccion.getDni();
-        } else {
-            return "";
-        }
     }
 
     private JButton crearEstiloBoton(String texto) {
@@ -129,8 +115,21 @@ public class InterfazSeleccionModificarCita extends JFrame {
         return boton;
     }
 
-    public static void main(String[] args) {
-        new InterfazSeleccionModificarCita().setVisible(true);
-    }
-}
+    public void eliminarCita() {
+        citaSeleccionada = LISTA_NOMBRES_CITAS.getSelectedValue();
+        if (citaSeleccionada != null) {
+            if (ControladorCita.eliminarCita(citaSeleccionada)) {
+                JOptionPane.showMessageDialog(null, "Cita eliminada con exito");
+                dispose();
+                new InterfazGestionCita().setVisible(true);
 
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar la cita", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una cita");
+        }
+    }
+
+}

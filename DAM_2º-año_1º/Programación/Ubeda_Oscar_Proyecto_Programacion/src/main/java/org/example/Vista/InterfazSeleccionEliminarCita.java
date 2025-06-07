@@ -1,5 +1,6 @@
 package org.example.Vista;
 
+import org.example.Modelo.Cita;
 import org.example.Modelo.Cliente;
 
 import javax.swing.*;
@@ -8,18 +9,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import static org.example.Controlador.ControladorCita.mostrarCitaCliente;
 import static org.example.Controlador.ControladorCliente.cargarClientes;
+import static org.example.Controlador.ControladorCliente.eliminarCliente;
 import static org.example.Vista.InterfazDarBajaCliente.LISTA_NOMBRES_CLIENTES;
 import static org.example.Vista.InterfazDarBajaCliente.MODEL_USUARIO_CLIENTES;
 import static org.example.Vista.InterfazLogin.*;
-import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
+import static org.example.Vista.InterfazModificarCita.*;
 
-public class InterfazSeleccionModificarCita extends JFrame {
+public class InterfazSeleccionEliminarCita extends JFrame {
 
     private static Cliente clienteSeleccion = new Cliente();
 
-    public InterfazSeleccionModificarCita() {
-        this.setTitle("Modificar Cita");
+    public InterfazSeleccionEliminarCita() {
+        this.setTitle("Eliminar cita");
         this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -36,7 +39,6 @@ public class InterfazSeleccionModificarCita extends JFrame {
         this.add(panelGestionDni, BorderLayout.CENTER);
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
-
     private JPanel getjPanelGestionDni() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
@@ -48,9 +50,9 @@ public class InterfazSeleccionModificarCita extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 seleccionCliente();
-
             }
         });
+
 
         MODEL_USUARIO_CLIENTES = new DefaultListModel<>();
         LISTA_NOMBRES_CLIENTES = new JList<>(MODEL_USUARIO_CLIENTES);
@@ -90,8 +92,8 @@ public class InterfazSeleccionModificarCita extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazGestionCita().setVisible(true);
                 dispose();
+                new InterfazGestionCita().setVisible(true);
             }
         });
         return panelBotonRetorno;
@@ -101,7 +103,7 @@ public class InterfazSeleccionModificarCita extends JFrame {
         clienteSeleccion = LISTA_NOMBRES_CLIENTES.getSelectedValue();
         if (clienteSeleccion != null) {
             dispose();
-            new InterfazModificarCita().setVisible(true);
+            new InterfazEliminarCita().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un cliente");
 
@@ -127,10 +129,6 @@ public class InterfazSeleccionModificarCita extends JFrame {
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
         return boton;
-    }
-
-    public static void main(String[] args) {
-        new InterfazSeleccionModificarCita().setVisible(true);
     }
 }
 
