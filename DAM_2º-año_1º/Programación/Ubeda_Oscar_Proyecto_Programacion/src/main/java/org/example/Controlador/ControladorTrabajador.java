@@ -136,4 +136,34 @@ public class ControladorTrabajador {
         }
 
     }
+
+    public static boolean actualizarPrimerLoginEnBD(Trabajador trabajador) {
+        try (Connection connection = connect();
+             PreparedStatement stmt = connection.prepareStatement("UPDATE loggin SET primer_login = ? WHERE usuario = ?")) {
+            stmt.setBoolean(1, false); // Ya no es primer login
+            stmt.setString(2, trabajador.getDni());
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean esPrimerLogin(Trabajador trabajador) {
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement(
+                     "SELECT primer_login FROM loggin WHERE usuario = ?")) {
+            ps.setString(1, trabajador.getDni());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBoolean("primer_login");
+                }
+                return false; // Si no encuentra el usuario
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al verificar primer login", e);
+        }
+    }
+
 }

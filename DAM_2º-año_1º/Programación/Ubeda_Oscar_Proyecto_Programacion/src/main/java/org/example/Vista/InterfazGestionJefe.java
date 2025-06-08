@@ -33,8 +33,8 @@ public class InterfazGestionJefe extends JFrame {
     }
 
     private JPanel getjPanelBotonesCentro() {
-        JPanel panelBotonesCentro = new JPanel(new GridLayout(2, 2, 20, 20));
-        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(10, 40, 50, 40));
+        JPanel panelBotonesCentro = new JPanel(new GridLayout(1, 3, 20, 20));
+        panelBotonesCentro.setBorder(BorderFactory.createEmptyBorder(20, 40, 80, 40));
 
         JButton darAlta = crearEstiloBoton("Dar Alta");
         darAlta.addActionListener(new ActionListener() {
@@ -53,14 +53,6 @@ public class InterfazGestionJefe extends JFrame {
             }
         });
 
-        JButton btnCambiarPass = crearEstiloBoton("<html>Cambiar <br> Contraseña <br> Trabajador</html>");
-        btnCambiarPass.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new InterfazSeleccionaTrabajadorContrasena().setVisible(true);
-            }
-        });
 
         JButton darBaja = crearEstiloBoton("Dar Baja");
         darBaja.addActionListener(new ActionListener() {
@@ -74,7 +66,6 @@ public class InterfazGestionJefe extends JFrame {
         panelBotonesCentro.add(darAlta);
         panelBotonesCentro.add(darBaja);
         panelBotonesCentro.add(editarTrabajador);
-        panelBotonesCentro.add(btnCambiarPass);
         return panelBotonesCentro;
     }
 

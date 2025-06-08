@@ -14,10 +14,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.example.Controlador.ControladorJefe.comprobarLogginAdmin;
 import static org.example.Controlador.ControladorRecepcionista.comprobarLogginRecepcionista;
 import static org.example.Controlador.ControladorRecepcionista.updateRecepcionista;
+import static org.example.Controlador.ControladorTrabajador.esPrimerLogin;
 import static org.example.Controlador.ControladorTrabajador.resgistroTrabajador;
 
 public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un frame directamente y no tener que ir creandome un frame cade vez
@@ -41,6 +44,10 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
     private JTextField jTextField;
     private JButton jButton;
     private JPasswordField jPasswordField;
+
+    private static Trabajador trabajadorLoggin = new Trabajador();
+
+    private static Set<String> usuariosConPassCambiada = new HashSet<>();
 
     public InterfazLogin() {
         this.setTitle("Login");
@@ -96,29 +103,44 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
         jButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String dni = jTextField.getText();
                 String pass = new String(jPasswordField.getPassword());
-                String user = jTextField.getText();
 
-                if (user.equalsIgnoreCase("admin")) {
-                    if (comprobarLogginAdmin(user, pass)) {
+                if (dni.equalsIgnoreCase("admin")) {
+                    if (comprobarLogginAdmin(dni, pass)) {
                         JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
                         dispose();
                         new InterfazGestionJefe().setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "⚠ Contraseña Incorrecta ⚠");
                     }
-                } else if (comprobarLogginRecepcionista(user, pass)) {
-                    Trabajador trabajador = resgistroTrabajador(user);
-                    updateRecepcionista(trabajador.getDni());
-                    controlTrabajadores(trabajador.getDni(),trabajador.getNombre(),trabajador.getApellidos());
-
-                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-                    dispose();
-                    new InterfazGestionaCliente().setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "⚠ Usuario o Contraseña Incorrectos ⚠");
-                }
+                    // Lógica para trabajador
+                    trabajadorLoggin = resgistroTrabajador(dni);
 
+                    if (trabajadorLoggin != null && comprobarLogginRecepcionista(dni, pass)) {
+                        if (esPrimerLogin(trabajadorLoggin)) {
+                            // Primer login - obligar a cambiar contraseña
+                            JOptionPane.showMessageDialog(
+                                    null,
+                                    "Debes cambiar tu contraseña antes de continuar",
+                                    "Cambio requerido",
+                                    JOptionPane.INFORMATION_MESSAGE
+                            );
+                            dispose();
+                            new InterfazCambiarContrasenaTrabajador().setVisible(true);
+                        } else {
+                            // Login normal
+                            updateRecepcionista(trabajadorLoggin.getDni());
+                            controlTrabajadores(trabajadorLoggin.getDni(), trabajadorLoggin.getNombre(), trabajadorLoggin.getApellidos());
+                            JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                            dispose();
+                            new InterfazGestionaCliente().setVisible(true);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "⚠ Usuario o Contraseña Incorrectos ⚠");
+                    }
+                }
             }
         });
 
@@ -150,6 +172,17 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String obtenerTrabajador() {
+        if (trabajadorLoggin == null) {
+            JOptionPane.showMessageDialog(null,
+                    "No hay trabajador logueado",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        return trabajadorLoggin.getDni();
     }
 }
 

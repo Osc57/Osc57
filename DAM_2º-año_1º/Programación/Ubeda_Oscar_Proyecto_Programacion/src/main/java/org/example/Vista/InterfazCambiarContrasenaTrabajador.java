@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 import static org.example.Controlador.ControladorJefe.cambiarContrasena;
 import static org.example.Controlador.ControladorJefe.verificarContrasenaActual;
+import static org.example.Controlador.ControladorTrabajador.actualizarPrimerLoginEnBD;
 import static org.example.Vista.InterfazLogin.*;
 
 public class InterfazCambiarContrasenaTrabajador extends JFrame {
@@ -32,11 +33,9 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelCambiarContrasena = getjPanelCambiarContrasena();
-        JPanel panelBotonRetorno = getjPanelBotonRetorno();
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelCambiarContrasena, BorderLayout.CENTER);
-        this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
     private JPanel getjPanelCambiarContrasena() {
@@ -44,6 +43,8 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel panelCampos = new JPanel(new GridLayout(3, 2, 5, 5));
+
+        JPanel panelBoton = new JPanel(new GridLayout(1, 2, 10, 10));
 
         // Fila 1: Contraseña actual
         panelCampos.add(crearLabels("Contraseña actual:"));
@@ -68,7 +69,7 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
 
         panelPrincipal.add(panelCampos, BorderLayout.CENTER);
 
-        JPanel panelBoton = new JPanel();
+
         panelBoton.add(btnCambiar);
 
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
@@ -112,10 +113,13 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
     }
 
     private void verificarPassword() {
-        String dniTrabajador = InterfazSeleccionaTrabajadorContrasena.obtenerTrabajador();
+        String dniTrabajador = InterfazLogin.obtenerTrabajador();
         String passwordActual = new String(pwdActual.getPassword());
         String nuevaPassword = new String(pwdNueva.getPassword());
         String confirmarPassword = new String(pwdConfirmar.getPassword());
+
+        Trabajador trabajador = new Trabajador();
+        trabajador.setDni(dniTrabajador);
 
         // Validaciones en cascada con else if para mayor eficiencia
         if (passwordActual.isEmpty() || nuevaPassword.isEmpty() || confirmarPassword.isEmpty()) {
@@ -132,14 +136,13 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
                     + "- Al menos un carácter especial", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             // Si pasó todas las validaciones, proceder con la verificación en BD
-            Trabajador trabajador = new Trabajador();
-            trabajador.setDni(dniTrabajador);
-
             if (verificarContrasenaActual(trabajador, passwordActual)) {
                 if (cambiarContrasena(trabajador, nuevaPassword)) {
+                    trabajador.setPrimerLogin(false);
+                    actualizarPrimerLoginEnBD(trabajador);
                     JOptionPane.showMessageDialog(null, "Contraseña cambiada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
-                    new InterfazGestionJefe().setVisible(true);
+                    new InterfazGestionaCliente().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al cambiar la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -171,28 +174,6 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
         return true;
     }
 
-
-    private JPanel getjPanelBotonRetorno() {
-        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
-        JButton botonRetorno = new JButton("←");
-        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
-        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
-
-        botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
-        botonRetorno.setFont(FUENTE_EMOJI);
-
-        botonRetorno.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new InterfazSeleccionaTrabajadorContrasena().setVisible(true);
-                dispose();
-            }
-        });
-        return panelBotonRetorno;
-    }
-
     private JLabel crearLabels(String texto) {
         JLabel label = new JLabel(texto);
         label.setFont(FUENTE_LABEL);
@@ -201,13 +182,6 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
         return label;
     }
 
-    private JPasswordField crearFields() {
-        JPasswordField field = new JPasswordField(15);
-        field.setFont(FUENTE_CAMPOS);
-        field.setPreferredSize(new Dimension(150, 30));
-
-        return field;
-    }
 
     private JButton crearEstiloBoton(String texto) {
         JButton boton = new JButton(texto);

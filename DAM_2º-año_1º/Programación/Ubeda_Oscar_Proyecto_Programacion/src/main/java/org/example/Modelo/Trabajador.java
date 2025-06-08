@@ -5,7 +5,7 @@ public class Trabajador {
     protected String nombre;
     protected String apellidos;
     protected int telefono;
-    protected String dni_jefe;
+    protected boolean primerLogin = true;
 
     public Trabajador() {
     }
@@ -14,6 +14,14 @@ public class Trabajador {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
+    }
+
+    public Trabajador(String dni, String nombre, String apellidos, int telefono, boolean primerLogin) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.primerLogin = primerLogin;
     }
 
     public Trabajador(String dni, String nombre, String apellidos, int telefono) {
@@ -55,12 +63,12 @@ public class Trabajador {
         this.telefono = telefono;
     }
 
-    public String getDni_jefe() {
-        return dni_jefe;
+    public boolean isPrimerLogin() {
+        return primerLogin;
     }
 
-    public void setDni_jefe(String dni_jefe) {
-        this.dni_jefe = dni_jefe;
+    public void setPrimerLogin(boolean primerLogin){
+        this.primerLogin = primerLogin;
     }
 
     @Override

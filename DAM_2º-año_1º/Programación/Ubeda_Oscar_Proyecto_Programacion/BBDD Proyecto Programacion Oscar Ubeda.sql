@@ -51,7 +51,8 @@ CREATE TABLE historial (
 
 CREATE TABLE loggin (
 	usuario VARCHAR(25),
-	contrasena VARCHAR(30));
+	contrasena VARCHAR(30),
+	primer_login BOOLEAN DEFAULT TRUE);
 
 /*Procedo a hacer triggers*/
 /*Este trigger introduce el dni del trabajador directamente a la tabla odontologo*/
