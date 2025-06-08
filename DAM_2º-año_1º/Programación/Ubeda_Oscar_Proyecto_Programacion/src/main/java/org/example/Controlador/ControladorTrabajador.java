@@ -120,7 +120,7 @@ public class ControladorTrabajador {
     public boolean enviarDatosTrabajador(Trabajador recepcionista) {
 
         try (Connection connection = connect();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES (?, ?, ?, ?, ?)")) {
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabajadores (dni, nombre, apellidos, telefono) VALUES (?, ?, ?, ?)")) {
 
             ps.setString(1, recepcionista.getDni());
             ps.setString(2, recepcionista.getNombre());
