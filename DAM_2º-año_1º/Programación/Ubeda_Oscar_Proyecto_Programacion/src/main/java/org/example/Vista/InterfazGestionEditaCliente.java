@@ -25,7 +25,7 @@ public class InterfazGestionEditaCliente extends JFrame {
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione cliente o Filtre el DNI");
+        JLabel introducirCliente = new JLabel("•Seleccione cliente");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 

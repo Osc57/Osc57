@@ -1,5 +1,6 @@
 package org.example.Controlador;
 
+import org.example.Modelo.Cliente;
 import org.example.Modelo.Recepcionista;
 import org.example.Modelo.Trabajador;
 
@@ -90,7 +91,7 @@ public class ControladorTrabajador {
             return resultSet.next();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Trabajador: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -112,7 +113,7 @@ public class ControladorTrabajador {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al verificar el DNI del Trabajador: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return trabajador;
     }
@@ -163,6 +164,45 @@ public class ControladorTrabajador {
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error al verificar primer login", e);
+        }
+    }
+
+    public static Trabajador obtenerTrabajadorPorDNI(String dni){//Obtengo todos los datos del cliente
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni = ?")) {
+
+            ps.setString(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Trabajador trabajador = new Trabajador();
+                trabajador.setDni(rs.getString("dni"));
+                trabajador.setNombre(rs.getString("nombre"));
+                trabajador.setApellidos(rs.getString("apellidos"));
+                trabajador.setTelefono(rs.getInt("telefono"));
+                return trabajador;
+            }
+            return null;
+        }catch (SQLException ex){
+            return null;
+        }
+    }
+
+    public static boolean editarTrabajador(String dni, String nombre, String apellidos, Integer telefono) {
+
+        try (Connection connection = connect();
+             PreparedStatement ps = connection.prepareStatement("UPDATE trabajadores SET nombre = ?, apellidos = ?, telefono = ? WHERE dni = ?")) {
+
+            ps.setString(1, nombre);
+            ps.setString(2, apellidos);
+            ps.setObject(3, telefono);
+            ps.setString(4, dni);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            System.err.println("[Error] No se pudo actualizar el cliente: " + ex.getMessage());
+            return false;
         }
     }
 

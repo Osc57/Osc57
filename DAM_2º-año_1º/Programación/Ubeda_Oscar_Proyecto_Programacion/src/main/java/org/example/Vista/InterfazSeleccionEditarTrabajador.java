@@ -10,22 +10,24 @@ import java.util.ArrayList;
 
 import static org.example.Controlador.ControladorTrabajador.cargarTrabajadores;
 import static org.example.Controlador.ControladorTrabajador.eliminarTrabajador;
+import static org.example.Vista.InterfazDarBajaTrabajador.LISTA_NOMBRES_TRABAJADORES;
+import static org.example.Vista.InterfazDarBajaTrabajador.MODEL_USUARIO_TRABAJADORES;
 import static org.example.Vista.InterfazLogin.*;
-import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
+import static org.example.Vista.InterfazLogin.COLOR_BOTON_GRIS_CLARO;
+import static org.example.Vista.InterfazLogin.FUENTE_EMOJI;
 
-public class InterfazDarBajaTrabajador extends JFrame {
+public class InterfazSeleccionEditarTrabajador extends JFrame {
 
-    protected static JList<Trabajador> LISTA_NOMBRES_TRABAJADORES;
-    protected static DefaultListModel<Trabajador> MODEL_USUARIO_TRABAJADORES;
+    private static Trabajador trabajadorSeleccion = new Trabajador();
 
-    public InterfazDarBajaTrabajador(){
-        this.setTitle("Dar de Baja");
-        this.setSize(480, 460);
+    public InterfazSeleccionEditarTrabajador() {
+        this.setTitle("Editar Trabajador");
+        this.setSize(460, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione trabajador o Filtre el DNI");
+        JLabel introducirCliente = new JLabel("•Seleccione trabajador");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -51,14 +53,6 @@ public class InterfazDarBajaTrabajador extends JFrame {
             }
         });
 
-        JButton botonFiltrar = crearEstiloBoton("Filtrar DNI");
-        botonFiltrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new InterfazFiltrarDNITrabajador().setVisible(true);
-                dispose();
-            }
-        });
 
         MODEL_USUARIO_TRABAJADORES = new DefaultListModel<>();
         LISTA_NOMBRES_TRABAJADORES = new JList<>(MODEL_USUARIO_TRABAJADORES);
@@ -75,9 +69,7 @@ public class InterfazDarBajaTrabajador extends JFrame {
         for (Trabajador t : trabajadores) {
             MODEL_USUARIO_TRABAJADORES.addElement(t);
         }
-        //MIRAR AQUI
 
-        panelBoton.add(botonFiltrar);
         panelBoton.add(botonConfirmar);
 
         panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
@@ -100,25 +92,29 @@ public class InterfazDarBajaTrabajador extends JFrame {
         botonRetorno.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazGestionJefe().setVisible(true);
                 dispose();
+                new InterfazGestionJefe().setVisible(true);
             }
         });
         return panelBotonRetorno;
     }
 
     private void seleccionTrabajador() {
-        Trabajador trabajadorSeleccion = LISTA_NOMBRES_TRABAJADORES.getSelectedValue();
+        trabajadorSeleccion = LISTA_NOMBRES_TRABAJADORES.getSelectedValue();
         if (trabajadorSeleccion != null) {
-            if (JOptionPane.showConfirmDialog(InterfazDarBajaTrabajador.this, "¿Quieres eliminar este usuario?", "Eliminar",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                eliminarTrabajador(trabajadorSeleccion.getDni());
-                JOptionPane.showMessageDialog(null, "Trabajador eliminado con exito");
-                dispose();
-                new InterfazGestionJefe().setVisible(true);
-            }
+            dispose();
+            new InterfazEditaTrabajador().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona a un trabajador");
+        }
+
+    }
+
+    public static String obtenerDNITrabajador() {
+        if (trabajadorSeleccion != null) {
+            return trabajadorSeleccion.getDni();
+        } else {
+            return "";
         }
 
     }
@@ -136,4 +132,3 @@ public class InterfazDarBajaTrabajador extends JFrame {
         return boton;
     }
 }
-

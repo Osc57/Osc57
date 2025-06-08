@@ -49,7 +49,8 @@ public class InterfazGestionJefe extends JFrame {
         editarTrabajador.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new InterfazSeleccionEditarTrabajador().setVisible(true);
             }
         });
 
@@ -64,8 +65,8 @@ public class InterfazGestionJefe extends JFrame {
         });
 
         panelBotonesCentro.add(darAlta);
-        panelBotonesCentro.add(darBaja);
         panelBotonesCentro.add(editarTrabajador);
+        panelBotonesCentro.add(darBaja);
         return panelBotonesCentro;
     }
 
