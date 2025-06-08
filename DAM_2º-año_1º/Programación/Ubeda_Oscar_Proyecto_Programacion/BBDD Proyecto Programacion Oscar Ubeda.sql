@@ -51,7 +51,7 @@ CREATE TABLE historial (
 
 CREATE TABLE loggin (
 	usuario VARCHAR(25),
-	contrasena INT);
+	contrasena VARCHAR(30));
 
 /*Procedo a hacer triggers*/
 /*Este trigger introduce el dni del trabajador directamente a la tabla odontologo*/
@@ -179,7 +179,7 @@ INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, fechaDeAlta) V
 ('99001122S', 'Alejandro', 'Molina Garcia', 'Calle Real 123, Sevilla', '698999000', '2021-09-17'),
 ('00112233T', 'Raquel', 'Serrano Martinez', 'Paseo de la Reforma 45, Bilbao', '609000111', '2021-10-05');
 
-/*Inserto citas*/
+/*Inserto citas para historial*/
 INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES
 ('2023-11-15 10:00:00', '12345677A', 1),
 ('2023-12-20 11:30:00', '12345677A', 3),
@@ -190,3 +190,16 @@ INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES
 ('2023-12-15 12:00:00', '45678911D', 1),
 ('2023-11-20 17:00:00', '56789011E', 3),
 ('2023-12-22 09:30:00', '56789011E', 2);
+
+/*Inserto citas para citas*/
+INSERT INTO cita (fechaCita, dni_cliente, id_tratamiento) VALUES
+('2026-01-05 09:00:00', '12345677A', 1),
+('2026-02-10 11:30:00', '45678911D', 4),
+('2026-03-15 14:00:00', '78901234G', 19),
+('2026-04-20 10:30:00', '23456788B', 5),
+('2026-05-25 16:00:00', '56789011E', 9),
+('2026-06-30 08:45:00', '89012345H', 14),
+('2026-07-05 12:15:00', '34567899C', 7),
+('2026-08-10 15:30:00', '67890123F', 12),
+('2026-09-15 09:45:00', '00112233T', 2),
+('2026-10-20 13:00:00', '11223344K', 8);
