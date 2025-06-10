@@ -75,4 +75,11 @@ public class Trabajador {
     public String toString() {
         return dni + " - "+ nombre + " " + apellidos;
     }
+    
+    
+    public String datosTrabajaoor(){
+        return "Nombre: " + nombre + "\n" + 
+                "Apellidos: " + apellidos + "\n" + 
+                "Teléfono: " + telefono;
+    }
 }

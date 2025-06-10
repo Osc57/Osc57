@@ -11,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.Controlador.ControladorCliente.obtenerClientePorDNI;
-import static org.example.Controlador.ControladorTrabajador.obtenerTrabajadorPorDNI;
+import static org.example.Controlador.ControladorTrabajador.*;
+import static org.example.Vista.InterfazDarBajaTrabajador.LISTA_NOMBRES_TRABAJADORES;
+import static org.example.Vista.InterfazDarBajaTrabajador.MODEL_USUARIO_TRABAJADORES;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 import static org.example.Vista.InterfazLogin.FUENTE_BOTONES;
@@ -19,14 +21,13 @@ import static org.example.Vista.InterfazLogin.FUENTE_LABEL;
 
 public class InterfazEditaTrabajador extends JFrame {
 
-    private JTextField txtDni = new JTextField();
     private JTextField txtNombre = new JTextField();
     private JTextField txtApellidos = new JTextField();
     private JTextField txtTelefono = new JTextField();
 
     public InterfazEditaTrabajador(){
         this.setTitle("Editar Trabajador");
-        this.setSize(420, 420);
+        this.setSize(430, 420);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -65,8 +66,16 @@ public class InterfazEditaTrabajador extends JFrame {
         panelFields.add(txtApellidos);
         panelFields.add(txtTelefono);
 
-        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 55, 15));
-        panelBotones.setBorder(BorderFactory.createEmptyBorder(0, 5, 15, 0));
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panelBotones.setBorder(BorderFactory.createEmptyBorder(0, 4, 15, 5));
+
+        JButton btnMostrar = crearEstiloBoton("Mostrar Datos");
+        btnMostrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarTrabajador();
+            }
+        });
 
         JButton btnEliminar = crearEstiloBoton("Borrar");
         btnEliminar.addActionListener(new ActionListener() {
@@ -84,7 +93,9 @@ public class InterfazEditaTrabajador extends JFrame {
             }
         });
 
+
         panelBotones.add(btnEliminar);
+        panelBotones.add(btnMostrar);
         panelBotones.add(btnEnviar);
 
         panelPrincipal.add(panelLabels, BorderLayout.WEST);
@@ -179,6 +190,23 @@ public class InterfazEditaTrabajador extends JFrame {
         }
     }
 
+    private void mostrarTrabajador(){
+        JDialog dialog = new JDialog(this, "Datos del Trabajador", false);
+        dialog.setSize(300, 160);
+        dialog.setLocationRelativeTo(this);
+        dialog.setResizable(false);
+        dialog.setLayout(new BorderLayout());
+
+        Trabajador trabajador = mostrarDatosTrabajador(InterfazSeleccionEditarTrabajador.obtenerDNITrabajador());
+
+        JTextArea textArea = new JTextArea(trabajador.datosTrabajaoor());
+        textArea.setEditable(false);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        textArea.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        dialog.add(new JScrollPane(textArea), BorderLayout.CENTER);
+        dialog.setVisible(true);
+    }
 
     private JTextField crearFields() {
         JTextField field = new JTextField(15);
@@ -234,6 +262,10 @@ public class InterfazEditaTrabajador extends JFrame {
         txtNombre.setText("");
         txtApellidos.setText("");
         txtTelefono.setText("");
+    }
+
+    public static void main(String[] args) {
+        new InterfazEditaTrabajador().setVisible(true);
     }
 
 }

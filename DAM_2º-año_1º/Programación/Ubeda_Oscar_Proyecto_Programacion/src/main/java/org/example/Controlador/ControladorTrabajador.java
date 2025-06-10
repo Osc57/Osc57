@@ -206,4 +206,29 @@ public class ControladorTrabajador {
         }
     }
 
+    public static Trabajador mostrarDatosTrabajador(String dni) {
+        Trabajador trabajador = null;
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM trabajadores WHERE dni = ?;")) {
+
+            preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                trabajador = new Trabajador();
+                trabajador.setDni(resultSet.getString("dni"));
+                trabajador.setNombre(resultSet.getString("nombre"));
+                trabajador.setApellidos(resultSet.getString("apellidos"));
+                trabajador.setTelefono(resultSet.getInt("telefono"));
+
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        return trabajador;
+    }
+
 }
