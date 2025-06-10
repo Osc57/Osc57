@@ -142,7 +142,7 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
                     actualizarPrimerLoginEnBD(trabajador);
                     JOptionPane.showMessageDialog(null, "Contraseña cambiada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
-                    new InterfazGestionaCliente().setVisible(true);
+                    new InterfazLogin().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al cambiar la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
                 }

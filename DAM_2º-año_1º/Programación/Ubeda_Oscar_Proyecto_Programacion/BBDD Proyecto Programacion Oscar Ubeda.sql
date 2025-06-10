@@ -46,7 +46,7 @@ CREATE TABLE historial (
 	id_tratamiento INT NOT NULL,
 	fecha_tratamiento DATETIME NOT NULL,
 	PRIMARY KEY (dni_cliente, fecha_tratamiento),
-	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni),
+	CONSTRAINT fk_historial_cliente FOREIGN KEY (dni_cliente) REFERENCES cliente(dni) ON DELETE CASCADE,
 	CONSTRAINT fk_historial_tratamiento FOREIGN KEY (id_tratamiento) REFERENCES tratamientos(id));
 
 CREATE TABLE loggin (
