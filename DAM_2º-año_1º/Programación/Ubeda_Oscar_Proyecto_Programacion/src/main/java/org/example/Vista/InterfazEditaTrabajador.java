@@ -264,8 +264,4 @@ public class InterfazEditaTrabajador extends JFrame {
         txtTelefono.setText("");
     }
 
-    public static void main(String[] args) {
-        new InterfazEditaTrabajador().setVisible(true);
-    }
-
 }

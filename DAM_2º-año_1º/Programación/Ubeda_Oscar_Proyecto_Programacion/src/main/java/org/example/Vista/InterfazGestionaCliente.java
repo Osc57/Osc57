@@ -82,8 +82,5 @@ public class InterfazGestionaCliente extends JFrame {
         return boton;
     }
 
-    public static void main(String[] args) {
-        new InterfazGestionaCliente().setVisible(true);
-    }
 }
 

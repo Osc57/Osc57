@@ -275,9 +275,6 @@ public class InterfazEditaCliente extends JFrame {
         return boton;
     }
 
-    public static void main(String[] args) {
-        new InterfazEditaCliente().setVisible(true);
-    }
 }
 
 

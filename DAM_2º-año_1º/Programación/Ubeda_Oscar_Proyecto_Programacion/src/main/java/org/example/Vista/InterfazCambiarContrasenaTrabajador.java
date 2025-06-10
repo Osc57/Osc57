@@ -196,7 +196,4 @@ public class InterfazCambiarContrasenaTrabajador extends JFrame {
         return boton;
     }
 
-    public static void main(String[] args) {
-        new InterfazCambiarContrasenaTrabajador().setVisible(true);
-    }
 }
