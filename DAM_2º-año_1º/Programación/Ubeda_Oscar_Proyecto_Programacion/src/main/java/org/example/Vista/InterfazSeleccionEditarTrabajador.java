@@ -22,7 +22,7 @@ public class InterfazSeleccionEditarTrabajador extends JFrame {
 
     public InterfazSeleccionEditarTrabajador() {
         this.setTitle("Editar Trabajador");
-        this.setSize(460, 460);
+        this.setSize(500, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);

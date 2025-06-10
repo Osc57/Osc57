@@ -47,8 +47,6 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
 
     private static Trabajador trabajadorLoggin = new Trabajador();
 
-    private static Set<String> usuariosConPassCambiada = new HashSet<>();
-
     public InterfazLogin() {
         this.setTitle("Login");
         this.setSize(500, 370);
@@ -87,10 +85,11 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
         jPanel.add(passw);
 
         jPasswordField = new JPasswordField();//Me genero el jtextfield de contraseña
-        jPasswordField.setBounds(200, 170, 250, 35);//Le doy tamaño
-        jPasswordField.setFont(FUENTE_CAMPOS);
-        jPanel.add(jPasswordField);//Lo añado al panel
+        JPanel passwordPanel = crearPasswordFieldConToggle(jPasswordField);
 
+        passwordPanel.setBounds(200, 170, 250, 35);//Le doy tamaño
+        passwordPanel.setFont(FUENTE_CAMPOS);
+        jPanel.add(passwordPanel);
 //--------------------------------------------------------------------------------------------------------------
 
         jButton = new JButton("INICIAR SESIÓN");//Me genero el botón
@@ -144,6 +143,40 @@ public class InterfazLogin extends JFrame {//Extiendo JFrame para ya tener un fr
             }
         });
 
+    }
+
+    private JPanel crearPasswordFieldConToggle(JPasswordField passwordField) {
+        JPanel panel = new JPanel(new BorderLayout());
+        passwordField.setFont(FUENTE_CAMPOS);
+        passwordField.setPreferredSize(new Dimension(150, 30));
+        passwordField.setEchoChar('•');
+
+        panel.add(passwordField, BorderLayout.CENTER);
+
+        // Botón de toggle con mejor estilo
+        JButton toggleButton = new JButton("👁");
+        toggleButton.setPreferredSize(new Dimension(30, 30));
+        toggleButton.setMargin(new Insets(0, 0, 0, 0));
+        toggleButton.setToolTipText("Mostrar contraseña");
+        toggleButton.setFocusPainted(false);
+        toggleButton.setBorderPainted(true);
+        toggleButton.setContentAreaFilled(false);
+        toggleButton.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
+
+        toggleButton.addActionListener(e -> {
+            if (passwordField.getEchoChar() == (char)0) {
+                passwordField.setEchoChar('•');
+                toggleButton.setText("👁");
+                toggleButton.setToolTipText("Mostrar contraseña");
+            } else {
+                passwordField.setEchoChar((char)0);
+                toggleButton.setText("👁");
+                toggleButton.setToolTipText("Ocultar contraseña");
+            }
+        });
+
+        panel.add(toggleButton, BorderLayout.EAST);
+        return panel;
     }
 
     public static void configurarCierreVentana(JFrame ventana) {
