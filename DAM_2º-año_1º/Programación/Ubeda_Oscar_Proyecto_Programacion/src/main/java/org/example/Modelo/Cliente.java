@@ -75,4 +75,11 @@ public class Cliente {
     public String toString() {
         return dni + " - "+ nombre + " " + apellidos;
     }
+
+    public String datosCliente(){
+        return "Nombre: " + nombre + "\n" +
+                "Apellidos: " + apellidos + "\n" +
+                "Dirección: " + direccion + "\n" +
+                "Teléfono: " + telefono;
+    }
 }

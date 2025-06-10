@@ -199,7 +199,7 @@ public class InterfazEditaTrabajador extends JFrame {
 
         Trabajador trabajador = mostrarDatosTrabajador(InterfazSeleccionEditarTrabajador.obtenerDNITrabajador());
 
-        JTextArea textArea = new JTextArea(trabajador.datosTrabajaoor());
+        JTextArea textArea = new JTextArea(trabajador.datosTrabajador());
         textArea.setEditable(false);
         textArea.setFont(new Font("Arial", Font.PLAIN, 18));
         textArea.setBackground(COLOR_FONDO_GRIS_CLARO);

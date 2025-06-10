@@ -2,6 +2,7 @@ package org.example.Vista;
 
 import org.example.Controlador.ControladorCliente;
 import org.example.Modelo.Cliente;
+import org.example.Modelo.Trabajador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.Controlador.ControladorCliente.*;
+import static org.example.Controlador.ControladorTrabajador.mostrarDatosTrabajador;
 import static org.example.Vista.InterfazLogin.*;
 import static org.example.Vista.InterfazLogin.COLOR_BOTONES_AZUL;
 import static org.example.Vista.InterfazLogin.COLOR_BOTON_GRIS_CLARO;
@@ -67,8 +69,16 @@ public class InterfazEditaCliente extends JFrame {
         panelFields.add(txtDireccion);
         panelFields.add(txtTelefono);
 
-        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 55, 15));
-        panelBotones.setBorder(BorderFactory.createEmptyBorder(0, 5, 15, 0));
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panelBotones.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 5));
+
+        JButton btnMostrar = crearEstiloBoton("Mostrar Datos");
+        btnMostrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarCliente();
+            }
+        });
 
         JButton btnEliminar = crearEstiloBoton("Borrar");
         btnEliminar.addActionListener(new ActionListener() {
@@ -86,7 +96,9 @@ public class InterfazEditaCliente extends JFrame {
             }
         });
 
+
         panelBotones.add(btnEliminar);
+        panelBotones.add(btnMostrar);
         panelBotones.add(btnEnviar);
 
         panelPrincipal.add(panelLabels, BorderLayout.WEST);
@@ -214,6 +226,24 @@ public class InterfazEditaCliente extends JFrame {
             }
         });
         return panelBotonRetorno;
+    }
+
+    private void mostrarCliente(){
+        JDialog dialog = new JDialog(this, "Datos del Cliente", false);
+        dialog.setSize(500, 200);
+        dialog.setLocationRelativeTo(this);
+        dialog.setResizable(false);
+        dialog.setLayout(new BorderLayout());
+
+        Cliente cliente = mostrarDatosCliente(InterfazGestionEditaCliente.obtenerDNICliente());
+
+        JTextArea textArea = new JTextArea(cliente.datosCliente());
+        textArea.setEditable(false);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        textArea.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        dialog.add(new JScrollPane(textArea), BorderLayout.CENTER);
+        dialog.setVisible(true);
     }
 
     private JTextField crearFields() {

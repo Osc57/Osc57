@@ -2,7 +2,6 @@ package org.example.Controlador;
 
 import org.example.Modelo.Cliente;
 import org.example.Modelo.Recepcionista;
-import org.example.Modelo.Trabajador;
 import org.example.Modelo.Tratamiento;
 
 import javax.swing.*;
@@ -160,6 +159,32 @@ public class ControladorCliente {
         }catch (SQLException ex){
             return null;
         }
+    }
+
+    public static Cliente mostrarDatosCliente(String dni) {
+        Cliente cliente = null;
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cliente WHERE dni = ?;")) {
+
+            preparedStatement.setString(1, dni);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                cliente = new Cliente();
+                cliente.setDni(resultSet.getString("dni"));
+                cliente.setNombre(resultSet.getString("nombre"));
+                cliente.setApellidos(resultSet.getString("apellidos"));
+                cliente.setDireccion(resultSet.getString("direccion"));
+                cliente.setTelefono(resultSet.getInt("telefono"));
+
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar al cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        return cliente;
     }
 
 }

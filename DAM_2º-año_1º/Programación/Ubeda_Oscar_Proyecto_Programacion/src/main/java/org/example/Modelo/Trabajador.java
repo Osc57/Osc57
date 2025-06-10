@@ -77,7 +77,7 @@ public class Trabajador {
     }
     
     
-    public String datosTrabajaoor(){
+    public String datosTrabajador(){
         return "Nombre: " + nombre + "\n" + 
                 "Apellidos: " + apellidos + "\n" + 
                 "Teléfono: " + telefono;
