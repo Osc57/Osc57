@@ -115,7 +115,7 @@ public class InterfazDarAltaCliente extends JFrame {
                         if (controladorCliente.enviarDatosCliente(nuevoCliente)) {
                             JOptionPane.showMessageDialog(null, "Cliente registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                             dispose();
-                            new InterfazGestionJefe().setVisible(true);
+                            new InterfazGestionaCliente().setVisible(true);
                         } else {
                             JOptionPane.showMessageDialog(null, "No se pudo registrar el cliente", "Error", JOptionPane.ERROR_MESSAGE);
                         }
