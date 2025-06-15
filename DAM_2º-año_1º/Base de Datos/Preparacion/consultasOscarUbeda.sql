@@ -1,3 +1,7 @@
+/*Consultas relacionadas con el scriptBBDDOscarUbeda*/
+/*Proyecto Bases de datos*/
+/*Óscar Úbeda*/
+
 /*1. Consulta en la que utilices el operador AND, LIKE y la cláusula ORDER BY.*/
 /*Consulta que saca el nombre, apellido y telefono de los clientes que su apellido sea Gil y su telefono empiece por 9 ordenados por nombre alfabeticamente*/
 
@@ -89,7 +93,7 @@ mysql> SELECT COUNT(*) AS total_clientes FROM cliente JOIN cita ON cliente.dni =
 /*7. Consulta en la que utilices la cláusula GROUP BY y la cláusula WHERE*/
 /*Consulta que muestra cuantos tratamientos ha realizado cada odontologo desde 2024*/
 
-SELECT dni_odontologo, COUNT(*) AS total_tratamientos FROM proporciona WHERE fecha > '2023-01-01' GROUP BY dni_odontologo;
+SELECT dni_odontologo, COUNT(*) AS total_tratamientos FROM proporciona WHERE fecha > '2024-01-01' GROUP BY dni_odontologo;
 
 mysql> SELECT dni_odontologo, COUNT(*) AS total_tratamientos FROM proporciona WHERE fecha > '2024-01-01' GROUP BY dni_odontologo;
 +----------------+--------------------+
@@ -102,42 +106,137 @@ mysql> SELECT dni_odontologo, COUNT(*) AS total_tratamientos FROM proporciona WH
 3 rows in set (0.00 sec)
 
 /*8. Consulta en la que uses las cláusulas GROUP BY y HAVING.*/
+/*Consulta que muestra a los odontologos que han hecho mas de 5 tratamientos*/
 
+SELECT dni_odontologo, COUNT(*) AS cantidad_tratamientos FROM proporciona GROUP BY dni_odontologo HAVING COUNT(*) > 5;
+
+mysql> SELECT dni_odontologo, COUNT(*) AS cantidad_tratamientos FROM proporciona GROUP BY dni_odontologo HAVING COUNT(*) > 5;
+Empty set (0.00 sec)
 
 /*9. Consulta en la que uses las cláusulas WHERE, HAVING y una subconsulta.*/
+/*Consulta que muestra los clientes que tienen mas citas que el promedio*/
+
+SELECT dni_cliente, COUNT(*) AS citas FROM cita WHERE fechaCita > '2024-01-01'GROUP BY dni_cliente
+HAVING COUNT(*) > (SELECT AVG(citas) FROM (SELECT COUNT(*) AS citas FROM cita GROUP BY dni_cliente) AS promedios);
+
+mysql> SELECT dni_cliente, COUNT(*) AS citas FROM cita WHERE fechaCita > '2024-01-01'GROUP BY dni_cliente
+    -> HAVING COUNT(*) > (SELECT AVG(citas) FROM (SELECT COUNT(*) AS citas FROM cita GROUP BY dni_cliente) AS promedios);
+Empty set (0.00 sec)
+
+/*10. Consulta en la que utilices uno de los operadores de conjuntos (EXCEPT, INTERSECT o EXCEPT.*/
+/*Consulta que mustra los odontologos que no son recepcionistas*/
+
+SELECT dni FROM odontologo EXCEPT SELECT dni FROM recepcionista;
+
+mysql> SELECT dni FROM odontologo EXCEPT SELECT dni FROM recepcionista;
++-----------+
+| dni       |
++-----------+
+| 11111111A |
++-----------+
+1 row in set (0.00 sec)
+
+/*Inserción, modificación y eliminacion*/
+
+/*1. Inserción de datos a partir del resultado de una consulta.*/
+/*Inserta los datos de la cita con id5*/
+
+INSERT INTO historial (dni_cliente, id_tratamiento, fecha_tratamiento)
+SELECT dni_cliente, id_tratamiento, fechaCita FROM cita WHERE id = 5;
+
+mysql> INSERT INTO historial (dni_cliente, id_tratamiento, fecha_tratamiento)
+    -> SELECT dni_cliente, id_tratamiento, fechaCita FROM cita WHERE id = 5;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+/*2. Modificación de datos utilizando la cláusula WHERE junto con una subconsulta.*/
+/*Modifica la direccion de los clientes con tratamiento nº 2*/
+
+UPDATE cliente SET direccion = 'Calle villalobos'
+WHERE dni IN (SELECT dni_cliente FROM cita WHERE id_tratamiento = 2);
+
+mysql> UPDATE cliente SET direccion = 'Calle villalobos'
+    -> WHERE dni IN (SELECT dni_cliente FROM cita WHERE id_tratamiento = 2);
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+/*3. Modificación de datos, de forma que el nuevo valor se obtenga mediante una subconsulta.*/
+/*Modifica el tipo de tratamiento para todas las citas del cliente seleccionado*/
+
+UPDATE cita SET id_tratamiento = (SELECT id FROM tratamientos WHERE tipo = 'Limpieza dental') WHERE dni_cliente = '12345678Z';
+
+mysql> UPDATE cita SET id_tratamiento = (SELECT id FROM tratamientos WHERE tipo = 'Limpieza dental') WHERE dni_cliente = '12345678Z';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+/*4. Modificar o eliminar datos utilizando una consulta correlacionada.*/
+/*Elimino todas las citas que no tienen registros correspondientes*/
+
+DELETE FROM cita WHERE NOT EXISTS (SELECT 1 FROM historial WHERE historial.dni_cliente = cita.dni_cliente);
+
+mysql> DELETE FROM cita WHERE NOT EXISTS (SELECT 1 FROM historial WHERE historial.dni_cliente = cita.dni_cliente);
+Query OK, 0 rows affected (0.00 sec)
 
 
-/*10. Consulta en la que utilices uno de los operadores de conjuntos (EXCEPT, INTERSECT o
-EXCEPT.*/
+/*Vista, funcion, procedimiento y trigger*/
 
+/*Vista*/
+/*Muestro a los clientes que no han sido dados de baja*/
 
+CREATE VIEW vista_clientes_activos ASSELECT dni, nombre, apellidos FROM cliente WHERE fechaDeBaja IS NULL;
 
+/*Funcion*/
+/*Funcion que devuelve cuántas citas tiene un cliente*/
 
+DELIMITER //
 
+CREATE FUNCTION contar_citas(dniCliente CHAR(9)) 
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE total_citas INT; -- Declaro variable
+    SELECT COUNT(*) INTO total_citas FROM cita WHERE dni_cliente = dniCliente; -- Meto en la variable las citas que cuento de el cliente pasado por parámetro
+    RETURN total_citas;-- Devuelvo 
+END//
 
+DELIMITER ;
 
+mysql> SELECT contar_citas('12345678Z');
++---------------------------+
+| contar_citas('12345678Z') |
++---------------------------+
+|                         1 |
++---------------------------+
+1 row in set (0.01 sec)
 
+/*Procedimiento*/
+/*Procedimiento que agrega una cita*/
 
+DELIMITER //
 
+CREATE PROCEDURE agregar_cita(IN p_dni_cliente CHAR(9),IN p_id_tratamiento INT,IN p_fecha DATETIME)
+BEGIN
+    INSERT INTO cita (dni_cliente, id_tratamiento, fechaCita) VALUES (p_dni_cliente, p_id_tratamiento, p_fecha); -- Introduzco en cita los valores dados por parámetro
+END//
 
+DELIMITER ;
 
+mysql> CALL agregar_cita('12345678Z', 1, '2023-12-15 10:00:00');
+Query OK, 1 row affected (0.01 sec)
 
+/*Trigger*/
+/*Trigger para pasar las citas automaticamente al historial*/
 
+DELIMITER //
 
+CREATE TRIGGER insertar_cita_historial
+AFTER INSERT ON cita
+FOR EACH ROW
+BEGIN
+    INSERT INTO historial (dni_cliente, id_tratamiento, fecha_tratamiento) VALUES (NEW.dni_cliente, NEW.id_tratamiento, NEW.fechaCita); --Le paso a historial los datos de la cita
+END;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+DELIMITER ;
 
 
 

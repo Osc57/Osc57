@@ -80,6 +80,7 @@ INSERT INTO trabajadores (dni, nombre, apellidos, telefono, dni_jefe) VALUES ('4
 INSERT INTO odontologo (dni) VALUES ('11111111A');
 INSERT INTO odontologo (dni) VALUES ('22222222B');
 INSERT INTO odontologo (dni) VALUES ('33333333C');
+INSERT INTO odontologo (dni) VALUES ('44444444D');
 
 /*Inserto al recepcionista*/
 INSERT INTO recepcionista (dni) VALUES ('22222222B');
