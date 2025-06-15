@@ -234,16 +234,21 @@ AFTER INSERT ON cita
 FOR EACH ROW
 BEGIN
     INSERT INTO historial (dni_cliente, id_tratamiento, fecha_tratamiento) VALUES (NEW.dni_cliente, NEW.id_tratamiento, NEW.fechaCita); --Le paso a historial los datos de la cita
-END;
+END//
 
 DELIMITER ;
 
+mysql> DELIMITER //
+mysql>
+mysql> CREATE TRIGGER insertar_cita_historial
+    -> AFTER INSERT ON cita
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     INSERT INTO historial (dni_cliente, id_tratamiento, fecha_tratamiento) VALUES (NEW.dni_cliente, NEW.id_tratamiento, NEW.fechaCita);
+    -> END//
+Query OK, 0 rows affected (0.01 sec)
 
-
-
-
-
-
+mysql>
 
 
 
