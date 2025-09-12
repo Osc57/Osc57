@@ -25,6 +25,74 @@ Iniciar Proceso Ej2;
 	Escribir "La altura es: " altura;
 Fin Proceso;
 
+3.
+Iniciar Proceso Ej3;
+	def cateto1,cateto2 como float;
+	def hipotenusa float;
+
+	Escribir "¿Dime el primer cateto del triangulo?";
+	Leer cateto1;
+
+	Escribir "¿Dime el segundo cateto del triangulo?";
+	Leer cateto2;
+	hipotenusa <- cateto1^2 + cateto2^2;
+
+	Escribir "La hipotenusa del triángulo es: " hipotenusa;
+
+4.
+Iniciar Proceso Ej4;
+	def n1,n2,suma,resta,multipli como entero;
+	def división como real;
+	
+	Escribir "Dime un número: ";
+	Leer n1;
+	
+	Escribir "Dime otro número: ";
+	Leer n2;
+
+	suma <- n1 + n2;
+	resta <- n1 - n2;
+	multipli <- n1 * n2;
+	division <- n1 / n2;
+
+	Escribir "La suma es " suma;
+	Escribir "La resta es " resta;
+	Escribir "La multiplicación es " multipli;
+	Escribir "La división es " división;
+Fin Proceso
+
+5.
+Iniciar Proceso Ej5;
+	def faren, cels como real;
+	
+	Escribir "Dime los grados en Fahrenheit: ";
+	Leer faren;
+	
+	cels <- (faren-32)*5/9;
+	Escribir "La conversión a Celsius es: " cels;
+Fin Proceso
+	
+6.
+Iniciar Proceso Ej6;
+	def n1,n2,n3,media como entero;
+
+	Escribir "Dime un número: ";
+	Leer n1;
+	
+	Escribir "Dime otro número: ";
+	Leer n2;
+
+	Escribir "Dime otro número: ";
+	Leer n3;
+
+	media <- (n1 + n2 + n3)/3;
+
+	Escribir "La media es " media;
+Fin Proceso
+
+7.
+
+		
 
 9.
 Iniciar Proceso Ej9;
