@@ -1,0 +1,83 @@
+5.
+Iniciar Programa Ej5;
+	def usuario, pass como Cadena;
+	def Cusuario <- "pepe";
+	def Cpass <- "asdasd"
+
+	Escribir "Dime tu usuario: ";
+	Leer usuario;
+
+	Escribir "Dime tu contraseña: ";
+	Leer pass;
+
+	Si (usuario = Cusuario & pass = Cpass) Entonces
+		Escribir "Has entrado al sistema";
+	Sino
+		Escribir "ERROR: Credenciales incorrectas";
+	FinSi;
+Fin Programa;
+
+9.
+Iniciar Programa Ej9;
+	def n1,n2,n3 como enteros;
+	
+	Escribir "Dime un número: ";
+	Leer n1;
+
+	Escribir "Dime otro número: ";
+	Leer n2;
+
+	Escribir "Dime el último número: ";
+	Leer n3;
+
+	Si (n1 > n2 & n1 > n3) Entonces
+		Si (n2 > n3) Entonces;
+			Escribir n1 " , " n2 " , " n3;
+
+		SiNo
+			Escribir n1" , " n3 " , " n2;
+		FinSi
+	FinSi
+	
+	Si (n2 > n1 & n2 > n3) Entonces
+		Si (n1 > n3) Entonces
+			Escribir n2 " , " n1 " , " n3;
+		SiNo
+			Escribir n2 " , " n3 " , " n1;
+		FinSi
+	FinSi
+
+	Si (n3 > n1 & n3 > n2) Entonces
+		Si (n1 > n2) Entonces
+			Escribir n3 " , " n1 " , ",n2;
+		SiNo
+			Escribir n3 " , " n2 " , " n1;
+		FinSi
+	FinSi
+Fin Programa;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

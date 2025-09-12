@@ -1,0 +1,44 @@
+1.
+Iniciar Proceso Ej1;
+	def nombre como Cadena;
+	
+	Escribir "Dime tu nombre: ";
+	Leer nombre;
+	
+	Escribir "Hola " nombre;
+Fin Proceso;
+
+2.
+Iniciar Proceso Ej2;
+	def base, altura, perímetro, area como entero;
+
+	Escribir "Dime la base de tu rectángulo: ";
+	Leer base;
+	
+	Escribir "Dime la altura de tu rectángulo: ";
+	Leer altura;
+
+	area <- base * altura;
+	perímetro <- (base + altura)*2
+
+	Escribir "El área es: " area;
+	Escribir "La altura es: " altura;
+Fin Proceso;
+
+
+9.
+Iniciar Proceso Ej9;
+	def compra, compraDescuento como real;
+	def descuento <- 15%
+
+	Escribir "¿Cuanto te ha costado la compra?";
+	Leer compra;
+
+	compraDescuento <- compra-(compra * descuento);
+
+	Escribir "El total a pagar es: "compraDescuento;
+Fin Proceso;
+	
+	
+	
+	
