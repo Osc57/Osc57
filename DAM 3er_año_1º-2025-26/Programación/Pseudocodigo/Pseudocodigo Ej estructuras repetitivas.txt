@@ -12,14 +12,11 @@ Inicio Proceso Ej1;
 	Escribir "Dime un número: ";
 	Leer num;
 
-	contador <- 2;
+	Para contador <- 2 Hasta num Hacer
+		resultado <-resultado * contador;
+	FinPara
 
-	Mientras contador <= num Hacer
-		resultado <- resultado * contador;
-		contador <- contador + 1;
-	FinMientras
-
-	Escribir "El resultado es ", resultado;
+	Escribir "El factorial de ", num " es " resultado;
 FinProceso
 
 Ejercicio 4
