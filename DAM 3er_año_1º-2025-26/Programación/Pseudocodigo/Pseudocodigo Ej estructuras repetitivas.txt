@@ -39,6 +39,85 @@ Inicio Proceso Ej4;
 		FinSi
 	FinPara
 	
+	Escribir "Numeros positivos: " contadorPositivos
+	Escribir "Numeros negativos: " contadorNegativos
+	Escribir "Numeros iguales a cero: " contadorCeros
+
+FinProceso
+
+Ejercicio 6
+Escribir un programa que imprima todos los números pares entre dos números que se le
+pidan al usuario.
+
+Inicio Proceso Ej6;
+	def n, n1, n2 como entero;
+	
+	Escribir "Dime un número: ";
+	Leer n1;
+	
+	Escribir "Dime otro número: ";
+	Leer n2;
+	
+	Si n1 % 2 = 1 Entonces
+		n1 = n1 + 1;
+	FinSi
+	
+	Para  n <- n1 Hasta num2 Con Paso 2 Hacer
+		Escribir num;
+	Fin Para
+
+FinProceso
+
+Ejercicio 12
+Realizar un algoritmo para determinar cuánto ahorrará una persona en un año, si al final
+de cada mes deposita cantidades variables de dinero; además, se quiere saber cuánto lleva
+ahorrado cada mes.
+
+Inicio Proceso Ej12;
+	def cantMensual como real;
+	def ahorroAcum como real;
+	def mes como entero;
+	
+	ahorroAcum <- 0;
+	
+	Para mes <- 1 Hasta 12 Con paso 1Hacer
+		Escribir "Cuanto has ahorrado en el mes " mes ": ";
+		Leer cantMesnsual;
+		
+		ahorroAcum <- ahorroAcum + cantMensual;
+		
+		Escribir "En el mes " mes " has ahorrado " cantMensual
+		"llevas ahorrado " ahorroAcum;
+	FinPara
+FinProceso
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
