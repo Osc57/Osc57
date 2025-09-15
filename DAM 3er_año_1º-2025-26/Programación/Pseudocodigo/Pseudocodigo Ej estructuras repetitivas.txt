@@ -4,7 +4,23 @@ es el producto de todos los enteros entre 1 y el propio número y se representa 
 número seguido de un signo de exclamación. Por ejemplo 5! = 1x2x3x4x5=120),
 
 Inicio Proceso Ej1;
+	def num,contador como entero;
+	def resultado como real;
 	
+	resultado <- 1;
+	
+	Escribir "Dime un número: ";
+	Leer num;
+
+	contador <- 2;
+
+	Mientras contador <= num Hacer
+		resultado <- resultado * contador;
+		contador <- contador + 1;
+	FinMientras
+
+	Escribir "El resultado es ", resultado;
+FinProceso
 
 Ejercicio 4
 Realizar un algoritmo que pida números (se pedirá por teclado la cantidad de números a
