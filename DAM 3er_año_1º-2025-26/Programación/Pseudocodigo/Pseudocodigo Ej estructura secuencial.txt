@@ -205,24 +205,96 @@ diferencia, de modo que el resultado sea siempre positivo).
 Iniciar Proceso Ej11;
 	def n1,n2,distancia como entero;
 	
-	Escribir
+	Escribir "Dime un número: ";		
+	Leer n1;	
 
+	Escribir "Dime otro número: ";
+	Leer n2;
+	
+	distancia <- abs(n1,n2);
+
+	Escribir "La distancia entre " n1 " y " n2 " es: " distancia;
+FinProceso
+	
 Ejercicio 12
 Pide al usuario dos pares de números x1,y2 y x2,y2, que representen dos puntos en el
 plano. Calcula y muestra la distancia entre ellos.
 
+Iniciar Proceso Ej12
+	def x1,y1,x2,y2 como real;
+	def distancia como entero;
+	
+	Escribir "Dime las coordenadas del primer punto: ";
+	Leer x1;
+	Leer y1;
+
+	Escribir "Dime las coordenadas del segundo punto: ";
+	Leer x2;
+	Leer y2;
+	
+	distancia <- raiz((x2-x1)^2 + (y2-y1)^2);
+
+	Escribir "La distancia es " distancia;
+FinProceso
+	
 Ejercicio 13
 Realizar un algoritmo que lea un número y que muestre su raíz cuadrada y su raíz cúbica.
 PSeInt no tiene ninguna función predefinida que permita calcular la raíz cúbica, ¿Cómo
 se puede calcular?
 
+Iniciar Proceso Ej13
+	def n1,rCuadrada,rCubica como entero
+	
+	Escribir "Dime un número: ";
+	Leer n1;
+
+	rCuadrada <- raíz(n1);
+	rCubica <- n1 ^ (1/3);
+
+	Escribir "La raíz cuadrada de " n1 " es " rCubica;
+	Escribir "La raíz cubica de " n1 " es " rCubico;
+FinProceso
+
 Ejercicio 14
 Dado un número de dos cifras, diseñe un algoritmo que permita obtener el número
 invertido. Ejemplo, si se introduce 23 que muestre 32.
+
+Iniciar Proceso Ej14
+	def n1,decenas,unidades como entero;
+
+	Escribir "Dime un número: ";
+	Leer n1;
+	
+	Escribir "Dime otro número: ";
+	Leer n2;
+
+	decenas <- trunc(n1/10);
+	unidades <-num % 10;
+	
+	Escribir "El número invertido es " decenas unidades;
+FinProceso
+
 Ejercicio 15
 Dadas dos variables numéricas A y B, que el usuario debe teclear, se pide realizar un
 algoritmo que intercambie los valores de ambas variables y muestre cuánto valen al final
 las dos variables.
+
+Iniciar Proceso Ej15
+	def a,b,aux como entero;
+
+	Escribir "Dime un número: ";
+	Leer a;
+	
+	Escribir "Dime otro número: ";
+	Leer b;
+	
+	aux <- a;
+	a <- b;
+	b <- aux;
+	
+	Escribir "El primer valor ahora vale: " a;
+	Escribir "El segundo valor ahora vale: " b;
+FinProceso
 
 Ejercicio 16
 Dos vehículos viajan a diferentes velocidades (v1 y v2) y están distanciados por una
@@ -230,6 +302,24 @@ distancia d. El que está detrás viaja a una velocidad mayor. Se pide hacer un 
 para ingresar la distancia entre los dos vehículos (km) y sus respectivas velocidades
 (km/h) y con esto determinar y mostrar en que tiempo (minutos) alcanzará el vehículo
 más rápido al otro.
+
+Iniciar Proceso Ej16
+	def v1,v2,d,t como entro
+
+	Escribir "Dime la velocidad del primer coche (km/h)";
+	Leer v1;
+
+	Escribir "Dime la velocidad del segundo coche (km/h)";
+	Leer v2;
+
+	Escribir "Dime la distancia entre los coches (km)";
+	Leer d;
+
+	t <- d / (v1-v2);
+	t <- t * 60:
+	
+	Escribir "El tiempo de encuentro es " t;
+FinProceso
 
 Ejercicio 17
 Un ciclista parte de una ciudad A a las HH horas, MM minutos y SS segundos. El tiempo
