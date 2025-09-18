@@ -1,5 +1,81 @@
-5.
-Iniciar Programa Ej5;
+Ejercicio 1
+Algoritmo que pida dos números e indique si el primero es mayor que el segundo o no.
+
+Iniciar Proceso Ej1
+	def n1,n2 como entero;
+	
+	Escribe "Dime un número: ";
+	Leer n1;
+
+	Escribir "Dime otro número: ";
+	Leer n2;
+
+	Si n1 > n2 Entonces 
+		Escribir "El primer número es mayor"
+	SiNo
+		Escribir "El primer número no es mayor"
+	FinSi
+FinPrograma
+
+Ejercicio 2
+Algoritmo que pida un número y diga si es positivo, negativo o 0.
+
+Iniciar Proceso Ej2
+	def n1 como entero;
+	
+	Escribir "Dime un número: "
+	Leer n1;
+
+	Si n1 > 0 Entonces
+		"El número es positivo";
+	SiNo
+		Si n1 < 0 Entonces
+			"El número es negativo";
+		SiNo
+			"El número es 0";
+		FinSi
+	FinSi
+FinProceso	
+
+Ejercicio 3
+Escribe un programa que lea un número e indique si es par o impar.
+
+Inicio Proceso Ej3
+	def n1 como entero;
+	
+	Si n1 % 2 = 0 Entonces
+		Escribir "El número es par";
+	SiNo
+		Escribir "El número es impar";
+	FinSi
+FinProceso
+
+Ejercicio 4
+Crea un programa que pida al usuario dos números y muestre su división si el segundo
+no es cero, o un mensaje de aviso en caso contrario.
+
+Inicio Proceso Ej4
+	def n1,n2 como entero;
+	
+	Escribir "Dime un número: ";
+	Leer n1;
+	
+	Escribir "Dime otro número: ";
+	Leer n2;
+	
+	Si n2 = 0 Entonces
+		Escribir "No puedes dividir entre 0";
+	SiNo
+		Escribir "La división es: " (n1/n2);
+	FinSi
+FinProceso
+
+
+Ejercicio 5
+Escribe un programa que pida un nombre de usuario y una contraseña y si se ha
+introducido “pepe” y “asdasd” se indica “Has entrado al sistema”, sino se da un error.
+
+Iniciar Proceso Ej5;
 	def usuario, pass como Cadena;
 	def Cusuario <- "pepe";
 	def Cpass <- "asdasd"
@@ -15,10 +91,38 @@ Iniciar Programa Ej5;
 	Sino
 		Escribir "ERROR: Credenciales incorrectas";
 	FinSi;
-Fin Programa;
+Fin Proceso;
 
-9.
-Iniciar Programa Ej9;
+Ejercicio 6
+Programa que lea una cadena por teclado y compruebe si es una letra mayúscula.
+
+Iniciar Proceso Ej6
+	def palabra como cadena;
+
+	Escribir "Dime una cadena: ";
+	Leer palabra;
+
+	Si palabra = Mayúsculas(palabra) Entonces
+		Escribir "La palabra esta en mayúsculas";
+	SiNo
+		Escribir "La palabra no esta en mayúsculas";
+	FinSi
+FinProceso
+
+Ejercicio 7
+Realiza un algoritmo que calcule la potencia, para ello pide por teclado la base y el
+exponente. Pueden ocurrir tres cosas:
+ El exponente sea positivo, sólo tienes que imprimir la potencia.
+ El exponente sea 0, el resultado es 1.
+ El exponente sea negativo, el resultado es 1/potencia con el exponente positivo.
+
+Iniciar Proceso Ej7
+	def nota,edad como entero;
+
+Ejercicio 9
+Algoritmo que pida tres números y los muestre ordenados (de mayor a menor);
+
+Iniciar Proceso Ej9;
 	def n1,n2,n3 como enteros;
 	
 	Escribir "Dime un número: ";
@@ -54,7 +158,7 @@ Iniciar Programa Ej9;
 			Escribir n3 " , " n2 " , " n1;
 		FinSi
 	FinSi
-Fin Programa;
+Fin Proceso;
 
 
 

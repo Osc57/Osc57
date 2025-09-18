@@ -326,20 +326,98 @@ Un ciclista parte de una ciudad A a las HH horas, MM minutos y SS segundos. El t
 de viaje hasta llegar a otra ciudad B es de T segundos. Escribir un algoritmo que determine
 la hora de llegada a la ciudad B.
 
+Iniciar Proceso Ej17
+	def hPartida,mPartida,sPartida,sInicial,sFinal,sViaje,hLlegada,sLlegada como entero;
+	
+	Escribir "Dime la hora de salida: ";
+	Leer hPartida;
+	
+	Escribir "Dime los minutos de salida: ";
+	Leer mPartida;
+
+	Escribir "Dime los segundos de salida: ";
+	Leer sPartida;
+	
+	Escribir "Tiempo que has tardado en segundos:";
+	leer sViaje;
+	
+	sInicial <- hPartida * 3600 + mPartida*60 + sPartida;
+	
+	sFinal <- sInicial + sViaje;
+	
+	hLlegada <- trunc(sFinal / 3600);
+	mLlegada <- trunc((sFinal % 3600) / 60);
+	sLlegada <- (sFinal % 3600) % 60;
+	
+	Escribir "Hora de llegada";
+	Escribir hLlegada,":",mLlegada,":",sLlegada;
+FinProceso	
+
 Ejercicio 18
 Pedir el nombre y los dos apellidos de una persona y mostrar las iniciales.
+
+Iniciar Proceso Ej18
+	def nombre,apellido como cadena;
+
+	Escribir "Dime tu nombre: ";
+	Leer nombre;
+	
+	Escribir "Dime tu apellido: ";
+	Leer apellido;
+
+	Escribir "La primera letra de tu nombre es " subcadena(nombre,0,0) 
+	" La primera letra de tu apellido es " subcadena(apellido,0,0);
+FinProceso
 
 Ejercicio 19
 Escribir un algoritmo para calcular la nota final de un estudiante, considerando que: por
 cada respuesta correcta 5 puntos, por una incorrecta -1 y por respuestas en blanco 0.
 Imprime el resultado obtenido por el estudiante.
 
+Iniciar Proceso Ej19
+	def correctas,incorrectas,puntos como entero;
+	
+	Escribir "¿Dime cantidad de respuestas correctas?";
+	Leer correctas;
+	
+	Escribir "¿Dime cantidad de respuestas incorrectas?";
+	Leer incorrectas;
+	
+	puntos <- correctas * 5 + incorrectas * (-1);
+	
+	Escribir "Puntos: ",puntos;
+FinProceso
+
 Ejercicio 20
 Diseñar un algoritmo que nos diga el dinero que tenemos (en euros y céntimos) después
 de pedirnos cuantas monedas tenemos (de 2€, 1€, 50 céntimos, 20 céntimos o 10
 céntimos).
 
-
+Iniciar Proceso Ej20
+	def moneda2,moneda1,moneda05,moneda02,moneda01 entero;
+	def totalEuros,totalCentimos entero;
+	
+	Escribir "¿Dime cuantas monedas de 2€ tienes?";
+	Leer moneda2;
+	
+	Escribir "¿Dime cuantas monedas de 1€ tienes?";
+	Leer moneda1;
+	
+	Escribir "¿Dime cuantas monedas de 0,50€ tienes?";
+	Leer moneda05;
+	
+	Escribir "¿Dime cuantas monedas de 0,20€ tienes?";
+	Leer moneda02;
+	
+	Escribir "¿Dime cuantas monedas de 0,10€ tienes?";
+	Leer monedas01;
+	
+	totalEuros <- moneda2*2+moneda1;
+	totalCentimos <- moneda05*0,50+moneda02*0,20+moneda01*0,10;
+	
+	Escribir "El total de euros es: "totalEuros;
+	Escribir "El total de céntimos es: "totalCentimos;
+FinProceso
 
 
 
