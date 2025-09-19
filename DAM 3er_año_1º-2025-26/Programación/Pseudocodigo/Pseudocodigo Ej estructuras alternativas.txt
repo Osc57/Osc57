@@ -609,7 +609,42 @@ Parte de su política implica que los paquetes con un peso superior a 5 kg no so
 transportados, esto por cuestiones de logística y de seguridad. Realice un algoritmo para
 determinar el cobro por la entrega de un paquete o, en su caso, el rechazo de la entrega.
 
+Iniciar Proceso Ej10
+	def peso como entero;
+	def zona como entero;
+	
+	Escribir Sin Saltar "¿Qué peso tiene el paquete (en gramos)?:";
+	Leer peso;
+	
+	Si peso>0 Y peso<=5000 Entonces
+		Escribir "1.- América del Norte";
+		Escribir "2.- América Central";
+		Escribir "3.- América del Sur";
+		Escribir "4.- Europa";
+		Escribir "5.- Asia";
+		Escribir "A que zona se reparte (1-5):";
+		Leer zona;
 
+		Segun zona Hacer
+			1:
+				Escribir "Coste: ",peso*24, " euros.";
+			2:
+				Escribir "Coste: ",peso*20, " euros.";
+			3:
+				Escribir "Coste: ",peso*21, " euros.";
+			4:
+				Escribir "Coste: ",peso*10, " euros.";
+			5:
+				Escribir "Coste: ",peso*18, " euros.";
+			De Otro Modo:
+				Escribir "Zona incorrecta.";
+				
+		FinSegun
+	SiNo
+		Escribir "Peso incorrecto (no podemos transportar paquetes de más de 5Kg).";
+	FinSi
+
+FinProceso
 
 
 
