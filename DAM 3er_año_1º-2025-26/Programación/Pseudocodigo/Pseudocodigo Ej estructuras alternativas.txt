@@ -627,15 +627,15 @@ Iniciar Proceso Ej10
 
 		Segun zona Hacer
 			1:
-				Escribir "Coste: ",peso*24, " euros.";
+				Escribir "Coste: ", peso*24, " euros.";
 			2:
-				Escribir "Coste: ",peso*20, " euros.";
+				Escribir "Coste: ", peso*20, " euros.";
 			3:
-				Escribir "Coste: ",peso*21, " euros.";
+				Escribir "Coste: ", peso*21, " euros.";
 			4:
-				Escribir "Coste: ",peso*10, " euros.";
+				Escribir "Coste: ", peso*10, " euros.";
 			5:
-				Escribir "Coste: ",peso*18, " euros.";
+				Escribir "Coste: ", peso*18, " euros.";
 			De Otro Modo:
 				Escribir "Zona incorrecta.";
 				
