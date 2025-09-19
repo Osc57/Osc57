@@ -117,8 +117,55 @@ exponente. Pueden ocurrir tres cosas:
  El exponente sea negativo, el resultado es 1/potencia con el exponente positivo.
 
 Iniciar Proceso Ej7
-	def nota,edad como entero;
+	def base,exponente como entero;
 
+	Escribir "Dime un numero: ";
+	Leer base;
+
+	Escribir "Dime el exponente: ";
+	Leer exponente;
+
+	Si exponente = 0 Entonces
+		Escribir "El resultado es 1"
+	SiNo
+		Si exponente > 0 Entonces 
+			Escribir base ^ exponente;
+		SiNo
+			Escribir 1/(base^abs(exponente));
+		FinSi
+	FinSi
+FinProceso	
+	
+Ejercicio 8
+Algoritmo que pida dos números ‘nota’ y ‘edad’ y un carácter ‘sexo’ y muestre el mensaje
+‘ACEPTADA’ si la nota es mayor o igual a cinco, la edad es mayor o igual a dieciocho y
+el sexo es ‘F’. En caso de que se cumpla lo mismo, pero el sexo sea ‘M’, debe imprimir
+‘POSIBLE’. Si no se cumplen dichas condiciones se debe mostrar ‘NO ACEPTADA’.
+
+Iniciar Proceso Ej8
+	def nota,edad como entero;
+	def sexo como carácter;
+
+	Escribir "Dime tu nota: ";
+	Leer nota;
+	
+	Escribir "Dime tu edad: ";
+	Leer edad;
+
+	Escribir "Dime tu sexo (F/M): ";
+	Leer sexo;
+
+	Si nota >= 5 & edad >= 18 & sexo = 'F' Entonces
+		Escribir "ACEPTADA";
+	SiNo
+		Si nota >= 5 & edad >= 18 & sexo = 'M' Entonces
+			Escribir "POSIBLE";
+		SiNo
+			Escribir "NO ACEPTADA";
+		FinSi
+	FinSi
+FinProceso
+		
 Ejercicio 9
 Algoritmo que pida tres números y los muestre ordenados (de mayor a menor);
 
@@ -159,6 +206,358 @@ Iniciar Proceso Ej9;
 		FinSi
 	FinSi
 Fin Proceso;
+
+Ejercicio 10
+Algoritmo que pida los puntos centrales x1,y1,x2,y2 y los radios r1,r2 de dos
+circunferencias y las clasifique en uno de estos estados:
+ exteriores
+ tangentes exteriores
+ secantes
+ tangentes interiores
+ interiores
+ concéntricas
+
+Iniciar Proceso Ej10
+	def x1,y1,x2,y2,r1,r2,distancia como reales;
+
+	
+	Escribir "Dime la primera coordenada x: ";
+	Leer x1;
+	
+	Escribir "Dime la primera coordenada y: ";
+	Leer y1;
+	
+	Escribir "Dime el radio de la primera circunferencia: ";
+	Leer r1;
+
+	Escribir "Dime la segunda coordenada x: ";
+	Leer x2;
+
+	Escribir "Dime la segunda coordenada y: ";
+	Leer y2;
+
+	Escribir "Dime el radio de la segunda circunferencia: ";
+	Leer r2;
+
+	distancia <- raiz((x2-x1)^2 + (y2-y1)^2);
+	
+	Si distancia> (r1 + r2) Entonces
+		Escribir "Circunferencias exteriores";
+	FinSi
+	Si distancia = (r1 + r2) Entonces
+		Escribir "Circunferencias tangentes exteriores";
+	FinSi
+
+	Si distancia < (r1 + r2) Y distancia > abs(r1-r2) Entonces
+		Escribir "Circunferencias secantes";
+	FinSi
+
+	Si distancia = abs(r1-r2) Entonces
+		Escribir "Circunferencias tangentes interiores";
+	FinSi
+
+	Si distancia>0 Y distancia<abs(r1-r2) Entonces
+		Escribir "Circunferencias interiores";
+	FinSi
+
+	Si distancia=0 Entonces
+		Escribir "Circunferencias concétricas";
+	FinSi
+FinProceso
+
+Ejercicio 11
+Programa que lea 3 datos de entrada A, B y C. Estos corresponden a las dimensiones de
+los lados de un triángulo. El programa debe determinar qué tipo de triangulo es, teniendo
+en cuenta los siguiente:
+ Si se cumple Pitágoras entonces es triángulo rectángulo
+ Si sólo dos lados del triángulo son iguales entonces es isósceles.
+ Si los 3 lados son iguales entonces es equilátero.
+ Si no se cumple ninguna de las condiciones anteriores, es escaleno.
+
+Iniciar Proceso Ej11
+	def a,b,c como entero;
+
+	Escribir "Dime la longitud del lado a: ";
+	Leer a;
+
+	Escribir "Dime la longitud del lado b: ";
+	Leer b;
+	
+	Escribir "Dime la longitud del lado c: ";
+	Leer c;
+
+	Si a^2+b^2 = c^2 | b^2+c^2 = a^2 | c^2+a^2 = b^2 Entonces
+		Escribir "El triangulo es escaleno"
+	FinSi
+
+	Si (a=b Y a<>c)|(b=c Y b<>a)|(c=a Y c<>b) Entonces
+		Escribir "El triangulo es isósceles"
+	SiNo
+		Si a=b Y a=c Entonces
+			Escribir "El triangulo es equilátero";
+		Sino
+			Escribir "El triangulo es escaleno";
+		FinSi
+	FinSi
+FinProceso
+		
+Ejercicio 12
+Escribir un programa que lea un año indicar si es bisiesto. Nota: un año es bisiesto si es
+un número divisible por 4, pero no si es divisible por 100, excepto que también sea
+divisible por 400.
+
+Iniciar Proceso Ej12
+	def año Entero;
+
+	Escribir "Dime un año";
+	Leer año;
+
+	Si año%4=0 Y NO (año%100=0))|año%400=0 Entonces
+		Escribir "El año es bisiesto";
+	SiNo
+		Escribir "El año no es bisiesto";
+	FinSi
+FinProceso
+
+Ejercicio 13
+Escribe un programa que pida una fecha (día, mes y año) y diga si es correcta.
+
+Iniciar Proceso Ej13
+	def dia,mes,ano,diaDelMes como entero;
+
+	Escribir "Dime el día: ";
+	Leer dia;
+
+	Escribir "Dime el mes: ";
+	Leer mes;
+	
+	Escribir "Dime el año: ";
+	Leer ano;
+
+	Según mes Entonces
+		1,3,5,7,8,10,12:
+			diasDelMes<-31;
+		4,6,9,11:
+			diasDelMes<-30;
+		2:
+			Si (ano % 4 = 0 & NO (ano % 100 = 0)) | ano % 400 = 0 Entonces
+				diasDelMes <- 29;
+			SiNo
+				diasDelMes <- 28;
+			FinSi
+		De Otro Modo:
+			Escribir "Fecha incorrecta";
+	FinSegun
+
+	Si dia < 0 | dia > diasDelMes Entonces
+		Escribir "Fecha incorrecta";
+	SiNo
+		Escribir "Fecha correcta";
+	FinSi
+FinProceso
+
+Ejercicio 14
+La asociación de vinicultores tiene como política fijar un precio inicial al kilo de uva, la
+cual se clasifica en tipos A y B, y además en tamaños 1 y 2. Cuando se realiza la venta
+del producto, ésta es de un solo tipo y tamaño, se requiere determinar cuánto recibirá un
+productor por la uva que entrega en un embarque, considerando lo siguiente: si es de tipo
+A, se le cargan 20 céntimos al precio inicial cuando es de tamaño 1; y 30 céntimos si es
+de tamaño 2. Si es de tipo B, se rebajan 30 céntimos cuando es de tamaño 1, y 50 céntimos
+cuando es de tamaño 2. Realice un algoritmo para determinar la ganancia obtenida.
+
+Iniciar Proceso Ej14
+	def tipo,tamano como caracter;
+	def precioInicial, precioFinal como real;
+	def kilos como entero;
+
+	Escribir "Introduce el precio inicial por kilos de la UVA (centimos):";
+	Leer precio_inicial;
+
+	Escribir "Introduce cuantos kilos has vendido:";
+	Leer kilos;
+
+	Escribir "Introduce el tipo de la UVA (A/B):";
+	Leer tipo;
+	
+	Si Mayusculas(tipo)<>"A" Y Mayusculas(tipo)<>"B" Entonces
+		Escribir "Tipo incorrecto";
+	SiNo
+		Escribir "Introduce el tamaño de la UVA (1/2):";
+		Leer tamano;
+
+		Si tamano<>"1" Y tamano<>"2" Entonces
+			Escribir "Tamaño incorrecto";
+		SiNo
+			Si Mayusculas(tipo)="A" Entonces
+				Si tamano="1" Entonces
+					precioInicial <- precioInicial + 20;
+				SiNo
+					precioInicial <- precioInicial + 30;
+				FinSi
+			SiNo
+				Si tamano="1" Entonces
+					precioInicial <- precioInicial - 20;
+				SiNo
+					precioInicial <- precioInicial - 30;
+				FinSi
+			FinSi
+			precioFinal<-precioInicial * kilos; 
+
+			Escribir "La ganancia es ",precioFinal/100, " euros.";
+			
+		FinSi
+	FinSi
+FinProceso
+
+Ejercicio 15
+El director de una escuela está organizando un viaje de estudios, y requiere determinar
+cuánto debe cobrar a cada alumno y cuánto debe pagar a la compañía de viajes por el
+servicio. La forma de cobrar es la siguiente: si son 100 alumnos o más, el costo por cada
+alumno es de 65 euros; de 50 a 99 alumnos, el costo es de 70 euros, de 30 a 49, de 95
+euros, y si son menos de 30, el costo de la renta del autobús es de 4000 euros, sin importar
+el número de alumnos. Realice un algoritmo que permita determinar el pago a la compañía
+de autobuses y lo que debe pagar cada alumno por el viaje.
+
+Iniciar Proceso Ej15
+	def alumnos, costeBus como entero;
+	def costeAlumno como real;
+
+	Escribir "Dime el número de alumnos que tienes en la actividad: ";
+	Leer alumnos;
+	
+	Si alumnos>=100 Entonces
+		costeAlumno<-65;
+	FinSi
+
+	Si alumnos>=50 Y alumnos<=99 Entonces
+		costeAlumno<-70;
+	FinSi
+
+	Si alumnos>=30 Y alumnos<=49 Entonces
+		costeAlumno<-95;
+	FinSi
+
+	Si alumnos<30 Y alumnos>0 Entonces
+		costeAlumno<-4000/alumnos;
+	FinSi
+
+	Si alumnos>0 Entonces
+		costeBus<-alumnos*costeAlumno;
+
+		Escribir "El coste por alumno es ",costeAlumno," euros.";
+		Escribir "El coste del autobús es ",costeBus," euros.";
+	SiNo
+		Escribir "El número de alumnos debe ser un valor positivo.";
+	FinSi
+FinProceso
+
+Ejercicio 16
+La política de cobro de una compañía telefónica es: cuando se realiza una llamada, el
+cobro es por el tiempo que ésta dura, de tal forma que los primeros cinco minutos cuestan
+1 euro, los siguientes tres, 80 céntimos, los siguientes dos minutos, 70 céntimos, y a partir
+del décimo minuto, 50 céntimos. Además, se carga un impuesto de 3 % cuando es
+domingo, y si es otro día, en turno de mañana, 15 %, y en turno de tarde, 10 %. Realice
+un algoritmo para determinar cuánto debe pagar por cada concepto una persona que
+realiza una llamada.
+
+Iniciar Proceso Ej16
+	def tiempo Como entero;
+	def esDomingo,turno como caracter;
+	def coste como entero;
+
+	Escribir "¿Cuánto tiempo es la llamada?:";
+	Leer tiempo;
+
+	Escribir "¿Es Domingo? (S/N):";
+	Leer esDomingo;
+
+	Si Mayusculas(esDomingo)="N" Entonces
+		Escribir "¿Qué turno: Mañana o Tarde? (M/T)?:";
+		Leer turno;
+	FinSi
+
+	Si tiempo<5 Entonces
+		coste<-tiempo*100;
+	SiNo
+		Si tiempo<8 Entonces
+			coste<-(tiempo-5)*80+500;
+		SiNo
+			Si tiempo<10 Entonces
+				coste<-(tiempo-8)*70+240+500;
+			SiNo
+				coste<-(tiempo-10)*50+140+240+500;
+			FinSi
+		FinSi
+	FinSi
+	Si Mayusculas(esDomingo)="S" Entonces
+		coste<-coste+coste*0.03;
+	SiNo
+		Si Mayusculas(turno)="M" Entonces
+			coste<-coste+coste*0.15;
+		SiNo
+			coste<-coste+coste*0.10;
+		FinSi
+	FinSi
+	Escribir "El coste de la llamada:", coste/100," euros.";
+
+FinProceso
+
+Ejercicio 17
+Realiza un programa que pida por teclado el resultado (dato entero) obtenido al lanzar un
+dado de seis caras y muestre por pantalla el número en letras (dato cadena) de la cara
+opuesta al resultado obtenido.
+ Nota 1: En las caras opuestas de un dado de seis caras están los números: 1-6, 2-5 y 3-4.
+ Nota 2: Si el número del dado introducido es menor que 1 o mayor que 6, se mostrará
+el mensaje: “ERROR: número incorrecto.”.
+Ejemplo:
+Introduzca número del dado: 5
+En la cara opuesta está el "dos".
+
+
+
+Ejercicio 18
+Realiza un programa que pida el día de la semana (del 1 al 7) y escriba el día
+correspondiente. Si introducimos otro número nos da un error.
+
+
+Ejercicio 19
+Escribe un programa que pida un número entero entre uno y doce e imprima el número
+de días que tiene el mes correspondiente.
+
+
+Ejercicio 20
+Una compañía de transporte internacional tiene servicio en algunos países de América del
+Norte, América Central, América del Sur, Europa y Asia. El costo por el servicio de
+transporte se basa en el peso del paquete y la zona a la que va dirigido. Lo anterior se
+muestra en la tabla:
+
+Zona 		Ubicación 		Costo/gramo
+
+1 		América del Norte 	24.00 euros
+
+2 		América Central 	20.00 euros
+
+3 		América del Sur 	21.00 euros
+
+4 		Europa 			10.00 euros
+
+5 		Asia 			18.00 euros
+
+Parte de su política implica que los paquetes con un peso superior a 5 kg no son
+transportados, esto por cuestiones de logística y de seguridad. Realice un algoritmo para
+determinar el cobro por la entrega de un paquete o, en su caso, el rechazo de la entrega.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
