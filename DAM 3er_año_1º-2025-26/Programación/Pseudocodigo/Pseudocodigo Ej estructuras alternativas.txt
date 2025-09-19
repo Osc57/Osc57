@@ -513,12 +513,57 @@ Ejemplo:
 Introduzca número del dado: 5
 En la cara opuesta está el "dos".
 
+Iniciar Proceso Ej17
+	def cara como entero;
 
+	Escribir "Dime la cara de tu dado: ";
+	Leer cara;
+
+	Según cara Hacer
+		1:
+			Escribir "SEIS";
+		2:
+			Escribir "CINCO";
+		3:
+			Escribir "CUATRO";
+		4:
+			Escribir "TRES";
+		5:
+			Escribir "DOS";
+		6:
+			Escribir "UNO";
+		De Otro Modo:
+			Escribir "Error: número incorrecto.";
+	FinSegun 
+FinProceso
 
 Ejercicio 18
 Realiza un programa que pida el día de la semana (del 1 al 7) y escriba el día
 correspondiente. Si introducimos otro número nos da un error.
 
+Iniciar Proceso Ej18
+	def dia como entero
+
+	Escribir "Dime un dia de la semana (1-7): ";
+	Leer dia;
+
+	Según dia Hacer
+		1:	
+			Escribir "Lunes";
+		2:	
+			Escribir "Martes";
+		3:	
+			Escribir "Miércoles";
+		4:	
+			Escribir "Jueves";
+		5:	
+			Escribir "Viernes";
+		6:	
+			Escribir "Sábado";
+		7:	
+			Escribir "Domingo";
+	FinSegun
+FinProceso
 
 Ejercicio 19
 Escribe un programa que pida un número entero entre uno y doce e imprima el número
