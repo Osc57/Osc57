@@ -19,6 +19,74 @@ Inicio Proceso Ej1;
 	Escribir "El factorial de ", num " es " resultado;
 FinProceso
 
+Ejercicio 2
+Crea una aplicación que permita adivinar un número. La aplicación genera un número
+aleatorio del 1 al 100. A continuación, va pidiendo números y va respondiendo si el
+número a adivinar es mayor o menor que el introducido, además de los intentos que te
+quedan (tienes 10 intentos para acertarlo). El programa termina cuando se acierta el
+número (además te dice en cuantos intentos lo has acertado), si se llega al límite de
+intentos te muestra el número que había generado.
+
+Inicio Proceso Ej2;
+	def random,num,contador como entero;
+
+	contador <- 10;
+	random <- aleatorio(1,10);
+	
+	Escribir "Dime un numero: ";
+
+	Mientras random <> num Hacer
+		Si num > random Entonces
+			Escribir "El número es menor"
+		SiNo
+			Escribir "El número es mayor"
+		FinSi
+		contador <- contador - 1;
+
+		Escribir "Le quedan ",intentos," intentos:";
+        	Leer num;
+
+    	FinMientras
+    
+    	Si random = num Entonces
+        	Escribir "Exacto! Usted adivino en ", contador ," intentos.";
+    	Sino
+        	Escribir "El numero era: ", random;
+    	FinSi
+			
+FinProceso
+
+Ejercicio 3
+Algoritmo que pida números hasta que se introduzca un cero. Debe imprimir la suma y la
+media de todos los números introducidos.
+
+Inicio Proceso Ej3
+	def num,suma,contador,media como entero;
+	
+	contador <- 0;
+	suma <- 0;	
+
+	Escribir "Dime un número: ";
+	Leer num;
+
+	Mientras num <> 0;
+		suma <- suma + num;
+		contador <- contador + 1;
+		
+		Leer num;
+	FinMientras
+
+	Si contador > 0 Hacer
+		media <- suma / contador;
+	SiNo 
+		media <- 0;
+	FinSi
+
+	Escribir "La suma es: " suma;
+	Escribir "La media es: " media;
+
+FinProceso
+
 Ejercicio 4
 Realizar un algoritmo que pida números (se pedirá por teclado la cantidad de números a
 introducir). El programa debe informar de cuantos números introducidos son mayores
@@ -58,6 +126,30 @@ Inicio Proceso Ej4;
 
 FinProceso
 
+Ejercicio 5
+Algoritmo que pida caracteres e imprima ‘VOCAL’ si son vocales y ‘NO VOCAL’ en
+caso contrario, el programa termina cuando se introduce un espacio.
+
+Inicio Proceso Ej5
+	def letra como carácter;
+	
+	Repetir
+		Repetir
+			Escribir "Introduce un carácter:";
+			Leer car;
+		Hasta que Longitud(letra) = 1;
+
+		Si letra <> " " Entonces
+			Si Mayusculas(car)="A" o Mayusculas(car)="E" o Mayusculas(car)="I" o 				Mayusculas(car)="O" o Mayusculas(car)="U" Entonces
+				Escribir "VOCAL";
+			SiNO
+				Escribir "NO VOCAL";
+			FinSi
+		FinSi
+	Hasta Que letra = " ";
+
+FinProceso
+
 Ejercicio 6
 Escribir un programa que imprima todos los números pares entre dos números que se le
 pidan al usuario.
@@ -78,6 +170,95 @@ Inicio Proceso Ej6;
 	Para  n <- n1 Hasta num2 Con Paso 2 Hacer
 		Escribir num;
 	Fin Para
+
+FinProceso
+
+Ejercicio 7
+Realizar un algoritmo que muestre la tabla de multiplicar de un número introducido por
+teclado.
+
+Inicio Proceso Ej7
+	def tabla, i como entero;
+
+	Escribir "¿De qué número quieres mostrar la tabla de multiplicar?:";
+	Leer tabla;
+
+	Para num<-1 hasta 10 Hacer
+		Escribir num," * ",tabla," = ",num * tabla;
+	FinPara
+
+FinProceso
+
+Ejercicio 8
+Escribe un programa que pida el límite inferior y superior de un intervalo. Si el límite
+inferior es mayor que el superior lo tiene que volver a pedir. A continuación, se van
+introduciendo números hasta que introduzcamos el 0. Cuando termine el programa dará
+las siguientes informaciones:
+ La suma de los números que están dentro del intervalo (intervalo abierto).
+ Cuantos números están fuera del intervalo.
+ He informa si hemos introducido algún número igual a los límites del intervalo.
+
+Inicio Proceso Ej8
+	def lim_inf, lim_sup,num, suma_dentro_intervalo, cont_fuera_intervalo como entero;
+	def igual_limites Como logico;
+
+	suma_dentro_intervalo <- 0;
+	cont_fuera_intervalo <- 0;
+	igual_limites <- Falso;
+
+	Repetir
+		Escribir "Introduce el límite inferior del intervalo:";
+		Leer lim_inf;
+
+		Escribir "Introduce el límite superior del intervalo:";
+		Leer lim_sup;
+
+		Si lim_inf>lim_sup Entonces
+			Escribir "ERROR: El límite inferior debe ser menor que el superior.";
+		FinSi
+	Hasta Que lim_inf<=lim_sup;
+	
+	Escribir Sin Saltar "Introduce un número (0, para salir):";
+	Leer num;
+
+	Mientras num<>0 Hacer
+		//Pertenece al intervalo
+		Si num>lim_inf Y num<lim_sup Entonces
+			suma_dentro_intervalo <- suma_dentro_intervalo + num;
+		SiNo
+			//No pertenece al intervalo
+			cont_fuera_intervalo <- cont_fuera_intervalo + 1;
+		FinSi
+
+		//Número igual a alguno de los límites
+		Si num=lim_inf O num=lim_sup Entonces
+			igual_limites <- Verdadero;
+		FinSi
+		Escribir Sin Saltar "Introduce un número (0, para salir):";
+		Leer num;
+	FinMientras
+
+	Escribir "La suma de los número dentro del intervalo es ",suma_dentro_intervalo;
+	Escribir "La cantidad de números fuera del intervalo es ",cont_fuera_intervalo;
+
+	Si igual_limites Entonces
+		Escribir "Se ha introducido algún número igual a los límites del intervalo.";
+	SiNo
+		Escribir "No se ha introducido ningún número igual a los límites del intervalo.";
+	FinSi
+FinProceso
+
+Ejercicio 9
+Escribe un programa que, dados dos números, uno real (base) y un entero positivo
+(exponente), saque por pantalla el resultado de la potencia. No se puede utilizar el
+operador de potencia.
+
+Inicio Proceso Ej9
+	def base, potencia como real;
+	def exponente, i como entero;
+	
+	
+	
 
 FinProceso
 
