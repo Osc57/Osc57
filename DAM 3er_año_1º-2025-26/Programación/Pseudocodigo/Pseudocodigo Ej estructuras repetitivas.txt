@@ -257,8 +257,71 @@ Inicio Proceso Ej9
 	def base, potencia como real;
 	def exponente, i como entero;
 	
+	Escribir Sin Saltar "Dame la base de la potencia:";
+	Leer base;
+
+	Repetir
+		Escribir Sin Saltar "Dame el exponente de la potencia:";
+		Leer exponente;
+		Si exponente < 0 Entonces
+			Escribir "ERROR: El exponente debe ser positivo";
+		FinSi
+
+	Hasta Que exponente >= 0;
+
+	potencia <- 1;
+
+	Para i<-1 hasta exponente Hacer
+		potencia <- potencia * base;
+	FinPara
 	
+	Escribir "Potencia:",potencia;
 	
+FinProceso
+
+Ejercicio 10
+Algoritmo que muestre la tabla de multiplicar de los números 1,2,3,4 y 5.
+
+Inicio Proceso Ej10
+	def tabla,num como entero;
+
+	Para tabla <- 1 hasta 5 Hacer
+		Para num<-1 hasta 10 Hacer
+			Escribir tabla," * ",num," = ", tabla*num;
+	FinPara
+
+	Esperar Tecla;
+
+	FinPara
+	
+FinProceso
+
+Ejercicio 11
+Escribe un programa que diga si un número introducido por teclado es o no primo. Un
+número primo es aquel que sólo es divisible entre él mismo y la unidad. Nota: Es
+suficiente probar hasta la raíz cuadrada del número para ver si es divisible por algún otro
+número.
+
+Inicio Proceso Ej11
+	def numEsPrimo, num como entero;
+	def esPrimo como logico;
+
+	esPrimo <- Verdadero;
+
+	Escribir "Dime un número para saber si es primo o no: ";
+	Leer numEsPrimo;
+	
+	Para num<-2 hasta rc(numeroEsPrimo) Hacer
+		Si numeroEsPrimo % num = 0 Entonces
+			esPrimo <- Falso;
+		FinSi
+	FinPara
+
+	Si esPrimo Entonces
+		Escribir "Es Primo";
+	SiNo
+		Escribir "No es Primo";
+	FinSi
 
 FinProceso
 
