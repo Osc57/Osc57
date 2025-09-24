@@ -501,7 +501,7 @@ Inicio Proceso Ej19
 	Repetir 
 
 	Escribir "Menú de recomendaciones";
-        Escribir "   1. Literatura";
+        Escribir "   1. Libros";
         Escribir "   2. Cine";
         Escribir "   3. Música";
         Escribir "   4. Videojuegos";
@@ -511,22 +511,56 @@ Inicio Proceso Ej19
 	
 	Según opción Hacer
 		1:
+			Escribir "Lecturas recomendables:";
 		2:
+			Escribir "Peliculas recomendadas: ";
 		3:
+			Escribir "Canciones recomendadas: ";
 		4:
+			Escribir "Videojuegos recomendados"
 		5:
-	
+			Escribir "Ha salido del programa";
+		De otro modo:
+			Escribir "Opción no valida ";
+	FinSegun
 
 	Hasta Que opción = 5;
-
-
 FinProceso
 
 Ejercicio 20
 Mostrar en pantalla los N primero número primos. Se pide por teclado la cantidad de
 números primos que queremos mostrar.
 
+Inicio Proceso Ej20
+	def cantidadMostrar, num, cantidadMostrados, divisor como entero;
+	def esPrimo como lógico;
+	
+	cantidadMostrados <- 1;
+	num <- 3;	
 
+	Repetir
+		Escribir "Dime la cantidad de números primos que quiere mostrar: ";
+		Leer cantidadMostrar;
+
+	Hasta que cantidadMostrar > 0;
+
+	Mientras cantidadMostrados < cantidadMostrar Hacer
+		esPrimo <- Verdadero;
+		
+		Para divisor <- 3 hasta rc(num) con paso 2 Hacer
+			Si num % divisor = 0	
+				esPrimo = Falso;
+			FinSi
+		FinPara
+
+		Si esPrimo Entonces
+			cantidadMostrados <- cantidadMostrados + 1;
+			Escribir cantidadMostrados ": " num
+		FinSi
+
+		num <- num + 2;
+	FinMientras
+FinProceso
 
 
 
