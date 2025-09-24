@@ -348,10 +348,183 @@ Inicio Proceso Ej12;
 	FinPara
 FinProceso
 	
+Ejercicio 13
+Una empresa tiene el registro de las horas que trabaja diariamente un empleado durante
+la semana (seis días) y requiere determinar el total de éstas, así como el sueldo que recibirá
+por las horas trabajadas.
+
+Inicio Proceso Ej13
+	def sueldoHora como real;
+	def horas, horasAcumuladas, dia como entero;
+
+	horasAcumuladas <- 0;
+
+	Escribir "Dime el sueldo por hora: ";
+	Leer sueldoHora;
+
+	Para dia <- 1 hasta 6 Hacer
+		Escribir "Cuantas horas has trabajado el dia " dia "?: ";
+		Leer horas;
+
+		horasAcumuladas <- horasAcumuladas + horas;
+	FinPara
+
+	Escribir "Horas acumuladas en la semana: " horasAcumuladas;
+	Escribir "Sueldo: " sueldoHoras * horasAcumuladas;
+FinProceso
+
+Ejercicio 14
+Una persona se encuentra en el kilómetro 70 de una carretera, otra se encuentra en el km
+150, los coches tienen sentido opuesto y tienen la misma velocidad. Realizar un programa
+para determinar en qué kilómetro de esa carretera se encontrarán.
+
+Inicio Proceso Ej14
+	def km1,km2 como entero;
+
+	Mientras km1 <> km2 Hacer
+		km1 <- km + 1;
+		km2 <- k2 - 1;
+	FinMientras
+
+	Escribir "Se encuentran en el km: " km1;
+FinProceso
+	
+Ejercicio 15
+Una persona adquirió un producto para pagar en 20 meses. El primer mes pagó 10 €, el
+segundo 20 €, el tercero 40 € y así sucesivamente. Realizar un algoritmo para determinar
+cuánto debe pagar mensualmente y el total de lo que pagó después de los 20 meses.
+
+Inicio Proceso Ej15
+	def pago,pagoAcumulado como real;
+	def mes como entero;
+
+	pagoAcumulado <- 0;
+	pago <- 10;
+
+	Para mes <- 1 hasta 20 Hacer
+		pagoAcumulado <- pagoAcumulado + pago;
+		pago <- pago * 2;
+	FinPara
+
+	Escribir "Al final de los 20 meses tuvo que pagar: " pagoAcumulado;
+FinProceso
+
+Ejercicio 16
+Una empresa les paga a sus empleados con base en las horas trabajadas en la semana.
+Realice un algoritmo para determinar el sueldo semanal de N trabajadores y, además,
+calcule cuánto pagó la empresa por los N empleados.
+
+Inicio Proceso Ej16
+	Definir horasSemana, horasAcumuladas, trabajadores,trabajador como Entero;
+	Definir sueldoHora como Real;
+	
+	horasAcumuladas < - 0;
+
+	Escribir "Cuántos trabajadores tiene la empresa:";
+	Leer trabajadores;
+	
+	Escribir "Sueldo por hora:";
+	Leer sueldoHora;
+
+	Para trabajador <-1 hasta trabajadores Hacer
+		Escribir "¿Cuántas horas ha trabajado el trabajador ",trabajador," ?";
+		Leer horasSemana;
+		horasAcumuladas <- horasAcumuladas + horasSemana;
+		Escribir "El trabajador ",trabajador," tiene de sueldo ",horasSemana * sueldoHora; 
+	FinPara
+
+	Escribir "El pago a los ",trabajadores," trabajadores es: ",horasAcumuladas * sueldoHora;
+FinProceso
+
+Ejercicio 17
+Una empresa les paga a sus empleados con base en las horas trabajadas en la semana.
+Para esto, se registran los días que trabajó y las horas de cada día. Realice un algoritmo
+para determinar el sueldo semanal de N trabajadores y además calcule cuánto pagó la
+empresa por los N empleados.
+
+Inicio Proceso Ej17
+	def dias, horas, horasTrabajador, horasAcumuladas, dia, trabajador, trabajadores Como Entero;
+	def sueldoHoras Como Real;
+		
+	horasAcumuladas <- 0;
+	
+	Escribir "¿Cuántos trabajadores tiene la empresa?:";
+	Leer trabajadores;
+
+	Escribir "Sueldo por hora:";
+	Leer sueldoHoras;
+
+	Para trabajador<-1 hasta trabajadores Hacer
+		horasTrabajador <- 0;
+
+		Escribir "¿Cuántos dí­as ha trabajado el trabajador ",trabajador," ?";
+		Leer dias;
+
+		Para dia<-1 hasta dias Hacer
+			Escribir "¿Cuántas horas ha trabajado el trabajador ",trabajador," el día ",dia,"?:";
+			Leer horas;
+
+			horasTrabajador<-horasTrabajador + horas;
+		FinPara
+
+		Escribir "El trabajador ",trabajador," tiene de sueldo ",horasTrabajador * sueldoHoras; 
+		horasAcumuladas <- horasAcumuladas + horasTrabajador;
+	FinPara
+
+	Escribir "El pago a los ",trabajadores," trabajadores es :",horas_acum*sueldo_por_hora;
+FinProceso
+
+Ejercicio 18
+Hacer un programa que muestre un cronometro, indicando las horas, minutos y segundos.
+
+Inicio Proceso Ej18
+	def hora, minuto, segundo como Entero;
+
+	Para hora <- 0 hasta 23 con paso 1 hacer 
+		Para minuto <- 0 hasta 59 con paso 1 hacer 
+			Para segundo <- 0 hasta 59 con paso 1 hacer 
+				Limpiar Pantalla;
+				Escribir hora,":",minuto,":",segundo;
+				Esperar 1 Segundo;
+			FinPara 
+		FinPara
+	FinPara
+FinProceso
+
+Ejercicio 19
+Realizar un ejemplo de menú, donde podemos escoger las distintas opciones hasta que
+seleccionamos la opción de “Salir”.
+
+Inicio Proceso Ej19
+	def opción como entero;
+	
+	Repetir 
+
+	Escribir "Menú de recomendaciones";
+        Escribir "   1. Literatura";
+        Escribir "   2. Cine";
+        Escribir "   3. Música";
+        Escribir "   4. Videojuegos";
+        Escribir "   5. Salir";
+        Escribir "Elija una opción (1-5): ";
+        Leer opcion;
+	
+	Según opción Hacer
+		1:
+		2:
+		3:
+		4:
+		5:
+	
+
+	Hasta Que opción = 5;
 
 
+FinProceso
 
-
+Ejercicio 20
+Mostrar en pantalla los N primero número primos. Se pide por teclado la cantidad de
+números primos que queremos mostrar.
 
 
 
