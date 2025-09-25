@@ -150,13 +150,54 @@ Pide una cadena y dos caracteres por teclado (valida que sea un carácter), sust
 aparición del primer carácter en la cadena por el segundo carácter.
 
 Iniciar Proceso Ej7
+	def cad, nuevaCad, carBuscar, carSustituir como carácter;
+	def posición como entero;
+
+	nuevaCad <- "";
+
+	Repetir
+		Escribir "Introduce un carácter a buscar:";
+		Leer carBuscar;	
+	Hasta Que longitud(carBuscar) = 1;	
 	
+	Repetir
+		Escribir "Introduce un carácter para sustituir: ";
+		Leer carSustituir;
+	Hasta Que longitud(carSustituir) = 1;
+
+	Para posicion<-0 hasta Longitud(cad)-1 Hacer
+		Si Subcadena(cad,posicion,posicion)=carBuscar Entonces
+			nuevaCad <- concatenar(nuevaCad, carSustituir);
+		SiNo
+			nuevaCad <- concatenar(nuevaCad,Subcadena(cad,posicion,posicion));
+		FinSi
+	FinPara
+	Escribir "La cadena modificada es ",nuevaCad;
 FinProceso
 
 Ejercicio 8
 Realizar un programa que lea una cadena por teclado y convierta las mayúsculas a
 minúsculas y viceversa.
 
+Inicio Proceso Ej8
+	def cad,nuevaCad como caracter;
+	def posicion como entero;
+
+	nuevaCad <- "";
+
+	Escribir "Introduce una cadena:";
+	Leer cad;
+		
+	Para posicion<-0 hasta Longitud(cad)-1 Hacer
+		Si Subcadena(cad,posicion,posicion)=Mayusculas(Subcadena(cad,posicion,posicion)) Entonces
+			nuevaCad <-concatenar(nuevaCad,Minusculas(Subcadena(cad,posicion,posicion)));
+		FinSi
+		Si Subcadena(cad,posicion,posicion)=Minusculas(Subcadena(cad,posicion,posicion)) Entonces
+			nuevaCad <- concatenar(nuevaCad,Mayusculas(Subcadena(cad,posicion,posicion)));
+		FinSi
+	FinPara
+	Escribir "La cadena convertida es: ",nuevaCad;
+FinProceso
 
 Ejercicio 9
 Realizar un programa que compruebe si una cadena contiene una subcadena. Las dos
