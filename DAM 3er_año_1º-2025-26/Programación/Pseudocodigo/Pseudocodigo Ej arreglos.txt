@@ -102,11 +102,35 @@ Programa que declare un vector de diez elementos enteros y pida números para re
 hasta que se llene el vector o se introduzca un número negativo. Entonces se debe
 imprimir el vector (sólo los elementos introducidos).
 
+Inicio Proceso Ej4
+	def vectorElementos, tamVector, num, i como entero;
+	dimensión vecorElementos[10];
+	
+	i <- 0;
+	tamVector <- 10;	
+
+	Repetir
+		Escribir "Introduce un número en el vector: ", i+1;
+		Leer vectorElementos[i];
+		i <- i + 1;
+	Hasta Que i = tamVector | vectorElementos[i-1]<0;
+
+	i <- 0;
+
+	Escribir "Elementos del vector";
+	Mientras i < tamVector - 1 & vectorElementos[indice]>=0 Hacer
+		Escribir vectorElementos[i]," ";
+		i <- i + 1;
+	FinMientras
+FinProceso
 
 Ejercicio 5
 Hacer un programa que inicialice un vector de números con valores aleatorios, y posterior
 ordene los elementos de menor a mayor.
 
+Inicio Proceso Ej5
+
+FinProceso
 
 Ejercicio 6
 Crea un programa que pida un número al usuario un número de mes (por ejemplo, el 4) y
