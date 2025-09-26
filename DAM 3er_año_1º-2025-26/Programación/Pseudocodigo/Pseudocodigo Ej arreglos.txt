@@ -129,7 +129,32 @@ Hacer un programa que inicialice un vector de números con valores aleatorios, y
 ordene los elementos de menor a mayor.
 
 Inicio Proceso Ej5
+	def vectorNumeros, cambios, aux, i, tamNumeros como entero;
+	dimensión vectorNumeros[10];
 
+	tamNumeros <- 10;
+
+	Para i <- 0 hasta tamNumeros - 1 Hacer
+		vectorNumeros[i] <- aleatorio(1,10);
+	FinPara
+
+	Repetir 
+		cambios <- 0;
+		
+		Para i <- 0 hasta tamNumeros - 2 Hacer
+			Si vector[i] > vector[i+1] Entonces
+				aux <- vectorNumeros[i];
+				vectorNumeros[i] <- aux;
+				vector[i+1] <- aux;
+				cambios <- cambios +1;
+			FinSi
+		FinPara
+	Hasta Que cambios = 0;
+
+	Para i <- 0 hasta tamNumeros -1 Hacer
+		Escribir Sin Saltar vectorNumeros[i]," ";
+	FinPara
+	
 FinProceso
 
 Ejercicio 6
