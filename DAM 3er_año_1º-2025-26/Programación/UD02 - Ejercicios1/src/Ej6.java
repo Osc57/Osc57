@@ -30,7 +30,7 @@ public class Ej6 {
         } else {
             System.out.println("¿Son múltiplos?: No");
         }
-        
+
 
     }
 }
