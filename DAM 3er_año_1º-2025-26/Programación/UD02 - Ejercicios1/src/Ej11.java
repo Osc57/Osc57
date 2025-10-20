@@ -12,6 +12,6 @@ no interesados en la vivienda.
 
 public class Ej11 {
     public static void main(String[] args) {
-        
+
     }
 }

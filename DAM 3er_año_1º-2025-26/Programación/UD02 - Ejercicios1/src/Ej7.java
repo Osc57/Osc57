@@ -15,7 +15,7 @@ public class Ej7 {
         System.out.print("Dime otro número: ");
         int n2 = scanner.nextInt();
 
-        int producto = n1 * n2;
+        int producto = Math.multiplyExact(n1,n2);
 
         System.out.println(producto);
     }
