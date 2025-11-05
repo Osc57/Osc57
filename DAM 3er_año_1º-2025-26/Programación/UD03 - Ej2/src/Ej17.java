@@ -23,13 +23,13 @@ public class Ej17 {
         int menor = Integer.MAX_VALUE;
         int mesMayor = 0;
         int mesMenor = 0;
-        int facturacion;
 
         for (int i = 0; i < 12; i++) {
             System.out.print("Dime cuanto has generado en el mes " + (i + 1) + ": ");
 
             if (scanner.hasNextInt()) {
-                facturacion = scanner.nextInt();
+                int facturacion = scanner.nextInt();
+                scanner.nextLine();
 
                 if (facturacion > 0) {
                     suma += facturacion;
