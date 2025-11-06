@@ -8,9 +8,30 @@ anchura 4 y altura 3, el rectángulo sería así:
 ****
 */
 
+import java.util.Scanner;
+
 public class Ej29 {
     public static void main(String[] args) {
 
-        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Dime la altura del rectangulo: ");
+
+        if (scanner.hasNextInt()) {
+            int altura = scanner.nextInt();
+
+            for (int i = 1; i <= altura; i++) {
+                for (int j = 1; j <= altura; j++) {
+                    if (i == 1 || i == altura || j == 1 || j == altura) {
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
+                    }
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("Debe introducir un número entero (0-9)");
+        }
     }
 }
