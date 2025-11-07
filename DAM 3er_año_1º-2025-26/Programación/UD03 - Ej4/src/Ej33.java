@@ -18,8 +18,41 @@ divisores hasta n/2, ya que no puede tener divisores mayores que su
 mitad.
 */
 
+import java.util.Scanner;
+
 public class Ej33 {
     public static void main(String[] args) {
-        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Dime un número: ");
+
+        if (scanner.hasNextInt()) {
+            int n = scanner.nextInt();
+
+            for (int i = 2; i <= n; i++) {
+                while (n % i == 0) {
+                    System.out.println(n + "|" + i);
+                    n = n / i;
+                }
+            }
+
+            if (n > 1) {
+                System.out.println(n + "|" + n);
+            }
+            System.out.println(1);
+
+        } else {
+            System.out.println("Debe introducir un número entero (0-9)");
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
