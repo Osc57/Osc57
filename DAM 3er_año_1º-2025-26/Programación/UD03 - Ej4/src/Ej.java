@@ -15,7 +15,7 @@ public class Ej {
 
             System.out.println("RULETA RUSA");
             System.out.println("ELIJE A UN AMIGO");
-            System.out.println("=========================");
+            System.out.println("======================================");
 
             do {
                 System.out.print("Dispara el gatillo (pulsa Enter) ");
@@ -32,12 +32,12 @@ public class Ej {
                 } else {
                     System.out.println("Estás a salvo");
                     System.out.println("Balas restantes: " + (balas - contador));
-                    System.out.println();
+                    System.out.println("======================================");
                 }
 
                 contador++;
             } while (contador <= balas);
-            
+
             System.out.print("¿Quieres jugar otra vez? (s/n): ");
             String respuesta = scanner.nextLine().trim().toLowerCase();
             jugarOtraVez = respuesta.equals("s");
