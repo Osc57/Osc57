@@ -9,9 +9,9 @@ public class Ej {
         boolean jugarOtraVez;
 
         do {
-            int revolver = random.nextInt(10) + 1;
+            int revolver = random.nextInt(6) + 1;
             int contador = 1;
-            int balas = 10;
+            int balas = 6;
 
             System.out.println("RULETA RUSA");
             System.out.println("ELIJE A UN AMIGO");
