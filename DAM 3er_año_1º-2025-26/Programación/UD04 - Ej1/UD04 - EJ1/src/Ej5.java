@@ -11,14 +11,32 @@ Q
 import java.util.Scanner;
 
 public class Ej5 {
-    public static void triangulo(char letra, int ancho) {
+    /*
+    public static String triangulo(char letra, int ancho) {
+        String resultado = "";
 
         for (int i = ancho; i >= 1; i--) {
+            String linea = "";
             for (int j = 1; j <= i; j++) {
-                System.out.print(letra);
+                linea += letra;
             }
-            System.out.println();
+            resultado += linea + "\n";
         }
+
+        return resultado;
+
+    }
+    */
+
+    public static String triangulo(char letra, int ancho) {
+        StringBuilder resultado = new StringBuilder();
+
+        for (int i = ancho; i >= 1; i--) {
+            StringBuilder linea = new StringBuilder();
+            linea.append(String.valueOf(letra).repeat(i));
+            resultado.append(linea).append("\n");
+        }
+        return resultado.toString();
     }
 
     public static void main(String[] args) {
@@ -31,7 +49,7 @@ public class Ej5 {
         System.out.print("Dime el ancho de tu piramide: ");
         int a = scanner.nextInt();
 
-        triangulo(caract, a);
+        System.out.println(triangulo(caract, a));
 
     }
 }
