@@ -5,8 +5,8 @@ public class Iteraciones {
         // Crear un objeto Random para generar números aleatorios
         Random random = new Random();
         // Obtener un número aleatorio entre 1 y 10 (ambos incluidos)
-        int iter = random.nextInt(4); // nextInt(20) genera un número entre 0 y 4
-        int count = random.nextInt(9); // nextInt(20) genera un número entre 0 y 9
+        int iter = random.nextInt(5); // nextInt(20) genera un número entre 0 y 4
+        int count = random.nextInt(10); // nextInt(20) genera un número entre 0 y 9
 
         System.out.println("Iteraciones: " + iter + " Números: " + count + ". Cantidad de números a generar: " + iter * count);
 
