@@ -10,10 +10,9 @@ public class Depurar {
 
         System.out.print("Ingresa el número total de términos que quieres que calcule la media: ");
         int counter = NumScanner.nextInt();
-        int counter2 = counter;
 
         for (int x = 0; x < counter; x++) {
-            System.out.print("Por favor ingresa " + (counter2--) + " números: ");
+            System.out.print("Por favor ingresa el " + (x +1) + " número: ");
             inputNum = NumScanner.nextInt();
 
             sum = sum + inputNum;
