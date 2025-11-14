@@ -23,6 +23,8 @@ public class Ej11 {
             int n = scanner.nextInt();
 
             System.out.println(factorialRecursivo(n));
+        }else {
+            System.out.println("ERROR: Introduce un número entero");
         }
     }
 }
