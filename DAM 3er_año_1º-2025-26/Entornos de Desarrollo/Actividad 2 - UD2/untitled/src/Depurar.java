@@ -12,7 +12,7 @@ public class Depurar {
         int counter = NumScanner.nextInt();
 
         for (int x = 0; x < counter; x++) {
-            System.out.print("Por favor ingresa el " + (x +1) + " número: ");
+            System.out.print("Por favor ingresa el " + (x + 1) + " número: ");
             inputNum = NumScanner.nextInt();
 
             sum = sum + inputNum;
