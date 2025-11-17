@@ -1,0 +1,26 @@
+/*
+7. Crea un programa que genere un array de 10 números aleatorios entre -10 y
+10. Después el programa mostrará los valores por pantalla en una sola línea
+separados por espacios. A continuación, debe cambiar los números negativos
+del array por el mismo valor positivo. El programa mostrará el array de nuevo.
+*/
+
+public class Ej7 {
+    public static void main(String[] args) {
+        int[] aleatorios = new int[10];
+
+        for (int i = 0; i < aleatorios.length; i++) {
+            aleatorios[i] = (int) (Math.random() * 21) - 10;
+            System.out.print(aleatorios[i] + " ");
+        }
+        System.out.println();
+
+        for (int j = 0; j < aleatorios.length; j++) {
+            if (aleatorios[j] < 0) {
+                aleatorios[j] = Math.abs(aleatorios[j]);
+            }
+
+            System.out.print(aleatorios[j] + " ");
+        }
+    }
+}

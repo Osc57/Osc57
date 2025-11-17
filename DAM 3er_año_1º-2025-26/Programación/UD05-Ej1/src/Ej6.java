@@ -7,6 +7,19 @@ negativos.
 
 public class Ej6 {
     public static void main(String[] args) {
+        int[] aleatorios = new int[10];
+        int contador = 0;
 
+
+        for (int n : aleatorios) {
+            aleatorios[n] = (int) (Math.random() * 21) - 10;
+            System.out.print(aleatorios[n] + " ");
+            if (aleatorios[n] < 0) {
+                contador++;
+            }
+        }
+
+        System.out.println();
+        System.out.println("Hay " + contador + " números negativos");
     }
 }
