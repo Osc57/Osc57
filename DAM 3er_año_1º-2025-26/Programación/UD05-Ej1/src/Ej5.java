@@ -14,6 +14,7 @@ public class Ej5 {
         Scanner scanner = new Scanner(System.in);
         int[] aleatorios = new int[10];
         boolean negativo;
+        boolean encontrado = false;
 
         for (int i = 0; i < 10; i++) {
             aleatorios[i] = (int) (Math.random() * 100);
@@ -32,7 +33,6 @@ public class Ej5 {
                     System.out.println("FIN PROGRAMA");
                     negativo = true;
                 } else {
-                    boolean encontrado = false;
                     for (int num : aleatorios) {
                         if (num == n) {
                             encontrado = true;
