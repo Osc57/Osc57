@@ -8,14 +8,16 @@ public class Ej9 {
     public static void main(String[] args) {
         int[] aleatorios = new int[10];
         boolean[] repetidos = new boolean[10];
-        int contador = 0;
 
         for (int i = 0; i < aleatorios.length; i++) {
             aleatorios[i] = (int) (Math.random() * 21) - 10;
             System.out.print(aleatorios[i] + " ");
         }
 
+        System.out.println();
         for (int i = 0; i < aleatorios.length; i++) {
+            int contador = 0;
+
             if (!repetidos[i]) {
                 for (int j = 0; j < aleatorios.length; j++) {
                     if (aleatorios[i] == aleatorios[j]) {
@@ -23,12 +25,11 @@ public class Ej9 {
                         repetidos[j] = true;
                     }
                 }
+                
                 if (contador > 1) {
                     System.out.println("El número " + aleatorios[i] + " se repite " + contador + " veces.");
                 }
-
             }
-
         }
     }
 }
