@@ -40,7 +40,7 @@ public class Ej13 {
                 esNumero = true;
 
             } else {
-                System.out.println("No pasa nada, recuerda valores enteros (0-9)");
+                System.out.println("No pasa nada, recuerda, valores enteros (0-9)");
                 scanner.next();
                 esNumero = false;
             }
