@@ -11,13 +11,20 @@ import java.util.Scanner;
 public class Ej13 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String[] nombres;
         boolean esNumero;
 
         do {
             System.out.print("Cuantos nombres vas a introducir: ");
             if (scanner.hasNextInt()) {
                 int n = scanner.nextInt();
-                String[] nombres = new String[n];
+
+                if (n <= 0) {
+                    System.out.println("Vale, el número es entero, pero tiene que ser positivo");
+                    esNumero = false;
+                    continue;
+                }
+                nombres = new String[n];
 
                 for (int i = 0; i < nombres.length; i++) {
                     System.out.print("Vale, dime el " + (i + 1) + " nombre: ");
