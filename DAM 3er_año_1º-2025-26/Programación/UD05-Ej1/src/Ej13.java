@@ -20,7 +20,7 @@ public class Ej13 {
                 int n = scanner.nextInt();
 
                 if (n <= 0) {
-                    System.out.println("Vale, el número es entero, pero tiene que ser positivo");
+                    System.out.println("Vale, el número es entero, pero tiene que ser positivo o que no sea cero");
                     esNumero = false;
                     continue;
                 }
