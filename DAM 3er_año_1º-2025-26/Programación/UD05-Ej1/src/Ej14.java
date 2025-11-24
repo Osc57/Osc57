@@ -1,0 +1,81 @@
+/*14. Pueblos de Aragón. El programa mostrará al usuario las siguientes opciones:*/
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ej14 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] huescaArray = {"Berbegal", "Chimillas", "Ibieca", "Altorricón", "Estada", "Sopeira", "Viacamp y Litera", "Salillas",
+                "Hoz y Costean", "Perarrúa", "Antillón", "Pozán de Vero", "Biscarrués", "Lascuarre", "Santa Cilia de Jaca", "Fonz",
+                "Angüés", "Grañén", "El Pueyo de Araguás", "Arguis"};
+        String[] zaragozaArray = {"Belchite", "Ateca", "Cariñena", "Sos del Rey Católico", "Tarazona", "Alagón", "Ejea de los Caballeros",
+                "Caspe", "Utebo", "La Almunia de Doña Godina", "Zuera", "Tauste", "Villanueva de Gállego", "Borja", "Calatayud", "Cuarte de Huerva",
+                "Grisén", "Maella", "Gallur", "Daroca"};
+        String[] teruelArray = {"Albarracín", "Alcañiz", "Andorra", "Calamocha", "Calanda", "Valderrobres", "Utrillas", "Cella", "Monreal del Campo",
+                "Albalate del Arzobispo", "Híjar", "Mora de Rubielos", "Rubielos de Mora", "Cantavieja", "Sarrión", "Alfambra", "Aliaga", "Puertomingalvo",
+                "Griegos", "Bronchales"};
+        boolean provinciaCorrecta;
+
+        /*
+        a) Mostrar pueblos por provincia. Pedirá al usuario que elija la provincia:
+        Huesca, Teruel, Zaragoza. Después mostrará todos los pueblos de la
+        provincia ordenados por orden alfabético.
+        */
+        do {
+            System.out.print("Dime la provincia (Huesca, Zaragoza o Teruel): ");
+            String provincia = scanner.nextLine().toLowerCase().trim();
+
+            switch (provincia) {
+                case "huesca" -> {
+                    Arrays.sort(huescaArray);
+                    for (String p : huescaArray) {
+                        System.out.print(p + ", ");
+                    }
+                    provinciaCorrecta = true;
+                }
+                case "zaragoza" -> {
+                    Arrays.sort(zaragozaArray);
+                    for (String p : zaragozaArray) {
+                        System.out.print(p + ", ");
+                    }
+                    provinciaCorrecta = true;
+                }
+                case "teruel" -> {
+                    Arrays.sort(teruelArray);
+                    for (String p : teruelArray) {
+                        System.out.print(p + ", ");
+                    }
+                    provinciaCorrecta = true;
+                }
+                default -> {
+                    System.out.println("Provincia Erronea");
+                    provinciaCorrecta = false;
+                }
+            }
+        } while (!provinciaCorrecta);
+
+        /*
+        b) Introducir pueblos por provincia. Pedirá al usuario que elija la
+        provincia: Huesca, Teruel, Zaragoza. Después pedirá al usuario el
+        número de pueblos de la provincia elegida que va a introducir y, a
+        continuación, pedirá que los introduzca. Una vez introducidos añadirá
+        los nuevos pueblos a la lista de pueblos de la provincia de seleccionada
+        validando que no hay duplicados.
+        */
+
+
+        /*
+        c) Mostrar todos los pueblos de las tres provincias en orden alfabético.
+        */
+
+
+        /*
+        d) Buscar pueblo. Buscará en los arrays de las provincias si existe el
+        pueblo buscado. Si existe mostrará el resultado y a qué provincia
+        pertenece. Si no lo encuentra ofrecerá al usuario introducirlo
+        pidiéndole para ello la provincia a la que pertenece.
+        */
+    }
+}
