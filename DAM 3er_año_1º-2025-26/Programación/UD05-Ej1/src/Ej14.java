@@ -29,7 +29,7 @@ public class Ej14 {
         System.out.println("<--------------------- APARTADO A --------------------->");
         do {
             System.out.print("Dime la provincia (Huesca, Zaragoza o Teruel): ");
-            String provincia = scanner.nextLine().toLowerCase().trim();
+            String provincia = scanner.nextLine().trim();
 
             switch (provincia) {
                 case "huesca" -> {
@@ -85,7 +85,7 @@ public class Ej14 {
 
                         for (int i = 0; i < huescaCopia.length; i++) {
                             System.out.print("Dime el " + (i + 1) + " pueblo: ");
-                            String pueblo = scanner.nextLine().toLowerCase().trim();
+                            String pueblo = scanner.nextLine().trim();
 
                             boolean repetido = false;
                             for (int j = 0; j < huescaArray.length; j++) {
@@ -112,7 +112,7 @@ public class Ej14 {
                         provinciaCorrecta = true;
                     } else {
                         System.out.println("ERROR: Introduce un número entero");
-                        scanner.next();
+                        scanner.nextLine();
                         provinciaCorrecta = false;
 
                     }
@@ -155,7 +155,7 @@ public class Ej14 {
                         provinciaCorrecta = true;
                     } else {
                         System.out.println("ERROR: Introduce un número entero");
-                        scanner.next();
+                        scanner.nextLine();
                         provinciaCorrecta = false;
 
                     }
@@ -170,7 +170,7 @@ public class Ej14 {
 
                         for (int i = 0; i < teruelCopia.length; i++) {
                             System.out.print("Dime el " + (i + 1) + " pueblo: ");
-                            String pueblo = scanner.nextLine().toLowerCase().trim();
+                            String pueblo = scanner.nextLine().trim();
 
                             boolean repetido = false;
 
