@@ -26,6 +26,7 @@ public class Ej14 {
         Huesca, Teruel, Zaragoza. Después mostrará todos los pueblos de la
         provincia ordenados por orden alfabético.
         */
+        System.out.println("<--------------------- APARTADO A --------------------->");
         do {
             System.out.print("Dime la provincia (Huesca, Zaragoza o Teruel): ");
             String provincia = scanner.nextLine().toLowerCase().trim();
@@ -68,6 +69,7 @@ public class Ej14 {
         validando que no hay duplicados.
         */
         System.out.println();
+        System.out.println("<--------------------- APARTADO B --------------------->");
         do {
             System.out.print("Dime la provincia (Huesca, Zaragoza o Teruel): ");
             String provincia = scanner.nextLine().toLowerCase().trim();
