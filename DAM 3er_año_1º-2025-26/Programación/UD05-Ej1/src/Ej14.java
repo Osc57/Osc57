@@ -99,11 +99,20 @@ public class Ej14 {
                                 i--;
                             } else {
                                 huescaCopia[i] = pueblo;
+                                System.out.println("Pueblo introducido con exito");
                             }
 
                         }
 
-                        huescaArray = Arrays.copyOf(huescaCopia, huescaCopia.length);
+                        String[] resultado = Arrays.copyOf(huescaArray, huescaArray.length + huescaCopia.length);
+                        System.arraycopy(huescaCopia, 0, resultado, huescaArray.length, huescaCopia.length);
+
+                        huescaArray = resultado;
+
+                        for (String h : huescaArray) {
+                            System.out.print(h + ", ");
+                        }
+
                         provinciaCorrecta = true;
                     } else {
                         System.out.println("ERROR: Introduce un número entero");
@@ -114,11 +123,50 @@ public class Ej14 {
 
                 }
                 case "zaragoza" -> {
-                    Arrays.sort(zaragozaArray);
-                    for (String p : zaragozaArray) {
-                        System.out.print(p + ", ");
+                    System.out.print("Dime cuantos pueblos de Zaragoza quieres añadir: ");
+                    if (scanner.hasNextInt()) {
+                        int n = scanner.nextInt();
+                        scanner.nextLine();
+
+                        zaragozaCopia = new String[n];
+
+                        for (int i = 0; i < zaragozaCopia.length; i++) {
+                            System.out.print("Dime el " + (i + 1) + " pueblo: ");
+                            String pueblo = scanner.next().toLowerCase().trim();
+
+                            boolean repetido = false;
+                            for (String p : zaragozaArray) {
+                                if (p.equalsIgnoreCase(pueblo)) {
+                                    repetido = true;
+                                    break;
+                                }
+                            }
+                            if (repetido) {
+                                System.out.println("ERROR: Pueblo existente");
+                                i--;
+                            } else {
+                                zaragozaCopia[i] = pueblo;
+                                System.out.println("Pueblo introducido con exito");
+                            }
+
+                        }
+
+                        String[] resultado = Arrays.copyOf(zaragozaArray, zaragozaArray.length + zaragozaCopia.length);
+                        System.arraycopy(zaragozaCopia, 0, resultado, zaragozaArray.length, zaragozaCopia.length);
+
+                        huescaArray = resultado;
+
+                        for (String h : zaragozaArray) {
+                            System.out.print(h + ", ");
+                        }
+
+                        provinciaCorrecta = true;
+                    } else {
+                        System.out.println("ERROR: Introduce un número entero");
+                        scanner.next();
+                        provinciaCorrecta = false;
+
                     }
-                    provinciaCorrecta = true;
                 }
                 case "teruel" -> {
                     Arrays.sort(teruelArray);
@@ -137,6 +185,34 @@ public class Ej14 {
         /*
         c) Mostrar todos los pueblos de las tres provincias en orden alfabético.
         */
+        System.out.println();
+        System.out.println("<--------------------- APARTADO C --------------------->");
+
+        Arrays.sort(huescaArray);
+
+        System.out.print("Huesca -> ");
+        for (String p : huescaArray) {
+            System.out.print(p + ", ");
+
+        }
+
+        System.out.println();
+        Arrays.sort(zaragozaArray);
+
+        System.out.print("Zaragoza -> ");
+        for (String p : zaragozaArray) {
+            System.out.print(p + ", ");
+
+        }
+
+        System.out.println();
+        Arrays.sort(teruelArray);
+
+        System.out.print("Teruel -> ");
+        for (String p : teruelArray) {
+            System.out.print(p + ", ");
+
+        }
 
 
         /*
