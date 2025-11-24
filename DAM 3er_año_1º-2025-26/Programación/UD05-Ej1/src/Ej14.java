@@ -85,7 +85,7 @@ public class Ej14 {
 
                         for (int i = 0; i < huescaCopia.length; i++) {
                             System.out.print("Dime el " + (i + 1) + " pueblo: ");
-                            String pueblo = scanner.next().toLowerCase().trim();
+                            String pueblo = scanner.nextLine().toLowerCase().trim();
 
                             boolean repetido = false;
                             for (String p : huescaArray) {
@@ -109,10 +109,6 @@ public class Ej14 {
 
                         huescaArray = resultado;
 
-                        for (String h : huescaArray) {
-                            System.out.print(h + ", ");
-                        }
-
                         provinciaCorrecta = true;
                     } else {
                         System.out.println("ERROR: Introduce un número entero");
@@ -132,7 +128,7 @@ public class Ej14 {
 
                         for (int i = 0; i < zaragozaCopia.length; i++) {
                             System.out.print("Dime el " + (i + 1) + " pueblo: ");
-                            String pueblo = scanner.next().toLowerCase().trim();
+                            String pueblo = scanner.nextLine().toLowerCase().trim();
 
                             boolean repetido = false;
                             for (String p : zaragozaArray) {
@@ -154,11 +150,7 @@ public class Ej14 {
                         String[] resultado = Arrays.copyOf(zaragozaArray, zaragozaArray.length + zaragozaCopia.length);
                         System.arraycopy(zaragozaCopia, 0, resultado, zaragozaArray.length, zaragozaCopia.length);
 
-                        huescaArray = resultado;
-
-                        for (String z : zaragozaArray) {
-                            System.out.print(z + ", ");
-                        }
+                        zaragozaArray = resultado;
 
                         provinciaCorrecta = true;
                     } else {
@@ -169,11 +161,46 @@ public class Ej14 {
                     }
                 }
                 case "teruel" -> {
-                    Arrays.sort(teruelArray);
-                    for (String p : teruelArray) {
-                        System.out.print(p + ", ");
+                    System.out.print("Dime cuantos pueblos de Teruel quieres añadir: ");
+                    if (scanner.hasNextInt()) {
+                        int n = scanner.nextInt();
+                        scanner.nextLine();
+
+                        teruelCopia = new String[n];
+
+                        for (int i = 0; i < teruelCopia.length; i++) {
+                            System.out.print("Dime el " + (i + 1) + " pueblo: ");
+                            String pueblo = scanner.nextLine().toLowerCase().trim();
+
+                            boolean repetido = false;
+                            for (String p : teruelArray) {
+                                if (p.equalsIgnoreCase(pueblo)) {
+                                    repetido = true;
+                                    break;
+                                }
+                            }
+                            if (repetido) {
+                                System.out.println("ERROR: Pueblo existente");
+                                i--;
+                            } else {
+                                teruelCopia[i] = pueblo;
+                                System.out.println("Pueblo introducido con exito");
+                            }
+
+                        }
+
+                        String[] resultado = Arrays.copyOf(teruelArray, teruelArray.length + teruelCopia.length);
+                        System.arraycopy(teruelCopia, 0, resultado, teruelArray.length, teruelCopia.length);
+
+                        teruelArray = resultado;
+
+                        provinciaCorrecta = true;
+                    } else {
+                        System.out.println("ERROR: Introduce un número entero");
+                        scanner.nextLine();
+                        provinciaCorrecta = false;
+
                     }
-                    provinciaCorrecta = true;
                 }
                 default -> {
                     System.out.println("Provincia Erronea");
@@ -213,7 +240,6 @@ public class Ej14 {
             System.out.print(p + ", ");
 
         }
-
 
         /*
         d) Buscar pueblo. Buscará en los arrays de las provincias si existe el
