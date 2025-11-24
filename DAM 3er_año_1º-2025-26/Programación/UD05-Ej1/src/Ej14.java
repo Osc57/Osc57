@@ -10,12 +10,15 @@ public class Ej14 {
         String[] huescaArray = {"Berbegal", "Chimillas", "Ibieca", "Altorricón", "Estada", "Sopeira", "Viacamp y Litera", "Salillas",
                 "Hoz y Costean", "Perarrúa", "Antillón", "Pozán de Vero", "Biscarrués", "Lascuarre", "Santa Cilia de Jaca", "Fonz",
                 "Angüés", "Grañén", "El Pueyo de Araguás", "Arguis"};
+        String[] huescaCopia;
         String[] zaragozaArray = {"Belchite", "Ateca", "Cariñena", "Sos del Rey Católico", "Tarazona", "Alagón", "Ejea de los Caballeros",
                 "Caspe", "Utebo", "La Almunia de Doña Godina", "Zuera", "Tauste", "Villanueva de Gállego", "Borja", "Calatayud", "Cuarte de Huerva",
                 "Grisén", "Maella", "Gallur", "Daroca"};
+        String[] zaragozaCopia;
         String[] teruelArray = {"Albarracín", "Alcañiz", "Andorra", "Calamocha", "Calanda", "Valderrobres", "Utrillas", "Cella", "Monreal del Campo",
                 "Albalate del Arzobispo", "Híjar", "Mora de Rubielos", "Rubielos de Mora", "Cantavieja", "Sarrión", "Alfambra", "Aliaga", "Puertomingalvo",
                 "Griegos", "Bronchales"};
+        String[] teruelCopia;
         boolean provinciaCorrecta;
 
         /*
@@ -64,7 +67,70 @@ public class Ej14 {
         los nuevos pueblos a la lista de pueblos de la provincia de seleccionada
         validando que no hay duplicados.
         */
+        System.out.println();
+        do {
+            System.out.print("Dime la provincia (Huesca, Zaragoza o Teruel): ");
+            String provincia = scanner.nextLine().toLowerCase().trim();
 
+            switch (provincia) {
+                case "huesca" -> {
+                    System.out.print("Dime cuantos pueblos de Huesca quieres añadir: ");
+                    if (scanner.hasNextInt()) {
+                        int n = scanner.nextInt();
+                        scanner.nextLine();
+
+                        huescaCopia = new String[n];
+
+                        for (int i = 0; i < huescaCopia.length; i++) {
+                            System.out.print("Dime el " + (i + 1) + " pueblo: ");
+                            String pueblo = scanner.next().toLowerCase().trim();
+
+                            boolean repetido = false;
+                            for (String p : huescaArray) {
+                                if (p.equalsIgnoreCase(pueblo)) {
+                                    repetido = true;
+                                    break;
+                                }
+                            }
+                            if (repetido) {
+                                System.out.println("ERROR: Pueblo existente");
+                                i--;
+                            } else {
+                                huescaCopia[i] = pueblo;
+                            }
+
+                        }
+
+                        huescaArray = Arrays.copyOf(huescaCopia, huescaCopia.length);
+                        provinciaCorrecta = true;
+                    } else {
+                        System.out.println("ERROR: Introduce un número entero");
+                        scanner.next();
+                        provinciaCorrecta = false;
+
+                    }
+
+                }
+                case "zaragoza" -> {
+                    Arrays.sort(zaragozaArray);
+                    for (String p : zaragozaArray) {
+                        System.out.print(p + ", ");
+                    }
+                    provinciaCorrecta = true;
+                }
+                case "teruel" -> {
+                    Arrays.sort(teruelArray);
+                    for (String p : teruelArray) {
+                        System.out.print(p + ", ");
+                    }
+                    provinciaCorrecta = true;
+                }
+                default -> {
+                    System.out.println("Provincia Erronea");
+                    provinciaCorrecta = false;
+                }
+            }
+        } while (!provinciaCorrecta);
 
         /*
         c) Mostrar todos los pueblos de las tres provincias en orden alfabético.
