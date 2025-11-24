@@ -156,8 +156,8 @@ public class Ej14 {
 
                         huescaArray = resultado;
 
-                        for (String h : zaragozaArray) {
-                            System.out.print(h + ", ");
+                        for (String z : zaragozaArray) {
+                            System.out.print(z + ", ");
                         }
 
                         provinciaCorrecta = true;
