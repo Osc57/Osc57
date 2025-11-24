@@ -88,8 +88,8 @@ public class Ej14 {
                             String pueblo = scanner.nextLine().toLowerCase().trim();
 
                             boolean repetido = false;
-                            for (String p : huescaArray) {
-                                if (p.equalsIgnoreCase(pueblo)) {
+                            for (int j = 0; j < huescaArray.length; j++) {
+                                if (pueblo.equalsIgnoreCase(huescaArray[i].toLowerCase().trim())) {
                                     repetido = true;
                                     break;
                                 }
@@ -131,8 +131,8 @@ public class Ej14 {
                             String pueblo = scanner.nextLine().toLowerCase().trim();
 
                             boolean repetido = false;
-                            for (String p : zaragozaArray) {
-                                if (p.equalsIgnoreCase(pueblo)) {
+                            for (int j = 0; j < zaragozaArray.length; j++) {
+                                if (pueblo.equalsIgnoreCase(zaragozaArray[i].toLowerCase().trim())) {
                                     repetido = true;
                                     break;
                                 }
@@ -173,8 +173,9 @@ public class Ej14 {
                             String pueblo = scanner.nextLine().toLowerCase().trim();
 
                             boolean repetido = false;
-                            for (String p : teruelArray) {
-                                if (p.equalsIgnoreCase(pueblo)) {
+
+                            for (int j = 0; j < teruelArray.length; j++) {
+                                if (pueblo.equalsIgnoreCase(teruelArray[i].toLowerCase().trim())) {
                                     repetido = true;
                                     break;
                                 }
