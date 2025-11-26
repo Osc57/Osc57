@@ -250,7 +250,34 @@ public class Ej14 {
         */
         System.out.println();
         System.out.println("<--------------------- APARTADO D --------------------->");
-        
+        String[][] arrayProvincias = {huescaArray, zaragozaArray, teruelArray};
+        String[] arrayNombres = {"Huesca", "Zaragoza", "Teruel"};
+
+        do {
+            System.out.print("Dime un pueblo: ");
+            String puebloBuscado = scanner.nextLine();
+            boolean encontrado = false;
+            String nombre = "";
+
+            for (int i = 0; i < arrayProvincias.length; i++) {
+                String[] arrayActual = arrayProvincias[i];
+                nombre = arrayNombres[i];
+
+                if (Arrays.asList(arrayActual).contains(puebloBuscado)) {
+                    encontrado = true;
+                }
+
+            }
+            if (encontrado) {
+                System.out.println("El pueblo -> " + puebloBuscado + " pertenece a la provincia de -> " + nombre);
+                provinciaCorrecta = true;
+            } else {
+                System.out.println("No se encuetra el pueblo");
+                scanner.nextLine();
+                provinciaCorrecta = false;
+            }
+
+        } while (!provinciaCorrecta);
 
     }
 }
