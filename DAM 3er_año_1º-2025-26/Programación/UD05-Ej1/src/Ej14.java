@@ -264,16 +264,15 @@ public class Ej14 {
                 nombre = arrayNombres[i];
 
                 if (Arrays.asList(arrayActual).contains(puebloBuscado)) {
+                    System.out.println("El pueblo -> " + puebloBuscado + " pertenece a la provincia de -> " + nombre);
                     encontrado = true;
+                    provinciaCorrecta = true;
+                    break;
                 }
 
             }
-            if (encontrado) {
-                System.out.println("El pueblo -> " + puebloBuscado + " pertenece a la provincia de -> " + nombre);
-                provinciaCorrecta = true;
-            } else {
+            if (!encontrado) {
                 System.out.println("No se encuetra el pueblo");
-                scanner.nextLine();
                 provinciaCorrecta = false;
             }
 
