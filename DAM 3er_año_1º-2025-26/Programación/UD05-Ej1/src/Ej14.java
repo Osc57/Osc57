@@ -257,11 +257,10 @@ public class Ej14 {
             System.out.print("Dime un pueblo: ");
             String puebloBuscado = scanner.nextLine();
             boolean encontrado = false;
-            String nombre = "";
 
             for (int i = 0; i < arrayProvincias.length; i++) {
                 String[] arrayActual = arrayProvincias[i];
-                nombre = arrayNombres[i];
+                String nombre = arrayNombres[i];
 
                 if (Arrays.asList(arrayActual).contains(puebloBuscado)) {
                     System.out.println("El pueblo -> " + puebloBuscado + " pertenece a la provincia de -> " + nombre);
