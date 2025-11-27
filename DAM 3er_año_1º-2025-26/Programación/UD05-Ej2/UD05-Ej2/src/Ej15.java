@@ -5,7 +5,17 @@ caracteres en el orden inverso al orden original.
 */
 
 public class Ej15 {
+    public static String inverso(String p) {
+        StringBuilder inversa = new StringBuilder();
+        for (int i = p.length() - 1; i >= 0; i--) {
+            inversa.append(p.charAt(i));
+        }
+        return inversa.toString();
+    }
+
     public static void main(String[] args) {
-        
+        String palabra = "Hola Mundo";
+
+        System.out.println(inverso(palabra));
     }
 }
