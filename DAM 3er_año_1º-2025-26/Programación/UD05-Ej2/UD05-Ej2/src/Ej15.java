@@ -6,11 +6,11 @@ caracteres en el orden inverso al orden original.
 
 public class Ej15 {
     public static String inverso(String p) {
-        StringBuilder inversa = new StringBuilder();
+        StringBuilder pInversa = new StringBuilder();
         for (int i = p.length() - 1; i >= 0; i--) {
-            inversa.append(p.charAt(i));
+            pInversa.append(p.charAt(i));
         }
-        return inversa.toString();
+        return pInversa.toString();
     }
 
     public static void main(String[] args) {
