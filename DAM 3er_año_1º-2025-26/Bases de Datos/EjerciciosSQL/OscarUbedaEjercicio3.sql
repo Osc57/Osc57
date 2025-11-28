@@ -23,12 +23,13 @@ CREATE DATABASE IF NOT EXIST CASO1;
 USE CASO 1;
 
 CREATE TABLE Proveedores (
-	id_proveedor NUMERIC PRIMARY KEY,
+	id_prov NUMERIC PRIMARY KEY,
 	nombre VARCHAR(30),
 	telefono CHAR(9),
 	mail VARCHAR(20)
 	);
 
 CREATE TABLE Categorias (
-	
+	id_categoria CHAR(2) PRIMARY KEY,
+	descripcion VARCHAR(50)
 	);
