@@ -19,7 +19,7 @@ Además:
  En todas las tablas el campo teléfono debe ser único.
 */
 
-CREATE DATABASE IF NOT EXIST CASO1;
+CREATE DATABASE IF NOT EXISTS CASO1;
 USE CASO1;
 
 CREATE TABLE Proveedores (
@@ -50,5 +50,22 @@ CREATE TABLE Productos_provedores (
 	CONSTRAINT fk_pprovedores_provedores FOREIGN KEY (id_prov) REFERENCES Proveedores(id_prov),
 	CONSTRAINT fk_pprovedores_productos FOREIGN KEY (numero_producto) REFERENCES Productos(numero_producto)
 	);
+
+CREATE TABLE Clientes (
+	id_cliente CHAR(3),
+	nombre VARCHAR(25),
+	apellidos VARCHAR(25),
+	direccion VARCHAR(30),
+	telefono CHAR(9)
+	);
+
+CREATE TABLE Empleados (
+	id_empleado CHAR(3) PRIMARY KEY,
+	nombre VARCHAR(30),
+	apellidos VARCHAR(30),
+	direccion VARCHAR(30),
+	codigo_area CHAR(2)
+	);
+	
 
 
