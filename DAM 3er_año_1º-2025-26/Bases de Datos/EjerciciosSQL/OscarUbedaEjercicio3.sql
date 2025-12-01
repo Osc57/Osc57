@@ -25,7 +25,7 @@ USE CASO1;
 CREATE TABLE Proveedores (
 	id_prov NUMERIC PRIMARY KEY,
 	nombre VARCHAR(30),
-	telefono CHAR(9),
+	telefono CHAR(9) UNIQUE,
 	mail VARCHAR(20)
 	);
 
@@ -56,7 +56,7 @@ CREATE TABLE Clientes (
 	nombre VARCHAR(25),
 	apellidos VARCHAR(25),
 	direccion VARCHAR(30),
-	telefono CHAR(9)
+	telefono CHAR(9) UNIQUE
 	);
 
 CREATE TABLE Empleados (
@@ -73,7 +73,8 @@ CREATE TABLE Pedidos (
 	id_cliente CHAR(3),
 	id_empleado CHAR(3),
 	CONSTRAINT fk_pedidos_cliente FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cleinte),
-	CONSTRAINT fk_pedidos_empelados FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado)
+	CONSTRAINT fk_pedidos_empelados FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado),
+	CONSTRAINT chk_cantidad_rango CHECK (cantidad >= 1 AND cantidad <= 100)
 	);
 
 CREATE TABLE Detalles_Pedidos (
