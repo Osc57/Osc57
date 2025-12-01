@@ -154,8 +154,7 @@ CREATE TABLE Localizacion (
 	ciudad VARCHAR(50),
 	riesgo INT DEFAULT 1
 	);
-/*Estancias_Pacientes (#id_paciente, #id_localizacion, #f_entrada, f_salida)
-						Paciente 	Localizacion*/
+
 CREATE TABLE Estancias_Pacientes (
 	id_paciente INT,
 	id_localizacion INT,
