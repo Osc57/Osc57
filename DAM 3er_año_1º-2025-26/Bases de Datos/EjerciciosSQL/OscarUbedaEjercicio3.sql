@@ -7,12 +7,10 @@ Productos (#numero_producto: entero, nombre: cadena(30), precio_venta: decimal, 
 																								Categorias
 Productos_provedores (#id_prov: numerico, #numero_producto:numerico)
 					Proveedores 		Productos
-Clientes (#id_cliente: cadena(3), nombre:cadena(25),apellidos:cadena(25), dirección:cadena(30),
-teléfono:cadena(9))
-Empleados (#id_empleado: cadena(3), nombre:cadena(30), apellidos:cadena(30) , dirección: cadena (30)
-codigo_area: cadena(2))
+Clientes (#id_cliente: cadena(3), nombre:cadena(25),apellidos:cadena(25), dirección:cadena(30),teléfono:cadena(9))
+Empleados (#id_empleado: cadena(3), nombre:cadena(30), apellidos:cadena(30) , dirección: cadena (30), codigo_area: cadena(2))
 Pedidos (#numero_pedido: entero, fecha_pedido:fecha, id_cliente:cadena(3), id_empleado:cadena(3))
-Clientes Empleados
+														Clientes 				Empleados
 VNN { id_cliente, id_empleado }
 Detalles_Pedidos (#numero_pedido:entero, #numero_producto:entero, cantidad:entero, precio:decimal(2 decimales))
 					Pedidos 				Producto
@@ -37,12 +35,20 @@ CREATE TABLE Categorias (
 	);
 	
 CREATE TABLE Productos (
-	numero_producto int PRIMARY KEY,
+	numero_producto INT PRIMARY KEY,
 	nombre VARCHAR(30),
 	precio_ventana FLOAT,
 	stock INT,
 	id_categoria CHAR(2),
 	CONSTRAINT fk_productos_categoria FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria)
+	);
+
+CREATE TABLE Productos_provedores (
+	id_prov NUMERIC,
+	numero_producto INT,
+	PRIMARY KEY (id_prov, numero_producto),
+	CONSTRAINT fk_pprovedores_provedores FOREIGN KEY (id_prov) REFERENCES Proveedores(id_prov),
+	CONSTRAINT fk_pprovedores_productos FOREIGN KEY (numero_producto) REFERENCES Productos(numero_producto)
 	);
 
 
