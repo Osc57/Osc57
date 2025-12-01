@@ -73,8 +73,7 @@ CREATE TABLE Pedidos (
 	id_cliente CHAR(3),
 	id_empleado CHAR(3),
 	CONSTRAINT fk_pedidos_cliente FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cleinte),
-	CONSTRAINT fk_pedidos_empelados FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado),
-	CONSTRAINT chk_cantidad_rango CHECK (cantidad >= 1 AND cantidad <= 100)
+	CONSTRAINT fk_pedidos_empelados FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado)
 	);
 
 CREATE TABLE Detalles_Pedidos (
@@ -84,6 +83,86 @@ CREATE TABLE Detalles_Pedidos (
 	precio DECIMAL(10,2),
 	PRIMARY KEY (numero_pedido, numero_produto),
 	CONSTRAINT fk_dpedidos_pedidos FOREIGN KEY (nuemero_pedido) REFERENCES Pedidos(numero_pedidos),
-	CONSTRAINT fk_dpedidos_productos FOREIGN KEY (nuemero_productos) REFERENCES Productos(numero_producto)
+	CONSTRAINT fk_dpedidos_productos FOREIGN KEY (nuemero_productos) REFERENCES Productos(numero_producto),
+	CONSTRAINT chk_cantidad_dpedido CHECK (cantidad >= 1 AND cantidad <= 100)
+	);
+	
+/*
+Caso 2:
+Enfermedad (#id_enfermedad, nombre, descripcion, t_recuperacion)
+Paciente (#id_paciente, nombre, apellidos, f_nacimiento, poblacion, id_medico)
+																	Paciente
+Historial (#id_historial, grupo_sanguineo, id_paciente)
+											Paciente
+Linea_Historial (#num_linea, #id_historial, id_enfermedad, f_inicio, f_fin, síntomas, observaciones)
+								Historial 	Enfermedad
+VNN {id_enfermedad }
+Localizacion (#id_localizacion, cp, ciudad, riesgo)
+Estancias_Pacientes (#id_paciente, #id_localizacion, #f_entrada, f_salida)
+						Paciente 	Localizacion
+Además:
+g) Elige los tipos de datos que mejor consideres
+h) El nombre de una enfermedad debe ser único y no nulo.
+i) En la tabla historial, f_fin debe ser superior a f_inicio.
+j) El valor por defecto del riesgo de una localización es 1.
+*/
+
+CREATE DATABASE IF NOT EXISTS CASO2;
+USE CASO2;
+
+CREATE TABLE Enfermedad (
+	id_enfermedad INT PRIMARY KEY,
+	nombre VARCHAR(30) UNIQUE,
+	descripcion VARCHAR(100),
+	t_recuperacion DOUBLE
+	);
+	
+CREATE TABLE Paciente (
+	id_paciente INT PRIMARY KEY,
+	nombre VARCHAR(30),
+	apellidos VARCHAR(30),
+	f_nacimiento DATE,
+	poblacion INTEGER,
+	id_medico INT,
+	CONSTRAINT fk_medico_paciente FOREIGN KEY (id_medico) REFERENCES Paciente(id_medico)
+	);
+	
+CREATE TABLE Historial (
+	id_historial INT,
+	grupo_sanguineo VARCHAR(10),
+	id_paciente INT,
+	CONSTRAINT fk_paciente_historial FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente)
+	);
+	
+CREATE TABLE Linea_Historial (
+	num_linea INT,
+	id_historial INT,
+	id_enfermedad INT,
+	f_inicio DATE,
+	f_fin DATE,
+	sintomas VARCHAR(100),
+	observaciones VARCHAR(150),
+	PRIMARY KEY(num_linea, id_historial),
+	CONSTRAINT fk_lhistorial_historial FOREIGN KEY (id_historial) REFERENCES Historial(id_historial),
+	CONSTRAINT fk_lhistorial_enfermendad FOREIGN KEY (id_enfermedad) REFERENCES Enfermedad(id_enfermedad),
+	CONSTRAINT chk_fin_inicio CHECK (f_fin > f_inicio)
+	);
+
+CREATE TABLE Localizacion (
+	id_localizacion INT PRIMARY KEY,
+	cp INT,
+	ciudad VARCHAR(50),
+	riesgo INT DEFAULT 1
+	);
+/*Estancias_Pacientes (#id_paciente, #id_localizacion, #f_entrada, f_salida)
+						Paciente 	Localizacion*/
+CREATE TABLE Estancias_Pacientes (
+	id_paciente INT,
+	id_localizacion INT,
+	f_entrada DATE,
+	f_salida DATE,
+	PRIMARY KEY (id_paciente, id_localizacion, f_entrada),
+	CONSTRAINT fk_epaciente_paciente FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
+	CONSTRAINT fk_epaciente_localizacion FOREIGN KEY (id_localizacion) REFERENCES Localizacion(id_localizacion)
 	);
 	
