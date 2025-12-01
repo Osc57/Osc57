@@ -1,6 +1,6 @@
 /*Ejercicio 2 - Óscar Úbeda*/
 /*Caso 1*/
-/*Caso 1:
+/*
 Proveedores (#id_prov: numerico, nombre: cadena(30), teléfono:cadena(9), mail: cadena(20))
 Categorías (#id_categoria:cadena (2), descripcion:cadena (50))
 Productos (#numero_producto: entero, nombre: cadena(30), precio_venta: decimal, stock: entero, id_categoria: cadena(2))
@@ -37,7 +37,7 @@ CREATE TABLE Categorias (
 CREATE TABLE Productos (
 	numero_producto INT PRIMARY KEY,
 	nombre VARCHAR(30),
-	precio_ventana FLOAT,
+	precio_ventana DECIMAL,
 	stock INT,
 	id_categoria CHAR(2),
 	CONSTRAINT fk_productos_categoria FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria)
@@ -66,6 +66,23 @@ CREATE TABLE Empleados (
 	direccion VARCHAR(30),
 	codigo_area CHAR(2)
 	);
+
+CREATE TABLE Pedidos (
+	numero_pedido INT PRIMARY KEY,
+	fecha_pedido DATE,
+	id_cliente CHAR(3),
+	id_empleado CHAR(3),
+	CONSTRAINT fk_pedidos_cliente FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cleinte),
+	CONSTRAINT fk_pedidos_empelados FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado)
+	);
+
+CREATE TABLE Detalles_Pedidos (
+	numero_pedido INT,
+	numero_producto INT,
+	cantidad INT,
+	precio DECIMAL(10,2),
+	PRIMARY KEY (numero_pedido, numero_produto),
+	CONSTRAINT fk_dpedidos_pedidos FOREIGN KEY (nuemero_pedido) REFERENCES Pedidos(numero_pedidos),
+	CONSTRAINT fk_dpedidos_productos FOREIGN KEY (nuemero_productos) REFERENCES Productos(numero_producto)
+	);
 	
-
-
