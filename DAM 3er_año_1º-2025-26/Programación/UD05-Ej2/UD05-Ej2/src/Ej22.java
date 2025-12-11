@@ -15,7 +15,6 @@ public class Ej22 {
         Scanner scanner = new Scanner(System.in);
         String[] frases;
 
-
         System.out.print("Dime una frase: ");
         String frase = scanner.nextLine().toLowerCase().trim();
 
