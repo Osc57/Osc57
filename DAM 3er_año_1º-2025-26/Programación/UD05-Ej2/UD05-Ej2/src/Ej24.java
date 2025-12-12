@@ -11,19 +11,25 @@ import java.util.Scanner;
 public class Ej24 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean esPalindromo = false;
+        String tildes = "àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ";
+        String letras = "aaaaaaaceeeeiiiionoooooouuuuyy";
+        StringBuilder palabraInversa = new StringBuilder();
 
-        System.out.print("Dime tu frase y te dire si es palindroma: ");
-        String frase = scanner.nextLine().trim();
+        System.out.print("Dime una palabra para comprobar si es un palindromo: ");
+        String palabra = scanner.nextLine().toLowerCase();
 
-        String fraseLimpia = frase.replace(" ", "").toLowerCase();
+        String palabraLimpia = palabra.replace(" ", "");
+        for (int i = 0; i < tildes.length(); i++) {
+            palabraLimpia = palabraLimpia.replace(tildes.charAt(i), letras.charAt(i));
+        }
+        for (int i = palabraLimpia.length() - 1; i >= 0; i--) {
+            palabraInversa.append(palabraLimpia.charAt(i));
+        }
 
-        esPalindromo = fraseLimpia.equalsIgnoreCase(new StringBuilder(frase).reverse().toString());
-
-        if (esPalindromo) {
-            System.out.println("La frase " + frase + " es palindroma");
+        if (palabraLimpia.contentEquals(palabraInversa)) {
+            System.out.println("La palabra " + palabra + " es un palindromo");
         } else {
-            System.out.println("La frase no es palindroma");
+            System.out.println("La palabra " + palabra + " no es un palindromo");
         }
 
     }
