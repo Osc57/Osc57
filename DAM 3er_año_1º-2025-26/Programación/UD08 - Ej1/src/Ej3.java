@@ -68,6 +68,24 @@ public class Ej3 {
             System.out.println("Las carpetas /docs/exercises ya están creadas");
         }
 
+        /*
+        d) Copie el archivo Programacion.txt en la carpeta
+        /PRO_UD08_Ej03/docs/samples
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
