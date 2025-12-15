@@ -31,8 +31,6 @@ public class Ej3 {
             Files.copy(source, Path.of(ruta + "(+2)" + extension));
             if (archivo.exists()) {
                 System.out.println("Se ha copiado con existo");
-            } else {
-                System.out.println("El archivo ya existe");
             }
         } catch (IOException e) {
             System.out.println("Los archivos [Programacion.txt] ya están copiados, ERROR [" + e + "]");
@@ -53,6 +51,12 @@ public class Ej3 {
         } else {
             System.out.println("Las Carpetas /docs/samples ya estan creadas");
         }
+
+        /*
+        c) Cree dentro de la carpeta PRO_UD08_Ej03 la siguiente estructura de
+        carpetas: /docs/exercises
+         */
+        
 
     }
 }
