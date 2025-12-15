@@ -56,7 +56,18 @@ public class Ej3 {
         c) Cree dentro de la carpeta PRO_UD08_Ej03 la siguiente estructura de
         carpetas: /docs/exercises
          */
-        
+        File carpetaExercises = new File("Documentos/PRO_UD08_Ej03/docs/exercises");
+
+        if (!carpetaExercises.exists()) {
+            if (carpetaExercises.mkdirs()) {
+                System.out.println("Directorio creado /docs/exercises creado");
+            } else {
+                System.out.println("Error al crear el directorio");
+            }
+        } else {
+            System.out.println("Las carpetas /docs/exercises ya están creadas");
+        }
+
 
     }
 }
