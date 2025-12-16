@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class Ej3 {
     public static void main(String[] args) {
@@ -72,19 +74,62 @@ public class Ej3 {
         d) Copie el archivo Programacion.txt en la carpeta
         /PRO_UD08_Ej03/docs/samples
         */
+        Path source = Paths.get("Documentos/PRO_UD08_Ej03/Programacion.txt");
+
+        Path objetivo = Paths.get("Documentos/PRO_UD08_Ej03/docs/samples/ProgramacionCopia.txt");
 
 
+        try {
+            Files.copy(source, objetivo, StandardCopyOption.REPLACE_EXISTING);
+
+            System.out.println("Archivo copiado correctamente");
+        } catch (IOException e) {
+            System.out.println("El archivo ya esta copiado en la carpeta /docs/samples, ERROR [" + e + "]");
+        }
+
+        /*
+        e) Mueva el archivo Programacion.txt de /PRO_UD08_Ej03 a la carpeta
+        /PRO_UD08_Ej03/docs/exercises
+         */
+        Path inicio = Path.of(String.valueOf(source));
+
+        Path rutaExercises = Paths.get("Documentos/PRO_UD08_Ej03/docs/exercises/Programacion.txt");
+
+        try {
+            Files.move(inicio, rutaExercises, StandardCopyOption.REPLACE_EXISTING);
+
+            System.out.println("Archivo movido correctamente");
+        } catch (IOException e) {
+            System.out.println("El archivo ya esta movido a la carpeta /docs/exercises, ERROR [" + e + "]");
+        }
 
 
+        /*
+        f) Renombre el fichero Programacion(+1).txt como Programacion.txt en
+        /PRO_UD08_Ej03
+         */
+        Path renombrarFichero = Paths.get("Documentos/PRO_UD08_Ej03/Programacion.txt(+1).txt");
 
 
+        try {
+            Files.move(renombrarFichero, source, StandardCopyOption.REPLACE_EXISTING);
 
+            System.out.println("Archivo renombrado");
+        } catch (IOException e) {
+            System.out.println("El archivo ya a sido renombrado, ERROR [" + e + "]");
+        }
 
+        /*
+        g) Borre el archivo Programacion(+2).txt que se encuentra en la carpeta
+        /PRO_UD08_Ej03.
+         */
+        File eliminarArchivo = new File("Documentos/PRO_UD08_Ej03/Programacion.txt(+2).txt");
 
-
-
-
-
+        if (eliminarArchivo.delete()) {
+            System.out.println("Archivo eliminado: " + eliminarArchivo.getName());
+        } else {
+            System.out.println("Fallo al eliminar el archivo");
+        }
 
 
     }
