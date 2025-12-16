@@ -22,6 +22,10 @@ public class Ej1 {
         if (file.exists()) {
             System.out.println("El archivo existe");
             System.out.println("Directorio raíz: " + file.toPath().getRoot());
+
+            String directorio = file.getParent();
+            String ultimoDirectorio = directorio.substring(directorio.lastIndexOf(File.separator) + 1);
+            System.out.println("Directorio del archivo: " + ultimoDirectorio);
             System.out.println("Nombre del archivo: " + file.getName());
 
             String archivoNombre = file.getName();
