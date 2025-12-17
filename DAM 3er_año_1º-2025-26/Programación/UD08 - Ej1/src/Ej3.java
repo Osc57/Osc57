@@ -18,7 +18,7 @@ public class Ej3 {
         PRO_UD08_Ej03 y lo pegue dos veces en la misma carpeta con los
         nombres Programacion(+1).txt y Programacion(+2).txt
         */
-        Path source1 = Path.of("Documentos/PRO_UD08_Ej03/Programacion.txt");
+        Path source1 = Path.of("Documentos\\PRO_UD08_Ej03\\Programacion.txt");
 
         Path carpeta = source1.getParent();
 
