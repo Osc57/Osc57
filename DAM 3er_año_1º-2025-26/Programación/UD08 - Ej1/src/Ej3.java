@@ -18,24 +18,24 @@ public class Ej3 {
         PRO_UD08_Ej03 y lo pegue dos veces en la misma carpeta con los
         nombres Programacion(+1).txt y Programacion(+2).txt
         */
+        Path source1 = Path.of("Documentos/PRO_UD08_Ej03/Programacion.txt");
 
-        String ruta = "Documentos/PRO_UD08_Ej03/Programacion.txt";
-        File archivo = new File(ruta);
-
-        String nombre = archivo.getName();
-        int indice = nombre.lastIndexOf(".");
-
-        String extension = nombre.substring(indice);
+        Path carpeta = source1.getParent();
 
         try {
-            Path source = Path.of(ruta);
-            Files.copy(source, Path.of(ruta + "(+1)" + extension));
-            Files.copy(source, Path.of(ruta + "(+2)" + extension));
-            if (archivo.exists()) {
-                System.out.println("Se ha copiado con existo");
+            if (Files.exists(source1)) {
+                Path destino1 = carpeta.resolve("Programacion(+1).txt");
+                Path destino2 = carpeta.resolve("Programacion(+2).txt");
+
+                Files.copy(source1, destino1, StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(source1, destino2, StandardCopyOption.REPLACE_EXISTING);
+
+                System.out.println("Archivos copiados con éxito en: " + carpeta.toAbsolutePath());
+            } else {
+                System.out.println("El archivo original no existe en la ruta especificada.");
             }
         } catch (IOException e) {
-            System.out.println("Los archivos [Programacion.txt] ya están copiados, ERROR [" + e + "]");
+            System.err.println("Error durante la copia: " + e.getMessage());
         }
 
         /*
@@ -108,8 +108,7 @@ public class Ej3 {
         f) Renombre el fichero Programacion(+1).txt como Programacion.txt en
         /PRO_UD08_Ej03
          */
-        Path renombrarFichero = Paths.get("Documentos/PRO_UD08_Ej03/Programacion.txt(+1).txt");
-
+        Path renombrarFichero = Paths.get("Documentos/PRO_UD08_Ej03/Programacion(+1).txt");
 
         try {
             Files.move(renombrarFichero, source, StandardCopyOption.REPLACE_EXISTING);
@@ -123,7 +122,7 @@ public class Ej3 {
         g) Borre el archivo Programacion(+2).txt que se encuentra en la carpeta
         /PRO_UD08_Ej03.
          */
-        File eliminarArchivo = new File("Documentos/PRO_UD08_Ej03/Programacion.txt(+2).txt");
+        File eliminarArchivo = new File("Documentos/PRO_UD08_Ej03/Programacion(+2).txt");
 
         if (eliminarArchivo.delete()) {
             System.out.println("Archivo eliminado: " + eliminarArchivo.getName());
