@@ -1,8 +1,9 @@
 package Ap1;
 
 public class Gato extends Animal {
+
     @Override
-    public void hacerSonido() {
-        System.out.println("Soy un gato y hago miau miau");
+    public String hacerSonido() {
+        return "Soy un Gato y hago Miau Miau";
     }
 }

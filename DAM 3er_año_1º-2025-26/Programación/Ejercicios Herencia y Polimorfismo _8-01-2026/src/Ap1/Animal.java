@@ -1,7 +1,9 @@
 package Ap1;
 
 public class Animal {
-    public void hacerSonido(){
+    protected String ruido;
 
+    public String hacerSonido(){
+        return ruido;
     }
 }
