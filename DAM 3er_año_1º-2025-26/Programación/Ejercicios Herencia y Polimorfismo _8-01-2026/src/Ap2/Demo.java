@@ -16,7 +16,7 @@ public class Demo {
         System.out.println("Detalle de Nómina:");
         for (Empleado e : listaEmpleados) {
             double sueldo = e.calcularSalario();
-            salarioTotal += sueldo;
+            salarioTotal = salarioTotal + sueldo;
             System.out.println("Nombre: " + e.getNombre() + " | Salario: " + sueldo + "€");
         }
 
