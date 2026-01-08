@@ -3,6 +3,6 @@ package Ap1;
 public class Animal {
 
     public String hacerSonido(){
-        return null;
+        return "El animal hace un sonido";
     }
 }
