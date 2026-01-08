@@ -4,7 +4,23 @@ import java.util.ArrayList;
 
 public class Demo {
     public static void main(String[] args) {
+        ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
 
+        listaVehiculos.add(new Coche("Toyota", "Corolla"));
+        listaVehiculos.add(new Motocicleta("Honda", "CBR600"));
+        listaVehiculos.add(new Coche("Ford", "Mustang"));
+        listaVehiculos.add(new Motocicleta("Yamaha", "MT-07"));
+
+        for (Vehiculo v : listaVehiculos) {
+            v.arrancar();
+
+            if (v instanceof Coche) {
+                ((Coche) v).abrirMaletero();
+            } else if (v instanceof Motocicleta) {
+                ((Motocicleta) v).hacerCaballito();
+            }
+            System.out.println("------------------------------------");
+        }
 
     }
 }

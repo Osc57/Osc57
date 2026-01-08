@@ -10,8 +10,4 @@ public class Coche extends Vehiculo {
         return "Maletero abierto";
     }
 
-    @Override
-    public String arrancar() {
-        return "Brrrrm Brrrrm coche arrancado";
-    }
 }
