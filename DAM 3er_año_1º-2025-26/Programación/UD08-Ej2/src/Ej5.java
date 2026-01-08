@@ -23,7 +23,7 @@ public class Ej5 {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("archivo.txt"));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("archivoCopia.txt"))) {
             String linea;
-            
+
             while ((linea = bufferedReader.readLine()) != null) {
                 bufferedWriter.write(linea.toUpperCase());
                 bufferedWriter.newLine();
