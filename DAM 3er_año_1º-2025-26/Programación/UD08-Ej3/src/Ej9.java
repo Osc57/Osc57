@@ -37,7 +37,7 @@ public class Ej9 {
         Matcher matcherEmail = patternEmail.matcher(texto);
 
         while (matcherEmail.find()) {
-            System.out.println("El correo electronico encontrado: " + matcherEmail.group());
+            System.out.println("El Correo Electrónico encontrado: " + matcherEmail.group());
         }
 
         Pattern patternCodigoPostal = Pattern.compile(regexCodigoPostal);
