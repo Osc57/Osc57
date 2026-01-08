@@ -7,7 +7,7 @@ public class Demo {
         ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
 
         listaVehiculos.add(new Coche("Toyota", "Corolla"));
-        listaVehiculos.add(new Motocicleta("Honda", "CBR600"));
+        listaVehiculos.add(new Motocicleta("Honda", "Civic"));
         listaVehiculos.add(new Coche("Ford", "Mustang"));
         listaVehiculos.add(new Motocicleta("Yamaha", "MT-07"));
 
