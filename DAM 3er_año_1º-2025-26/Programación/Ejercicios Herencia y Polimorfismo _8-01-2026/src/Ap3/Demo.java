@@ -12,14 +12,7 @@ public class Demo {
         listaVehiculos.add(new Motocicleta("Yamaha", "MT-07"));
 
         for (Vehiculo v : listaVehiculos) {
-            v.arrancar();
-
-            if (v instanceof Coche) {
-                ((Coche) v).abrirMaletero();
-            } else if (v instanceof Motocicleta) {
-                ((Motocicleta) v).hacerCaballito();
-            }
-            System.out.println("------------------------------------");
+            System.out.println(v.arrancar());
         }
 
     }

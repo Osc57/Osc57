@@ -10,6 +10,6 @@ public class Vehiculo {
     }
 
     public String arrancar() {
-        return "Vehiculo arrancado";
+        return "Vehiculo " + marca + " " + modelo + " arrancado";
     }
 }
