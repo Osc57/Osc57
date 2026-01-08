@@ -1,11 +1,13 @@
 package Ap2;
 
 public class EmpleadoPorHoras extends Empleado {
-    private int horasTrabajadas;
-    private double tarifaPorHora;
+    private final int horasTrabajadas;
+    private final double tarifaPorHora;
 
-    public EmpleadoPorHoras(String nombre) {
+    public EmpleadoPorHoras(String nombre, int horasTrabajadas, double tarifaPorHora) {
         super(nombre);
+        this.horasTrabajadas = horasTrabajadas;
+        this.tarifaPorHora = tarifaPorHora;
     }
 
     @Override
