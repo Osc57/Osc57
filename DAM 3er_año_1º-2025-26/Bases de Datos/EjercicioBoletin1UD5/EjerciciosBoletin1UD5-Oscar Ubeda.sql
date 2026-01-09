@@ -128,5 +128,11 @@ CREATE TABLE INSTRUCTORES (
 CREATE TABLE CURSOS(
 	cod_curso CHAR(10) PRIMARY KEY,
 	titulo VARCHAR(100) NOT NULL,
+	descripcion TEXT,
+	nivel CHAR(15),
+	duracion_horas INTEGER,
+	precio DECIMAL(6,2),
 	
+	CONSTRAINT chk_nivel CHECK (nivel IN ('BASICO','INTERMEDIO','AVANZADO','EXPERTO')),
+	CONSTRAINT ck_duracion_horas CHECK (duracion_horas > 0 AND duracion_horas < 500),
 );
