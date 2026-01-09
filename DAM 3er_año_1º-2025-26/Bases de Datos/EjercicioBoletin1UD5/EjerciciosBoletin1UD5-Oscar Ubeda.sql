@@ -88,4 +88,45 @@ ALTER TABLE MEDICOS MODIFY COLUMN email VARCHAR(100);
 ALTER TABLE PACIENTES ADD mutua VARCHAR(50) DEFAULT ('PARTICULAR')
 
 
+-- Ejercicio 2 - Cursos online 
+-- Fecha: 09/01/26
+-- Nombre: Óscar Úbeda
 
+-- Borramos la base de datos si existe 
+DROP DATABASE IF EXISTS ACADEMIA_VIRTUAL;
+-- Creamos la base de datos
+CREATE DATABASE ACADEMIA_VIRTUAL;
+
+-- Nos situamos en la base de datos 
+USE ACADEMIA_VIRTUAL;
+
+-- Creamos la tabla CATEGORIAS 
+CREATE TABLE CATEGORIAS (
+	id_categoria INTEGER AUTO_INCREMENT PRIMARY KEY,
+	nombre_categoria VARCHAR(40) NOT NULL UNIQUE,
+	descripcion VARCHAR(150),
+	activa CHAR(1) DEFAULT 'S', 
+	
+	CONSTRAINT ck_activa CHECK (activa IN ('S', 'N'))
+);
+
+-- Creamos la tabla INSTRUCTORES
+CREATE TABLE INSTRUCTORES (
+	email VARCHAR(100) PRIMARY KEY,
+	nombre_completo VARCHAR(80) UNIQUE,
+	biografia TEXT,
+	fecha_registro DATE DEFAULT CURRENT_DATE,
+	puntuacion_media DECIMAL(3,2),
+	certificado	CHAR(1),
+	linkedin VARCHAR(150),
+	
+	CONSTRAINT ck_puntuacion_rango CHECK (puntuacion_media BETWEEN 0 AND 5),
+    CONSTRAINT ck_certificado_valores CHECK (certificado IN ('S', 'N'))
+);
+
+-- Creamos la tabla Cursos
+CREATE TABLE CURSOS(
+	cod_curso CHAR(10) PRIMARY KEY,
+	titulo VARCHAR(100) NOT NULL,
+	
+);
