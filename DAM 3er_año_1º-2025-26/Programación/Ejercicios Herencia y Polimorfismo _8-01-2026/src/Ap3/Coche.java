@@ -7,7 +7,7 @@ public class Coche extends Vehiculo {
     }
 
     public String abrirMaletero() {
-        return "El vehiculo " + super.modelo + super.marca + " ha abierto el maletero";
+        return "El vehiculo " + super.marca + " " + super.modelo + " ha abierto el maletero";
     }
 
 }

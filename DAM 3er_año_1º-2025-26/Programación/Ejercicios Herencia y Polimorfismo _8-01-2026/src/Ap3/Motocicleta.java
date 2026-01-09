@@ -7,6 +7,6 @@ public class Motocicleta extends Vehiculo {
     }
 
     public String hacerCaballito() {
-        return "El vehiculo " + super.marca + super.modelo + " ha hecho un caballito";
+        return "El vehiculo " + super.marca + " " + super.modelo + " ha hecho un caballito";
     }
 }
