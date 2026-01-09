@@ -13,6 +13,11 @@ public class Demo {
 
         for (Vehiculo v : listaVehiculos) {
             System.out.println(v.arrancar());
+            if (v instanceof Coche) {
+                ((Coche) v).abrirMaletero();
+            } else if (v instanceof Motocicleta) {
+                ((Motocicleta) v).hacerCaballito();
+            }
         }
 
     }
