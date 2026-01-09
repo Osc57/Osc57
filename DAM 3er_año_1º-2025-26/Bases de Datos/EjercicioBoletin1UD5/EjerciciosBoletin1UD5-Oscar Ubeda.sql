@@ -132,7 +132,15 @@ CREATE TABLE CURSOS(
 	nivel CHAR(15),
 	duracion_horas INTEGER,
 	precio DECIMAL(6,2),
+	fecha_creacion DATE DEFAULT CURRENT_DATE,
+	plazas_max INTEGER,
+	id_categoria INTEGER,
+	email_instructor VARCHAR(100),
 	
-	CONSTRAINT chk_nivel CHECK (nivel IN ('BASICO','INTERMEDIO','AVANZADO','EXPERTO')),
+	CONSTRAINT ck_nivel CHECK (nivel IN ('BASICO','INTERMEDIO','AVANZADO','EXPERTO')),
 	CONSTRAINT ck_duracion_horas CHECK (duracion_horas > 0 AND duracion_horas < 500),
+	CONSTRAINT ck_precio CHECK (precio >= 0),
+	CONSTRAINT ck_plazas CHECK (plazas_max > 0 AND plazas_max < 100),
+	CONSTRAINT fk_cursos_categoria FOREIGN KEY (id_categoria) REFERENCES CATEGORIAS(id_categoria) ON DELETE RESTRICT,
+	CONSTRAINT fk_cursos_email FOREIGN KEY (email_instructor) REFERENCES INSTRUCTORES(email) ON DELETE CASCADE
 );
