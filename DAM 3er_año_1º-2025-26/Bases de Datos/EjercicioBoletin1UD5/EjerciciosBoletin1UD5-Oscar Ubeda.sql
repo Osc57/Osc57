@@ -144,3 +144,35 @@ CREATE TABLE CURSOS(
 	CONSTRAINT fk_cursos_categoria FOREIGN KEY (id_categoria) REFERENCES CATEGORIAS(id_categoria) ON DELETE RESTRICT,
 	CONSTRAINT fk_cursos_email FOREIGN KEY (email_instructor) REFERENCES INSTRUCTORES(email) ON DELETE CASCADE
 );
+
+-- Creamos la tabla ESTUDIANTES
+CREATE TABLE ESTUDIANTES (
+	id_estudiante INT AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(100) NOT NULL UNIQUE,
+	nombre VARCHAR(40) NOT NULL,
+	apellidos VARCHAR(60) NOT NULL,
+	pais VARCHAR(50)
+	fecha_nacimiento DATE,
+	premium CHAR(1) DEFAULT 'N',
+	
+	CONSTRAINT ck_premium CHECK (premium IN ('S', 'N'))
+);
+
+-- Creamos la tabla MATRICULAS
+CREATE TABLE MATRICULAS (
+	id_matricula INT AUTO_INCREMENT PRIMARY KEY,
+	id_estudiante INT UNIQUE,
+	cod_curso VARCHAR(10) UNIQUE,
+	fecha_matricula DATE DEFAULT CURRENT_DATE,
+	progreso INT DEFAULT 0,
+	calificacion_final DECIMAL(4,2),
+	completado CHAR(1),
+	
+	CONSTRAINT fk_matricula_estudiantes FOREIGN KEY (id_estudiante) REFERENCES ESTUDIANTES(id_estudiante) ON DELETE CASCADE,
+	CONSTRAINT fk_matricula_cursos FOREIGN KEY (cod_curso) REFERENCES CURSOS(cod_curso) ON DELETE RESTRICT,
+	CONSTRAINT ck_progreso CHECK (progreso BETWEEN 0 AND 100),
+	CONSTRAINT ck_calificacion CHECK (calificacion_final BETWEEN 0 AND 10),
+	CONSTRAINT ck_completado CHECK (compleatado IN ('S', 'N'))
+);
+
+
