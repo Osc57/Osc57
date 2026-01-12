@@ -4,12 +4,13 @@ public class Revista extends Publicacion {
     private int numeroEdicion;
 
 
-    public Revista(String titulo, String autor) {
+    public Revista(String titulo, String autor, int numeroEdicion) {
         super(titulo, autor);
+        this.numeroEdicion = numeroEdicion;
     }
 
     @Override
     public String mostrarInformacion() {
-        return super.mostrarInformacion() + " edición número " + numeroEdicion;
+        return super.mostrarInformacion() + ", la edición número " + numeroEdicion;
     }
 }
