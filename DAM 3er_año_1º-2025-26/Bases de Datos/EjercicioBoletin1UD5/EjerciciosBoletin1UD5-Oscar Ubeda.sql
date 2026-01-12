@@ -124,7 +124,7 @@ CREATE TABLE INSTRUCTORES (
     CONSTRAINT ck_certificado_valores CHECK (certificado IN ('S', 'N'))
 );
 
--- Creamos la tabla Cursos
+-- Creamos la tabla CURSOS
 CREATE TABLE CURSOS(
 	cod_curso CHAR(10) PRIMARY KEY,
 	titulo VARCHAR(100) NOT NULL,
@@ -175,4 +175,8 @@ CREATE TABLE MATRICULAS (
 	CONSTRAINT ck_completado CHECK (compleatado IN ('S', 'N'))
 );
 
+-- Ej 7
+INSERT INTO CATEGORIAS (nombre_categoria, activa) VALUES ('PROGRAMACION', 'S');
 
+-- Ej 8
+INSERT INTO INSTRUCTORES (email, nombre_completo, puntuacion_media, certificado) VALUES ('juan.perez@academia.com', 'Juan Pérez Sánchez', 4.75, 'S');
