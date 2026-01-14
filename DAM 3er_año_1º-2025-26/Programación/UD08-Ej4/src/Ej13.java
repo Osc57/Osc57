@@ -16,7 +16,7 @@ public class Ej13 {
 
         boolean correcto;
 
-        String regexTelefono = "\\d{3}-";
+        String regexTelefono = "\\d{3}-\\d{3}-\\d{4}";
 
 
         do {
