@@ -180,3 +180,26 @@ INSERT INTO CATEGORIAS (nombre_categoria, activa) VALUES ('PROGRAMACION', 'S');
 
 -- Ej 8
 INSERT INTO INSTRUCTORES (email, nombre_completo, puntuacion_media, certificado) VALUES ('juan.perez@academia.com', 'Juan Pérez Sánchez', 4.75, 'S');
+
+
+-- Ejercicio 3 - Biblioteca Digital 
+-- Fecha: 16/01/26
+-- Nombre: Óscar Úbeda
+
+CREATE DATABASE IF NOT EXISTS BIBLIOTECA_DIGITAL;
+USE BIBLIOTECA_DIGITAL;
+
+-- Crear tabla EDITORES
+CREATE TABLE EDITORIALES (
+	cif CHAR(12) PRIMARY KEY,
+	nombre VARCHAR(80) UNIQUE NOT NULL,
+	pais_origen VARCHAR(50),
+	anio_fundacion INT,
+	web VARCHAR(150),
+	activa CHAR(1) DEFAULT 'S',
+	
+	CONSTRAINT ck_anio CHECK (anio_fundacion BETWEEN 1800 AND (YEAR(CURDATE())),
+	CONSTRAINT ck_activa CHECK (activa IN ('N','S'))
+);
+
+-- Crear tabla AUTORES
