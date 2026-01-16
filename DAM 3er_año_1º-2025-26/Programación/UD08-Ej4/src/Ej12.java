@@ -15,8 +15,7 @@ public class Ej12 {
 
         boolean correcto;
         String regexCorreo = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
-
+        
         do {
             System.out.print("Dime un correo electronico: ");
             String correo = scanner.nextLine();
