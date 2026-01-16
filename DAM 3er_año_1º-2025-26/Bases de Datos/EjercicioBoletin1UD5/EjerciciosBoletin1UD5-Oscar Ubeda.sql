@@ -180,3 +180,4 @@ INSERT INTO CATEGORIAS (nombre_categoria, activa) VALUES ('PROGRAMACION', 'S');
 
 -- Ej 8
 INSERT INTO INSTRUCTORES (email, nombre_completo, puntuacion_media, certificado) VALUES ('juan.perez@academia.com', 'Juan Pérez Sánchez', 4.75, 'S');
+
