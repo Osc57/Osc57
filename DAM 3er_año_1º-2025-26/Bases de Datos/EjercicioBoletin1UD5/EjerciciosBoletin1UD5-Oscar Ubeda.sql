@@ -278,6 +278,4 @@ CREATE TABLE PRESTAMOS(
 	estado VARCHAR(20) DEFAULT 'EN_PRESTAMO',
 	renovaciones INT DEFAULT 0,
 	
-	
-	
 );
