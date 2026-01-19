@@ -47,7 +47,7 @@ public class CentroEducativo {
 
     public double salarioMedio() {
         if (listaDetrabajadores.isEmpty()) return 0.0;
-        double suma = 0;
+        double suma = 0.0;
 
         for (Trabajador t : listaDetrabajadores) {
             suma = suma + t.getSalarioBase();
