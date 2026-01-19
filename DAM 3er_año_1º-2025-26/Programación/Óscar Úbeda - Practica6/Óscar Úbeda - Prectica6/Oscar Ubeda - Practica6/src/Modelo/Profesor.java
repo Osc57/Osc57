@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Profesor extends Trabajador {
     private String especialidad;
     private int horasLectivasSemanales;
+    private final double PRECIO = 20.0;
 
     public Profesor(String nombre, String apellidos, String dni, LocalDate fechaDeIncorporacion, double salarioBase, String especialidad, int horasLectivasSemanales) {
         super(nombre, apellidos, dni, fechaDeIncorporacion, salarioBase);
@@ -15,7 +16,7 @@ public class Profesor extends Trabajador {
 
     @Override
     public double calcularSalario() {
-        return super.getSalarioBase() + (super.getSalarioBase() * horasLectivasSemanales);
+        return super.getSalarioBase() + (horasLectivasSemanales * PRECIO);
     }
 
     @Override
