@@ -14,7 +14,7 @@ public class Ej16 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String regex = "^(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\\\\d{4}$";
+        String regex = "^(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$";
 
         System.out.print("Dime una fecha valida con formato (dd/mm/yyyy): ");
         String fecha = scanner.next();
