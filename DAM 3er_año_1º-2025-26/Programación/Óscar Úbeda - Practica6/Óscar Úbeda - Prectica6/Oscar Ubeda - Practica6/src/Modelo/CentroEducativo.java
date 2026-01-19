@@ -57,6 +57,8 @@ public class CentroEducativo {
     }
 
     public Trabajador trabajadorMayorAntiguedad() {
+        if (listaDetrabajadores.isEmpty()) return null;
+
         Trabajador mayor = listaDetrabajadores.getFirst();
 
         for (Trabajador t : listaDetrabajadores) {
