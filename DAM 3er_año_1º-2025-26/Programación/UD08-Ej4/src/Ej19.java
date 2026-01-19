@@ -38,6 +38,6 @@ public class Ej19 {
                 correcto = false;
             }
 
-        }while (!correcto);
+        } while (!correcto);
     }
 }
