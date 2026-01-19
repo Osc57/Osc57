@@ -203,3 +203,32 @@ CREATE TABLE EDITORIALES (
 );
 
 -- Crear tabla AUTORES
+CREATE TABLE AUTORES (
+	id_autor INT AUTO_INCREMENT PRIMARY KEY,
+	nombre_completo VARCHAR(100) NOT NULL,
+	nacionalidad VARCHAR(50),
+	fecha_nacimiento DATE,
+	fecha_fallecimiento DATE,
+	biografia TEXT,
+	premios VARCHAR(200),
+	
+	CONSTRAINT chk_fechas CHECK (fecha_fallecimiento IS NULL OR fecha_fallecimiento > fecha_nacimiento)
+);
+
+-- Crear tabla LIBROS
+CREATE TABLE LIBROS(
+	isbn CHAR(17) PRIMARY KEY,
+	titulo VARCHAR(150) NOT NULL,
+	anio_publicacion INT,
+    num_paginas INT,
+	idioma VARCHAR(20),
+	genero VARCHAR(30) NOT NULL,
+	formato VARCHAR(15) DEFAULT 'DIGITAL',
+	precio_compra DECIMAL(6,2)
+	
+    CONSTRAINT ck_anio CHECK (anio_publicacion BETWEEN 1000 AND 2027),
+    CONSTRAINT ck_paginas CHECK (num_paginas > 0),
+	CONSTRAINT ck_idioma CHECK (idioma IN ('ESPAÑOL', 'INGLES', 'FRANCES', 'ALEMAN','ITALIANO', 'PORTUGUES')),
+	CONSTRAINT ck_formato CHECK (formato IN ('DIGITAL', 'FISICO', 'AMBOS')),
+	CONSTRAINT ck_precio_compra CHECK (precio_compra > 0)
+);
