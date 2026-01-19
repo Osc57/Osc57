@@ -268,3 +268,16 @@ CREATE TABLE SOCIOS (
 );
 
 -- Crear tabla PRESTAMOS
+CREATE TABLE PRESTAMOS(
+	id_prestamo INT AUTO_INCREMENT PRIMARY KEY,
+	num_socio INT,
+	isbn CHAR(17),
+	fecha_prestamo DATE DEFAULT (CURRENT_DATE),
+	fecha_devolucion_prevista DATE NOT NULL,
+	fecha_devolucion_real DATE,
+	estado VARCHAR(20) DEFAULT 'EN_PRESTAMO',
+	renovaciones INT DEFAULT 0,
+	
+	
+	
+);
