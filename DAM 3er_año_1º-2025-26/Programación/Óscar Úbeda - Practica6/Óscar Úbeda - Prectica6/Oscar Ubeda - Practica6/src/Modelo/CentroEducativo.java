@@ -73,13 +73,13 @@ public class CentroEducativo {
     public ArrayList<Trabajador> buscarTrabajador(String busqueda) {
         ArrayList<Trabajador> lista = new ArrayList<>();
 
-        for (Trabajador tra : listaDetrabajadores) {
-            if (tra.getNombre().equalsIgnoreCase(busqueda)) {
-                lista.add(tra);
-            } else if (busqueda.equalsIgnoreCase("profesor") && tra instanceof Profesor) {
-                lista.add(tra);
-            } else if (busqueda.equalsIgnoreCase("administrativo") && tra instanceof PersonalAdministrativo) {
-                lista.add(tra);
+        for (Trabajador t : listaDetrabajadores) {
+            if (t.getNombre().equalsIgnoreCase(busqueda)) {
+                lista.add(t);
+            } else if (busqueda.equalsIgnoreCase("profesor") && t instanceof Profesor) {
+                lista.add(t);
+            } else if (busqueda.equalsIgnoreCase("administrativo") && t instanceof PersonalAdministrativo) {
+                lista.add(t);
             }
 
         }
