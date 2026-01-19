@@ -224,11 +224,47 @@ CREATE TABLE LIBROS(
 	idioma VARCHAR(20),
 	genero VARCHAR(30) NOT NULL,
 	formato VARCHAR(15) DEFAULT 'DIGITAL',
-	precio_compra DECIMAL(6,2)
+	precio_compra DECIMAL(6,2),
+	disponible CHAR(1) DEFAULT 'S',
+	cif_editorial VARCHAR(12),
 	
     CONSTRAINT ck_anio CHECK (anio_publicacion BETWEEN 1000 AND 2027),
     CONSTRAINT ck_paginas CHECK (num_paginas > 0),
 	CONSTRAINT ck_idioma CHECK (idioma IN ('ESPAÑOL', 'INGLES', 'FRANCES', 'ALEMAN','ITALIANO', 'PORTUGUES')),
 	CONSTRAINT ck_formato CHECK (formato IN ('DIGITAL', 'FISICO', 'AMBOS')),
-	CONSTRAINT ck_precio_compra CHECK (precio_compra > 0)
+	CONSTRAINT ck_precio_compra CHECK (precio_compra > 0),
+	CONSTRAINT ck_disponible CHECK (disponible IN ('N', 'S')),
+	CONSTRAINT fk_editorial_table FOREIGN KEY (cif_editorial) REFERENCES EDITORES(cif) ON DELETE RESTRICT
 );
+
+-- Crear tabla LIBROS_AUTORES
+CREATE TABLE LIBROS_AUTORES(
+	isbn CHAR(17),
+	id_autor INT,
+	orden_autor INT DEFAULT 1,
+	
+	PRIMARY KEY (isbn, id_autor),
+	CONSTRAINT ck_orden_autor CHECK (orden_autor > 0),
+	CONSTRAINT fk_isbn FOREIGN KEY (isbn) REFERENCES LIBROS(isbn) ON DELETE CASCADE,
+	CONSTRAINT fk_autor FOREIGN KEY (id_autor) REFERENCES AUTORES(id_autor) ON DELETE CASCADE
+);
+
+-- Crear tabla SOCIOS
+CREATE TABLE SOCIOS (
+    num_socio INT AUTO_INCREMENT PRIMARY KEY,
+    dni VARCHAR(10) NOT NULL UNIQUE,
+    nombre VARCHAR(40) NOT NULL,
+    apellidos VARCHAR(60) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    telefono VARCHAR(12),
+    fecha_alta DATE DEFAULT (CURRENT_DATE),
+    tipo_socio VARCHAR(15) DEFAULT 'BASICO',
+    cuota_pagada CHAR(1) DEFAULT 'N',
+    penalizaciones INT DEFAULT 0,
+   
+    CONSTRAINT ck_tipo_socio CHECK (tipo_socio IN ('BASICO', 'PREMIUM', 'VIP')),
+    CONSTRAINT ck_cuota_pagada CHECK (cuota_pagada IN ('S', 'N')),
+    CONSTRAINT ck_penalizaciones CHECK (penalizaciones BETWEEN 0 AND 10)
+);
+
+-- Crear tabla PRESTAMOS
