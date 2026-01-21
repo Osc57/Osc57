@@ -13,9 +13,16 @@ public class Ej22 {
 
             int contador = 0;
             while ((linea = bufferedReader.readLine()) != null) {
-                String[] palabras = linea.split("\\s");
-                contador = contador + palabras.length;
+                linea = linea.trim();
+                if (!linea.isEmpty()) {
+                    String[] palabras = linea.split("[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]+");
 
+                    for (String p : palabras) {
+                        if (!p.isEmpty()) {
+                            contador++;
+                        }
+                    }
+                }
             }
             System.out.println("Hay " + contador + " palabras");
         } catch (IOException e) {
