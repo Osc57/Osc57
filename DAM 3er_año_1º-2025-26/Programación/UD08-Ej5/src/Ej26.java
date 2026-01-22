@@ -35,9 +35,10 @@ public class Ej26 {
 
                 while (matcher.find()) {
                     contador++;
+                    //System.out.println("Palabra " + contador + ": " + matcher.group());
                 }
             }
-            System.out.println("Total: Se encontraron " + contador + " palabras de " + longitud + " letras.");
+            System.out.println("Se encontraron " + contador + " palabras de " + longitud + " letras.");
 
         } catch (IOException e) {
             throw new RuntimeException(e);
