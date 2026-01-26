@@ -3,14 +3,10 @@ package Ej5;
 public class Demo {
     public static void main(String[] args) {
         Usuario usuario = new Usuario("Pacheco12", "miIncreibleContraseña123");
+        Usuario usuario2 = new Usuario("Pacheco12", "miincreiblecontraseña123");
 
-        System.out.println(usuario.mostrarDatos());
-        System.out.print("La contraseña es -> ");
-        System.out.println(usuario.verificarContrasena("miIncreibleContraseña123"));
-        System.out.println("-----------------------------------------------------");
-        System.out.println("Contraseña nueva que se implementara -> miSuperNuevaIncreibleContraseña123");
-        System.out.println(usuario.cambiarContrasena("miSuperNuevaIncreibleContraseña123"));
-        System.out.println("-----------------------------------------------------");
-        System.out.println(usuario.mostrarDatos());
+
+        
+
     }
 }

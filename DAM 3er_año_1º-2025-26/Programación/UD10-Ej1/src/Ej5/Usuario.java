@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Usuario {
     private String nombreUsuario;
-    public String contrasena;
+    private String contrasena;
 
     public Usuario() {
     }
@@ -16,7 +16,7 @@ public class Usuario {
     }
 
     public boolean verificarContrasena(String ingreso) {
-        return contrasena.equals(ingreso);
+        return this.contrasena.equals(ingreso);
     }
 
     public String cambiarContrasena(String nuevaContrasena) {
@@ -34,5 +34,9 @@ public class Usuario {
 
     public String mostrarDatos() {//Metodo creado por mí para saber si se cumplen los cambios
         return "El usuario " + nombreUsuario + " tiene la contraseña " + contrasena;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 }
