@@ -32,7 +32,7 @@ public class Usuario {
         }
     }
 
-    public String mostrarDatos() {//Metodo creado por mi para saber si se cumplen los cambios
+    public String mostrarDatos() {//Metodo creado por mí para saber si se cumplen los cambios
         return "El usuario " + nombreUsuario + " tiene la contraseña " + contrasena;
     }
 }
