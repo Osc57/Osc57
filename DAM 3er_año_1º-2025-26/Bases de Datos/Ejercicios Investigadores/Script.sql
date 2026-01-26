@@ -59,7 +59,7 @@ where NomFacultad = 'Ciencias Geologicas'))) and IdEquipo = 'H222';
 select * from reservas where dni in (select dni from investigadores 
 where facultad in (select IdFacultad  from facultades 
 where nomfacultad = 'Ciencias Geologicas')) and idequipo in (select idequipo from equipos 
-where idfacultad = (select idfacultad from facultades 
+where IdFacultad = (select IdFacultad from facultades 
 where nomfacultad = 'Ciencias Quimicas'));
 
 
