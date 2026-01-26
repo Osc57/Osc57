@@ -8,6 +8,7 @@ public class Demo {
         System.out.print("La contraseña es -> ");
         System.out.println(usuario.verificarContrasena("miIncreibleContraseña123"));
         System.out.println("-----------------------------------------------------");
+        System.out.println("Contraseña nueva que se implementara -> miSuperNuevaIncreibleContraseña123");
         System.out.println(usuario.cambiarContrasena("miSuperNuevaIncreibleContraseña123"));
         System.out.println("-----------------------------------------------------");
         System.out.println(usuario.mostrarDatos());
