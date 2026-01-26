@@ -3,8 +3,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Test
-@DisplayName("Add two numbers")
-void add() {
-    assertEquals(4, Calculator.add(2, 2));
+class CalculatorTest {
+    @Test
+    @DisplayName("Add two numbers")
+    void add() {
+        assertEquals(4, Calculator.add(2, 2));
+    }
+
+    void multiPly() {
+
+    }
 }
