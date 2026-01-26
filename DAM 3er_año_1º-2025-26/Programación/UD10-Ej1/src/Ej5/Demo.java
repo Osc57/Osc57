@@ -9,8 +9,6 @@ public class Demo {
         System.out.println("-----------------------------------------------------");
         System.out.println("Cambiar contraseña");
         System.out.println(usuario.cambiarContrasena("miSuperIncreibleContraseña123"));
-        System.out.println("-----------------------------------------------------");
-
 
     }
 }
