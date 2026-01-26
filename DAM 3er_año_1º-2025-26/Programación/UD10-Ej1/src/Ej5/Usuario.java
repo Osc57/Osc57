@@ -28,14 +28,15 @@ public class Usuario {
             contrasena = nuevaContrasena;
             return ("La contraseña es valida, se cambiara la contraseña");
         } else {
-            return ("No se ha podido cambiar la contraseña");
+            return ("Error: La contraseña debe tener al menos 8 caracteres, una mayúscula y un número");
         }
     }
 
+    /*
     public String mostrarDatos() {//Metodo creado por mí para saber si se cumplen los cambios
         return "El usuario " + nombreUsuario + " tiene la contraseña " + contrasena;
     }
-
+    */
     public String getNombreUsuario() {
         return nombreUsuario;
     }
