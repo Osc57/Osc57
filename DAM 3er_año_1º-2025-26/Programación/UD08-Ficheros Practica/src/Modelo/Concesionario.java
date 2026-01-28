@@ -13,12 +13,10 @@ public class Concesionario {
         this.listaVehiculos = listaVehiculos;
     }
 
-    public String mostrarVehiculos() {
-        StringBuilder resultado = new StringBuilder();
+    public void mostrarVehiculos() {
         for (Vehiculos v : listaVehiculos) {
-            resultado.append(v.toString()).append("\n");
+            System.out.println(v);
         }
-        return resultado.toString();
     }
 
     public Vehiculos vehiculoMasAntiguo() {
