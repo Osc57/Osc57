@@ -1,6 +1,7 @@
 -- Ejercicio de Ventas
 -- Óscar Úbeda
 
+-- CONSULTAS BÁSICAS DE SELECCIÓN
 -- Ej1
 mysql> SELECT CONCAT(nombre, " ", apellidos) AS Nombre, ciudad FROM empleados;
 +-----------------+------------+
@@ -139,3 +140,5 @@ mysql> SELECT precio_venta AS Precio_Original, precio_venta * 0.85 AS Precio_Con
 |          180.00 |             153.0000 |
 +-----------------+----------------------+
 39 rows in set (0.007 sec)
+
+-- SUBCONSULTAS
