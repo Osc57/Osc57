@@ -142,3 +142,31 @@ mysql> SELECT precio_venta AS Precio_Original, precio_venta * 0.85 AS Precio_Con
 39 rows in set (0.007 sec)
 
 -- SUBCONSULTAS
+-- Ej7
+mysql> SELECT * FROM productos WHERE precio_venta > (SELECT AVG(precio_venta) FROM productos);
++-----------------+---------------------------------------+-------------+--------------+-------+--------------+
+| numero_producto | nombre                                | descripcion | precio_venta | stock | id_categoria |
++-----------------+---------------------------------------+-------------+--------------+-------+--------------+
+|               2 | Eagle FS-3 Mountain Bike              | NULL        |      1800.00 |     8 |            2 |
+|               6 | Viscount Mountain Bike                | NULL        |       635.00 |     5 |            2 |
+|              11 | GT RTS-2 Mountain Bike                | NULL        |      1650.00 |     5 |            2 |
+|              18 | Viscount CardioSport Sport Watch      | NULL        |       179.00 |    12 |            1 |
+|              37 | AeroFlo ATB Ruedas                    | NULL        |       189.00 |    40 |            4 |
+|              39 | Road Warrior soporte para maletero    | NULL        |       175.00 |     6 |            5 |
+|              40 | Ultimate Export 2G baca para bibileta | NULL        |       180.00 |     8 |            5 |
++-----------------+---------------------------------------+-------------+--------------+-------+--------------+
+7 rows in set (0.021 sec)
+
+-- Ej8
+-- Ej9
+mysql> SELECT * FROM proveedores
+    -> WHERE id_prov NOT IN (SELECT id_prov FROM productos_proveedores
+    -> WHERE numero_producto IN(SELECT numero_producto FROM productos
+    -> WHERE numero_producto IN (SELECT numero_producto FROM detalles_pedidos
+    -> WHERE numero_pedido IN (SELECT numero_pedido FROM pedidos WHERE YEAR(fecha_pedido) = 2007))));
++---------+-----------------------+------------------+-------------+-----------+------------+----------------+----------------+---------+-------+
+| id_prov | nombre                | direccion        | ciudad      | provincia | cod_postal | telefono       | fax            | pag_web | email |
++---------+-----------------------+------------------+-------------+-----------+------------+----------------+----------------+---------+-------+
+|      11 | Astro Paper productos | Avda. del Rio 56 | Castroviejo | LA RIOJA  | 26637      | (941) 555-9876 | (941) 555-9875 | NULL    | NULL  |
++---------+-----------------------+------------------+-------------+-----------+------------+----------------+----------------+---------+-------+
+1 row in set (0.117 sec)
