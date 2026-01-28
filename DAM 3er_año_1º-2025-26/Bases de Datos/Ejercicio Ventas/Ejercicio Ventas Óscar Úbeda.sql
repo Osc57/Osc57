@@ -170,3 +170,8 @@ mysql> SELECT * FROM proveedores
 |      11 | Astro Paper productos | Avda. del Rio 56 | Castroviejo | LA RIOJA  | 26637      | (941) 555-9876 | (941) 555-9875 | NULL    | NULL  |
 +---------+-----------------------+------------------+-------------+-----------+------------+----------------+----------------+---------+-------+
 1 row in set (0.117 sec)
+
+-- Ej10
+SELECT * FROM categorias WHERE id_categoria 
+
+SELECT numero_producto FROM productos WHERE precio_venta > 30.00;
