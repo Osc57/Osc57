@@ -22,14 +22,6 @@ public class CuentaBancaria {
         return "Se han retirado: " + monto + "€";
     }
 
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
-
     public String mostrarSaldo() {
         return "Su saldo es de: " + saldo + "€";
     }
