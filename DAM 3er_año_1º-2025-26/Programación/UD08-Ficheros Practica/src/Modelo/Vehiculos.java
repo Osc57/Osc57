@@ -36,7 +36,8 @@ public class Vehiculos {
     }
 
     public int calcularAntiguedad() {
-        return Period.between(LocalDate.ofEpochDay(anoFabricacion), LocalDate.now()).getYears();
+        //return Period.between(LocalDate.ofEpochDay(anoFabricacion), LocalDate.now()).getYears();
+        return LocalDate.now().getYear() - anoFabricacion;
     }
 
     public String getMarca() {
