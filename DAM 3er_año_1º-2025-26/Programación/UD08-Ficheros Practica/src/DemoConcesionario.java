@@ -15,6 +15,15 @@ public class DemoConcesionario {
 
         Concesionario concesionario = new Concesionario(listaVehiculos);
 
+        System.out.println("MOSTRAR VEHÍCULOS");
+        concesionario.mostrarVehiculos();
+
+        System.out.println();
+        System.out.println("VEHICULO MÁS ANTIGÜO");
+        System.out.println(concesionario.vehiculoMasAntiguo());
+
+        System.out.println();
+        System.out.println("BUSCAR VEHÍCULO");
         
     }
 }

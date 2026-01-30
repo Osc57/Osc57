@@ -79,4 +79,10 @@ public class Vehiculos {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "Vehiculo marca " + marca + ", modelo " + modelo + ", año " + anoFabricacion
+                + ", matricula " + matricula + ", precio " + precio;
+    }
 }
