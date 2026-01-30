@@ -24,6 +24,6 @@ public class DemoConcesionario {
 
         System.out.println();
         System.out.println("BUSCAR VEHÍCULO");
-        
+        for (Vehiculos v : concesionario.buscarVehiculo("Seat")) System.out.println(v);
     }
 }
