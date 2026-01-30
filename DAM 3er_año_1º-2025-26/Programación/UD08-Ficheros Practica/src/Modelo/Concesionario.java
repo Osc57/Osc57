@@ -15,7 +15,7 @@ public class Concesionario {
 
     public void mostrarVehiculos() {
         for (Vehiculos v : listaVehiculos) {
-            System.out.println(v);
+            System.out.println(v.descripcion());
         }
     }
 
