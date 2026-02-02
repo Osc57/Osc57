@@ -7,7 +7,9 @@ class CalculatorTest {
     @Test
     @DisplayName("Add two numbers")
     void add() {
-        assertEquals(4, Calculator.add(2, 2));
+        assertAll( () -> assertEquals(4, Calculator.add(2, 2)),
+                () -> assertEquals(-4,Calculator.multiply(2,-2)));
+
     }
 
     void multiPly() {
