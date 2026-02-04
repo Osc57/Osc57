@@ -52,13 +52,6 @@ public class Practica {
                     bwInvalidos.newLine();
                     contadorF++;
                 }
-                /*
-                if (validar(linea)){
-                    contadorV++;
-                }else {
-                    contadorF++;
-                }
-                */
             }
 
             System.out.println(contadorV + " válidos");
