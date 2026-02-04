@@ -32,8 +32,8 @@ public class Practica {
                 validarDni(partes[3]);
     }
 
-    //21 inválidos
     //79 validos
+    //21 inválidos
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new FileReader("usuarios.txt"));
              BufferedWriter bwValidos = new BufferedWriter(new FileWriter("usuarios_validos.txt"));
