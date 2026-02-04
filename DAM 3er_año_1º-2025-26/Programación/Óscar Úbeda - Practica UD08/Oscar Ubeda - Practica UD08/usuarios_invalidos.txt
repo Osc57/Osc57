@@ -1,0 +1,21 @@
+María Gómez;maria.gomez@;600123456;11111111A
+Pedro Ruiz;pedro.ruiz@hotmail.com;12345;22222222B
+Carlos Sánchez;carlos.sanchez@gmail;612345678;44444444D
+Isabel Torres;isabel.torres@outlook.com;81234567;55555555E
+Patricia Fernández;patricia.fernandez@;712345678;22222222L
+José Luis Hernández;jose.hernandez@gmail.com;61234;33333333M
+David Martín;david.martin@;612345678;99999999S
+Sergio Martínez;sergio.martinez@outlook;612345678;44444444W
+Pablo López;pablo.lopez@gmail;912345678;66666666Y
+Hugo Ruiz;hugo.ruiz@gmail;61234567;33333333E
+Daniela Torres;daniela.torres@;612345678;55555555Q
+María Pérez;maría.perez@gmail;612345678;99999999U
+Tomás Torres;tomás.torres@gmail.com;612345678;33333333X
+Alberto Pérez;alberto.perez@gmail;612345678;77777777B
+Marcos Torres;marcos.torres@gmail;612345678;88888888M
+Laura Torres;laura.torres@gmail;612345678;66666666T
+Diego Torres;diego.torres@gmail;612345678;44444444A
+Marta Torres;marta.torres@gmail;612345678;22222222H
+Tomás López;tomás.lopez@gmail.com;612345678;77777777N
+Alberto Torres;alberto.torres@gmail;612345678;99999999P
+Marta Torres;marta.torres@gmail;612345678;77777777W
