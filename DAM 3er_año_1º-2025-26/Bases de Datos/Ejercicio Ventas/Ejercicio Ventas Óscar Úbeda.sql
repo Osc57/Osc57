@@ -313,3 +313,5 @@ mysql> SELECT * FROM productos p WHERE precio_venta <= ALL
 |              39 | Road Warrior soporte para maletero | NULL        |       175.00 |     6 |            5 |
 +-----------------+------------------------------------+-------------+--------------+-------+--------------+
 6 rows in set (0.012 sec)
+
+-- Ej19
