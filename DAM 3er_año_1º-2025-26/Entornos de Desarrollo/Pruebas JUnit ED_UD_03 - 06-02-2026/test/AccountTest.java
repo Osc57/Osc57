@@ -18,7 +18,6 @@ class AccountTest {
     @Test
     @DisplayName("Lanzar excepción cuando el nombre es nulo")
     void testConstructor_NullName_ThrowsException() {
-        // En JUnit 5, assertThrows es el equivalente a ExpectedException
         assertThrows(NullPointerException.class, () -> {
             new Account(null);
         });
