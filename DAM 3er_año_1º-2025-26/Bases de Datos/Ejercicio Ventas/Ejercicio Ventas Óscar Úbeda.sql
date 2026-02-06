@@ -299,6 +299,7 @@ mysql> SELECT * FROM productos WHERE precio_venta
 mysql> SELECT * FROM pedidos WHERE precio_total < ALL (SELECT precio_total FROM pedidos WHERE id_cliente = 1001);
 Empty set (0.212 sec)
 
+-- Ej18
 mysql> SELECT * FROM productos p WHERE precio_venta <= ALL
     -> (SELECT p2.precio_venta FROM productos p2 WHERE p2.id_categoria = p.id_categoria);
 +-----------------+------------------------------------+-------------+--------------+-------+--------------+
