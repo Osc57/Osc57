@@ -1,4 +1,4 @@
-public class Impuestos {
+public final class Impuestos {
 
     private Impuestos() {
     }
