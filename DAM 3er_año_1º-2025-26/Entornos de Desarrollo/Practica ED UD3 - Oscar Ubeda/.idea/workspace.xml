@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="00af6c24-d0c6-4a81-b810-1ecf24b28e2c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/Practica ED UD3 - Oscar Ubeda.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/src/Impuestos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica ED UD3 - Oscar Ubedae/test/ImpuestosTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Osc57&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Osc57/Osc57.git&quot;,
+    &quot;accountId&quot;: &quot;2c1bc16f-4819-46af-ba6b-4555d09c5547&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="39ROfNWiFRLLtPyt66atm4xJypd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.ImpuestosTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/dam1/Desktop/DAM Óscar Úbeda/Osc57/DAM 3er_año_1º-2025-26/Entornos de Desarrollo/Practica ED UD3 - Oscar Ubeda",
+    "onboarding.tips.debug.path": "C:/Users/dam1/Desktop/DAM Óscar Úbeda/Osc57/DAM 3er_año_1º-2025-26/Entornos de Desarrollo/Practica ED UD3 - Oscar Ubedae/src/Main.java"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00af6c24-d0c6-4a81-b810-1ecf24b28e2c" name="Changes" comment="" />
+      <created>1770655519189</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770655519189</updated>
+    </task>
+    <servers />
+  </component>
+</project>
