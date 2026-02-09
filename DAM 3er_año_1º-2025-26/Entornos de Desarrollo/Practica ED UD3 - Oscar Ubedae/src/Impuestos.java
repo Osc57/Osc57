@@ -1,8 +1,4 @@
 public final class Impuestos {
-
-    private Impuestos() {
-    }
-
     public static double calcularPVP(double precio, double impuesto) {
         if (impuesto < 0) {
             throw new IllegalArgumentException("El impuesto no puede ser negativo.");
