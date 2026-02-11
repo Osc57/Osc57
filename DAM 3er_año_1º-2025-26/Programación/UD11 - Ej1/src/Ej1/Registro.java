@@ -30,7 +30,7 @@ public class Registro {
 
         return matcher.find();
     }
-    
+
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new FileReader("DATA.csv"))) {
             String linea;
