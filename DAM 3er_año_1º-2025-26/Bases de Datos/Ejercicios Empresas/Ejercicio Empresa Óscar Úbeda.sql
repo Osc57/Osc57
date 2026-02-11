@@ -167,3 +167,16 @@ mysql> SELECT NomDep, PreAnu FROM departamento WHERE PreAnu >= 10000000 AND PreA
 2 rows in set (0.008 sec)
 
 -- Ej12
+mysql> SELECT * FROM empleado WHERE CodDep = 'PROZS' OR CodDep = 'VENZS';
++--------+--------+----------+------------+------------+-----------+-------------------------+-------+------------+
+| CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                  | NumHi | SalEmp     |
++--------+--------+----------+------------+------------+-----------+-------------------------+-------+------------+
+|      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado L├│pez, Galeote |     0 | 1600000.00 |
+|      8 | PROZS  | NULL     | 1994-08-15 | 1976-06-15 | 32132154H | Mascullas Alto, Elo├¡sa |     1 | 1600000.00 |
+|      9 | PROZS  | 12124    | 1982-06-10 | 1968-07-19 | 11312121D | Mando Correa, Rosa      |     2 | 3100000.00 |
+|     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario     |     0 | 1300000.00 |
+|      3 | VENZS  | 2133     | 1984-06-08 | 1965-12-07 | 23823930D | Monforte Cid, Rold├ín   |     1 | 5200000.00 |
+|      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Ill├ín, Carlos    |     0 | 3200000.00 |
++--------+--------+----------+------------+------------+-----------+-------------------------+-------+------------+
+6 rows in set (0.007 sec)
+
