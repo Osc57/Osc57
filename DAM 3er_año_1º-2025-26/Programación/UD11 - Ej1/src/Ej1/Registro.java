@@ -1,3 +1,5 @@
+package Ej1;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,7 +22,7 @@ por ‘A’ ordenados por fecha (descendente) del último inicio de sesión
 */
 
 
-public class Ej1 {
+public class Registro {
     public static boolean verificarFrancia(String pais) {
         String regex = "FR";
         Pattern pattern = Pattern.compile(regex);
