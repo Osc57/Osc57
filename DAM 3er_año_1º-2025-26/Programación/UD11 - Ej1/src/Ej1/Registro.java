@@ -24,12 +24,10 @@ class Registro {
     private String email;
     private String country;
     private LocalDateTime lastLogin;
-
-    // Formateador para el formato: 2017-09-27 19:41:14
+    
     private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public Registro(String[] datos) {
-        // Mapeo según las columnas de tu DATA.csv
         this.firstName = datos[1];
         this.lastName = datos[2];
         this.email = datos[6];
@@ -37,7 +35,6 @@ class Registro {
         this.lastLogin = LocalDateTime.parse(datos[9], FORMATO);
     }
 
-    // Getters necesarios para tus streams
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
