@@ -18,26 +18,26 @@ por ‘A’ ordenados por fecha (descendente) del último inicio de sesión
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Registro {
+class Registro {
     private String firstName;
     private String lastName;
     private String email;
     private String country;
     private LocalDateTime lastLogin;
 
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    // Formateador para el formato: 2017-09-27 19:41:14
+    private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    public Registro(String firstName, String lastName, String email, String country, String lastLogin) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.country = country;
-        this.lastLogin = LocalDateTime.parse(lastLogin, FORMATTER);
+    public Registro(String[] datos) {
+        // Mapeo según las columnas de tu DATA.csv
+        this.firstName = datos[1];
+        this.lastName = datos[2];
+        this.email = datos[6];
+        this.country = datos[7];
+        this.lastLogin = LocalDateTime.parse(datos[9], FORMATO);
     }
 
-    public Registro(String[] split) {
-    }
-
+    // Getters necesarios para tus streams
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
@@ -46,7 +46,7 @@ public class Registro {
 
     @Override
     public String toString() {
-        return String.format("%s %s | %s | %s | %s", firstName, lastName, email, country, lastLogin);
+        return String.format("%-10s %-10s | %-2s | %-25s | %s", firstName, lastName, country, email, lastLogin.format(FORMATO));
     }
 }
 
