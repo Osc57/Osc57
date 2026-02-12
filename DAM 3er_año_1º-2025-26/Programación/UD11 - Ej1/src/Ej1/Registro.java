@@ -3,6 +3,10 @@ package Ej1;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /*
@@ -23,26 +27,91 @@ por ‘A’ ordenados por fecha (descendente) del último inicio de sesión
 
 
 public class Registro {
-    public static boolean verificarFrancia(String pais) {
-        String regex = "FR";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(pais);
+    private ArrayList<String> listaFrancia = new ArrayList<>();
+    private ArrayList<String> listaEmails = new ArrayList<>();
+    private List<String> listaLogins = new ArrayList<>();
+    private ArrayList<String> listaNombreApe = new ArrayList<>();
 
-        return matcher.find();
+    //Francia
+    public String anadirFrancia(String f) {
+        listaFrancia.add(f);
+        return "";
     }
 
-    public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new FileReader("DATA.csv"))) {
-            String linea;
-
-            while ((linea = br.readLine()) != null) {
-                if (verificarFrancia(linea)){
-                    System.out.println(linea);
-                }
+    public void mostrarFrancia() {
+        if (listaEmails.isEmpty()) {
+            System.out.println("Vacia");
+        } else {
+            for (String f : listaFrancia) {
+                System.out.println(f);
             }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
+
+    //Email
+    public String anadirEmail(String e) {
+        listaEmails.add(e);
+        return "";
+    }
+
+    public void ordenarEmails() {
+        Collections.sort(listaLogins);
+    }
+
+    public String mostrarEmail() {
+        if (listaEmails.isEm pty()) {
+            return "Vacia";
+        }
+
+        StringBuilder email = new StringBuilder();
+        for (String e : listaEmails) {
+            email.append(e).append("\n");
+        }
+        return email.toString().trim();
+    }
+
+    //Logins
+    public String anadirLogins(String l) {
+        listaLogins.add(l);
+        return "";
+    }
+
+    public void ordenarLogins() {
+        Collections.sort(listaLogins, Comparator.reverseOrder());
+    }
+
+    public String mostrarLogins() {
+        if (listaLogins.isEmpty()) {
+            return "Vacia";
+        }
+
+        StringBuilder login = new StringBuilder();
+        for (String l : listaLogins) {
+            login.append(l).append("\n");
+        }
+        return login.toString().trim();
+    }
+
+    //Nombre y Apellido
+    public String anadirNombreApe(String nombre) {
+        listaNombreApe.add(nombre);
+        return "";
+    }
+
+    public void ordenarNombreApe(){
+
+
+    }
+
+    public String mostrarNombreApe(){
+
+        if (listaNombreApe.isEmpty()) {
+            return "Vacia";
+        }
+
+        StringBuilder nombreApe = new StringBuilder();
+        for (String nA : listaNombreApe) {
+            nombreApe.append(nA).append("\n");
+        }
+        return nombreApe.toString().trim();}
 }
