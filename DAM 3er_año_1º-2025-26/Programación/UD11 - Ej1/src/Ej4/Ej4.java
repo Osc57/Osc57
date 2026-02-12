@@ -25,12 +25,12 @@ public class Ej4 {
 
         System.out.println("Lista inicial: " + lista);
 
-        System.out.println("Sustituir la palabra:");
+        System.out.print("Sustituir la palabra: ");
         String buscar = sc.nextLine();
 
-        System.out.println("Por:");
+        System.out.print("Por: ");
         String reemplazo = sc.nextLine();
-        
+
         if (lista.contains(buscar)) {
             int indice = lista.indexOf(buscar);
             lista.set(indice, reemplazo);
