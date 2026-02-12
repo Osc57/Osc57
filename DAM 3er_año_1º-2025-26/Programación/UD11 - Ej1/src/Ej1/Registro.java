@@ -24,7 +24,7 @@ class Registro {
     private String email;
     private String country;
     private LocalDateTime lastLogin;
-    
+
     private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public Registro(String[] datos) {
@@ -35,11 +35,25 @@ class Registro {
         this.lastLogin = LocalDateTime.parse(datos[9], FORMATO);
     }
 
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
-    public String getEmail() { return email; }
-    public String getCountry() { return country; }
-    public LocalDateTime getLastLogin() { return lastLogin; }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public LocalDateTime getLastLogin() {
+        return lastLogin;
+    }
 
     @Override
     public String toString() {
