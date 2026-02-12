@@ -59,7 +59,7 @@ public class Registro {
     }
 
     public String mostrarEmail() {
-        if (listaEmails.isEm pty()) {
+        if (listaEmails.isEmpty()) {
             return "Vacia";
         }
 
@@ -98,13 +98,12 @@ public class Registro {
         return "";
     }
 
-    public void ordenarNombreApe(){
+    public void ordenarNombreApe() {
 
 
     }
 
-    public String mostrarNombreApe(){
-
+    public String mostrarNombreApe() {
         if (listaNombreApe.isEmpty()) {
             return "Vacia";
         }
@@ -113,5 +112,6 @@ public class Registro {
         for (String nA : listaNombreApe) {
             nombreApe.append(nA).append("\n");
         }
-        return nombreApe.toString().trim();}
+        return nombreApe.toString().trim();
+    }
 }
