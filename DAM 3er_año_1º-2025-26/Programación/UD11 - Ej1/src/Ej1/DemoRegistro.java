@@ -9,10 +9,7 @@ import java.util.*;
 public class DemoRegistro {
     public static void main(String[] args) {
         try {
-            List<Registro> registros = Files.lines(Paths.get("DATA.csv"))
-                    .skip(1)
-                    .map(linea -> new Registro(linea.split(",")))
-                    .toList();
+            List<Registro> registros = Files.lines(Paths.get("DATA.csv")).skip(1).map(linea -> new Registro(linea.split(","))).toList();
 
             System.out.println("\n--- País: FR ---");
             registros.stream().filter(r -> r.getCountry().equals("FR")).forEach(System.out::println);
