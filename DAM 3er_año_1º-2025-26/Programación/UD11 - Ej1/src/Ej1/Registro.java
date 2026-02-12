@@ -1,14 +1,4 @@
 package Ej1;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 /*
 Utiliza como fuente de datos el fichero DATA.csv disponible en Moodle (UD08)
 para llevar a cabo este ejercicio. Crea la clase Registro que corresponda con la
@@ -25,93 +15,35 @@ por ‘A’ ordenados por fecha (descendente) del último inicio de sesión
 (last_login).
 */
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Registro {
-    private ArrayList<String> listaFrancia = new ArrayList<>();
-    private ArrayList<String> listaEmails = new ArrayList<>();
-    private List<String> listaLogins = new ArrayList<>();
-    private ArrayList<String> listaNombreApe = new ArrayList<>();
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String country;
+    private LocalDateTime lastLogin;
 
-    //Francia
-    public String anadirFrancia(String f) {
-        listaFrancia.add(f);
-        return "";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    public Registro(String firstName, String lastName, String email, String country, String lastLogin) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.country = country;
+        this.lastLogin = LocalDateTime.parse(lastLogin, FORMATTER);
     }
 
-    public void mostrarFrancia() {
-        if (listaEmails.isEmpty()) {
-            System.out.println("Vacia");
-        } else {
-            for (String f : listaFrancia) {
-                System.out.println(f);
-            }
-        }
-    }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getEmail() { return email; }
+    public String getCountry() { return country; }
+    public LocalDateTime getLastLogin() { return lastLogin; }
 
-    //Email
-    public String anadirEmail(String e) {
-        listaEmails.add(e);
-        return "";
-    }
-
-    public void ordenarEmails() {
-        Collections.sort(listaLogins);
-    }
-
-    public String mostrarEmail() {
-        if (listaEmails.isEmpty()) {
-            return "Vacia";
-        }
-
-        StringBuilder email = new StringBuilder();
-        for (String e : listaEmails) {
-            email.append(e).append("\n");
-        }
-        return email.toString().trim();
-    }
-
-    //Logins
-    public String anadirLogins(String l) {
-        listaLogins.add(l);
-        return "";
-    }
-
-    public void ordenarLogins() {
-        Collections.sort(listaLogins, Comparator.reverseOrder());
-    }
-
-    public String mostrarLogins() {
-        if (listaLogins.isEmpty()) {
-            return "Vacia";
-        }
-
-        StringBuilder login = new StringBuilder();
-        for (String l : listaLogins) {
-            login.append(l).append("\n");
-        }
-        return login.toString().trim();
-    }
-
-    //Nombre y Apellido
-    public String anadirNombreApe(String nombre) {
-        listaNombreApe.add(nombre);
-        return "";
-    }
-
-    public void ordenarNombreApe() {
-
-
-    }
-
-    public String mostrarNombreApe() {
-        if (listaNombreApe.isEmpty()) {
-            return "Vacia";
-        }
-
-        StringBuilder nombreApe = new StringBuilder();
-        for (String nA : listaNombreApe) {
-            nombreApe.append(nA).append("\n");
-        }
-        return nombreApe.toString().trim();
+    @Override
+    public String toString() {
+        return String.format("%s %s | %s | %s | %s", firstName, lastName, email, country, lastLogin);
     }
 }
+
