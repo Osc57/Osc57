@@ -35,6 +35,9 @@ public class Registro {
         this.lastLogin = LocalDateTime.parse(lastLogin, FORMATTER);
     }
 
+    public Registro(String[] split) {
+    }
+
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public String getEmail() { return email; }
