@@ -14,28 +14,23 @@ Lista final: “monitor”, “keyboard”, “mouse”, “computer”
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 public class Ej4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 1. Lista inicial predefinida
         ArrayList<String> lista = new ArrayList<>(Arrays.asList("monitor", "keyboard", "trackpad", "computer"));
 
         System.out.println("Lista inicial: " + lista);
 
-        // 2. Pedir palabras para el cambio
         System.out.println("Sustituir la palabra:");
         String buscar = sc.nextLine();
 
         System.out.println("Por:");
         String reemplazo = sc.nextLine();
-
-        // 3. Sustitución
+        
         if (lista.contains(buscar)) {
             int indice = lista.indexOf(buscar);
             lista.set(indice, reemplazo);
