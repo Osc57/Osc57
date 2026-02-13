@@ -8,6 +8,6 @@ repetidos en caso de que los hubiera.
 
 public class Ej6 {
     public static void main(String[] args) {
-
+        
     }
 }
