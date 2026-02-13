@@ -240,3 +240,47 @@ mysql> SELECT * FROM departamento WHERE (CodCen = 'FAZS' AND PreAnu > 10000000) 
 2 rows in set (0.009 sec)
 
 -- Ej17
+mysql> SELECT NomDep, PreAnu FROM departamento WHERE PreAnu NOT IN (SELECT PreAnu FROM departamento WHERE PreAnu BETWEEN 10000000 AND 20000000);
++----------------------------+--------------+
+| NomDep                     | PreAnu       |
++----------------------------+--------------+
+| Direcci├│n General         |  26000000.00 |
+| Investigaci├│n y Dise├▒o   |  25000000.00 |
+| Jefatura F├íbrica Zona Sur |   6200000.00 |
+| Producci├│n Zona Sur       | 108000000.00 |
++----------------------------+--------------+
+4 rows in set (0.012 sec)
+
+-- Ej18
+mysql> SELECT NomDep FROM departamento WHERE NomDep LIKE '%Zona%';
++----------------------------+
+| NomDep                     |
++----------------------------+
+| Administraci├│n Zona Sur   |
+| Jefatura F├íbrica Zona Sur |
+| Producci├│n Zona Sur       |
+| Ventas Zona Sur            |
++----------------------------+
+4 rows in set (0.006 sec)
+
+-- Ej19
+mysql> SELECT NomEmp, SalEmp FROM empleado WHERE (NomEmp LIKE 'M%' OR NomEmp LIKE 'F%') AND SalEmp > 3000000;
++--------------------------+------------+
+| NomEmp                   | SalEmp     |
++--------------------------+------------+
+| Manrique Bacterio, Luisa | 4500000.00 |
+| Monforte Cid, Rold├ín    | 5200000.00 |
+| Mando Correa, Rosa       | 3100000.00 |
++--------------------------+------------+
+3 rows in set (0.008 sec)
+
+-- Ej20
+mysql> SELECT * FROM empleado WHERE FecNaEmp BETWEEN '1970-01-01' AND '1979-12-31' AND CodDep NOT IN ('PROZS') AND (NomEmp LIKE '%ar%' OR NomEmp LIKE '%o') AND SalEmp > 3000000;
++--------+--------+----------+------------+------------+-----------+----------------------+-------+------------+
+| CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp               | NumHi | SalEmp     |
++--------+--------+----------+------------+------------+-----------+----------------------+-------+------------+
+|      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Ill├ín, Carlos |     0 | 3200000.00 |
++--------+--------+----------+------------+------------+-----------+----------------------+-------+------------+
+1 row in set (0.008 sec)
+
+-- SUBCONSULTAS
