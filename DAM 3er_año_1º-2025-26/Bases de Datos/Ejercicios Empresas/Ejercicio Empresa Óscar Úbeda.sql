@@ -331,12 +331,12 @@ mysql> SELECT NomDep FROM departamento WHERE PreAnu > (SELECT AVG(PreAnu) FROM d
 1 row in set (0.008 sec)
 
 -- Ej5
-mysql> SELECT NomDep FROM departamento WHERE PreAnu > (SELECT AVG(SumaCentro) FROM (SELECT SUM(PreAnu) AS SumaCentro FROM departamento GROUP BY CodCen) AS PresupuestosCentros);
+mysql> SELECT NomDep FROM departamento WHERE PreAnu > (SELECT AVG(TotalCentro) FROM (SELECT SUM(PreAnu) AS TotalCentro FROM departamento GROUP BY CodCen) AS Sub);
 +----------------------+
 | NomDep               |
 +----------------------+
 | Producci├│n Zona Sur |
 +----------------------+
-1 row in set (0.009 sec)
+1 row in set (0.010 sec)
 
 -- Ej6
