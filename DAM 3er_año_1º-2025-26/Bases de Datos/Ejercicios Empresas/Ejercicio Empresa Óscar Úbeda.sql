@@ -284,3 +284,41 @@ mysql> SELECT * FROM empleado WHERE FecNaEmp BETWEEN '1970-01-01' AND '1979-12-3
 1 row in set (0.008 sec)
 
 -- SUBCONSULTAS
+-- Ej1
+mysql> SELECT NomEmp, SalEmp FROM empleado WHERE SalEmp > (SELECT AVG(SalEmp) FROM empleado WHERE CodDep = 'PROZS');
++-----------------------------+------------+
+| NomEmp                      | SalEmp     |
++-----------------------------+------------+
+| Saladino Mandam├ís, Augusto | 7200000.00 |
+| Manrique Bacterio, Luisa    | 4500000.00 |
+| Monforte Cid, Rold├ín       | 5200000.00 |
+| Topaz Ill├ín, Carlos        | 3200000.00 |
+| Alada Veraz, Juana          | 6200000.00 |
+| Gozque Altanero, C├índido   | 5000000.00 |
+| Mando Correa, Rosa          | 3100000.00 |
++-----------------------------+------------+
+7 rows in set (0.030 sec)
+
+-- Ej2
+mysql> SELECT NomEmp, SalEmp FROM empleado WHERE SalEmp > (SELECT AVG(SalEmp) FROM empleado WHERE CodEmp IN (SELECT CodEmpDir FROM departamento WHERE NomDep = 'Investigaci├│n y Dise├▒o'));
++-----------------------------+------------+
+| NomEmp                      | SalEmp     |
++-----------------------------+------------+
+| Saladino Mandam├ís, Augusto | 7200000.00 |
+| Monforte Cid, Rold├ín       | 5200000.00 |
+| Alada Veraz, Juana          | 6200000.00 |
+| Gozque Altanero, C├índido   | 5000000.00 |
++-----------------------------+------------+
+4 rows in set (0.009 sec)
+
+-- Ej3
+mysql> SELECT NomEmp, SalEmp FROM empleado e1 WHERE SalEmp > (SELECT AVG(SalEmp) FROM empleado e2 WHERE e2.CodDep = e1.CodDep);
++-----------------------+------------+
+| NomEmp                | SalEmp     |
++-----------------------+------------+
+| Monforte Cid, Rold├ín | 5200000.00 |
+| Mando Correa, Rosa    | 3100000.00 |
++-----------------------+------------+
+2 rows in set (0.009 sec)
+
+-- Ej4
