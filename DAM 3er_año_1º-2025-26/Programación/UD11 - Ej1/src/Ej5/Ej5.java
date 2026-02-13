@@ -1,7 +1,7 @@
 package Ej5;
 
 /*
-Escribe un programa que permita crear una lista de palabras y que, a continuación,
+5. Escribe un programa que permita crear una lista de palabras y que, a continuación,
 pida una palabra al usuario y la elimine de la lista.
 Ejemplo:
 Lista inicial: “monitor”, “keyboard”, “trackpad”, “computer”
