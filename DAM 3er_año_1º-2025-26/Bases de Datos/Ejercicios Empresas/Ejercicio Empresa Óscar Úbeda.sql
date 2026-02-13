@@ -192,3 +192,51 @@ mysql> SELECT * FROM empleado WHERE CodDep IN ('PROZS', 'VENZS');
 |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Ill├ín, Carlos    |     0 | 3200000.00 |
 +--------+--------+----------+------------+------------+-----------+-------------------------+-------+------------+
 6 rows in set (0.008 sec)
+
+-- Ej13
+mysql> SELECT * FROM departamento WHERE TiDir = 'F' OR PreAnu > 20000000;
++--------+-----------+-----------+--------+----------------------------+--------------+-------+
+| CodDep | CodEmpDir | CodDepDep | CodCen | NomDep                     | PreAnu       | TiDir |
++--------+-----------+-----------+--------+----------------------------+--------------+-------+
+| DIRGE  |         1 | NULL      | DIGE   | Direcci├│n General         |  26000000.00 | P     |
+| IN&DI  |         2 | DIRGE     | DIGE   | Investigaci├│n y Dise├▒o   |  25000000.00 | P     |
+| JEFZS  |         6 | NULL      | FAZS   | Jefatura F├íbrica Zona Sur |   6200000.00 | F     |
+| PROZS  |         9 | JEFZS     | FAZS   | Producci├│n Zona Sur       | 108000000.00 | P     |
+| VENZS  |         3 | ADMZS     | OFZS   | Ventas Zona Sur            |  13500000.00 | F     |
++--------+-----------+-----------+--------+----------------------------+--------------+-------+
+5 rows in set (0.021 sec)
+
+-- Ej14
+mysql> SELECT * FROM empleado WHERE YEAR(FecNaEmp) < 1970 OR YEAR(FecNaEmp) > 1975;
++--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+
+| CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                      | NumHi | SalEmp     |
++--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+
+|      1 | DIRGE  | 1111     | 1972-07-01 | 1961-08-07 | 21451451V | Saladino Mandam├ís, Augusto |     1 | 7200000.00 |
+|      3 | VENZS  | 2133     | 1984-06-08 | 1965-12-07 | 23823930D | Monforte Cid, Rold├ín       |     1 | 5200000.00 |
+|      5 | ADMZS  | 1239     | 1976-08-07 | 1958-03-08 | 38223923T | Alada Veraz, Juana          |     1 | 6200000.00 |
+|      6 | JEFZS  | 23838    | 1991-08-01 | 1969-06-03 | 26454122D | Gozque Altanero, C├índido   |     1 | 5000000.00 |
+|      8 | PROZS  | NULL     | 1994-08-15 | 1976-06-15 | 32132154H | Mascullas Alto, Elo├¡sa     |     1 | 1600000.00 |
+|      9 | PROZS  | 12124    | 1982-06-10 | 1968-07-19 | 11312121D | Mando Correa, Rosa          |     2 | 3100000.00 |
++--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+
+6 rows in set (0.010 sec)
+
+-- Ej15
+mysql> SELECT * FROM empleado WHERE CodEmp IN (SELECT CodEmp FROM empleado WHERE CodDep = 'PROZS' AND SalEmp > 2000000) OR CodEmp IN (SELECT CodEmp FROM empleado WHERE CodDep = 'VENZS' AND NumHi > 1);
++--------+--------+----------+------------+------------+-----------+--------------------+-------+------------+
+| CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp             | NumHi | SalEmp     |
++--------+--------+----------+------------+------------+-----------+--------------------+-------+------------+
+|      9 | PROZS  | 12124    | 1982-06-10 | 1968-07-19 | 11312121D | Mando Correa, Rosa |     2 | 3100000.00 |
++--------+--------+----------+------------+------------+-----------+--------------------+-------+------------+
+1 row in set (0.012 sec)
+
+-- Ej16
+mysql> SELECT * FROM departamento WHERE (CodCen = 'FAZS' AND PreAnu > 10000000) OR (CodCen = 'OFZS' AND TiDir = 'P');
++--------+-----------+-----------+--------+--------------------------+--------------+-------+
+| CodDep | CodEmpDir | CodDepDep | CodCen | NomDep                   | PreAnu       | TiDir |
++--------+-----------+-----------+--------+--------------------------+--------------+-------+
+| PROZS  |         9 | JEFZS     | FAZS   | Producci├│n Zona Sur     | 108000000.00 | P     |
+| ADMZS  |         5 | NULL      | OFZS   | Administraci├│n Zona Sur |  14000000.00 | P     |
++--------+-----------+-----------+--------+--------------------------+--------------+-------+
+2 rows in set (0.009 sec)
+
+-- Ej17
