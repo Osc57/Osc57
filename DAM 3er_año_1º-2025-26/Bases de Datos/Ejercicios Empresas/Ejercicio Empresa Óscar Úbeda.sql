@@ -322,3 +322,12 @@ mysql> SELECT NomEmp, SalEmp FROM empleado e1 WHERE SalEmp > (SELECT AVG(SalEmp)
 2 rows in set (0.009 sec)
 
 -- Ej4
+mysql> SELECT NomDep FROM departamento WHERE PreAnu > (SELECT AVG(PreAnu) FROM departamento);
++----------------------+
+| NomDep               |
++----------------------+
+| Producci├│n Zona Sur |
++----------------------+
+1 row in set (0.008 sec)
+
+-- Ej5
