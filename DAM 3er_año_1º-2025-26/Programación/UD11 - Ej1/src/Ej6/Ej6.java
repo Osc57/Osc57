@@ -9,9 +9,6 @@ repetidos en caso de que los hubiera.
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import java.util.*;
-
 import java.util.*;
 
 public class Ej6 {
