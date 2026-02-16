@@ -16,7 +16,7 @@ public class Ej8 {
         String frase = scanner.nextLine().toLowerCase();
 
         int[] contador = new int[26];
-        
+
         for (int i = 0; i < frase.length(); i++) {
             char c = frase.charAt(i);
             if (c >= 'a' && c <= 'z') {
