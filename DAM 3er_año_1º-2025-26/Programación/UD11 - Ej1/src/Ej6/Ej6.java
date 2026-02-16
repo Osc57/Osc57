@@ -12,6 +12,8 @@ import java.util.Random;
 
 import java.util.*;
 
+import java.util.*;
+
 public class Ej6 {
     public static void main(String[] args) {
         List<Integer> lista = new ArrayList<>();
@@ -22,8 +24,11 @@ public class Ej6 {
         }
 
         Set<Integer> sinRepetidos = new HashSet<>(lista);
+        Set<Integer> ordenadosSinRepetidos = new TreeSet<>(lista);
 
         System.out.println("Números únicos: " + sinRepetidos);
+        System.out.println("Números únicos y ordenados: " + ordenadosSinRepetidos);
     }
 }
+
 
