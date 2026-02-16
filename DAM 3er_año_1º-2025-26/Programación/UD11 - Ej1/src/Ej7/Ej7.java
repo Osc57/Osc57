@@ -18,6 +18,8 @@ var list2 = new List<string>() { "Ann", "Martha", "Noel",
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Ej7 {
     public static void main(String[] args) {
@@ -33,6 +35,25 @@ public class Ej7 {
                 "Rue", "Ann", "Jacob", "Sidney", "Sophia", "Tyler"
         ));
 
+        Set<String> set1 = new HashSet<>(list1);
+        Set<String> set2 = new HashSet<>(list2);
 
+        Set<String> interseccion = new HashSet<>(set1);
+        interseccion.retainAll(set2);
+        System.out.println("En ambas listas: " + interseccion);
+
+        Set<String> soloEnPrimera = new HashSet<>(set1);
+        soloEnPrimera.removeAll(set2);
+        System.out.println("Solo en la primera: " + soloEnPrimera);
+
+        Set<String> soloEnSegunda = new HashSet<>(set2);
+        soloEnSegunda.removeAll(set1);
+        System.out.println("Solo en la segunda: " + soloEnSegunda);
+
+        Set<String> union = new HashSet<>(set1);
+        union.addAll(set2);
+        System.out.println("En alguna de las dos (todas): " + union);
     }
 }
+
+
