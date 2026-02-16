@@ -55,5 +55,3 @@ public class Ej7 {
         System.out.println("En alguna de las dos (todas): " + union);
     }
 }
-
-
