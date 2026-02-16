@@ -6,9 +6,7 @@ continuación, el programa mostrará todos los números, pero sin elementos
 repetidos en caso de que los hubiera.
 */
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -22,7 +20,7 @@ public class Ej6 {
         for (int i = 0; i < 30; i++) {
             lista.add(random.nextInt(100));
         }
-        
+
         Set<Integer> sinRepetidos = new HashSet<>(lista);
 
         System.out.println("Números únicos: " + sinRepetidos);
