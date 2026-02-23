@@ -39,7 +39,7 @@ public class Pedido {
 
         // Imprimimos el total solo una vez para no repetir codigo
         //System.out.printf("Total: %.2f" + totalFinal);
-        System.out.printf("Total: %.2f", totalFinal); //Saco solo 2 decimales
+        System.out.printf("Total: %.2f€", totalFinal); //Saco solo 2 decimales
         System.out.println();
     }
 
