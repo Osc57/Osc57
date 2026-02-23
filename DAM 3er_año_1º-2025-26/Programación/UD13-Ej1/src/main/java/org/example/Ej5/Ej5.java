@@ -13,7 +13,7 @@ public class Ej5 {
 
         try {
             JAXBContext context = JAXBContext.newInstance(Book.class);
-            
+
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(book, System.out);
