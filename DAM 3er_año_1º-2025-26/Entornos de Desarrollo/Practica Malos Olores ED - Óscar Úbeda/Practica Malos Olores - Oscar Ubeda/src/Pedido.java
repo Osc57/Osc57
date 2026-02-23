@@ -64,6 +64,24 @@ public class Pedido {
         //Cliente que no es tipo de clinete
         procesarPedido("avitual", 150.40);
     }
+
+    /*DOCUMENTO DE MALOS OLORES
+    1-Duplicación de código: El System.out.println del total cuatro veces.
+    Si el día de mañana me piden cambiar el mensaje, voy a tener que buscar línea por línea y cambiarlo en todos lados,
+    lo cual es poco eficiente.
+
+    2-Anidamiento Excesivo: if dentro de otros if y el código se ha ido muy a la derecha.
+    Es difícil de leer porque tengo que ir siguiendo demasiadas llaves para saber en qué parte de la lógica estoy.
+
+    3-Mezcla de responsabilidades: Estoy haciendo el cálculo matemático y la salida por pantalla a la vez.
+    Debería separar la lógica (sacar el descuento) de la presentación (imprimir el ticket) para que sea más limpio.
+
+    4-Números mágicos: He metido los decimales como 0.05 o 0.20 directamente en las fórmulas. Si alguien lee esto,
+    no sabe de dónde salen; es mejor guardarlos en una variable que explique que son porcentajes.
+
+    5-Fragilidad ante nulos: He usado el equalsIgnoreCase partiendo de la variable tipoCliente.
+    Si por lo que sea esa variable me llega vacía, mi programa va a pegar un petardazo y se va a cerrar.
+     */
 }
 
 
