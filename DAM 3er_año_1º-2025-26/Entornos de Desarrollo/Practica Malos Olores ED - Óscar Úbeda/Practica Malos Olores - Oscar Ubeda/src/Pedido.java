@@ -14,7 +14,7 @@ public class Pedido {
             if (totalCompra > 100) {
                 descuento = 0.20;
             } else {
-                descuento = 0.10; // Los VIP siempre rascan algo
+                descuento = 0.10; // Los VIP siepmre rascan algo
             }
         } else {
             clienteOk = false; // Por si escriben mal el tipo de cliente
