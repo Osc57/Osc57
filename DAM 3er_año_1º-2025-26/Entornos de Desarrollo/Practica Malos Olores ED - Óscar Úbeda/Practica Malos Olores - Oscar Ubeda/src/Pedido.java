@@ -1,6 +1,6 @@
 public class Pedido {
     public static void procesarPedido(String tipoCliente, double totalCompra) {
-        // Inicializo estas variables aquí arriba para que el codigo quede más ordenado
+        // Inicializo estas varialbes aquí arriba para que el codigo quede más ordenado
         double descuento = 0.0;
         boolean clienteOk = true;
 
