@@ -19,7 +19,7 @@ public class Ej6 {
         try {
             JAXBContext context = JAXBContext.newInstance(Library.class);
             Marshaller marshaller = context.createMarshaller();
-            
+
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(library, new File("Libreria.xml"));
         } catch (Exception e) {
