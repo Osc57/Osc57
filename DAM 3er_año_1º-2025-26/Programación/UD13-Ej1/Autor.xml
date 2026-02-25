@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<author>
+    <book>
+        <author>Julio Verne</author>
+        <title>Veinte Mil Leguas de Viaje Submarino</title>
+        <yearPublished>1870</yearPublished>
+    </book>
+    <book>
+        <author>Julio Verne</author>
+        <title>La Vuelta al Mundo en 80 días</title>
+        <yearPublished>1873</yearPublished>
+    </book>
+    <name>Julio Verne</name>
+</author>
