@@ -36,7 +36,7 @@ public class Ej7 {
         try {
             JAXBContext context = JAXBContext.newInstance(Author.class);
             Marshaller marshaller = context.createMarshaller();
-            
+
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(author, new File("Autor.xml"));
 
