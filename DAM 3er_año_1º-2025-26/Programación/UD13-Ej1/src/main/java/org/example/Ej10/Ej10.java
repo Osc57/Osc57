@@ -8,6 +8,17 @@ autor como la clave y el título del libro como el valor. Hacer esto tanto para 
 XML.
 */
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.Ej5.Book;
+import org.example.Ej7.Author;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Ej10 {
     public static void main(String[] args) {
         LibraryCatalog libraryCatalog = new LibraryCatalog();
@@ -20,7 +31,7 @@ public class Ej10 {
 
         try {
             Map<String, String> map = new HashMap<>();
-            for (Map.Entry<Author, Book> entry : libraryCatalog.getBookMap().entrySet()) {
+            for (Map.Entry<Author, Book> entry : libraryCatalog.getmapAuthor().entrySet()) {
                 map.put(entry.getKey().getName(), entry.getValue().getTitle());
                 objectMapper.writeValue(Paths.get("LibrayCatalog.json").toFile(), map);
                 System.out.println(map);
