@@ -46,7 +46,7 @@ public class Ej10 {
             JAXBContext context = JAXBContext.newInstance(LibraryCatalog.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(libraryCatalog, new File("LibraryCatalo.xml"));
+            marshaller.marshal(libraryCatalog, new File("src/ficheros/LibraryCatalog.xml"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
