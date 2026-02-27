@@ -38,7 +38,7 @@ public class Ej7 {
             Marshaller marshaller = context.createMarshaller();
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(author, new File("src/ficheros/Austor.xml"));
+            marshaller.marshal(author, new File("src/ficheros/Autor.xml"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -35,7 +35,7 @@ public class Ej8 {
         try {
             String json = objectMapper.writeValueAsString(bookstore);
             System.out.println(json);
-            objectMapper.writeValue(Paths.get("Bookssstore.json").toFile(), bookstore);
+            objectMapper.writeValue(Paths.get("src/ficheros/Bookstore.json").toFile(), bookstore);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -44,7 +44,7 @@ public class Ej8 {
             JAXBContext context = JAXBContext.newInstance(Bookstore.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(bookstore, new File("Bookstssore.xml"));
+            marshaller.marshal(bookstore, new File("src/ficheros/Bookstore.xml"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

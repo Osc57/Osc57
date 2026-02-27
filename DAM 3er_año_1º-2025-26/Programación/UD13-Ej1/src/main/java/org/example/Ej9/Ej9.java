@@ -31,7 +31,7 @@ public class Ej9 {
         try {
             String json = objectMapper.writeValueAsString(publisher);
             System.out.println(json);
-            objectMapper.writeValue(Paths.get("Publisher.json").toFile(), publisher);
+            objectMapper.writeValue(Paths.get("src/ficheros/Publisher.json").toFile(), publisher);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -40,7 +40,7 @@ public class Ej9 {
             JAXBContext context = JAXBContext.newInstance(Publisher.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(publisher, new File("Publisher.xml"));
+            marshaller.marshal(publisher, new File("src/ficheros/Publisher.xml"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
