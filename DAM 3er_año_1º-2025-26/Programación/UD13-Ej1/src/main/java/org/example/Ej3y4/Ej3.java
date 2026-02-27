@@ -22,7 +22,7 @@ public class Ej3 {
             String json = objectMapper.writeValueAsString(library);
             System.out.println(json);
 
-            objectMapper.writeValue(Paths.get("Librería.json").toFile(), library);
+            objectMapper.writeValue(Paths.get("src/ficheros/Librería.json").toFile(), library);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

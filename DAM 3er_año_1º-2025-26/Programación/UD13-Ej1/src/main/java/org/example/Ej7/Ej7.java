@@ -27,7 +27,7 @@ public class Ej7 {
         try {
             String json = objectMapper.writeValueAsString(author);
             System.out.println(json);
-            objectMapper.writeValue(Paths.get("Autor.json").toFile(), author);
+            objectMapper.writeValue(Paths.get("src/ficheros/Autor.json").toFile(), author);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -38,7 +38,7 @@ public class Ej7 {
             Marshaller marshaller = context.createMarshaller();
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(author, new File("Autor.xml"));
+            marshaller.marshal(author, new File("src/ficheros/Austor.xml"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

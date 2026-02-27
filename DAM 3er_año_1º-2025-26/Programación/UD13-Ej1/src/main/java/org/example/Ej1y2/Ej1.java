@@ -19,7 +19,7 @@ public class Ej1 {
             String json = objectMapper.writeValueAsString(book);
             System.out.println(json);
 
-            objectMapper.writeValue(Paths.get("Libro.json").toFile(), book);
+            objectMapper.writeValue(Paths.get("src/ficheros/Libro.json").toFile(), book);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

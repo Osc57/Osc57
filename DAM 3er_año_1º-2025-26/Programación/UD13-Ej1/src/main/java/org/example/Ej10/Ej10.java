@@ -33,7 +33,8 @@ public class Ej10 {
             Map<String, String> map = new HashMap<>();
             for (Map.Entry<Author, Book> entry : libraryCatalog.getmapAuthor().entrySet()) {
                 map.put(entry.getKey().getName(), entry.getValue().getTitle());
-                objectMapper.writeValue(Paths.get("LibrayCatalog.json").toFile(), map);
+                objectMapper.writeValue(Paths.get("src/ficheros/LibraryCatalog.json").toFile(), map);
+
                 System.out.println(map);
             }
 
@@ -45,7 +46,7 @@ public class Ej10 {
             JAXBContext context = JAXBContext.newInstance(LibraryCatalog.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(libraryCatalog, new File("LibraryCatalog.xml"));
+            marshaller.marshal(libraryCatalog, new File("LibraryCatalo.xml"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

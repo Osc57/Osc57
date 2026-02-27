@@ -17,7 +17,7 @@ public class Ej5 {
 
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(book, new File("Libro.xml"));
+            marshaller.marshal(book, new File("src/ficheros/Libro.xml"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

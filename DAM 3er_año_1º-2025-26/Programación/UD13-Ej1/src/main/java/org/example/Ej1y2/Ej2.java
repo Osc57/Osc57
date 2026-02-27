@@ -13,7 +13,7 @@ public class Ej2 {
     public static void main(String[] args) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            Book book = objectMapper.readValue(new File("Libro.json"), Book.class);
+            Book book = objectMapper.readValue(new File("src/ficheros/Libro.json"), Book.class);
             System.out.println(book);
             System.out.println("Nombre: " + book.getTitle());
             System.out.println("Autor: " + book.getAuthor());
