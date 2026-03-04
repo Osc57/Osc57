@@ -69,3 +69,4 @@ mysql> SELECT CodEmp, CodDep, CONCAT(CodEmp, '-' ,CodDep, '-' ,IFNULL(ExTelEmp, 
 +--------+--------+----------------+
 10 rows in set (0.005 sec)
 
+-- Ej5
