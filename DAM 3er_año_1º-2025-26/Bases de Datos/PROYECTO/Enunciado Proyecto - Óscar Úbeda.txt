@@ -1,0 +1,23 @@
+Una empresa desea desarrollar un sistema para gestionar los proyectos solicitados por sus clientes.
+El sistema debe almacenar información sobre los empleados, los departamentos, los clientes, los proyectos y las versiones de dichos proyectos.
+
+La empresa cuenta con empleados, de los cuales se almacenará: nombre, DNI, salario y email. 
+Los empleados pueden organizarse jerárquicamente: un empleado puede supervisar a varios empleados, y cada empleado puede tener un único supervisor.
+Los empleados se clasifican en dos tipos: programadores y gerentes.
+De los programadores se almacenará su lenguaje de programación principal.
+De los gerentes se almacenará su bono y su nivel de cargo.
+Cada empleado pertenece a un único departamento.
+
+De cada departamento se almacenará: id del departamento, nombre y ubicación (por ejemplo, “1ª planta”, “2ª planta”, etc.).
+Un departamento puede tener muchos empleados, pero cada empleado pertenece a uno solo.
+
+De cada cliente se almacenará: DNI, nombre, apellidos, teléfono y email.
+Un cliente puede solicitar varios proyectos, pero cada proyecto pertenece a un único cliente.
+
+De cada proyecto se almacenará: id del proyecto, nombre, presupuesto y fecha de inicio.
+Los empleados pueden trabajar en los proyectos.
+Un empleado puede participar en varios proyectos, y un proyecto puede tener varios empleados.
+
+Cada proyecto puede tener varias versiones asociadas.
+Una versión no puede existir sin su proyecto.
+De cada versión se almacenará: número de versión, fecha y descripción.
