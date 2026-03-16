@@ -93,7 +93,7 @@ mysql> SELECT e.nombre, COUNT(es.id_empleado) AS Numero_Servicios FROM empleado 
 3 rows in set (0.007 sec)
 
 /*Ej9*/
-mysql> SELECT DISTINCT(e.nombre), SUM(precio) AS Recaudado FROM empleado e JOIN cita c ON e.id = c.id_empleado GROUP BY c.id_empleado HAVING Recaudado > (SELECT AVG(c.precio));
+mysql> SELECT e.nombre, SUM(precio) AS Recaudado FROM empleado e JOIN cita c ON e.id = c.id_empleado GROUP BY c.id_empleado HAVING Recaudado > (SELECT AVG(c.precio));
 +-----------+-----------+
 | nombre    | Recaudado |
 +-----------+-----------+
