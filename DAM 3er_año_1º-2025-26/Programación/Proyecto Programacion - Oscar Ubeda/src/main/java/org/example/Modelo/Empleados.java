@@ -55,4 +55,36 @@ public class Empleados {
     public void setSalario(double salario) {
         this.salario = salario;
     }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Empleados getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Empleados supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public List<Empleados> getSubordinados() {
+        return subordinados;
+    }
+
+    public void setSubordinados(List<Empleados> subordinados) {
+        this.subordinados = subordinados;
+    }
+
+    public List<Proyecto> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(List<Proyecto> proyectos) {
+        this.proyectos = proyectos;
+    }
 }

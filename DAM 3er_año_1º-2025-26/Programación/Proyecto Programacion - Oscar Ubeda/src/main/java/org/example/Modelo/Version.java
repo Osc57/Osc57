@@ -38,4 +38,12 @@ public class Version {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
 }
