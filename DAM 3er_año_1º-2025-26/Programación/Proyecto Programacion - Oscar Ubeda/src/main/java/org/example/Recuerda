@@ -1,0 +1,5 @@
+Hacer alguna manera de que el admin cree el empleado, que el admin decida el departamento
+El empleado cuando hace un proyecto automáticamente se asigna a ese departamento
+Cuando el admin modifica el departamento del empleado
+Si el empleado empieza el proyecto en otro depa, se asignara el otro departamento
+Pero el proyecto asignado primeramente pertenece al departamento asignado en primer lugar

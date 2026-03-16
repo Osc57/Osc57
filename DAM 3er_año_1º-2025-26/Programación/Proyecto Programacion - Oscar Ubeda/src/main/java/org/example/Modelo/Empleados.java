@@ -1,10 +1,18 @@
 package org.example.Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Empleados {
     private String dni;
     private String nombre;
     private String email;
     private double salario;
+
+    private Departamento departamento;
+    private Empleados supervisor;
+    private List<Empleados> subordinados;
+    private List<Proyecto> proyectos = new ArrayList<>();
 
     public Empleados() {
     }
