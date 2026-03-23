@@ -13,3 +13,30 @@ mysql> SELECT * FROM cliente WHERE dni = '022222222R';
 1 row in set (0.008 sec)
 
 /*Ej2*/
+mysql> UPDATE cliente SET nombre = UPPER(nombre);
+Query OK, 2 rows affected (0.048 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM cliente;
++------------+--------------------+------------------+-----------+
+| DNI        | Nombre             | Direccion        | Telefono  |
++------------+--------------------+------------------+-----------+
+| 011111111Z | PEDRO MARTINEZ ROY | NULL             | 934444444 |
+| 022222222R | MARIA CASAS COMAS  | Mayor, 10 Teruel | 555666111 |
++------------+--------------------+------------------+-----------+
+2 rows in set (0.005 sec)
+
+/*Ej3*/
+mysql> INSERT INTO pelicula (codpeli, titulo, codgenero, segundaparte, codactor) VALUES 
+(6, 'Lo que el agua se llevó', (SELECT codgenero FROM genero WHERE descripcion = 'Drama'), 4, (SELECT codactor FROM actor WHERE nombre = 'Eva'));
+Query OK, 1 row affected (0.046 sec)
+
+mysql> SELECT * FROM pelicula WHERE codpeli = 6;
++---------+-------------------------+-----------+--------------+----------+
+| CodPeli | Titulo                  | CodGenero | SegundaParte | CodActor |
++---------+-------------------------+-----------+--------------+----------+
+|       6 | Lo que el agua se llevó |         3 |            4 |        3 |
++---------+-------------------------+-----------+--------------+----------+
+1 row in set (0.005 sec)
+
+/*Ej4*/
