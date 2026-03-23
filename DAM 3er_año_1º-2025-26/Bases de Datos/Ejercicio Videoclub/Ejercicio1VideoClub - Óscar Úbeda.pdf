@@ -40,3 +40,14 @@ mysql> SELECT * FROM pelicula WHERE codpeli = 6;
 1 row in set (0.005 sec)
 
 /*Ej4*/
+mysql> INSERT INTO copia (codcopia, codpeli) VALUES (1, 6);
+Query OK, 1 row affected (0.035 sec)
+
+mysql> SELECT * FROM copia WHERE codPeli = 6;
++---------+----------+
+| CodPeli | CodCopia |
++---------+----------+
+|       6 |        1 |
++---------+----------+
+1 row in set (0.015 sec)
+
