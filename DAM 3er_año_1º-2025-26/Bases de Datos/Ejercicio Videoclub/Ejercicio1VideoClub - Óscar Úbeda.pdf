@@ -1,0 +1,15 @@
+/*Ejercicio Videoclub - Óscar Úbeda*/
+/*Ej1*/
+mysql> UPDATE cliente SET direccion = 'Mayor, 10 Teruel' WHERE dni = '022222222R';
+Query OK, 1 row affected (0.032 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM cliente WHERE dni = '022222222R';
++------------+-------------------+------------------+-----------+
+| DNI        | Nombre            | Direccion        | Telefono  |
++------------+-------------------+------------------+-----------+
+| 022222222R | Maria Casas Comas | Mayor, 10 Teruel | 555666111 |
++------------+-------------------+------------------+-----------+
+1 row in set (0.008 sec)
+
+/*Ej2*/
