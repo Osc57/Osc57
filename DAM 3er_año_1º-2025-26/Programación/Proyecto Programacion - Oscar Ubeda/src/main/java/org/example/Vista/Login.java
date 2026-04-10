@@ -22,7 +22,6 @@ public class Login extends JFrame {
     protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
-
     private JPanel jPanel;
     private JTextField jTextField;
     private JButton jButton;
@@ -71,7 +70,7 @@ public class Login extends JFrame {
         jPasswordField.setFont(FUENTE_CAMPOS);
 
         jPanel.add(jPasswordField);
-        
+
         //======================================================================================================
 
 
