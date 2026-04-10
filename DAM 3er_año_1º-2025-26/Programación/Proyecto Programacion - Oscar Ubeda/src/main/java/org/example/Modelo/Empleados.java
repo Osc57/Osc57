@@ -10,7 +10,6 @@ public class Empleados {
     private double salario;
 
     private Departamento departamento;
-    private Empleados supervisor;
     private List<Empleados> subordinados;
     private List<Proyecto> proyectos = new ArrayList<>();
 
@@ -63,15 +62,7 @@ public class Empleados {
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-
-    public Empleados getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Empleados supervisor) {
-        this.supervisor = supervisor;
-    }
-
+    
     public List<Empleados> getSubordinados() {
         return subordinados;
     }
