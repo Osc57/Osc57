@@ -73,6 +73,13 @@ public class Login extends JFrame {
 
         //======================================================================================================
 
+        jButton = new JButton("INICIAR SESIÓN");
+        jButton.setFont(FUENTE_BOTON);
+        jPanel.add(jButton);
+        jButton.setBounds(150, 250, 200, 45);
+        jButton.setBackground(COLOR_BOTONES_AZUL);
+        jButton.setForeground(Color.WHITE);
+        jPanel.add(jButton);
 
 
     }
