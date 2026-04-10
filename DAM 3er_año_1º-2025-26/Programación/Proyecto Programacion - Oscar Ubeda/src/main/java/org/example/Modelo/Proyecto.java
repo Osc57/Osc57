@@ -10,10 +10,6 @@ public class Proyecto {
     private double presupuesto;
     private LocalDate fechaInicio;
 
-    private Cliente cliente;
-    private List<Version> version;
-    private List<Empleados> empleados = new ArrayList<>();
-
     public Proyecto(int id, String nombre, double presupuesto, LocalDate fechaInicio) {
         this.id = id;
         this.nombre = nombre;
@@ -51,29 +47,5 @@ public class Proyecto {
 
     public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<Version> getVersion() {
-        return version;
-    }
-
-    public void setVersion(List<Version> version) {
-        this.version = version;
-    }
-
-    public List<Empleados> getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(List<Empleados> empleados) {
-        this.empleados = empleados;
     }
 }
