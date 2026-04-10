@@ -3,3 +3,6 @@ El empleado cuando hace un proyecto automáticamente se asigna a ese departament
 Cuando el admin modifica el departamento del empleado
 Si el empleado empieza el proyecto en otro depa, se asignara el otro departamento
 Pero el proyecto asignado primeramente pertenece al departamento asignado en primer lugar
+
+Gerente una interfaz
+Programador otra
