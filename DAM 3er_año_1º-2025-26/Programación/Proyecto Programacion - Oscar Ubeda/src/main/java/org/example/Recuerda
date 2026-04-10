@@ -4,5 +4,5 @@ Cuando el admin modifica el departamento del empleado
 Si el empleado empieza el proyecto en otro depa, se asignara el otro departamento
 Pero el proyecto asignado primeramente pertenece al departamento asignado en primer lugar
 
-Gerente una interfaz -> Actuara como admin
+Gerente una interfaz -> Actuara como admin -> Gerente asignado a depa
 Programador otra -> Vera sus datos
