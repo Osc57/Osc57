@@ -66,13 +66,12 @@ public class Login extends JFrame {
         jPanel.add(passw);
 
         jPasswordField = new JPasswordField();
-        JPanel passwordPanel = new JPanel(jPasswordField.getLayout());
 
-        passwordPanel.setBounds(200, 170, 250, 35);
-        passwordPanel.setFont(FUENTE_CAMPOS);
-        jPanel.add(passwordPanel);
+        jPasswordField.setBounds(200, 170, 250, 35);
+        jPasswordField.setFont(FUENTE_CAMPOS);
 
-
+        jPanel.add(jPasswordField);
+        
         //======================================================================================================
 
 
