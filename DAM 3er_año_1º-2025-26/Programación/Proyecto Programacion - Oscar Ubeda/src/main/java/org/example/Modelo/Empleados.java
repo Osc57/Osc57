@@ -62,7 +62,7 @@ public class Empleados {
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-    
+
     public List<Empleados> getSubordinados() {
         return subordinados;
     }
