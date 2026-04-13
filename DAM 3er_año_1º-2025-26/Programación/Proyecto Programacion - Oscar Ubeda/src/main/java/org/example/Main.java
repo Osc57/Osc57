@@ -4,10 +4,10 @@ import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
 
-import static org.example.Dao.EmpleadosDAO.eliminarEmpleado;
-import static org.example.Dao.EmpleadosDAO.insertarEmpleado;
-import static org.example.Dao.GerenteDAO.insertarGerente;
-import static org.example.Dao.ProgramadorDAO.insertarProgramador;
+import static org.example.ControladorDAO.EmpleadosDAO.eliminarEmpleado;
+import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
+import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
+import static org.example.ControladorDAO.ProgramadorDAO.insertarProgramador;
 
 public class Main {
     public static void main(String[] args) {
