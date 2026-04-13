@@ -1,4 +1,4 @@
-package org.example.Dao;
+package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
