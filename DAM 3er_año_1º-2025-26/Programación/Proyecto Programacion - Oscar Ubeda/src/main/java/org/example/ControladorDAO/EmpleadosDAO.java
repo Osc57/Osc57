@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static org.example.Controlador.Conexion.getConnect;
+import static org.example.Configuracion.Conexion.getConnect;
 
 public class EmpleadosDAO {
 

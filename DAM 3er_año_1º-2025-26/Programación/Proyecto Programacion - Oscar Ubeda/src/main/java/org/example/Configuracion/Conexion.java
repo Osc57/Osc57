@@ -1,4 +1,4 @@
-package org.example.Controlador;
+package org.example.Configuracion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
