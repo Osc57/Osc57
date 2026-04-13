@@ -1,10 +1,13 @@
 package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Programador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
@@ -12,6 +15,34 @@ public class EmpleadosDAO {
 
     public EmpleadosDAO() {
 
+    }
+
+    public static ArrayList<Empleados> mostrarEmpleados() {
+        ArrayList<Empleados> listaEmpelados = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM empleados")) {
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Empleados empleados = new Empleados();
+                empleados.setDni(resultSet.getString("dni"));
+                empleados.setNombre(resultSet.getString("nombre"));
+                empleados.setApellidos(resultSet.getString("apellidos"));
+                empleados.setEmail(resultSet.getString("email"));
+                empleados.setSalario(resultSet.getDouble("salario"));
+                empleados.setDepartamento(resultSet.getInt("id_depa"));
+
+                listaEmpelados.add(empleados);
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return listaEmpelados;
     }
 
     public static boolean insertarEmpleado(Empleados empleados) {

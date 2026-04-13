@@ -7,6 +7,7 @@ import org.example.Modelo.Programador;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
+import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.ControladorDAO.ProgramadorDAO.insertarProgramador;
 import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
@@ -14,11 +15,11 @@ import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Programador> programadores = mostrarProgramadores();
-
+        ArrayList<Empleados> empleados = mostrarEmpleados();
 
         boolean esGerente = false;
 
-        Empleados empleados = new Empleados("32345608Y", "Panacota", "Seven Six", "sevensix@seven.six", 2560.0, 1);
+        Empleados empleado = new Empleados("32345608Y", "Panacota", "Seven Six", "sevensix@seven.six", 2560.0, 1);
 
         /*
         if (insertarEmpleado(empleados)) {
@@ -54,6 +55,7 @@ public class Main {
         for (Programador p : programadores){
             System.out.println(p);
         }
+
 
 
 
