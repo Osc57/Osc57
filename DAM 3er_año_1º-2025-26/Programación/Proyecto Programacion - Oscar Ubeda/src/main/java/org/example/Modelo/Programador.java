@@ -3,6 +3,9 @@ package org.example.Modelo;
 public class Programador extends Empleados{
     private String lenguajePrincipal;
 
+    public Programador() {
+    }
+
     public Programador(String lenguajePrincipal) {
         this.lenguajePrincipal = lenguajePrincipal;
     }

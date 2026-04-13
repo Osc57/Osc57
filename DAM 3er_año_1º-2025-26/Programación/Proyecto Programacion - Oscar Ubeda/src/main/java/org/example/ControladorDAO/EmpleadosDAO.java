@@ -32,6 +32,7 @@ public class EmpleadosDAO {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
 
     }
