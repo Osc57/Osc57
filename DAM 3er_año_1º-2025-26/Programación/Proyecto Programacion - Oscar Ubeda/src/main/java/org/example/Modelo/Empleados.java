@@ -80,4 +80,9 @@ public class Empleados {
     public void setProyectos(List<Proyecto> proyectos) {
         this.proyectos = proyectos;
     }
+
+    @Override
+    public String toString() {
+        return dni + " - " + nombre + " - " + apellidos + " - " + email + " - " + salario + " - " + departamento;
+    }
 }

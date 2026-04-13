@@ -4,16 +4,21 @@ import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
 
+import java.util.ArrayList;
+
 import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.ControladorDAO.ProgramadorDAO.insertarProgramador;
+import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
 
 public class Main {
     public static void main(String[] args) {
+        ArrayList<Programador> programadores = mostrarProgramadores();
+
 
         boolean esGerente = false;
 
-        Empleados empleados = new Empleados("02345608Y", "Panacoto", "Six Seven", "sixseven@six.seven", 2560.0, 1);
+        Empleados empleados = new Empleados("32345608Y", "Panacota", "Seven Six", "sevensix@seven.six", 2560.0, 1);
 
         /*
         if (insertarEmpleado(empleados)) {
@@ -36,6 +41,7 @@ public class Main {
         }
         */
 
+        /*
         if (insertarEmpleado(empleados)){
             insertarProgramador(empleados, new Programador("Python"));
 
@@ -43,6 +49,12 @@ public class Main {
         }else {
             System.out.println("Not Good");
         }
+         */
+
+        for (Programador p : programadores){
+            System.out.println(p);
+        }
+
 
 
     }

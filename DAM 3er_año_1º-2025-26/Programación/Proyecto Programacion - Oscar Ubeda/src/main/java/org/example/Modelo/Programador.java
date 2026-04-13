@@ -1,6 +1,6 @@
 package org.example.Modelo;
 
-public class Programador extends Empleados{
+public class Programador extends Empleados {
     private String lenguajePrincipal;
 
     public Programador() {
@@ -21,5 +21,10 @@ public class Programador extends Empleados{
 
     public void setLenguajePrincipal(String lenguajePrincipal) {
         this.lenguajePrincipal = lenguajePrincipal;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " - " + lenguajePrincipal;
     }
 }
