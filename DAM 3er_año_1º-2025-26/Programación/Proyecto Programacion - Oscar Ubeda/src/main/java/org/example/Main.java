@@ -23,6 +23,8 @@ public class Main {
 
             if (!esGerente) {
                 exitoCargo = insertarGerente(empleados, new Gerente(500, "Bajo"));
+                //Aqui habra un combobox que dira los 4 lenguajes de programacion mas usados y una opcion que sea otro
+                //Se asignaria un especifica si elige la opcion otro
             } else {
                 exitoCargo = insertarProgramador(empleados, new Programador("Python"));
             }
