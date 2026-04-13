@@ -2,15 +2,15 @@ package org.example.Modelo;
 
 public class Gerente extends Empleados {
     private double bono;
-    private int nivel;
+    private String nivel;
 
-    public Gerente(double bono, int nivel) {
+    public Gerente(double bono, String nivel) {
         this.bono = bono;
         this.nivel = nivel;
     }
 
-    public Gerente(String dni, String nombre, String email, double salario, double bono, int nivel) {
-        super(dni, nombre, email, salario);
+    public Gerente(String dni, String nombre, String apellidos, String email, double salario, int departamento, double bono, String nivel) {
+        super(dni, nombre, apellidos, email, salario, departamento);
         this.bono = bono;
         this.nivel = nivel;
     }
@@ -23,11 +23,11 @@ public class Gerente extends Empleados {
         this.bono = bono;
     }
 
-    public int getNivel() {
+    public String getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
+    public void setNivel(String nivel) {
         this.nivel = nivel;
     }
 }

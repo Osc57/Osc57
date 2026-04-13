@@ -6,21 +6,23 @@ import java.util.List;
 public class Empleados {
     private String dni;
     private String nombre;
+    private String apellidos;
     private String email;
     private double salario;
 
-    private Departamento departamento;
-    private List<Empleados> subordinados;
+    private int departamento;
     private List<Proyecto> proyectos = new ArrayList<>();
 
     public Empleados() {
     }
 
-    public Empleados(String dni, String nombre, String email, double salario) {
+    public Empleados(String dni, String nombre, String apellidos, String email, double salario, int departamento) {
         this.dni = dni;
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.email = email;
         this.salario = salario;
+        this.departamento = departamento;
     }
 
     public String getDni() {
@@ -55,20 +57,20 @@ public class Empleados {
         this.salario = salario;
     }
 
-    public Departamento getDepartamento() {
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public int getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
+    public void setDepartamento(int departamento) {
         this.departamento = departamento;
-    }
-
-    public List<Empleados> getSubordinados() {
-        return subordinados;
-    }
-
-    public void setSubordinados(List<Empleados> subordinados) {
-        this.subordinados = subordinados;
     }
 
     public List<Proyecto> getProyectos() {
