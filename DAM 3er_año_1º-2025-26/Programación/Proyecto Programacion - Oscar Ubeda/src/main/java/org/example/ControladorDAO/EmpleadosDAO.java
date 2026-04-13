@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static org.example.Controlador.Conexion.connect;
+import static org.example.Controlador.Conexion.getConnect;
 
 public class EmpleadosDAO {
 
@@ -16,7 +16,7 @@ public class EmpleadosDAO {
 
     public static boolean insertarEmpleado(Empleados empleados) {
 
-        try (Connection connection = connect();
+        try (Connection connection = getConnect();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO empleados (dni,nombre,apellidos,email,salario,id_depa) VALUES (?,?,?,?,?,?)")) {
 
             ps.setString(1, empleados.getDni());
@@ -37,7 +37,7 @@ public class EmpleadosDAO {
     }
 
     public static boolean eliminarEmpleado(Empleados empleados) {
-        try (Connection connection = connect();
+        try (Connection connection = getConnect();
              PreparedStatement ps = connection.prepareStatement("DELETE FROM empleados WHERE dni = ?")) {
 
             ps.setString(1, empleados.getDni());

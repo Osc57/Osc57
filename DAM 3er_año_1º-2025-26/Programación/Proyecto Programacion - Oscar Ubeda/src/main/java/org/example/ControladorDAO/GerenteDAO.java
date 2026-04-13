@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static org.example.Controlador.Conexion.connect;
+import static org.example.Controlador.Conexion.getConnect;
 
 public class GerenteDAO {
 
@@ -16,7 +16,7 @@ public class GerenteDAO {
     }
 
     public static boolean insertarGerente(Empleados empelados, Gerente gerente){
-        try (Connection connection = connect();
+        try (Connection connection = getConnect();
              PreparedStatement ps  = connection.prepareStatement("INSERT INTO gerentes (dni,bono,nivel) VALUES (?,?,?)")){
 
             ps.setString(1, empelados.getDni());
