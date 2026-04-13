@@ -4,6 +4,9 @@ public class Gerente extends Empleados {
     private double bono;
     private String nivel;
 
+    public Gerente() {
+    }
+
     public Gerente(double bono, String nivel) {
         this.bono = bono;
         this.nivel = nivel;
@@ -29,5 +32,10 @@ public class Gerente extends Empleados {
 
     public void setNivel(String nivel) {
         this.nivel = nivel;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " - " + bono + " - " + nivel;
     }
 }
