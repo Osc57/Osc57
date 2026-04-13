@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static org.example.Configuracion.Conexion.getConnect;
+import static org.example.Configuracion.Conexion.getConnection;
 
 public class ProgramadorDAO {
 
@@ -16,7 +16,7 @@ public class ProgramadorDAO {
     }
 
     public static boolean insertarProgramador(Empleados empelados, Programador programador) {
-        try (Connection connection = getConnect();
+        try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO programadores (dni, lenguajePrincipal) VALUES (?,?)")) {
 
             ps.setString(1, empelados.getDni());

@@ -12,7 +12,7 @@ public class Conexion {
     public Conexion() {
     }
 
-    public static Connection getConnect() {
+    public static Connection getConnection() {
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
