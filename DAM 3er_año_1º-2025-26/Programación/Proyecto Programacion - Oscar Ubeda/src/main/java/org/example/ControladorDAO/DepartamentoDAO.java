@@ -17,8 +17,8 @@ public class DepartamentoDAO {
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("INSERT INTO departamentos (nombre, ubicacion) VALUES (?,?)")) {
 
-            ps.executeUpdate(departamento.getNombre());
-            ps.executeUpdate(departamento.getUbicacion());
+            ps.setString(1, departamento.getNombre());
+            ps.setString(2, departamento.getUbicacion());
 
             int filasAfectadas = ps.executeUpdate();
 

@@ -3,7 +3,7 @@ USE proyectoOscarUbeda;
 
 CREATE TABLE Departamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(175) NOT NULL,
+    nombre VARCHAR(175) NOT NULL UNIQUE,
     ubicacion VARCHAR(75) NOT NULL
 );
 

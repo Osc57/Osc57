@@ -1,11 +1,13 @@
 package org.example;
 
+import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
 
 import java.util.ArrayList;
 
+import static org.example.ControladorDAO.DepartamentoDAO.insertarDepartamento;
 import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.ControladorDAO.GerenteDAO.mostrarGerentes;
@@ -52,6 +54,12 @@ public class Main {
         }
         */
 
+        if (insertarDepartamento(new Departamento("Dpt Departamento", "Piso 1"))) {
+            System.out.println("Good");
+        } else {
+            System.out.println("Not good");
+        }
+
         for (Programador p : programadores) {
             System.out.println(p);
         }
@@ -62,7 +70,7 @@ public class Main {
         }
 
         System.out.println();
-        for (Gerente g : gerentes){
+        for (Gerente g : gerentes) {
             System.out.println(g);
         }
 

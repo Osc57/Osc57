@@ -5,8 +5,7 @@ public class Departamento {
     private String nombre;
     private String ubicacion;
 
-    public Departamento(int id, String nombre, String ubicacion) {
-        this.id = id;
+    public Departamento(String nombre, String ubicacion) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
     }
