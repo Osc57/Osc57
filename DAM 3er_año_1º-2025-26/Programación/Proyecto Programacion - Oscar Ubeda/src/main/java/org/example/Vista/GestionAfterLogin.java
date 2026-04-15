@@ -1,0 +1,88 @@
+package org.example.Vista;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static org.example.Vista.Login.*;
+
+public class GestionAfterLogin extends JFrame {
+
+    public GestionAfterLogin() {
+        this.setTitle("Contratar Empleado");
+        this.setSize(500, 370);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        //configurarCierreVentana(this);
+
+        JLabel titulo = new JLabel(" ");
+        titulo.setBorder(BorderFactory.createEmptyBorder(20, 23, 20, 0));
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        titulo.setFont(FUENTE_TITULO_2);
+
+        JPanel panelBotonesGetion = getjPanlepanelBotonesGestion();
+
+        this.add(titulo, BorderLayout.NORTH);
+        this.add(panelBotonesGetion, BorderLayout.CENTER);
+
+
+    }
+
+    private JPanel getjPanlepanelBotonesGestion() {
+        JPanel panelBotonesGestion = new JPanel(new GridLayout(1, 3, 15, 15));
+        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 70, 90, 70));
+        panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        JButton botonGestiona = crearEstiloBoton("<html>Gestiona <br> Proyectos</html>");
+        botonGestiona.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                //new InterfazModificarCliente().setVisible(true);//interfazModificarCliente tiene dar alta, baja y editar al cliente
+            }
+        });
+
+        JButton botonDarCitaCliente = crearEstiloBoton("<html>Gestiona <br> Empleados</html>");
+        botonDarCitaCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                //new InterfazGestionCita().setVisible(true);//dar Cita, modificar Cita, eliminar Cita
+            }
+        });
+
+        JButton botonHistorialCliente = crearEstiloBoton("<html>Gestiona <br> Departamentos</html>");
+        botonHistorialCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                //new InterfazSeleccionHistorial().setVisible(true);//Mostrar Historial, eliminar historial
+            }
+        });
+
+        panelBotonesGestion.add(botonGestiona);
+        panelBotonesGestion.add(botonDarCitaCliente);
+        panelBotonesGestion.add(botonHistorialCliente);
+
+        return panelBotonesGestion;
+    }
+
+    private JButton crearEstiloBoton(String texto) {
+        JButton boton = new JButton(texto);
+        boton.setFont(FUENTE_BOTON);
+        boton.setBackground(COLOR_BOTON_GRIS_CLARO);
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+        ));
+        return boton;
+    }
+
+    public static void main(String[] args) {
+        GestionAfterLogin insertarEmpleado = new GestionAfterLogin();
+        insertarEmpleado.setVisible(true);
+    }
+}
