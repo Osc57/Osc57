@@ -24,7 +24,6 @@ public class Login extends JFrame {
 
     private JPanel jPanel;
     private JTextField jTextField;
-    private JButton jButton;
     private JPasswordField jPasswordField;
 
     public Login() {
@@ -73,14 +72,23 @@ public class Login extends JFrame {
 
         //======================================================================================================
 
-        jButton = new JButton("INICIAR SESIÓN");
-        jButton.setFont(FUENTE_BOTON);
-        jPanel.add(jButton);
-        jButton.setBounds(150, 250, 200, 45);
-        jButton.setBackground(COLOR_BOTONES_AZUL);
-        jButton.setForeground(Color.WHITE);
-        jPanel.add(jButton);
+        JButton btnInicioSes = new JButton("INICIAR SESIÓN");
+        btnInicioSes.setFont(FUENTE_BOTON);
+        jPanel.add(btnInicioSes);
+        btnInicioSes.setBounds(250, 240, 200, 45);
+        btnInicioSes.setBackground(COLOR_BOTONES_AZUL);
+        btnInicioSes.setForeground(Color.WHITE);
+        jPanel.add(btnInicioSes);
 
+        //======================================================================================================
+
+        JButton btnRegistro = new JButton("REGISTRARSE");
+        btnRegistro.setFont(FUENTE_BOTON);
+        jPanel.add(btnRegistro);
+        btnRegistro.setBounds(50, 240, 170, 45);
+        btnRegistro.setBackground(COLOR_BOTONES_AZUL);
+        btnRegistro.setForeground(Color.WHITE);
+        jPanel.add(btnRegistro);
 
     }
 

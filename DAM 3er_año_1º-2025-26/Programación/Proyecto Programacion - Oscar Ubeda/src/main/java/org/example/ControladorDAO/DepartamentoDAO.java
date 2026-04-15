@@ -28,4 +28,19 @@ public class DepartamentoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public static boolean eliminarDepartamentos(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("DELETE FROM departamentos WHERE id = ?")) {
+
+            ps.setInt(1, departamento.getId());
+
+            int filasAfectadas = ps.executeUpdate();
+
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
