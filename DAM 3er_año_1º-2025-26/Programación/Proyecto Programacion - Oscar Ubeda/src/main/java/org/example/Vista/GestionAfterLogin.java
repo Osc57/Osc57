@@ -40,7 +40,7 @@ public class GestionAfterLogin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                //new InterfazModificarCliente().setVisible(true);//interfazModificarCliente tiene dar alta, baja y editar al cliente
+
             }
         });
 
@@ -49,7 +49,7 @@ public class GestionAfterLogin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                //new InterfazGestionCita().setVisible(true);//dar Cita, modificar Cita, eliminar Cita
+
             }
         });
 
@@ -58,7 +58,7 @@ public class GestionAfterLogin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                //new InterfazSeleccionHistorial().setVisible(true);//Mostrar Historial, eliminar historial
+
             }
         });
 
