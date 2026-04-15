@@ -1,7 +1,6 @@
 package org.example.Vista;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 import static org.example.Vista.Login.*;
@@ -10,7 +9,6 @@ public class RegistroUser extends JFrame {
 
     private JTextField txtDni = new JTextField();
     private JTextField txtUsuario = new JTextField();
-    private JPasswordField txtPassword = new JPasswordField();
 
     public RegistroUser() {
         this.setTitle("Registro");
@@ -38,22 +36,27 @@ public class RegistroUser extends JFrame {
         panelRegistro.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 10));
 
         JPanel panelLabels = new JPanel();
-        panelLabels.setLayout(new GridLayout(3, 1, 5, 5));
+        panelLabels.setLayout(new GridLayout(4, 1, 5, 5));
 
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Usuario: "));
         panelLabels.add(crearLabels("Contraseña: "));
+        panelLabels.add(crearLabels("Confirmar: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(3, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(4, 1, 5, 5));
 
         txtDni = crearFields();
         txtUsuario = crearFields();
-        txtPassword = new JPasswordField(15);
+        JPasswordField txtPassword = new JPasswordField(15);
         txtPassword.setPreferredSize(new Dimension(150, 30));
+
+        JPasswordField txtValidarPasswd = new JPasswordField(15);
+        txtValidarPasswd.setPreferredSize(new Dimension(150, 30));
 
         panelFields.add(txtDni);
         panelFields.add(txtUsuario);
         panelFields.add(txtPassword);
+        panelFields.add(txtValidarPasswd);
 
         panelRegistro.add(panelLabels, BorderLayout.WEST);
         panelRegistro.add(panelFields, BorderLayout.CENTER);

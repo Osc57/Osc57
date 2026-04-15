@@ -52,13 +52,18 @@ public class Main {
         } else {
             System.out.println("Not Good");
         }
-        */
 
+         */
+
+
+        /*
         if (insertarDepartamento(new Departamento("Dpt Departamento", "Piso 1"))) {
             System.out.println("Good");
         } else {
             System.out.println("Not good");
         }
+
+         */
 
         for (Programador p : programadores) {
             System.out.println(p);
