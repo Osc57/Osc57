@@ -22,10 +22,6 @@ public class Login extends JFrame {
     protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
-    private JPanel jPanel;
-    private JTextField jTextField;
-    private JPasswordField jPasswordField;
-
     public Login() {
         this.setTitle("Login");
         this.setSize(500, 370);
@@ -33,7 +29,7 @@ public class Login extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
 
-        jPanel = new JPanel();
+        JPanel jPanel = new JPanel();
         jPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         this.setContentPane(jPanel);
         jPanel.setLayout(null);
@@ -51,7 +47,7 @@ public class Login extends JFrame {
         user.setBounds(50, 110, 150, 30);
         jPanel.add(user);
 
-        jTextField = new JTextField();
+        JTextField jTextField = new JTextField();
         jTextField.setBounds(200, 110, 250, 35);
         jTextField.setFont(FUENTE_CAMPOS);
         jPanel.add(jTextField);
@@ -63,7 +59,7 @@ public class Login extends JFrame {
         passw.setBounds(50, 170, 150, 30);
         jPanel.add(passw);
 
-        jPasswordField = new JPasswordField();
+        JPasswordField jPasswordField = new JPasswordField();
 
         jPasswordField.setBounds(200, 170, 250, 35);
         jPasswordField.setFont(FUENTE_CAMPOS);
@@ -80,6 +76,13 @@ public class Login extends JFrame {
         btnInicioSes.setForeground(Color.WHITE);
         jPanel.add(btnInicioSes);
 
+        btnInicioSes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         //======================================================================================================
 
         JButton btnRegistro = new JButton("REGISTRARSE");
@@ -89,6 +92,13 @@ public class Login extends JFrame {
         btnRegistro.setBackground(COLOR_BOTONES_AZUL);
         btnRegistro.setForeground(Color.WHITE);
         jPanel.add(btnRegistro);
+
+        btnRegistro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
 
     }
 
