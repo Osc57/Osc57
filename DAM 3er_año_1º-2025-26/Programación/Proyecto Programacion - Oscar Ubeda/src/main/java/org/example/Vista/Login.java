@@ -81,7 +81,8 @@ public class Login extends JFrame {
         btnInicioSes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new GestionAfterLogin().setVisible(true);
             }
         });
 
