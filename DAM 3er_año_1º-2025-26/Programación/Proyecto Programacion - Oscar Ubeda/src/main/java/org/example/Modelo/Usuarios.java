@@ -1,11 +1,11 @@
 package org.example.Modelo;
 
-public class Admin {
+public class Usuarios {
     private int id;
     private String usuario;
     private String password;
 
-    public Admin(String nombre, String password) {
+    public Usuarios(String nombre, String password) {
         this.usuario = nombre;
         this.password = password;
     }

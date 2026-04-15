@@ -1,5 +1,7 @@
 package org.example.Vista;
 
+import org.example.Modelo.Usuarios;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -7,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import static org.example.ControladorDAO.UsuariosDAO.combrobarUsuarios;
 
 public class Login extends JFrame {
     protected static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
@@ -81,8 +85,21 @@ public class Login extends JFrame {
         btnInicioSes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new GestionAfterLogin().setVisible(true);
+                String userName = jTextField.getText();
+                String password = new String(jPasswordField.getPassword());
+
+                if (combrobarUsuarios(new Usuarios(userName, password))) {
+                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
+                    dispose();
+
+                    if (userName.equalsIgnoreCase("admin")) {
+                        new GestionAfterLogin().setVisible(true);
+                    } else {
+                        new SacarDatosUsuarios().setVisible(true);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "❌ Usuario o contraseña incorrectos ❌");
+                }
             }
         });
 

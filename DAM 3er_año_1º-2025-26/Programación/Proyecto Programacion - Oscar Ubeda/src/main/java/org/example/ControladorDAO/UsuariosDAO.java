@@ -1,7 +1,6 @@
 package org.example.ControladorDAO;
 
-import org.example.Modelo.Admin;
-import org.example.Modelo.Empleados;
+import org.example.Modelo.Usuarios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,17 +9,17 @@ import java.sql.SQLException;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
-public class AdminDAO {
+public class UsuariosDAO {
 
-    public AdminDAO() {
+    public UsuariosDAO() {
     }
 
-    public static boolean combrobarAdmin(Admin admin) {
+    public static boolean combrobarUsuarios(Usuarios usuarios) {
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT usuario FROM login WHERE usuario = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT usuario FROM usuarios WHERE usuario = ?")) {
 
-            ps.setString(1, admin.getUsuario());
+            ps.setString(1, usuarios.getUsuario());
             ResultSet resultSet = ps.executeQuery();
 
             return resultSet.next();
@@ -31,13 +30,13 @@ public class AdminDAO {
 
     }
 
-    public static boolean insertarAdmin(Admin admin) {
+    public static boolean insertarUsuarios(Usuarios usuarios) {
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO login (usuario, password) VALUES (?,?)")) {
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO usuarios (usuario, password) VALUES (?,?)")) {
 
-            ps.setString(1, admin.getUsuario());
-            ps.setString(2, admin.getPassword());
+            ps.setString(1, usuarios.getUsuario());
+            ps.setString(2, usuarios.getPassword());
 
             int filasAfectadas = ps.executeUpdate();
 
