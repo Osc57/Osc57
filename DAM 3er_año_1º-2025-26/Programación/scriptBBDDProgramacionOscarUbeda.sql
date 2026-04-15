@@ -3,8 +3,8 @@ USE proyectoOscarUbeda;
 
 CREATE TABLE Login (
 	id INT AUTO_INCREMENT PRIMARY KEY ,
-	nombre VARCHAR(70) NOT NULL UNIQUE,
-	password VARCHAR(70) NOT NULL
+	usuario VARCHAR(70) NOT NULL UNIQUE DEFAULT "admin",
+	password VARCHAR(70) NOT NULL DEFAULT "1234"
 );
 
 CREATE TABLE Departamentos (
