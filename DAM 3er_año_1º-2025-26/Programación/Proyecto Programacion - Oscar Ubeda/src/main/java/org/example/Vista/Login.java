@@ -90,10 +90,7 @@ public class Login extends JFrame {
 
                 //VALIDACIÓN USER
                 //===================================================
-                if (userName.isEmpty() || password.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
-                    return;
-                }
+
 
                 if (!userName.matches("^[a-zA-Z0-9_]{4,12}$")) {
                     JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
@@ -105,6 +102,11 @@ public class Login extends JFrame {
                     return;
                 }
                 //===================================================
+
+                if (userName.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
+                    return;
+                }
 
                 Usuarios usuarios = new Usuarios(userName, password);
 
