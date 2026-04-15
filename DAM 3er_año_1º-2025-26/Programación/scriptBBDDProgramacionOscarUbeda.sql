@@ -57,7 +57,7 @@ CREATE TABLE Trabaja (
 );
 
 -- 7. Login 
-CREATE TABLE Login (
+CREATE TABLE Usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(70) NOT NULL UNIQUE DEFAULT 'admin',
     password VARCHAR(70) NOT NULL DEFAULT '1234',

@@ -55,13 +55,29 @@ public class UsuariosDAO {
         }
     }
 
+    public static boolean comprobarExistenciaUsuario(Usuarios usuarios){
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT dni FROM usuarios WHERE dni = ?")) {
+
+            ps.setString(1, usuarios.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static boolean insertarUsuarios(Usuarios usuarios) {
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO usuarios (usuario, password) VALUES (?,?)")) {
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO usuarios (usuario, password, dni) VALUES (?,?,?)")) {
 
             ps.setString(1, usuarios.getUsuario());
             ps.setString(2, usuarios.getPassword());
+            ps.setString(3, usuarios.getDni());
 
             int filasAfectadas = ps.executeUpdate();
 

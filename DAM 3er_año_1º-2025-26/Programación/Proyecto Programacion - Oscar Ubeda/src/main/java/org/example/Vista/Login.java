@@ -88,21 +88,6 @@ public class Login extends JFrame {
                 String userName = jTextField.getText();
                 String password = new String(jPasswordField.getPassword()).trim();
 
-                //VALIDACIÓN USER
-                //===================================================
-
-
-                if (!userName.matches("^[a-zA-Z0-9_]{4,12}$")) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
-                    return;
-                }
-
-                if (!password.matches("^(?=.*[A-Z])(?=.*[^a-zA-Z]).{12,}$")) {
-                    JOptionPane.showMessageDialog(null, "⚠️ La contraseña debe tener al menos 12 caracteres,una mayúscula y un símbolo");
-                    return;
-                }
-                //===================================================
-
                 if (userName.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
                     return;
