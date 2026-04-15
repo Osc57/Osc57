@@ -40,6 +40,21 @@ public class UsuariosDAO {
 
     }
 
+    public static boolean comprobarUsuarioEmpleado(Usuarios usuarios) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE dni = ?")) {
+
+            ps.setString(1, usuarios.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static boolean insertarUsuarios(Usuarios usuarios) {
 
         try (Connection connection = getConnection();
