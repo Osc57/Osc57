@@ -86,19 +86,48 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String userName = jTextField.getText();
-                String password = new String(jPasswordField.getPassword());
+                String password = new String(jPasswordField.getPassword()).trim();
 
-                if (combrobarUsuarios(new Usuarios(userName, password))) {
-                    JOptionPane.showMessageDialog(null, "✅ Login Correcto ✅");
-                    dispose();
+                //VALIDACIÓN USER
+                //===================================================
+                if (userName.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
+                    return;
+                }
 
-                    if (userName.equalsIgnoreCase("admin")) {
-                        new GestionAfterLogin().setVisible(true);
-                    } else {
-                        new SacarDatosUsuarios().setVisible(true);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "❌ Usuario o contraseña incorrectos ❌");
+                if (!userName.matches("^[a-zA-Z0-9_]{4,12}$")) {
+                    JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
+                    return;
+                }
+
+                if (!password.matches("^(?=.*[A-Z])(?=.*[^a-zA-Z]).{12,}$")) {
+                    JOptionPane.showMessageDialog(null, "⚠️ La contraseña debe tener al menos 12 caracteres,una mayúscula y un símbolo");
+                    return;
+                }
+                //===================================================
+
+                Usuarios usuarios = new Usuarios(userName, password);
+
+                int resultado = combrobarUsuarios(usuarios);
+
+                switch (resultado) {
+                    case 0:
+                        JOptionPane.showMessageDialog(null, "❌ El usuario no existe");
+                        break;
+                    case 1:
+                        JOptionPane.showMessageDialog(null, "✅ Login Correcto");
+                        dispose();
+                        if (userName.equalsIgnoreCase("admin")) {
+                            new GestionAfterLogin().setVisible(true);
+                        } else {
+                            new SacarDatosUsuarios().setVisible(true);
+                        }
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(null, "❌ Contraseña Incorrecta");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "⚠️ No se ha podido completar el inicio de sesión");
                 }
             }
         });

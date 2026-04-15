@@ -14,15 +14,25 @@ public class UsuariosDAO {
     public UsuariosDAO() {
     }
 
-    public static boolean combrobarUsuarios(Usuarios usuarios) {
+    public static int combrobarUsuarios(Usuarios usuarios) {
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT usuario FROM usuarios WHERE usuario = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT usuario, password FROM usuarios WHERE usuario = ?")) {
 
             ps.setString(1, usuarios.getUsuario());
-            ResultSet resultSet = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
-            return resultSet.next();
+            if (!rs.next()) {
+                return 0;
+            }
+
+            String password = rs.getString("password");
+
+            if (password.equals(usuarios.getPassword())) {
+                return 1;
+            }
+
+            return 2;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
