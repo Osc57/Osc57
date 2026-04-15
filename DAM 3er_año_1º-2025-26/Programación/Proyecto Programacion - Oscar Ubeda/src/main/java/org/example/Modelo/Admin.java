@@ -2,11 +2,11 @@ package org.example.Modelo;
 
 public class Admin {
     private int id;
-    private String nombre;
+    private String usuario;
     private String password;
 
     public Admin(String nombre, String password) {
-        this.nombre = nombre;
+        this.usuario = nombre;
         this.password = password;
     }
 
@@ -18,12 +18,12 @@ public class Admin {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsuario() {
+        return usuario;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.usuario = nombre;
     }
 
     public String getPassword() {
