@@ -145,7 +145,8 @@ public class Login extends JFrame {
         btnRegistro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                new RegistroUser().setVisible(true);
             }
         });
 

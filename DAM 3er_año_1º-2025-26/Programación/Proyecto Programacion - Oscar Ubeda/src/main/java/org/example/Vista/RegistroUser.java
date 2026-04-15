@@ -1,6 +1,8 @@
 package org.example.Vista;
 
-public class RegistroUser {
+import javax.swing.*;
+
+public class RegistroUser extends JFrame {
 
     public RegistroUser(){
 
