@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 
 import static org.example.ControladorDAO.UsuariosDAO.combrobarUsuarios;
 
-public class Login extends JFrame {
+public class Login extends JFrame{
     protected static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
     protected static final Font FUENTE_TITULO_2 = new Font("Arial", Font.BOLD, 25);
 
