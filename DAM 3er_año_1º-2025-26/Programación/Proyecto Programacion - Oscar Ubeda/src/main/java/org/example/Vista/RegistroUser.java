@@ -15,7 +15,7 @@ public class RegistroUser extends JFrame {
 
     public RegistroUser() {
         this.setTitle("Registro");
-        this.setSize(440, 450);
+        this.setSize(440, 410);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -26,92 +26,81 @@ public class RegistroUser extends JFrame {
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
-        //JPanel panelBotonRetorno = getjPanelBotonRetorno();
+        JPanel panelBotonRetorno = getjPanelBotonRetorno();
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelDatosUsuario, BorderLayout.CENTER);
-        //this.add(panelBotonRetorno, BorderLayout.SOUTH);
+        this.add(panelBotonRetorno, BorderLayout.SOUTH);
 
     }
 
     private JPanel getjPanelDatosUsuario() {
-        JPanel panelRegistro = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        JPanel panelRegistro = new JPanel(new BorderLayout());
         panelRegistro.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 10));
 
-        JPanel panelLabels = new JPanel();
-        panelLabels.setLayout(new GridLayout(4, 1, 5, 5));
+        // Panel central con los labels y los campos
+        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
+        JPanel panelLabels = new JPanel(new GridLayout(4, 1, 5, 5));
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Usuario: "));
         panelLabels.add(crearLabels("Contraseña: "));
         panelLabels.add(crearLabels("Confirmar: "));
 
         JPanel panelFields = new JPanel(new GridLayout(4, 1, 5, 5));
-
         JTextField txtDni = crearFields();
         JTextField txtUsuario = crearFields();
         JPasswordField txtPassword = new JPasswordField(15);
-        txtPassword.setPreferredSize(new Dimension(150, 30));
-
         JPasswordField txtValidarPasswd = new JPasswordField(15);
-        txtValidarPasswd.setPreferredSize(new Dimension(150, 30));
 
-        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER, 70, 15));
-        panelBoton.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 0));
+        panelFields.add(txtDni);
+        panelFields.add(txtUsuario);
+        panelFields.add(txtPassword);
+        panelFields.add(txtValidarPasswd);
 
+        panelCentro.add(panelLabels);
+        panelCentro.add(panelFields);
+        panelRegistro.add(panelCentro, BorderLayout.CENTER);
+
+        // Panel del botón centrado abajo
         JButton btnCrearUser = crearEstiloBoton("CREAR USUARIO");
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String password = new String(txtPassword.getPassword()).trim();
                 String passwordConfirmar = new String(txtValidarPasswd.getPassword()).trim();
                 String dni = txtDni.getText().trim();
                 String usuario = txtUsuario.getText().trim();
 
-                //Campos vacíos
                 if (!RegistroValidator.camposRellenos(dni, usuario, password, passwordConfirmar)) {
                     JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
                     return;
                 }
-
-                //DNI valido
                 if (!RegistroValidator.dniValido(dni)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El DNI debe tener 8 números y una letra");
                     return;
                 }
-
-                //Comprobar si tiene usuario
                 if (comprobarExistenciaUsuario(new Usuarios(usuario, password, dni))) {
                     JOptionPane.showMessageDialog(null, "⚠️ Este empleado ya tiene un usuario creado");
                     return;
                 }
-
-                //Comprobar si es empleado
                 if (!comprobarUsuarioEmpleado(new Usuarios(usuario, password, dni))) {
                     JOptionPane.showMessageDialog(null, "⚠️ Usted no es empleado, no se le creará el usuario");
                     return;
                 }
-
-                //Usuario valido
                 if (!RegistroValidator.usuarioValido(usuario)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
                     return;
                 }
-
-                //Contraseña valida
                 if (!RegistroValidator.passwordValida(password)) {
                     JOptionPane.showMessageDialog(null, "⚠️ La contraseña debe tener al menos 12 caracteres, una mayúscula y un símbolo");
                     return;
                 }
-
-                //Coinciden las contraseñas
                 if (!RegistroValidator.passwordsCoinciden(password, passwordConfirmar)) {
                     JOptionPane.showMessageDialog(null, "⚠️ Las contraseñas no coinciden");
                     return;
                 }
 
-                //Insertar usuario
                 if (insertarUsuarios(new Usuarios(usuario, password, dni))) {
                     JOptionPane.showMessageDialog(null, "✅ Usuario creado correctamente");
                     dispose();
@@ -122,22 +111,21 @@ public class RegistroUser extends JFrame {
             }
         });
 
-
-        panelFields.add(txtDni);
-        panelFields.add(txtUsuario);
-        panelFields.add(txtPassword);
-        panelFields.add(txtValidarPasswd);
+        JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
+        btnCrearUser.setPreferredSize(new Dimension(385, 45));
         panelBoton.add(btnCrearUser);
 
-        panelRegistro.add(panelLabels, BorderLayout.WEST);
-        panelRegistro.add(panelFields, BorderLayout.CENTER);
+
+        panelBoton.add(btnCrearUser);
         panelRegistro.add(panelBoton, BorderLayout.SOUTH);
+
 
         return panelRegistro;
     }
 
+
     private JTextField crearFields() {
-        JTextField field = new JTextField(15);
+        JTextField field = new JTextField(19);
         field.setFont(FUENTE_CAMPOS);
         field.setPreferredSize(new Dimension(150, 30));
 
@@ -160,9 +148,29 @@ public class RegistroUser extends JFrame {
         boton.setForeground(Color.WHITE);
         boton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.GRAY, 1),
-                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+                BorderFactory.createEmptyBorder(10, 50, 10, 45)
         ));
         return boton;
     }
 
+    private JPanel getjPanelBotonRetorno() {
+        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
+        JButton botonRetorno = new JButton("←");
+        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
+        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
+        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
+
+        botonRetorno.setFocusPainted(false);
+        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
+        botonRetorno.setFont(FUENTE_EMOJI);
+
+        botonRetorno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new Login().setVisible(true);
+            }
+        });
+        return panelBotonRetorno;
+    }
 }
