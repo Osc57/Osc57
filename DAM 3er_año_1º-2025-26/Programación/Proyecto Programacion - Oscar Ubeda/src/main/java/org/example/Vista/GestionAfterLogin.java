@@ -11,7 +11,7 @@ import static org.example.Vista.Login.*;
 public class GestionAfterLogin extends JFrame {
 
     public GestionAfterLogin() {
-        this.setTitle("Contratar Empleado");
+        this.setTitle("Gestión Empresa");
         this.setSize(500, 370);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
