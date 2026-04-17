@@ -55,7 +55,22 @@ public class UsuariosDAO {
         }
     }
 
-    public static boolean comprobarExistenciaUsuario(Usuarios usuarios){
+    public static boolean comprobarNombreUsuarioEmpleado(Usuarios usuarios) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM usuarios WHERE usuario = ?")) {
+
+            ps.setString(1, usuarios.getUsuario());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean comprobarExistenciaUsuario(Usuarios usuarios) {
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("SELECT dni FROM usuarios WHERE dni = ?")) {
 

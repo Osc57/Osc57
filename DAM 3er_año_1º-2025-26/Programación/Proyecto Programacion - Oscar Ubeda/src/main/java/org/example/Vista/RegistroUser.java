@@ -88,6 +88,12 @@ public class RegistroUser extends JFrame {
                     JOptionPane.showMessageDialog(null, "⚠️ Usted no es empleado, no se le creará el usuario");
                     return;
                 }
+
+                if (comprobarNombreUsuarioEmpleado(new Usuarios(usuario, password))) {
+                    JOptionPane.showMessageDialog(null, "⚠️ Nombre de usuario existente");
+                    return;
+                }
+
                 if (!Validator.usuarioValido(usuario)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
                     return;
