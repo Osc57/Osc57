@@ -95,6 +95,22 @@ public class DarAltaEmpleado extends JFrame {
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String dni = txtDni.getText().trim();
+                String nombre = txtNombre.getText().trim();
+                String apellidos = txtApellidos.getText().trim();
+                String telefono = txtTelefono.getText().trim();
+                String email = txtEmail.getText().trim();
+                boolean esGerente = rbSi.isSelected();
+
+                if (!Validator.camposRellenos(dni, nombre, apellidos, telefono, email)) {
+                    JOptionPane.showMessageDialog(null, "⚠️ Rellene todos los campos de texto.");
+                    return;
+                }
+
+                if (!rbSi.isSelected() && !rbNo.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "⚠️ Seleccione una opción para Gerente.");
+                    return;
+                }
 
             }
         });
