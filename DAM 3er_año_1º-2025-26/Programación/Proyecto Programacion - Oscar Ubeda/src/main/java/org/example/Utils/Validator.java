@@ -1,6 +1,6 @@
 package org.example.Utils;
 
-public class RegistroValidator {
+public class Validator {
 
     public static boolean camposRellenos(String... campos) {
         for (String c : campos) {

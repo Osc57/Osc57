@@ -1,7 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Usuarios;
-import org.example.Utils.RegistroValidator;
+import org.example.Utils.Validator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,11 +72,11 @@ public class RegistroUser extends JFrame {
                 String dni = txtDni.getText().trim();
                 String usuario = txtUsuario.getText().trim();
 
-                if (!RegistroValidator.camposRellenos(dni, usuario, password, passwordConfirmar)) {
+                if (!Validator.camposRellenos(dni, usuario, password, passwordConfirmar)) {
                     JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
                     return;
                 }
-                if (!RegistroValidator.dniValido(dni)) {
+                if (!Validator.dniValido(dni)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El DNI debe tener 8 números y una letra");
                     return;
                 }
@@ -88,15 +88,15 @@ public class RegistroUser extends JFrame {
                     JOptionPane.showMessageDialog(null, "⚠️ Usted no es empleado, no se le creará el usuario");
                     return;
                 }
-                if (!RegistroValidator.usuarioValido(usuario)) {
+                if (!Validator.usuarioValido(usuario)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
                     return;
                 }
-                if (!RegistroValidator.passwordValida(password)) {
+                if (!Validator.passwordValida(password)) {
                     JOptionPane.showMessageDialog(null, "⚠️ La contraseña debe tener al menos 12 caracteres, una mayúscula y un símbolo");
                     return;
                 }
-                if (!RegistroValidator.passwordsCoinciden(password, passwordConfirmar)) {
+                if (!Validator.passwordsCoinciden(password, passwordConfirmar)) {
                     JOptionPane.showMessageDialog(null, "⚠️ Las contraseñas no coinciden");
                     return;
                 }
