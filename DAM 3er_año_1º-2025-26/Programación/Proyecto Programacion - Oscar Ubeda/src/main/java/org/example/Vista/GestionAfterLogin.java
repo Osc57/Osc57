@@ -17,15 +17,9 @@ public class GestionAfterLogin extends JFrame {
         this.setResizable(false);
         //configurarCierreVentana(this);
 
-        JLabel titulo = new JLabel(" ");
-        titulo.setBorder(BorderFactory.createEmptyBorder(0, 23, 0, 0));
-        titulo.setHorizontalAlignment(SwingConstants.CENTER);
-        titulo.setFont(FUENTE_TITULO_2);
-
         JPanel panelBotonesGetion = getjPanlepanelBotonesGestion();
         JPanel panelBotonRetorno = getjPanelBotonRetorno();
 
-        this.add(titulo, BorderLayout.NORTH);
         this.add(panelBotonesGetion, BorderLayout.CENTER);
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
 
@@ -33,7 +27,7 @@ public class GestionAfterLogin extends JFrame {
 
     private JPanel getjPanlepanelBotonesGestion() {
         JPanel panelBotonesGestion = new JPanel(new GridLayout(3, 1, 15, 15));
-        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(20, 70, 90, 70));
+        panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(50, 70, 20, 70));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
         JButton botonGestiona = crearEstiloBoton("<html>Gestiona <br> Proyectos</html>");
