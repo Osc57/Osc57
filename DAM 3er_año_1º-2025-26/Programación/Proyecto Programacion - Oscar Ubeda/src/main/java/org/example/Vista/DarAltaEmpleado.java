@@ -1,6 +1,5 @@
 package org.example.Vista;
 
-import org.example.Modelo.Usuarios;
 import org.example.Utils.Validator;
 
 import javax.swing.*;
@@ -8,8 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.ControladorDAO.UsuariosDAO.*;
-import static org.example.ControladorDAO.UsuariosDAO.insertarUsuarios;
 import static org.example.Vista.Login.*;
 import static org.example.Vista.Login.FUENTE_EMOJI;
 
@@ -130,6 +127,12 @@ public class DarAltaEmpleado extends JFrame {
                 if (!Validator.telefonoValido(telefono)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El teléfono deben ser 9 números");
                     return;
+                }
+
+                if (esGerente) {
+                    JOptionPane.showMessageDialog(null,"Eres Gerente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No eres gerente");
                 }
 
             }
