@@ -26,4 +26,20 @@ public class Validator {
     public static boolean passwordsCoinciden(String p1, String p2) {
         return p1.equals(p2);
     }
+
+    public static boolean nombreValido(String nombre) {
+        return nombre.matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$");
+    }
+
+    public static boolean apellidosValido(String apellido) {
+        return apellido.matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$");
+    }
+
+    public static boolean telefonoValido(String telefono) {
+        return telefono.matches("^[0-9]{9}");
+    }
+
+    public static boolean validarEmail(String email) {
+        return email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
 }

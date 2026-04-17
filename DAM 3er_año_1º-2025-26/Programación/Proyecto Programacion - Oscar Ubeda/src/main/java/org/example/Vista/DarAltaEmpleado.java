@@ -112,8 +112,23 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
-                if (!Validator.dniValido(dni)){
+                if (!Validator.dniValido(dni)) {
                     JOptionPane.showMessageDialog(null, "⚠️ El DNI debe tener 8 números y una letra");
+                    return;
+                }
+
+                if (!Validator.nombreValido(nombre)) {
+                    JOptionPane.showMessageDialog(null, "⚠️ El nombre debe empezar por mayúscula y ser letras");
+                    return;
+                }
+
+                if (!Validator.apellidosValido(apellidos)) {
+                    JOptionPane.showMessageDialog(null, "⚠️ El apellido debe empezar por mayúscula y ser letras");
+                    return;
+                }
+
+                if (!Validator.telefonoValido(telefono)) {
+                    JOptionPane.showMessageDialog(null, "⚠️ El teléfono deben ser 9 números");
                     return;
                 }
 
