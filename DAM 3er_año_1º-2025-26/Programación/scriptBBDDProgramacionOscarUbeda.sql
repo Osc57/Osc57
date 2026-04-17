@@ -13,9 +13,10 @@ CREATE TABLE Empleados (
     dni CHAR(9) PRIMARY KEY,
     nombre VARCHAR(40) NOT NULL,
     apellidos VARCHAR(200) NOT NULL,
-    email VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
     salario DOUBLE NOT NULL DEFAULT 0,
-    id_depa INT,
+	telefono CHAR(9),
+    id_depa INT
 	
     CONSTRAINT fk_emple_depa FOREIGN KEY (id_depa) REFERENCES Departamentos(id) ON DELETE SET NULL
 );
