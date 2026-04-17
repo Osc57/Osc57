@@ -112,6 +112,11 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
+                if (!Validator.dniValido(dni)){
+                    JOptionPane.showMessageDialog(null, "⚠️ El DNI debe tener 8 números y una letra");
+                    return;
+                }
+
             }
         });
 
