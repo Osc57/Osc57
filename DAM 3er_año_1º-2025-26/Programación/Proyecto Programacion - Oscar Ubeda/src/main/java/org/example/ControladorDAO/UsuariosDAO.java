@@ -61,9 +61,13 @@ public class UsuariosDAO {
 
             ps.setString(1, usuarios.getUsuario());
 
-            ResultSet rs = ps.executeQuery();
-
-            return rs.next();
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Si el conteo es mayor a 0, el usuario ya existe
+                    return rs.getInt(1) > 0;
+                }
+            }
+            return false;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

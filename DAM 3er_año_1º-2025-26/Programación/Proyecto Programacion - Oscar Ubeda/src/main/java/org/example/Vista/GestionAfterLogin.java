@@ -96,9 +96,4 @@ public class GestionAfterLogin extends JFrame {
         });
         return panelBotonRetorno;
     }
-
-    public static void main(String[] args) {
-        GestionAfterLogin insertarEmpleado = new GestionAfterLogin();
-        insertarEmpleado.setVisible(true);
-    }
 }
