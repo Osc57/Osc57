@@ -34,7 +34,8 @@ public class GestionEmpleado extends JFrame {
         botonDarAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+                dispose();
+                new DarAltaEmpleado().setVisible(true);
 
             }
         });
