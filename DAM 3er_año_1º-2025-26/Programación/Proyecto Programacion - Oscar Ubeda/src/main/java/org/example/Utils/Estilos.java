@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Componentes {
+public class Estilos {
     public static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
     public static final Font FUENTE_TITULO_2 = new Font("Arial", Font.BOLD, 25);
 

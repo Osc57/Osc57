@@ -7,11 +7,10 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import static org.example.ControladorDAO.UsuariosDAO.combrobarUsuarios;
-import static org.example.Utils.Componentes.*;
+import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Messages.mostrarError;
 
 public class Login extends JFrame{
 
@@ -76,7 +75,7 @@ public class Login extends JFrame{
                 String password = new String(jPasswordField.getPassword()).trim();
 
                 if (userName.isEmpty() || password.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
+                    mostrarError("⚠️ Rellena todos los campos");
                     return;
                 }
 
@@ -86,10 +85,10 @@ public class Login extends JFrame{
 
                 switch (resultado) {
                     case 0:
-                        JOptionPane.showMessageDialog(null, "❌ El usuario no existe");
+                        mostrarError("❌ El usuario no existe");
                         break;
                     case 1:
-                        JOptionPane.showMessageDialog(null, "✅ Login Correcto");
+                        mostrarError("✅ Login Correcto");
                         dispose();
                         if (userName.equalsIgnoreCase("admin")) {
                             new GestionAfterLogin().setVisible(true);
@@ -98,10 +97,10 @@ public class Login extends JFrame{
                         }
                         break;
                     case 2:
-                        JOptionPane.showMessageDialog(null, "❌ Contraseña Incorrecta");
+                        mostrarError("❌ Contraseña Incorrecta");
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "⚠️ No se ha podido completar el inicio de sesión");
+                        mostrarError("⚠️ No se ha podido completar el inicio de sesión");
                 }
             }
         });

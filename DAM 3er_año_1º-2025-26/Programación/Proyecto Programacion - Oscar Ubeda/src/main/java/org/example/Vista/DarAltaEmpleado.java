@@ -7,7 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.Utils.Componentes.*;
+import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Messages.mostrarError;
 
 public class DarAltaEmpleado extends JFrame {
 
@@ -99,37 +100,43 @@ public class DarAltaEmpleado extends JFrame {
                 boolean esGerente = rbSi.isSelected();
 
                 if (!Validator.camposRellenos(dni, nombre, apellidos, telefono, email)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Rellene todos los campos de texto.");
+                    mostrarError("⚠️ Rellene todos los campos de texto.");
                     return;
                 }
 
                 if (!rbSi.isSelected() && !rbNo.isSelected()) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Seleccione una opción para Gerente.");
+                    mostrarError("⚠️ Seleccione una opción para Gerente.");
                     return;
                 }
 
                 if (!Validator.dniValido(dni)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El DNI debe tener 8 números y una letra");
+                    mostrarError("⚠️ El DNI debe tener 8 números y una letra");
                     return;
                 }
 
                 if (!Validator.nombreValido(nombre)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El nombre debe empezar por mayúscula y ser letras");
+                    mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.apellidosValido(apellidos)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El apellido debe empezar por mayúscula y ser letras");
+                    mostrarError("⚠️ El apellido debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.telefonoValido(telefono)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El teléfono deben ser 9 números");
+                    mostrarError("⚠️ El teléfono deben ser 9 números");
+                    return;
+                }
+
+                if (!Validator.validarEmail(email)) {
+                    mostrarError("⚠️ El email debe ser válido (Ej. example@correo.com)");
                     return;
                 }
 
                 if (esGerente) {
-                    JOptionPane.showMessageDialog(null,"Eres Gerente");
+                    dispose();
+                    new EmpleadoGerente().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "No eres gerente");
                 }

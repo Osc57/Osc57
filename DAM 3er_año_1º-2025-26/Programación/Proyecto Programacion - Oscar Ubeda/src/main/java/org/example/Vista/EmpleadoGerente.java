@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.Utils.Componentes.*;
+import static org.example.Utils.Estilos.*;
 
 public class EmpleadoGerente extends JFrame {
 
@@ -45,11 +45,6 @@ public class EmpleadoGerente extends JFrame {
 
         JPanel panelGerente = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         panelGerente.setOpaque(false);
-
-
-
-
-
 
         panelCentro.add(panelLabels);
         panelCentro.add(panelFields);
