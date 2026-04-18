@@ -52,7 +52,7 @@ public class EmpleadoGerente extends JFrame {
 
         // Panel del botón centrado abajo
         JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
-        JButton btnCrearUser = crearEstiloBotonSubmit("SIGUIENTE");
+        JButton btnCrearUser = crearEstiloBotonSubmit("DAR DE ALTA GERENTE");
 
         btnCrearUser.setPreferredSize(new Dimension(380, 45));
         panelBoton.add(btnCrearUser);
