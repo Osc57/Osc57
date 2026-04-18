@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.UsuariosDAO.*;
-import static org.example.Vista.Login.*;
+import static org.example.Utils.Componentes.*;
 
 public class RegistroUser extends JFrame {
 
@@ -19,14 +19,14 @@ public class RegistroUser extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
-        //configurarCierreVentana(this);
+        configurarCierreVentana(this);
 
         JLabel introducirCliente = new JLabel("•Introduzca sus datos");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
-        JPanel panelBotonRetorno = getjPanelBotonRetorno();
+        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new Login());
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelDatosUsuario, BorderLayout.CENTER);
@@ -63,7 +63,7 @@ public class RegistroUser extends JFrame {
         panelRegistro.add(panelCentro, BorderLayout.CENTER);
 
         // Panel del botón centrado abajo
-        JButton btnCrearUser = crearEstiloBoton("CREAR USUARIO");
+        JButton btnCrearUser = crearEstiloBotonSubmit("CREAR USUARIO");
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -130,53 +130,4 @@ public class RegistroUser extends JFrame {
     }
 
 
-    private JTextField crearFields() {
-        JTextField field = new JTextField(19);
-        field.setFont(FUENTE_CAMPOS);
-        field.setPreferredSize(new Dimension(150, 30));
-
-        return field;
-    }
-
-    private JLabel crearLabels(String texto) {
-        JLabel label = new JLabel(texto);
-        label.setFont(FUENTE_LABEL);
-        label.setPreferredSize(new Dimension(120, 30));
-
-        return label;
-    }
-
-    private JButton crearEstiloBoton(String texto) {
-        JButton boton = new JButton(texto);
-        boton.setFont(FUENTE_BOTONES);
-        boton.setBackground(COLOR_BOTONES_AZUL);
-        boton.setFocusPainted(false);
-        boton.setForeground(Color.WHITE);
-        boton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.GRAY, 1),
-                BorderFactory.createEmptyBorder(10, 50, 10, 45)
-        ));
-        return boton;
-    }
-
-    private JPanel getjPanelBotonRetorno() {
-        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
-        JButton botonRetorno = new JButton("←");
-        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
-        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
-
-        botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
-        botonRetorno.setFont(FUENTE_EMOJI);
-
-        botonRetorno.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new Login().setVisible(true);
-            }
-        });
-        return panelBotonRetorno;
-    }
 }

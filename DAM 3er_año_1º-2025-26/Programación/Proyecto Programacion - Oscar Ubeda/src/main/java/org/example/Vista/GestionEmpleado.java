@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.Vista.Login.*;
+import static org.example.Utils.Componentes.*;
 
 public class GestionEmpleado extends JFrame {
 
@@ -18,7 +18,7 @@ public class GestionEmpleado extends JFrame {
         //configurarCierreVentana(this);
 
         JPanel panelBotonesCentro = getjPanelBotonesCentro();
-        JPanel panelBotonRetorno = getjPanelBotonRetorno();
+        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new GestionAfterLogin());
 
         this.add(panelBotonesCentro, BorderLayout.CENTER);
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
@@ -63,39 +63,6 @@ public class GestionEmpleado extends JFrame {
         panelGestion.add(botonDarBaja);
 
         return panelGestion;
-    }
-
-    private JButton crearEstiloBoton(String texto) {
-        JButton boton = new JButton(texto);
-        boton.setFont(FUENTE_BOTON);
-        boton.setBackground(COLOR_BOTON_GRIS_CLARO);
-        boton.setFocusPainted(false);
-        boton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.GRAY, 1),
-                BorderFactory.createEmptyBorder(-10, -10, -10, -20)
-        ));
-        return boton;
-    }
-
-    private JPanel getjPanelBotonRetorno() {
-        JPanel panelBotonRetorno = new JPanel(new BorderLayout());
-        JButton botonRetorno = new JButton("←");
-        panelBotonRetorno.add(botonRetorno, BorderLayout.SOUTH);
-        panelBotonRetorno.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 320));
-        panelBotonRetorno.setBackground(COLOR_FONDO_GRIS_CLARO);
-
-        botonRetorno.setFocusPainted(false);
-        botonRetorno.setBackground(COLOR_BOTON_GRIS_CLARO);
-        botonRetorno.setFont(FUENTE_EMOJI);
-
-        botonRetorno.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new GestionAfterLogin().setVisible(true);
-            }
-        });
-        return panelBotonRetorno;
     }
 
     public static void main(String[] args) {

@@ -11,22 +11,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import static org.example.ControladorDAO.UsuariosDAO.combrobarUsuarios;
+import static org.example.Utils.Componentes.*;
 
 public class Login extends JFrame{
-    protected static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
-    protected static final Font FUENTE_TITULO_2 = new Font("Arial", Font.BOLD, 25);
-
-    protected static final Color COLOR_FONDO_GRIS_CLARO = new Color(240, 240, 240);
-    protected static final Color COLOR_BOTON_GRIS_CLARO = new Color(230, 230, 230);
-
-    protected static final Color COLOR_BOTONES_AZUL = new Color(70, 130, 180);
-
-    protected static final Font FUENTE_LABEL = new Font("Arial", Font.BOLD, 18);
-    protected static final Font FUENTE_CAMPOS = new Font("Arial", Font.PLAIN, 16);
-    protected static final Font FUENTE_EMOJI = new Font("Arial", Font.BOLD, 25);
-
-    protected static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
-    protected static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
     public Login() {
         this.setTitle("Login");
@@ -139,21 +126,6 @@ public class Login extends JFrame{
 
     }
 
-    public static void configurarCierreVentana(JFrame ventana) {
-        ventana.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        ventana.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                int respuesta = JOptionPane.showConfirmDialog(ventana, "¿Quiere cerrar sesión?", "Cerrar sesión",
-                        JOptionPane.YES_NO_OPTION);
-
-                if (respuesta == JOptionPane.YES_OPTION) {
-                    ventana.dispose();
-                    new Login().setVisible(true);
-                }
-            }
-        });
-    }
 
 
     public static void main(String[] args) {
