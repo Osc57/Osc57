@@ -134,9 +134,7 @@ public class EmpleadoGerente extends JFrame {
                 double bono = Double.parseDouble(bonoTexto.replace(",", "."));
 
                 //Crear objetos
-                Empleados empleadoCompleto = new Empleados(
-                        dni, nombre, apellidos, email, telefono, salario, idDept
-                );
+                Empleados empleadoCompleto = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
 
                 //Inserciones en BD
                 if (!insertarEmpleado(empleadoCompleto)) {
