@@ -10,8 +10,8 @@ public class Programador extends Empleados {
         this.lenguajePrincipal = lenguajePrincipal;
     }
 
-    public Programador(String dni, String nombre, String apellidos, String email, double salario, int departamento, String lenguajePrincipal) {
-        super(dni, nombre, apellidos, email, salario, departamento);
+    public Programador(String dni, String nombre, String apellidos, String email, String telefono, double salario, int departamento, String lenguajePrincipal) {
+        super(dni, nombre, apellidos, email, telefono, salario, departamento);
         this.lenguajePrincipal = lenguajePrincipal;
     }
 

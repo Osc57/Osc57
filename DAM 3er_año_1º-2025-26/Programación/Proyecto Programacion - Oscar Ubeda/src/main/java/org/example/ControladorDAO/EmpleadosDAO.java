@@ -1,7 +1,6 @@
 package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
-import org.example.Modelo.Programador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,6 +76,21 @@ public class EmpleadosDAO {
             int filasAfectadas = ps.executeUpdate();
 
             return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean comprobarEmpleados(Empleados empleado) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE dni = ?")) {
+
+            ps.setString(1, empleado.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

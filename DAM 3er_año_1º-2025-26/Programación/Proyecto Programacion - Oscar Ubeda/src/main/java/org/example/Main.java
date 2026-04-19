@@ -22,7 +22,7 @@ public class Main {
 
         boolean esGerente = false;
 
-        Empleados empleado = new Empleados("32345600Y", "Panacota", "Seven Six", "sevensix@seven.six", 2560.0, 1);
+        //Empleados empleado = new Empleados("32345600Y", "Panacota", "Seven Six", "sevensix@seven.six", 2560.0, 1);
 
         /*
         if (insertarEmpleado(empleados)) {

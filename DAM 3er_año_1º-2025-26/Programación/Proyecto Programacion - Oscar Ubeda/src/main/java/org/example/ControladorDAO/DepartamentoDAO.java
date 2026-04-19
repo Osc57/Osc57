@@ -4,7 +4,9 @@ import org.example.Modelo.Departamento;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
@@ -43,4 +45,29 @@ public class DepartamentoDAO {
             throw new RuntimeException(e);
         }
     }
+
+
+    public static ArrayList<Departamento> obtenerDepartamentos() {
+        ArrayList<Departamento> departamentos = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre FROM departamentos");
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Departamento departamento = new Departamento();
+
+                departamento.setId(rs.getInt("id"));
+                departamento.setNombre(rs.getString("nombre"));
+
+                departamentos.add(departamento);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return departamentos;
+    }
+
+
 }

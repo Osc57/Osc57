@@ -1,21 +1,34 @@
 package org.example.Vista;
 
+import org.example.Modelo.Departamento;
+import org.example.Modelo.Empleados;
+import org.example.Modelo.Gerente;
+import org.example.Utils.Validator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
+import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Messages.mostrarError;
 
 public class EmpleadoGerente extends JFrame {
 
     private DarAltaEmpleado ventanaAnterior;
+    private Empleados empleado;
+    private ArrayList<Departamento> departamentos = obtenerDepartamentos();
 
-    public EmpleadoGerente(DarAltaEmpleado ventanaAnterior) {
+    public EmpleadoGerente(DarAltaEmpleado ventanaAnterior, Empleados empleado) {
         this.ventanaAnterior = ventanaAnterior;
+        this.empleado = empleado;
 
         this.setTitle("Gerente");
-        this.setSize(500, 450);
+        this.setSize(500, 400);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -40,15 +53,30 @@ public class EmpleadoGerente extends JFrame {
         // Panel central con los labels y los campos
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        JPanel panelLabels = new JPanel(new GridLayout(6, 1, 5, 5));
+        JPanel panelLabels = new JPanel(new GridLayout(4, 1, 5, 5));
+        panelLabels.add(crearLabels("Salario: "));
+        panelLabels.add(crearLabels("Depto.: "));
+        panelLabels.add(crearLabels("Bono: "));
+        panelLabels.add(crearLabels("Nivel: "));
 
+        JPanel panelFields = new JPanel(new GridLayout(4, 1, 5, 5));
+        JTextField txtsalario = crearFields();
 
-        JPanel panelFields = new JPanel(new GridLayout(6, 1, 5, 5));
+        JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
 
+        for (Departamento d : departamentos) {
+            comboBoxDepart.addItem(d);
+        }
 
+        JTextField txtbono = crearFields();
 
-        JPanel panelGerente = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        panelGerente.setOpaque(false);
+        JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{"Alto", "Medio", "Bajo"});
+
+        panelFields.add(txtsalario);
+        panelFields.add(comboBoxDepart);
+        panelFields.add(txtbono);
+        panelFields.add(comboBoxNivel);
+
 
         panelCentro.add(panelLabels);
         panelCentro.add(panelFields);
@@ -64,6 +92,47 @@ public class EmpleadoGerente extends JFrame {
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String dni = empleado.getDni();
+                String nombre = empleado.getNombre();
+                String apellidos = empleado.getApellidos();
+                String email = empleado.getEmail();
+                String telefono = empleado.getTelefono();
+
+                String salarioTexto = txtsalario.getText().trim();
+                Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
+                int idDept = departamento.getId();
+                String bonoTexto = txtbono.getText().trim();
+                String nivel = comboBoxNivel.getSelectedItem().toString();
+
+                if (!Validator.salarioValido(salarioTexto)) {
+                    mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
+                    return;
+                }
+
+
+                if (!Validator.bonoValido(bonoTexto)) {
+                    mostrarError("⚠️ El bono debe ser un número válido mayor que 0.");
+                    return;
+                }
+
+                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+                double bono = Double.parseDouble(bonoTexto.replace(",", "."));
+
+                Empleados empleadoCompleto = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
+
+
+                if (insertarEmpleado(empleadoCompleto)) {
+                    Gerente gerente = new Gerente(dni, bono, nivel);
+                    if (insertarGerente(empleadoCompleto, gerente)) {
+                        mostrarError("✅ Gerente dado de alta exitosamente");
+                        dispose();
+                        new GestionEmpleado().setVisible(true);
+                    } else {
+                        mostrarError("❌ Error al insertar los datos del gerente.");
+                    }
+                } else {
+                    mostrarError("❌ Error al insertar el empleado en la base de datos.");
+                }
 
 
             }

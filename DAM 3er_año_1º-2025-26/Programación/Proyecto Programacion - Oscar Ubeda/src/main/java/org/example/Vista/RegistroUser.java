@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.UsuariosDAO.*;
 import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Messages.mostrarError;
 
 public class RegistroUser extends JFrame {
 
@@ -73,37 +74,37 @@ public class RegistroUser extends JFrame {
                 String usuario = txtUsuario.getText().trim();
 
                 if (!Validator.camposRellenos(dni, usuario, password, passwordConfirmar)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Rellena todos los campos");
+                    mostrarError("⚠️ Rellena todos los campos");
                     return;
                 }
                 if (!Validator.dniValido(dni)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El DNI debe tener 8 números y una letra");
+                    mostrarError("⚠️ El DNI debe tener 8 números y una letra");
                     return;
                 }
                 if (comprobarExistenciaUsuario(new Usuarios(usuario, password, dni))) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Este empleado ya tiene un usuario creado");
+                    mostrarError("⚠️ Este empleado ya tiene un usuario creado");
                     return;
                 }
                 if (!comprobarUsuarioEmpleado(new Usuarios(usuario, password, dni))) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Usted no es empleado, no se le creará el usuario");
+                    mostrarError("⚠️ Usted no es empleado, no se le creará el usuario");
                     return;
                 }
 
                 if (comprobarNombreUsuarioEmpleado(new Usuarios(usuario, password))) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Nombre de usuario existente");
+                    mostrarError("⚠️ Nombre de usuario existente");
                     return;
                 }
 
                 if (!Validator.usuarioValido(usuario)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
+                    mostrarError("⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
                     return;
                 }
                 if (!Validator.passwordValida(password)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ La contraseña debe tener al menos 12 caracteres, una mayúscula y un símbolo");
+                    mostrarError("⚠️ La contraseña debe tener al menos 12 caracteres, una mayúscula y un símbolo");
                     return;
                 }
                 if (!Validator.passwordsCoinciden(password, passwordConfirmar)) {
-                    JOptionPane.showMessageDialog(null, "⚠️ Las contraseñas no coinciden");
+                    mostrarError("⚠️ Las contraseñas no coinciden");
                     return;
                 }
 

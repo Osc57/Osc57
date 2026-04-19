@@ -1,5 +1,6 @@
 package org.example.Vista;
 
+import org.example.Modelo.Empleados;
 import org.example.Utils.Validator;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.ControladorDAO.EmpleadosDAO.comprobarEmpleados;
 import static org.example.Utils.Estilos.*;
 import static org.example.Utils.Messages.mostrarError;
 
@@ -23,7 +25,7 @@ public class DarAltaEmpleado extends JFrame {
 
     public DarAltaEmpleado() {
         this.setTitle("Dar De Alta");
-        this.setSize(500, 450);
+        this.setSize(500, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -48,7 +50,7 @@ public class DarAltaEmpleado extends JFrame {
         // Panel central con los labels y los campos
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        JPanel panelLabels = new JPanel(new GridLayout(6, 1, 5, 5));
+        JPanel panelLabels = new JPanel(new GridLayout(7, 1, 5, 5));
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
@@ -56,7 +58,7 @@ public class DarAltaEmpleado extends JFrame {
         panelLabels.add(crearLabels("Email: "));
         panelLabels.add(crearLabels("¿Gerente?: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(6, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(7, 1, 5, 5));
         txtDni = crearFields();
         txtNombre = crearFields();
         txtApellidos = crearFields();
@@ -123,6 +125,7 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
+
                 if (!Validator.nombreValido(nombre)) {
                     mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
                     return;
@@ -143,12 +146,19 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
+                Empleados empleado = new Empleados(dni, nombre, apellidos, email, telefono);
+                if (comprobarEmpleados(empleado)) {
+                    mostrarError("⚠️ Este empelado ya existe en la empresa");
+                    return;
+                }
+
                 if (esGerente) {
                     setVisible(false);
-                    new EmpleadoGerente(DarAltaEmpleado.this).setVisible(true);
+                    new EmpleadoGerente(DarAltaEmpleado.this, empleado).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "No eres gerente");
                 }
+
 
             }
         });

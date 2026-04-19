@@ -8,6 +8,7 @@ public class Empleados {
     private String nombre;
     private String apellidos;
     private String email;
+    private String telefono;
     private double salario;
 
     private int departamento;
@@ -16,11 +17,21 @@ public class Empleados {
     public Empleados() {
     }
 
-    public Empleados(String dni, String nombre, String apellidos, String email, double salario, int departamento) {
+    public Empleados(String dni, String nombre, String apellidos, String email, String telefono) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
+        this.telefono = telefono;
+        this.salario = salario;
+    }
+
+    public Empleados(String dni, String nombre, String apellidos, String email, String telefono, double salario, int departamento) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
         this.salario = salario;
         this.departamento = departamento;
     }
@@ -71,6 +82,14 @@ public class Empleados {
 
     public void setDepartamento(int departamento) {
         this.departamento = departamento;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public List<Proyecto> getProyectos() {

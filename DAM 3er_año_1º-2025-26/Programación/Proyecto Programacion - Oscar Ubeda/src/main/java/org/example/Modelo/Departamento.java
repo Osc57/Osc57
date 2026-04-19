@@ -5,9 +5,17 @@ public class Departamento {
     private String nombre;
     private String ubicacion;
 
+    public Departamento() {
+    }
+
     public Departamento(String nombre, String ubicacion) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
+    }
+
+    public Departamento(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -32,5 +40,10 @@ public class Departamento {
 
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }
