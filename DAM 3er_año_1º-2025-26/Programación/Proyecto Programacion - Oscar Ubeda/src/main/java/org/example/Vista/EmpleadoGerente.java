@@ -100,27 +100,38 @@ public class EmpleadoGerente extends JFrame {
 
                 String salarioTexto = txtsalario.getText().trim();
                 Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
-                int idDept = departamento.getId();
+
                 String bonoTexto = txtbono.getText().trim();
-                String nivel = comboBoxNivel.getSelectedItem().toString();
 
                 if (!Validator.salarioValido(salarioTexto)) {
                     mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
                 }
 
+                if (departamento == null) {
+                    mostrarError("⚠️ Debes seleccionar un departamento.");
+                    return;
+                }
+                int idDept = departamento.getId();
 
                 if (!Validator.bonoValido(bonoTexto)) {
                     mostrarError("⚠️ El bono debe ser un número válido mayor que 0.");
                     return;
                 }
 
+                Object nivelObj = comboBoxNivel.getSelectedItem();
+                if (nivelObj == null) {
+                    mostrarError("⚠️ Debes seleccionar un nivel.");
+                    return;
+                }
+
+                String nivel = comboBoxNivel.getSelectedItem().toString();
+
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
                 double bono = Double.parseDouble(bonoTexto.replace(",", "."));
 
                 Empleados empleadoCompleto = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
-
-
+                
                 if (insertarEmpleado(empleadoCompleto)) {
                     Gerente gerente = new Gerente(dni, bono, nivel);
                     if (insertarGerente(empleadoCompleto, gerente)) {
