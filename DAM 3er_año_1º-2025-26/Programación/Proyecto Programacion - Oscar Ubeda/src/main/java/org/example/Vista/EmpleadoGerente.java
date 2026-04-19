@@ -92,17 +92,21 @@ public class EmpleadoGerente extends JFrame {
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //Datos del empleado base
                 String dni = empleado.getDni();
                 String nombre = empleado.getNombre();
                 String apellidos = empleado.getApellidos();
                 String email = empleado.getEmail();
                 String telefono = empleado.getTelefono();
 
+                //Datos del formulario
                 String salarioTexto = txtsalario.getText().trim();
-                Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
-
                 String bonoTexto = txtbono.getText().trim();
+                Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
+                Object nivelObj = comboBoxNivel.getSelectedItem();
 
+                //Validaciones
                 if (!Validator.salarioValido(salarioTexto)) {
                     mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
@@ -112,42 +116,48 @@ public class EmpleadoGerente extends JFrame {
                     mostrarError("⚠️ Debes seleccionar un departamento.");
                     return;
                 }
-                int idDept = departamento.getId();
 
                 if (!Validator.bonoValido(bonoTexto)) {
                     mostrarError("⚠️ El bono debe ser un número válido mayor que 0.");
                     return;
                 }
 
-                Object nivelObj = comboBoxNivel.getSelectedItem();
                 if (nivelObj == null) {
                     mostrarError("⚠️ Debes seleccionar un nivel.");
                     return;
                 }
 
-                String nivel = comboBoxNivel.getSelectedItem().toString();
-
+                // Conversión de datos
+                int idDept = departamento.getId();
+                String nivel = nivelObj.toString();
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
                 double bono = Double.parseDouble(bonoTexto.replace(",", "."));
 
-                Empleados empleadoCompleto = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
-                
-                if (insertarEmpleado(empleadoCompleto)) {
-                    Gerente gerente = new Gerente(dni, bono, nivel);
-                    if (insertarGerente(empleadoCompleto, gerente)) {
-                        mostrarError("✅ Gerente dado de alta exitosamente");
-                        dispose();
-                        new GestionEmpleado().setVisible(true);
-                    } else {
-                        mostrarError("❌ Error al insertar los datos del gerente.");
-                    }
-                } else {
+                //Crear objetos
+                Empleados empleadoCompleto = new Empleados(
+                        dni, nombre, apellidos, email, telefono, salario, idDept
+                );
+
+                //Inserciones en BD
+                if (!insertarEmpleado(empleadoCompleto)) {
                     mostrarError("❌ Error al insertar el empleado en la base de datos.");
+                    return;
                 }
 
+                Gerente gerente = new Gerente(dni, bono, nivel);
 
+                if (!insertarGerente(empleadoCompleto, gerente)) {
+                    mostrarError("❌ Error al insertar los datos del gerente.");
+                    return;
+                }
+
+                //Éxito
+                mostrarError("✅ Gerente dado de alta exitosamente");
+                dispose();
+                new GestionEmpleado().setVisible(true);
             }
         });
+
 
         panelRegistro.add(panelBoton, BorderLayout.SOUTH);
 
