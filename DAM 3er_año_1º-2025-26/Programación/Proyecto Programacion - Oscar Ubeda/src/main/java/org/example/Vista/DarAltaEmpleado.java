@@ -12,6 +12,15 @@ import static org.example.Utils.Messages.mostrarError;
 
 public class DarAltaEmpleado extends JFrame {
 
+    private JTextField txtDni;
+    private JTextField txtNombre;
+    private JTextField txtApellidos;
+    private JTextField txtTelefono;
+    private JTextField txtEmail;
+
+    private JRadioButton rbSi;
+    private JRadioButton rbNo;
+
     public DarAltaEmpleado() {
         this.setTitle("Dar De Alta");
         this.setSize(500, 450);
@@ -48,11 +57,11 @@ public class DarAltaEmpleado extends JFrame {
         panelLabels.add(crearLabels("¿Gerente?: "));
 
         JPanel panelFields = new JPanel(new GridLayout(6, 1, 5, 5));
-        JTextField txtDni = crearFields();
-        JTextField txtNombre = crearFields();
-        JTextField txtApellidos = crearFields();
-        JTextField txtTelefono = crearFields();
-        JTextField txtEmail = crearFields();
+        txtDni = crearFields();
+        txtNombre = crearFields();
+        txtApellidos = crearFields();
+        txtTelefono = crearFields();
+        txtEmail = crearFields();
 
         panelFields.add(txtDni);
         panelFields.add(txtNombre);
@@ -63,8 +72,8 @@ public class DarAltaEmpleado extends JFrame {
         JPanel panelGerente = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         panelGerente.setOpaque(false);
 
-        JRadioButton rbSi = crearRadioButtonEstilizado("Sí", false);
-        JRadioButton rbNo = crearRadioButtonEstilizado("No", false);
+        rbSi = crearRadioButtonEstilizado("Sí", false);
+        rbNo = crearRadioButtonEstilizado("No", false);
 
 
         ButtonGroup grupoGerente = new ButtonGroup();
@@ -135,8 +144,8 @@ public class DarAltaEmpleado extends JFrame {
                 }
 
                 if (esGerente) {
-                    dispose();
-                    new EmpleadoGerente().setVisible(true);
+                    setVisible(false);
+                    new EmpleadoGerente(DarAltaEmpleado.this).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "No eres gerente");
                 }

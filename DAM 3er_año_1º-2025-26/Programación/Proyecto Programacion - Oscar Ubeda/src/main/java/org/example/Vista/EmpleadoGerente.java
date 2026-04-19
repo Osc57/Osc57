@@ -9,7 +9,11 @@ import static org.example.Utils.Estilos.*;
 
 public class EmpleadoGerente extends JFrame {
 
-    public EmpleadoGerente() {
+    private DarAltaEmpleado ventanaAnterior;
+
+    public EmpleadoGerente(DarAltaEmpleado ventanaAnterior) {
+        this.ventanaAnterior = ventanaAnterior;
+
         this.setTitle("Gerente");
         this.setSize(500, 450);
         this.setLocationRelativeTo(null);
@@ -22,7 +26,7 @@ public class EmpleadoGerente extends JFrame {
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 50, 0, 0));
 
         JPanel panelDatosUsuario = getjPanelDatosUsuario();
-        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new DarAltaEmpleado());
+        JPanel panelBotonRetorno = getPanelBotonRetorno(this, ventanaAnterior);
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelDatosUsuario, BorderLayout.CENTER);

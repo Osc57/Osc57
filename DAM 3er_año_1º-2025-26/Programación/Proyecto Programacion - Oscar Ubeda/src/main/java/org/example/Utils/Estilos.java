@@ -63,7 +63,7 @@ public class Estilos {
         botonRetorno.setFont(FUENTE_EMOJI);
 
         botonRetorno.addActionListener(e -> {
-            ventanaActual.dispose();
+            ventanaActual.setVisible(false);
             ventanaDestino.setVisible(true);
         });
 
