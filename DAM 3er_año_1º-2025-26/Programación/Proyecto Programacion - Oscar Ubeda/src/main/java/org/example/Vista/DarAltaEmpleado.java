@@ -125,7 +125,6 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
-
                 if (!Validator.nombreValido(nombre)) {
                     mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
                     return;
@@ -152,11 +151,13 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
+                //Ocultar this para mantener datos por si quiere volver atrás
                 if (esGerente) {
                     setVisible(false);
                     new EmpleadoGerente(DarAltaEmpleado.this, empleado).setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No eres gerente");
+                    setVisible(false);
+                    new EmpleadoProgramador(DarAltaEmpleado.this, empleado).setVisible(true);
                 }
 
 
