@@ -15,7 +15,7 @@ public class GestionEmpleado extends JFrame {
         this.setSize(500, 370);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        //configurarCierreVentana(this);
+        configurarCierreVentana(this);
 
         JPanel panelBotonesCentro = getjPanelBotonesCentro();
         JPanel panelBotonRetorno = getPanelBotonRetorno(this, new GestionAfterLogin());
