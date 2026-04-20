@@ -168,9 +168,4 @@ public class DarAltaEmpleado extends JFrame {
 
         return panelRegistro;
     }
-
-
-    public static void main(String[] args) {
-        new DarAltaEmpleado().setVisible(true);
-    }
 }
