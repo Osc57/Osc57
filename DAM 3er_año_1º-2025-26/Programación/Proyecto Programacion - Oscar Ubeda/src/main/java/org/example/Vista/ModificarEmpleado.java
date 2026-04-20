@@ -18,11 +18,11 @@ public class ModificarEmpleado extends JFrame {
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
-        JPanel panelGestionDni = getjPanelGestionDni();
+        //JPanel panelGestionDni = getjPanelGestionDni();
         JPanel panelBotonRetorno = getPanelBotonRetorno(this, new GestionEmpleado());
 
         this.add(introducirCliente, BorderLayout.NORTH);
-        this.add(panelGestionDni, BorderLayout.CENTER);
+        //this.add(panelGestionDni, BorderLayout.CENTER);
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 }
