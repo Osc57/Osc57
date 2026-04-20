@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
-import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.ControladorDAO.ProgramadorDAO.insertarProgramador;
 import static org.example.Utils.Estilos.*;
 import static org.example.Utils.Messages.mostrarError;
@@ -63,14 +62,19 @@ public class EmpleadoProgramador extends JFrame {
         JTextField txtsalario = crearFields();
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
 
         for (Departamento d : departamentos) {
             comboBoxDepart.addItem(d);
         }
 
+        comboBoxDepart.setSelectedIndex(0);
+
         JComboBox<String> comboBoxLProgramacion = new JComboBox<>(new String[]{
-                "JavaScript", "Python", "Java", "C#", "Otro..."
+                "Seleccione un lenguaje...", "JavaScript", "Python", "Java", "C#", "Otro..."
         });
+
+        comboBoxLProgramacion.setSelectedIndex(0);
 
         panelFields.add(txtsalario);
         panelFields.add(comboBoxDepart);
@@ -96,7 +100,8 @@ public class EmpleadoProgramador extends JFrame {
                 //Datos Programador
                 String salarioTexto = txtsalario.getText().trim();
                 Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
-                Object lenguajeProgramacion = comboBoxLProgramacion.getSelectedItem();
+                int indexLenguaje = comboBoxLProgramacion.getSelectedIndex();
+                int indexDepartamento = comboBoxDepart.getSelectedIndex();
 
                 //Validaciones
                 if (!Validator.salarioValido(salarioTexto)) {
@@ -104,19 +109,19 @@ public class EmpleadoProgramador extends JFrame {
                     return;
                 }
 
-                if (departamento == null) {
-                    mostrarError("⚠️ Debes seleccionar un departamento.");
+                if (indexDepartamento == 0) {
+                    mostrarError("⚠️ Debe seleccionar un departamento");
                     return;
                 }
 
-                if (lenguajeProgramacion == null) {
+                if (indexLenguaje == 0) {
                     mostrarError("⚠️ Debes seleccionar un lenguaje de programación.");
                     return;
                 }
 
                 // Conversión de datos
                 int idDept = departamento.getId();
-                String lenguajeProgramacionString = lenguajeProgramacion.toString();
+                String lenguajeProgramacionString = comboBoxLProgramacion.getSelectedItem().toString();
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
 
                 //Crear objetos
@@ -145,7 +150,7 @@ public class EmpleadoProgramador extends JFrame {
 
         btnCrearUser.setPreferredSize(new Dimension(380, 45));
         panelBoton.add(btnCrearUser);
-        
+
         panelRegistro.add(panelBoton, BorderLayout.SOUTH);
 
         return panelRegistro;

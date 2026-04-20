@@ -64,13 +64,21 @@ public class EmpleadoGerente extends JFrame {
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
 
+
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
+
         for (Departamento d : departamentos) {
             comboBoxDepart.addItem(d);
         }
 
+        comboBoxDepart.setSelectedIndex(0);
+
         JTextField txtbono = crearFields();
 
-        JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{"Alto", "Medio", "Bajo"});
+        JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{
+                "Selecciona nivel de gerente...", "Alto", "Medio", "Bajo"});
+
+        comboBoxNivel.setSelectedIndex(0);
 
         panelFields.add(txtsalario);
         panelFields.add(comboBoxDepart);
@@ -104,6 +112,8 @@ public class EmpleadoGerente extends JFrame {
                 String salarioTexto = txtsalario.getText().trim();
                 String bonoTexto = txtbono.getText().trim();
                 Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
+                int indexNivel = comboBoxNivel.getSelectedIndex();
+                int indexDepartamento = comboBoxDepart.getSelectedIndex();
                 Object nivelObj = comboBoxNivel.getSelectedItem();
 
                 //Validaciones
@@ -112,8 +122,13 @@ public class EmpleadoGerente extends JFrame {
                     return;
                 }
 
-                if (departamento == null) {
-                    mostrarError("⚠️ Debes seleccionar un departamento.");
+                if (indexDepartamento == 0 || departamento == null) {
+                    mostrarError("⚠️ Debe seleccionar un departamento");
+                    return;
+                }
+
+                if (indexNivel == 0 || nivelObj == null) {
+                    mostrarError("⚠️ Debes seleccionar un nivel.");
                     return;
                 }
 
@@ -122,14 +137,9 @@ public class EmpleadoGerente extends JFrame {
                     return;
                 }
 
-                if (nivelObj == null) {
-                    mostrarError("⚠️ Debes seleccionar un nivel.");
-                    return;
-                }
-
                 // Conversión de datos
                 int idDept = departamento.getId();
-                String nivel = nivelObj.toString();
+                String nivel = comboBoxNivel.getSelectedItem().toString();
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
                 double bono = Double.parseDouble(bonoTexto.replace(",", "."));
 
