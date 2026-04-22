@@ -48,28 +48,25 @@ public class DarAltaEmpleado extends JFrame {
         panelRegistro.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 10));
 
         // Panel central con los labels y los campos
-        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 30));
 
-        JPanel panelLabels = new JPanel(new GridLayout(7, 1, 5, 5));
+        JPanel panelLabels = new JPanel(new GridLayout(6, 1, 5, 5));
         panelLabels.add(crearLabels("DNI: "));
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
         panelLabels.add(crearLabels("Teléfono: "));
-        panelLabels.add(crearLabels("Email: "));
         panelLabels.add(crearLabels("¿Gerente?: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(7, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(6, 1, 5, 5));
         txtDni = crearFields();
         txtNombre = crearFields();
         txtApellidos = crearFields();
         txtTelefono = crearFields();
-        txtEmail = crearFields();
 
         panelFields.add(txtDni);
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
         panelFields.add(txtTelefono);
-        panelFields.add(txtEmail);
 
         JPanel panelGerente = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         panelGerente.setOpaque(false);
@@ -107,10 +104,9 @@ public class DarAltaEmpleado extends JFrame {
                 String nombre = txtNombre.getText().trim();
                 String apellidos = txtApellidos.getText().trim();
                 String telefono = txtTelefono.getText().trim();
-                String email = txtEmail.getText().trim();
                 boolean esGerente = rbSi.isSelected();
 
-                if (!Validator.camposRellenos(dni, nombre, apellidos, telefono, email)) {
+                if (!Validator.camposRellenos(dni, nombre, apellidos, telefono)) {
                     mostrarError("⚠️ Rellene todos los campos de texto.");
                     return;
                 }
@@ -140,11 +136,7 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
-                if (!Validator.validarEmail(email)) {
-                    mostrarError("⚠️ El email debe ser válido (Ej. example@correo.com)");
-                    return;
-                }
-
+                String email = generarEmail(nombre, apellidos);
                 Empleados empleado = new Empleados(dni, nombre, apellidos, email, telefono);
                 if (comprobarEmpleados(empleado)) {
                     mostrarError("⚠️ Este empelado ya existe en la empresa");

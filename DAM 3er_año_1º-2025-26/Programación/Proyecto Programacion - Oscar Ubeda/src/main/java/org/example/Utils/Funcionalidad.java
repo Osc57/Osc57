@@ -126,5 +126,30 @@ public class Funcionalidad {
         lista.setBackground(COLOR_FONDO_GRIS_CLARO);
     }
 
+    public static String generarEmail(String nombre, String apellidos) {
+        // 1. Limpiar espacios y pasar a minúsculas
+        nombre = nombre.trim().toLowerCase();
+        apellidos = apellidos.trim().toLowerCase();
+
+        // 2. Obtener la primera letra del nombre
+        char primeraLetraNombre = nombre.charAt(0);
+
+        // 3. Separar los apellidos (asumiendo que vienen en un solo String)
+        String[] partesApellidos = apellidos.split(" ");
+
+        String primerApellido = "";
+        String letraSegundoApellido = "";
+
+        if (partesApellidos.length >= 2) {
+            primerApellido = partesApellidos[0];
+            letraSegundoApellido = String.valueOf(partesApellidos[1].charAt(0));
+        } else {
+            // En caso de que solo tenga un apellido
+            primerApellido = apellidos;
+        }
+
+        // 4. Construir el resultado
+        return primeraLetraNombre + primerApellido + letraSegundoApellido + "@empresa.emp";
+    }
 
 }
