@@ -44,8 +44,8 @@ public class GestionEmpleado extends JFrame {
         botonModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
-
+                dispose();
+                new ModificarEmpleado().setVisible(true);
             }
         });
 

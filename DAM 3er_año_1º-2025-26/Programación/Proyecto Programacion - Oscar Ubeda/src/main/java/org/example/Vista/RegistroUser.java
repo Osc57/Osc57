@@ -63,8 +63,11 @@ public class RegistroUser extends JFrame {
         panelCentro.add(panelFields);
         panelRegistro.add(panelCentro, BorderLayout.CENTER);
 
+        JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
+
         // Panel del botón centrado abajo
         JButton btnCrearUser = crearEstiloBotonSubmit("CREAR USUARIO");
+        btnCrearUser.setPreferredSize(new Dimension(385, 45));
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -118,8 +121,6 @@ public class RegistroUser extends JFrame {
             }
         });
 
-        JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
-        btnCrearUser.setPreferredSize(new Dimension(385, 45));
         panelBoton.add(btnCrearUser);
 
 

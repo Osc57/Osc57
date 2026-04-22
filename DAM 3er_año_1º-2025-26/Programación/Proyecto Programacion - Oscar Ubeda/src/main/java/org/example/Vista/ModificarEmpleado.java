@@ -5,12 +5,16 @@ import org.example.Modelo.Empleados;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
+import static org.example.ControladorDAO.EmpleadosDAO.seleccionarGerenteEmpleado;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Messages.mostrarError;
 
-public class ModificarEmpleado extends JFrame{
+public class ModificarEmpleado extends JFrame {
 
 
     public ModificarEmpleado() {
@@ -36,18 +40,44 @@ public class ModificarEmpleado extends JFrame{
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
-        modelEmpelados = new DefaultListModel<>();
-        listaEmpelados = new JList<>(modelEmpelados);
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        JScrollPane jScrollPane = new JScrollPane(listaEmpelados);
-        jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 10));
+        configurarListaEnScroll(LISTA_EMPLEADOS);
+
+        JScrollPane jScrollPane = new JScrollPane(LISTA_EMPLEADOS);
+        jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 5));
 
         ArrayList<Empleados> empleados = mostrarEmpleados();
         for (Empleados t : empleados) {
-            modelEmpelados.addElement(t);
+            MODEL_EMPLEADOS.addElement(t);
         }
 
+        JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR EMPLEADO");
+        btnSeleccionEmple.setPreferredSize(new Dimension(420, 45));
+
+        btnSeleccionEmple.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Empleados seleccionado = LISTA_EMPLEADOS.getSelectedValue();
+
+                if (seleccionado == null) {
+                    mostrarError("⚠️ Seleccione una opción");
+                    return;
+                }
+
+                if (seleccionarGerenteEmpleado(seleccionado)) {
+                    mostrarError("Es gerente");
+                } else {
+                    mostrarError("No es gerente");
+                }
+            }
+        });
+
+        panelBoton.add(btnSeleccionEmple);
+
         panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
+        panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
+
         return panelPrincipal;
     }
 

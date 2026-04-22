@@ -152,11 +152,10 @@ public class DarAltaEmpleado extends JFrame {
                 }
 
                 //Ocultar this para mantener datos por si quiere volver atrás
+                setVisible(false);
                 if (esGerente) {
-                    setVisible(false);
                     new EmpleadoGerente(DarAltaEmpleado.this, empleado).setVisible(true);
                 } else {
-                    setVisible(false);
                     new EmpleadoProgramador(DarAltaEmpleado.this, empleado).setVisible(true);
                 }
 

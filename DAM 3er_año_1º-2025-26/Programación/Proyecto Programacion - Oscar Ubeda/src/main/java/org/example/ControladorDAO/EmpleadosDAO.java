@@ -97,4 +97,19 @@ public class EmpleadosDAO {
         }
     }
 
+    public static boolean seleccionarGerenteEmpleado(Empleados empleados) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM gerentes WHERE dni = ?")) {
+
+            ps.setString(1, empleados.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

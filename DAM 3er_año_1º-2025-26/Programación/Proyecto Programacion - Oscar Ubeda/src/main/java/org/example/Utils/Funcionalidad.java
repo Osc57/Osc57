@@ -25,8 +25,8 @@ public class Funcionalidad {
     public static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
 
-    protected static JList<Empleados> listaEmpelados;
-    protected static DefaultListModel<Empleados> modelEmpelados;
+    public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
+    public static final JList<Empleados> LISTA_EMPLEADOS = new JList<>(MODEL_EMPLEADOS);
 
     public static JButton crearEstiloBotonSubmit(String texto) {
         JButton boton = new JButton(texto);
@@ -117,5 +117,14 @@ public class Funcionalidad {
             }
         });
     }
+
+    public static void configurarListaEnScroll(JList<?> lista) {
+
+        lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lista.setFont(new Font("Arial", Font.PLAIN, 18));
+        lista.setFixedCellHeight(35);
+        lista.setBackground(COLOR_FONDO_GRIS_CLARO);
+    }
+
 
 }
