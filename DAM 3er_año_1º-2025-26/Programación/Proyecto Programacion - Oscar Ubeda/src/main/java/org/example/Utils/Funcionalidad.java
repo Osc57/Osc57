@@ -1,5 +1,6 @@
 package org.example.Utils;
 
+import org.example.Modelo.Empleados;
 import org.example.Vista.Login;
 
 import javax.swing.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Estilos {
+public class Funcionalidad {
     public static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
     public static final Font FUENTE_TITULO_2 = new Font("Arial", Font.BOLD, 25);
 
@@ -23,6 +24,9 @@ public class Estilos {
     public static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     public static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
+
+    protected static JList<Empleados> listaEmpelados;
+    protected static DefaultListModel<Empleados> modelEmpelados;
 
     public static JButton crearEstiloBotonSubmit(String texto) {
         JButton boton = new JButton(texto);

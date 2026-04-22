@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.EmpleadosDAO.comprobarEmpleados;
-import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
 public class DarAltaEmpleado extends JFrame {

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Funcionalidad.*;
 
 public class GestionAfterLogin extends JFrame {
 

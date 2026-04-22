@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.UsuariosDAO.*;
-import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
 public class RegistroUser extends JFrame {

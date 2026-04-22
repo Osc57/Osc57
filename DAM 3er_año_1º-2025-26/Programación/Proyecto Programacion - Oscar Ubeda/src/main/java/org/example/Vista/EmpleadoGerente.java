@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
-import static org.example.Utils.Estilos.*;
+import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
 public class EmpleadoGerente extends JFrame {
