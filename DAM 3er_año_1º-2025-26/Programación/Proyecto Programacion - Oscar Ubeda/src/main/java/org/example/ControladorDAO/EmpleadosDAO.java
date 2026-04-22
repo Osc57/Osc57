@@ -47,7 +47,7 @@ public class EmpleadosDAO {
     public static boolean insertarEmpleado(Empleados empleados) {
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO empleados (dni,nombre,apellidos,email,salario,id_depa) VALUES (?,?,?,?,?,?)")) {
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO empleados (dni,nombre,apellidos,email,salario,id_depa,telefono) VALUES (?,?,?,?,?,?,?)")) {
 
             ps.setString(1, empleados.getDni());
             ps.setString(2, empleados.getNombre());
@@ -55,6 +55,7 @@ public class EmpleadosDAO {
             ps.setString(4, empleados.getEmail());
             ps.setDouble(5, empleados.getSalario());
             ps.setInt(6, empleados.getDepartamento());
+            ps.setString(7, empleados.getTelefono());
 
             int filasAfectadas = ps.executeUpdate();
 
@@ -102,6 +103,21 @@ public class EmpleadosDAO {
              PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM gerentes WHERE dni = ?")) {
 
             ps.setString(1, empleados.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean emailExistente(Empleados empleados) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE email = ?")) {
+
+            ps.setString(1, empleados.getEmail());
 
             ResultSet rs = ps.executeQuery();
 

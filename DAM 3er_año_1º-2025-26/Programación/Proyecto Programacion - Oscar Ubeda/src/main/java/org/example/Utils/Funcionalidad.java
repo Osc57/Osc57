@@ -1,5 +1,6 @@
 package org.example.Utils;
 
+import org.example.ControladorDAO.EmpleadosDAO;
 import org.example.Modelo.Empleados;
 import org.example.Vista.Login;
 
@@ -7,6 +8,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.UUID;
+
+import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 
 public class Funcionalidad {
     public static final Font FUENTE_TITULO = new Font("Arial", Font.BOLD, 42);
@@ -27,6 +33,8 @@ public class Funcionalidad {
 
     public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
     public static final JList<Empleados> LISTA_EMPLEADOS = new JList<>(MODEL_EMPLEADOS);
+
+    //===============================================================================================
 
     public static JButton crearEstiloBotonSubmit(String texto) {
         JButton boton = new JButton(texto);
@@ -102,6 +110,8 @@ public class Funcionalidad {
         return rb;
     }
 
+    //===============================================================================================
+
     public static void configurarCierreVentana(JFrame ventana) {
         ventana.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         ventana.addWindowListener(new WindowAdapter() {
@@ -118,6 +128,8 @@ public class Funcionalidad {
         });
     }
 
+    //===============================================================================================
+
     public static void configurarListaEnScroll(JList<?> lista) {
 
         lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -126,30 +138,74 @@ public class Funcionalidad {
         lista.setBackground(COLOR_FONDO_GRIS_CLARO);
     }
 
-    public static String generarEmail(String nombre, String apellidos) {
-        // 1. Limpiar espacios y pasar a minúsculas
+    //===============================================================================================
+
+    public static String generarEmailBase(String nombre, String apellidos) {
         nombre = nombre.trim().toLowerCase();
         apellidos = apellidos.trim().toLowerCase();
 
-        // 2. Obtener la primera letra del nombre
-        char primeraLetraNombre = nombre.charAt(0);
+        char primeraLetra = nombre.charAt(0);
 
-        // 3. Separar los apellidos (asumiendo que vienen en un solo String)
-        String[] partesApellidos = apellidos.split(" ");
+        String[] partes = apellidos.split(" ");
+        String primerApellido = partes[0];
+        String letraSegundoApellido = partes.length >= 2 ? String.valueOf(partes[1].charAt(0)) : "";
 
-        String primerApellido = "";
-        String letraSegundoApellido = "";
+        return primeraLetra + primerApellido + letraSegundoApellido;
+    }
 
-        if (partesApellidos.length >= 2) {
-            primerApellido = partesApellidos[0];
-            letraSegundoApellido = String.valueOf(partesApellidos[1].charAt(0));
-        } else {
-            // En caso de que solo tenga un apellido
-            primerApellido = apellidos;
+    public static String generarEmailUnico(String nombre, String apellidos) {
+
+        String base = generarEmailBase(nombre, apellidos);
+        String dominio = "@empresa.emp";
+
+        // Empleado temporal para comprobar duplicados
+        Empleados temp = new Empleados();
+        temp.setEmail(base + dominio);
+
+        // 1. Si no existe, perfecto
+        if (!emailExistente(temp)) {
+            return temp.getEmail();
         }
 
-        // 4. Construir el resultado
-        return primeraLetraNombre + primerApellido + letraSegundoApellido + "@empresa.emp";
+        // 2. Añadir más letras del nombre
+        nombre = nombre.toLowerCase();
+        for (int i = 1; i < nombre.length(); i++) {
+            temp.setEmail(base + nombre.charAt(i) + dominio);
+            if (!emailExistente(temp)) {
+                return temp.getEmail();
+            }
+        }
+
+        // 3. Añadir más letras del apellido
+        apellidos = apellidos.toLowerCase();
+        String[] partes = apellidos.split(" ");
+        String primerApellido = partes[0];
+
+        for (int i = 1; i < primerApellido.length(); i++) {
+            temp.setEmail(base + primerApellido.charAt(i) + dominio);
+            if (!emailExistente(temp)) {
+                return temp.getEmail();
+            }
+        }
+
+        // 4. Último recurso elegante (sin números)
+        temp.setEmail(base + "_" + UUID.randomUUID().toString().substring(0, 4) + dominio);
+        return temp.getEmail();
     }
+
+    // Esta versión prepara los datos y llama a la tuya
+    public static String generarEmailUnicoLimpio(String nombre, String apellidos) {
+        return generarEmailUnico(quitarTildes(nombre), quitarTildes(apellidos));
+    }
+
+    // Función auxiliar de limpieza
+    private static String quitarTildes(String texto) {
+        if (texto == null) return "";
+        String normalizado = Normalizer.normalize(texto, Normalizer.Form.NFD);
+
+        return normalizado.replaceAll("[^\\p{ASCII}]", "");
+    }
+
+    //===============================================================================================
 
 }
