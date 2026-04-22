@@ -34,6 +34,8 @@ public class Funcionalidad {
     public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
     public static final JList<Empleados> LISTA_EMPLEADOS = new JList<>(MODEL_EMPLEADOS);
 
+    private static final String DOMINIO = "@empresa.emp";
+
     //===============================================================================================
 
     public static JButton crearEstiloBotonSubmit(String texto) {
@@ -156,11 +158,11 @@ public class Funcionalidad {
     public static String generarEmailUnico(String nombre, String apellidos) {
 
         String base = generarEmailBase(nombre, apellidos);
-        String dominio = "@empresa.emp";
+
 
         // Empleado temporal para comprobar duplicados
         Empleados temp = new Empleados();
-        temp.setEmail(base + dominio);
+        temp.setEmail(base + DOMINIO);
 
         // 1. Si no existe, perfecto
         if (!emailExistente(temp)) {
@@ -170,7 +172,7 @@ public class Funcionalidad {
         // 2. Añadir más letras del nombre
         nombre = nombre.toLowerCase();
         for (int i = 1; i < nombre.length(); i++) {
-            temp.setEmail(base + nombre.charAt(i) + dominio);
+            temp.setEmail(base + nombre.charAt(i) + DOMINIO);
             if (!emailExistente(temp)) {
                 return temp.getEmail();
             }
@@ -182,14 +184,14 @@ public class Funcionalidad {
         String primerApellido = partes[0];
 
         for (int i = 1; i < primerApellido.length(); i++) {
-            temp.setEmail(base + primerApellido.charAt(i) + dominio);
+            temp.setEmail(base + primerApellido.charAt(i) + DOMINIO);
             if (!emailExistente(temp)) {
                 return temp.getEmail();
             }
         }
 
         // 4. Último recurso elegante (sin números)
-        temp.setEmail(base + "_" + UUID.randomUUID().toString().substring(0, 4) + dominio);
+        temp.setEmail(base + "_" + UUID.randomUUID().toString().substring(0, 4) + DOMINIO);
         return temp.getEmail();
     }
 
