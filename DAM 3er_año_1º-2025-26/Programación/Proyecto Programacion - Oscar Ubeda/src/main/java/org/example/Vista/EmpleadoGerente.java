@@ -49,7 +49,7 @@ public class EmpleadoGerente extends JFrame {
 
     private JPanel getjPanelDatosUsuario() {
         JPanel panelRegistro = new JPanel(new BorderLayout());
-        panelRegistro.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 10));
+        panelRegistro.setBorder(BorderFactory.createEmptyBorder(30, 15, 15, 10));
 
         // Panel central con los labels y los campos
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -164,5 +164,4 @@ public class EmpleadoGerente extends JFrame {
 
         return panelRegistro;
     }
-
 }

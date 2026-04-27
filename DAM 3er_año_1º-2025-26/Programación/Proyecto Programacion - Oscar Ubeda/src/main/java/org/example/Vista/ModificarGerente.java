@@ -48,4 +48,5 @@ public class ModificarGerente extends JFrame {
 
         return panelPrincipal;
     }
+
 }
