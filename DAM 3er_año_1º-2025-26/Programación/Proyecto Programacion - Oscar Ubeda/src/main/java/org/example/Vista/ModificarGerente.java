@@ -26,7 +26,7 @@ public class ModificarGerente extends JFrame {
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelModificarGerente = getJPanelModificarGerente();
-        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new GestionEmpleado());
+        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new ModificarEmpleado());
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelModificarGerente, BorderLayout.CENTER);
@@ -36,6 +36,15 @@ public class ModificarGerente extends JFrame {
     public JPanel getJPanelModificarGerente() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
+
+        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 30));
+
+        JPanel panelLabels = new JPanel(new GridLayout(6, 1, 5, 5));
+        panelLabels.add(crearLabels("Nombre: "));
+        panelLabels.add(crearLabels("Apellidos: "));
+        panelLabels.add(crearLabels("Teléfono: "));
+        panelLabels.add(crearLabels("Depto.: "));
+        panelLabels.add(crearLabels("Bono: "));
 
         return panelPrincipal;
     }

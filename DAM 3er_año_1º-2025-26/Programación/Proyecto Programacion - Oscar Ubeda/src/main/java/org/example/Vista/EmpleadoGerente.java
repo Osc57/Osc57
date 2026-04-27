@@ -16,6 +16,7 @@ import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Validator.calcularBono;
 
 public class EmpleadoGerente extends JFrame {
 
@@ -53,13 +54,12 @@ public class EmpleadoGerente extends JFrame {
         // Panel central con los labels y los campos
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        JPanel panelLabels = new JPanel(new GridLayout(4, 1, 5, 5));
+        JPanel panelLabels = new JPanel(new GridLayout(3, 1, 5, 5));
         panelLabels.add(crearLabels("Salario: "));
         panelLabels.add(crearLabels("Depto.: "));
-        panelLabels.add(crearLabels("Bono: "));
         panelLabels.add(crearLabels("Nivel: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(4, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(3, 1, 5, 5));
         JTextField txtsalario = crearFields();
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
@@ -73,8 +73,6 @@ public class EmpleadoGerente extends JFrame {
 
         comboBoxDepart.setSelectedIndex(0);
 
-        JTextField txtbono = crearFields();
-
         JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{
                 "Selecciona nivel de gerente...", "Alto", "Medio", "Bajo"});
 
@@ -82,7 +80,6 @@ public class EmpleadoGerente extends JFrame {
 
         panelFields.add(txtsalario);
         panelFields.add(comboBoxDepart);
-        panelFields.add(txtbono);
         panelFields.add(comboBoxNivel);
 
 
@@ -110,7 +107,6 @@ public class EmpleadoGerente extends JFrame {
 
                 //Datos del formulario
                 String salarioTexto = txtsalario.getText().trim();
-                String bonoTexto = txtbono.getText().trim();
                 Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
                 int indexNivel = comboBoxNivel.getSelectedIndex();
                 int indexDepartamento = comboBoxDepart.getSelectedIndex();
@@ -132,16 +128,13 @@ public class EmpleadoGerente extends JFrame {
                     return;
                 }
 
-                if (!Validator.bonoValido(bonoTexto)) {
-                    mostrarError("⚠️ El bono debe ser un número válido mayor que 0.");
-                    return;
-                }
 
                 // Conversión de datos
                 int idDept = departamento.getId();
                 String nivel = comboBoxNivel.getSelectedItem().toString();
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
-                double bono = Double.parseDouble(bonoTexto.replace(",", "."));
+
+                double bonoCalculado = calcularBono(nivel, salario);
 
                 //Crear objetos
                 Empleados empleadoCompleto = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
@@ -152,7 +145,7 @@ public class EmpleadoGerente extends JFrame {
                     return;
                 }
 
-                Gerente gerente = new Gerente(dni, bono, nivel);
+                Gerente gerente = new Gerente(dni, bonoCalculado, nivel);
 
                 if (!insertarGerente(empleadoCompleto, gerente)) {
                     mostrarError("❌ Error al insertar los datos del gerente.");

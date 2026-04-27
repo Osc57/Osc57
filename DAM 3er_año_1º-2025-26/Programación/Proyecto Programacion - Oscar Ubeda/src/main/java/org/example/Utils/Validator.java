@@ -32,7 +32,7 @@ public class Validator {
     }
 
     public static boolean apellidosValido(String apellido) {
-        return apellido.matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)?$");
+        return apellido.matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)+$");
     }
 
     public static boolean telefonoValido(String telefono) {
@@ -69,6 +69,17 @@ public class Validator {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static double calcularBono(String rango, double salarioBase) {
+        double porcentaje = switch (rango.toUpperCase()) {
+            case "ALTO" -> 0.50;
+            case "MEDIO" -> 0.25;
+            case "BAJO" -> 0.10;
+            default -> 0;
+        };
+
+        return salarioBase * porcentaje;
     }
 
 }
