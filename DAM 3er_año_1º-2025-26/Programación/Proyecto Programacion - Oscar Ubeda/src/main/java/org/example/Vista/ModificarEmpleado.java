@@ -65,7 +65,9 @@ public class ModificarEmpleado extends JFrame {
                     return;
                 }
 
+                dispose();
                 if (seleccionarGerenteEmpleado(seleccionado)) {
+                    new ModificarGerente(seleccionado).setVisible(true);
                     mostrarError("Es gerente");
                 } else {
                     mostrarError("No es gerente");

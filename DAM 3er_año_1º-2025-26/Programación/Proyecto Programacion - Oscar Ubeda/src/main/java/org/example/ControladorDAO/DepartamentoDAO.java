@@ -69,5 +69,25 @@ public class DepartamentoDAO {
         return departamentos;
     }
 
+    public static Departamento mostrarNombreDepartamento(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT nombre FROM departamentos WHERE id = ?")) {
+
+            ps.setInt(1, departamento.getId());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                departamento.setNombre(rs.getString("nombre"));
+            } else {
+                departamento.setNombre(null);
+            }
+
+            return departamento;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

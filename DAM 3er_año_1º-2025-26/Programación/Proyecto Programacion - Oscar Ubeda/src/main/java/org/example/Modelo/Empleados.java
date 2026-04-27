@@ -3,6 +3,9 @@ package org.example.Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.ControladorDAO.DepartamentoDAO.mostrarNombreDepartamento;
+import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+
 public class Empleados {
     private String dni;
     private String nombre;
@@ -99,10 +102,17 @@ public class Empleados {
     public void setProyectos(List<Proyecto> proyectos) {
         this.proyectos = proyectos;
     }
-    
+
+
+    public String mostrarEmpleado() {
+        return dni + " - " + nombre + " " + apellidos + " - " + departamento;
+    }
 
     @Override
     public String toString() {
-        return dni + " - " + nombre + " - " + apellidos + " - " + email + " - " + salario + "€" + " - " + departamento;
+        Departamento d = new Departamento();
+        d.setId(departamento);
+        mostrarNombreDepartamento(d);
+        return dni + " - " + nombre + " " + apellidos + " - " + email + " - " + salario + "€" + " - " + d.getNombre();
     }
 }
