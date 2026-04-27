@@ -9,8 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
-import static org.example.ControladorDAO.EmpleadosDAO.seleccionarGerenteEmpleado;
+import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
@@ -64,11 +63,11 @@ public class ModificarEmpleado extends JFrame {
                     mostrarError("⚠️ Seleccione una opción");
                     return;
                 }
+                obtenerDatosEmpelado(seleccionado);
 
                 dispose();
                 if (seleccionarGerenteEmpleado(seleccionado)) {
                     new ModificarGerente(seleccionado).setVisible(true);
-                    mostrarError("Es gerente");
                 } else {
                     mostrarError("No es gerente");
                 }

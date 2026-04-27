@@ -128,4 +128,27 @@ public class EmpleadosDAO {
         }
     }
 
+    public static Empleados obtenerDatosEmpelado(Empleados empleado) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT nombre, apellidos, salario, telefono, id_depa FROM empleados WHERE dni = ?")) {
+
+            ps.setString(1, empleado.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setApellidos(rs.getString("apellidos"));
+                empleado.setSalario(rs.getDouble("salario"));
+                empleado.setTelefono(rs.getString("telefono"));
+                empleado.setDepartamento(rs.getInt("id_depa"));
+            }
+
+            return empleado;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

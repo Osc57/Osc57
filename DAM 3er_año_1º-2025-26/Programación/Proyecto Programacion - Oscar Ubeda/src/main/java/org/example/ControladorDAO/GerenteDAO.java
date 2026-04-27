@@ -63,4 +63,23 @@ public class GerenteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public static Gerente obtenerNivelGerente(Empleados empleados) {
+        Gerente gerente = new Gerente();
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT nivel FROM gerentes WHERE dni = ?")) {
+
+            ps.setString(1, empleados.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                gerente.setNivel(rs.getString("nivel"));
+            }
+
+            return gerente;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -104,8 +104,8 @@ public class Empleados {
     }
 
 
-    public String mostrarEmpleado() {
-        return dni + " - " + nombre + " " + apellidos + " - " + departamento;
+    public String getDatos() {
+        return dni + " - " + nombre + " " + apellidos + " - " + telefono + " - " + departamento;
     }
 
     @Override

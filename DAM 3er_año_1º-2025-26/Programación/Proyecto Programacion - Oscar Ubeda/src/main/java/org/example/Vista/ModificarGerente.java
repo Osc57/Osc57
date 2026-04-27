@@ -2,19 +2,30 @@ package org.example.Vista;
 
 import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Gerente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+import static org.example.ControladorDAO.GerenteDAO.obtenerNivelGerente;
 import static org.example.Utils.Funcionalidad.*;
 
 public class ModificarGerente extends JFrame {
     private Empleados empleado;
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
+    private Gerente gerente;
+
+    JTextField txtNombre = new JTextField();
+    JTextField txtApellidos = new JTextField();
+    JTextField txtTelefono = new JTextField();
+    JTextField txtSalario = new JTextField();
 
     public ModificarGerente(Empleados empleado) {
+        this.empleado = empleado;
+        this.gerente = obtenerNivelGerente(empleado);
+
         this.setTitle("Modificar Gerente");
         this.setSize(480, 460);
         this.setLocationRelativeTo(null);
@@ -43,8 +54,40 @@ public class ModificarGerente extends JFrame {
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
         panelLabels.add(crearLabels("Teléfono: "));
+        panelLabels.add(crearLabels("Salario: "));
         panelLabels.add(crearLabels("Depto.: "));
-        panelLabels.add(crearLabels("Bono: "));
+        panelLabels.add(crearLabels("Nivel: "));
+
+        JPanel panelFields = new JPanel(new GridLayout(6, 1, 5, 5));
+        (txtNombre = crearFields()).setText(empleado.getNombre());
+        (txtApellidos = crearFields()).setText(empleado.getApellidos());
+        (txtTelefono = crearFields()).setText(empleado.getTelefono());
+        (txtSalario = crearFields()).setText(empleado.getSalario() + "");
+
+        JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
+
+        for (Departamento d : departamentos) {
+            comboBoxDepart.addItem(d);
+        }
+
+        comboBoxDepart.setSelectedIndex(empleado.getDepartamento());
+
+        JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{
+                "Selecciona nivel de gerente...", "Alto", "Medio", "Bajo"});
+
+        comboBoxNivel.setSelectedItem(gerente.getNivel());
+
+        panelFields.add(txtNombre);
+        panelFields.add(txtApellidos);
+        panelFields.add(txtTelefono);
+        panelFields.add(txtSalario);
+        panelFields.add(comboBoxDepart);
+        panelFields.add(comboBoxNivel);
+
+        panelCentro.add(panelLabels);
+        panelCentro.add(panelFields);
+        panelPrincipal.add(panelCentro, BorderLayout.CENTER);
 
         return panelPrincipal;
     }
