@@ -3,14 +3,18 @@ package org.example.Vista;
 import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
+import org.example.Utils.Validator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.GerenteDAO.obtenerNivelGerente;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Messages.mostrarError;
 
 public class ModificarGerente extends JFrame {
     private Empleados empleado;
@@ -32,7 +36,7 @@ public class ModificarGerente extends JFrame {
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione empleado a modificar");
+        JLabel introducirCliente = new JLabel("•Seleccione datos del gerente");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -48,7 +52,7 @@ public class ModificarGerente extends JFrame {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
-        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 30));
+        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         JPanel panelLabels = new JPanel(new GridLayout(6, 1, 5, 5));
         panelLabels.add(crearLabels("Nombre: "));
@@ -85,9 +89,52 @@ public class ModificarGerente extends JFrame {
         panelFields.add(comboBoxDepart);
         panelFields.add(comboBoxNivel);
 
+        JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
+        JButton btnCrearUser = crearEstiloBotonSubmit("MODIFICAR DATOS");
+
+        btnCrearUser.setPreferredSize(new Dimension(380, 45));
+        panelBoton.add(btnCrearUser);
+
+        btnCrearUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = txtNombre.getText().trim();
+                String apellidos = txtApellidos.getText().trim();
+                String telefono = txtTelefono.getText().trim();
+                String salarioTexto = txtSalario.getText().trim();
+
+                Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
+                int indexNivel = comboBoxNivel.getSelectedIndex();
+                int indexDepartamento = comboBoxDepart.getSelectedIndex();
+                Object nivelObj = comboBoxNivel.getSelectedItem();
+
+                if (!Validator.camposRellenos(nombre, apellidos, telefono, salarioTexto)) {
+                    mostrarError("⚠️ Rellene todos los campos de texto.");
+                    return;
+                }
+
+                if (!Validator.nombreValido(nombre)) {
+                    mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
+                    return;
+                }
+
+                if (!Validator.apellidosValido(apellidos)) {
+                    mostrarError("⚠️ El apellido debe empezar por mayúscula y ser letras");
+                    return;
+                }
+
+                if (!Validator.telefonoValido(telefono)) {
+                    mostrarError("⚠️ El teléfono deben ser 9 números");
+                    return;
+                }
+
+            }
+        });
+
         panelCentro.add(panelLabels);
         panelCentro.add(panelFields);
         panelPrincipal.add(panelCentro, BorderLayout.CENTER);
+        panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
     }
