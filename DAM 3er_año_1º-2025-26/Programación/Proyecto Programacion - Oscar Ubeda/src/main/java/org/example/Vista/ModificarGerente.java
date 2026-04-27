@@ -33,9 +33,10 @@ public class ModificarGerente extends JFrame {
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
-    public JPanel getJPanelModificarGerente(){
+    public JPanel getJPanelModificarGerente() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
+        return panelPrincipal;
     }
 }
