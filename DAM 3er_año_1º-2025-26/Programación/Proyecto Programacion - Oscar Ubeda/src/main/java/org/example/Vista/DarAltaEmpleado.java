@@ -136,7 +136,7 @@ public class DarAltaEmpleado extends JFrame {
                     return;
                 }
 
-                String email = generarEmailUnicoLimpio(nombre, apellidos);
+                String email = generarEmailUnicoLimpio(nombre, apellidos);//Metodo en Funcionalidad
                 Empleados empleado = new Empleados(dni, nombre, apellidos, email, telefono);
                 if (comprobarEmpleados(empleado)) {
                     mostrarError("⚠️ Este empelado ya existe en la empresa");

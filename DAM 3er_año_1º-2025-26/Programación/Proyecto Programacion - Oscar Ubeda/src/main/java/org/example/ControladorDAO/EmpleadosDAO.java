@@ -153,13 +153,14 @@ public class EmpleadosDAO {
 
     public static boolean modificarDatosEmpleado(Empleados empleados) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("UPDATE empleados SET nombre = ?, apellidos = ?, telefono = ?, salario = ? WHERE dni = ?")) {
+             PreparedStatement ps = connection.prepareStatement("UPDATE empleados SET nombre = ?, apellidos = ?, telefono = ?, email = ?, salario = ? WHERE dni = ?")) {
 
             ps.setString(1, empleados.getNombre());
             ps.setString(2, empleados.getApellidos());
             ps.setString(3, empleados.getTelefono());
-            ps.setDouble(4, empleados.getSalario());
-            ps.setString(5, empleados.getDni());
+            ps.setString(4, empleados.getEmail());
+            ps.setDouble(5, empleados.getSalario());
+            ps.setString(6, empleados.getDni());
 
             int filasAfect = ps.executeUpdate();
 

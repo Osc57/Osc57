@@ -12,9 +12,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
+import static org.example.ControladorDAO.GerenteDAO.modificarDatosGerente;
 import static org.example.ControladorDAO.GerenteDAO.obtenerNivelGerente;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Validator.NOMBRE_EMPRESA;
+import static org.example.Utils.Validator.calcularBono;
 
 public class ModificarGerente extends JFrame {
     private Empleados empleado;
@@ -25,6 +29,7 @@ public class ModificarGerente extends JFrame {
     JTextField txtApellidos = new JTextField();
     JTextField txtTelefono = new JTextField();
     JTextField txtSalario = new JTextField();
+    JTextField txtEmail = new JTextField();
 
     public ModificarGerente(Empleados empleado) {
         this.empleado = empleado;
@@ -38,7 +43,7 @@ public class ModificarGerente extends JFrame {
 
         JLabel introducirCliente = new JLabel("•Seleccione datos del gerente");
         introducirCliente.setFont(FUENTE_TITULO_2);
-        introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
+        introducirCliente.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
 
         JPanel panelModificarGerente = getJPanelModificarGerente();
         JPanel panelBotonRetorno = getPanelBotonRetorno(this, new ModificarEmpleado());
@@ -50,22 +55,24 @@ public class ModificarGerente extends JFrame {
 
     public JPanel getJPanelModificarGerente() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(5, 15, 15, 15));
 
-        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        JPanel panelLabels = new JPanel(new GridLayout(6, 1, 5, 5));
+        JPanel panelLabels = new JPanel(new GridLayout(7, 1, 5, 5));
         panelLabels.add(crearLabels("Nombre: "));
         panelLabels.add(crearLabels("Apellidos: "));
         panelLabels.add(crearLabels("Teléfono: "));
+        panelLabels.add(crearLabels("Correo: "));
         panelLabels.add(crearLabels("Salario: "));
         panelLabels.add(crearLabels("Depto.: "));
         panelLabels.add(crearLabels("Nivel: "));
 
-        JPanel panelFields = new JPanel(new GridLayout(6, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(7, 1, 5, 5));
         (txtNombre = crearFields()).setText(empleado.getNombre());
         (txtApellidos = crearFields()).setText(empleado.getApellidos());
         (txtTelefono = crearFields()).setText(empleado.getTelefono());
+        (txtEmail = crearFields()).setText(empleado.getEmail());
         (txtSalario = crearFields()).setText(empleado.getSalario() + "");
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
@@ -85,6 +92,7 @@ public class ModificarGerente extends JFrame {
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
         panelFields.add(txtTelefono);
+        panelFields.add(txtEmail);
         panelFields.add(txtSalario);
         panelFields.add(comboBoxDepart);
         panelFields.add(comboBoxNivel);
@@ -98,8 +106,10 @@ public class ModificarGerente extends JFrame {
         btnCrearUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String dni = empleado.getDni();
                 String nombre = txtNombre.getText().trim();
                 String apellidos = txtApellidos.getText().trim();
+                String email = txtEmail.getText().trim();
                 String telefono = txtTelefono.getText().trim();
                 String salarioTexto = txtSalario.getText().trim();
 
@@ -123,9 +133,46 @@ public class ModificarGerente extends JFrame {
                     return;
                 }
 
+                if (!Validator.validarEmail(email)) {
+                    mostrarError("⚠️ Correo invalido, tiene tener " + NOMBRE_EMPRESA);
+                    return;
+                }
+
                 if (!Validator.telefonoValido(telefono)) {
                     mostrarError("⚠️ El teléfono deben ser 9 números");
                     return;
+                }
+
+                if (!Validator.salarioValido(salarioTexto)) {
+                    mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
+                    return;
+                }
+
+                if (indexDepartamento == 0 || departamento == null) {
+                    mostrarError("⚠️ Debe seleccionar un departamento");
+                    return;
+                }
+
+                if (indexNivel == 0 || nivelObj == null) {
+                    mostrarError("⚠️ Debes seleccionar un nivel.");
+                    return;
+                }
+
+                int idDept = departamento.getId();
+                String nivel = comboBoxNivel.getSelectedItem().toString();//Parseo objeto a String
+                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+
+                double bonoCalculado = calcularBono(nivel, salario);
+
+                Empleados empleadoModificado = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
+                Gerente gerenteModificado = new Gerente(bonoCalculado, nivel);
+
+                if (modificarDatosEmpleado(empleadoModificado) && modificarDatosGerente(empleadoModificado, gerenteModificado)) {
+                    mostrarError("✅ Gerente modificado exitosamente");
+                    dispose();
+                    new GestionEmpleado().setVisible(true);
+                } else {
+                    mostrarError("❌ Error al modificar el gerente");
                 }
 
             }

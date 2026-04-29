@@ -112,11 +112,11 @@ public class RegistroUser extends JFrame {
                 }
 
                 if (insertarUsuarios(new Usuarios(usuario, password, dni))) {
-                    JOptionPane.showMessageDialog(null, "✅ Usuario creado correctamente");
+                    mostrarError("✅ Usuario creado correctamente");
                     dispose();
                     new Login().setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "❌ Error al crear el usuario");
+                    mostrarError("❌ Error al crear el usuario");
                 }
             }
         });

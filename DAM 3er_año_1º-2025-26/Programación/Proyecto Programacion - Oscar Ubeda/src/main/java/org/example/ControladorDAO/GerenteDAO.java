@@ -82,4 +82,21 @@ public class GerenteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public static boolean modificarDatosGerente(Empleados empleados, Gerente gerente) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("UPDATE gerentes SET bono = ?, nivel = ? WHERE dni = ?")) {
+
+            ps.setDouble(1, gerente.getBono());
+            ps.setString(2, gerente.getNivel());
+            ps.setString(3, empleados.getDni());
+
+            int filasAfect = ps.executeUpdate();
+
+            return filasAfect > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

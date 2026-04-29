@@ -2,6 +2,8 @@ package org.example.Utils;
 
 public class Validator {
 
+    public static final String NOMBRE_EMPRESA = "@empresa.emp";
+
     public static boolean camposRellenos(String... campos) {
         for (String c : campos) {
             if (c == null || c.isBlank()) {
@@ -40,24 +42,10 @@ public class Validator {
     }
 
     public static boolean validarEmail(String email) {
-        return email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+        return email.matches("^[a-zA-Z0-9._%+-]+" + NOMBRE_EMPRESA + "$");
     }
 
     public static boolean salarioValido(String salarioTexto) {
-
-        salarioTexto = salarioTexto.trim().replace(",", ".");
-
-        try {
-            double salario = Double.parseDouble(salarioTexto);
-
-            return salario > 0;
-
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    public static boolean bonoValido(String salarioTexto) {
 
         salarioTexto = salarioTexto.trim().replace(",", ".");
 
