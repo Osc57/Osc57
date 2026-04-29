@@ -170,6 +170,7 @@ public class ModificarGerente extends JFrame {
 
                 if (emailExistente(empleadoModificado)) {
                     mostrarError("⚠️ Este email ya está registrado");
+                    return;
                 }
 
                 Gerente gerenteModificado = new Gerente(bonoCalculado, nivel);
