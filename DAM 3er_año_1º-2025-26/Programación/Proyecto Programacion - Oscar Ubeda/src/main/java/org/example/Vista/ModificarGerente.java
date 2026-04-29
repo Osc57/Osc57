@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.modificarDatosGerente;
 import static org.example.ControladorDAO.GerenteDAO.obtenerNivelGerente;
@@ -138,6 +139,7 @@ public class ModificarGerente extends JFrame {
                     return;
                 }
 
+
                 if (!Validator.telefonoValido(telefono)) {
                     mostrarError("⚠️ El teléfono deben ser 9 números");
                     return;
@@ -165,6 +167,11 @@ public class ModificarGerente extends JFrame {
                 double bonoCalculado = calcularBono(nivel, salario);
 
                 Empleados empleadoModificado = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
+
+                if (emailExistente(empleadoModificado)) {
+                    
+                }
+
                 Gerente gerenteModificado = new Gerente(bonoCalculado, nivel);
 
                 if (modificarDatosEmpleado(empleadoModificado) && modificarDatosGerente(empleadoModificado, gerenteModificado)) {

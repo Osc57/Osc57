@@ -29,15 +29,6 @@ public class Empleados {
         this.salario = salario;
     }
 
-    public Empleados(String nombre, String apellidos, String email, String telefono, double salario, int departamento) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.email = email;
-        this.telefono = telefono;
-        this.salario = salario;
-        this.departamento = departamento;
-    }
-
     public Empleados(String dni, String nombre, String apellidos, String email, String telefono, double salario, int departamento) {
         this.dni = dni;
         this.nombre = nombre;
