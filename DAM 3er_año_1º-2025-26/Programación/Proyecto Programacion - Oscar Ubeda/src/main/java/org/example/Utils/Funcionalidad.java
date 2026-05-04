@@ -29,7 +29,7 @@ public class Funcionalidad {
 
     public static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     public static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
-    
+
     public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
     public static final JList<Empleados> LISTA_EMPLEADOS = new JList<>(MODEL_EMPLEADOS);
 
