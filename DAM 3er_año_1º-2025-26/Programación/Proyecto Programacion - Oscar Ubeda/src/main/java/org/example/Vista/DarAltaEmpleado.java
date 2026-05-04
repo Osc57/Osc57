@@ -18,7 +18,6 @@ public class DarAltaEmpleado extends JFrame {
     private JTextField txtNombre;
     private JTextField txtApellidos;
     private JTextField txtTelefono;
-    private JTextField txtEmail;
 
     private JRadioButton rbSi;
     private JRadioButton rbNo;

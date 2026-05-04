@@ -51,7 +51,8 @@ public class GestionAfterLogin extends JFrame {
         botonHistorialCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+                dispose();
+                new GestionDepartamentos().setVisible(true);
 
             }
         });

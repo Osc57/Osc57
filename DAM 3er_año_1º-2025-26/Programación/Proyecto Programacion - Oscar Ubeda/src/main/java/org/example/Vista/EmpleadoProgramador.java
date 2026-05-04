@@ -22,6 +22,8 @@ public class EmpleadoProgramador extends JFrame {
     private Empleados empleado;
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
 
+    private final double MIN_PROG = 1600.0;
+    private final double MAX_PROG = 7000.0;
 
     public EmpleadoProgramador(DarAltaEmpleado ventanaAnterior, Empleados empleado) {
         this.ventanaAnterior = ventanaAnterior;
@@ -109,6 +111,17 @@ public class EmpleadoProgramador extends JFrame {
                     return;
                 }
 
+                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+                if (salario < MIN_PROG) {
+                    mostrarError("⚠️ El salario es demasiado bajo para un programador (Mín: " + MIN_PROG + "€)");
+                    return;
+                }
+
+                if (salario > MAX_PROG) {
+                    mostrarError("⚠️ El salario excede el rango técnico. Si cobra más de " + MAX_PROG + "€, quizás deba ser dado de alta como Gerente.");
+                    return;
+                }
+
                 if (indexDepartamento == 0) {
                     mostrarError("⚠️ Debe seleccionar un departamento");
                     return;
@@ -122,7 +135,7 @@ public class EmpleadoProgramador extends JFrame {
                 // Conversión de datos
                 int idDept = departamento.getId();
                 String lenguajeProgramacionString = comboBoxLProgramacion.getSelectedItem().toString();
-                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+
 
                 //Crear objetos
                 Empleados empleadoCompleto = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);

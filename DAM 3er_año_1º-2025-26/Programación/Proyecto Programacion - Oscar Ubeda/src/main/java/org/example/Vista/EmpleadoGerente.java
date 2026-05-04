@@ -24,6 +24,9 @@ public class EmpleadoGerente extends JFrame {
     private Empleados empleado;
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
 
+    private final double MIN_MES = 1425.0;
+    private final double MAX_MES = 18000.0;
+
     public EmpleadoGerente(DarAltaEmpleado ventanaAnterior, Empleados empleado) {
         this.ventanaAnterior = ventanaAnterior;
         this.empleado = empleado;
@@ -117,6 +120,13 @@ public class EmpleadoGerente extends JFrame {
                     mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
                 }
+                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+
+                if (salario < MIN_MES || salario > MAX_MES) {
+                    mostrarError("⚠️ El salario mensual no es coherente.\n" +
+                            "Rango permitido: " + MIN_MES + "€ - " + MAX_MES + "€");
+                    return;
+                }
 
                 if (indexDepartamento == 0 || departamento == null) {
                     mostrarError("⚠️ Debe seleccionar un departamento");
@@ -132,7 +142,7 @@ public class EmpleadoGerente extends JFrame {
                 // Conversión de datos
                 int idDept = departamento.getId();
                 String nivel = comboBoxNivel.getSelectedItem().toString();
-                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+
 
                 double bonoCalculado = calcularBono(nivel, salario);
 
