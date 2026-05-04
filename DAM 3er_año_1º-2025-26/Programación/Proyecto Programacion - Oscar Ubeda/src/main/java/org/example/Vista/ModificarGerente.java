@@ -150,6 +150,13 @@ public class ModificarGerente extends JFrame {
                     return;
                 }
 
+                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+                if (salario < MIN_MES || salario > MAX_MES) {
+                    mostrarError("⚠️ El salario mensual no es coherente.\n" +
+                            "Rango permitido: " + MIN_MES + "€ - " + MAX_MES + "€");
+                    return;
+                }
+
                 if (indexDepartamento == 0 || departamento == null) {
                     mostrarError("⚠️ Debe seleccionar un departamento");
                     return;
@@ -162,7 +169,7 @@ public class ModificarGerente extends JFrame {
 
                 int idDept = departamento.getId();
                 String nivel = comboBoxNivel.getSelectedItem().toString();//Parseo objeto a String
-                double salario = Double.parseDouble(salarioTexto.replace(",", "."));
+
 
                 double bonoCalculado = calcularBono(nivel, salario);
 

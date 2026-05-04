@@ -24,9 +24,6 @@ public class EmpleadoGerente extends JFrame {
     private Empleados empleado;
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
 
-    private final double MIN_MES = 1425.0;
-    private final double MAX_MES = 18000.0;
-
     public EmpleadoGerente(DarAltaEmpleado ventanaAnterior, Empleados empleado) {
         this.ventanaAnterior = ventanaAnterior;
         this.empleado = empleado;

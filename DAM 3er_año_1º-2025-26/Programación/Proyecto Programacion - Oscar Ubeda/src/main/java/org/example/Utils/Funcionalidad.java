@@ -36,6 +36,12 @@ public class Funcionalidad {
 
     private static final String DOMINIO = "@empresa.emp";
 
+    public static final double MIN_PROG = 1600.0;
+    public static final double MAX_PROG = 7000.0;
+
+    public static final double MIN_MES = 1425.0;
+    public static final double MAX_MES = 18000.0;
+
     //===============================================================================================
 
     public static JButton crearEstiloBotonSubmit(String texto) {

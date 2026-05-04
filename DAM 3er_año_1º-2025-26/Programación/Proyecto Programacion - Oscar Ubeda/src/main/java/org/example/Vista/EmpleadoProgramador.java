@@ -22,8 +22,7 @@ public class EmpleadoProgramador extends JFrame {
     private Empleados empleado;
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
 
-    private final double MIN_PROG = 1600.0;
-    private final double MAX_PROG = 7000.0;
+
 
     public EmpleadoProgramador(DarAltaEmpleado ventanaAnterior, Empleados empleado) {
         this.ventanaAnterior = ventanaAnterior;
