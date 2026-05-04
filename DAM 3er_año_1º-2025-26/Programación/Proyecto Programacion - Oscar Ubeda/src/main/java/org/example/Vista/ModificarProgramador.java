@@ -3,6 +3,7 @@ package org.example.Vista;
 import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
 import org.example.Utils.Validator;
 
 import javax.swing.*;
@@ -15,16 +16,17 @@ import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.modificarDatosGerente;
-import static org.example.ControladorDAO.GerenteDAO.obtenerNivelGerente;
+import static org.example.ControladorDAO.ProgramadorDAO.modificarDatosProgramador;
+import static org.example.ControladorDAO.ProgramadorDAO.obtenerLenguajeProgramador;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 import static org.example.Utils.Validator.NOMBRE_EMPRESA;
 import static org.example.Utils.Validator.calcularBono;
 
-public class ModificarGerente extends JFrame {
+public class ModificarProgramador extends JFrame {
     private Empleados empleado;
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
-    private Gerente gerente;
+    private Programador programador;
 
     JTextField txtNombre = new JTextField();
     JTextField txtApellidos = new JTextField();
@@ -32,21 +34,21 @@ public class ModificarGerente extends JFrame {
     JTextField txtSalario = new JTextField();
     JTextField txtEmail = new JTextField();
 
-    public ModificarGerente(Empleados empleado) {
-        this.empleado = empleado;
-        this.gerente = obtenerNivelGerente(empleado);
+    public ModificarProgramador(Empleados empleados) {
+        this.empleado = empleados;
+        this.programador = obtenerLenguajeProgramador(empleados);
 
-        this.setTitle("Modificar Gerente");
+        this.setTitle("Modificar Programador");
         this.setSize(480, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione datos del gerente");
+        JLabel introducirCliente = new JLabel("•Seleccione datos del programador");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
 
-        JPanel panelModificarGerente = getJPanelModificarGerente();
+        JPanel panelModificarGerente = getJPanelModificarProgramador();
         JPanel panelBotonRetorno = getPanelBotonRetorno(this, new ModificarEmpleado());
 
         this.add(introducirCliente, BorderLayout.NORTH);
@@ -54,7 +56,7 @@ public class ModificarGerente extends JFrame {
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
-    public JPanel getJPanelModificarGerente() {
+    public JPanel getJPanelModificarProgramador() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(5, 15, 15, 15));
 
@@ -67,7 +69,7 @@ public class ModificarGerente extends JFrame {
         panelLabels.add(crearLabels("Correo: "));
         panelLabels.add(crearLabels("Salario: "));
         panelLabels.add(crearLabels("Depto.: "));
-        panelLabels.add(crearLabels("Nivel: "));
+        panelLabels.add(crearLabels("Lenguaje: "));
 
         JPanel panelFields = new JPanel(new GridLayout(7, 1, 5, 5));
         (txtNombre = crearFields()).setText(empleado.getNombre());
@@ -85,10 +87,11 @@ public class ModificarGerente extends JFrame {
 
         comboBoxDepart.setSelectedIndex(empleado.getDepartamento());
 
-        JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{
-                "Selecciona nivel de gerente...", "Alto", "Medio", "Bajo"});
+        JComboBox<String> comboBoxLProgramacion = new JComboBox<>(new String[]{
+                "Seleccione un lenguaje...", "JavaScript", "Python", "Java", "C#", "Otro..."
+        });
 
-        comboBoxNivel.setSelectedItem(gerente.getNivel());
+        comboBoxLProgramacion.setSelectedItem(programador.getLenguajePrincipal());
 
         panelFields.add(txtNombre);
         panelFields.add(txtApellidos);
@@ -96,7 +99,7 @@ public class ModificarGerente extends JFrame {
         panelFields.add(txtEmail);
         panelFields.add(txtSalario);
         panelFields.add(comboBoxDepart);
-        panelFields.add(comboBoxNivel);
+        panelFields.add(comboBoxLProgramacion);
 
         JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
         JButton btnCrearUser = crearEstiloBotonSubmit("MODIFICAR DATOS");
@@ -115,9 +118,9 @@ public class ModificarGerente extends JFrame {
                 String salarioTexto = txtSalario.getText().trim();
 
                 Departamento departamento = (Departamento) comboBoxDepart.getSelectedItem();
-                int indexNivel = comboBoxNivel.getSelectedIndex();
+                int indexLProgram = comboBoxLProgramacion.getSelectedIndex();
                 int indexDepartamento = comboBoxDepart.getSelectedIndex();
-                Object nivelObj = comboBoxNivel.getSelectedItem();
+                Object nivelObj = comboBoxLProgramacion.getSelectedItem();
 
                 if (!Validator.camposRellenos(nombre, apellidos, telefono, salarioTexto)) {
                     mostrarError("⚠️ Rellene todos los campos de texto.");
@@ -155,16 +158,15 @@ public class ModificarGerente extends JFrame {
                     return;
                 }
 
-                if (indexNivel == 0 || nivelObj == null) {
+                if (indexLProgram == 0 || nivelObj == null) {
                     mostrarError("⚠️ Debes seleccionar un nivel.");
                     return;
                 }
 
                 int idDept = departamento.getId();
-                String nivel = comboBoxNivel.getSelectedItem().toString();//Parseo objeto a String
+                String lenguajeProgramacion = comboBoxLProgramacion.getSelectedItem().toString();//Parseo objeto a String
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
 
-                double bonoCalculado = calcularBono(nivel, salario);
 
                 Empleados empleadoModificado = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
 
@@ -173,9 +175,9 @@ public class ModificarGerente extends JFrame {
                     return;
                 }
 
-                Gerente gerenteModificado = new Gerente(bonoCalculado, nivel);
+                Programador programadorModificado = new Programador(lenguajeProgramacion);
 
-                if (modificarDatosEmpleado(empleadoModificado) && modificarDatosGerente(empleadoModificado, gerenteModificado)) {
+                if (modificarDatosEmpleado(empleadoModificado) && modificarDatosProgramador(empleadoModificado, programadorModificado)) {
                     mostrarError("✅ Empleado modificado exitosamente");
                     dispose();
                     new GestionEmpleado().setVisible(true);
@@ -193,5 +195,4 @@ public class ModificarGerente extends JFrame {
 
         return panelPrincipal;
     }
-
 }

@@ -115,9 +115,10 @@ public class EmpleadosDAO {
 
     public static boolean emailExistente(Empleados empleados) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE email = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE email = ? AND dni <> ?")) {
 
             ps.setString(1, empleados.getEmail());
+            ps.setString(2, empleados.getDni());
 
             ResultSet rs = ps.executeQuery();
 

@@ -3,7 +3,6 @@ package org.example.Vista;
 import org.example.Modelo.Empleados;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,17 +12,16 @@ import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
-public class ModificarEmpleado extends JFrame {
+public class EliminarEmpleado extends JFrame {
 
-
-    public ModificarEmpleado() {
-        this.setTitle("Modificar Empleado");
+    public EliminarEmpleado() {
+        this.setTitle("Eliminar Empleado");
         this.setSize(480, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione empleado a modificar");
+        JLabel introducirCliente = new JLabel("•De de baja a un empleado");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -35,7 +33,7 @@ public class ModificarEmpleado extends JFrame {
         this.add(panelBotonRetorno, BorderLayout.SOUTH);
     }
 
-    private JPanel getJPanelScrollPanel() {
+    public JPanel getJPanelScrollPanel() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
@@ -63,13 +61,33 @@ public class ModificarEmpleado extends JFrame {
                     mostrarError("⚠️ Seleccione una opción");
                     return;
                 }
-                Empleados empleados1 = obtenerDatosEmpelado(seleccionado);//Obtengo datos empelado de la tabla empelados
 
-                dispose();
-                if (seleccionarGerenteEmpleado(empleados1)) {
-                    new ModificarGerente(empleados1).setVisible(true);
+                if (seleccionarGerenteEmpleado(seleccionado)) {
+                    int respuesta = JOptionPane.showConfirmDialog(null, "⚠️ ¿Esta seguro de que quiere eliminar a este GERENTE?", "Eliminar Empleado",
+                            JOptionPane.YES_NO_OPTION);
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                        if (eliminarEmpleado(seleccionado)) {
+                            mostrarError("✅ Gerente eliminado correctamente");
+                            dispose();
+                            new GestionEmpleado().setVisible(true);
+                        } else {
+                            mostrarError("❌ Error al eliminar el gerente");
+                        }
+                    }
+
                 } else {
-                    new ModificarProgramador(empleados1).setVisible(true);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "⚠️ ¿Esta seguro de que quiere eliminar a este PROGRAMADOR?", "Eliminar Empleado",
+                            JOptionPane.YES_NO_OPTION);
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                        if (eliminarEmpleado(seleccionado)) {
+                            mostrarError("✅ Programador eliminado correctamente");
+                            dispose();
+                            new GestionEmpleado().setVisible(true);
+                        } else {
+                            mostrarError("❌ Error al eliminar al programador");
+                        }
+                    }
+
                 }
             }
         });
@@ -81,8 +99,5 @@ public class ModificarEmpleado extends JFrame {
 
         return panelPrincipal;
     }
-
-    public static void main(String[] args) {
-        new ModificarEmpleado().setVisible(true);
-    }
 }
+

@@ -1,6 +1,7 @@
 package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
 
 import java.sql.Connection;
@@ -56,6 +57,41 @@ public class ProgramadorDAO {
             int filasAfectadas = ps.executeUpdate();
 
             return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Programador obtenerLenguajeProgramador(Empleados empleados) {
+        Programador programador = new Programador();
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT lenguajePrincipal FROM programadores WHERE dni = ?")) {
+
+            ps.setString(1, empleados.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                programador.setLenguajePrincipal(rs.getString("lenguajePrincipal"));
+            }
+
+            return programador;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean modificarDatosProgramador(Empleados empleados, Programador programador) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("UPDATE programadores SET lenguajePrincipal = ? WHERE dni = ?")) {
+
+            ps.setString(1, programador.getLenguajePrincipal());
+            ps.setString(2, empleados.getDni());
+
+            int filasAfect = ps.executeUpdate();
+
+            return filasAfect > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
