@@ -89,5 +89,20 @@ public class DepartamentoDAO {
         }
     }
 
+    public static boolean departamentoEnPiso(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM departamentos WHERE ubicacion = ?")) {
+
+            ps.setString(1, departamento.getUbicacion());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

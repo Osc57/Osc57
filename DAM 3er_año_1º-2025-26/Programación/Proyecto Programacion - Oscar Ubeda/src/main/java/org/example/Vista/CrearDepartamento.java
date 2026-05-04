@@ -1,11 +1,16 @@
 package org.example.Vista;
 
+import org.example.Modelo.Departamento;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.ControladorDAO.DepartamentoDAO.departamentoEnPiso;
+import static org.example.ControladorDAO.DepartamentoDAO.insertarDepartamento;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Messages.mostrarError;
 
 public class CrearDepartamento extends JFrame {
     private JTextField txtNombre;
@@ -37,7 +42,7 @@ public class CrearDepartamento extends JFrame {
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 30));
 
         JPanel panelLabels = new JPanel(new GridLayout(2, 1, 5, 5));
-        panelLabels.add(crearLabels("Departamento: "));
+        panelLabels.add(crearLabels("Depto.: "));
         panelLabels.add(crearLabels("Ubicación: "));
 
         JPanel panelFields = new JPanel(new GridLayout(2, 1, 5, 5));
@@ -72,6 +77,37 @@ public class CrearDepartamento extends JFrame {
         btnCrearDpto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int indexDepartamento = comboBoxDepartamentos.getSelectedIndex();
+                int indexUbicacion = comboBoxUbicacion.getSelectedIndex();
+
+
+                if (indexDepartamento == 0) {
+                    mostrarError("⚠️ Seleccione un departamento");
+                    return;
+                }
+
+                if (indexUbicacion == 0) {
+                    mostrarError("⚠️ Seleccione un piso");
+                    return;
+                }
+
+                String departamento = comboBoxDepartamentos.getSelectedItem().toString();
+                String ubicacion = comboBoxUbicacion.getSelectedItem().toString();
+
+                Departamento dp = new Departamento(departamento, ubicacion);
+
+                if (departamentoEnPiso(dp)) {
+                    mostrarError("⚠️ Este departamento ya este en este piso");
+                    return;
+                }
+
+                if (insertarDepartamento(dp)) {
+                    mostrarError("✅ Departamento insertado correctamente");
+                    dispose();
+                    new GestionDepartamentos().setVisible(true);
+                } else {
+                    mostrarError("❌ Error al insertar el departamento");
+                }
 
             }
         });

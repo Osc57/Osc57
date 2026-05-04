@@ -7,7 +7,6 @@ import org.example.Modelo.Programador;
 
 import java.util.ArrayList;
 
-import static org.example.ControladorDAO.DepartamentoDAO.insertarDepartamento;
 import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.ControladorDAO.GerenteDAO.mostrarGerentes;
