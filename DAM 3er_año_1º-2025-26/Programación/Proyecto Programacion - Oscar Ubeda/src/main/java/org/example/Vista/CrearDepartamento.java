@@ -8,8 +8,6 @@ import static org.example.Utils.Funcionalidad.*;
 public class CrearDepartamento extends JFrame {
     private JTextField txtNombre;
 
-    private final int nPisos = 5;
-
     public CrearDepartamento() {
         this.setTitle("Crear un departamento");
         this.setSize(500, 370);
@@ -48,7 +46,7 @@ public class CrearDepartamento extends JFrame {
 
         comboBoxUbicacion.addItem("Selecciona un piso...");
 
-        for (int i = 1; i <= nPisos; i++) {
+        for (int i = 1; i <= N_PISOS; i++) {
             comboBoxUbicacion.addItem("Piso " + i);
         }
 

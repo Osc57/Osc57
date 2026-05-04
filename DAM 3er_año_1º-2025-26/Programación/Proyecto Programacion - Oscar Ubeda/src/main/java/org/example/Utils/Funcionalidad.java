@@ -42,6 +42,8 @@ public class Funcionalidad {
     public static final double MIN_MES = 1425.0;
     public static final double MAX_MES = 18000.0;
 
+    public static final int N_PISOS = 5;
+
     //===============================================================================================
 
     public static JButton crearEstiloBotonSubmit(String texto) {
