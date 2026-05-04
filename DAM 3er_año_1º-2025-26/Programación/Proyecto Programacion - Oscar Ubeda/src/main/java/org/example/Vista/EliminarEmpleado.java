@@ -44,6 +44,8 @@ public class EliminarEmpleado extends JFrame {
         JScrollPane jScrollPane = new JScrollPane(LISTA_EMPLEADOS);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 5));
 
+        MODEL_EMPLEADOS.removeAllElements();
+
         ArrayList<Empleados> empleados = mostrarEmpleados();
         for (Empleados t : empleados) {
             MODEL_EMPLEADOS.addElement(t);
