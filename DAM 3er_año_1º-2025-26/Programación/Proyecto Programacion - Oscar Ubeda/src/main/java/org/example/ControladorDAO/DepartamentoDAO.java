@@ -1,6 +1,7 @@
 package org.example.ControladorDAO;
 
 import org.example.Modelo.Departamento;
+import org.example.Modelo.Empleados;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -118,5 +119,39 @@ public class DepartamentoDAO {
         }
     }
 
+    public static Departamento obtenerDatosDepartamento(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT nombre, ubicacion FROM departamentos WHERE id = ?")) {
+
+            ps.setInt(1, departamento.getId());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                departamento.setNombre(rs.getString("nombre"));
+                departamento.setNombre(rs.getString("ubicacion"));
+            }
+
+            return departamento;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean seleccionarDepartamento(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM departamentos WHERE id = ?")) {
+
+            ps.setInt(1, departamento.getId());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

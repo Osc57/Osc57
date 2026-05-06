@@ -1,6 +1,7 @@
 package org.example.Utils;
 
 import org.example.ControladorDAO.EmpleadosDAO;
+import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
 import org.example.Vista.Login;
 
@@ -30,8 +31,15 @@ public class Funcionalidad {
     public static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     public static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
+    //========================================================================================================
+
     public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
     public static final JList<Empleados> LISTA_EMPLEADOS = new JList<>(MODEL_EMPLEADOS);
+
+    public static final DefaultListModel<Departamento> MODEL_DEPTO = new DefaultListModel<>();
+    public static final JList<Departamento> LISTA_DEPTO = new JList<>(MODEL_DEPTO);
+
+    //========================================================================================================
 
     private static final String DOMINIO = "@empresa.emp";
 

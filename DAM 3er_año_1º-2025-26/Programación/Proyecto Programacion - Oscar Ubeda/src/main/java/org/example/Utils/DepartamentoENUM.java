@@ -1,6 +1,6 @@
 package org.example.Utils;
 
-public enum Departamentos {
+public enum DepartamentoENUM {
     SELECCIONA("Selecciona un departamento..."),
     DIRECCION_PROYECTOS("Dirección de Proyectos"),
     DESARROLLO_SOFTWARE("Desarrollo de Software"),
@@ -15,7 +15,7 @@ public enum Departamentos {
 
     private final String nombre;
 
-    Departamentos(String nombre) {
+    DepartamentoENUM(String nombre) {
         this.nombre = nombre;
     }
 

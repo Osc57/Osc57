@@ -1,25 +1,20 @@
 package org.example.Vista;
 
 import org.example.Modelo.Departamento;
-import org.example.Modelo.Empleados;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.ControladorDAO.DepartamentoDAO.obtenerDatosDepartamento;
-import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
-import static org.example.ControladorDAO.EmpleadosDAO.*;
+import static org.example.ControladorDAO.DepartamentoDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
-public class ModificarEmpleado extends JFrame {
+public class SeleccionDeptoModificar extends JFrame {
 
-
-    public ModificarEmpleado() {
+    public SeleccionDeptoModificar() {
         this.setTitle("Modificar Empleado");
         this.setSize(480, 460);
         this.setLocationRelativeTo(null);
@@ -44,16 +39,16 @@ public class ModificarEmpleado extends JFrame {
 
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        configurarListaEnScroll(LISTA_EMPLEADOS);
+        configurarListaEnScroll(LISTA_DEPTO);
 
-        JScrollPane jScrollPane = new JScrollPane(LISTA_EMPLEADOS);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_DEPTO);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 5));
 
-        MODEL_EMPLEADOS.removeAllElements();
+        MODEL_DEPTO.removeAllElements();
 
-        ArrayList<Empleados> empleados = mostrarEmpleados();
-        for (Empleados t : empleados) {
-            MODEL_EMPLEADOS.addElement(t);
+        ArrayList<Departamento> empleados = obtenerDepartamentos();
+        for (Departamento d : empleados) {
+            MODEL_DEPTO.addElement(d);
         }
 
         JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR EMPLEADO");
@@ -62,19 +57,17 @@ public class ModificarEmpleado extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Empleados seleccionado = LISTA_EMPLEADOS.getSelectedValue();
+                Departamento seleccionado = LISTA_DEPTO.getSelectedValue();
 
                 if (seleccionado == null) {
                     mostrarError("⚠️ Seleccione una opción");
                     return;
                 }
-                Empleados empleados1 = obtenerDatosEmpelado(seleccionado);//Obtengo datos empelado de la tabla empelados
+                Departamento departamento1 = obtenerDatosDepartamento(seleccionado);//Obtengo datos del departamento
 
                 dispose();
-                if (seleccionarGerenteEmpleado(empleados1)) {
-                    new ModificarGerente(empleados1).setVisible(true);
-                } else {
-                    new ModificarProgramador(empleados1).setVisible(true);
+                if (seleccionarDepartamento(departamento1)) {
+
                 }
             }
         });
@@ -85,9 +78,5 @@ public class ModificarEmpleado extends JFrame {
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
-    }
-
-    public static void main(String[] args) {
-        new ModificarEmpleado().setVisible(true);
     }
 }

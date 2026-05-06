@@ -1,7 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Departamento;
-import org.example.Utils.Departamentos;
+import org.example.Utils.DepartamentoENUM;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +47,7 @@ public class CrearDepartamento extends JFrame {
 
         JPanel panelFields = new JPanel(new GridLayout(2, 1, 5, 5));
 
-        JComboBox<Departamentos> comboBoxDepartamentos = new JComboBox<>(Departamentos.values());
+        JComboBox<DepartamentoENUM> comboBoxDepartamentos = new JComboBox<>(DepartamentoENUM.values());
 
         JComboBox<String> comboBoxUbicacion = new JComboBox<>();
         comboBoxUbicacion.addItem("Selecciona un piso...");
@@ -65,11 +65,11 @@ public class CrearDepartamento extends JFrame {
         btnCrearDpto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Departamentos deptoEnum = (Departamentos) comboBoxDepartamentos.getSelectedItem();
+                DepartamentoENUM deptoEnum = (DepartamentoENUM) comboBoxDepartamentos.getSelectedItem();
                 int indexUbicacion = comboBoxUbicacion.getSelectedIndex();
 
 
-                if (deptoEnum == Departamentos.SELECCIONA) {
+                if (deptoEnum == DepartamentoENUM.SELECCIONA) {
                     mostrarError("⚠️ Seleccione un departamento");
                     return;
                 }
