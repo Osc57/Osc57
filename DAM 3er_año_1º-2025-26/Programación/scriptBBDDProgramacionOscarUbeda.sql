@@ -4,7 +4,7 @@ USE proyectoOscarUbeda;
 -- 1. Departamentos
 CREATE TABLE Departamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(175) NOT NULL UNIQUE,
+    nombre VARCHAR(175) NOT NULL,
     ubicacion VARCHAR(75) NOT NULL
 );
 
@@ -13,10 +13,10 @@ CREATE TABLE Empleados (
     dni CHAR(9) PRIMARY KEY,
     nombre VARCHAR(40) NOT NULL,
     apellidos VARCHAR(200) NOT NULL,
-    email VARCHAR(150) NOT NULL UNIQUE,
+    email VARCHAR(150) NOT NULL,
     salario DOUBLE NOT NULL DEFAULT 0,
 	telefono CHAR(9),
-    id_depa INT
+    id_depa INT,
 	
     CONSTRAINT fk_emple_depa FOREIGN KEY (id_depa) REFERENCES Departamentos(id) ON DELETE SET NULL
 );
@@ -60,12 +60,14 @@ CREATE TABLE Trabaja (
 -- 7. Login 
 CREATE TABLE Usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario VARCHAR(70) NOT NULL UNIQUE DEFAULT 'admin',
-    password VARCHAR(70) NOT NULL DEFAULT '1234',
+    usuario VARCHAR(70) NOT NULL,
+    password VARCHAR(70) NOT NULL,
     dni CHAR(9),
 	
     CONSTRAINT fk_user_dni FOREIGN KEY (dni) REFERENCES Empleados(dni) ON DELETE CASCADE
 );
+
+INSERT INTO Usuarios (usuario, password) VALUES ('admin', '1234');
 
 
 

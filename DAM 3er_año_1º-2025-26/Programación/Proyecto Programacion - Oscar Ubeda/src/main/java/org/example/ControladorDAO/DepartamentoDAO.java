@@ -91,13 +91,27 @@ public class DepartamentoDAO {
 
     public static boolean departamentoEnPiso(Departamento departamento) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM departamentos WHERE ubicacion = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM departamentos WHERE nombre = ? AND ubicacion <> ?")) {
 
-            ps.setString(1, departamento.getUbicacion());
+            ps.setString(1, departamento.getNombre());
+            ps.setString(2, departamento.getUbicacion());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
 
-            ResultSet rs = ps.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-            return rs.next();
+    public static boolean existeNombreDepartamento(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM departamentos WHERE nombre = ?")) {
+
+            ps.setString(1, departamento.getNombre());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

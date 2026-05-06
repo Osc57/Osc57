@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.ControladorDAO.DepartamentoDAO.departamentoEnPiso;
-import static org.example.ControladorDAO.DepartamentoDAO.insertarDepartamento;
+import static org.example.ControladorDAO.DepartamentoDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 
@@ -96,10 +95,18 @@ public class CrearDepartamento extends JFrame {
 
                 Departamento dp = new Departamento(departamento, ubicacion);
 
-                if (departamentoEnPiso(dp)) {
-                    mostrarError("⚠️ Este departamento ya este en este piso");
+                //Valido nombre duplicado
+                if (existeNombreDepartamento(dp)) {
+                    mostrarError("⚠️ Ya existe un departamento registrado con el nombre " + dp.getNombre() + ".");
                     return;
                 }
+
+                //Mismo departamento en otro piso
+                if (departamentoEnPiso(dp)) {
+                    mostrarError("⚠️ La departamento " + dp.getNombre() + " ya está asignado en otro piso.");
+                    return;
+                }
+
 
                 if (insertarDepartamento(dp)) {
                     mostrarError("✅ Departamento insertado correctamente");
