@@ -95,7 +95,7 @@ public class CrearDepartamento extends JFrame {
 
                 Departamento dp = new Departamento(departamento, ubicacion);
 
-                //Valido nombre duplicado
+                //Valido si el nombre es duplicado
                 if (existeNombreDepartamento(dp)) {
                     mostrarError("⚠️ Ya existe un departamento registrado con el nombre " + dp.getNombre() + ".");
                     return;
