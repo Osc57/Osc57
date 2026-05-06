@@ -1,6 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Departamento;
+import org.example.Utils.Departamentos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,19 +47,7 @@ public class CrearDepartamento extends JFrame {
 
         JPanel panelFields = new JPanel(new GridLayout(2, 1, 5, 5));
 
-        JComboBox<String> comboBoxDepartamentos = new JComboBox<>(new String[]{
-                "Selecciona un departamento...",
-                "Dirección de Proyectos",
-                "Desarrollo de Software",
-                "Ingeniería y Sistemas",
-                "Operaciones Técnicas",
-                "Arquitectura de Soluciones",
-                "Control de Calidad (QA)",
-                "Gestión de Producto",
-                "Innovación y I+D",
-                "Infraestructura y DevOps",
-                "Consultoría Técnica"
-        });
+        JComboBox<Departamentos> comboBoxDepartamentos = new JComboBox<>(Departamentos.values());
 
         JComboBox<String> comboBoxUbicacion = new JComboBox<>();
         comboBoxUbicacion.addItem("Selecciona un piso...");

@@ -48,6 +48,6 @@ public class Departamento {
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre + " - " + ubicacion;
     }
 }

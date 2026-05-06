@@ -65,8 +65,4 @@ public class GestionEmpleado extends JFrame {
 
         return panelGestion;
     }
-
-    public static void main(String[] args) {
-        new GestionEmpleado().setVisible(true);
-    }
 }
