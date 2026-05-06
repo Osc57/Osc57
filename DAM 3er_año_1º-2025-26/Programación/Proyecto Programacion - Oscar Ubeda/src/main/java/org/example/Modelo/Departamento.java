@@ -46,8 +46,13 @@ public class Departamento {
         this.ubicacion = ubicacion;
     }
 
+
+    public String mostrarDepartamento() {
+        return nombre + " - " + ubicacion;
+    }
+
     @Override
     public String toString() {
-        return nombre + " - " + ubicacion;
+        return nombre;
     }
 }

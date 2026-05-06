@@ -65,11 +65,11 @@ public class CrearDepartamento extends JFrame {
         btnCrearDpto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int indexDepartamento = comboBoxDepartamentos.getSelectedIndex();
+                Departamentos deptoEnum = (Departamentos) comboBoxDepartamentos.getSelectedItem();
                 int indexUbicacion = comboBoxUbicacion.getSelectedIndex();
 
 
-                if (indexDepartamento == 0) {
+                if (deptoEnum == Departamentos.SELECCIONA) {
                     mostrarError("⚠️ Seleccione un departamento");
                     return;
                 }
@@ -79,10 +79,10 @@ public class CrearDepartamento extends JFrame {
                     return;
                 }
 
-                String departamento = comboBoxDepartamentos.getSelectedItem().toString();
+                String nombreDepto = deptoEnum.toString();
                 String ubicacion = comboBoxUbicacion.getSelectedItem().toString();
 
-                Departamento dp = new Departamento(departamento, ubicacion);
+                Departamento dp = new Departamento(nombreDepto, ubicacion);
 
                 //Valido si el nombre es duplicado
                 if (existeNombreDepartamento(dp)) {
