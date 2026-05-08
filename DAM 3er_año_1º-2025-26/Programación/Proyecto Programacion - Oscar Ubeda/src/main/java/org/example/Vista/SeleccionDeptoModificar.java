@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class SeleccionDeptoModificar extends JFrame {
 
@@ -60,7 +60,7 @@ public class SeleccionDeptoModificar extends JFrame {
                 Departamento seleccionado = LISTA_DEPTO.getSelectedValue();
 
                 if (seleccionado == null) {
-                    mostrarError("⚠️ Seleccione una opción");
+                    mostrarMensaje("⚠️ Seleccione una opción");
                     return;
                 }
                 Departamento departamento1 = obtenerDatosDepartamento(seleccionado);//Obtengo datos del departamento

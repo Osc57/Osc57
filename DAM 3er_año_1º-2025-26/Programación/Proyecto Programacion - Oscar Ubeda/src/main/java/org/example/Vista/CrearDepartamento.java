@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.DepartamentoDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class CrearDepartamento extends JFrame {
     private JTextField txtNombre;
@@ -70,12 +70,12 @@ public class CrearDepartamento extends JFrame {
 
 
                 if (deptoEnum == DepartamentoENUM.SELECCIONA) {
-                    mostrarError("⚠️ Seleccione un departamento");
+                    mostrarMensaje("⚠️ Seleccione un departamento");
                     return;
                 }
 
                 if (indexUbicacion == 0) {
-                    mostrarError("⚠️ Seleccione un piso");
+                    mostrarMensaje("⚠️ Seleccione un piso");
                     return;
                 }
 
@@ -86,23 +86,23 @@ public class CrearDepartamento extends JFrame {
 
                 //Valido si el nombre es duplicado
                 if (existeNombreDepartamento(dp)) {
-                    mostrarError("⚠️ Ya existe un departamento registrado con el nombre " + dp.getNombre() + ".");
+                    mostrarMensaje("⚠️ Ya existe un departamento registrado con el nombre " + dp.getNombre() + ".");
                     return;
                 }
 
                 //Mismo departamento en otro piso
                 if (departamentoEnPiso(dp)) {
-                    mostrarError("⚠️ La departamento " + dp.getNombre() + " ya está asignado en otro piso.");
+                    mostrarMensaje("⚠️ La departamento " + dp.getNombre() + " ya está asignado en otro piso.");
                     return;
                 }
 
 
                 if (insertarDepartamento(dp)) {
-                    mostrarError("✅ Departamento insertado correctamente");
+                    mostrarMensaje("✅ Departamento insertado correctamente");
                     dispose();
                     new GestionDepartamentos().setVisible(true);
                 } else {
-                    mostrarError("❌ Error al insertar el departamento");
+                    mostrarMensaje("❌ Error al insertar el departamento");
                 }
 
             }

@@ -18,7 +18,7 @@ import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
 import static org.example.ControladorDAO.ProgramadorDAO.modificarDatosProgramador;
 import static org.example.ControladorDAO.ProgramadorDAO.obtenerLenguajeProgramador;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 import static org.example.Utils.Validator.NOMBRE_EMPRESA;
 
 public class ModificarProgramador extends JFrame {
@@ -121,43 +121,43 @@ public class ModificarProgramador extends JFrame {
                 Object nivelObj = comboBoxLProgramacion.getSelectedItem();
 
                 if (!Validator.camposRellenos(nombre, apellidos, telefono, salarioTexto)) {
-                    mostrarError("⚠️ Rellene todos los campos de texto.");
+                    mostrarMensaje("⚠️ Rellene todos los campos de texto.");
                     return;
                 }
 
                 if (!Validator.nombreValido(nombre)) {
-                    mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
+                    mostrarMensaje("⚠️ El nombre debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.apellidosValido(apellidos)) {
-                    mostrarError("⚠️ El apellido debe empezar por mayúscula y ser letras");
+                    mostrarMensaje("⚠️ El apellido debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.validarEmail(email)) {
-                    mostrarError("⚠️ Correo invalido, tiene que tener " + NOMBRE_EMPRESA);
+                    mostrarMensaje("⚠️ Correo invalido, tiene que tener " + NOMBRE_EMPRESA);
                     return;
                 }
 
 
                 if (!Validator.telefonoValido(telefono)) {
-                    mostrarError("⚠️ El teléfono deben ser 9 números");
+                    mostrarMensaje("⚠️ El teléfono deben ser 9 números");
                     return;
                 }
 
                 if (!Validator.salarioValido(salarioTexto)) {
-                    mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
+                    mostrarMensaje("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
                 }
 
                 if (indexDepartamento == 0 || departamento == null) {
-                    mostrarError("⚠️ Debe seleccionar un departamento");
+                    mostrarMensaje("⚠️ Debe seleccionar un departamento");
                     return;
                 }
 
                 if (indexLProgram == 0 || nivelObj == null) {
-                    mostrarError("⚠️ Debes seleccionar un nivel.");
+                    mostrarMensaje("⚠️ Debes seleccionar un nivel.");
                     return;
                 }
 
@@ -169,18 +169,18 @@ public class ModificarProgramador extends JFrame {
                 Empleados empleadoModificado = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
 
                 if (emailExistente(empleadoModificado)) {
-                    mostrarError("⚠️ Este email ya está registrado");
+                    mostrarMensaje("⚠️ Este email ya está registrado");
                     return;
                 }
 
                 Programador programadorModificado = new Programador(lenguajeProgramacion);
 
                 if (modificarDatosEmpleado(empleadoModificado) && modificarDatosProgramador(empleadoModificado, programadorModificado)) {
-                    mostrarError("✅ Empleado modificado exitosamente");
+                    mostrarMensaje("✅ Empleado modificado exitosamente");
                     dispose();
                     new GestionEmpleado().setVisible(true);
                 } else {
-                    mostrarError("❌ Error al modificar el empleado");
+                    mostrarMensaje("❌ Error al modificar el empleado");
                 }
 
             }

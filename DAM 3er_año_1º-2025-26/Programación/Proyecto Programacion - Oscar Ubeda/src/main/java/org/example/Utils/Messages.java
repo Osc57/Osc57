@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Messages {
 
-    public static void mostrarError(String mensaje) {
+    public static void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
 

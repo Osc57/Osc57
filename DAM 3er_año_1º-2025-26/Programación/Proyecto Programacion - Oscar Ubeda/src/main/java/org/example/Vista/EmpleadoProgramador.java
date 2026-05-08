@@ -15,7 +15,7 @@ import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
 import static org.example.ControladorDAO.ProgramadorDAO.insertarProgramador;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class EmpleadoProgramador extends JFrame {
     private DarAltaEmpleado ventanaAnterior;
@@ -106,28 +106,28 @@ public class EmpleadoProgramador extends JFrame {
 
                 //Validaciones
                 if (!Validator.salarioValido(salarioTexto)) {
-                    mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
+                    mostrarMensaje("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
                 }
 
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
                 if (salario < MIN_PROG) {
-                    mostrarError("⚠️ El salario es demasiado bajo para un programador (Mín: " + MIN_PROG + "€)");
+                    mostrarMensaje("⚠️ El salario es demasiado bajo para un programador (Mín: " + MIN_PROG + "€)");
                     return;
                 }
 
                 if (salario > MAX_PROG) {
-                    mostrarError("⚠️ El salario excede el rango técnico. Si cobra más de " + MAX_PROG + "€, quizás deba ser dado de alta como Gerente.");
+                    mostrarMensaje("⚠️ El salario excede el rango técnico. Si cobra más de " + MAX_PROG + "€, quizás deba ser dado de alta como Gerente.");
                     return;
                 }
 
                 if (indexDepartamento == 0) {
-                    mostrarError("⚠️ Debe seleccionar un departamento");
+                    mostrarMensaje("⚠️ Debe seleccionar un departamento");
                     return;
                 }
 
                 if (indexLenguaje == 0) {
-                    mostrarError("⚠️ Debes seleccionar un lenguaje de programación.");
+                    mostrarMensaje("⚠️ Debes seleccionar un lenguaje de programación.");
                     return;
                 }
 
@@ -141,19 +141,19 @@ public class EmpleadoProgramador extends JFrame {
 
                 //Inserciones en BD
                 if (!insertarEmpleado(empleadoCompleto)) {
-                    mostrarError("❌ Error al insertar el empleado en la base de datos.");
+                    mostrarMensaje("❌ Error al insertar el empleado en la base de datos.");
                     return;
                 }
 
                 Programador programador = new Programador(lenguajeProgramacionString);
 
                 if (!insertarProgramador(empleadoCompleto, programador)) {
-                    mostrarError("❌ Error al insertar los datos del programador.");
+                    mostrarMensaje("❌ Error al insertar los datos del programador.");
                     return;
                 }
 
                 //Éxito
-                mostrarError("✅ Programador dado de alta exitosamente");
+                mostrarMensaje("✅ Programador dado de alta exitosamente");
                 dispose();
                 new GestionEmpleado().setVisible(true);
 

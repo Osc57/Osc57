@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.EmpleadosDAO.comprobarEmpleados;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class DarAltaEmpleado extends JFrame {
 
@@ -106,39 +106,39 @@ public class DarAltaEmpleado extends JFrame {
                 boolean esGerente = rbSi.isSelected();
 
                 if (!Validator.camposRellenos(dni, nombre, apellidos, telefono)) {
-                    mostrarError("⚠️ Rellene todos los campos de texto.");
+                    mostrarMensaje("⚠️ Rellene todos los campos de texto.");
                     return;
                 }
 
                 if (!rbSi.isSelected() && !rbNo.isSelected()) {
-                    mostrarError("⚠️ Seleccione una opción para Gerente.");
+                    mostrarMensaje("⚠️ Seleccione una opción para Gerente.");
                     return;
                 }
 
                 if (!Validator.dniValido(dni)) {
-                    mostrarError("⚠️ El DNI debe tener 8 números y una letra");
+                    mostrarMensaje("⚠️ El DNI debe tener 8 números y una letra");
                     return;
                 }
 
                 if (!Validator.nombreValido(nombre)) {
-                    mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
+                    mostrarMensaje("⚠️ El nombre debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.apellidosValido(apellidos)) {
-                    mostrarError("⚠️ El apellido debe empezar por mayúscula y ser letras");
+                    mostrarMensaje("⚠️ El apellido debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.telefonoValido(telefono)) {
-                    mostrarError("⚠️ El teléfono deben ser 9 números");
+                    mostrarMensaje("⚠️ El teléfono deben ser 9 números");
                     return;
                 }
 
                 String email = generarEmailUnicoLimpio(nombre, apellidos);//Metodo en Funcionalidad
                 Empleados empleado = new Empleados(dni, nombre, apellidos, email, telefono);
                 if (comprobarEmpleados(empleado)) {
-                    mostrarError("⚠️ Este empelado ya existe en la empresa");
+                    mostrarMensaje("⚠️ Este empelado ya existe en la empresa");
                     return;
                 }
 

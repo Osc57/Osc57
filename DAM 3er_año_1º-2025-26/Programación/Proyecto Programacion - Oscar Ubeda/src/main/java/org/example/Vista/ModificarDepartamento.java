@@ -10,10 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import static org.example.ControladorDAO.DepartamentoDAO.modificarDatosDepartamento;
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class ModificarDepartamento extends JFrame {
 
@@ -42,7 +43,7 @@ public class ModificarDepartamento extends JFrame {
 
     private JPanel getJPanelScrollPanel() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 85, 50));
 
@@ -63,7 +64,31 @@ public class ModificarDepartamento extends JFrame {
         JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
         JButton btnModificarDpto = crearEstiloBotonSubmit("MODIFICAR UBICACIÓN");
         btnModificarDpto.setPreferredSize(new Dimension(380, 45));
+        btnModificarDpto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                String piso = departamento.getUbicacion();
+
+                Departamento departamento = (Departamento) comboBoxUbicacion.getSelectedItem();
+                int indexDepartamento = comboBoxUbicacion.getSelectedIndex();
+
+                if (indexDepartamento == 0 || departamento == null) {
+                    mostrarMensaje("⚠️ Debe seleccionar un piso");
+                    return;
+                }
+
+                int dept = departamento.getId();
+
+                Departamento departamentoModificar = new Departamento(dept, departamento.getNombre(), piso);
+
+                if (modificarDatosDepartamento(departamentoModificar)) {
+                    mostrarMensaje("✅ Piso modificado correctamente");
+                } else {
+                    mostrarMensaje("❌ Error al modificar la ubicación");
+                }
+            }
+        });
 
         panelFields.add(comboBoxUbicacion);
 

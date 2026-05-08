@@ -15,7 +15,7 @@ import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.insertarEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.insertarGerente;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 import static org.example.Utils.Validator.calcularBono;
 
 public class EmpleadoGerente extends JFrame {
@@ -114,24 +114,24 @@ public class EmpleadoGerente extends JFrame {
 
                 //Validaciones
                 if (!Validator.salarioValido(salarioTexto)) {
-                    mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
+                    mostrarMensaje("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
                 }
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
 
                 if (salario < MIN_MES || salario > MAX_MES) {
-                    mostrarError("⚠️ El salario mensual no es coherente.\n" +
+                    mostrarMensaje("⚠️ El salario mensual no es coherente.\n" +
                             "Rango permitido: " + MIN_MES + "€ - " + MAX_MES + "€");
                     return;
                 }
 
                 if (indexDepartamento == 0 || departamento == null) {
-                    mostrarError("⚠️ Debe seleccionar un departamento");
+                    mostrarMensaje("⚠️ Debe seleccionar un departamento");
                     return;
                 }
 
                 if (indexNivel == 0 || nivelObj == null) {
-                    mostrarError("⚠️ Debes seleccionar un nivel.");
+                    mostrarMensaje("⚠️ Debes seleccionar un nivel.");
                     return;
                 }
 
@@ -148,19 +148,19 @@ public class EmpleadoGerente extends JFrame {
 
                 //Inserciones en BD
                 if (!insertarEmpleado(empleadoCompleto)) {
-                    mostrarError("❌ Error al insertar el empleado en la base de datos.");
+                    mostrarMensaje("❌ Error al insertar el empleado en la base de datos.");
                     return;
                 }
 
                 Gerente gerente = new Gerente(dni, bonoCalculado, nivel);
 
                 if (!insertarGerente(empleadoCompleto, gerente)) {
-                    mostrarError("❌ Error al insertar los datos del gerente.");
+                    mostrarMensaje("❌ Error al insertar los datos del gerente.");
                     return;
                 }
 
                 //Éxito
-                mostrarError("✅ Gerente dado de alta exitosamente");
+                mostrarMensaje("✅ Gerente dado de alta exitosamente");
                 dispose();
                 new GestionEmpleado().setVisible(true);
             }

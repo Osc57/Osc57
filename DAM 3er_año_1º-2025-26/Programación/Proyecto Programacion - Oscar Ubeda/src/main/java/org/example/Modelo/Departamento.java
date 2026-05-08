@@ -8,6 +8,12 @@ public class Departamento {
     public Departamento() {
     }
 
+    public Departamento(int id, String nombre, String ubicacion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+    }
+
     public Departamento(String nombre, String ubicacion) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;

@@ -176,4 +176,20 @@ public class DepartamentoDAO {
         }
     }
 
+    public static boolean modificarDatosDepartamento(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("UPDATE departamentos SET ubicacion = ? WHERE id = ?")) {
+
+            ps.setString(1, departamento.getUbicacion());
+            ps.setInt(2, departamento.getId());
+
+            int filasAfect = ps.executeUpdate();
+
+            return filasAfect > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

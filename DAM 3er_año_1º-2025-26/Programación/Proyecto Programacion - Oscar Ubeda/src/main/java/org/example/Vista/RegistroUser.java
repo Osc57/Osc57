@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.UsuariosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class RegistroUser extends JFrame {
 
@@ -77,46 +77,46 @@ public class RegistroUser extends JFrame {
                 String usuario = txtUsuario.getText().trim();
 
                 if (!Validator.camposRellenos(dni, usuario, password, passwordConfirmar)) {
-                    mostrarError("⚠️ Rellena todos los campos");
+                    mostrarMensaje("⚠️ Rellena todos los campos");
                     return;
                 }
                 if (!Validator.dniValido(dni)) {
-                    mostrarError("⚠️ El DNI debe tener 8 números y una letra");
+                    mostrarMensaje("⚠️ El DNI debe tener 8 números y una letra");
                     return;
                 }
                 if (comprobarExistenciaUsuario(new Usuarios(usuario, password, dni))) {
-                    mostrarError("⚠️ Este empleado ya tiene un usuario creado");
+                    mostrarMensaje("⚠️ Este empleado ya tiene un usuario creado");
                     return;
                 }
                 if (!comprobarUsuarioEmpleado(new Usuarios(usuario, password, dni))) {
-                    mostrarError("⚠️ Usted no es empleado, no se le creará el usuario");
+                    mostrarMensaje("⚠️ Usted no es empleado, no se le creará el usuario");
                     return;
                 }
 
                 if (comprobarNombreUsuarioEmpleado(new Usuarios(usuario, password))) {
-                    mostrarError("⚠️ Nombre de usuario existente");
+                    mostrarMensaje("⚠️ Nombre de usuario existente");
                     return;
                 }
 
                 if (!Validator.usuarioValido(usuario)) {
-                    mostrarError("⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
+                    mostrarMensaje("⚠️ El usuario debe tener entre 4 y 12 caracteres alfanuméricos");
                     return;
                 }
                 if (!Validator.passwordValida(password)) {
-                    mostrarError("⚠️ La contraseña debe tener al menos 12 caracteres, una mayúscula y un símbolo");
+                    mostrarMensaje("⚠️ La contraseña debe tener al menos 12 caracteres, una mayúscula y un símbolo");
                     return;
                 }
                 if (!Validator.passwordsCoinciden(password, passwordConfirmar)) {
-                    mostrarError("⚠️ Las contraseñas no coinciden");
+                    mostrarMensaje("⚠️ Las contraseñas no coinciden");
                     return;
                 }
 
                 if (insertarUsuarios(new Usuarios(usuario, password, dni))) {
-                    mostrarError("✅ Usuario creado correctamente");
+                    mostrarMensaje("✅ Usuario creado correctamente");
                     dispose();
                     new Login().setVisible(true);
                 } else {
-                    mostrarError("❌ Error al crear el usuario");
+                    mostrarMensaje("❌ Error al crear el usuario");
                 }
             }
         });

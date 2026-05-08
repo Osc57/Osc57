@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class ModificarEmpleado extends JFrame {
 
@@ -63,7 +63,7 @@ public class ModificarEmpleado extends JFrame {
                 Empleados seleccionado = LISTA_EMPLEADOS.getSelectedValue();
 
                 if (seleccionado == null) {
-                    mostrarError("⚠️ Seleccione una opción");
+                    mostrarMensaje("⚠️ Seleccione una opción");
                     return;
                 }
                 Empleados empleados1 = obtenerDatosEmpelado(seleccionado);//Obtengo datos empelado de la tabla empelados

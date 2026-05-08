@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.UsuariosDAO.combrobarUsuarios;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class Login extends JFrame{
 
@@ -75,7 +75,7 @@ public class Login extends JFrame{
                 String password = new String(jPasswordField.getPassword()).trim();
 
                 if (userName.isEmpty() || password.isEmpty()) {
-                    mostrarError("⚠️ Rellena todos los campos");
+                    mostrarMensaje("⚠️ Rellena todos los campos");
                     return;
                 }
 
@@ -85,10 +85,10 @@ public class Login extends JFrame{
 
                 switch (resultado) {
                     case 0:
-                        mostrarError("❌ El usuario no existe");
+                        mostrarMensaje("❌ El usuario no existe");
                         break;
                     case 1:
-                        mostrarError("✅ Login Correcto");
+                        mostrarMensaje("✅ Login Correcto");
                         dispose();
                         if (userName.equalsIgnoreCase("admin")) {
                             new GestionAfterLogin().setVisible(true);
@@ -97,10 +97,10 @@ public class Login extends JFrame{
                         }
                         break;
                     case 2:
-                        mostrarError("❌ Contraseña Incorrecta");
+                        mostrarMensaje("❌ Contraseña Incorrecta");
                         break;
                     default:
-                        mostrarError("⚠️ No se ha podido completar el inicio de sesión");
+                        mostrarMensaje("⚠️ No se ha podido completar el inicio de sesión");
                 }
             }
         });

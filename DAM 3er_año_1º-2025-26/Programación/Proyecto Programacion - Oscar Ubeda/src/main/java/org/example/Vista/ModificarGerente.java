@@ -18,7 +18,7 @@ import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
 import static org.example.ControladorDAO.GerenteDAO.modificarDatosGerente;
 import static org.example.ControladorDAO.GerenteDAO.obtenerNivelGerente;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 import static org.example.Utils.Validator.NOMBRE_EMPRESA;
 import static org.example.Utils.Validator.calcularBono;
 
@@ -121,50 +121,50 @@ public class ModificarGerente extends JFrame {
                 Object nivelObj = comboBoxNivel.getSelectedItem();
 
                 if (!Validator.camposRellenos(nombre, apellidos, telefono, salarioTexto)) {
-                    mostrarError("⚠️ Rellene todos los campos de texto.");
+                    mostrarMensaje("⚠️ Rellene todos los campos de texto.");
                     return;
                 }
 
                 if (!Validator.nombreValido(nombre)) {
-                    mostrarError("⚠️ El nombre debe empezar por mayúscula y ser letras");
+                    mostrarMensaje("⚠️ El nombre debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.apellidosValido(apellidos)) {
-                    mostrarError("⚠️ El apellido debe empezar por mayúscula y ser letras");
+                    mostrarMensaje("⚠️ El apellido debe empezar por mayúscula y ser letras");
                     return;
                 }
 
                 if (!Validator.validarEmail(email)) {
-                    mostrarError("⚠️ Correo invalido, tiene que tener " + NOMBRE_EMPRESA);
+                    mostrarMensaje("⚠️ Correo invalido, tiene que tener " + NOMBRE_EMPRESA);
                     return;
                 }
 
 
                 if (!Validator.telefonoValido(telefono)) {
-                    mostrarError("⚠️ El teléfono deben ser 9 números");
+                    mostrarMensaje("⚠️ El teléfono deben ser 9 números");
                     return;
                 }
 
                 if (!Validator.salarioValido(salarioTexto)) {
-                    mostrarError("⚠️ El salario debe ser un número válido mayor que 0.");
+                    mostrarMensaje("⚠️ El salario debe ser un número válido mayor que 0.");
                     return;
                 }
 
                 double salario = Double.parseDouble(salarioTexto.replace(",", "."));
                 if (salario < MIN_MES || salario > MAX_MES) {
-                    mostrarError("⚠️ El salario mensual no es coherente.\n" +
+                    mostrarMensaje("⚠️ El salario mensual no es coherente.\n" +
                             "Rango permitido: " + MIN_MES + "€ - " + MAX_MES + "€");
                     return;
                 }
 
                 if (indexDepartamento == 0 || departamento == null) {
-                    mostrarError("⚠️ Debe seleccionar un departamento");
+                    mostrarMensaje("⚠️ Debe seleccionar un departamento");
                     return;
                 }
 
                 if (indexNivel == 0 || nivelObj == null) {
-                    mostrarError("⚠️ Debes seleccionar un nivel.");
+                    mostrarMensaje("⚠️ Debes seleccionar un nivel.");
                     return;
                 }
 
@@ -177,18 +177,18 @@ public class ModificarGerente extends JFrame {
                 Empleados empleadoModificado = new Empleados(dni, nombre, apellidos, email, telefono, salario, idDept);
 
                 if (emailExistente(empleadoModificado)) {
-                    mostrarError("⚠️ Este email ya está registrado");
+                    mostrarMensaje("⚠️ Este email ya está registrado");
                     return;
                 }
 
                 Gerente gerenteModificado = new Gerente(bonoCalculado, nivel);
 
                 if (modificarDatosEmpleado(empleadoModificado) && modificarDatosGerente(empleadoModificado, gerenteModificado)) {
-                    mostrarError("✅ Empleado modificado exitosamente");
+                    mostrarMensaje("✅ Empleado modificado exitosamente");
                     dispose();
                     new GestionEmpleado().setVisible(true);
                 } else {
-                    mostrarError("❌ Error al modificar el empleado");
+                    mostrarMensaje("❌ Error al modificar el empleado");
                 }
 
             }

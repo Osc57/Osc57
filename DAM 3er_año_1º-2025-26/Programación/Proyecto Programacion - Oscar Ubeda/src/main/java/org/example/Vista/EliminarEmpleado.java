@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Messages.mostrarError;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class EliminarEmpleado extends JFrame {
 
@@ -60,7 +60,7 @@ public class EliminarEmpleado extends JFrame {
                 Empleados seleccionado = LISTA_EMPLEADOS.getSelectedValue();
 
                 if (seleccionado == null) {
-                    mostrarError("⚠️ Seleccione una opción");
+                    mostrarMensaje("⚠️ Seleccione una opción");
                     return;
                 }
 
@@ -69,11 +69,11 @@ public class EliminarEmpleado extends JFrame {
                             JOptionPane.YES_NO_OPTION);
                     if (respuesta == JOptionPane.YES_OPTION) {
                         if (eliminarEmpleado(seleccionado)) {
-                            mostrarError("✅ Gerente eliminado correctamente");
+                            mostrarMensaje("✅ Gerente eliminado correctamente");
                             dispose();
                             new GestionEmpleado().setVisible(true);
                         } else {
-                            mostrarError("❌ Error al eliminar el gerente");
+                            mostrarMensaje("❌ Error al eliminar el gerente");
                         }
                     }
 
@@ -82,11 +82,11 @@ public class EliminarEmpleado extends JFrame {
                             JOptionPane.YES_NO_OPTION);
                     if (respuesta == JOptionPane.YES_OPTION) {
                         if (eliminarEmpleado(seleccionado)) {
-                            mostrarError("✅ Programador eliminado correctamente");
+                            mostrarMensaje("✅ Programador eliminado correctamente");
                             dispose();
                             new GestionEmpleado().setVisible(true);
                         } else {
-                            mostrarError("❌ Error al eliminar al programador");
+                            mostrarMensaje("❌ Error al eliminar al programador");
                         }
                     }
 
