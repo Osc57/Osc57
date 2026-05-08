@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static org.example.ControladorDAO.DepartamentoDAO.modificarDatosDepartamento;
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
@@ -43,7 +44,7 @@ public class ModificarDepartamento extends JFrame {
 
     private JPanel getJPanelScrollPanel() {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 85, 50));
 
@@ -67,23 +68,21 @@ public class ModificarDepartamento extends JFrame {
         btnModificarDpto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int index = comboBoxUbicacion.getSelectedIndex();
 
-                String piso = departamento.getUbicacion();
-
-                Departamento departamento = (Departamento) comboBoxUbicacion.getSelectedItem();
-                int indexDepartamento = comboBoxUbicacion.getSelectedIndex();
-
-                if (indexDepartamento == 0 || departamento == null) {
+                if (index <= 0) {
                     mostrarMensaje("⚠️ Debe seleccionar un piso");
                     return;
                 }
 
-                int dept = departamento.getId();
+                String nuevaUbicacion = (String) comboBoxUbicacion.getSelectedItem();
 
-                Departamento departamentoModificar = new Departamento(dept, departamento.getNombre(), piso);
+                Departamento departamentoModificar = new Departamento(departamento.getId(), departamento.getNombre(), nuevaUbicacion);
 
                 if (modificarDatosDepartamento(departamentoModificar)) {
                     mostrarMensaje("✅ Piso modificado correctamente");
+                    dispose();
+                    new GestionDepartamentos().setVisible(true);
                 } else {
                     mostrarMensaje("❌ Error al modificar la ubicación");
                 }

@@ -66,13 +66,14 @@ public class ModificarEmpleado extends JFrame {
                     mostrarMensaje("⚠️ Seleccione una opción");
                     return;
                 }
-                Empleados empleados1 = obtenerDatosEmpelado(seleccionado);//Obtengo datos empelado de la tabla empelados
+
+                Empleados empleadosSeleccionado = obtenerDatosEmpelado(seleccionado);
 
                 dispose();
-                if (seleccionarGerenteEmpleado(empleados1)) {
-                    new ModificarGerente(empleados1).setVisible(true);
+                if (seleccionarGerenteEmpleado(empleadosSeleccionado)) {
+                    new ModificarGerente(empleadosSeleccionado).setVisible(true);
                 } else {
-                    new ModificarProgramador(empleados1).setVisible(true);
+                    new ModificarProgramador(seleccionado).setVisible(true);
                 }
             }
         });

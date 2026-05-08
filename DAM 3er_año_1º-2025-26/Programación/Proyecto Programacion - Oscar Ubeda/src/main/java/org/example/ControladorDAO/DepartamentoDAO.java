@@ -52,7 +52,7 @@ public class DepartamentoDAO {
         ArrayList<Departamento> departamentos = new ArrayList<>();
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre FROM departamentos");
+             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre, ubicacion FROM departamentos");
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
@@ -60,6 +60,7 @@ public class DepartamentoDAO {
 
                 departamento.setId(rs.getInt("id"));
                 departamento.setNombre(rs.getString("nombre"));
+                departamento.setUbicacion(rs.getString("ubicacion"));
 
                 departamentos.add(departamento);
             }
@@ -143,7 +144,7 @@ public class DepartamentoDAO {
 
     public static Departamento obtenerDatosDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT nombre, ubicacion FROM departamentos WHERE id = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre, ubicacion FROM departamentos WHERE id = ?")) {
 
             ps.setInt(1, departamento.getId());
 

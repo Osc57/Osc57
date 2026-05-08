@@ -129,23 +129,26 @@ public class EmpleadosDAO {
         }
     }
 
-    public static Empleados obtenerDatosEmpelado(Empleados empleado) {
+    public static Empleados obtenerDatosEmpelado(Empleados empleados) {
+
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("SELECT nombre, apellidos, salario, telefono, id_depa FROM empleados WHERE dni = ?")) {
 
-            ps.setString(1, empleado.getDni());
 
-            ResultSet rs = ps.executeQuery();
+            ps.setString(1, empleados.getDni());
 
-            if (rs.next()) {
-                empleado.setNombre(rs.getString("nombre"));
-                empleado.setApellidos(rs.getString("apellidos"));
-                empleado.setSalario(rs.getDouble("salario"));
-                empleado.setTelefono(rs.getString("telefono"));
-                empleado.setDepartamento(rs.getInt("id_depa"));
+            // 3. El ResultSet debe obtenerse DESPUÉS de asignar el parámetro
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    empleados.setNombre(rs.getString("nombre"));
+                    empleados.setApellidos(rs.getString("apellidos"));
+                    empleados.setSalario(rs.getDouble("salario"));
+                    empleados.setTelefono(rs.getString("telefono"));
+                    empleados.setDepartamento(rs.getInt("id_depa"));
+                }
             }
 
-            return empleado;
+            return empleados;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

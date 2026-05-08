@@ -16,7 +16,7 @@ import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Programador> programadores = mostrarProgramadores();
-        ArrayList<Empleados> empleados = mostrarEmpleados();
+        //ArrayList<Empleados> empleados = mostrarEmpleados();
         ArrayList<Gerente> gerentes = mostrarGerentes();
 
         boolean esGerente = false;
@@ -68,10 +68,13 @@ public class Main {
             System.out.println(p);
         }
 
+        /*
         System.out.println();
         for (Empleados e : empleados) {
             System.out.println(e);
         }
+
+         */
 
         System.out.println();
         for (Gerente g : gerentes) {

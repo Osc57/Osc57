@@ -113,6 +113,7 @@ public class Empleados {
         Departamento d = new Departamento();
         d.setId(departamento);
         mostrarNombreDepartamento(d);
-        return dni + " - " + nombre + " " + apellidos + " - " + email + " - " + salario + "€" + " - " + d.getNombre();
+        return dni + " - " + nombre + " " + apellidos + " - " + email ;
     }
+    //+ " - " + salario + "€" + " - " + d.getNombre()
 }

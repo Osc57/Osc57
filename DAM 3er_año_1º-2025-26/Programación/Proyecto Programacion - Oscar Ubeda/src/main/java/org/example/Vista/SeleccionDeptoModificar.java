@@ -46,7 +46,7 @@ public class SeleccionDeptoModificar extends JFrame {
 
         MODEL_DEPTO.removeAllElements();
 
-        ArrayList<Departamento> empleados = mostrarDepartamentos();
+        ArrayList<Departamento> empleados = obtenerDepartamentos();
         for (Departamento d : empleados) {
             MODEL_DEPTO.addElement(d);
         }
@@ -63,10 +63,11 @@ public class SeleccionDeptoModificar extends JFrame {
                     mostrarMensaje("⚠️ Seleccione una opción");
                     return;
                 }
-                Departamento departamento1 = obtenerDatosDepartamento(seleccionado);//Obtengo datos del departamento
+
+                Departamento departamento = new Departamento(seleccionado.getId(), seleccionado.getNombre(), seleccionado.getUbicacion());
 
                 dispose();
-                new ModificarDepartamento(departamento1).setVisible(true);
+                new ModificarDepartamento(departamento).setVisible(true);
 
             }
         });
