@@ -51,7 +51,8 @@ public class GestionDepartamentos extends JFrame {
         botonDarBaja.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+                dispose();
+                new EliminarDepartamento().setVisible(true);
 
             }
         });

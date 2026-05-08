@@ -193,4 +193,19 @@ public class DepartamentoDAO {
         }
     }
 
+    public static boolean contarEmpleadosDepartamento(Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM empleados WHERE id_depa = ?")) {
+
+            ps.setInt(1, departamento.getId());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
