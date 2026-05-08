@@ -61,8 +61,8 @@ public class ModificarDepartamento extends JFrame {
         comboBoxUbicacion.setSelectedItem(departamento.getUbicacion());
 
         JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
-        JButton btnCrearDpto = crearEstiloBotonSubmit("MODIFICAR UBICACIÓN");
-        btnCrearDpto.setPreferredSize(new Dimension(380, 45));
+        JButton btnModificarDpto = crearEstiloBotonSubmit("MODIFICAR UBICACIÓN");
+        btnModificarDpto.setPreferredSize(new Dimension(380, 45));
 
 
         panelFields.add(comboBoxUbicacion);
@@ -72,7 +72,7 @@ public class ModificarDepartamento extends JFrame {
 
         panelPrincipal.add(panelCentro, BorderLayout.CENTER);
 
-        panelBoton.add(btnCrearDpto);
+        panelBoton.add(btnModificarDpto);
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
         return panelPrincipal;
     }
