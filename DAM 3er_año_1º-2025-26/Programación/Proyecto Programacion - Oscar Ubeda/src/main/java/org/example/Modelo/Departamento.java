@@ -14,6 +14,10 @@ public class Departamento {
         this.ubicacion = ubicacion;
     }
 
+    public Departamento(int id) {
+        this.id = id;
+    }
+
     public Departamento(String nombre, String ubicacion) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;

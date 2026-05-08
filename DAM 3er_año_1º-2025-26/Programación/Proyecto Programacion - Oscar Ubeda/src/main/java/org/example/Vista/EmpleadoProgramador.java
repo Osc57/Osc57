@@ -23,7 +23,6 @@ public class EmpleadoProgramador extends JFrame {
     private ArrayList<Departamento> departamentos = obtenerDepartamentos();
 
 
-
     public EmpleadoProgramador(DarAltaEmpleado ventanaAnterior, Empleados empleado) {
         this.ventanaAnterior = ventanaAnterior;
         this.empleado = empleado;
@@ -63,7 +62,7 @@ public class EmpleadoProgramador extends JFrame {
         JTextField txtsalario = crearFields();
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
-        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento", " "));
 
         for (Departamento d : departamentos) {
             comboBoxDepart.addItem(d);

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
+import static org.example.ControladorDAO.DepartamentoDAO.mostrarNombreDepartamento;
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
@@ -78,13 +79,15 @@ public class ModificarGerente extends JFrame {
         (txtSalario = crearFields()).setText(empleado.getSalario() + "");
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
-        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento", " "));
 
         for (Departamento d : departamentos) {
             comboBoxDepart.addItem(d);
         }
 
-        comboBoxDepart.setSelectedIndex(empleado.getDepartamento());
+        Departamento dp = new Departamento(empleado.getDepartamento());
+
+        comboBoxDepart.setSelectedIndex(mostrarNombreDepartamento(dp).getId());
 
         JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{
                 "Selecciona nivel de gerente...", "Alto", "Medio", "Bajo"});

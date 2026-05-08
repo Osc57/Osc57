@@ -65,7 +65,7 @@ public class EmpleadoGerente extends JFrame {
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
 
 
-        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento", " "));
 
         for (Departamento d : departamentos) {
             comboBoxDepart.addItem(d);

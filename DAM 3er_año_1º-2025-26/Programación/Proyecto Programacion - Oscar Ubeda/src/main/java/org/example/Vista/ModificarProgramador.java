@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.ControladorDAO.DepartamentoDAO.mostrarDepartamentos;
+import static org.example.ControladorDAO.DepartamentoDAO.*;
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
 import static org.example.ControladorDAO.ProgramadorDAO.modificarDatosProgramador;
@@ -23,7 +23,7 @@ import static org.example.Utils.Validator.NOMBRE_EMPRESA;
 
 public class ModificarProgramador extends JFrame {
     private Empleados empleado;
-    private ArrayList<Departamento> departamentos = mostrarDepartamentos();
+    private ArrayList<Departamento> departamentos = obtenerDepartamentos();
     private Programador programador;
 
     JTextField txtNombre = new JTextField();
@@ -77,13 +77,15 @@ public class ModificarProgramador extends JFrame {
         (txtSalario = crearFields()).setText(empleado.getSalario() + "");
 
         JComboBox<Departamento> comboBoxDepart = new JComboBox<>();
-        comboBoxDepart.addItem(new Departamento("Seleccione un departamento..."));
+        comboBoxDepart.addItem(new Departamento("Seleccione un departamento", " "));
 
         for (Departamento d : departamentos) {
             comboBoxDepart.addItem(d);
         }
 
-        comboBoxDepart.setSelectedIndex(empleado.getDepartamento());
+        Departamento dp = new Departamento(empleado.getDepartamento());
+
+        comboBoxDepart.setSelectedIndex(mostrarNombreDepartamento(dp).getId());
 
         JComboBox<String> comboBoxLProgramacion = new JComboBox<>(new String[]{
                 "Seleccione un lenguaje...", "JavaScript", "Python", "Java", "C#", "Otro..."
