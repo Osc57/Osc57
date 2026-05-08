@@ -44,7 +44,7 @@ public class ModificarDepartamento extends JFrame {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
-        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 40));
+        JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 85, 50));
 
         JPanel panelLabels = new JPanel(new GridLayout(1, 1, 5, 5));
         panelLabels.add(crearLabels("Ubicación: "));
