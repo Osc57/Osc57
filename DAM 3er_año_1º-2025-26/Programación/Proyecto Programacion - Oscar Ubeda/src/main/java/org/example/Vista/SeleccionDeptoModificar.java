@@ -15,18 +15,18 @@ import static org.example.Utils.Messages.mostrarError;
 public class SeleccionDeptoModificar extends JFrame {
 
     public SeleccionDeptoModificar() {
-        this.setTitle("Modificar Empleado");
+        this.setTitle("Modificar Departamento");
         this.setSize(480, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione empleado a modificar");
+        JLabel introducirCliente = new JLabel("•Seleccione depto. a modificar");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
         JPanel panelScrollPanel = getJPanelScrollPanel();
-        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new GestionEmpleado());
+        JPanel panelBotonRetorno = getPanelBotonRetorno(this, new GestionDepartamentos());
 
         this.add(introducirCliente, BorderLayout.NORTH);
         this.add(panelScrollPanel, BorderLayout.CENTER);
@@ -46,12 +46,12 @@ public class SeleccionDeptoModificar extends JFrame {
 
         MODEL_DEPTO.removeAllElements();
 
-        ArrayList<Departamento> empleados = obtenerDepartamentos();
+        ArrayList<Departamento> empleados = mostrarDepartamentos();
         for (Departamento d : empleados) {
             MODEL_DEPTO.addElement(d);
         }
 
-        JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR EMPLEADO");
+        JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR DEPARTAMENTO");
         btnSeleccionEmple.setPreferredSize(new Dimension(420, 45));
 
         btnSeleccionEmple.addActionListener(new ActionListener() {
@@ -66,9 +66,8 @@ public class SeleccionDeptoModificar extends JFrame {
                 Departamento departamento1 = obtenerDatosDepartamento(seleccionado);//Obtengo datos del departamento
 
                 dispose();
-                if (seleccionarDepartamento(departamento1)) {
+                new ModificarDepartamento(departamento1).setVisible(true);
 
-                }
             }
         });
 
@@ -78,5 +77,9 @@ public class SeleccionDeptoModificar extends JFrame {
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
+    }
+
+    public static void main(String[] args) {
+        new SeleccionDeptoModificar().setVisible(true);
     }
 }

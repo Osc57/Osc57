@@ -12,20 +12,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+import static org.example.ControladorDAO.DepartamentoDAO.mostrarDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
-import static org.example.ControladorDAO.GerenteDAO.modificarDatosGerente;
 import static org.example.ControladorDAO.ProgramadorDAO.modificarDatosProgramador;
 import static org.example.ControladorDAO.ProgramadorDAO.obtenerLenguajeProgramador;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarError;
 import static org.example.Utils.Validator.NOMBRE_EMPRESA;
-import static org.example.Utils.Validator.calcularBono;
 
 public class ModificarProgramador extends JFrame {
     private Empleados empleado;
-    private ArrayList<Departamento> departamentos = obtenerDepartamentos();
+    private ArrayList<Departamento> departamentos = mostrarDepartamentos();
     private Programador programador;
 
     JTextField txtNombre = new JTextField();

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import static org.example.ControladorDAO.DepartamentoDAO.mostrarDepartamentos;
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
 import static org.example.ControladorDAO.EmpleadosDAO.modificarDatosEmpleado;
@@ -23,7 +24,7 @@ import static org.example.Utils.Validator.calcularBono;
 
 public class ModificarGerente extends JFrame {
     private Empleados empleado;
-    private ArrayList<Departamento> departamentos = obtenerDepartamentos();
+    private ArrayList<Departamento> departamentos = mostrarDepartamentos();
     private Gerente gerente;
 
     JTextField txtNombre = new JTextField();

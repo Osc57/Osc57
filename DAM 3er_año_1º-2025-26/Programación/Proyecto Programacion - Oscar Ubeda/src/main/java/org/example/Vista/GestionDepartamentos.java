@@ -11,7 +11,7 @@ import static org.example.Utils.Funcionalidad.crearEstiloBoton;
 public class GestionDepartamentos extends JFrame {
 
     public GestionDepartamentos() {
-        this.setTitle("Gestión Proyectos");
+        this.setTitle("Gestión Departamento");
         this.setSize(500, 370);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -42,7 +42,8 @@ public class GestionDepartamentos extends JFrame {
         botonModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+                dispose();
+                new SeleccionDeptoModificar().setVisible(true);
             }
         });
 
@@ -60,5 +61,9 @@ public class GestionDepartamentos extends JFrame {
         panelGestion.add(botonDarBaja);
 
         return panelGestion;
+    }
+
+    public static void main(String[] args) {
+        new GestionDepartamentos().setVisible(true);
     }
 }

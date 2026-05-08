@@ -70,6 +70,28 @@ public class DepartamentoDAO {
         return departamentos;
     }
 
+    public static ArrayList<Departamento> mostrarDepartamentos() {
+        ArrayList<Departamento> departamentos = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT nombre, ubicacion FROM departamentos");
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Departamento departamento = new Departamento();
+
+                departamento.setNombre(rs.getString("nombre"));
+                departamento.setUbicacion(rs.getString("ubicacion"));
+
+                departamentos.add(departamento);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return departamentos;
+    }
+
     public static Departamento mostrarNombreDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("SELECT nombre FROM departamentos WHERE id = ?")) {
@@ -129,7 +151,7 @@ public class DepartamentoDAO {
 
             if (rs.next()) {
                 departamento.setNombre(rs.getString("nombre"));
-                departamento.setNombre(rs.getString("ubicacion"));
+                departamento.setUbicacion(rs.getString("ubicacion"));
             }
 
             return departamento;
@@ -145,9 +167,9 @@ public class DepartamentoDAO {
 
             ps.setInt(1, departamento.getId());
 
-            ResultSet rs = ps.executeQuery();
-
-            return rs.next();
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
