@@ -83,12 +83,24 @@ public class ModificarProgramador extends JFrame {
             comboBoxDepart.addItem(d);
         }
 
-        Departamento dp = new Departamento(empleado.getDepartamento());
+        int idDeptoEmpleado = empleado.getDepartamento();
 
-        comboBoxDepart.setSelectedIndex(mostrarNombreDepartamento(dp).getId());
+        int indexEncontrado = 0;
+
+        for (int i = 0; i < comboBoxDepart.getItemCount(); i++) {
+            Departamento d = comboBoxDepart.getItemAt(i);
+
+            if (d.getId() == idDeptoEmpleado) {
+                indexEncontrado = i;
+                break;
+            }
+        }
+
+        comboBoxDepart.setSelectedIndex(indexEncontrado);
+
 
         JComboBox<String> comboBoxLProgramacion = new JComboBox<>(new String[]{
-                "Seleccione un lenguaje...", "JavaScript", "Python", "Java", "C#", "Otro..."
+                "Seleccione un lenguaje...", "JavaScript", "Python", "Java", "C#", "Otro... "
         });
 
         comboBoxLProgramacion.setSelectedItem(programador.getLenguajePrincipal());

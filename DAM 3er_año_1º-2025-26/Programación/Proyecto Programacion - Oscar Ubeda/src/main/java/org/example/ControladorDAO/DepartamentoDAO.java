@@ -95,7 +95,7 @@ public class DepartamentoDAO {
 
     public static Departamento mostrarNombreDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT nombre FROM departamentos WHERE id = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT nombre, ubicacion FROM departamentos WHERE id = ?")) {
 
             ps.setInt(1, departamento.getId());
 
@@ -103,6 +103,7 @@ public class DepartamentoDAO {
 
             if (rs.next()) {
                 departamento.setNombre(rs.getString("nombre"));
+                departamento.setNombre(rs.getString("ubicacion"));
             } else {
                 departamento.setNombre(null);
             }

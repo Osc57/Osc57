@@ -85,9 +85,20 @@ public class ModificarGerente extends JFrame {
             comboBoxDepart.addItem(d);
         }
 
-        Departamento dp = new Departamento(empleado.getDepartamento());
+        int idDeptoEmpleado = empleado.getDepartamento();
 
-        comboBoxDepart.setSelectedIndex(mostrarNombreDepartamento(dp).getId());
+        int indexEncontrado = 0;
+
+        for (int i = 0; i < comboBoxDepart.getItemCount(); i++) {
+            Departamento d = comboBoxDepart.getItemAt(i);
+
+            if (d.getId() == idDeptoEmpleado) {
+                indexEncontrado = i;
+                break;
+            }
+        }
+
+        comboBoxDepart.setSelectedIndex(indexEncontrado);
 
         JComboBox<String> comboBoxNivel = new JComboBox<>(new String[]{
                 "Selecciona nivel de gerente...", "Alto", "Medio", "Bajo"});
