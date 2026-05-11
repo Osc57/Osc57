@@ -33,8 +33,8 @@ public class GestionDepartamentos extends JFrame {
         botonDarAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new CrearDepartamento().setVisible(true);
+                dispose();
             }
         });
 
@@ -42,8 +42,8 @@ public class GestionDepartamentos extends JFrame {
         botonModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new SeleccionDeptoModificar().setVisible(true);
+                dispose();
             }
         });
 
@@ -51,8 +51,8 @@ public class GestionDepartamentos extends JFrame {
         botonDarBaja.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new EliminarDepartamento().setVisible(true);
+                dispose();
 
             }
         });

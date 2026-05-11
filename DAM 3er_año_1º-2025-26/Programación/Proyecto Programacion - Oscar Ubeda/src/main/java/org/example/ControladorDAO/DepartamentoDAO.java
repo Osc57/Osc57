@@ -195,7 +195,7 @@ public class DepartamentoDAO {
 
     public static boolean contarEmpleadosDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM empleados WHERE id_depa = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE id_depa = ?")) {
 
             ps.setInt(1, departamento.getId());
 

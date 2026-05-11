@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.*;
-import static org.example.ControladorDAO.EmpleadosDAO.*;
-import static org.example.ControladorDAO.EmpleadosDAO.eliminarEmpleado;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -84,14 +82,26 @@ public class EliminarDepartamento extends JFrame {
                                     mostrarMensaje("❌ Error al eliminar el departamento");
                                 }
                             }
+                        } else {
+                            int respuesta2 = JOptionPane.showConfirmDialog(null, "⚠️ No hay empleados asignados al departamento \n" +
+                                            "¿Quieres darlo de baja?", "Eliminar Departamento",
+                                    JOptionPane.YES_NO_OPTION);
+                            if (respuesta2 == JOptionPane.YES_OPTION) {
+                                if (eliminarDepartamentos(seleccionado)) {
+                                    mostrarMensaje("✅ Departamento eliminado correctamente");
+                                    dispose();
+                                    new GestionDepartamentos().setVisible(true);
+                                } else {
+                                    mostrarMensaje("❌ Error al eliminar el departamento");
+                                }
+                            }
+
                         }
 
                     }
-
                 }
             }
         });
-
         panelBoton.add(btnSeleccionEmple);
 
         panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
@@ -100,3 +110,6 @@ public class EliminarDepartamento extends JFrame {
         return panelPrincipal;
     }
 }
+
+
+
