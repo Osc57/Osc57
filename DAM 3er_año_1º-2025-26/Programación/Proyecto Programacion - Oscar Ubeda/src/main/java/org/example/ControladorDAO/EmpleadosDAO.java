@@ -205,7 +205,9 @@ public class EmpleadosDAO {
                 empleados.setApellidos(resultSet.getString("apellidos"));
                 empleados.setEmail(resultSet.getString("email"));
                 empleados.setSalario(resultSet.getDouble("salario"));
-                empleados.setDepartamento(resultSet.getInt("id_depa"));
+
+                Integer idDepa = (Integer) resultSet.getObject("id_depa");
+                empleados.setDepartamento(idDepa == null ? 0 : idDepa);
 
                 listaEmpleados.add(empleados);
 
