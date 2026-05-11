@@ -40,7 +40,7 @@ public class ModificarEmpleado extends JFrame {
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
 
-        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel panelBoton = new JPanel(new GridLayout(2, 1, 5, 5));
 
         configurarListaEnScroll(LISTA_EMPLEADOS);
 
@@ -55,7 +55,6 @@ public class ModificarEmpleado extends JFrame {
         }
 
         JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR EMPLEADO");
-        btnSeleccionEmple.setPreferredSize(new Dimension(420, 45));
 
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
@@ -78,7 +77,23 @@ public class ModificarEmpleado extends JFrame {
             }
         });
 
+        JButton btnMostrarEmpleSinDepto = crearEstiloBotonSubmit("MOSTRAR EMPELADOS SIN DEPTO.");
+        btnMostrarEmpleSinDepto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                if ((comprobarEmpleadoDepto())) {
+                    new EmpleadosSinDepartamento().setVisible(true);
+                    dispose();
+                } else {
+                    mostrarMensaje("⚠️ No hay empleados sin departamento");
+                }
+            }
+        });
+
         panelBoton.add(btnSeleccionEmple);
+        panelBoton.add(btnMostrarEmpleSinDepto);
 
         panelPrincipal.add(jScrollPane, BorderLayout.CENTER);
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);

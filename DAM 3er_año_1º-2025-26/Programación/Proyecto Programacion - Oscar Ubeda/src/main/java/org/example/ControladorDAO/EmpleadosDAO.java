@@ -17,7 +17,7 @@ public class EmpleadosDAO {
     }
 
     public static ArrayList<Empleados> mostrarEmpleados() {
-        ArrayList<Empleados> listaEmpelados = new ArrayList<>();
+        ArrayList<Empleados> listaEmpleados = new ArrayList<>();
 
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("SELECT * FROM empleados")) {
@@ -33,7 +33,7 @@ public class EmpleadosDAO {
                 empleados.setSalario(resultSet.getDouble("salario"));
                 empleados.setDepartamento(resultSet.getInt("id_depa"));
 
-                listaEmpelados.add(empleados);
+                listaEmpleados.add(empleados);
 
             }
 
@@ -41,7 +41,7 @@ public class EmpleadosDAO {
             throw new RuntimeException(e);
         }
 
-        return listaEmpelados;
+        return listaEmpleados;
     }
 
     public static boolean insertarEmpleado(Empleados empleados) {
@@ -170,6 +170,48 @@ public class EmpleadosDAO {
             int filasAfect = ps.executeUpdate();
 
             return filasAfect > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean comprobarEmpleadoDepto() {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE id_depa IS NULL LIMIT 1")) {
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static ArrayList<Empleados> mostrarEmpeladosSinDepto() {
+        ArrayList<Empleados> listaEmpleados = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM empleados WHERE id_depa IS NULL")) {
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Empleados empleados = new Empleados();
+                empleados.setDni(resultSet.getString("dni"));
+                empleados.setNombre(resultSet.getString("nombre"));
+                empleados.setApellidos(resultSet.getString("apellidos"));
+                empleados.setEmail(resultSet.getString("email"));
+                empleados.setSalario(resultSet.getDouble("salario"));
+                empleados.setDepartamento(resultSet.getInt("id_depa"));
+
+                listaEmpleados.add(empleados);
+
+            }
+
+            return listaEmpleados;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
