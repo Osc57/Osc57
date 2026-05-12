@@ -1,7 +1,6 @@
 package org.example.Vista;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,8 +33,8 @@ public class GestionEmpleado extends JFrame {
         botonDarAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new DarAltaEmpleado().setVisible(true);
+                dispose();
 
             }
         });
@@ -44,8 +43,8 @@ public class GestionEmpleado extends JFrame {
         botonModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new ModificarEmpleado().setVisible(true);
+                dispose();
             }
         });
 
@@ -53,8 +52,8 @@ public class GestionEmpleado extends JFrame {
         botonDarBaja.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new EliminarEmpleado().setVisible(true);
+                dispose();
 
             }
         });

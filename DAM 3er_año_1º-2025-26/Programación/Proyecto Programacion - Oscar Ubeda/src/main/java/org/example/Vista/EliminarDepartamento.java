@@ -1,7 +1,6 @@
 package org.example.Vista;
 
 import org.example.Modelo.Departamento;
-import org.example.Modelo.Empleados;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,8 +75,16 @@ public class EliminarDepartamento extends JFrame {
                             if (respuesta2 == JOptionPane.YES_OPTION) {
                                 if (eliminarDepartamentos(seleccionado)) {
                                     mostrarMensaje("✅ Departamento eliminado correctamente");
-                                    dispose();
-                                    new GestionDepartamentos().setVisible(true);
+                                    if (existenDepartamentos()) {
+                                        new EmpleadosSinDepartamento().setVisible(true);
+                                        dispose();
+
+                                    } else {
+                                        mostrarMensaje("⚠️ No hay departamentos disponibles \n" +
+                                                "De de alta un departamento");
+                                        new CrearDepartamento().setVisible(true);
+                                        dispose();
+                                    }
                                 } else {
                                     mostrarMensaje("❌ Error al eliminar el departamento");
                                 }
@@ -89,8 +96,16 @@ public class EliminarDepartamento extends JFrame {
                             if (respuesta2 == JOptionPane.YES_OPTION) {
                                 if (eliminarDepartamentos(seleccionado)) {
                                     mostrarMensaje("✅ Departamento eliminado correctamente");
-                                    dispose();
-                                    new GestionDepartamentos().setVisible(true);
+                                    if (existenDepartamentos()) {
+                                        new EmpleadosSinDepartamento().setVisible(true);
+                                        dispose();
+
+                                    } else {
+                                        mostrarMensaje("⚠️ No hay departamentos disponibles \n" +
+                                                "De de alta un departamento");
+                                        new CrearDepartamento().setVisible(true);
+                                        dispose();
+                                    }
                                 } else {
                                     mostrarMensaje("❌ Error al eliminar el departamento");
                                 }

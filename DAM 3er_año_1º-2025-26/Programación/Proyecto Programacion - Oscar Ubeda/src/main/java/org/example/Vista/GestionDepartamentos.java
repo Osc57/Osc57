@@ -5,8 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.ControladorDAO.DepartamentoDAO.existenDepartamentos;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Funcionalidad.crearEstiloBoton;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class GestionDepartamentos extends JFrame {
 
@@ -51,8 +52,13 @@ public class GestionDepartamentos extends JFrame {
         botonDarBaja.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new EliminarDepartamento().setVisible(true);
-                dispose();
+
+                if (existenDepartamentos()) {
+                    new EliminarDepartamento().setVisible(true);
+                    dispose();
+                } else {
+                    mostrarMensaje("⚠️ No hay departamentos para eliminar");
+                }
 
             }
         });

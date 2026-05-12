@@ -1,5 +1,6 @@
 package org.example.ControladorDAO;
 
+import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
 
 import java.sql.Connection;
@@ -194,7 +195,7 @@ public class EmpleadosDAO {
         ArrayList<Empleados> listaEmpleados = new ArrayList<>();
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT * FROM empleados WHERE id_depa IS NULL")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT dni,nombre,apellidos,email,salario,id_depa FROM empleados WHERE id_depa IS NULL")) {
 
             ResultSet resultSet = ps.executeQuery();
 
@@ -214,6 +215,22 @@ public class EmpleadosDAO {
             }
 
             return listaEmpleados;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean asignarEmpleadoADepartamento(Empleados empleados, Departamento departamento) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("UPDATE empleados SET id_depa = ? WHERE dni = ?")) {
+
+            ps.setInt(1, departamento.getId());
+            ps.setString(2, empleados.getDni());
+
+            int filasAfectadas = ps.executeUpdate();
+
+            return filasAfectadas > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

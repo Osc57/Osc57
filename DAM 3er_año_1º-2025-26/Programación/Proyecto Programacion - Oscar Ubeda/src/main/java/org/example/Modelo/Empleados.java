@@ -26,7 +26,6 @@ public class Empleados {
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
-        this.salario = salario;
     }
 
     public Empleados(String dni, String nombre, String apellidos, String email, String telefono, double salario, int departamento) {
@@ -110,9 +109,6 @@ public class Empleados {
 
     @Override
     public String toString() {
-        Departamento d = new Departamento();
-        d.setId(departamento);
-        mostrarNombreDepartamento(d);
         return dni + " - " + nombre + " " + apellidos + " - " + email ;
     }
     //+ " - " + salario + "€" + " - " + d.getNombre()

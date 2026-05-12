@@ -1,7 +1,6 @@
 package org.example.ControladorDAO;
 
 import org.example.Modelo.Departamento;
-import org.example.Modelo.Empleados;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -145,13 +144,14 @@ public class DepartamentoDAO {
 
     public static Departamento obtenerDatosDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre, ubicacion FROM departamentos WHERE id = ?")) {
+             PreparedStatement ps = connection.prepareStatement("SELECT * FROM departamentos WHERE nombre = ?")) {
 
-            ps.setInt(1, departamento.getId());
+            ps.setString(1, departamento.getNombre());
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+                departamento.setId(rs.getInt("id"));
                 departamento.setNombre(rs.getString("nombre"));
                 departamento.setUbicacion(rs.getString("ubicacion"));
             }
@@ -203,6 +203,18 @@ public class DepartamentoDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next();
             }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean existenDepartamentos() {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM departamentos LIMIT 1")) {
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
