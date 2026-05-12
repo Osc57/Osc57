@@ -237,4 +237,16 @@ public class EmpleadosDAO {
         }
     }
 
+    public static boolean saberSiNoHayEmpeladoEnDepartamento() {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM empleados WHERE id_depa IS NULL LIMIT 1")) {
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.DepartamentoDAO.*;
+import static org.example.ControladorDAO.EmpleadosDAO.saberSiNoHayEmpeladoEnDepartamento;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -58,11 +59,12 @@ public class CrearDepartamento extends JFrame {
         comboBoxDepartamentos.setSelectedIndex(0);
         comboBoxUbicacion.setSelectedIndex(0);
 
-        JPanel panelBoton = new JPanel((new FlowLayout(FlowLayout.CENTER)));
-        JButton btnCrearDpto = crearEstiloBotonSubmit("CREAR DEPARTAMENTO");
-        btnCrearDpto.setPreferredSize(new Dimension(380, 45));
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        btnCrearDpto.addActionListener(new ActionListener() {
+        JButton btnCrearYAsignarDepto = crearEstiloBotonSubmit("CREAR Y ASIGNAR DEPTO.");
+        btnCrearYAsignarDepto.setPreferredSize(new Dimension(380, 45));
+
+        btnCrearYAsignarDepto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DepartamentoENUM deptoEnum = (DepartamentoENUM) comboBoxDepartamentos.getSelectedItem();
@@ -96,13 +98,28 @@ public class CrearDepartamento extends JFrame {
                     return;
                 }
 
-
-                if (insertarDepartamento(dp)) {
-                    mostrarMensaje("✅ Departamento insertado correctamente");
-                    dispose();
-                    new GestionDepartamentos().setVisible(true);
+                if (saberSiNoHayEmpeladoEnDepartamento()) {
+                    if (insertarDepartamento(dp)) {
+                        mostrarMensaje("✅ Departamento insertado correctamente");
+                        new EmpleadosSinDepartamento().setVisible(true);
+                        dispose();
+                    } else {
+                        mostrarMensaje("❌ Error al insertar el departamento");
+                    }
                 } else {
-                    mostrarMensaje("❌ Error al insertar el departamento");
+                    int respuesta = JOptionPane.showConfirmDialog(null, "⚠️ Los empelados estan asignados a departamentos \n" +
+                                    "¿Quieres crear el departamento?", "Crear Departamento",
+                            JOptionPane.YES_NO_OPTION);
+
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                        if (insertarDepartamento(dp)) {
+                            mostrarMensaje("✅ Departamento insertado correctamente");
+                            new GestionDepartamentos().setVisible(true);
+                            dispose();
+                        } else {
+                            mostrarMensaje("❌ Error al insertar el departamento");
+                        }
+                    }
                 }
 
             }
@@ -116,7 +133,7 @@ public class CrearDepartamento extends JFrame {
 
         panelPrincipal.add(panelCentro, BorderLayout.CENTER);
 
-        panelBoton.add(btnCrearDpto);
+        panelBoton.add(btnCrearYAsignarDepto);
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
         return panelPrincipal;
     }

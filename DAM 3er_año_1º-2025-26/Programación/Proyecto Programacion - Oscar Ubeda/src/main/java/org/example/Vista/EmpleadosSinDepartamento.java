@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
-import static org.example.ControladorDAO.EmpleadosDAO.asignarEmpleadoADepartamento;
-import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpeladosSinDepto;
+import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -75,7 +74,7 @@ public class EmpleadosSinDepartamento extends JFrame {
                 // Crear ventana emergente
                 JDialog dialog = new JDialog((Frame) null, "Asignar departamento", true);
                 dialog.setLayout(new BorderLayout());
-                dialog.setSize(450, 80);
+                dialog.setSize(450, 120);
                 dialog.setLocationRelativeTo(null);
 
                 // ComboBox con departamentos
@@ -106,6 +105,15 @@ public class EmpleadosSinDepartamento extends JFrame {
                                 "Departamento asignado a " + seleccionados.size() + " empleados.");
 
                         dialog.dispose();
+
+                        if (saberSiNoHayEmpeladoEnDepartamento()) {
+                            new EmpleadosSinDepartamento().setVisible(true);
+                            dispose();
+
+                        } else {
+                            new GestionEmpleado().setVisible(true);
+                            dispose();
+                        }
                     }
                 });
 
