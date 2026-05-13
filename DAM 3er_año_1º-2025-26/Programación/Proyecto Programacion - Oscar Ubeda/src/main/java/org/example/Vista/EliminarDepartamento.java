@@ -97,7 +97,7 @@ public class EliminarDepartamento extends JFrame {
                                 if (eliminarDepartamentos(seleccionado)) {
                                     mostrarMensaje("✅ Departamento eliminado correctamente");
                                     if (existenDepartamentos()) {
-                                        new EmpleadosSinDepartamento().setVisible(true);
+                                        new GestionDepartamentos().setVisible(true);
                                         dispose();
 
                                     } else {
