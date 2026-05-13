@@ -27,37 +27,37 @@ public class GestionAfterLogin extends JFrame {
         panelBotonesGestion.setBorder(BorderFactory.createEmptyBorder(50, 70, 50, 70));
         panelBotonesGestion.setBackground(COLOR_FONDO_GRIS_CLARO);
 
-        JButton botonGestiona = crearEstiloBoton("<html>Gestiona <br> Proyectos</html>");
-        botonGestiona.addActionListener(new ActionListener() {
+        JButton botonGestionarProyectos = crearEstiloBoton("<html>Gestiona <br> Proyectos</html>");
+        botonGestionarProyectos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
-
+                new GestionProyectos().setVisible(true);
+                dispose();
             }
         });
 
-        JButton botonDarCitaCliente = crearEstiloBoton("<html>Gestiona <br> Empleados</html>");
-        botonDarCitaCliente.addActionListener(new ActionListener() {
+        JButton botonGestionEmpleados = crearEstiloBoton("<html>Gestiona <br> Empleados</html>");
+        botonGestionEmpleados.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new GestionEmpleado().setVisible(true);
+                dispose();
             }
         });
 
-        JButton botonHistorialCliente = crearEstiloBoton("<html>Gestiona <br> Departamentos</html>");
-        botonHistorialCliente.addActionListener(new ActionListener() {
+        JButton botonGestionaDeptos = crearEstiloBoton("<html>Gestiona <br> Departamentos</html>");
+        botonGestionaDeptos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 new GestionDepartamentos().setVisible(true);
+                dispose();
 
             }
         });
 
-        panelBotonesGestion.add(botonGestiona);
-        panelBotonesGestion.add(botonDarCitaCliente);
-        panelBotonesGestion.add(botonHistorialCliente);
+        panelBotonesGestion.add(botonGestionarProyectos);
+        panelBotonesGestion.add(botonGestionEmpleados);
+        panelBotonesGestion.add(botonGestionaDeptos);
 
         return panelBotonesGestion;
     }

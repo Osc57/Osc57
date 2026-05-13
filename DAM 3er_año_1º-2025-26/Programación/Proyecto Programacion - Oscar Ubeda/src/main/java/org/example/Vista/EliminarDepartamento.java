@@ -16,7 +16,7 @@ public class EliminarDepartamento extends JFrame {
 
     public EliminarDepartamento() {
         this.setTitle("Eliminar Departamento");
-        this.setSize(480, 460);
+        this.setSize(480, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
