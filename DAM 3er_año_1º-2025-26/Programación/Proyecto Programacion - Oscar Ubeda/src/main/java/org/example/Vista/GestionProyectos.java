@@ -33,7 +33,8 @@ public class GestionProyectos extends JFrame {
         botonCrearProyecto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+                new CrearProyecto().setVisible(true);
+                dispose();
 
             }
         });

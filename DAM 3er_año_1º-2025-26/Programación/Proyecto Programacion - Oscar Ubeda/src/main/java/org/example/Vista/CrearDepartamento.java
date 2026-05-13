@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.example.ControladorDAO.DepartamentoDAO.*;
 import static org.example.ControladorDAO.EmpleadosDAO.saberSiNoHayEmpeladoEnDepartamento;
@@ -48,7 +51,18 @@ public class CrearDepartamento extends JFrame {
 
         JPanel panelFields = new JPanel(new GridLayout(2, 1, 5, 5));
 
-        JComboBox<DepartamentoENUM> comboBoxDepartamentos = new JComboBox<>(DepartamentoENUM.values());
+        ArrayList<Departamento> deptosOcupados = obtenerDepartamentos();
+
+        DepartamentoENUM[] disponibles = Arrays.stream(DepartamentoENUM.values())
+                .filter(depto ->
+                        depto == DepartamentoENUM.SELECCIONA ||
+                                // CAMBIO CLAVE: Usamos depto.toString() para comparar los textos legibles
+                                deptosOcupados.stream().noneMatch(d -> d.getNombre().equalsIgnoreCase(depto.toString()))
+                )
+                .toArray(DepartamentoENUM[]::new);
+
+        JComboBox<DepartamentoENUM> comboBoxDepartamentos = new JComboBox<>(disponibles);
+
 
         JComboBox<String> comboBoxUbicacion = new JComboBox<>();
         comboBoxUbicacion.addItem("Selecciona un piso...");
