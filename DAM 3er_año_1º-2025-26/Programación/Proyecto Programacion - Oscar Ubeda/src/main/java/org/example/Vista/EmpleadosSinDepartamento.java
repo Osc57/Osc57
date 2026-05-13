@@ -18,7 +18,7 @@ import static org.example.Utils.Messages.mostrarMensaje;
 public class EmpleadosSinDepartamento extends JFrame {
     public EmpleadosSinDepartamento() {
         this.setTitle("Eliminar Empleado");
-        this.setSize(480, 460);
+        this.setSize(480, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
