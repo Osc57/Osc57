@@ -111,7 +111,7 @@ public class EmpleadosSinDepartamento extends JFrame {
                             dispose();
 
                         } else {
-                            new GestionEmpleado().setVisible(true);
+                            new GestionDepartamentos().setVisible(true);
                             dispose();
                         }
                     }
