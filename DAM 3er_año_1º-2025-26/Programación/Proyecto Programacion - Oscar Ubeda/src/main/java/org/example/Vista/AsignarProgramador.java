@@ -53,7 +53,7 @@ public class AsignarProgramador extends JFrame {
             MODEL_EMPLEADOS.addElement(t);
         }
 
-        JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR EMPLEADO");
+        JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR PROGRAMADOR");
         btnSeleccionEmple.setPreferredSize(new Dimension(515, 45));
 
         btnSeleccionEmple.addActionListener(new ActionListener() {
