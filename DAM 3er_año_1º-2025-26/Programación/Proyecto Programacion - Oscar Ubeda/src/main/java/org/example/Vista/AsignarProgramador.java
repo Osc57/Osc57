@@ -18,7 +18,7 @@ public class AsignarProgramador extends JFrame {
 
     public AsignarProgramador() {
         this.setTitle("Seleccione Programador");
-        this.setSize(480, 460);
+        this.setSize(570, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
@@ -54,7 +54,7 @@ public class AsignarProgramador extends JFrame {
         }
 
         JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR EMPLEADO");
-        btnSeleccionEmple.setPreferredSize(new Dimension(420, 45));
+        btnSeleccionEmple.setPreferredSize(new Dimension(515, 45));
 
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
@@ -83,5 +83,9 @@ public class AsignarProgramador extends JFrame {
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
+    }
+
+    public static void main(String[] args) {
+        new AsignarProgramador().setVisible(true);
     }
 }
