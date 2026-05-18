@@ -1,20 +1,27 @@
 package org.example.Modelo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class Proyecto {
     private int id;
     private String nombre;
     private double presupuesto;
-    private LocalDate fechaInicio;
+    private Date fechaInicio;
+    private boolean finalizado;
 
-    public Proyecto(int id, String nombre, double presupuesto, LocalDate fechaInicio) {
-        this.id = id;
+    public Proyecto(String nombre, double presupuesto, Date fechaInicio, boolean finalizado) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
         this.fechaInicio = fechaInicio;
+        this.finalizado = finalizado;
+    }
+
+    public boolean getFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public int getId() {
@@ -41,11 +48,11 @@ public class Proyecto {
         this.presupuesto = presupuesto;
     }
 
-    public LocalDate getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 }

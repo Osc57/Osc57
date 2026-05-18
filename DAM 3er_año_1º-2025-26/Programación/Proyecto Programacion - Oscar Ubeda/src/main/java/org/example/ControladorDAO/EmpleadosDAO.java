@@ -249,4 +249,20 @@ public class EmpleadosDAO {
         }
     }
 
+    public static boolean quedanEmpleadosLibres() {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS libres FROM empleados e WHERE e.dni NOT IN (SELECT DISTINCT t.dni FROM trabaja t JOIN proyectos p ON t.id_proyect = p.id WHERE p.fechaInicio <= CURDATE() AND p.finalizado = 0)");
+             ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+                int libres = rs.getInt("libres");
+                return libres > 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+
 }

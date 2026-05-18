@@ -11,7 +11,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.Objects;
 
+import static org.example.ControladorDAO.EmpleadosDAO.quedanEmpleadosLibres;
+import static org.example.ControladorDAO.ProyectosDAO.insertarProyecto;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -74,6 +78,24 @@ public class CrearProyecto extends JFrame {
                 if (presupuestoEnum == PresupuestosENUM.SELECCIONE_PRESUPUESTO) {
                     mostrarMensaje("⚠️ Seleccione un presupuesto");
                     return;
+                }
+
+                if (!quedanEmpleadosLibres()) {
+                    mostrarMensaje("❌ No se pueden dar más proyectos de alta. Todos los empleados están ocupados.");
+                    return;
+                }
+
+                String nombreProyecto = Objects.requireNonNull(proyectosEnum).toString();
+                double presupuestoProyecto = (double) Objects.requireNonNull(presupuestoEnum).getMin();
+
+                Date fechaActual = new Date();
+
+                Proyecto proyecto = new Proyecto(nombreProyecto, presupuestoProyecto, fechaActual, false);
+
+                if (insertarProyecto(proyecto)) {
+                    mostrarMensaje("✅ Proyecto creado correctamente");
+                } else {
+                    mostrarMensaje("❌ Error al crear el proyecto");
                 }
 
             }
