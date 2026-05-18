@@ -44,6 +44,8 @@ public class AsignarProgramador extends JFrame {
 
         configurarListaEnScroll(LISTA_PROGRAM);
 
+        LISTA_PROGRAM.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
         JScrollPane jScrollPane = new JScrollPane(LISTA_PROGRAM);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 5));
 
@@ -61,6 +63,16 @@ public class AsignarProgramador extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Programador> seleccionados = LISTA_PROGRAM.getSelectedValuesList();
+
+                if (seleccionados.isEmpty()) {
+                    mostrarMensaje("⚠️ Debes seleccionar programadores.");
+                    return;
+                }
+
+                if (seleccionados.size() < 3) {
+                    mostrarMensaje("⚠️ Debes seleccionar al menos 3 programadores");
+                    return;
+                }
             }
         });
 
