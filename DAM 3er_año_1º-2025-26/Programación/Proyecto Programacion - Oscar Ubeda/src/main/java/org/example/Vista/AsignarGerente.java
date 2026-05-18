@@ -61,7 +61,7 @@ public class AsignarGerente extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<Gerente> seleccionados = LISTA_GERENTE.getSelectedValuesList();
+                Gerente seleccionados = LISTA_GERENTE.getSelectedValue();
 
             }
         });
