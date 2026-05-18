@@ -86,7 +86,7 @@ public class CrearProyecto extends JFrame {
                 }
 
                 String nombreProyecto = Objects.requireNonNull(proyectosEnum).toString();
-                double presupuestoProyecto = (double) Objects.requireNonNull(presupuestoEnum).getMin();
+                double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
 
                 Date fechaActual = new Date();
 
