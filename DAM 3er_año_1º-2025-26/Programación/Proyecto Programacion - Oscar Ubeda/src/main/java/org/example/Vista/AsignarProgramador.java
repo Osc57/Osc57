@@ -1,4 +1,6 @@
 package org.example.Vista;
 
-public class AsignarProgramador {
+import javax.swing.*;
+
+public class AsignarProgramador extends JFrame {
 }

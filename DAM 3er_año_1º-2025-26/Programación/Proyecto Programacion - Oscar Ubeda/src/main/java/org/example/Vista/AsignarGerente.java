@@ -1,4 +1,6 @@
 package org.example.Vista;
 
-public class AsignarGerente {
+import javax.swing.*;
+
+public class AsignarGerente extends JFrame {
 }
