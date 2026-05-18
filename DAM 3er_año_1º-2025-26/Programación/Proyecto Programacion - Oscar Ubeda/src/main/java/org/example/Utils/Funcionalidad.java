@@ -3,6 +3,8 @@ package org.example.Utils;
 import org.example.ControladorDAO.EmpleadosDAO;
 import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
 import org.example.Vista.Login;
 
 import javax.swing.*;
@@ -35,6 +37,12 @@ public class Funcionalidad {
 
     public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
     public static final JList<Empleados> LISTA_EMPLEADOS = new JList<>(MODEL_EMPLEADOS);
+
+    public static final DefaultListModel<Programador> MODEL_PROGRAM = new DefaultListModel<>();
+    public static final JList<Programador> LISTA_PROGRAM = new JList<>(MODEL_PROGRAM);
+
+    public static final DefaultListModel<Gerente> MODEL_GERENTE = new DefaultListModel<>();
+    public static final JList<Gerente> LISTA_GERENTE = new JList<>(MODEL_GERENTE);
 
     public static final DefaultListModel<Departamento> MODEL_DEPTO = new DefaultListModel<>();
     public static final JList<Departamento> LISTA_DEPTO = new JList<>(MODEL_DEPTO);

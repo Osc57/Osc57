@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.ControladorDAO.GerenteDAO.mostrarGerentes;
 import static org.example.Utils.Funcionalidad.*;
@@ -42,16 +43,16 @@ public class AsignarGerente extends JFrame {
 
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        configurarListaEnScroll(LISTA_EMPLEADOS);
+        configurarListaEnScroll(LISTA_GERENTE);
 
-        JScrollPane jScrollPane = new JScrollPane(LISTA_EMPLEADOS);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_GERENTE);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 5));
 
-        MODEL_EMPLEADOS.removeAllElements();
+        MODEL_GERENTE.removeAllElements();
 
         ArrayList<Gerente> empleados = mostrarGerentes();
         for (Gerente t : empleados) {
-            MODEL_EMPLEADOS.addElement(t);
+            MODEL_GERENTE.addElement(t);
         }
 
         JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR GERENTE");
@@ -60,6 +61,7 @@ public class AsignarGerente extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                List<Gerente> seleccionados = LISTA_GERENTE.getSelectedValuesList();
 
             }
         });

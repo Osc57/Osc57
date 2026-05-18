@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
@@ -41,16 +42,16 @@ public class AsignarProgramador extends JFrame {
 
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        configurarListaEnScroll(LISTA_EMPLEADOS);
+        configurarListaEnScroll(LISTA_PROGRAM);
 
-        JScrollPane jScrollPane = new JScrollPane(LISTA_EMPLEADOS);
+        JScrollPane jScrollPane = new JScrollPane(LISTA_PROGRAM);
         jScrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 5));
 
-        MODEL_EMPLEADOS.removeAllElements();
+        MODEL_PROGRAM.removeAllElements();
 
         ArrayList<Programador> empleados = mostrarProgramadores();
         for (Programador t : empleados) {
-            MODEL_EMPLEADOS.addElement(t);
+            MODEL_PROGRAM.addElement(t);
         }
 
         JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR PROGRAMADOR");
@@ -59,7 +60,7 @@ public class AsignarProgramador extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                List<Programador> seleccionados = LISTA_PROGRAM.getSelectedValuesList();
             }
         });
 
