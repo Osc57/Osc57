@@ -69,7 +69,7 @@ public class AsignarProgramador extends JFrame {
                     return;
                 }
 
-                if (seleccionados.size() < 3) {
+                if (seleccionados.size() < 2) {
                     mostrarMensaje("⚠️ Debes seleccionar al menos 3 programadores");
                     return;
                 }

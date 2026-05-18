@@ -42,7 +42,7 @@ public class GestionProyectos extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 if (empleados.size() < 4) {
-                    mostrarMensaje("⚠️ Para empezar un proyecto se necesitan minimo 4 trabajadores. \n" +
+                    mostrarMensaje("⚠️ Para empezar un proyecto se necesitan minimo 3 trabajadores. \n" +
                             "Uno de ellos GERENTE");
                     return;
                 }
