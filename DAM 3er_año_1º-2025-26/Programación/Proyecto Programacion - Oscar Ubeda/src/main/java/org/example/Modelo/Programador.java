@@ -25,6 +25,6 @@ public class Programador extends Empleados {
 
     @Override
     public String toString() {
-        return super.toString() + " - " + lenguajePrincipal;
+        return super.toString();
     }
 }

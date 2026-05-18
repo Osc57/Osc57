@@ -18,12 +18,12 @@ public class AsignarProgramador extends JFrame {
 
     public AsignarProgramador() {
         this.setTitle("Seleccione Programador");
-        this.setSize(570, 460);
+        this.setSize(575, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configurarCierreVentana(this);
 
-        JLabel introducirCliente = new JLabel("•Seleccione programador para el proyecto");
+        JLabel introducirCliente = new JLabel("•Seleccione programadores para el proyecto");
         introducirCliente.setFont(FUENTE_TITULO_2);
         introducirCliente.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 0));
 
@@ -59,21 +59,7 @@ public class AsignarProgramador extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Empleados seleccionado = LISTA_EMPLEADOS.getSelectedValue();
 
-                if (seleccionado == null) {
-                    mostrarMensaje("⚠️ Seleccione una opción");
-                    return;
-                }
-
-                Empleados empleadosSeleccionado = obtenerDatosEmpelado(seleccionado);
-
-                dispose();
-                if (seleccionarGerenteEmpleado(empleadosSeleccionado)) {
-                    new ModificarGerente(empleadosSeleccionado).setVisible(true);
-                } else {
-                    new ModificarProgramador(seleccionado).setVisible(true);
-                }
             }
         });
 

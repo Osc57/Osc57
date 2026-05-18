@@ -37,6 +37,6 @@ public class Gerente extends Empleados {
 
     @Override
     public String toString() {
-        return super.toString() + " - " + bono + " - " + nivel;
+        return super.toString();
     }
 }
