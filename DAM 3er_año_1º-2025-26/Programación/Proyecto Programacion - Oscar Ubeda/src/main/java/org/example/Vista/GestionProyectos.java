@@ -1,6 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Programador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
+import static org.example.ControladorDAO.ProgramadorDAO.obtenerEmpleadosLibres;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Funcionalidad.crearEstiloBoton;
 import static org.example.Utils.Messages.mostrarMensaje;
@@ -40,12 +42,6 @@ public class GestionProyectos extends JFrame {
         botonCrearProyecto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (empleados.size() < 4) {
-                    mostrarMensaje("⚠️ Para empezar un proyecto se necesitan minimo 3 trabajadores. \n" +
-                            "Uno de ellos GERENTE");
-                    return;
-                }
 
                 new CrearProyecto().setVisible(true);
                 dispose();

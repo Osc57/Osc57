@@ -73,11 +73,6 @@ public class AsignarProgramador extends JFrame {
                     return;
                 }
 
-                if (seleccionados.size() < 2) {
-                    mostrarMensaje("⚠️ Debes seleccionar al menos 2 programadores");
-                    return;
-                }
-
                 for (Programador p : seleccionados) {
                     asignarProgramadorProyecto(p, proyecto);
                 }

@@ -89,13 +89,6 @@ public class CrearProyecto extends JFrame {
                     return;
                 }
 
-                ArrayList<Programador> programadoresLibres = obtenerEmpleadosLibres();
-
-                if (programadoresLibres.size() < 2) {
-                    mostrarMensaje("❌ No se puede dar de alta el proyecto. Se necesitan al menos 2 empleados libres.");
-                    return;
-                }
-
                 String nombreProyecto = Objects.requireNonNull(proyectosEnum).toString();
                 double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
 
