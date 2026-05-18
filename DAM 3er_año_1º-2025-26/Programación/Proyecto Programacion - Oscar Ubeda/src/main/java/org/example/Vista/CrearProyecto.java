@@ -94,6 +94,7 @@ public class CrearProyecto extends JFrame {
 
                 if (insertarProyecto(proyecto)) {
                     mostrarMensaje("✅ Proyecto creado correctamente");
+                    new AsignarProgramador().setVisible(true);
                 } else {
                     mostrarMensaje("❌ Error al crear el proyecto");
                 }
