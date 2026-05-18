@@ -1,13 +1,20 @@
 package org.example.Vista;
 
+import org.example.Modelo.Empleados;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class GestionAfterLogin extends JFrame {
+
+    ArrayList<Empleados> empelados = mostrarEmpleados();
 
     public GestionAfterLogin() {
         this.setTitle("Gestión Empresa");
@@ -31,6 +38,12 @@ public class GestionAfterLogin extends JFrame {
         botonGestionarProyectos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (empelados.isEmpty()) {
+                    mostrarMensaje("⚠️ No hay empelados para asignar a un proyecto");
+                    return;
+                }
+
                 new GestionProyectos().setVisible(true);
                 dispose();
             }
