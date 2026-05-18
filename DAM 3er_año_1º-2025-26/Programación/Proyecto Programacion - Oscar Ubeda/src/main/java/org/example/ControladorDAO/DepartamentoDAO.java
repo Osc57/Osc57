@@ -70,6 +70,7 @@ public class DepartamentoDAO {
         return departamentos;
     }
 
+    /*
     public static ArrayList<Departamento> mostrarDepartamentos() {
         ArrayList<Departamento> departamentos = new ArrayList<>();
 
@@ -91,6 +92,7 @@ public class DepartamentoDAO {
         }
         return departamentos;
     }
+     */
 
     public static Departamento mostrarNombreDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
@@ -142,6 +144,7 @@ public class DepartamentoDAO {
         }
     }
 
+    /*
     public static Departamento obtenerDatosDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("SELECT * FROM departamentos WHERE nombre = ?")) {
@@ -162,6 +165,7 @@ public class DepartamentoDAO {
             throw new RuntimeException(e);
         }
     }
+     */
 
     public static boolean seleccionarDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();

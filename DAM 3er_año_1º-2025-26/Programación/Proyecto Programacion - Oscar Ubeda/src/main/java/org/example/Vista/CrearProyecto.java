@@ -1,6 +1,8 @@
 package org.example.Vista;
 
 
+import org.example.ControladorDAO.ProgramadorDAO;
+import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 import org.example.Utils.DepartamentoENUM;
 import org.example.Utils.PresupuestosENUM;
@@ -11,10 +13,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 import static org.example.ControladorDAO.EmpleadosDAO.quedanEmpleadosLibres;
+import static org.example.ControladorDAO.ProgramadorDAO.obtenerEmpleadosLibres;
 import static org.example.ControladorDAO.ProyectosDAO.insertarProyecto;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
@@ -85,6 +89,13 @@ public class CrearProyecto extends JFrame {
                     return;
                 }
 
+                ArrayList<Programador> programadoresLibres = obtenerEmpleadosLibres();
+
+                if (programadoresLibres.size() < 2) {
+                    mostrarMensaje("❌ No se puede dar de alta el proyecto. Se necesitan al menos 2 empleados libres.");
+                    return;
+                }
+
                 String nombreProyecto = Objects.requireNonNull(proyectosEnum).toString();
                 double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
 
@@ -93,8 +104,7 @@ public class CrearProyecto extends JFrame {
                 Proyecto proyecto = new Proyecto(nombreProyecto, presupuestoProyecto, fechaActual, false);
 
                 if (insertarProyecto(proyecto)) {
-                    mostrarMensaje("✅ Proyecto creado correctamente");
-                    new AsignarProgramador().setVisible(true);
+                    new AsignarProgramador(proyecto).setVisible(true);
                 } else {
                     mostrarMensaje("❌ Error al crear el proyecto");
                 }

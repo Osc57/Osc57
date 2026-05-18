@@ -1,19 +1,14 @@
 package org.example.Vista;
 
 import org.example.Modelo.Departamento;
-import org.example.Modelo.Empleados;
-import org.example.Utils.DepartamentoENUM;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Objects;
+
 
 import static org.example.ControladorDAO.DepartamentoDAO.modificarDatosDepartamento;
-import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
-import static org.example.ControladorDAO.EmpleadosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 

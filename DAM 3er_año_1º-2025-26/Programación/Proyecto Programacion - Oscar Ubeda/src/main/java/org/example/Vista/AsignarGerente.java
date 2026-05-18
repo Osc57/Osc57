@@ -3,6 +3,7 @@ package org.example.Vista;
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
+import org.example.Modelo.Proyecto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,14 +12,18 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.ControladorDAO.GerenteDAO.mostrarGerentes;
+import static org.example.ControladorDAO.GerenteDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Funcionalidad.LISTA_EMPLEADOS;
 import static org.example.Utils.Messages.mostrarMensaje;
 
 public class AsignarGerente extends JFrame {
 
-    public AsignarGerente() {
+    private Proyecto proyecto;
+
+    public AsignarGerente(Proyecto proyect) {
+        this.proyecto = proyect;
+
         this.setTitle("Seleccione Gerente");
         this.setSize(570, 460);
         this.setLocationRelativeTo(null);
@@ -50,7 +55,7 @@ public class AsignarGerente extends JFrame {
 
         MODEL_GERENTE.removeAllElements();
 
-        ArrayList<Gerente> empleados = mostrarGerentes();
+        ArrayList<Gerente> empleados = obtenerGerentesLibres();
         for (Gerente t : empleados) {
             MODEL_GERENTE.addElement(t);
         }
@@ -63,6 +68,22 @@ public class AsignarGerente extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Gerente seleccionados = LISTA_GERENTE.getSelectedValue();
 
+                if (seleccionados == null) {
+                    mostrarMensaje("⚠️ Seleccione una opción");
+                    return;
+                }
+
+                Gerente gerenteSeleccionado = obtenerDatosGerente(seleccionados);
+
+                if (asignarGerenteProyecto(gerenteSeleccionado, proyecto)) {
+                    mostrarMensaje("✅ Proyecto creado y asignado correctamente");
+
+                    new GestionProyectos().setVisible(true);
+                    dispose();
+                } else {
+                    mostrarMensaje("❌ Error al asignar el gerente");
+                }
+
             }
         });
 
@@ -72,9 +93,5 @@ public class AsignarGerente extends JFrame {
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
-    }
-
-    public static void main(String[] args) {
-        new AsignarGerente().setVisible(true);
     }
 }

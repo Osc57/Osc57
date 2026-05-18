@@ -3,6 +3,7 @@ package org.example.ControladorDAO;
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
+import org.example.Modelo.Proyecto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -96,5 +97,44 @@ public class ProgramadorDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static boolean asignarProgramadorProyecto(Programador empleados, Proyecto proyecto) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabaja (dni,id_proyect) VALUES (?,?)")) {
+
+            ps.setString(1, empleados.getDni());
+            ps.setInt(2, proyecto.getId());
+
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ArrayList<Programador> obtenerEmpleadosLibres() {
+        ArrayList<Programador> listaLibres = new ArrayList<>();
+
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT e.* FROM empleados e WHERE e.dni NOT IN (SELECT DISTINCT t.dni FROM trabaja t JOIN proyectos p ON t.id_proyect = p.id WHERE p.fechaInicio <= CURDATE() AND p.finalizado = 0)");
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                // Mapeas el registro de la BBDD a tu objeto de Java
+                Programador p = new Programador();
+                p.setDni(rs.getString("dni"));
+                p.setNombre(rs.getString("nombre"));
+                p.setApellidos(rs.getString("apellidos"));
+                // ... setea aquí el resto de atributos de tu objeto ...
+
+                listaLibres.add(p);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaLibres; // Devuelve la colección de objetos
     }
 }

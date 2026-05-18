@@ -2,6 +2,8 @@ package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
+import org.example.Modelo.Proyecto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -98,5 +100,80 @@ public class GerenteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static boolean asignarGerenteProyecto(Gerente empleados, Proyecto proyecto) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO trabaja (dni,id_proyect) VALUES (?,?)")) {
+
+            ps.setString(1, empleados.getDni());
+            ps.setInt(2, proyecto.getId());
+
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Gerente obtenerDatosGerente(Gerente gerente) {
+        String sql = "SELECT e.*, g.bono, g.nivel FROM empleados e JOIN gerentes g ON e.dni = g.dni WHERE e.dni = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, gerente.getDni());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Datos heredados de la clase Empleados
+                    gerente.setNombre(rs.getString("nombre"));
+                    gerente.setApellidos(rs.getString("apellidos"));
+                    gerente.setSalario(rs.getDouble("salario"));
+                    gerente.setTelefono(rs.getString("telefono"));
+                    gerente.setDepartamento(rs.getInt("id_depa"));
+
+                    // 2. ¡Faltaba esto! Datos exclusivos de la clase Gerente
+                    gerente.setBono(rs.getDouble("bono"));
+                    gerente.setNivel(rs.getString("nivel"));
+                }
+            }
+
+            return gerente;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ArrayList<Gerente> obtenerGerentesLibres() {
+        ArrayList<Gerente> listaGerentes = new ArrayList<>();
+        String sql = "SELECT e.*, g.bono, g.nivel FROM empleados e JOIN gerentes g ON e.dni = g.dni WHERE e.dni NOT IN (SELECT DISTINCT t.dni FROM trabaja t JOIN proyectos p ON t.id_proyect = p.id WHERE p.fechaInicio <= CURDATE() AND p.finalizado = 0)";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Gerente g = new Gerente();
+                // Datos de la tabla 'empleados' (Heredados)
+                g.setDni(rs.getString("dni"));
+                g.setNombre(rs.getString("nombre"));
+                g.setApellidos(rs.getString("apellidos"));
+                g.setSalario(rs.getDouble("salario"));
+                g.setTelefono(rs.getString("telefono"));
+                g.setDepartamento(rs.getInt("id_depa"));
+
+                // Datos de la tabla 'gerentes' (Propios)
+                g.setBono(rs.getDouble("bono"));
+                g.setNivel(rs.getString("nivel"));
+
+                listaGerentes.add(g);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaGerentes;
     }
 }

@@ -2,6 +2,7 @@ package org.example.Vista;
 
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Programador;
+import org.example.Modelo.Proyecto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,14 +11,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.ControladorDAO.EmpleadosDAO.*;
-import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
+import static org.example.ControladorDAO.ProgramadorDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
 public class AsignarProgramador extends JFrame {
 
-    public AsignarProgramador() {
+    private Proyecto proyecto;
+
+    public AsignarProgramador(Proyecto proyect) {
+        this.proyecto = proyect;
+
         this.setTitle("Seleccione Programador");
         this.setSize(575, 460);
         this.setLocationRelativeTo(null);
@@ -51,7 +55,7 @@ public class AsignarProgramador extends JFrame {
 
         MODEL_PROGRAM.removeAllElements();
 
-        ArrayList<Programador> empleados = mostrarProgramadores();
+        ArrayList<Programador> empleados = obtenerEmpleadosLibres();
         for (Programador t : empleados) {
             MODEL_PROGRAM.addElement(t);
         }
@@ -70,9 +74,17 @@ public class AsignarProgramador extends JFrame {
                 }
 
                 if (seleccionados.size() < 2) {
-                    mostrarMensaje("⚠️ Debes seleccionar al menos 3 programadores");
+                    mostrarMensaje("⚠️ Debes seleccionar al menos 2 programadores");
                     return;
                 }
+
+                for (Programador p : seleccionados) {
+                    asignarProgramadorProyecto(p, proyecto);
+                }
+
+                new AsignarGerente(proyecto).setVisible(true);
+
+
             }
         });
 
@@ -82,9 +94,5 @@ public class AsignarProgramador extends JFrame {
         panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
-    }
-
-    public static void main(String[] args) {
-        new AsignarProgramador().setVisible(true);
     }
 }

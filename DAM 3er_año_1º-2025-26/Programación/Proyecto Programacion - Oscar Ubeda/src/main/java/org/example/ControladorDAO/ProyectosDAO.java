@@ -1,10 +1,10 @@
 package org.example.ControladorDAO;
 
+import org.example.Modelo.Empleados;
+import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
@@ -16,7 +16,7 @@ public class ProyectosDAO {
 
     public static boolean insertarProyecto(Proyecto proyecto) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO proyectos (nombre,presupuesto,fechaInicio,finalizado) VALUES (?,?,?,?)")) {
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO proyectos (nombre,presupuesto,fechaInicio,finalizado) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, proyecto.getNombre());
             ps.setDouble(2, proyecto.getPresupuesto());
@@ -27,10 +27,23 @@ public class ProyectosDAO {
 
             int filasAfectadas = ps.executeUpdate();
 
-            return filasAfectadas > 0;
+            if (filasAfectadas > 0) {
+                // 2. Obtenemos el ID autoincremental que asignó la BBDD
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        int idGenerado = rs.getInt(1);
+
+                        // 3. ¡ESTA ES LA LÍNEA CLAVE! Guardamos el ID real en el objeto
+                        proyecto.setId(idGenerado);
+                    }
+                }
+                return true;
+            }
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 }
