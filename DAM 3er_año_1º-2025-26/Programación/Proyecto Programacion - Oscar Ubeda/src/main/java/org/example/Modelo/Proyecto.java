@@ -9,6 +9,14 @@ public class Proyecto {
     private Date fechaInicio;
     private boolean finalizado;
 
+    public Proyecto(int id, String nombre, double presupuesto, Date fechaInicio, boolean finalizado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.fechaInicio = fechaInicio;
+        this.finalizado = finalizado;
+    }
+
     public Proyecto(String nombre, double presupuesto, Date fechaInicio, boolean finalizado) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;

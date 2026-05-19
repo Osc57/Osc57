@@ -1,6 +1,5 @@
 package org.example.Vista;
 
-import org.example.Modelo.Empleados;
 import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 
@@ -8,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,14 @@ public class AsignarProgramador extends JFrame {
         this.setSize(575, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configurarCierreVentana(this);
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                mostrarMensaje("⚠️ Debes completar la asignación antes de cerrar esta ventana.");
+            }
+        });
 
         JLabel introducirCliente = new JLabel("•Seleccione programadores para el proyecto");
         introducirCliente.setFont(FUENTE_TITULO_2);
@@ -55,7 +63,7 @@ public class AsignarProgramador extends JFrame {
 
         MODEL_PROGRAM.removeAllElements();
 
-        ArrayList<Programador> empleados = obtenerEmpleadosLibres();
+        ArrayList<Programador> empleados = mostrarProgramadores();
         for (Programador t : empleados) {
             MODEL_PROGRAM.addElement(t);
         }
@@ -66,6 +74,7 @@ public class AsignarProgramador extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 List<Programador> seleccionados = LISTA_PROGRAM.getSelectedValuesList();
 
                 if (seleccionados.isEmpty()) {
@@ -73,15 +82,45 @@ public class AsignarProgramador extends JFrame {
                     return;
                 }
 
+                boolean algunoAsignado = false;
+
                 for (Programador p : seleccionados) {
-                    asignarProgramadorProyecto(p, proyecto);
+
+                    if (saberSiProgramdaroEstaEnProyecto(p)) {
+
+                        int respuesta = JOptionPane.showConfirmDialog(
+                                null,
+                                "⚠️ " + p.getDni() + " " + p.getNombre() + " Esta asignado a un proyecto\n" +
+                                        "¿Quieres asignarlo también a este proyecto?",
+                                "Asignar Programador",
+                                JOptionPane.YES_NO_OPTION
+                        );
+
+                        if (respuesta != JOptionPane.YES_OPTION) {
+                            continue; // No asignar, pero seguir con los demás
+                        }
+                    }
+
+                    if (!asignarProgramadorProyecto(p, proyecto)) {
+                        mostrarMensaje("❌ Error al asignar el programador: " + p.getNombre());
+                        return;
+                    } else {
+                        algunoAsignado = true;
+                    }
+
                 }
 
+                if (!algunoAsignado) {
+                    mostrarMensaje("⚠️ No se asignó ningún programador");
+                    return;
+                }
+
+                // Solo aquí, una vez terminado el bucle
                 new AsignarGerente(proyecto).setVisible(true);
-
-
+                dispose();
             }
         });
+
 
         panelBoton.add(btnSeleccionEmple);
 

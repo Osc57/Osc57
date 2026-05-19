@@ -1,7 +1,6 @@
 package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
-import org.example.Modelo.Gerente;
 import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 
@@ -136,5 +135,21 @@ public class ProgramadorDAO {
             throw new RuntimeException(e);
         }
         return listaLibres; // Devuelve la colección de objetos
+    }
+
+    public static boolean saberSiProgramdaroEstaEnProyecto(Programador programador) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM trabaja WHERE dni = ?")) {
+
+            ps.setString(1, programador.getDni());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

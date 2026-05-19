@@ -1,5 +1,7 @@
 package org.example.Vista;
 
+import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
 import org.example.Modelo.Usuarios;
 
 import javax.swing.*;
@@ -8,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.example.ControladorDAO.UsuariosDAO.combrobarUsuarios;
+import static org.example.ControladorDAO.UsuariosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -71,7 +73,8 @@ public class Login extends JFrame{
         btnInicioSes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userName = jTextField.getText();
+
+                String userName = jTextField.getText().trim();
                 String password = new String(jPasswordField.getPassword()).trim();
 
                 if (userName.isEmpty() || password.isEmpty()) {
@@ -79,31 +82,55 @@ public class Login extends JFrame{
                     return;
                 }
 
-                Usuarios usuarios = new Usuarios(userName, password);
+                // Objeto Usuarios con username y password
+                Usuarios usuarioLogin = new Usuarios(userName, password);
 
-                int resultado = combrobarUsuarios(usuarios);
+                // 0 = no existe, 1 = correcto, 2 = contraseña incorrecta
+                int resultado = combrobarUsuarios(usuarioLogin);
 
                 switch (resultado) {
+
                     case 0:
                         mostrarMensaje("❌ El usuario no existe");
                         break;
+
+                    case 2:
+                        mostrarMensaje("❌ Contraseña incorrecta");
+                        break;
+
                     case 1:
-                        mostrarMensaje("✅ Login Correcto");
+                        mostrarMensaje("✅ Login correcto");
+
+                        // Obtener el usuario completo desde BD (incluye DNI)
+                        Usuarios usuarioCompleto = obtenerUsuarioPorNombre(usuarioLogin);
+
                         dispose();
+
+                        // Si es admin → panel admin
                         if (userName.equalsIgnoreCase("admin")) {
                             new GestionAfterLogin().setVisible(true);
-                        } else {
-                            new SacarDatosUsuarios().setVisible(true);
+                            return;
                         }
+
+                        // Si NO es admin → comprobar si es gerente o programador
+                        if (esGerente(usuarioCompleto)) {
+
+                            Gerente g = obtenerGerente(usuarioCompleto);
+                            new LoginGerente(g).setVisible(true);
+
+                        } else {
+                            Programador p = obtenerProgramador(usuarioCompleto);
+                            new LoginProgramador(p).setVisible(true);
+                        }
+
                         break;
-                    case 2:
-                        mostrarMensaje("❌ Contraseña Incorrecta");
-                        break;
+
                     default:
-                        mostrarMensaje("⚠️ No se ha podido completar el inicio de sesión");
+                        mostrarMensaje("⚠️ Error inesperado");
                 }
             }
         });
+
 
         //======================================================================================================
 

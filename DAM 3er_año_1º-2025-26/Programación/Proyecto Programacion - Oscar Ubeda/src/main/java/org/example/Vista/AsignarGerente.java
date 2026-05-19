@@ -1,20 +1,18 @@
 package org.example.Vista;
 
-import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
-import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.example.ControladorDAO.GerenteDAO.*;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Funcionalidad.LISTA_EMPLEADOS;
 import static org.example.Utils.Messages.mostrarMensaje;
 
 public class AsignarGerente extends JFrame {
@@ -28,7 +26,14 @@ public class AsignarGerente extends JFrame {
         this.setSize(570, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configurarCierreVentana(this);
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                mostrarMensaje("⚠️ Debes completar la asignación antes de cerrar esta ventana.");
+            }
+        });
 
         JLabel introducirCliente = new JLabel("•Seleccione gerente para el proyecto");
         introducirCliente.setFont(FUENTE_TITULO_2);
@@ -55,7 +60,7 @@ public class AsignarGerente extends JFrame {
 
         MODEL_GERENTE.removeAllElements();
 
-        ArrayList<Gerente> empleados = obtenerGerentesLibres();
+        ArrayList<Gerente> empleados = mostrarGerentes();
         for (Gerente t : empleados) {
             MODEL_GERENTE.addElement(t);
         }
@@ -74,6 +79,21 @@ public class AsignarGerente extends JFrame {
                 }
 
                 Gerente gerenteSeleccionado = obtenerDatosGerente(seleccionados);
+
+                if (saberSiGerenteEstaEnProyecto(gerenteSeleccionado)) {
+                    int respuesta = JOptionPane.showConfirmDialog(
+                            null,
+                            "⚠️ " + gerenteSeleccionado.getDni() + " " + gerenteSeleccionado.getNombre() + " Esta asignado a un proyecto\n" +
+                                    "¿Quieres asignarlo también a este proyecto?",
+                            "Asignar Programador",
+                            JOptionPane.YES_NO_OPTION
+                    );
+
+                    if (respuesta != JOptionPane.YES_OPTION) {
+                        // Usuario dijo NO → no asignar y no avanzar
+                        return;
+                    }
+                }
 
                 if (asignarGerenteProyecto(gerenteSeleccionado, proyecto)) {
                     mostrarMensaje("✅ Proyecto creado y asignado correctamente");

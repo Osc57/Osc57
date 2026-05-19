@@ -1,5 +1,7 @@
 package org.example.ControladorDAO;
 
+import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
 import org.example.Modelo.Usuarios;
 
 import java.sql.Connection;
@@ -109,4 +111,101 @@ public class UsuariosDAO {
 
 
     }
+
+    public static boolean esGerente(Usuarios usuario) {
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT dni FROM gerentes WHERE dni = ?")) {
+            ps.setString(1, usuario.getDni());
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Si existe → es gerente
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Gerente obtenerGerente(Usuarios usuario) {
+        String sql = "SELECT e.dni, e.nombre, e.apellidos, e.email, e.telefono, e.salario, e.id_depa, g.bono, g.nivel FROM empleados e JOIN gerentes g ON e.dni = g.dni WHERE e.dni = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, usuario.getDni());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Gerente(
+                        rs.getString("dni"),
+                        rs.getString("nombre"),
+                        rs.getString("apellidos"),
+                        rs.getString("email"),
+                        rs.getString("telefono"),
+                        rs.getDouble("salario"),
+                        rs.getInt("id_depa"),
+                        rs.getDouble("bono"),
+                        rs.getString("nivel")
+                );
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
+
+    public static Usuarios obtenerUsuarioPorNombre(Usuarios usuario) {
+        String sql = "SELECT * FROM usuarios WHERE usuario = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, usuario.getUsuario());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Usuarios(
+                        rs.getString("usuario"),
+                        rs.getString("password"),
+                        rs.getString("dni")
+                );
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
+
+    public static Programador obtenerProgramador(Usuarios usuario) {
+        String sql = "SELECT e.dni, e.nombre, e.apellidos, e.email, e.telefono, e.salario, e.id_depa, p.especialidad FROM empleados e JOIN programadores p ON e.dni = p.dni WHERE e.dni = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, usuario.getDni());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Programador(
+                        rs.getString("dni"),
+                        rs.getString("nombre"),
+                        rs.getString("apellidos"),
+                        rs.getString("email"),
+                        rs.getString("telefono"),
+                        rs.getDouble("salario"),
+                        rs.getInt("id_depa"),
+                        rs.getString("especialidad")
+                );
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
+
+
+
+
 }

@@ -1,24 +1,20 @@
 package org.example.Vista;
 
 
-import org.example.ControladorDAO.ProgramadorDAO;
-import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
-import org.example.Utils.DepartamentoENUM;
 import org.example.Utils.PresupuestosENUM;
 import org.example.Utils.ProyectosENUM;
-import org.example.Utils.Validator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.Objects;
 
 import static org.example.ControladorDAO.EmpleadosDAO.quedanEmpleadosLibres;
-import static org.example.ControladorDAO.ProgramadorDAO.obtenerEmpleadosLibres;
 import static org.example.ControladorDAO.ProyectosDAO.insertarProyecto;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
@@ -31,7 +27,24 @@ public class CrearProyecto extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
-        configurarCierreVentana(this);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int opcion = JOptionPane.showConfirmDialog(
+                        null,
+                        "⚠️ ¿Seguro que quieres cancelar la creación del proyecto?\n" +
+                                "Se perderán todos los datos introducidos.",
+                        "Cancelar creación",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+                if (opcion == JOptionPane.YES_OPTION) {
+                    new GestionProyectos().setVisible(true);
+                    dispose();
+                }
+            }
+        });
 
         JLabel introducirCliente = new JLabel("Introduzca los datos del proyecto");
         introducirCliente.setFont(FUENTE_TITULO_2);
@@ -84,11 +97,6 @@ public class CrearProyecto extends JFrame {
                     return;
                 }
 
-                if (!quedanEmpleadosLibres()) {
-                    mostrarMensaje("❌ No se pueden dar más proyectos de alta. Todos los empleados están ocupados.");
-                    return;
-                }
-
                 String nombreProyecto = Objects.requireNonNull(proyectosEnum).toString();
                 double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
 
@@ -98,6 +106,7 @@ public class CrearProyecto extends JFrame {
 
                 if (insertarProyecto(proyecto)) {
                     new AsignarProgramador(proyecto).setVisible(true);
+                    dispose();
                 } else {
                     mostrarMensaje("❌ Error al crear el proyecto");
                 }

@@ -8,6 +8,12 @@ public class Gerente extends Empleados {
     public Gerente() {
     }
 
+    public Gerente(String dni, String nombre, String apellidos, String email, String telefono, double salario, int departamento, double bono, String nivel) {
+        super(dni, nombre, apellidos, email, telefono, salario, departamento);
+        this.bono = bono;
+        this.nivel = nivel;
+    }
+
     public Gerente(String dni, double bono, String nivel) {
         this.dni = dni;
         this.bono = bono;

@@ -2,12 +2,14 @@ package org.example.ControladorDAO;
 
 import org.example.Modelo.Departamento;
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Proyecto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
@@ -263,5 +265,36 @@ public class EmpleadosDAO {
         }
         return false;
     }
+
+    public static List<Proyecto> obtenerProyectosPorEmpleado(Empleados empleado) {
+        List<Proyecto> lista = new ArrayList<>();
+
+        String sql = "SELECT p.id, p.nombre, p.presupuesto, p.fechaInicio, p.finalizado " +
+                "FROM proyectos p JOIN trabaja t ON p.id = t.id_proyect WHERE t.dni = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, empleado.getDni());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Proyecto p = new Proyecto(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getDouble("presupuesto"),
+                        rs.getDate("fechaInicio"),
+                        rs.getBoolean("finalizado")
+                );
+                lista.add(p);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return lista;
+    }
+
 
 }

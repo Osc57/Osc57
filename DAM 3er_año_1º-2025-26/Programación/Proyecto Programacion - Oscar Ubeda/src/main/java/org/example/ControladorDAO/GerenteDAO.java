@@ -2,7 +2,6 @@ package org.example.ControladorDAO;
 
 import org.example.Modelo.Empleados;
 import org.example.Modelo.Gerente;
-import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 
 import java.sql.Connection;
@@ -10,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
@@ -176,4 +176,21 @@ public class GerenteDAO {
         }
         return listaGerentes;
     }
+
+    public static boolean saberSiGerenteEstaEnProyecto(Gerente gerente) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM trabaja WHERE dni = ?")) {
+
+            ps.setString(1, gerente.getDni());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }

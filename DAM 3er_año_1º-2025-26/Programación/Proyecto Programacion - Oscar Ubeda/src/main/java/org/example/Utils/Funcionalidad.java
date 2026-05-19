@@ -33,6 +33,8 @@ public class Funcionalidad {
     public static final Font FUENTE_BOTON = new Font("Arial", Font.BOLD, 18);
     public static final Font FUENTE_BOTONES = new Font("Arial", Font.BOLD, 18);
 
+    public static final Font FUENTE_TEXTO = new Font("Segoe UI", Font.PLAIN, 16);
+
     //========================================================================================================
 
     public static final DefaultListModel<Empleados> MODEL_EMPLEADOS = new DefaultListModel<>();
