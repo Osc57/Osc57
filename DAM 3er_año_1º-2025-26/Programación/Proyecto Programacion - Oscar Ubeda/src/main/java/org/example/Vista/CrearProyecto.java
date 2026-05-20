@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Objects;
 
 import static org.example.ControladorDAO.EmpleadosDAO.quedanEmpleadosLibres;
+import static org.example.ControladorDAO.ProyectosDAO.comprobarNombreProyecto;
 import static org.example.ControladorDAO.ProyectosDAO.insertarProyecto;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
@@ -105,7 +106,6 @@ public class CrearProyecto extends JFrame {
                     return;
                 }
 
-
                 String tipoProyecto = Objects.requireNonNull(proyectosEnum).toString();
                 double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
 
@@ -113,6 +113,11 @@ public class CrearProyecto extends JFrame {
 
                 Proyecto proyecto = new Proyecto(nombre, tipoProyecto, presupuestoProyecto, fechaActual, false);
 
+                if (comprobarNombreProyecto(proyecto)) {
+                    mostrarMensaje("⚠️ Este proyecto ya existe en el sistema");
+                    return;
+                }
+                
                 if (insertarProyecto(proyecto)) {
                     new AsignarProgramador(proyecto).setVisible(true);
                     dispose();
