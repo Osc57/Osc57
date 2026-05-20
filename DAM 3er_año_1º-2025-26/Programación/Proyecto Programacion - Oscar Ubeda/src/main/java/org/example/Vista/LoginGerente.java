@@ -30,9 +30,23 @@ public class LoginGerente extends JFrame {
 
         JPanel panelScrollPanel = getJPanelScrollPanel();
 
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelBoton.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
+
+        JButton btnProyectos = crearEstiloBotonSubmit("VER PROYECTOS");
+        btnProyectos.setPreferredSize(new Dimension(420, 45));
+
+        btnProyectos.addActionListener(e -> {
+            List<Proyecto> proyectos = obtenerProyectosPorEmpleado(empleados);
+            new VentanaProyectos(proyectos, this).setVisible(true);
+            dispose();
+        });
+
+        panelBoton.add(btnProyectos);
 
         this.add(introducirCliente, BorderLayout.NORTH);
-        this.add(panelScrollPanel, BorderLayout.CENTER);
+        this.add(panelScrollPanel, BorderLayout.WEST);
+        this.add(panelBoton, BorderLayout.SOUTH);
 
     }
 
@@ -43,8 +57,9 @@ public class LoginGerente extends JFrame {
 
         JPanel panelCentro = new JPanel();
         // Panel donde van los labels
-        JPanel panelLabels = new JPanel(new GridLayout(6,1,5,5));
+        JPanel panelLabels = new JPanel(new GridLayout(7, 1, 5, 5));
 
+        JLabel lblDni = new JLabel("DNI: " + empleados.getDni());
         JLabel lblNombre = new JLabel("Nombre completo: " + empleados.getNombre() + " " + empleados.getApellidos());
         JLabel lblSalario = new JLabel("Salario: " + empleados.getSalario() + " €");
         JLabel lblTelefono = new JLabel("Teléfono: " + empleados.getTelefono());
@@ -52,6 +67,7 @@ public class LoginGerente extends JFrame {
         JLabel lblBono = new JLabel("Bono: " + empleados.getBono() + " €");
         JLabel lblCorreo = new JLabel("Correo corporativo: " + empleados.getEmail());
 
+        lblDni.setFont(FUENTE_TEXTO);
         lblNombre.setFont(FUENTE_TEXTO);
         lblSalario.setFont(FUENTE_TEXTO);
         lblTelefono.setFont(FUENTE_TEXTO);
@@ -60,34 +76,18 @@ public class LoginGerente extends JFrame {
         lblCorreo.setFont(FUENTE_TEXTO);
 
         // Añadimos los labels al panelLabels
+        panelLabels.add(lblDni);
         panelLabels.add(lblNombre);
-
         panelLabels.add(lblSalario);
-
         panelLabels.add(lblTelefono);
-
         panelLabels.add(lblDepto);
-
         panelLabels.add(lblBono);
-
         panelLabels.add(lblCorreo);
 
         panelCentro.add(panelLabels, BorderLayout.WEST);
 
-        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton btnProyectos = crearEstiloBotonSubmit("VER PROYECTOS");
-
-        btnProyectos.addActionListener(e -> {
-            List<Proyecto> proyectos = obtenerProyectosPorEmpleado(empleados);
-            new VentanaProyectos(proyectos, this).setVisible(true);
-            dispose();
-        });
-
-        panelBoton.add(btnProyectos);
-
         // Añadimos panelLabels al panelPrincipal
         panelPrincipal.add(panelCentro, BorderLayout.CENTER);
-        panelPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
         return panelPrincipal;
     }

@@ -269,7 +269,7 @@ public class EmpleadosDAO {
     public static List<Proyecto> obtenerProyectosPorEmpleado(Empleados empleado) {
         List<Proyecto> lista = new ArrayList<>();
 
-        String sql = "SELECT p.id, p.nombre, p.presupuesto, p.fechaInicio, p.finalizado " +
+        String sql = "SELECT p.id, p.nombre,p.tipo, p.presupuesto, p.fechaInicio, p.finalizado " +
                 "FROM proyectos p JOIN trabaja t ON p.id = t.id_proyect WHERE t.dni = ?";
 
         try (Connection connection = getConnection();
@@ -282,6 +282,7 @@ public class EmpleadosDAO {
                 Proyecto p = new Proyecto(
                         rs.getInt("id"),
                         rs.getString("nombre"),
+                        rs.getString("tipo"),
                         rs.getDouble("presupuesto"),
                         rs.getDate("fechaInicio"),
                         rs.getBoolean("finalizado")

@@ -14,7 +14,7 @@ import static org.example.ControladorDAO.UsuariosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
-public class Login extends JFrame{
+public class Login extends JFrame {
 
     public Login() {
         this.setTitle("Login");
@@ -114,7 +114,6 @@ public class Login extends JFrame{
 
                         // Si NO es admin → comprobar si es gerente o programador
                         if (esGerente(usuarioCompleto)) {
-
                             Gerente g = obtenerGerente(usuarioCompleto);
                             new LoginGerente(g).setVisible(true);
 
@@ -151,7 +150,6 @@ public class Login extends JFrame{
         });
 
     }
-
 
 
     public static void main(String[] args) {

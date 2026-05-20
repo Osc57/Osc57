@@ -5,20 +5,23 @@ import java.util.Date;
 public class Proyecto {
     private int id;
     private String nombre;
+    private String tipo;
     private double presupuesto;
     private Date fechaInicio;
     private boolean finalizado;
 
-    public Proyecto(int id, String nombre, double presupuesto, Date fechaInicio, boolean finalizado) {
+    public Proyecto(int id, String nombre, String tipo, double presupuesto, Date fechaInicio, boolean finalizado) {
         this.id = id;
         this.nombre = nombre;
+        this.tipo = tipo;
         this.presupuesto = presupuesto;
         this.fechaInicio = fechaInicio;
         this.finalizado = finalizado;
     }
 
-    public Proyecto(String nombre, double presupuesto, Date fechaInicio, boolean finalizado) {
+    public Proyecto(String nombre, String tipo, double presupuesto, Date fechaInicio, boolean finalizado) {
         this.nombre = nombre;
+        this.tipo = tipo;
         this.presupuesto = presupuesto;
         this.fechaInicio = fechaInicio;
         this.finalizado = finalizado;
@@ -58,6 +61,14 @@ public class Proyecto {
 
     public Date getFechaInicio() {
         return fechaInicio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public void setFechaInicio(Date fechaInicio) {

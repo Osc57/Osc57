@@ -13,6 +13,13 @@ public class Validator {
         return true;
     }
 
+    public static boolean validarNombreEmpresa(String nombre) {
+        if (nombre == null) return false;
+
+        return nombre.matches("^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ&.,\\s-]{2,150}$");
+    }
+
+
     public static boolean dniValido(String dni) {
         return dni.matches("^[0-9]{8}[A-Za-z]$");
     }
@@ -34,7 +41,7 @@ public class Validator {
     }
 
     public static boolean apellidosValido(String apellido) {
-        return apellido.matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)+$");
+        return apellido.matches("^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*$");
     }
 
     public static boolean telefonoValido(String telefono) {

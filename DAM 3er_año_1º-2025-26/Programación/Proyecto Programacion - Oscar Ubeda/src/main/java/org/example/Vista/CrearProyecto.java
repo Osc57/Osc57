@@ -4,6 +4,7 @@ package org.example.Vista;
 import org.example.Modelo.Proyecto;
 import org.example.Utils.PresupuestosENUM;
 import org.example.Utils.ProyectosENUM;
+import org.example.Utils.Validator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,8 @@ import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
 public class CrearProyecto extends JFrame {
+
+    JTextField txtNombre = new JTextField();
 
     public CrearProyecto() {
         this.setTitle("Crear un proyecto");
@@ -64,15 +67,19 @@ public class CrearProyecto extends JFrame {
 
         JPanel panelCentro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 30));
 
-        JPanel panelLabels = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel panelLabels = new JPanel(new GridLayout(3, 1, 5, 5));
+        panelLabels.add(crearLabels("Nombre Proy.: "));
         panelLabels.add(crearLabels("Tipo Proy.: "));
         panelLabels.add(crearLabels("Presupuest.: "));
 
         JComboBox<ProyectosENUM> comboBoxProyectos = new JComboBox<>(ProyectosENUM.values());
         JComboBox<PresupuestosENUM> comboBoxPresupuestos = new JComboBox<>(PresupuestosENUM.values());
 
-        JPanel panelFields = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel panelFields = new JPanel(new GridLayout(3, 1, 5, 5));
 
+        txtNombre = crearFields();
+
+        panelFields.add(txtNombre);
         panelFields.add(comboBoxProyectos);
         panelFields.add(comboBoxPresupuestos);
 
@@ -84,25 +91,27 @@ public class CrearProyecto extends JFrame {
         btnCrearYAsignarDepto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nombre = txtNombre.getText().trim();
                 ProyectosENUM proyectosEnum = (ProyectosENUM) comboBoxProyectos.getSelectedItem();
                 PresupuestosENUM presupuestoEnum = (PresupuestosENUM) comboBoxPresupuestos.getSelectedItem();
 
-                if (proyectosEnum == ProyectosENUM.SELECCIONE_PROYECTO) {
-                    mostrarMensaje("⚠️ Seleccione un proyecto");
+                if (!Validator.camposRellenos(nombre) || proyectosEnum == ProyectosENUM.SELECCIONE_PROYECTO || presupuestoEnum == PresupuestosENUM.SELECCIONE_PRESUPUESTO) {
+                    mostrarMensaje("⚠️ Rellene y seleccione los campos");
                     return;
                 }
 
-                if (presupuestoEnum == PresupuestosENUM.SELECCIONE_PRESUPUESTO) {
-                    mostrarMensaje("⚠️ Seleccione un presupuesto");
+                if (!Validator.validarNombreEmpresa(nombre)) {
+                    mostrarMensaje("⚠️ Nombre erroneo. Debe contener letras y o algún signo de puntuación");
                     return;
                 }
 
-                String nombreProyecto = Objects.requireNonNull(proyectosEnum).toString();
+
+                String tipoProyecto = Objects.requireNonNull(proyectosEnum).toString();
                 double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
 
                 Date fechaActual = new Date();
 
-                Proyecto proyecto = new Proyecto(nombreProyecto, presupuestoProyecto, fechaActual, false);
+                Proyecto proyecto = new Proyecto(nombre, tipoProyecto, presupuestoProyecto, fechaActual, false);
 
                 if (insertarProyecto(proyecto)) {
                     new AsignarProgramador(proyecto).setVisible(true);

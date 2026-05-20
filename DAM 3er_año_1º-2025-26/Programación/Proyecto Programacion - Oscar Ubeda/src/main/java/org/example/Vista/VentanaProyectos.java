@@ -16,10 +16,11 @@ public class VentanaProyectos extends JFrame {
     public VentanaProyectos(List<Proyecto> proyectos, JFrame ventanaAnterior) {
         this.ventanaAnterior = ventanaAnterior;
 
-        setTitle("Proyectos a cargo");
-        setSize(500, 400);
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        this.setTitle("Proyectos a cargo");
+        this.setSize(500, 400);
+        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         configurarCierreVentana(this);
 
@@ -29,7 +30,8 @@ public class VentanaProyectos extends JFrame {
 
         for (Proyecto p : proyectos) {
             JLabel lbl = new JLabel(
-                    "• " + p.getNombre() +
+                    "• " + "Empresa: " + p.getNombre() +
+                            " | Tipo: " + p.getTipo() +
                             " | Presupuesto: " + p.getPresupuesto() + "€" +
                             " | Inicio: " + p.getFechaInicio() +
                             " | Finalizado: " + (p.getFinalizado() ? "Sí" : "No")

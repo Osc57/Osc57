@@ -16,7 +16,7 @@ public class ProyectosDAO {
 
     public static boolean insertarProyecto(Proyecto proyecto) {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO proyectos (nombre,presupuesto,fechaInicio,finalizado) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO proyectos (nombre,presupuesto,fechaInicio,finalizado,tipo) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, proyecto.getNombre());
             ps.setDouble(2, proyecto.getPresupuesto());
@@ -24,6 +24,7 @@ public class ProyectosDAO {
             ps.setDate(3, new java.sql.Date(proyecto.getFechaInicio().getTime()));
 
             ps.setBoolean(4, proyecto.getFinalizado());
+            ps.setString(5, proyecto.getTipo());
 
             int filasAfectadas = ps.executeUpdate();
 
@@ -45,5 +46,20 @@ public class ProyectosDAO {
             throw new RuntimeException(e);
         }
         return false;
+    }
+
+    public static boolean comprobarNombreProyecto(Proyecto proyecto) {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM proyectos WHERE nombre = ?")) {
+
+            ps.setString(1, proyecto.getNombre());
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

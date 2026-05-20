@@ -177,7 +177,7 @@ public class UsuariosDAO {
     }
 
     public static Programador obtenerProgramador(Usuarios usuario) {
-        String sql = "SELECT e.dni, e.nombre, e.apellidos, e.email, e.telefono, e.salario, e.id_depa, p.especialidad FROM empleados e JOIN programadores p ON e.dni = p.dni WHERE e.dni = ?";
+        String sql = "SELECT e.dni, e.nombre, e.apellidos, e.email, e.telefono, e.salario, e.id_depa, p.lenguajePrincipal FROM empleados e JOIN programadores p ON e.dni = p.dni WHERE e.dni = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -194,7 +194,7 @@ public class UsuariosDAO {
                         rs.getString("telefono"),
                         rs.getDouble("salario"),
                         rs.getInt("id_depa"),
-                        rs.getString("especialidad")
+                        rs.getString("lenguajePrincipal")
                 );
             }
 
@@ -204,8 +204,6 @@ public class UsuariosDAO {
 
         return null;
     }
-
-
 
 
 }
