@@ -297,5 +297,29 @@ public class EmpleadosDAO {
         return lista;
     }
 
+    public static Departamento sacarDepartamentoEmpelado(Empleados empleados) {
+
+        Departamento departamento = new Departamento();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("SELECT nombre FROM departamentos WHERE id IN (SELECT id_depa FROM empleados WHERE dni = ?)")) {
+
+            ps.setString(1, empleados.getDni());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                departamento.setNombre(rs.getString("nombre"));
+            } else {
+                departamento.setNombre("Desconocido");
+            }
+
+            return departamento;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

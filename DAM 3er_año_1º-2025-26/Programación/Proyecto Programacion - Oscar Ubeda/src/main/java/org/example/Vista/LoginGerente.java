@@ -1,5 +1,6 @@
 package org.example.Vista;
 
+import org.example.Modelo.Departamento;
 import org.example.Modelo.Gerente;
 import org.example.Modelo.Proyecto;
 
@@ -8,6 +9,7 @@ import java.awt.*;
 import java.util.List;
 
 import static org.example.ControladorDAO.EmpleadosDAO.obtenerProyectosPorEmpleado;
+import static org.example.ControladorDAO.EmpleadosDAO.sacarDepartamentoEmpelado;
 import static org.example.Utils.Funcionalidad.*;
 
 public class LoginGerente extends JFrame {
@@ -59,11 +61,14 @@ public class LoginGerente extends JFrame {
         // Panel donde van los labels
         JPanel panelLabels = new JPanel(new GridLayout(7, 1, 5, 5));
 
+
+        Departamento dep = sacarDepartamentoEmpelado(empleados);
+
         JLabel lblDni = new JLabel("DNI: " + empleados.getDni());
         JLabel lblNombre = new JLabel("Nombre completo: " + empleados.getNombre() + " " + empleados.getApellidos());
         JLabel lblSalario = new JLabel("Salario: " + empleados.getSalario() + " €");
         JLabel lblTelefono = new JLabel("Teléfono: " + empleados.getTelefono());
-        JLabel lblDepto = new JLabel("Departamento asignado: " + empleados.getDepartamento());
+        JLabel lblDepto = new JLabel("Departamento asignado: " + dep.getNombre());
         JLabel lblBono = new JLabel("Bono: " + empleados.getBono() + " €");
         JLabel lblCorreo = new JLabel("Correo corporativo: " + empleados.getEmail());
 

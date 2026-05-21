@@ -3,9 +3,6 @@ package org.example.Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.ControladorDAO.DepartamentoDAO.mostrarNombreDepartamento;
-import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
-
 public class Empleados {
     private String dni;
     private String nombre;
@@ -15,6 +12,7 @@ public class Empleados {
     private double salario;
 
     private int departamento;
+
     private List<Proyecto> proyectos = new ArrayList<>();
 
     public Empleados() {

@@ -107,6 +107,7 @@ public class DepartamentoDAO {
                 departamento.setNombre(rs.getString("ubicacion"));
             } else {
                 departamento.setNombre(null);
+                departamento.setUbicacion(null);
             }
 
             return departamento;

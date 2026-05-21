@@ -27,25 +27,33 @@ public class VentanaProyectos extends JFrame {
         // Panel donde van los labels
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 20));
 
-        for (Proyecto p : proyectos) {
+
+        for (Proyecto p : proyectos.stream()
+                .filter(pr -> !pr.getFinalizado())
+                .toList()) {
+
             JLabel lbl = new JLabel(
-                    "• " + "Empresa: " + p.getNombre() +
+                    "• Nombre Proyecto: " + p.getNombre() +
                             " | Tipo: " + p.getTipo() +
                             " | Presupuesto: " + p.getPresupuesto() + "€" +
                             " | Inicio: " + p.getFechaInicio() +
-                            " | Finalizado: " + (p.getFinalizado() ? "Sí" : "No")
+                            " | Finalizado: No"
             );
-            lbl.setFont(new Font("Arial", Font.PLAIN, 14));
+
+            lbl.setFont(new Font("Arial", Font.PLAIN, 18));
             panel.add(lbl);
             panel.add(Box.createVerticalStrut(10));
         }
+
 
         // Scroll con el panel
         JScrollPane scroll = new JScrollPane(panel);
 
         // Panel de retorno reutilizable
         JPanel panelRetorno = getPanelBotonRetorno(this, ventanaAnterior);
+
 
         // Añadimos correctamente al BorderLayout
         add(scroll, BorderLayout.CENTER);

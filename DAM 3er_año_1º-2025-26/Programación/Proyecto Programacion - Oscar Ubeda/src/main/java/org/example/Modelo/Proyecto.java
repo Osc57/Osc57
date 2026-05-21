@@ -1,6 +1,7 @@
 package org.example.Modelo;
 
 import java.util.Date;
+import java.util.function.Function;
 
 public class Proyecto {
     private int id;
@@ -9,6 +10,9 @@ public class Proyecto {
     private double presupuesto;
     private Date fechaInicio;
     private boolean finalizado;
+
+    public Proyecto() {
+    }
 
     public Proyecto(int id, String nombre, String tipo, double presupuesto, Date fechaInicio, boolean finalizado) {
         this.id = id;
@@ -74,4 +78,11 @@ public class Proyecto {
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre Proyecto: " + nombre + " | " + "Tipo Proyecto: " + tipo + " | " + "Presupuesto: " + presupuesto + " | " + "Inicio: " + fechaInicio + " | " +
+                "Finalizado: " + ((Function<Boolean, String>) (f -> f ? "Sí" : "No")).apply(finalizado);
+    }
+
 }

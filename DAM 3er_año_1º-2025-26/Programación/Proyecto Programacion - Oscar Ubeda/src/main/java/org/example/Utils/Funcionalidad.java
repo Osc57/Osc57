@@ -1,10 +1,6 @@
 package org.example.Utils;
 
-import org.example.ControladorDAO.EmpleadosDAO;
-import org.example.Modelo.Departamento;
-import org.example.Modelo.Empleados;
-import org.example.Modelo.Gerente;
-import org.example.Modelo.Programador;
+import org.example.Modelo.*;
 import org.example.Vista.Login;
 
 import javax.swing.*;
@@ -12,7 +8,6 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
@@ -48,6 +43,9 @@ public class Funcionalidad {
 
     public static final DefaultListModel<Departamento> MODEL_DEPTO = new DefaultListModel<>();
     public static final JList<Departamento> LISTA_DEPTO = new JList<>(MODEL_DEPTO);
+
+    public static final DefaultListModel<Proyecto> MODEL_PROYECT = new DefaultListModel<>();
+    public static final JList<Proyecto> LIST_PROYECT = new JList<>(MODEL_PROYECT);
 
     //========================================================================================================
 

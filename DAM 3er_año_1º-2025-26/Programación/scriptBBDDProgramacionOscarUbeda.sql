@@ -43,6 +43,7 @@ CREATE TABLE Proyectos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(170) NOT NULL,
     presupuesto DOUBLE NOT NULL DEFAULT 0,
+	tipo VARCHAR(100) NOT NULL,
     fechaInicio DATE NOT NULL,
     finalizado BOOLEAN DEFAULT FALSE
 );

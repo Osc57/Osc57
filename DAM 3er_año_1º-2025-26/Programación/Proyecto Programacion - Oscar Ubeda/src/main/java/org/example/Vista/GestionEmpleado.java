@@ -1,11 +1,16 @@
 package org.example.Vista;
 
+import org.example.Modelo.Departamento;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class GestionEmpleado extends JFrame {
 
@@ -33,6 +38,15 @@ public class GestionEmpleado extends JFrame {
         botonDarAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                ArrayList<Departamento> departamentos = obtenerDepartamentos();
+
+                if (departamentos.isEmpty()) {
+                    mostrarMensaje("⚠️ Debe dar de alta un departamento \n" +
+                            "Para poder crear un empelado");
+                    return;
+                }
+
                 new DarAltaEmpleado().setVisible(true);
                 dispose();
 

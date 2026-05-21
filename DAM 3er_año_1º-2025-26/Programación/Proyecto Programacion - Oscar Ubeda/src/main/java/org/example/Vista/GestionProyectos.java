@@ -1,7 +1,6 @@
 package org.example.Vista;
 
 import org.example.Modelo.Empleados;
-import org.example.Modelo.Programador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,10 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
-import static org.example.ControladorDAO.ProgramadorDAO.obtenerEmpleadosLibres;
 import static org.example.Utils.Funcionalidad.*;
-import static org.example.Utils.Funcionalidad.crearEstiloBoton;
-import static org.example.Utils.Messages.mostrarMensaje;
 
 public class GestionProyectos extends JFrame {
 
@@ -53,11 +49,13 @@ public class GestionProyectos extends JFrame {
         botonModificarProyecto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+
+                new ModificarProyecto().setVisible(true);
+                dispose();
             }
         });
 
-        JButton botonEliminarProyecto = crearEstiloBoton("<html>Eliminar <br> Proyecto</html>");
+        JButton botonEliminarProyecto = crearEstiloBoton("<html>Finalizar <br> Proyecto</html>");
         botonEliminarProyecto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
