@@ -7,7 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.Normalizer;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import static org.example.ControladorDAO.EmpleadosDAO.emailExistente;
@@ -233,4 +237,21 @@ public class Funcionalidad {
 
     //===============================================================================================
 
+    public static class Log {
+
+        private static final String RUTA_LOG = "logs/login_log.txt";
+
+        public static void registrar(String mensaje) {
+            try (FileWriter fw = new FileWriter(RUTA_LOG, true)) {
+
+                String fechaHora = LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+                fw.write("[" + fechaHora + "] " + mensaje + "\n");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

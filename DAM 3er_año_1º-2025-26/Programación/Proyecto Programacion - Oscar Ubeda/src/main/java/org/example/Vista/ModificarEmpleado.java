@@ -85,8 +85,4 @@ public class ModificarEmpleado extends JFrame {
 
         return panelPrincipal;
     }
-
-    public static void main(String[] args) {
-        new ModificarEmpleado().setVisible(true);
-    }
 }

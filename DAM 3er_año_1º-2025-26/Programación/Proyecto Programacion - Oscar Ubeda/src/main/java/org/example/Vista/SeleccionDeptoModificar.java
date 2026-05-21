@@ -79,8 +79,4 @@ public class SeleccionDeptoModificar extends JFrame {
 
         return panelPrincipal;
     }
-
-    public static void main(String[] args) {
-        new SeleccionDeptoModificar().setVisible(true);
-    }
 }

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 import static org.example.ControladorDAO.UsuariosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Funcionalidad.Log.registrar;
 import static org.example.Utils.Messages.mostrarMensaje;
 
 public class Login extends JFrame {
@@ -92,33 +93,37 @@ public class Login extends JFrame {
 
                     case 0:
                         mostrarMensaje("❌ El usuario no existe");
+                        registrar("Intento de login → Usuario: " + userName + " → Resultado: USUARIO NO EXISTE");
                         break;
 
                     case 2:
                         mostrarMensaje("❌ Contraseña incorrecta");
+                        registrar("Intento de login → Usuario: " + userName + " → Resultado: CONTRASEÑA INCORRECTA");
                         break;
 
                     case 1:
                         mostrarMensaje("✅ Login correcto");
 
-                        // Obtener el usuario completo desde BD (incluye DNI)
                         Usuarios usuarioCompleto = obtenerUsuarioPorNombre(usuarioLogin);
+
+                        registrar("Login correcto → Usuario: " + userName);
 
                         dispose();
 
-                        // Si es admin → panel admin
                         if (userName.equalsIgnoreCase("admin")) {
+                            registrar("Usuario " + userName + " inició sesión como ADMIN");
                             new GestionAfterLogin().setVisible(true);
                             return;
                         }
 
-                        // Si NO es admin → comprobar si es gerente o programador
                         if (esGerente(usuarioCompleto)) {
                             Gerente g = obtenerGerente(usuarioCompleto);
+                            registrar("Usuario " + userName + " inició sesión como GERENTE");
                             new LoginGerente(g).setVisible(true);
 
                         } else {
                             Programador p = obtenerProgramador(usuarioCompleto);
+                            registrar("Usuario " + userName + " inició sesión como PROGRAMADOR");
                             new LoginProgramador(p).setVisible(true);
                         }
 
@@ -126,7 +131,9 @@ public class Login extends JFrame {
 
                     default:
                         mostrarMensaje("⚠️ Error inesperado");
+                        registrar("Intento de login → Usuario: " + userName + " → Resultado: ERROR DESCONOCIDO");
                 }
+
             }
         });
 
@@ -149,12 +156,5 @@ public class Login extends JFrame {
             }
         });
 
-    }
-
-
-    public static void main(String[] args) {
-        Login login = new Login();
-
-        login.setVisible(true);
     }
 }

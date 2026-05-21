@@ -1,0 +1,7 @@
+[2026-05-21 22:24:57] Login correcto → Usuario: admin
+[2026-05-21 22:24:57] Usuario admin inició sesión como ADMIN
+[2026-05-21 22:25:31] Login correcto → Usuario: admin
+[2026-05-21 22:25:31] Usuario admin inició sesión como ADMIN
+[2026-05-21 22:26:45] Login correcto → Usuario: Laura
+[2026-05-21 22:26:45] Usuario Laura inició sesión como GERENTE
+[2026-05-21 22:27:21] Intento de login → Usuario: Laura1234 → Resultado: USUARIO NO EXISTE

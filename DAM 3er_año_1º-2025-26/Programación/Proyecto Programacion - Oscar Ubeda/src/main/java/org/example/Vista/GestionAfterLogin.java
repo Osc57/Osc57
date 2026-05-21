@@ -74,10 +74,4 @@ public class GestionAfterLogin extends JFrame {
 
         return panelBotonesGestion;
     }
-
-    public static void main(String[] args) {
-        new GestionAfterLogin().setVisible(true);
-    }
-
-
 }

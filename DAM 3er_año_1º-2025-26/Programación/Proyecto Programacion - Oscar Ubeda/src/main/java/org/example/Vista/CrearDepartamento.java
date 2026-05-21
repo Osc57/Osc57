@@ -152,7 +152,4 @@ public class CrearDepartamento extends JFrame {
         return panelPrincipal;
     }
 
-    public static void main(String[] args) {
-        new CrearDepartamento().setVisible(true);
-    }
 }

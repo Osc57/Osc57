@@ -82,10 +82,4 @@ public class ModificarProyecto extends JFrame {
 
         return panelPrincipal;
     }
-
-    public static void main(String[] args) {
-        new ModificarProyecto().setVisible(true);
-    }
-
-
 }

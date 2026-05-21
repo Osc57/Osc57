@@ -75,8 +75,4 @@ public class GestionDepartamentos extends JFrame {
 
         return panelGestion;
     }
-
-    public static void main(String[] args) {
-        new GestionDepartamentos().setVisible(true);
-    }
 }

@@ -133,9 +133,4 @@ public class EmpleadosSinDepartamento extends JFrame {
         return panelPrincipal;
 
     }
-
-    public static void main(String[] args) {
-        new EmpleadosSinDepartamento().setVisible(true);
-    }
-
 }
