@@ -1,6 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Departamento;
+import org.example.Modelo.Empleados;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.DepartamentoDAO.obtenerDepartamentos;
+import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -57,6 +59,14 @@ public class GestionEmpleado extends JFrame {
         botonModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                ArrayList<Empleados> empleados = mostrarEmpleados();
+
+                if (empleados.isEmpty()) {
+                    mostrarMensaje("⚠️ No hay empleados para modificar");
+                    return;
+                }
+
                 new ModificarEmpleado().setVisible(true);
                 dispose();
             }
@@ -66,6 +76,14 @@ public class GestionEmpleado extends JFrame {
         botonDarBaja.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                ArrayList<Empleados> empleados = mostrarEmpleados();
+
+                if (empleados.isEmpty()) {
+                    mostrarMensaje("⚠️ No hay empleados para eliminar");
+                    return;
+                }
+
                 new EliminarEmpleado().setVisible(true);
                 dispose();
 

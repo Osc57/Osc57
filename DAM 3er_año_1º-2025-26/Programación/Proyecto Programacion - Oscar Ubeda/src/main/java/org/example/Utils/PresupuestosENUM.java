@@ -17,12 +17,30 @@ public enum PresupuestosENUM {
         this.max = max;
     }
 
-    public int getMin() { return min; }
-    public int getMax() { return max; }
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
 
     @Override
     public String toString() {
         return rangoTexto;
+    }
+
+    public int getRandom() {
+        return min + (int) (Math.random() * ((max - min) + 1));
+    }
+
+    public static PresupuestosENUM fromValor(int valor) {
+        for (PresupuestosENUM p : values()) {
+            if (valor >= p.min && valor <= p.max) {
+                return p;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for value: " + valor);
     }
 }
 

@@ -40,7 +40,7 @@ public class GestionAfterLogin extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 if (empelados.isEmpty()) {
-                    mostrarMensaje("⚠️ No hay empelados para asignar a un proyecto");
+                    mostrarMensaje("⚠️ No hay empelados para gestionar a un proyecto");
                     return;
                 }
 

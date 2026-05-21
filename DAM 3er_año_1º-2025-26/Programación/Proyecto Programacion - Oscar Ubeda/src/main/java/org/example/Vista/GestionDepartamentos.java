@@ -43,8 +43,14 @@ public class GestionDepartamentos extends JFrame {
         botonModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SeleccionDeptoModificar().setVisible(true);
-                dispose();
+
+                if (existenDepartamentos()) {
+                    new SeleccionDeptoModificar().setVisible(true);
+                    dispose();
+                } else {
+                    mostrarMensaje("⚠️ No hay departamentos para modificar");
+                }
+
             }
         });
 

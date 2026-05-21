@@ -152,4 +152,25 @@ public class ProgramadorDAO {
         }
 
     }
+
+    public static boolean programadorTieneAsignaciones(Programador programador) {
+        String sql = "SELECT COUNT(*) FROM trabaja WHERE dni = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, programador.getDni());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1) > 0; // Tiene asignaciones
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false; // No tiene asignaciones
+    }
+
 }

@@ -67,6 +67,7 @@ public class ProyectosSinFinalizar extends JFrame {
                 Proyecto proyectoSeleccionado = new Proyecto(seleccionado.getId(), seleccionado.getNombre(), seleccionado.getTipo(), seleccionado.getPresupuesto(), seleccionado.getFechaInicio(), seleccionado.getFinalizado());
 
                 new GestionModificarProyecto(proyectoSeleccionado, ProyectosSinFinalizar.this).setVisible(true);
+                dispose();
             }
         });
 

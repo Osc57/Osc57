@@ -150,4 +150,87 @@ public class ProyectosDAO {
         }
 
     }
+
+    public static int contarTrabajadoresProyecto(Proyecto proyecto) {
+        String sql = "SELECT COUNT(*) FROM trabaja WHERE id_proyect = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, proyecto.getId());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return 0;
+    }
+
+    public static boolean actualizarProyecto(Proyecto proyecto) {
+
+        String sql = "UPDATE proyectos SET nombre = ?, tipo = ?, presupuesto = ? WHERE id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, proyecto.getNombre());
+            ps.setString(2, proyecto.getTipo());
+            ps.setDouble(3, proyecto.getPresupuesto());
+            ps.setInt(4, proyecto.getId());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean estaFinalizado(Proyecto proyecto) {
+        String sql = "SELECT finalizado FROM proyectos WHERE id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, proyecto.getId());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBoolean("finalizado");
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
+    }
+
+    public static boolean actualizarProyectoSiFinalizado(Proyecto proyecto) {
+
+        String sql = "UPDATE proyectos SET nombre = ?, tipo = ?, presupuesto = ?, finalizado = false WHERE id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, proyecto.getNombre());
+            ps.setString(2, proyecto.getTipo());
+            ps.setDouble(3, proyecto.getPresupuesto());
+            ps.setInt(4, proyecto.getId());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 }

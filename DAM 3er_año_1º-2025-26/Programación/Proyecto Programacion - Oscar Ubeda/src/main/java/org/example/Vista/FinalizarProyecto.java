@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static org.example.ControladorDAO.ProyectosDAO.mostrarProyectosSinFinalizar;
+import static org.example.ControladorDAO.ProyectosDAO.*;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -64,10 +64,46 @@ public class FinalizarProyecto extends JFrame {
                     return;
                 }
 
-                Proyecto proyectoSeleccionado = new Proyecto(seleccionado.getId(), seleccionado.getNombre(), seleccionado.getTipo(), seleccionado.getPresupuesto(), seleccionado.getFechaInicio(), seleccionado.getFinalizado());
+                Proyecto proyectoSeleccionado = new Proyecto(
+                        seleccionado.getId(),
+                        seleccionado.getNombre(),
+                        seleccionado.getTipo(),
+                        seleccionado.getPresupuesto(),
+                        seleccionado.getFechaInicio(),
+                        seleccionado.getFinalizado()
+                );
 
+                // 1. Contar empleados del proyecto
+                int empleados = contarTrabajadoresProyecto(proyectoSeleccionado);
 
+                // 2. Mensaje personalizado
+                int respuesta = JOptionPane.showConfirmDialog(
+                        null,
+                        "⚠️ Hay " + empleados + " empleados trabajando en este proyecto.\n" +
+                                "¿Desea finalizarlo igualmente?",
+                        "Finalizar Proyecto",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    // 3. Eliminar empleados del proyecto
+                    boolean trabajadoresEliminados = eliminarTrabajadoresProyecto(proyectoSeleccionado);
+
+                    // 4. Finalizar proyecto
+                    boolean proyectoFinalizado = finalizarProyecto(proyectoSeleccionado);
+
+                    if (proyectoFinalizado) {
+                        mostrarMensaje("✅ Proyecto finalizado correctamente");
+
+                        new GestionProyectos().setVisible(true);
+                        dispose();
+
+                    } else {
+                        mostrarMensaje("❌ No se pudo finalizar el proyecto");
+                    }
+                }
             }
+
         });
 
         panelBoton.add(btnSeleccionEmple);

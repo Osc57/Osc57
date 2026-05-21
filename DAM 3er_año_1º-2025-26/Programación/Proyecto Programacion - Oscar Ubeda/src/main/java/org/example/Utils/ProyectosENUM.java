@@ -25,5 +25,14 @@ public enum ProyectosENUM {
     public String toString() {
         return nombreComercial;
     }
+
+    public static ProyectosENUM fromNombreComercial(String texto) {
+        for (ProyectosENUM p : values()) {
+            if (p.nombreComercial.equalsIgnoreCase(texto)) {
+                return p;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for: " + texto);
+    }
 }
 

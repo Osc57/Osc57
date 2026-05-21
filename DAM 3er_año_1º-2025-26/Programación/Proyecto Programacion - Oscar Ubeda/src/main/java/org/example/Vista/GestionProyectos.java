@@ -1,6 +1,7 @@
 package org.example.Vista;
 
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Proyecto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.mostrarEmpleados;
+import static org.example.ControladorDAO.ProyectosDAO.mostrarProyectosSinFinalizar;
 import static org.example.Utils.Funcionalidad.*;
+import static org.example.Utils.Messages.mostrarMensaje;
 
 public class GestionProyectos extends JFrame {
 
@@ -39,6 +42,18 @@ public class GestionProyectos extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                ArrayList<Empleados> empleados = mostrarEmpleados();
+
+                if (empleados.isEmpty()) {
+                    mostrarMensaje("⚠️ No hay empleados ,\n" +
+                            "De de alta empelados");
+
+                    new DarAltaEmpleado().setVisible(true);
+                    dispose();
+
+                    return;
+                }
+
                 new CrearProyecto().setVisible(true);
                 dispose();
 
@@ -59,7 +74,17 @@ public class GestionProyectos extends JFrame {
         botonEliminarProyecto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+
+                ArrayList<Proyecto> proyectos = mostrarProyectosSinFinalizar();
+
+                if (proyectos.isEmpty()) {
+                    mostrarMensaje("⚠️ No hay Proyectos o\n" +
+                            "Los proyectos están finalizados");
+                    return;
+                }
+
+                new FinalizarProyecto().setVisible(true);
+                dispose();
 
             }
         });

@@ -14,6 +14,10 @@ public class Gerente extends Empleados {
         this.nivel = nivel;
     }
 
+    public Gerente(String dni) {
+        this.dni = dni;
+    }
+
     public Gerente(String dni, double bono, String nivel) {
         this.dni = dni;
         this.bono = bono;

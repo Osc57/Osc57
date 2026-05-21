@@ -1,6 +1,8 @@
 package org.example.Vista;
 
 
+import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
 import org.example.Modelo.Proyecto;
 import org.example.Utils.PresupuestosENUM;
 import org.example.Utils.ProyectosENUM;
@@ -12,10 +14,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-import static org.example.ControladorDAO.EmpleadosDAO.quedanEmpleadosLibres;
+import static org.example.ControladorDAO.GerenteDAO.mostrarGerentes;
+import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
 import static org.example.ControladorDAO.ProyectosDAO.comprobarNombreProyecto;
 import static org.example.ControladorDAO.ProyectosDAO.insertarProyecto;
 import static org.example.Utils.Funcionalidad.*;
@@ -107,7 +111,7 @@ public class CrearProyecto extends JFrame {
                 }
 
                 String tipoProyecto = Objects.requireNonNull(proyectosEnum).toString();
-                double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getMin();
+                double presupuestoProyecto = Objects.requireNonNull(presupuestoEnum).getRandom();
 
                 Date fechaActual = new Date();
 
@@ -117,6 +121,21 @@ public class CrearProyecto extends JFrame {
                     mostrarMensaje("⚠️ Este proyecto ya existe en el sistema");
                     return;
                 }
+
+                ArrayList<Gerente> gerentes = mostrarGerentes();
+                ArrayList<Programador> programadores = mostrarProgramadores();
+
+                if (programadores.isEmpty()) {
+                    mostrarMensaje("⚠️ No se puede crear un proyecto debido a que no hay programadores");
+                    return;
+                }
+
+
+                if (gerentes.isEmpty()) {
+                    mostrarMensaje("⚠️ No se puede crear un proyecto debido a que no hay gerentes");
+                    return;
+                }
+
                 
                 if (insertarProyecto(proyecto)) {
                     new AsignarProgramador(proyecto).setVisible(true);

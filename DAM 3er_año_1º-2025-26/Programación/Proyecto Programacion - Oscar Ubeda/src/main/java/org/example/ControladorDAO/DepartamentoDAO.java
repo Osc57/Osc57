@@ -70,7 +70,7 @@ public class DepartamentoDAO {
         return departamentos;
     }
 
-    /*
+
     public static ArrayList<Departamento> mostrarDepartamentos() {
         ArrayList<Departamento> departamentos = new ArrayList<>();
 
@@ -92,7 +92,7 @@ public class DepartamentoDAO {
         }
         return departamentos;
     }
-     */
+
 
     public static Departamento mostrarNombreDepartamento(Departamento departamento) {
         try (Connection connection = getConnection();

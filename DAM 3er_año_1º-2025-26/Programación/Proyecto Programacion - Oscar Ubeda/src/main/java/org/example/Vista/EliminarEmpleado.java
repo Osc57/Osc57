@@ -1,6 +1,8 @@
 package org.example.Vista;
 
 import org.example.Modelo.Empleados;
+import org.example.Modelo.Gerente;
+import org.example.Modelo.Programador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +11,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static org.example.ControladorDAO.EmpleadosDAO.*;
+import static org.example.ControladorDAO.GerenteDAO.mostrarGerentes;
+import static org.example.ControladorDAO.GerenteDAO.saberSiGerenteEstaEnProyecto;
+import static org.example.ControladorDAO.ProgramadorDAO.mostrarProgramadores;
+import static org.example.ControladorDAO.ProgramadorDAO.programadorTieneAsignaciones;
 import static org.example.Utils.Funcionalidad.*;
 import static org.example.Utils.Messages.mostrarMensaje;
 
@@ -57,6 +63,7 @@ public class EliminarEmpleado extends JFrame {
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Empleados seleccionado = LISTA_EMPLEADOS.getSelectedValue();
 
                 if (seleccionado == null) {
@@ -64,22 +71,82 @@ public class EliminarEmpleado extends JFrame {
                     return;
                 }
 
-                if (seleccionarGerenteEmpleado(seleccionado)) {
-                    int respuesta = JOptionPane.showConfirmDialog(null, "⚠️ ¿Esta seguro de que quiere eliminar a este GERENTE?", "Eliminar Empleado",
-                            JOptionPane.YES_NO_OPTION);
+                //Empleados empleados = new Empleados(seleccionado.getDni(), seleccionado.getNombre(), seleccionado.getApellidos(), seleccionado.getEmail(), seleccionado.getTelefono());
+
+                String dni = seleccionado.getDni();
+
+                boolean esGerente = seleccionarGerenteEmpleado(seleccionado);
+                boolean esProgramador = seleccionarProgramadormpleado(seleccionado);
+
+                // ============================================================
+                // VALIDACIONES PARA GERENTE
+                // ============================================================
+                if (esGerente) {
+
+                    // 1. ¿Es el último gerente?
+                    if (mostrarGerentes().size() == 1) {
+                        mostrarMensaje("⚠️ No puede eliminar al último gerente de la empresa.");
+                        return;
+                    }
+
+                    // 2. ¿Está asignado a un proyecto?
+                    Gerente gTemp = new Gerente();
+                    gTemp.setDni(dni);
+
+                    if (saberSiGerenteEstaEnProyecto(gTemp)) {
+                        mostrarMensaje("⚠️ Este gerente está asignado a un proyecto.\nDebe reasignarlo antes de eliminarlo.");
+                        return;
+                    }
+
+                    // 3. Confirmación
+                    int respuesta = JOptionPane.showConfirmDialog(
+                            null,
+                            "⚠️ ¿Está seguro de que quiere eliminar a este GERENTE?",
+                            "Eliminar Empleado",
+                            JOptionPane.YES_NO_OPTION
+                    );
+
                     if (respuesta == JOptionPane.YES_OPTION) {
                         if (eliminarEmpleado(seleccionado)) {
                             mostrarMensaje("✅ Gerente eliminado correctamente");
-                            dispose();
                             new GestionEmpleado().setVisible(true);
+                            dispose();
                         } else {
                             mostrarMensaje("❌ Error al eliminar el gerente");
                         }
                     }
 
-                } else {
-                    int respuesta = JOptionPane.showConfirmDialog(null, "⚠️ ¿Esta seguro de que quiere eliminar a este PROGRAMADOR?", "Eliminar Empleado",
-                            JOptionPane.YES_NO_OPTION);
+                    return; // IMPORTANTE
+                }
+
+                // ============================================================
+                // VALIDACIONES PARA PROGRAMADOR
+                // ============================================================
+                if (esProgramador) {
+
+                    // 1. ¿Es el último programador?
+                    if (mostrarProgramadores().size() == 1) {
+                        mostrarMensaje("⚠️ No puede eliminar al último programador de la empresa.");
+                        return;
+                    }
+
+                    // 2. ¿Está asignado a un proyecto?
+                    Programador pTemp = new Programador();
+                    pTemp.setDni(dni);
+
+                    if (programadorTieneAsignaciones(pTemp)) {
+                        mostrarMensaje("⚠️ Este programador está asignado a un proyecto.\nDebe reasignarlo antes de eliminarlo.");
+                        return;
+                    }
+
+                    // 3. Confirmación
+                    int respuesta = JOptionPane.showConfirmDialog(
+                            null,
+                            "⚠️ ¿Está seguro de que quiere eliminar a este PROGRAMADOR?",
+                            "Eliminar Empleado",
+                            JOptionPane.YES_NO_OPTION
+                    );
+
                     if (respuesta == JOptionPane.YES_OPTION) {
                         if (eliminarEmpleado(seleccionado)) {
                             mostrarMensaje("✅ Programador eliminado correctamente");
@@ -90,9 +157,16 @@ public class EliminarEmpleado extends JFrame {
                         }
                     }
 
+                    return;
                 }
+
+                // ============================================================
+                // SI LLEGA AQUÍ → EL EMPLEADO NO ES NI GERENTE NI PROGRAMADOR
+                // ============================================================
+                mostrarMensaje("⚠️ Este empleado no tiene rol asignado (ni gerente ni programador).");
             }
         });
+
 
         panelBoton.add(btnSeleccionEmple);
 
