@@ -52,7 +52,6 @@ public class ProyectosSinFinalizar extends JFrame {
         }
 
         JButton btnSeleccionEmple = crearEstiloBotonSubmit("SELECCIONAR PROYECTO");
-        btnSeleccionEmple.setPreferredSize(new Dimension(420, 45));
 
         btnSeleccionEmple.addActionListener(new ActionListener() {
             @Override
@@ -70,6 +69,7 @@ public class ProyectosSinFinalizar extends JFrame {
                 dispose();
             }
         });
+
 
         panelBoton.add(btnSeleccionEmple);
 

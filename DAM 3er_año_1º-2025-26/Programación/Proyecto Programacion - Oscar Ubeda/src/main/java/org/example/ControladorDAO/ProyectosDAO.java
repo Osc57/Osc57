@@ -1,9 +1,11 @@
 package org.example.ControladorDAO;
 
+import org.example.Modelo.Empleados;
 import org.example.Modelo.Proyecto;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.Configuracion.Conexion.getConnection;
 
@@ -230,7 +232,5 @@ public class ProyectosDAO {
             throw new RuntimeException(e);
         }
     }
-
-
 
 }
