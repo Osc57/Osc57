@@ -21,3 +21,33 @@ Un empleado puede participar en varios proyectos, y un proyecto puede tener vari
 Cada proyecto puede tener varias versiones asociadas.
 Una versión no puede existir sin su proyecto.
 De cada versión se almacenará: número de versión, fecha y descripción.
+
+
+El proyecto esta creado para gestionar empleados, departamentos y proyectos.
+Claramente podremos dar de alta a un empleado (el cual se decidirá por parte del administrador), si queremos dar de alta a un gerente o un programador.
+Un aspecto a tener en cuenta es que no se podrá dar de alta un empleado si no hay un departamento creado o establecido.
+El administrador podrá modificar los datos de sus empleados.
+El administrador seleccionara los empleados a eliminar.
+Otro aspecto a tener en cuenta, es que no se podrá eliminar un empleado si este esta trabajando en un proyecto.
+Se deberá terminar el proyecto para poder darlo de baja.
+Esto es debido a que, si el empleado esta en un proyecto y se le despide, el siguiente programador no tendrá ni idea de lo que ha hecho ese empelado.
+Además de que ese empleado podría borrar cosas importantes u otras cosas.
+Por eso, ese empelado no será dado de baja hasta que el proyecto esté finalizado.
+Retomando las funciones, el admin también podrá generar departamentos, estos departamentos estarán en 1 piso, no podrá estar un departamento repetido en diferentes pisos.
+Esto es debido a que normalmente en las empresas solo hay 1 departamento de cada “tipo”.
+El administrador podrá modificar el piso en el que el departamento se encuentre, por si este decide ser movido a otro piso.
+Y el administrador eliminara el departamento.
+Dato a tener en cuenta, cuando el administrador elimine un departamento, si este no tenia empleados en el se eliminara sin problemas.
+Pero si este tenía empelados en él, se les podrá reasignar a otros departamentos diferentes.
+El administrador creara proyectos y asignara un número de empleados (programadores y gerentes) a este.
+El proyecto constará de un gerente que lleve a cabo las labores de supervisión, y un número de programadores que decida el gerente (este número se lo dirá al administrador).
+Se podrán modificar los datos del proyecto, ya sea el nombre para una empresa, el presupuesto o el tipo de proyecto.
+
+El administrador finalizara los proyectos, y almacenara los proyectos que se han finalizado por si hiciera falta volver a modificar cualquier cosa de este.
+Ahora que he explicado las funciones de mi proyecto, explicare otras funciones hechas para los empleados.
+En la interfaz de login del proyecto se podrá ver un botón de registrarse o registro.
+Este esta hecho para que el empleado se registre en el programa.
+El empleado introducirá su dni para que el sistema valide si es un empleado o no.
+Una vez el empelado ponga su dni (si este está en la empresa) procederá a introducir un usuario y una contraseña.
+Cuando introduzca esos datos, el sistema validara si son válidos, si estos son validos, en la interfaz de login el usuario introducirá sus datos y este podrá revisar/ver sus datos y sus proyectos asignados.
+
