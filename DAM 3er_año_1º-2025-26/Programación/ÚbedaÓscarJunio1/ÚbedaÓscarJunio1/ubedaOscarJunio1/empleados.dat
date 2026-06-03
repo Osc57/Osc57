@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaEmpleados>
+    <empleados>
+        <edad>24</edad>
+        <nombre>Antonio</nombre>
+        <salario>1750.0</salario>
+    </empleados>
+    <empleados>
+        <edad>22</edad>
+        <nombre>Jose</nombre>
+        <salario>1750.0</salario>
+    </empleados>
+    <empleados>
+        <edad>21</edad>
+        <nombre>Maria</nombre>
+        <salario>1750.0</salario>
+    </empleados>
+    <empleados>
+        <edad>32</edad>
+        <nombre>Carlos</nombre>
+        <salario>1800.0</salario>
+    </empleados>
+    <empleados>
+        <edad>20</edad>
+        <nombre>Manuel</nombre>
+        <salario>1750.0</salario>
+    </empleados>
+    <empleados>
+        <edad>25</edad>
+        <nombre>Marina</nombre>
+        <salario>1750.0</salario>
+    </empleados>
+</listaEmpleados>
