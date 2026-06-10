@@ -1,0 +1,13 @@
+[ {
+  "nombre" : "Persona",
+  "edad" : 23,
+  "ciudad" : "Casa"
+}, {
+  "nombre" : "Persona2",
+  "edad" : 17,
+  "ciudad" : "Casa"
+}, {
+  "nombre" : "Persona4",
+  "edad" : 43,
+  "ciudad" : "Casa"
+} ]

@@ -1,0 +1,294 @@
+Inicio Proceso Ej1
+
+	Escribir "Dime un número: ";
+	Leer numero;
+
+	Si numero = 0 Entonces
+		Escribir "El número es cero";
+	SiNo
+		Si numero > 0 Entonces
+			Escribir "El número es positivo";
+		Sino
+			Escribir "El número es negativo";
+		FinSi
+	FinSi
+Fin Proceso
+
+Inicio Proceso Ej2
+	
+	Para i <- 1 Hasta 20 Hacer
+		Escribir Sin Salto i, " "
+	FinPara
+FinProceso
+
+Inicio Proceso Ej3
+
+    Definir miArray[5] Como Entero;
+    Definir suma Como Entero;
+    Definir i Como Entero;
+
+    suma <- 0;
+
+    Para i <- 1 Hasta 5 Hacer
+        Escribir "Dime un número: ";
+        Leer miArray[i];
+        suma <- suma + miArray[i];
+    FinPara
+
+    Escribir "La media es: ", suma / 5;
+
+FinProceso
+
+=========================================================================================================================
+
+Inicio Proceso Ej1
+	
+	Escribir "Dime un número: ";
+	Leer numero;
+
+	Si numero % 2 = 0 Entonces
+		Escribir "Es par";
+	Sino
+		Escribir "Es impar";
+	FinSi
+FinProceso
+
+
+Inicio Proceso Ej2
+
+	def i como entero;
+	
+	Escribir "Dime un número: ";
+	Leer numero;
+
+	Para i <- 1 Hasta numero Hacer
+		Escribir Sin Salto i, " "
+	FinPara
+FinProceso
+
+Inicio Proceso Ej3
+
+    Definir n, suma, i Como Entero;
+    suma <- 0;
+
+    Escribir "Dime cuantos números quieres introducir: ";
+    Leer n;
+
+    Definir miArray[n] Como Entero;
+
+    Para i <- 1 Hasta n Hacer
+        Escribir "Dime un número: ";
+        Leer miArray[i];
+        suma <- suma + miArray[i];
+    FinPara
+
+    Escribir "La media es: ", suma / n;
+
+FinProceso
+
+
+Inicio Proceso Ej4
+
+    Definir numeros[10] Como Entero;
+    Definir i, mayor, menor, contMayor, contMenor Como Entero;
+
+    contMayor <- 0;
+    contMenor <- 0;
+
+    Para i <- 1 Hasta 10 Hacer
+        Escribir "Introduce un número: ";
+        Leer numeros[i];
+    FinPara
+
+    mayor <- numeros[1];
+    menor <- numeros[1];
+
+    Para i <- 2 Hasta 10 Hacer
+        Si numeros[i] > mayor Entonces
+            mayor <- numeros[i];
+        FinSi
+
+        Si numeros[i] < menor Entonces
+            menor <- numeros[i];
+        FinSi
+    FinPara
+
+    Para i <- 1 Hasta 10 Hacer
+        Si numeros[i] = mayor Entonces
+            contMayor <- contMayor + 1;
+        FinSi
+
+        Si numeros[i] = menor Entonces
+            contMenor <- contMenor + 1;
+        FinSi
+    FinPara
+
+    Escribir "Mayor: ", mayor, " aparece ", contMayor, " veces";
+    Escribir "Menor: ", menor, " aparece ", contMenor, " veces";
+
+FinProceso
+
+
+Inicio Proceso Ej5
+
+    Definir contrasena Como Cadena;
+    Definir i, longitud Como Entero;
+    Definir mayus, minus, numero, simbolo, espacio Como Entero;
+
+    mayus <- 0;
+    minus <- 0;
+    numero <- 0;
+    simbolo <- 0;
+    espacio <- 0;
+
+    Escribir "Introduce una contraseña: ";
+    Leer contrasena;
+
+    longitud <- Longitud(contrasena);
+
+    Si longitud < 8 Entonces
+        Escribir "Contraseña inválida: demasiado corta";
+        FinProceso
+    FinSi
+
+    Si EsNumero(Subcadena(contrasena,1,1)) Entonces
+        Escribir "Contraseña inválida: no puede empezar por número";
+        FinProceso
+    FinSi
+
+    Para i <- 1 Hasta longitud Hacer
+
+        Si contrasena[i] = " " Entonces
+            espacio <- 1;
+        FinSi
+
+        Si contrasena[i] >= "A" Y contrasena[i] <= "Z" Entonces
+            mayus <- mayus + 1;
+        FinSi
+
+        Si contrasena[i] >= "a" Y contrasena[i] <= "z" Entonces
+            minus <- minus + 1;
+        FinSi
+
+        Si contrasena[i] >= "0" Y contrasena[i] <= "9" Entonces
+            numero <- numero + 1;
+        FinSi
+
+        Si contrasena[i] En {"!", "@", "#", "$", "%", "&", "/", "?"} Entonces
+            simbolo <- simbolo + 1;
+        FinSi
+
+    FinPara
+
+    Si espacio = 1 Entonces
+        Escribir "Contraseña inválida: contiene espacios";
+        FinProceso
+    FinSi
+
+    Si mayus = 0 O minus = 0 O numero = 0 O simbolo = 0 Entonces
+        Escribir "Contraseña inválida: no cumple los requisitos";
+    Sino
+        Escribir "Contraseña válida";
+    FinSi
+
+FinProceso
+
+=========================================================================================================================
+
+Inicio Proceso Ej1
+	def numero, suma como entero;
+
+	Repetir
+		Escribir "Dime números a sumar: ";
+		Leer numero;
+		
+
+		Si numero >= 0 Entonces
+			suma <- numero + suma;
+		FinSi
+		
+	Hasta Que numero < 0;
+	
+	Escribir suma;
+FinProceso
+
+
+Inicio Proceso Ej2
+	def n, i como entero;
+	def mayor, menor como logico
+
+	Escribir "Cuantos números quieres introducir: ";
+	Leer n;
+
+	def miArray[n] como entero;
+
+	Para i <- 0 Hasta n Hacer
+		Escribir "Dime un número: ";
+		Leer miArray[i];
+	FinPara
+
+	mayor <- verdadero;
+	menor <- verdadero;
+
+	Para i <- 1 Hasta n - 1 Hacer
+		Si miArray[i] > miArray[i + 1] Entonces
+			mayor <- falso
+		FinSi
+
+		Si miArray[i] < miArray[i + 1] Entonces
+			menor <- falso
+		FinSi
+
+	FinPara
+
+	Si mayor Entonces
+		Escribir "Ordenado ascendentemente"
+	SiNo
+		Si menor Entonces
+			Escribir "Ordenado descendentemente"
+		SiNo
+			Escribir "Descordenado"
+		FinSi
+	FinSi
+FinProceso
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

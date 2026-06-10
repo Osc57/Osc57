@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaPersonas>
+    <personas>
+        <ciudad>Casa</ciudad>
+        <edad>23</edad>
+        <nombre>Persona</nombre>
+    </personas>
+    <personas>
+        <ciudad>Casa</ciudad>
+        <edad>17</edad>
+        <nombre>Persona2</nombre>
+    </personas>
+    <personas>
+        <ciudad>Casa</ciudad>
+        <edad>43</edad>
+        <nombre>Persona4</nombre>
+    </personas>
+</listaPersonas>
