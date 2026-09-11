@@ -1,0 +1,9 @@
+Crear entorno virtual (desde la Terminal)
+python -m venv App (se añadirá contenido a nuestra carpeta)
+cd App
+cd Scripts
+.\activate
+pip install PyQt6
+
+pip install PySide6 (instalar Qt Designer)
+pyside6-designer (ejecutar Qt Designer)
