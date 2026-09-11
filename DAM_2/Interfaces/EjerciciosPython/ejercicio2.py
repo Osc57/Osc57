@@ -1,5 +1,3 @@
-#Generar una ventana en python
-
 from PyQt6.QtWidgets import QApplication, QWidget;
 
 app = QApplication([]);
