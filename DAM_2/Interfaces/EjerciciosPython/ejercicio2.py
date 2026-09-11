@@ -1,8 +1,10 @@
-from PyQt6.QtWidgets import QApplication, QWidget;
+#Generación de Widgets en Python, botón
+
+from PyQt6.QtWidgets import QApplication, QPushButton;
 
 app = QApplication([]);
 
-window = QWidget();
+window = QPushButton("Pulsa");
 
 window.show();
 
