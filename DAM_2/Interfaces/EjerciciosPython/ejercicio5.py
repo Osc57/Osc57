@@ -1,4 +1,4 @@
-#Generación de una ventana en python con una clase + botón
+#Generación de una alerta + widgets
 
 from PyQt6.QtCore import QSize;
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton;
@@ -10,11 +10,14 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Mi aplicación");
 
         boton = QPushButton("Pulsa");
-
-        self.setFixedSize(QSize(400, 300));
+        boton.setCheckable(True);
+        boton.clicked.connect(self.botonPulsado);
 
         self.setCentralWidget(boton);
-        
+
+    def botonPulsado (self):
+        print("Botón pulsado");
+       
 
 
 app = QApplication([]);
