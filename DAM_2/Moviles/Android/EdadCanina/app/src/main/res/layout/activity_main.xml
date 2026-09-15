@@ -8,10 +8,50 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:src="@drawable/perro"
+        android:adjustViewBounds="true"
+        />
+
+    <TextView
+        android:id="@+id/texto_pregunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="¿Que edad tienes?"
+        android:textColor="@color/verde_personalizado"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edit_edad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Introduce tu edad: "
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/boton_calcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
+        android:backgroundTint="@color/verde_personalizado"
+        android:text="Calcular Edad"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/texto_respuesta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="Si fueras un perro, tendías 47 años"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
 </LinearLayout>
