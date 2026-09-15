@@ -3,6 +3,11 @@ package Ap1;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+Ej3. Dada una lista de Strings, escribir una función que devuelva la longitud del
+string más largo en la lista.
+*/
+
 public class Ej3 {
     static void main() {
         ArrayList<String> stringArray = new ArrayList<>(Arrays.asList("Hola", "Que tal", "Como estás", "Saludos", "Bonjour", "Hello"));
