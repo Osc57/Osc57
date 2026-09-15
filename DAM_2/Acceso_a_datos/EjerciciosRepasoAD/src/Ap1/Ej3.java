@@ -6,26 +6,25 @@ import java.util.Arrays;
 public class Ej3 {
     static void main() {
         ArrayList<String> stringArray = new ArrayList<>(Arrays.asList("Hola", "Que tal", "Como estás", "Saludos", "Bonjour", "Hello"));
-        ArrayList<String> emptyArray = new ArrayList<>();
 
-        for (String s : stringArray) {
-            String palabra = s.replace(" ", "");
 
-            emptyArray.add(palabra);
-        }
-        System.out.print(longString(emptyArray));
+        System.out.print(longString(stringArray));
     }
 
     static String longString(ArrayList<String> list) {
         String maxima = "";
 
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).length() > maxima.length()) {
-                maxima = list.get(i);
+        for (String s : list) {
+            int longitudActualSinEspacios = s.replace(" ", "").length();
+            int longitudMaximaSinEspacios = maxima.replace(" ", "").length();
+
+            if (longitudActualSinEspacios > longitudMaximaSinEspacios) {
+                maxima = s;
             }
         }
 
+        int letrasFinales = maxima.replace(" ", "").length();
 
-        return "La palabra es '" + maxima + "' con " + maxima.length() + " letras";
+        return "La palabra es '" + maxima + "' con " + letrasFinales + " letras";
     }
 }
