@@ -10,8 +10,8 @@ public class Ej3 {
         System.out.print(longString(stringArray));
     }
 
-    static int longString(ArrayList<String> list) {
-        String maxima = "";
+    static String longString(ArrayList<String> list) {
+        String maxima = "".replace(" ", "");
 
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).length() > maxima.length()) {
@@ -20,6 +20,6 @@ public class Ej3 {
         }
 
 
-        return maxima.length();
+        return "La palabra es '" + maxima + "' con " + maxima.length() + " letras";
     }
 }
