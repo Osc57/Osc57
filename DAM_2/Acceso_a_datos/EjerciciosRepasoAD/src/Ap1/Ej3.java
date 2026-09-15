@@ -6,8 +6,14 @@ import java.util.Arrays;
 public class Ej3 {
     static void main() {
         ArrayList<String> stringArray = new ArrayList<>(Arrays.asList("Hola", "Que tal", "Como estás", "Saludos", "Bonjour", "Hello"));
+        ArrayList<String> emptyArray = new ArrayList<>();
 
-        System.out.print(longString(stringArray));
+        for (String s : stringArray) {
+            String palabra = s.replace(" ", "");
+
+            emptyArray.add(palabra);
+        }
+        System.out.print(longString(emptyArray));
     }
 
     static String longString(ArrayList<String> list) {
