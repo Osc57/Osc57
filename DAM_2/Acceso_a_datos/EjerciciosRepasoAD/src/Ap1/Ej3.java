@@ -11,7 +11,7 @@ public class Ej3 {
     }
 
     static String longString(ArrayList<String> list) {
-        String maxima = "".replace(" ", "");
+        String maxima = "";
 
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).length() > maxima.length()) {
