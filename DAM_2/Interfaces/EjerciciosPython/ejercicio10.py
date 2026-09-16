@@ -9,14 +9,16 @@ class MainWindow(QMainWindow):
 
         self.boton = QPushButton("Pulsa");
 
+        self.boton.setCheckable(True);
+
         self.boton.clicked.connect(self.botonActivado);
     
         self.setCentralWidget(self.boton);
 
     
-    def botonActivado(self):
-        self.boton.setText("Botón ya pulsado");
-        self.boton.setEnabled(False);
+    def botonActivado(self, pulsado):
+        self.boton.setText(["No Pulsado","Pulsado"][pulsado]);
+
 
 app = QApplication([]);
 
