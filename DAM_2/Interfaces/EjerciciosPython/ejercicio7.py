@@ -12,9 +12,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Mi aplicación");
 
         boton = QPushButton("Pulsa");
-        boton.setCheckable(True);
+        boton.setCheckable(False);
         boton.clicked.connect(self.botonActivado);
-        boton.setChecked(self.botonPulsado);
+        #boton.setChecked(self.botonPulsado);
 
         self.setCentralWidget(boton);
 
