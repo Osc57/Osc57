@@ -7,12 +7,20 @@ Set que contenga solo los números únicos de la lista original.
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Ej2 {
     static void main() {
-        Set<Integer> integerSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        List<Integer> numeros = List.of(1, 2, 3, 2, 4, 1, 5);
+        Set<Integer> numerosUnicos = obtenerEnterosUnicos(numeros);
+        System.out.println("Enteros únicos: " + numerosUnicos);
+    }
 
-        System.out.print(integerSet);
+    static Set<Integer> obtenerEnterosUnicos(List<Integer> lista) {
+        if (lista == null) {
+            return new HashSet<>();
+        }
+        return new HashSet<>(lista);
     }
 }
