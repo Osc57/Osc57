@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
     def botonRealesed(self):
         print("Botón soltado");
         self.esta_pulsado = False;
-        print("Has aguantado ", self.contador , " segundos con el botón presionado")
+        print("Has aguantado ", self.contador , " segundos con el botón presionado");
     
     def botonActivado(self, checked):
         print("Botón pulsado y soltado");
