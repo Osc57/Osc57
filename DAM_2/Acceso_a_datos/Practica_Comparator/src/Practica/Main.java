@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     static void main() {
-
+        calculaCuadrados();
     }
 
     public static void calculaCuadrados() {
@@ -13,5 +13,7 @@ public class Main {
 
         //Primero filtro para ver números pares
         List<Integer> cuadradosPares = numbers.stream().filter(n -> n % 2 == 0).toList();
+
+        System.out.println(cuadradosPares);
     }
 }
