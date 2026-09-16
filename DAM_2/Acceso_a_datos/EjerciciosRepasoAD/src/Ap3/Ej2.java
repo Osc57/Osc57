@@ -12,7 +12,7 @@ public class Ej2 {
     static void main() {
         List<String> stringList = new ArrayList<>(List.of("Hola", "Que tal", "Como estás", "Saludos", "Bonjour", "Hello", "Hola", "Como estás", "Saludos", "Bonjour", "Hello"));
         
-        System.out.println(contarFrecuenciaStrings(stringList));
+        System.out.print(contarFrecuenciaStrings(stringList));
 
     }
 
