@@ -40,7 +40,7 @@ public class Paciente {
 
     /*
     public static Comparator<Paciente> comparadorGravedad(List<Paciente> list) {
-
+        
         for (Paciente p : list) {
         }
     }
