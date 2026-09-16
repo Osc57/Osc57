@@ -1,6 +1,4 @@
 package Ap3;
-
-import java.util.HashMap;
 import java.util.Map;
 
 public class Ej1 {
