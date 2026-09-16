@@ -38,13 +38,12 @@ public class Paciente {
         this.llegada = llegada;
     }
 
-    /*
+/*
     public static Comparator<Paciente> comparadorGravedad(List<Paciente> list) {
-        
         for (Paciente p : list) {
         }
     }
-    */
+*/
 
     @Override
     public String toString() {
