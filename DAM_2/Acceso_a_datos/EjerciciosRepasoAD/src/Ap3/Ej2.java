@@ -6,14 +6,21 @@ las claves son los Strings únicos de la lista y los valores son el número de v
 que cada String aparece en la lista.
 */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Ej2 {
     static void main() {
-        List<String> stringList = new ArrayList<>(List.of("Hola", "Que tal", "Como estás", "Saludos", "Bonjour", "Hello"));
-
+        List<String> stringList = new ArrayList<>(List.of("Hola", "Que tal", "Como estás", "Saludos", "Bonjour", "Hello", "Hola", "Como estás", "Saludos", "Bonjour", "Hello"));
         
+        System.out.println(contarFrecuenciaStrings(stringList));
+
+    }
+
+    public static Map<String, Integer> contarFrecuenciaStrings(List<String> lista) {
+        Map<String, Integer> frecuenciaMap = new HashMap<>();
+        for (String str : lista) {
+            frecuenciaMap.put(str, frecuenciaMap.getOrDefault(str, 0) + 1);
+        }
+        return frecuenciaMap;
     }
 }
