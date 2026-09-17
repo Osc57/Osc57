@@ -1,7 +1,6 @@
 import java.time.LocalDateTime;
-import java.util.Collections;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
-import java.util.List;
 
 public class Paciente {
     private String nombre;
@@ -38,12 +37,17 @@ public class Paciente {
         this.llegada = llegada;
     }
 
-/*
-    public static Comparator<Paciente> comparadorGravedad(List<Paciente> list) {
-        for (Paciente p : list) {
-        }
+
+    public Paciente(String[] line) {
+        this.nombre = line[1];
+        this.gravedad = Integer.parseInt(line[2]);
+        this.llegada = LocalDateTime.parse((line[3]));
     }
-*/
+
+    public static Comparator<Paciente> comparadorGravedad() {
+        return (p1, p2) -> Integer.compare(p2.getGravedad(), p1.getGravedad());
+    }
+
 
     @Override
     public String toString() {
