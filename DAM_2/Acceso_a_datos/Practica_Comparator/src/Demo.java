@@ -17,11 +17,7 @@ public class Demo {
                     .toList();
 
             pacientes.forEach(System.out::println);
-
-            for (Paciente p : pacientes) {
-                System.out.println(p);
-            }
-
+            
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
