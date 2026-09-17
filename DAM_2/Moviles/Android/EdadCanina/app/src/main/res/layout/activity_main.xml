@@ -51,7 +51,9 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         tools:text="Si fueras un perro, tendías 47 años"
-        android:textSize="18sp"
+        android:textSize="26sp"
+        android:gravity="center"
+        android:textColor="@color/verde_personalizado"
         android:textStyle="bold" />
 
 </LinearLayout>
