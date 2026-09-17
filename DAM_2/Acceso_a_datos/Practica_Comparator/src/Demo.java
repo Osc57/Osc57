@@ -17,7 +17,7 @@ public class Demo {
                     .toList();
 
             pacientes.forEach(System.out::println);
-            
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
