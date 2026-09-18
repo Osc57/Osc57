@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QSize, Qt;
-from PyQt6.QtWidgets import QApplication, QComboBox, QMainWindow, QCheckBox;
+from PyQt6.QtWidgets import QApplication, QComboBox, QListWidget, QMainWindow, QCheckBox, QAbstractItemView;
 from PyQt6.QtGui import QPixmap
 
 class MainWindow(QMainWindow):
@@ -8,14 +8,14 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Mi aplicación");
 
-        lista = QComboBox();
+        lista = QListWidget();
 
         lista.addItems(["Uno","Dos","Tres","Cuatro"]);
-        lista.addItem("Cinco");
-        lista.setEditable(True);
 
-        lista.currentIndexChanged.connect(self.muestraIndice);
         lista.currentTextChanged.connect(self.muestraTexto);
+
+        lista.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection);#Elejir varios elementos de la lista
+    
 
         self.setCentralWidget(lista);
 
