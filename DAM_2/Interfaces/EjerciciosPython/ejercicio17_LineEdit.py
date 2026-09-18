@@ -8,22 +8,20 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Mi aplicación");
 
-        texto = QLineEdit();
+        self.texto = QLineEdit();
 
-        texto.setMaxLength(10);
-        texto.setPlaceholderText("Introduce tu nombre....");
+        self.texto.setMaxLength(10);
+        self.texto.setPlaceholderText("Introduce tu nombre....");
 
         #texto.textChanged.connect(self.textoCambiado);
-        texto.returnPressed.connect(self.introPulsado)
+        self.texto.returnPressed.connect(self.introPulsado)
 
-        self.setCentralWidget(texto);
-
-
-    def textoCambiado(self, s):
-        print(s)
+        self.setCentralWidget(self.texto);
 
     def introPulsado(self):
-        print("Intro pulsado")
+        print(self.texto.text());
+        print("Intro pulsado");
+        
 
 app = QApplication([]);
 
