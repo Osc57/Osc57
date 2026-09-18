@@ -10,12 +10,19 @@ class MainWindow(QMainWindow):
 
         lista = QComboBox();
 
-        lista.addItems(["Uno","Dos","Tres","Cuatro"])
+        lista.addItems(["Uno","Dos","Tres","Cuatro"]);
+        lista.addItem("Cinco");
+
+        lista.currentIndexChanged.connect(self.muestraIndice);
+        lista.currentTextChanged.connect(self.muestraTexto);
 
         self.setCentralWidget(lista);
 
 
-    def muestraEstado(self, s):
+    def muestraIndice(self, s):
+        print(s)
+
+    def muestraTexto(self, s):
         print(s)
 
 app = QApplication([]);
