@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QSize, Qt;
-from PyQt6.QtWidgets import QApplication, QGraphicsPixmapItem, QMainWindow, QCheckBox;
+from PyQt6.QtWidgets import QApplication, QMainWindow, QCheckBox;
 from PyQt6.QtGui import QPixmap;
 
 class MainWindow(QMainWindow):
@@ -9,9 +9,18 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Mi aplicación");
 
         casilla = QCheckBox("Casilla de verificación");
+        formato = casilla.font();
+        formato.setBold(True);
+
+        casilla.setFont(formato);
+
+        casilla.stateChanged.connect(self.muestraEstado);
 
         self.setCentralWidget(casilla);
 
+
+    def muestraEstado(self, s):
+        print(s)
 
 app = QApplication([]);
 
