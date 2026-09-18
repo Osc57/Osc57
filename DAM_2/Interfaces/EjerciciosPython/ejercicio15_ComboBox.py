@@ -12,6 +12,7 @@ class MainWindow(QMainWindow):
 
         lista.addItems(["Uno","Dos","Tres","Cuatro"]);
         lista.addItem("Cinco");
+        lista.setEditable(True)
 
         lista.currentIndexChanged.connect(self.muestraIndice);
         lista.currentTextChanged.connect(self.muestraTexto);
