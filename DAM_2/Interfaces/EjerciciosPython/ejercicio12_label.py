@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QSize;
+from PyQt6.QtCore import QSize, Qt;
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QVBoxLayout, QWidget;
 
 class MainWindow(QMainWindow):
@@ -13,7 +13,8 @@ class MainWindow(QMainWindow):
         formato.setPointSize(30);
         formato.setFamily("Arial");
         formato.setBold(True);
-
+        label.setFont(formato);
+        label.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter);
 
         self.setCentralWidget(label);
 
