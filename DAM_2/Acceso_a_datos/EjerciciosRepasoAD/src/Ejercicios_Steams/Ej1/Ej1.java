@@ -17,6 +17,10 @@ public class Ej1 {
                 new Fruta("Manzana", "Rojo"),
                 new Fruta("Pera", "Verde"));
 
-        fruteria.forEach(f -> System.out.println(f));
+        List<String> nombresFrutas = fruteria.stream()
+                .map(Fruta::getNombre).toList();
+
+
+        nombresFrutas.forEach(System.out::println);
     }
 }

@@ -9,6 +9,14 @@ public class Fruta {
         this.color = color;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
     @Override
     public String toString() {
         return "Fruta -> " + nombre + ", " + color;
