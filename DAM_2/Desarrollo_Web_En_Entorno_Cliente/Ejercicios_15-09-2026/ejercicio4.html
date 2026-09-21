@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+ <script>
+        const num1 = 15;
+        const num2 = 5;
+        const operacion = prompt("¿Qué operación quieres realizar? (+, -, *, /)");
+
+        if (operacion === "+") {
+            document.write(`${num1} + ${num2} = ${num1 + num2}`);
+        } else if (operacion === "-") {
+            document.write(`${num1} - ${num2} = ${num1 - num2}`);
+        } else if (operacion === "*") {
+            document.write(`${num1} * ${num2} = ${num1 * num2}`);
+        } else if (operacion === "/") {
+            if (num2 !== 0) {
+                document.write(`${num1} / ${num2} = ${num1 / num2}`);
+            } else {
+                document.write("Error: No se puede dividir por cero.");
+            }
+        } else {
+            document.write("Operación no válida.");
+        }
+
+        document.write("<hr>"); 
+
+        switch (operacion) {
+            case "+":
+                document.write(`${num1} + ${num2} = ${num1 + num2}`);
+                break;
+            case "-":
+                document.write(`${num1} - ${num2} = ${num1 - num2}`);
+                break;
+            case "*":
+                document.write(`${num1} * ${num2} = ${num1 * num2}`);
+                break;
+            case "/":
+                if (num2 !== 0) {
+                    document.write(`${num1} / ${num2} = ${num1 / num2}`);
+                } else {
+                    document.write("Error: No se puede dividir por cero.");
+                }
+                break;
+            default:
+                document.write("Operación no válida.");
+                break;
+        }
+    </script>
+<body>
+    
+</body>
+</html>

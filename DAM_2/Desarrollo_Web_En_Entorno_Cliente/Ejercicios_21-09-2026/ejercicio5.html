@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    .calendario {
+        display: grid;
+        grid-template-columns: repeat(7, 40px);
+        gap: 5px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .dia-semana {
+        font-weight: bold;
+        background-color: #eee;
+        padding: 5px;
+    }
+
+    .dia {
+        padding: 10px 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .festivo {
+        color: red;
+    }
+</style>
+
+<body>
+    <h2 id="nombre-mes">Calendario</h2>
+    <div class="calendario" id="contenedor-calendario"></div>
+
+    <script>
+        var nombreMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        var festivos = [[1, 6], [], [], [3], [1], [], [], [15], [], [12], [1], [8, 25]];
+        var diasSemana = ["L", "M", "X", "J", "V", "S", "D"];
+
+        var seleccion = prompt("Introduce el número del mes de 2026 que quieres ver (1 al 12):");
+        var numMes = parseInt(seleccion) - 1;
+
+        if (isNaN(numMes) || numMes < 0 || numMes > 11) {
+            alert("Por favor, introduce un número válido del 1 al 12.");
+        } else {
+            document.getElementById("nombre-mes").innerText = nombreMeses[numMes] + " - 2026";
+
+            var contenedor = document.getElementById("contenedor-calendario");
+
+            diasSemana.forEach(function (dia) {
+                var divDiaSemana = document.createElement("div");
+                divDiaSemana.className = "dia-semana";
+                divDiaSemana.innerText = dia;
+                contenedor.appendChild(divDiaSemana);
+            });
+
+
+            var primerDia = new Date(2026, numMes, 1).getDay();
+            var indiceInicio = (primerDia === 0) ? 6 : primerDia - 1;
+
+            var totalDias = new Date(2026, numMes + 1, 0).getDate();
+
+            for (var i = 0; i < indiceInicio; i++) {
+                var huecoVacio = document.createElement("div");
+                contenedor.appendChild(huecoVacio);
+            }
+
+            var festivosDelMes = festivos[numMes];
+
+            for (var dia = 1; dia <= totalDias; dia++) {
+                var celdaDia = document.createElement("div");
+                celdaDia.className = "dia";
+                celdaDia.innerText = dia;
+
+                if (festivosDelMes.includes(dia)) {
+                    celdaDia.classList.add("festivo");
+                }
+
+                contenedor.appendChild(celdaDia);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
