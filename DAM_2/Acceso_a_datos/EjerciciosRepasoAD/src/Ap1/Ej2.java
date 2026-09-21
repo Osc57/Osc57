@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /*
-Ej2. Dada una lista de números enteros, escribir una función que devuelva una
+Ejercicios_Steams.Ej2. Dada una lista de números enteros, escribir una función que devuelva una
 nueva lista que contenga solo los números pares de la lista original.
 */
 

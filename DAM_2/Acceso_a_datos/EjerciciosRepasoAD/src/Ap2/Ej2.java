@@ -1,7 +1,7 @@
 package Ap2;
 
 /*
-Ej2. Dada una lista de números enteros, escribir una función que devuelva un
+Ejercicios_Steams.Ej2. Dada una lista de números enteros, escribir una función que devuelva un
 Set que contenga solo los números únicos de la lista original.
 */
 
