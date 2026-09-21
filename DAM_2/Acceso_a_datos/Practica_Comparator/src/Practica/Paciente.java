@@ -8,10 +8,10 @@ public class Paciente {
     private int gravedad;
     private LocalDateTime llegada;
 
-    public Paciente(String nombre, int gravedad, LocalDateTime llegada) {
-        this.nombre = nombre;
-        this.gravedad = gravedad;
-        this.llegada = llegada;
+    public Paciente(String[] line) {
+        this.nombre = line[1];
+        this.gravedad = Integer.parseInt(line[2]);
+        this.llegada = LocalDateTime.parse((line[3]));
     }
 
     public String getNombre() {
@@ -37,18 +37,6 @@ public class Paciente {
     public void setLlegada(LocalDateTime llegada) {
         this.llegada = llegada;
     }
-
-
-    public Paciente(String[] line) {
-        this.nombre = line[1];
-        this.gravedad = Integer.parseInt(line[2]);
-        this.llegada = LocalDateTime.parse((line[3]));
-    }
-
-    public static Comparator<Paciente> comparadorGravedad() {
-        return (p1, p2) -> Integer.compare(p2.getGravedad(), p1.getGravedad());
-    }
-
 
     @Override
     public String toString() {
