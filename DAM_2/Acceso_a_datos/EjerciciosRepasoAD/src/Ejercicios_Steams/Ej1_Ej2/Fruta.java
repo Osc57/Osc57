@@ -1,4 +1,4 @@
-package Ejercicios_Steams.Ej1;
+package Ejercicios_Steams.Ej1_Ej2;
 
 public class Fruta {
     private String nombre;

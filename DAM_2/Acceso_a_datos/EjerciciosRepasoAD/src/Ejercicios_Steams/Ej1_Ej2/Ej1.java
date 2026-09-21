@@ -1,4 +1,4 @@
-package Ejercicios_Steams.Ej1;
+package Ejercicios_Steams.Ej1_Ej2;
 
 /*
 Ejercicio 1:
@@ -19,7 +19,7 @@ public class Ej1 {
 
         List<String> nombresFrutas = fruteria.stream()
                 .map(Fruta::getNombre).toList();
-        
+
         nombresFrutas.forEach(System.out::println);
     }
 }
