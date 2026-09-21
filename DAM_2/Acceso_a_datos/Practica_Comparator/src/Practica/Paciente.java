@@ -1,5 +1,6 @@
+package Practica;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 public class Paciente {
@@ -51,7 +52,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente -> " + "Nombre: " + nombre + " - Gravedad: " + gravedad + " - Llegada: " + llegada;
+        return " Paciente-> " + "Nombre: " + nombre + " - Gravedad: " + gravedad + " - Llegada: " + llegada;
 
     }
 }
