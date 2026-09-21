@@ -2,7 +2,7 @@
 
 <h2>Sobre mi</h2>
 
--Soy un estudiante con interes en el mundo de la informática, ahora estoy aprendiendo pero algún día sabré.
+-Soy un estudiante con interés en el mundo de la informática, ahora estoy aprendiendo pero algún día sabré.
 
 <h2>Más datos:</h2>
 
