@@ -1,4 +1,4 @@
-package Ejercicios_Steams.Ej1_Ej2;
+package Ejercicios_Streams.Ej1_Ej2;
 
 import java.util.List;
 import java.util.Set;

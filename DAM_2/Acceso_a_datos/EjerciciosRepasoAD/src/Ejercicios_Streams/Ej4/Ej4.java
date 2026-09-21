@@ -1,4 +1,4 @@
-package Ejercicios_Steams.Ej4;
+package Ejercicios_Streams.Ej4;
 
 /*
 Ejercicio 4:
@@ -9,6 +9,6 @@ Crea la clase persona con al menos los atributos nombre y edad.
 
 public class Ej4 {
     static void main() {
-        
+
     }
 }

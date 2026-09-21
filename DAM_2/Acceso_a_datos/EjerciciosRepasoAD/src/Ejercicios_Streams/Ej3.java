@@ -1,4 +1,4 @@
-package Ejercicios_Steams;
+package Ejercicios_Streams;
 
 /*
 Ejercicio 3:
