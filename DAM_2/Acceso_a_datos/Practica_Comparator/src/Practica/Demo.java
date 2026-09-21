@@ -1,17 +1,18 @@
 package Practica;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.PriorityQueue;
+
+import static java.nio.file.Files.lines;
 
 public class Demo {
     static void main() {
         PriorityQueue<Paciente> cola = new PriorityQueue<>(new ComparadorGravedad());
 
         try {
-            List<Paciente> pacientes = Files.lines(Paths.get("pacientes.txt"))
+            List<Paciente> pacientes = lines(Paths.get("pacientes.txt"))
                     .map(linea -> linea.replace("gravedad ", ""))
                     .map(lineaLimpia -> {
                         String[] partes = lineaLimpia.trim().split("\\s*—\\s*");
@@ -19,7 +20,7 @@ public class Demo {
                     })
                     .map(Paciente::new)
                     .toList();
-            
+
             cola.addAll(pacientes);
 
             while (!cola.isEmpty()) {
