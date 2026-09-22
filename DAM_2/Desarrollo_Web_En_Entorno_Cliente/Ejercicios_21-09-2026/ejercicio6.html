@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let correo = prompt("Dime tu correo electronico: ");
+
+    let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (regex.test(correo)) {
+        alert("Correo válido");
+    } else {
+        alert("Correo inválido");
+    }
+
+</script>
+
+<body>
+
+</body>
+
+</html>

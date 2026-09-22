@@ -27,7 +27,7 @@ public class Ej5 {
 
         Map<String, List<Empleado>> empleadosPorDepartamento = empleados.stream()
                 .collect(Collectors.groupingBy(Empleado::getDepartamento));
-        
+
         System.out.println("-------------- Empleados por departamento --------------");
         System.out.println(empleadosPorDepartamento);
 
