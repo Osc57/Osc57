@@ -25,7 +25,7 @@ class DetailActivity : AppCompatActivity() {
         val superHeroName = bundle.getString("superHeroName") ?: "No hay nombre"
         val alterEgo = bundle.getString("alterEgo") ?: "No hay alter ego"
         val bio = bundle.getString("bio") ?: "No hay bio"
-        val power = bundle.getFloat("power", 0.0f)
+        val power = bundle.getFloat("power")
 
         //Rellenamos los campos con los valores recibidos
 
