@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import org.iesch.superheroes.Model.SuperHeroe
 import org.iesch.superheroes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -42,24 +43,31 @@ class MainActivity : AppCompatActivity() {
             val bio = binding.bioEdit.text.toString()
             val power = binding.power.rating
 
+            //2 - Me creo el objeto SuperHeroe
+            val superHeroe = SuperHeroe(superHeroName, alterEgo, bio, power);
 
             //Que quiero hacer cuando pulso el botón guardar
 
-            irADetailActivity(superHeroName, alterEgo, bio, power)
+            irADetailActivity(superHeroe)
         }
 
 
     }
 
-    fun irADetailActivity(superHeroName: String, alterEgo: String, bio: String, rating: Float) {
+    fun irADetailActivity(superHeroe: SuperHeroe) {
         //Creamos el objeto intent
         val intent = Intent(this, DetailActivity::class.java);
 
         //Añadimos todos los campos con el metodo putExtra
+
+        intent.putExtra("superHeroe", superHeroe)
+
+        /*
         intent.putExtra("superHeroName", superHeroName)
             .putExtra("alterEgo", alterEgo)
             .putExtra("bio", bio)
             .putExtra("power", rating)
+         */
 
         //De esta manera todos estos datos se eviaran al DetailActivity
 

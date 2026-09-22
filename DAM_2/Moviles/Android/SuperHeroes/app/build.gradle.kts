@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    //0 - Añadimos parcelizable plugin para hacer objetos parcelizable
     id("kotlin-parcelize")
 }
 
