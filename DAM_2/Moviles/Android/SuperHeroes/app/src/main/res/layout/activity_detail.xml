@@ -11,11 +11,12 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:adjustViewBounds="true"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
@@ -24,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Iron Man"
+        tools:text="Iron Man"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +54,7 @@
         tools:text="Tony Stark" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/bioNormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -63,15 +64,15 @@
         app:layout_constraintTop_toBottomOf="@+id/alter_ego_result" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/bioResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="Genio, millonario, play boy, filántropo"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Genio, millonario, play boy, filántropo"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/bioNormal"
+        app:layout_constraintTop_toBottomOf="@+id/bioNormal" />
 
     <TextView
         android:id="@+id/textView7"
@@ -80,17 +81,19 @@
         android:layout_marginTop="16dp"
         android:text="Power"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/bioResult" />
 
     <RatingBar
-        android:id="@+id/ratingBar2"
+        android:id="@+id/ratingResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:progressTint="@color/amarillo"
         android:isIndicator="true"
+        android:progressTint="@color/amarillo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
