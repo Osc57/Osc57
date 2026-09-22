@@ -3,6 +3,9 @@ package org.iesch.superheroes
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,17 +25,34 @@ class MainActivity : AppCompatActivity() {
         val botonGuardar = findViewById<Button>(R.id.btnGuardar);
 
         botonGuardar.setOnClickListener {
+            //Obtenemos los valores al momento de hacer click
+
+            val superHeroName = findViewById<EditText>(R.id.hero_name_edit).text.toString()
+            val alterEgo = findViewById<EditText>(R.id.alter_ego_edit).text.toString()
+            val bio = findViewById<EditText>(R.id.bioEdit).text.toString()
+            val power = findViewById<RatingBar>(R.id.power).rating
+
+
             //Que quiero hacer cuando pulso el botón guardar
 
-            irADetailActivity()
+            irADetailActivity(superHeroName, alterEgo, bio, power)
         }
 
     }
 
-    fun irADetailActivity() {
+    fun irADetailActivity(superHeroName: String, alterEgo: String, bio: String, rating: Float) {
         //Creamos el objeto intent
         val intent = Intent(this, DetailActivity::class.java);
 
+        //Añadimos todos los campos con el metodo putExtra
+        intent.putExtra("superHeroName", superHeroName)
+            .putExtra("alterEgo", alterEgo)
+            .putExtra("bio", bio)
+            .putExtra("power", rating)
+
+        //De esta manera todos estos datos se eviaran al DetailActivity
+
+        //Iniciamos la nueva actividad
         startActivity(intent)
     }
 
