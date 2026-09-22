@@ -7,12 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import org.iesch.superheroes.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
+
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -21,7 +28,6 @@ class DetailActivity : AppCompatActivity() {
 
         //Ultimo paso: recibir los datos del main activity
         val bundle = intent.extras!!
-
         val superHeroName = bundle.getString("superHeroName") ?: "No hay nombre"
         val alterEgo = bundle.getString("alterEgo") ?: "No hay alter ego"
         val bio = bundle.getString("bio") ?: "No hay bio"
@@ -29,10 +35,10 @@ class DetailActivity : AppCompatActivity() {
 
         //Rellenamos los campos con los valores recibidos
 
-        findViewById<TextView>(R.id.heroName_tv).text = superHeroName
-        findViewById<TextView>(R.id.alter_ego_result).text = alterEgo
-        findViewById<TextView>(R.id.bioResult).text = bio
-        findViewById<RatingBar>(R.id.ratingResult).rating = power
+        binding.heroNameTv.text = superHeroName
+        binding.alterEgoResult.text = alterEgo
+        binding.bioResult.text = bio
+        binding.ratingResult.rating = power
 
     }
 }
