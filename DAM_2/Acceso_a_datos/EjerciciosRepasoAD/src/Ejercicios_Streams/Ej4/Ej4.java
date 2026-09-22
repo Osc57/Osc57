@@ -23,14 +23,14 @@ public class Ej4 {
                 .sorted(Comparator.comparingInt(Persona::getEdad).reversed())
                 .toList();
 
-        System.out.println("---------------- Ordenadas por edad ----------------");
+        System.out.println("---------------- Ordenadas por edad descencente ----------------");
         personasPorEdad.forEach(System.out::println);
 
         List<Persona> personasPorNombre = personas.stream()
                 .sorted(Comparator.comparing(Persona::getNombre))
                 .toList();
 
-        System.out.println("---------------- Ordenadas por nombre ----------------");
+        System.out.println("---------------- Ordenadas por nombre ascendente ----------------");
         personasPorNombre.forEach(System.out::println);
     }
 }
