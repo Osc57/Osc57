@@ -39,10 +39,17 @@ public class Ej5 {
         conteoPorDepartamento.forEach((departamento, cantidad) ->
                 System.out.println(departamento + ": " + cantidad));
 
-
         System.out.println("-------------- Empleados por departamento especifico --------------");
         String deptoBuscar = "Contabilidad";
         System.out.println("Empleados en " + deptoBuscar + ": " +
                 empleadosPorDepartamento.getOrDefault(deptoBuscar, List.of()));
+
+        System.out.println("-------------- Empleados por su nombre en departamento --------------");
+        String personaBuscar = "Maria";
+        Map<String, List<Empleado>> empleadosNombre = empleados.stream()
+                .collect(Collectors.groupingBy(Empleado::getNombre));
+
+        System.out.println(personaBuscar + " trabaja en: " + empleadosNombre.get(personaBuscar).get(0).getDepartamento());
+        
     }
 }
