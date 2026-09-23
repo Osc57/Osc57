@@ -10,6 +10,6 @@ especificaron en la lista
 
 public class Ej4 {
     static void main() {
-        
+
     }
 }
