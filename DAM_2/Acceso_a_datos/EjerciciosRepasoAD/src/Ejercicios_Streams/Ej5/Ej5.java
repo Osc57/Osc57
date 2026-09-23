@@ -38,5 +38,11 @@ public class Ej5 {
         System.out.println("-------------- Empleados por departamento y cantidad --------------");
         conteoPorDepartamento.forEach((departamento, cantidad) ->
                 System.out.println(departamento + ": " + cantidad));
+
+
+        System.out.println("-------------- Empleados por departamento especifico --------------");
+        String deptoBuscar = "Contabilidad";
+        System.out.println("Empleados en " + deptoBuscar + ": " +
+                empleadosPorDepartamento.getOrDefault(deptoBuscar, List.of()));
     }
 }
