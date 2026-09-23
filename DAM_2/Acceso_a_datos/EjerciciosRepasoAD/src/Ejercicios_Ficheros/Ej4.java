@@ -1,0 +1,15 @@
+package Ejercicios_Ficheros;
+
+/*
+4 Combinación de archivos en uno solo: Escribir un programa en Java que permita
+combinar varios archivos en uno solo. El programa debe tomar como entrada una lista de
+archivos de origen y el nombre del archivo de destino. El programa debe leer cada archivo
+de origen y escribir su contenido en el archivo de destino en el orden en que se
+especificaron en la lista
+*/
+
+public class Ej4 {
+    static void main() {
+        
+    }
+}
