@@ -16,8 +16,7 @@ public class Ej1 {
         int contador = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader("archivo.txt"))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
+            while (br.readLine() != null) {
                 contador++;
             }
 
