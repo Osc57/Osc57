@@ -45,11 +45,11 @@ public class Ej5 {
                 empleadosPorDepartamento.getOrDefault(deptoBuscar, List.of()));
 
         System.out.println("-------------- Empleados por su nombre en departamento --------------");
-        String personaBuscar = "Maria";
+        String personaBuscar = "Manuel";
         Map<String, List<Empleado>> empleadosNombre = empleados.stream()
                 .collect(Collectors.groupingBy(Empleado::getNombre));
 
-        System.out.println(personaBuscar + " trabaja en: " + empleadosNombre.get(personaBuscar).get(0).getDepartamento());
-        
+        System.out.println(personaBuscar + " trabaja en: " + empleadosNombre.get(personaBuscar).getFirst().getDepartamento());
+
     }
 }
