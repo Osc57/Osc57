@@ -21,19 +21,42 @@ De esa forma veremos que ocurre en cada situación:
 • un comando incorrecto
  */
 
+import java.io.File;
+import java.io.IOException;
+
 public class Ej2 {
-    static void main() {
+    static void main(String[] args) {
+        File ficheroEntrada = new File("comandos.bat");
+        File ficheroSalida = new File("salida.log");
+        File ficheroError = new File("error.log");
 
+        if (!ficheroEntrada.exists()) {
+            System.err.println("Error: El fichero 'comandos.bat' no existe en la raíz del proyecto.");
+            return;
+        }
+        ProcessBuilder pb = new ProcessBuilder("cmd.exe");
 
+        pb.redirectInput(ficheroEntrada);
+        pb.redirectOutput(ficheroSalida);
+        pb.redirectError(ficheroError);
 
+        try {
+            System.out.println("Iniciando el subproceso cmd...");
 
+            Process proceso = pb.start();
 
+            int codigoSalida = proceso.waitFor();
 
+            System.out.println("Proceso finalizado de forma segura.");
+            System.out.println("Código de salida del sistema: " + codigoSalida);
+            System.out.println("Verifica 'salida.log' y 'error.log' para ver los resultados.");
 
-
-
-
-
-
+        } catch (IOException e) {
+            System.err.println("Error de Entrada/Salida: " + e.getMessage());
+        } catch (InterruptedException e) {
+            System.err.println("El proceso fue interrumpido de forma inesperada: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        }
     }
 }
+
