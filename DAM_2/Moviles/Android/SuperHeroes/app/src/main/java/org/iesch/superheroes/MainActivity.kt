@@ -16,6 +16,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,34 +27,32 @@ import java.io.FileOutputStream
 
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
 
-    //1 - una variable que va a manejar el resultado de haber hecho la foto
+    // 1 - Creamos una variable que va a manejar el resultado de haber hecho la foto
     private lateinit var heroImage: ImageView
     private var heroBitmap: Bitmap? = null
 
-    // 1 - Hay que cambiar el metodo TakePicturesPreview por TakePictures
+    // 1 - Hay que cambiar el TakepicturesPreview por takepictures
     private var picturePath = ""
-    private val getContent =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) {
-            //Ahora en lugar de un bitMap nos va a devolver un booleano, si la foto es exitosa o no
-
-                success ->
-            if (success && picturePath.isNotEmpty()) {
-                //Cualquier imagen del directorio la podemos convertir a bit map
-                heroBitmap = BitmapFactory.decodeFile(picturePath)
-                //Mostramos la imagen en el cuadradito
-                heroImage.setImageBitmap(heroBitmap)
-            }
-
+    private val getContent = registerForActivityResult(ActivityResultContracts.TakePicture()) {
+        // 1 - Ahora en lugar de un bitmap nos va a devolver un booleano, si la foto es exitosa o no
+            success ->
+        if (success && picturePath.isNotEmpty()) {
+            // cualquier imagen del directorio la podemos convertir a bitmap
+            heroBitmap = BitmapFactory.decodeFile(picturePath)
+            // Mostramos la imagen en el cuadradito
+            heroImage.setImageBitmap(heroBitmap)
         }
+
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -61,24 +60,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // 2
         heroImage = binding.heroImage
         binding.heroImage.setOnClickListener {
             abrirCamara()
         }
 
-        binding.btnGuardar.setOnClickListener {
-            //Obtenemos los valores al momento de hacer click
 
+        binding.btnGuardar.setOnClickListener {
             val superHeroName = binding.heroNameEdit.text.toString()
             val alterEgo = binding.alterEgoEdit.text.toString()
             val bio = binding.bioEdit.text.toString()
             val power = binding.power.rating
-
-
-            //2 - Me creo el objeto SuperHeroe
-            val superHeroe = SuperHeroe(superHeroName, alterEgo, bio, power);
-
-            //Que quiero hacer cuando pulso el botón guardar
+            val superHeroe = SuperHeroe(superHeroName, alterEgo, bio, power)
 
             irADetailActivity(superHeroe)
         }
@@ -87,53 +81,47 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun abrirCamara() {
-        // 2 - Aquí debemos crear un path temporal para guardar la imagen que acabamos de captar
+        // 2 - Aqui debemos crear un path temporal para guardar esa imagen
         val imageFile = crearImagenFile()
 
-        // Ahora ya tenemos el archivo de tipo file pero lo que necesitamos es el URI
-        //Sera a través del FileProvider
-        //FileProvider lo que hace es compartir el file con otras aplicaciones de manera segura
-
-
+        // Ahora ya tenemos el File, pero lo que necesitamos es el uri
+        // Sera a traves del FileProvider
+        // FileProvider lo que hace es compartir el file con otras aplicaciones de forma segura
+        val uri = FileProvider.getUriForFile(
+            this,
+            "${applicationContext.packageName}.provider",
+            imageFile
+        )
+        getContent.launch(uri)
     }
 
-    // 3 - Esta función crea un File y de ese File recuperaremos la URI
+    //3 - Esta funcion crea un File y de ese File recuperaremos la uri
     private fun crearImagenFile(): File {
-        var fileName = "superhero_image"
-
-        // Esto sera el directorio donde vamos a almacenar la imagen. Por defecto es DIRECTORY_PICTURES
-        val fileDirectory = getExternalFilesDirs(Environment.DIRECTORY_PICTURES)
-
-        // Creamos nuestro File, aqui nos pide el nombre, el formato y el directorio
-        val imageFile = File.createTempFile(fileName, ".jpg", fileDirectory as File?)
-
-        //Ahora ya podemos guardar la ruta (path) en la variable global
-
+        val fileName = "superhero_image"
+        // Esto será el directorio donde vamos a almacenar la image.. Por defecto es DIRECTORY_PICTURES
+        val fileDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        // Creamos nuestro file, aqui nos pide el nombre, el formato, y el directorio
+        val imageFile = File.createTempFile(fileName, ".jpg", fileDirectory)
+        // Ahora ya podemos guardar la ruta (path) en la variable global
         picturePath = imageFile.absolutePath
-
         return imageFile
-
     }
 
     fun irADetailActivity(superHeroe: SuperHeroe) {
-        //Creamos el objeto intent
-        val intent = Intent(this, DetailActivity::class.java);
-
-        //Añadimos todos los campos con el metodo putExtra
-
+        // Creamos el objeto Intent
+        val intent = Intent(this, DetailActivity::class.java)
+        // Añadimos todos los campos con el metodo putExtra
+        //intent.putExtra("superHeroName", superHeroName)
+        //intent.putExtra("alterEgo", alterEgo)
+        //intent.putExtra("bio", bio)
+        //intent.putExtra("power",power)
         intent.putExtra("superHero", superHeroe)
-        intent.putExtra("foto_heroe", heroImage.drawable.toBitmap())
-        /*
-        intent.putExtra("superHeroName", superHeroName)
-            .putExtra("alterEgo", alterEgo)
-            .putExtra("bio", bio)
-            .putExtra("power", rating)
-         */
-
-        //De esta manera todos estos datos se eviaran al DetailActivity
-
-        //Iniciamos la nueva actividad
+        // Añado el Objeto Bitmap al intent
+        intent.putExtra("path_heroe", picturePath)
+        // De esta manera, todos estos datos se enviarán al DetailActivity
+        // Iniciamos la nueva actividad
         startActivity(intent)
     }
+
 
 }
