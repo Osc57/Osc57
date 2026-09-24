@@ -1,4 +1,22 @@
 Microsoft Windows [Versi¢n 10.0.26200.9457]
 (c) Microsoft Corporation. Todos los derechos reservados.
 
-C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejericio1>
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejericio1>ping www.dam2chomon.org
+La solicitud de ping no pudo encontrar el host www.dam2chomon.org. Compruebe el nombre y
+vuelva a intentarlo.
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejericio1>ping www.google.es
+
+Haciendo ping a www.google.es [142.251.208.227] con 32 bytes de datos:
+Respuesta desde 142.251.208.227: bytes=32 tiempo=28ms TTL=112
+Respuesta desde 142.251.208.227: bytes=32 tiempo=29ms TTL=112
+Respuesta desde 142.251.208.227: bytes=32 tiempo=29ms TTL=112
+Respuesta desde 142.251.208.227: bytes=32 tiempo=29ms TTL=112
+
+Estad¡sticas de ping para 142.251.208.227:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 28ms, M ximo = 29ms, Media = 28ms
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejericio1>¨M s? 
