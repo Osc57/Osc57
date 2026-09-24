@@ -1,0 +1,19 @@
+Microsoft Windows [Versi¢n 10.0.26200.9457]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>echo Usuario actual:
+Usuario actual:
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>whoami
+b304pc10\dam2
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>echo Directorio actual:
+Directorio actual:
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>cd
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>echo Contenido del directorio:
+Contenido del directorio:
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>¨M s? 
