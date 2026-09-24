@@ -2,8 +2,10 @@ package org.iesch.superheroes
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.Image
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
@@ -29,12 +31,21 @@ class MainActivity : AppCompatActivity() {
     //1 - una variable que va a manejar el resultado de haber hecho la foto
     private lateinit var heroImage: ImageView
     private var heroBitmap: Bitmap? = null
+
+    // 1 - Hay que cambiar el metodo TakePicturesPreview por TakePictures
+    private var picturePath = ""
     private val getContent =
-        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
-            //Esto nos va a devolver un objeto de tipo bitmap
-                bitmap ->
-            heroBitmap = bitmap
-            heroImage.setImageBitmap(heroBitmap)
+        registerForActivityResult(ActivityResultContracts.TakePicture()) {
+            //Ahora en lugar de un bitMap nos va a devolver un booleano, si la foto es exitosa o no
+
+                success ->
+            if (success && picturePath.isNotEmpty()) {
+                //Cualquier imagen del directorio la podemos convertir a bit map
+                heroBitmap = BitmapFactory.decodeFile(picturePath)
+                //Mostramos la imagen en el cuadradito
+                heroImage.setImageBitmap(heroBitmap)
+            }
+
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,8 +87,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun abrirCamara() {
-        // 3 - Abrimos la camara llamando al getContent launch
-        getContent.launch(null)
+        // 2 - Aquí debemos crear un path temporal para guardar la imagen que acabamos de captar
+        val imageFile = crearImagenFile()
+
+        // Ahora ya tenemos el archivo de tipo file pero lo que necesitamos es el URI
+        //Sera a través del FileProvider
+        //FileProvider lo que hace es compartir el file con otras aplicaciones de manera segura
+
+
+    }
+
+    // 3 - Esta función crea un File y de ese File recuperaremos la URI
+    private fun crearImagenFile(): File {
+        var fileName = "superhero_image"
+
+        // Esto sera el directorio donde vamos a almacenar la imagen. Por defecto es DIRECTORY_PICTURES
+        val fileDirectory = getExternalFilesDirs(Environment.DIRECTORY_PICTURES)
+
+        // Creamos nuestro File, aqui nos pide el nombre, el formato y el directorio
+        val imageFile = File.createTempFile(fileName, ".jpg", fileDirectory as File?)
+
+        //Ahora ya podemos guardar la ruta (path) en la variable global
+
+        picturePath = imageFile.absolutePath
+
+        return imageFile
 
     }
 
