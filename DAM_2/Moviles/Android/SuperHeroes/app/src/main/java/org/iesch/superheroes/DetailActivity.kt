@@ -1,14 +1,17 @@
 package org.iesch.superheroes
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.iesch.superheroes.Model.SuperHeroe
 import org.iesch.superheroes.databinding.ActivityDetailBinding
+import java.io.File
 
 class DetailActivity : AppCompatActivity() {
 
@@ -37,6 +40,9 @@ class DetailActivity : AppCompatActivity() {
                 intent.getParcelableExtra<SuperHeroe>("superHero")
             }
 
+        val bundle = intent.extras
+        val bitmap = bundle?.getParcelable<Bitmap>("foto_heroe")
+
         //Ultimo paso: recibir los datos del main activity
         /*
          val bundle = intent.extras!!
@@ -48,10 +54,13 @@ class DetailActivity : AppCompatActivity() {
 
         //Rellenamos los campos con los valores recibidos
 
-        binding.heroNameTv.text = superHeroName
-        binding.alterEgoResult.text = alterEgo
-        binding.bioResult.text = bio
-        binding.ratingResult.rating = power
+        binding.heroNameTv.text = superHeroe?.nombre ?: "No hay nombre"
+        binding.alterEgoResult.text = superHeroe?.alterEgo ?: "No hay alter ego"
+        binding.bioResult.text = superHeroe?.bio ?: "No hay bio"
+        binding.ratingResult.rating = superHeroe?.power ?: 0f
+
+        //Asigno la imagen a la imageView
+        binding.imageResult.setImageBitmap(bitmap)
 
     }
 }
