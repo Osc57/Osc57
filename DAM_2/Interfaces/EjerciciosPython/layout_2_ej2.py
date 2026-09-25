@@ -33,10 +33,16 @@ class MainWindow(QMainWindow):
         plantilla1.addLayout(textoHolder)
         plantilla1.addLayout(checkHolder)
 
+        box1.stateChanged.connect(self.saberPulsarCheck)
+        box2.stateChanged.connect(self.saberPulsarCheck)
+        box3.stateChanged.connect(self.saberPulsarCheck)
+
         widget = QWidget()
         widget.setLayout(plantilla1)
         self.setCentralWidget(widget)
 
+    def saberPulsarCheck(self, marcado):
+        print(f"{self.sender().text()}: {["Opción Desmarcada","","Opción Marcada"][marcado]}")
     
 
 app = QApplication([]);
