@@ -21,12 +21,18 @@ class MainWindow(QMainWindow):
         plantilla1.addWidget(boton1)
         plantilla1.addWidget(boton2)
         plantilla1.addWidget(boton3)
-        
 
+
+        boton1.clicked.connect(self.decirBotonPulsado)
+        boton2.clicked.connect(self.decirBotonPulsado)
+        boton3.clicked.connect(self.decirBotonPulsado)
+        
         widget = QWidget()
         widget.setLayout(plantilla1)
         self.setCentralWidget(widget)
 
+    def decirBotonPulsado(self):
+        print(f"Has pulsado el {self.sender().text()}")
         
 
 app = QApplication([]);
