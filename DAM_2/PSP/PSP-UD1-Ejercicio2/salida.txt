@@ -16,4 +16,25 @@ C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2
 C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>echo Contenido del directorio:
 Contenido del directorio:
 
-C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>¨M s? 
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El n£mero de serie del volumen es: 4869-0688
+
+ Directorio de C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2
+
+28/09/2026  16:26    <DIR>          .
+24/09/2026  20:43    <DIR>          ..
+24/09/2026  20:43               352 .gitignore
+28/09/2026  16:25    <DIR>          .idea
+28/09/2026  16:24                94 comandos.txt
+28/09/2026  16:26                 0 errores.txt
+28/09/2026  16:26                96 ficheroEntrada.bat
+24/09/2026  21:15               818 ficheroSalida.txt
+24/09/2026  20:56    <DIR>          out
+24/09/2026  20:43               433 PSP-UD1-Ejercicio2.iml
+28/09/2026  16:26                 0 salida.txt
+28/09/2026  16:26    <DIR>          src
+               7 archivos          1.793 bytes
+               5 dirs  1.793.952.526.336 bytes libres
+
+C:\Users\dam2\Desktop\DAM_2_Oscar_Ubeda\Osc57\DAM_2\PSP\PSP-UD1-Ejercicio2>

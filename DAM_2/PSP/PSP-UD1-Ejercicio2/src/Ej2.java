@@ -17,8 +17,7 @@ Además:
 • Finalmente, deberá mostrar por consola el código de finalización.
 */
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class Ej2 {
     static void main() {
@@ -28,6 +27,23 @@ public class Ej2 {
 
         if (!ficheroEntrada.exists()) {
             System.out.println("No existe el fichero de entrada");
+            try {
+                ficheroEntrada.createNewFile();
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("ficheroEntrada.bat"));
+                     BufferedReader br = new BufferedReader(new FileReader("comandos.txt"))) {
+
+                    String line;
+
+                    while ((line = br.readLine()) != null) {
+                        bw.write(line);
+                        bw.newLine();
+                    }
+                    System.out.println("Fichero creado con comandos");
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return;
         }
 
