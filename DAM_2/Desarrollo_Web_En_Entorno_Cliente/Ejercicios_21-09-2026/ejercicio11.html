@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btnInicio">Empezar a contar</button>
+    <button type="button" id="btnFinalizar">Finalizar</button>
+    <p id="resultado"></p>
+
+    <script>
+        const btnInicio = document.getElementById('btnInicio');
+        const btnFinalizar = document.getElementById('btnFinalizar');
+        const resultado = document.getElementById('resultado');
+
+        let tiempoInicio = 0;
+
+        btnInicio.addEventListener('click', () => {
+            tiempoInicio = performance.now();
+            resultado.textContent = "Contando tiempo...";
+        });
+
+        btnFinalizar.addEventListener('click', () => {
+            const tiempoFin = performance.now();
+            const diferenciaSegundos = ((tiempoFin - tiempoInicio) / 1000).toFixed(2);
+
+            resultado.textContent = `Tiempo transcurrido: ${diferenciaSegundos} segundos.`;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let frase = prompt("Dime una frase: ")
+
+    let arrayPalabras = frase.split(" ")
+    let palabrasModificadas = []
+    
+    for(let p of arrayPalabras){
+        if (p.length > 0) { 
+        let palabraMayuscula = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+        
+        palabrasModificadas.push(palabraMayuscula);
+    }
+    }
+
+    let fraseFinal = palabrasModificadas.join(" ");
+
+
+    alert("Frase modificada:\n" + fraseFinal);
+    
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

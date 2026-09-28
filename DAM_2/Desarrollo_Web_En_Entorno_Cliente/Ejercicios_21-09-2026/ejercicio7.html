@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let cadena = prompt("Dime una cadena de texto y te diré si es palindromo: ")
+
+    let textoLimpio = cadena.toLocaleLowerCase().replace(/ /g, "");
+
+    let arrayLetras = textoLimpio.split("");
+
+    let esPalindromo = true
+
+    for (let i = 0; i < arrayLetras.length / 2; i++) {
+    
+        if (arrayLetras[i] !== arrayLetras[arrayLetras.length - 1 - i]) {
+            esPalindromo = false;
+            break;
+        }
+
+    }
+
+    if (esPalindromo && textoLimpio.length > 0) {
+        alert("¡Sí, es un palíndromo!");
+    } else {
+        alert("No, no es un palíndromo.");
+    }
+
+</script>
+
+<body>
+
+</body>
+
+</html>
