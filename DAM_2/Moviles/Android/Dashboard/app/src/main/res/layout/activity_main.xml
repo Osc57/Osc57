@@ -134,7 +134,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- TARJETA 1 - EDAD CANINA -->
+        <!-- TARJETA 3 - EDAD CANINA -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardEdadCanina"
             android:layout_width="0dp"
@@ -176,7 +176,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- TARJETA 2 - REGISTRO SUPERHEROES -->
+        <!-- TARJETA 4 - REGISTRO SUPERHEROES -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardSuperHeroes"
             android:layout_width="0dp"
