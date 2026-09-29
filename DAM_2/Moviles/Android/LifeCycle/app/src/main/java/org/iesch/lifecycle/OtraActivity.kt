@@ -10,53 +10,56 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class OtraActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ir_mainActivity)) { v, insets ->
+        setContentView(R.layout.activity_otra)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ir_otraActivity)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
         }
-        val boton = findViewById<Button>(R.id.ir_otraActivity)
+
+        val boton = findViewById<Button>(R.id.ir_mainActivity)
         boton.setOnClickListener {
-            val intent = Intent(this, OtraActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        Log.i("CICLOVIDA", "Entramos en el método onCreate()")
+        Log.w("CICLOVIDA", "Otra activity entramos en el método onCreate()")
+
     }
 
     override fun onStart() {
         super.onStart()
-        Log.i("CICLOVIDA", "Entramos en el método onStart()")
+        Log.w("CICLOVIDA", "Entramos en el método onStart()")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.i("CICLOVIDA", "Entramos en el método onResume()")
+        Log.w("CICLOVIDA", "Entramos en el método onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.i("CICLOVIDA", "Entramos en el método onPause()")
+        Log.w("CICLOVIDA", "Entramos en el método onPause()")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.i("CICLOVIDA", "Entramos en el método onStop()")
+        Log.w("CICLOVIDA", "Entramos en el método onStop()")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.i("CICLOVIDA", "Entramos en el método onRestart()")
+        Log.w("CICLOVIDA", "Entramos en el método onRestart()")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i("CICLOVIDA", "Entramos en el método onDestroy()")
+        Log.w("CICLOVIDA", "Entramos en el método onDestroy()")
     }
+
 }
