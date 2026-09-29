@@ -112,11 +112,11 @@
                     android:id="@+id/imgSuperHeroes"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:alpha="0.30"
+                    android:alpha="0.40"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/edad_canina_24" />
+                    app:srcCompat="@drawable/outline_agriculture_24" />
 
                 <TextView
                     android:id="@+id/textView2"
