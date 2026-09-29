@@ -2,6 +2,7 @@ package org.iesch.lifecycle
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +17,38 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+
         }
+        Log.i("CICLOVIDA", "Entramos en el método onCreate()")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("CICLOVIDA", "Entramos en el método onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("CICLOVIDA", "Entramos en el método onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("CICLOVIDA", "Entramos en el método onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("CICLOVIDA", "Entramos en el método onStop()")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("CICLOVIDA", "Entramos en el método onRestart()")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("CICLOVIDA", "Entramos en el método onDestroy()")
     }
 }
