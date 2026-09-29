@@ -134,6 +134,90 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- TARJETA 1 - EDAD CANINA -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEdadCanina"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp"
+            app:cardBackgroundColor="@color/design_default_color_primary"
+            app:layout_columnWeight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imgEdadCanina"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:alpha="0.30"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/edad_canina_24" />
+
+                <TextView
+                    android:id="@+id/textEdadCanina"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Edad Canina"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- TARJETA 2 - REGISTRO SUPERHEROES -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSuperHeroes"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp"
+            app:cardBackgroundColor="#00A3EE"
+            app:layout_columnWeight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imgSuperHeroes"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:alpha="0.40"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/outline_agriculture_24" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="App Super Heroes"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
     </androidx.gridlayout.widget.GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
