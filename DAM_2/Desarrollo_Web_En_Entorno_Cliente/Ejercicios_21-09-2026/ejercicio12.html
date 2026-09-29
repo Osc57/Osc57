@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>Introduce tu fecha de nacimiento:</p>
+
+    <div style="margin-bottom: 15px;">
+        <label for="dia">Día: </label>
+        <input type="text" id="dia" placeholder="DD" style="width: 40px; text-align: center; margin-right: 10px;">
+
+        <label for="mes">Mes: </label>
+        <input type="text" id="mes" placeholder="MM" style="width: 40px; text-align: center; margin-right: 10px;">
+
+        <label for="anio">Año: </label>
+        <input type="text" id="anio" placeholder="AAAA" style="width: 60px; text-align: center;">
+    </div>
+
+
+    <button onclick="validarFecha()">Validar Fecha</button>
+
+    <script>
+        function validarFecha() {
+            let d = document.getElementById("dia").value;
+            let m = document.getElementById("mes").value;
+            let a = document.getElementById("anio").value;
+
+            let fecha = `${d}-${m}-${a}`;
+
+     
+            let regex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/;
+
+            if (regex.test(fecha)) {
+                alert("Fecha válida: " + fecha);
+            } else {
+                alert("Fecha no válida. Revisa los campos.");
+            }
+        }
+
+    </script>
+</body>
+
+</html>
