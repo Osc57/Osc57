@@ -22,13 +22,11 @@ Objetivo: comprobar cómo se pueden utilizar ficheros como entrada y salida de
 un proceso.
 */
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Ej4 {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         File ficheroEntrada = new File("comandos.txt");
         File ficheroResultado = new File("resultado.txt");
         File ficheroErrores = new File("errores.txt");
@@ -52,7 +50,7 @@ public class Ej4 {
             System.err.println("Error de E/S: " + e.getMessage());
         } catch (InterruptedException e) {
             System.err.println("El proceso fue interrumpido: " + e.getMessage());
-            Thread.currentThread().interrupt(); 
+            Thread.currentThread().interrupt();
         }
     }
 }
