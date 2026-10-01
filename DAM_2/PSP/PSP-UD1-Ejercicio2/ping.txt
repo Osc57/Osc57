@@ -1,0 +1,12 @@
+
+Haciendo ping a www.google.es [142.251.209.99] con 32 bytes de datos:
+Respuesta desde 142.251.209.99: bytes=32 tiempo=37ms TTL=107
+Respuesta desde 142.251.209.99: bytes=32 tiempo=30ms TTL=107
+Respuesta desde 142.251.209.99: bytes=32 tiempo=36ms TTL=107
+Respuesta desde 142.251.209.99: bytes=32 tiempo=30ms TTL=107
+
+Estad¡sticas de ping para 142.251.209.99:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 30ms, M ximo = 37ms, Media = 33ms

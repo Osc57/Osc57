@@ -22,8 +22,40 @@ esperar a que termine cualquiera de ellos. De esta forma podrás observar que lo
 procesos pueden ejecutarse de forma concurrente.
 */
 
+import java.io.File;
+import java.io.IOException;
+
 public class Ej5 {
     static void main() {
+        File ficheroIpConfig = new File("ipconfig.txt");
+        File ficheroHostName = new File("hostname.txt");
+        File ficheroPing = new File("ping.txt");
+
+        try {
+            ProcessBuilder pb1 = new ProcessBuilder("cmd.exe", "/c", "ipconfig");
+            ProcessBuilder pb2 = new ProcessBuilder("cmd.exe", "/c", "hostname");
+            ProcessBuilder pb3 = new ProcessBuilder("cmd.exe", "/c", "ping www.google.es");
+
+            pb1.redirectOutput(ficheroIpConfig);
+            pb2.redirectOutput(ficheroHostName);
+            pb3.redirectOutput(ficheroPing);
+
+
+            System.out.println("Iniciando el proceso cmd...");
+            Process p1 = pb1.start();
+            Process p2 = pb2.start();
+            Process p3 = pb3.start();
+
+            p1.waitFor();
+            p2.waitFor();
+            p3.waitFor();
+
+            System.out.println("El proceso ha terminado.");
+
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }
