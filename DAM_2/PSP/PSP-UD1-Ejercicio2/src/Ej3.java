@@ -13,15 +13,21 @@ ejecutar dicho fichero .bat.
 */
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Ej3 {
     static void main() {
+        File ficheroSalida = new File("salida.txt");
+        File ficheroError = new File("errores.txt");
 
         try {
             ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "comandos.bat");
             Process p = pb.start();
+
+            pb.redirectOutput(ficheroSalida);
+            pb.redirectError(ficheroError);
 
             try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()))) {
                 String line = "";
