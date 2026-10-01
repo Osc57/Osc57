@@ -119,7 +119,7 @@
                     app:srcCompat="@drawable/outline_agriculture_24" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textSuperHeroe"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="App Super Heroes"
@@ -134,15 +134,15 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- TARJETA 3 - EDAD CANINA -->
+        <!-- TARJETA 3 - LIFE CYCLE -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEdadCanina"
+            android:id="@+id/lifeCycle"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_margin="6dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="20dp"
-            app:cardBackgroundColor="@color/design_default_color_primary"
+            app:cardBackgroundColor="#3CEE00"
             app:layout_columnWeight="1">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -151,20 +151,20 @@
                 android:padding="12dp">
 
                 <ImageView
-                    android:id="@+id/imgEdadCanina"
+                    android:id="@+id/imgLifeCycle"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:alpha="0.30"
+                    android:alpha="0.75"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/edad_canina_24" />
+                    app:srcCompat="@drawable/life_cycle_24" />
 
                 <TextView
-                    android:id="@+id/textEdadCanina"
+                    android:id="@+id/textLifeCycle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Edad Canina"
+                    android:text="Life Cycle"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
