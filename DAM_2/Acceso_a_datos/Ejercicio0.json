@@ -1,6 +1,8 @@
 use blog_db
+db.createCollection("blog_post");
+db.blog_post
 
-db.blog_db.insertMany([
+db.blog_post.insertMany([
   {
     "_id": 1,
     "creador": "Ana García",
@@ -35,39 +37,32 @@ db.blog_db.insertMany([
   }]);
   
 //1
-db.blog_db.find();
+db.blog_post.find();
 
 //2
-db.blog_db.findOne();
+db.blog_post.find(),pretty();
 
 //3
-db.blog_db.countDocuments();
+db.blog_post.countDocuments();
 
 //4
-db.blog_db.find({creador: "Ana García"});
+db.blog_post.find({creador: "Ana García"});
 
 //5
-db.blog_db.find({likes: {$gt:100}});
+db.blog_post.find({likes: {$gt:100}});
 
 //6
-db.blog_db.find({ tags: "programacion" });
+db.blog_post.find({ tags: "programacion" });
 
 //7
-db.blog_db.find({}, { creador: 1, contenido: 1});
+db.blog_post.find({}, { creador: 1, contenido: 1});
 
 //8
-db.blog_db.find({
-  $expr: { 
-    $gte: [ { $size: { $ifNull: ["$comments", []] } }, 1 ] 
-  }
-});
+db.blog_post.find({"comments.0":{$exists:true}})
 
 //9
-db.blog_db.find({
-  $expr: { 
-    $eq: [ { $size: { $ifNull: ["$comments", []] } }, 0 ] 
-  }
-});
+db.blog_post.find({"comments.0":{$exists:false}})
 
+//10
 
 
