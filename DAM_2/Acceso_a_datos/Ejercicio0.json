@@ -1,0 +1,73 @@
+use blog_db
+
+db.blog_db.insertMany([
+  {
+    "_id": 1,
+    "creador": "Ana García",
+    "contenido": "Hoy comienza mi viaje por Asia. Estoy emocionada por visitar Japón y Tailandia.",
+    "rutaImagen": "https://example.com/images/asia1.jpg",
+    "fecha": ISODate("2024-01-15T10:30:00Z"),
+    "tags": ["viajes", "asia", "aventura"],
+    "likes": 45,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Pedro Ruiz",
+        "comentario": "¡Qué suerte! Disfruta mucho del viaje",
+        "fecha": ISODate("2024-01-15T11:00:00Z"),
+        "likes": 3
+      },
+      {
+        "id_comment": 2,
+        "creador": "Laura Martín",
+        "comentario": "Visita Kioto, es increíble",
+        "fecha": ISODate("2024-01-15T12:30:00Z"),
+        "likes": 5
+      },
+      {
+        "id_comment": 3,
+        "creador": "Carlos López",
+        "comentario": "Comparte muchas fotos por favor",
+        "fecha": ISODate("2024-01-15T14:00:00Z"),
+        "likes": 2
+      }
+    ]
+  }]);
+  
+//1
+db.blog_db.find();
+
+//2
+db.blog_db.findOne();
+
+//3
+db.blog_db.countDocuments();
+
+//4
+db.blog_db.find({creador: "Ana García"});
+
+//5
+db.blog_db.find({likes: {$gt:100}});
+
+//6
+db.blog_db.find({ tags: "programacion" });
+
+//7
+db.blog_db.find({}, { creador: 1, contenido: 1});
+
+//8
+db.blog_db.find({
+  $expr: { 
+    $gte: [ { $size: { $ifNull: ["$comments", []] } }, 1 ] 
+  }
+});
+
+//9
+db.blog_db.find({
+  $expr: { 
+    $eq: [ { $size: { $ifNull: ["$comments", []] } }, 0 ] 
+  }
+});
+
+
+
