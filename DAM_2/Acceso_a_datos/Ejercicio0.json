@@ -1,7 +1,7 @@
 use blog_db
+
 db.createCollection("blog_post");
 db.blog_post
-
 db.blog_post.insertMany([
   {
     "_id": 1,
@@ -58,11 +58,22 @@ db.blog_post.find({ tags: "programacion" });
 db.blog_post.find({}, { creador: 1, contenido: 1});
 
 //8
-db.blog_post.find({"comments.0":{$exists:true}})
+db.blog_post.find({"comments.0":{$exists:true}});
 
 //9
-db.blog_post.find({"comments.0":{$exists:false}})
+db.blog_post.find({"comments.0":{$exists:false}});
 
 //10
+db.blog_post.find({"comments.creador":"Pedro Ruiz"});
 
+//11
+db.blog_post.aggregate([ { $match: { $expr: { $gt: [{ $size: "$comments" }, 3] } } } ]);
 
+//12
+db.blog_post.aggregate([ { $match: { $expr: { $gt: [{ $size: "$comments" }, 3] } } } ]);
+
+//13
+db.blog_post.find({}, {creador:1, comments:1});
+
+//14
+db.blog_post.find({},{creador:1, contenido:1,"comments.creador":1});
