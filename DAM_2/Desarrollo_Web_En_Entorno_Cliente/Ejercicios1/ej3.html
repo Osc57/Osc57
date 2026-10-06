@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>100 Checkboxes con números aleatorios</h1>
+
+    <div class="controls">
+        <button id="markAll">Marcar todos</button>
+        <button id="unmarkAll">Desmarcar todos</button>
+        <button id="regen">Regenerar números</button>
+    </div>
+
+    <div id="container" class="checkbox-list" aria-live="polite"></div>
+
+    <script>
+        const COUNT = 100;
+        const container = document.getElementById('container');
+        const markAllBtn = document.getElementById('markAll');
+        const unmarkAllBtn = document.getElementById('unmarkAll');
+        const regenBtn = document.getElementById('regen');
+
+        function randInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function renderCheckboxes() {
+            container.innerHTML = '';
+            for (let i = 0; i < COUNT; i++) {
+                const value = randInt(0, 999);
+                const id = `cb-${i}`;
+
+                const wrapper = document.createElement('label');
+                wrapper.className = 'item';
+                wrapper.setAttribute('for', id);
+
+                const cb = document.createElement('input');
+                cb.type = 'checkbox';
+                cb.id = id;
+                cb.dataset.value = value;
+
+                const span = document.createElement('span');
+                span.textContent = value;
+
+                wrapper.appendChild(cb);
+                wrapper.appendChild(span);
+                container.appendChild(wrapper);
+            }
+        }
+
+        function markAll() {
+            const boxes = container.querySelectorAll('input[type="checkbox"]');
+            boxes.forEach(cb => cb.checked = true);
+        }
+
+        function unmarkAll() {
+            const boxes = container.querySelectorAll('input[type="checkbox"]');
+            boxes.forEach(cb => cb.checked = false);
+        }
+
+        markAllBtn.addEventListener('click', markAll);
+        unmarkAllBtn.addEventListener('click', unmarkAll);
+        regenBtn.addEventListener('click', renderCheckboxes);
+
+        renderCheckboxes();
+    </script>
+</body>
+
+</html>

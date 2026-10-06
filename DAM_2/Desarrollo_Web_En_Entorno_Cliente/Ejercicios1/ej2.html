@@ -6,6 +6,54 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Tabla de Números Casi Primos (100x100)</h1>
+    <table id="tabla-numeros"></table>
+    <button id="calcular-casi-primos">Calcular Números Casi Primos</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabla = document.getElementById('tabla-numeros');
+            const boton = document.getElementById('calcular-casi-primos');
+            let numero = 1;
+
+            for (let i = 0; i < 100; i++) {
+                const fila = document.createElement('tr');
+                for (let j = 0; j < 100; j++) {
+                    const celda = document.createElement('td');
+                    celda.textContent = numero;
+                    celda.id = `celda-${numero}`;
+                    fila.appendChild(celda);
+                    numero++;
+                }
+                tabla.appendChild(fila);
+            }
+
+            function esCasiPrimo(num) {
+                if (num <= 1) return false;
+                let divisores = 0;
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        divisores++;
+                        if (divisores > 1) return false;
+                    }
+                }
+                return divisores === 1;
+            }
+
+            function resaltarCasiPrimos() {
+                const celdas = document.querySelectorAll('#tabla-numeros td');
+                celdas.forEach(celda => {
+                    const numero = parseInt(celda.textContent);
+                    if (esCasiPrimo(numero)) {
+                        celda.classList.add('casi-primo');
+                    } else {
+                        celda.classList.remove('casi-primo');
+                    }
+                });
+            }
+
+            boton.addEventListener('click', resaltarCasiPrimos);
+        });
+    </script>
 </body>
 </html>
