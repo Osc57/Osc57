@@ -36,6 +36,19 @@ class MainWindow(QMainWindow):
 
         self.setStatusBar(QStatusBar(self))
 
+        menu = self.menuBar()
+        menu_archivo = menu.addMenu("&Archivo")
+        menu_editar = menu.addMenu("&Editar")
+        menu_insertar = menu.addMenu("&Insertar")
+
+        menu_archivo.addAction(btn)
+        menu_archivo.addAction(btn1)
+        menu.addSeparator()
+
+        menu_mas = menu_archivo.addMenu("Más")
+        menu_mas.addAction(btn)
+        menu_mas.addAction(btn1)
+
         barraHerramientas.addAction(btn)
         barraHerramientas.addAction(btn1)
 
