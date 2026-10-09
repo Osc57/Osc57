@@ -4,8 +4,8 @@ from cuadrado import Color
 from PyQt6.QtGui import QAction, QIcon
 
 class CustomDialog(QDialog):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent = None):
+        super().__init__(parent)
 
         self.setWindowTitle("Cuadro de diálogo")
 

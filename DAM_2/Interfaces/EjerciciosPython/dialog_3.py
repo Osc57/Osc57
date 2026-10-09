@@ -1,9 +1,7 @@
 from PyQt6.QtCore import QSize, Qt;
-from PyQt6.QtWidgets import QDialog,QApplication, QCheckBox, QGridLayout, QHBoxLayout, QLabel, QLineEdit, QMainWindow, QPushButton, QRadioButton, QStackedLayout, QStatusBar, QTabWidget, QToolBar, QVBoxLayout, QWidget, QGroupBox;
+from PyQt6.QtWidgets import QDialog,QApplication, QCheckBox, QGridLayout, QHBoxLayout, QLabel, QLineEdit, QMainWindow, QMessageBox, QPushButton, QRadioButton, QStackedLayout, QStatusBar, QTabWidget, QToolBar, QVBoxLayout, QWidget, QGroupBox;
 from cuadrado import Color
 from PyQt6.QtGui import QAction, QIcon
-
-from dialog import CustomDialog
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -18,8 +16,13 @@ class MainWindow(QMainWindow):
 
 
     def btnPressed(self):
-        dlg = CustomDialog(self)
-        if dlg.exec():
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Cuadro de mensaje")
+        dlg.setText("Este es el mensaje de mi cuadro de mensaje")
+        dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        dlg.setIcon(QMessageBox.Icon.Information)
+
+        if dlg.exec() == QMessageBox.StandardButton.Yes:
             print("El usuario ha aceptado")
         else:
             print("El usuario ha rechazado")
