@@ -8,9 +8,19 @@ class ContadorScreen extends StatelessWidget {
     return Scaffold(
         body: Column(
           children: [
-            Center (
-              child: Text('Contador Screen'),
-              ),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
+            Text('Contador Screen'),
           ],
         ),
       );
