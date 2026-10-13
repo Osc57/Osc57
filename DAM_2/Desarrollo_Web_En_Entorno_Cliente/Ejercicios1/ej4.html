@@ -5,7 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+  <style>
+        .oculto {
+            display: none;
+        }
+        
+    </style>
 <body>
-    
+
+    <p class="parrafo">Párrafo 1: Haz un clic para ocultarme, doble clic para eliminarme.</p>
+    <p class="parrafo">Párrafo 2: Haz un clic para ocultarme, doble clic para eliminarme.</p>
+    <p class="parrafo">Párrafo 3: Haz un clic para ocultarme, doble clic para eliminarme.</p>
+
+    <button id="btnReaparecer">Reaparecer</button>
+
+    <script>
+        const parrafos = document.querySelectorAll('.parrafo');
+        const btnReaparecer = document.getElementById('btnReaparecer');
+
+        parrafos.forEach(parrafo => {
+            
+            parrafo.addEventListener('click', (evento) => {
+
+                setTimeout(() => {
+   
+                    if (parrafo.parentNode) {
+                        parrafo.classList.add('oculto');
+                    }
+                }, 200); 
+            });
+
+ 
+            parrafo.addEventListener('dblclick', () => {
+                parrafo.remove(); 
+            });
+        });
+
+
+        btnReaparecer.addEventListener('click', () => {
+            const ocultos = document.querySelectorAll('.parrafo.oculto');
+            
+            ocultos.forEach(parrafo => {
+                parrafo.classList.remove('oculto');
+            });
+        });
+    </script>
 </body>
 </html>
