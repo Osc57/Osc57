@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
 
     def showWindow(self):
         self.window = OtraVentana()
-        self.window.show()
+        self.window.show()#Manenerse abierta
         
 
 app = QApplication([]);
