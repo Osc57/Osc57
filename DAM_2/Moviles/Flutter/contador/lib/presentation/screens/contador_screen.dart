@@ -6,22 +6,25 @@ class ContadorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: [
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-            Text('Contador Screen'),
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: .center,
+            children: [
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+              Text('Contador Screen'),
+            ],
+          ),
         ),
       );
   }
