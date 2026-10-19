@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    let nombres = ["C3PO", "R2", "Vader", "luck"];
+
+    let nombreBuscado = prompt("Dime un nombre de Star Wars:");
+
+    let encontrado = false;
+
+    nombres.forEach(element => {
+        if (element.toLowerCase() === nombreBuscado.toLowerCase()) {
+            encontrado = true;
+        }
+    });
+
+    if (encontrado) {
+        alert(nombreBuscado + " es un personaje de Star Wars");
+    } else {
+        alert("No son personajes de la pelicula");
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>
