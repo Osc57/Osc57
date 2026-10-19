@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    const PRECIO_BASE_SIN_IVA = 12.5;
+    const IVA_FACTOR = 0.21;
+
+    let nombre = prompt("Introduce tu nombre:");
+    let edad = parseInt(prompt("Introduce tu edad:"));
+    let diaSemana = prompt("¿Qué día de la semana vas a viajar?").toLowerCase().trim();
+
+    let descuentoEdad = 0;
+    let descuentoDia = 0;
+    let motivos = [];
+
+    if ((edad >= 18 && edad <= 26) || edad > 60) {
+        descuentoEdad = 0.15;
+        motivos.push("Descuento por edad (15%)");
+    }
+
+    if (diaSemana === "miercoles" || diaSemana === "miércoles" || diaSemana === "viernes") {
+        descuentoDia = 0.05;
+        motivos.push("Descuento por día de la semana (5%)");
+    }
+
+    let descuentoTotalPorcentaje = descuentoEdad + descuentoDia;
+    let precioConDescuentoSinIva = PRECIO_BASE_SIN_IVA * (1 - descuentoTotalPorcentaje);
+    let precioFinalConIva = precioConDescuentoSinIva * (1 + IVA_FACTOR);
+
+    let textoMotivos = motivos.length > 0 ? motivos.join(" y ") : "Ninguno (Tarifa estándar)";
+
+    let resumen = `--- RESUMEN DE COMPRA: BILLETE DE AUTOBÚS ---\n\n` +
+                  `Pasajero: ${nombre}\n` +
+                  `Edad: ${edad} años | Día de viaje: ${diaSemana}\n` +
+                  `Motivo del descuento: ${textoMotivos}\n\n` +
+                  `Precio SIN IVA: ${precioConDescuentoSinIva.toFixed(2)} €\n` +
+                  `Precio FINAL (con 21% IVA): ${precioFinalConIva.toFixed(2)} €`;
+
+    alert(resumen);
+    console.log(resumen);
+</script>
+
+<body>
+
+</body>
+
+</html>
