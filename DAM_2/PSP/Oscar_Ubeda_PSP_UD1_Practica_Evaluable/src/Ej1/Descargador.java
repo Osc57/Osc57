@@ -26,7 +26,7 @@ public class Descargador implements Runnable {
         }
     }
 
-    static void main(String[] args) {
+    static void main() {
         GestorDescargas gd = new GestorDescargas();
 
         Thread[] descargadores = new Thread[6];
