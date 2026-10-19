@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    let n1 = prompt("Introduce un número: ");
+
+    if (isNaN(n1) || n1 < 0) {
+        alert("Por favor, introduce un número entero positivo válido.");
+    } else {
+        let factorial = 1;
+        for (let i = 2; i <= n1; i++) {
+            factorial *= i;
+        }
+
+        alert("El factorial de " + n1 + " es: " + factorial);
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

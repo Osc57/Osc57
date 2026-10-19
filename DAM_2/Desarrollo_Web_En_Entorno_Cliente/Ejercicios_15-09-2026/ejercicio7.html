@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    let numero = 10;
+    let n1;
+
+    do {
+        n1 = prompt("Dime un número del 1 al 10: ");
+
+        n1 = parseInt(n1);
+
+        if (n1 === numero) {
+            alert("¡Correcto! El número es " + numero);
+            break; 
+        } else if (isNaN(n1)) {
+            alert("Por favor, introduce un número válido.");
+        } else {
+            alert("Incorrecto. ¡Sigue intentando!");
+        }
+
+    } while (n1 !== numero);
+</script>
+
+<body>
+
+</body>
+
+</html>
