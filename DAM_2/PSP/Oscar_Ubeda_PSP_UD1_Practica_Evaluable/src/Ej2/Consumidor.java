@@ -20,7 +20,7 @@ class Consumidor implements Runnable {
                 }
 
                 System.out.println("[" + nombreHilo + "] Tarea procesada: " + tarea);
-                
+
                 Thread.sleep(800);
             }
         } catch (InterruptedException e) {
