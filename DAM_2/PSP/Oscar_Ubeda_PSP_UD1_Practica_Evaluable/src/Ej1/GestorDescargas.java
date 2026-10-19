@@ -15,7 +15,8 @@ public class GestorDescargas {
     }
 
     public synchronized void registrarDescarga(String nombreArchivo) {
-        System.out.println(Thread.currentThread().getName() + " " + nombreArchivo + " " + getDescargasCompletadas());
+        descargasCompletadas++;
+        System.out.println(Thread.currentThread().getName() + " " + nombreArchivo + " " + descargasCompletadas);
     }
 
 
