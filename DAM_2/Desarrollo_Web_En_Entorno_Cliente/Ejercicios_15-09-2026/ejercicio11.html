@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    let input;
+    let n;
+    let esValido = false;
+
+    do {
+        input = prompt("Por favor, introduce un número entero:");
+        n = Number(input);
+
+        esValido = input !== "" && input !== null && !isNaN(n) && Number.isInteger(n);
+
+        if (!esValido) {
+            alert("Error: No has introducido un número entero válido. Inténtalo de nuevo.");
+        }
+
+    } while (!esValido);
+
+    let numeroDeCifras = Math.abs(n).toString().length;
+
+    alert(`El número ${n} tiene ${numeroDeCifras} cifra(s).`);
+
+</script>
+
+<body>
+
+</body>
+
+</html>

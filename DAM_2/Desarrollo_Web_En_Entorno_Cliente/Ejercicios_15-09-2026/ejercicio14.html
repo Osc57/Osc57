@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    let n = prompt("Dime un número: ")
+
+    for (let i = n; i >= 1; i--) {
+
+
+        let linea = "";
+
+        let cuantosAsteriscos = n - i;
+        for (let a = 0; a < cuantosAsteriscos; a++) {
+            linea = linea + "*";
+        }
+
+
+        for (let num = 0; num < i; num++) {
+            linea = linea + i;
+        }
+
+
+        console.log(linea);
+
+
+    }
+    document.write("Mira la consola")
+</script>
+
+<body>
+
+</body>
+
+</html>

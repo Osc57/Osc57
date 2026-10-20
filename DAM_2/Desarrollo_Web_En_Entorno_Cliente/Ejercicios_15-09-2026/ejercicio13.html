@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    let n = prompt("Dime un número: ")
+
+    for (let i = 1; i <= n; i++) {
+
+        if (i % 2 != 0) {
+            let linea = "";
+
+            let topeImpar = (n % 2 == 0) ? n - 1 : n;
+            let cuantosAsteriscos = (topeImpar - i) / 2;
+
+            for (let a1 = 0; a1 < cuantosAsteriscos; a1++) {
+                linea = linea + "*";
+            }
+
+            for (let num = 0; num < i; num++) {
+                linea = linea + i;
+            }
+
+            for (let a2 = 0; a2 < cuantosAsteriscos; a2++) {
+                linea = linea + "*";
+            }
+
+
+            console.log(linea);
+        }
+
+    }
+    document.write("Mira la consola")
+</script>
+
+<body>
+
+</body>
+
+</html>
