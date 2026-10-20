@@ -18,7 +18,7 @@ class _ContadorScreenState extends State<ContadorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Contador App'),
-        backgroundColor: Colors.deepPurpleAccent.shade100,
+        backgroundColor: Colors.lightBlueAccent.shade100,
         centerTitle: true,
         /*
       leading: IconButton(
@@ -64,33 +64,57 @@ class _ContadorScreenState extends State<ContadorScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: .end,
         children: [
-          FloatingActionButton(
-            child: Icon(Icons.refresh),
-            onPressed: () {
-              contador = 0;
-              setState(() {});
+          CustomButton(
+            icono: Icons.refresh,
+            onPressed: (){
+              setState(() {
+                contador = 0;
+              });
             },
-          ),
+            ),
           SizedBox(height: 10),
-          FloatingActionButton(
-            child: Icon(Icons.plus_one),
-            onPressed: () {
-              contador++;
-              setState(() {});
-            },
-          ),
+          CustomButton(
+            icono: Icons.plus_one,
+            onPressed: (){
+              setState(() {
+                contador ++;
+              });
+            }
+            ),
           SizedBox(height: 10),
-          FloatingActionButton(
-            child: Icon(Icons.exposure_minus_1),
-            onPressed: () {
-              if (contador == 0) return;
-              contador--;
-
-              setState(() {});
-            },
-          ),
+          CustomButton(
+            icono: Icons.exposure_minus_1,
+            onPressed: (){
+              setState(() {
+                if(contador == 0) return;
+                contador--;
+              });
+            }
+            ),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final IconData icono;
+  final VoidCallback? onPressed;
+
+  const new({
+    super.key,
+    required this.icono,
+    this.onPressed
+    });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      //shape: StadiumBorder(),
+      enableFeedback: true,
+      elevation: 5,
+      onPressed: onPressed,
+      child: Icon( icono ),
     );
   }
 }
