@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: Listview1Screen()
+      debugShowCheckedModeBanner: false,
+      home: ListView1Screen()
     );
   }
 }
