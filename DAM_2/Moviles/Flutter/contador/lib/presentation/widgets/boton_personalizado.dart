@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
+
+
 class BotonPersonalizado extends StatelessWidget {
-  const new({super.key});
+
+  final IconData icono;
+  const new({
+    super.key,
+    required this.icono
+  });
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(child: Icon(Icons.add), onPressed: () {});
+    return FloatingActionButton(
+      child: Icon( icono ),
+      onPressed: () {
+        
+      },
+    );
   }
-
-  
-  
 }
-/*
-FloatingActionButton(
-            child: Icon(Icons.minimize_rounded),
-            onPressed: () {
-              setState(() {
-                contador++;
-              });
-            },
-  )
-  */

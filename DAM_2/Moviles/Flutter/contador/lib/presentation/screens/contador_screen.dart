@@ -16,28 +16,75 @@ class _ContadorScreenState extends State<ContadorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Contador App'), centerTitle: true),
+      appBar: AppBar(title: Text('Contador App'),
+      backgroundColor: Colors.deepPurpleAccent.shade100,
+      centerTitle: true,
+      leading: IconButton(
+        onPressed: (){
+          contador = 0;
+          setState(() {
+            
+          });
+        },
+        icon: Icon(Icons.refresh)
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: .center,
           children: [
             Text(
-              contador.toString(),
+              '$contador',
               style: TextStyle(fontSize: 160, fontWeight: .w100),
             ),
-            Text('Clicks', style: TextStyle(fontSize: 25)),
+
+            Text('Click${ contador == 1 ? '': 's'}', style: TextStyle(fontSize: 25))
+            /*
+            if(contador != 1)Text('Clicks', style: TextStyle(fontSize: 25)),
+            if(contador == 1)Text('Click', style: TextStyle(fontSize: 25)),
+            */
           ],
         ),
       ),
       floatingActionButton: Column(
         mainAxisAlignment: .end,
         children: [
-          BotonPersonalizado(),
-        
+          
+          FloatingActionButton(
+            child: Icon(Icons.refresh),
+            onPressed:(){
+              contador = 0;
+              setState(() {
+                
+              });
+            },
+          ),
+          SizedBox(height: 10,),
+          FloatingActionButton(
+            child: Icon(Icons.plus_one),
+            onPressed:(){
+              contador++;
+              setState(() {
+                
+              });
+            },
+          ),
+          SizedBox(height: 10,),
+          FloatingActionButton(
+            child: Icon(Icons.exposure_minus_1),
+            onPressed:(){
+              if(contador == 0) return;
+              contador--;
+              
+              setState(() {
+                
+              });
+            },
+          ),
+          
         ],
       ),
     );
   }
 }
-
 
