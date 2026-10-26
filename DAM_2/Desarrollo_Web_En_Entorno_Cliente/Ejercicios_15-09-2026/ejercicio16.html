@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <pre><tt id="out"></tt></pre>
+
+    <script>
+        var alto = parseInt(prompt("Alto:"), 10);
+
+        var ancho = parseInt(prompt("Ancho:"), 10);
+
+        var borde = (prompt("Carácter de borde (un carácter):") || " ").charAt(0);
+        var relleno = (prompt("Carácter de relleno (un carácter):") || " ").charAt(0);
+
+        var filas = [];
+        for (var r = 0; r < alto; r++) {
+            if (r === 0 || r === alto - 1) {
+                filas.push(borde.repeat(ancho));
+            } else {
+                if (ancho === 1) {
+                    filas.push(borde);
+                } else {
+                    filas.push(borde + relleno.repeat(ancho - 2) + borde);
+                }
+            }
+        }
+
+        document.getElementById('out').textContent = filas.join("\n");
+    </script>
+</body>
+
+</html>

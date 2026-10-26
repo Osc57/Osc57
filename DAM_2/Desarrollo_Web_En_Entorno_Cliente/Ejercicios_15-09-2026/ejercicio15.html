@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    const palabras = [];
+    for (let i = 1; i <= 4; i++) {
+        let p = prompt(`Introduce la palabra ${i}:`);
+        // Si el usuario pulsa Cancelar, salimos
+        if (p === null) {
+            alert('Entrada cancelada.');
+            throw new Error('Entrada cancelada por el usuario');
+        }
+        palabras.push(p.trim());
+    }
+
+    const ordenadas = palabras.slice().sort((a, b) =>
+        a.toLowerCase().localeCompare(b.toLowerCase())
+    );
+
+    alert('Palabras ordenadas:\n' + ordenadas.join('\n'));
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>
