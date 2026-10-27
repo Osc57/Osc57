@@ -1,4 +1,5 @@
 import 'package:componentes/models/menu_option.dart';
+import 'package:componentes/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         itemBuilder: (context, i ) => ListTile(
-          leading: Icon(menuOptions[i].icono, color: Colors.indigo,),
+          leading: Icon(menuOptions[i].icono),
           title: Text(menuOptions[i].nombre),
           onTap: () {
             /*
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
 
             Navigator.pushNamed(context, menuOptions[i].ruta);
           },
-          trailing: Icon(Icons.arrow_forward_ios, color: Colors.red,),
+          trailing: Icon(Icons.arrow_forward_ios),
         ),
         separatorBuilder: (_, _) => Divider(),
         itemCount: 4
