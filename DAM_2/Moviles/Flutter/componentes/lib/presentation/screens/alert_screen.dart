@@ -7,6 +7,11 @@ class AlertScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Alertas"),
+        backgroundColor: Colors.red,
+        elevation: 0,
+      ),
       body: Center(
          child: Text('AlertScreen'),
       ),

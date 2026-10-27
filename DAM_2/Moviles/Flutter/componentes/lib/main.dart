@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       // home: ListView1Screen(),
-      initialRoute: "/",
+      initialRoute: "Home",
       routes: {
-        "/"     : (BuildContext context) => HomeScreen(),
+        "Home"     : (BuildContext context) => HomeScreen(),
         "ListView1": (context) => ListView1Screen(),
         "ListView2": (context) => ListView2Screen(), 
         "Alert"    : (context) => AlertScreen(),
@@ -24,6 +24,12 @@ class MyApp extends StatelessWidget {
       },
       // onGenerateRoute gestiona donde vamos cuando la ruta con nombre no existe
       onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => HomeScreen(),),
+      theme: ThemeData.light().copyWith(
+        useMaterial3: false,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.green,
+        )
+      ),
     );
   }
 }
