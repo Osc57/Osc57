@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+     <script>
+        function calcularEdad(fechaNacimiento) {
+            var hoy = new Date();
+
+            var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+            
+            var diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth();
+
+            if (diferenciaMeses < 0 || (diferenciaMeses === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+                edad = edad - 1;
+            }
+
+            return edad;
+        }
+
+        var textoUsuario = prompt("Dime tu fecha de nacimiento (dd-mm-yyyy): ");
+
+        var partes = textoUsuario.split("-");
+        var dia = partes[0];
+        var mes = partes[1] - 1;
+        var anio = partes[2];
+
+        var fechaRealNacimiento = new Date(anio, mes, dia);
+
+        var edadFinal = calcularEdad(fechaRealNacimiento); 
+        
+        // 5. MOSTRAMOS EL RESULTADO
+        alert("Tienes " + edadFinal + " años."); 
+    </script>
+</body>
+</html>

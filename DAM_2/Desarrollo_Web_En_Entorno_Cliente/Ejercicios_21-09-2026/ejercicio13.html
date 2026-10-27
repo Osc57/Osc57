@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+     <script>
+        // 1. CREAMOS LA FUNCIÓN (La caja que procesa el Date)
+        function formatearFecha(objetoDate) {
+            var dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+            var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+            var nombreDia = dias[objetoDate.getDay()];     
+            var numeroDia = objetoDate.getDate();          
+            var nombreMes = meses[objetoDate.getMonth()];   
+            var anio = objetoDate.getFullYear();           
+
+            var resultado = nombreDia + ", " + numeroDia + " de " + nombreMes + " de " + anio;
+            
+            // Devolvemos el texto final
+            return resultado; 
+        }
+
+       // 2. PEDIMOS EL TEXTO AL USUARIO
+        var textoUsuario = prompt("Dime la fecha (dd-mm-yyyy): "); // Ejemplo: 26-11-2015
+
+        // 3. TRUCO: Rompemos el texto por los guiones para separar los números
+        var partes = textoUsuario.split("-"); // Nos da un array: ['26', '11', '2015']
+        
+        var dia = partes[0];
+        var mes = partes[1] - 1; // RESTAMOS 1 porque en JS los meses van de 0 a 11 (Noviembre es 10)
+        var anio = partes[2];
+
+        // 4. CREAMOS EL OBJETO DATE REAL CON ESOS NÚMEROS
+        var fechaReal = new Date(anio, mes, dia);
+
+        // 5. AHORA SÍ, PASAMOS EL DATE REAL A LA FUNCIÓN
+        var textoFinal = formatearFecha(fechaReal); 
+        
+        // 6. MOSTRAMOS EL RESULTADO
+        alert(textoFinal); 
+    </script>
+</body>
+
+</html>
