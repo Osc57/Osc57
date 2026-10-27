@@ -1,3 +1,4 @@
+import 'package:componentes/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens.dart';
@@ -24,12 +25,8 @@ class MyApp extends StatelessWidget {
       },
       // onGenerateRoute gestiona donde vamos cuando la ruta con nombre no existe
       onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => HomeScreen(),),
-      theme: ThemeData.light().copyWith(
-        useMaterial3: false,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.green,
-        )
-      ),
+      theme: AppTheme.lightTheme
+      
     );
   }
 }
