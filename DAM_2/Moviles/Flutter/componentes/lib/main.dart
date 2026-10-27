@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'presentation/screens.dart';
 
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,17 +11,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
       debugShowCheckedModeBanner: false,
-      //home: ListView1Screen(),
-      initialRoute: "Home",
+      title: 'Material App',
+      // home: ListView1Screen(),
+      initialRoute: "/",
       routes: {
-        "Home"    :(BuildContext context) => HomeScreen(),
-        "ListView1"   :(context) => ListView1Screen(),
-        "ListView2"   :(context) => ListView2Screen(),
-        "Alert"   :(context) => AlertScreen(),
-        "Card"    :(context) => CardScreen()
+        "/"     : (BuildContext context) => HomeScreen(),
+        "ListView1": (context) => ListView1Screen(),
+        "ListView2": (context) => ListView2Screen(), 
+        "Alert"    : (context) => AlertScreen(),
+        "Card"     : (context) => CardScreen()
       },
+      // onGenerateRoute gestiona donde vamos cuando la ruta con nombre no existe
+      onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => HomeScreen(),),
     );
   }
 }
