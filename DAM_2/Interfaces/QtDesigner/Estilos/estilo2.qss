@@ -1,0 +1,17 @@
+QPushButton{
+    background-color: orange;
+    font-weight: bold;
+}
+
+QLabel{
+    color: white;
+}
+
+QLabel#label_4{
+    background-color: aqua;
+    color: black;
+}
+
+.QWidget{
+    background-color: black;
+}
