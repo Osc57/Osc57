@@ -10,7 +10,7 @@ class CardTipo2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior:
-          Clip.antiAlias, //Para que la imagen no se salga de la tarjeta
+          Clip.antiAlias, // para que la imagen no se salga de la tarjeta
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(15),
       ),
@@ -18,18 +18,17 @@ class CardTipo2 extends StatelessWidget {
         children: [
           FadeInImage(
             fit: BoxFit.cover,
-            image: NetworkImage(
-              'https://imanesdeviaje.com/wp-content/uploads/2013/12/Lagos-de-Plitvice_11.jpg',
-            ),
-            placeholder: AssetImage("asserts/jar-loading.gif"),
+            image: NetworkImage(urlImagen),
+            placeholder: AssetImage('assets/jar-loading.gif'),
             width: double.infinity,
             height: 230,
-            fadeInDuration: Duration(milliseconds: 2000),
+            fadeInDuration: Duration(milliseconds: 1200),
           ),
-          Container(
-            padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
-            child: Text('Un bonito paisaje'),
-          ),
+          if (texto != null)
+            Container(
+              padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
+              child: Text(texto!),
+            ),
         ],
       ),
     );
