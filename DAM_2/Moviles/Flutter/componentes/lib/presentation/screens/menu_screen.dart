@@ -1,5 +1,4 @@
 import 'package:componentes/models/menu_option.dart';
-import 'package:componentes/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,38 +7,41 @@ class HomeScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    
+
+    // Acceder a los parámetros del tema
+    final colors = Theme.of(context).colorScheme;
+
+
+
     final menuOptions = <MenuOption>[
+      MenuOption(ruta: "Buttons", icono: Icons.radio_button_on_outlined, nombre: "Botones - Buttons"),
       MenuOption(ruta: "ListView1", icono: Icons.list_alt, nombre: "ListView Tipo 1"),
       MenuOption(ruta: "ListView2", icono: Icons.list, nombre: "ListView Tipo 2"),
       MenuOption(ruta: "Alert", icono: Icons.add_alert, nombre: "Alertas - Alerts"),
-      MenuOption(ruta: "Card", icono: Icons.card_giftcard, nombre: "Tarjetas - Cards"),
+      MenuOption(ruta: "Card", icono: Icons.credit_card, nombre: "Tarjetas - Cards"),
     ];
+
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Componentes en Flutter"),
+        title: Text('Componentes en Flutter'),
       ),
       body: ListView.separated(
         itemBuilder: (context, i ) => ListTile(
-          leading: Icon(menuOptions[i].icono),
-          title: Text(menuOptions[i].nombre),
+          leading: Icon(menuOptions[i].icono, color: colors.primary,),
+          title: Text(menuOptions[i].nombre,),
           onTap: () {
-            /*
-            final route = MaterialPageRoute(
-              builder: (context) => ListView2Screen() 
+            Navigator.pushNamed(context, menuOptions[i].ruta );
+            /*final route = MaterialPageRoute(
+              builder: (context) => ListView2Screen(),
             );
-            Navigator.push(context, route);
-            */
-
-            Navigator.pushNamed(context, menuOptions[i].ruta);
+            Navigator.push(context, route);*/
           },
-          trailing: Icon(Icons.arrow_forward_ios),
-        ),
-        separatorBuilder: (_, _) => Divider(),
-        itemCount: 4
+          trailing: Icon(Icons.arrow_forward_ios, color: colors.primary,),
+        ), 
+        separatorBuilder: (_, __) => Divider(), 
+        itemCount: menuOptions.length
       )
     );
-    
   }
 }
