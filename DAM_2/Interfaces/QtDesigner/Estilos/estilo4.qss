@@ -1,0 +1,26 @@
+QLabel {
+    background-color: lightgrey;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+QPusButton{
+    background-color: lightgrey;
+    border-style: solid;
+}
+
+QPushButton[text="ON"] {
+    background-color: darkgreen;
+    color: white;
+}
+
+QPushButton[text="OFF"] {
+    background-color: darkred;
+    color: white;
+}
+
+.QWidget {
+    background-color: #5C4E4B;
+}
