@@ -25,3 +25,6 @@ QDial{
     background-color: blue;
 }
 
+QSlider::handle{
+    
+}
