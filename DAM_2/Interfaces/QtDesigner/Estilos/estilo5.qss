@@ -26,5 +26,9 @@ QDial{
 }
 
 QSlider::handle{
-    
+    background-image: url("img/animal.png");
+}
+
+QComboBox::down-arrow{
+    background-image: url("img/arrow-270-medium.png");
 }
