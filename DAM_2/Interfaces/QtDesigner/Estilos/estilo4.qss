@@ -6,7 +6,7 @@ QLabel {
     font-size: 20px;
 }
 
-QPusButton{
+QPushButton{
     background-color: lightgrey;
     border-style: solid;
 }
