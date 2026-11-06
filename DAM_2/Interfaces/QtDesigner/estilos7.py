@@ -11,8 +11,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 app = QApplication([])
 #app.setStyle("Fusion")
-# with open("Estilos/estilo4.qss", "r") as f:
-#     app.setStyleSheet(f.read())
+with open("Estilos/estilo5.qss", "r") as f:
+    app.setStyleSheet(f.read())
 
 ventana = MainWindow()
 app.exec()
