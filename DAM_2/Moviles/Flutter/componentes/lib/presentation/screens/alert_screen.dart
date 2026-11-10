@@ -8,7 +8,34 @@ class AlertScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(title: Text("Titulo de la Alerta"));
+        return AlertDialog(
+          title: Text("Titulo de la Alerta"),
+          content: Column(
+            mainAxisSize: .min,
+            children: [
+              Text('Esto es el contenido de la alerta'),
+              SizedBox(height: 20),
+              FlutterLogo(size: 100),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () =>
+                  Navigator.pop(context), // Corregido: añadido (context)
+              child: const Text('Ok'),
+            ),
+            TextButton(
+              onPressed: () =>
+                  Navigator.pop(context), // Corregido: añadido (context)
+              child: const Text(
+                'Cancelar',
+                style: TextStyle(
+                  color: Colors.redAccent,
+                ), // Corregido: el color se aplica al Text
+              ),
+            ),
+          ],
+        );
       },
     );
   }

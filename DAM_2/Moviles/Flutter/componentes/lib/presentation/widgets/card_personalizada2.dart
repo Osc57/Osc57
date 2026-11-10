@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CardTipo2 extends StatelessWidget {
+
   final String urlImagen;
   final String? texto;
 
-  const new({super.key, required this.urlImagen, this.texto});
+
+  const new({
+    super.key,
+    required this.urlImagen,
+    this.texto
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      clipBehavior:
-          Clip.antiAlias, // para que la imagen no se salga de la tarjeta
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(15),
-      ),
+      clipBehavior: Clip.antiAlias, // para que la imagen no se salga de la tarjeta
+      shape: RoundedRectangleBorder( borderRadius: BorderRadiusGeometry.circular(15)),
       child: Column(
         children: [
           FadeInImage(
@@ -24,11 +27,11 @@ class CardTipo2 extends StatelessWidget {
             height: 230,
             fadeInDuration: Duration(milliseconds: 1200),
           ),
-          if (texto != null)
+          if ( texto != null)
             Container(
-              padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
-              child: Text(texto!),
-            ),
+              padding: EdgeInsets.only(right: 20, top: 10,bottom: 10),
+              child: Text(texto!)
+            )
         ],
       ),
     );

@@ -1,3 +1,4 @@
+
 import 'package:componentes/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         "Alert": (context) => AlertScreen(),
         "Card": (context) => CardScreen(),
         "Buttons": (context) => BotonesScreen(),
+        "Slider":(context) => SliderScreen(),
+        "Snack":(context) => SnackBarScreen(),
+        "Animated":(context) => AnimatedScreen(),
       },
       // onGenerateRoute gestiona donde vamos cuando la ruta con nombre no existe
       onGenerateRoute: (settings) =>
