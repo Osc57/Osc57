@@ -13,21 +13,49 @@ const listaColores = <Color>[
 ];
 
 class AppTheme {
-
   final int colorSeleccionado;
 
-  new({
-    this.colorSeleccionado = 0
-  }): assert( colorSeleccionado >= 0 , 'EL color seleccionado debe ser mayor de 0'),
-  assert(colorSeleccionado < listaColores.length, 'El color seleccionado debe ser igual o menor que ${listaColores.length}');
+  new({this.colorSeleccionado = 0})
+    : assert(
+        colorSeleccionado >= 0,
+        'EL color seleccionado debe ser mayor de 0',
+      ),
+      assert(
+        colorSeleccionado < listaColores.length,
+        'El color seleccionado debe ser igual o menor que ${listaColores.length}',
+      );
 
   ThemeData getTheme() => ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: listaColores[ colorSeleccionado ],
+    colorSchemeSeed: listaColores[colorSeleccionado],
     //AppBarTheme
-    appBarTheme: AppBarTheme(
-      centerTitle: true,
-    )
+    appBarTheme: AppBarTheme(centerTitle: true),
+
+    //InputDecorationTheme
+    inputDecorationTheme: InputDecorationTheme(
+      floatingLabelStyle: TextStyle(color: listaColores[colorSeleccionado]),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: listaColores[colorSeleccionado]),
+        borderRadius: .only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
+      ),
+
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: listaColores[colorSeleccionado]),
+        borderRadius: .only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
+      ),
+      border: OutlineInputBorder(
+         borderRadius: .only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
+      ),
+    ),
   );
   //Color primario
   static const Color primary = Colors.pink;

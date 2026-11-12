@@ -11,14 +11,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.comboBox.currentIndexChanged.connect(self.cambiar_estilo)
 
-    def cambiar_estilo(self, index):    
-        estilos = {
-            0: "Estilos/estilo1.qss",
-            1: "Estilos/estilo2.qss",
-            2: "Estilos/estilo3.qss",
-        }
-
-        with open(estilos.get(index), "r") as f:
+    def cambiar_estilo(self):    
+        with open(["Estilos/estilo1.qss","Estilos/estilo2.qss","Estilos/estilo3.qss"][self.comboBox.currentIndex()], "r") as f:
             app.setStyleSheet(f.read())
 
 app = QApplication([])

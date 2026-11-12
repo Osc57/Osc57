@@ -1,0 +1,19 @@
+QPushButton{
+    background-color: blue;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+QPushButton:hover{
+    background-color: red;
+}
+
+QPushButton:on{
+    background-color: green;
+}
+
+QLable{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
