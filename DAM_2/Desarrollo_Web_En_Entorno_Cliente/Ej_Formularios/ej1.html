@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Validar DNI</title>
+</head>
+
+<body>
+    <form id="formulario">
+        <label>DNI: <input type="text" id="dni" maxlength="9"></label>
+        <button type="submit">Enviar</button>
+        <p id="mensaje"></p>
+    </form>
+
+    <script>
+        const formulario = document.getElementById("formulario");
+        const inputDni = document.getElementById("dni");
+        const mensaje = document.getElementById("mensaje");
+
+        function comprobarDNI() {
+            const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            const dni = inputDni.value.toUpperCase();
+
+            // Comprueba que tenga 9 caracteres y que los 8 primeros sean números
+            if (dni.length !== 9 || isNaN(dni.slice(0, 8))) {
+                mensaje.textContent = "Formato incorrecto";
+                return false;
+            }
+
+            const numero = dni.slice(0, 8);
+            const letra = dni.slice(8);
+            const letraCorrecta = letras[numero % 23];
+
+            if (letra !== letraCorrecta) {
+                mensaje.textContent = "Letra incorrecta deberia ser " + letraCorrecta;
+                return false;
+            }
+
+            mensaje.textContent = "DNI correcto";
+            
+        }
+
+        // Ejer 1-a) Al perder el foco
+        inputDni.addEventListener("blur", comprobarDNI);
+
+        // Ejer 1-b) Al enviar el formulario
+        formulario.addEventListener("submit", function (e) {
+            if (!comprobarDNI()) {
+                e.preventDefault(); // Cancela el envío
+            }
+        });
+    </script>
+</body>
+
+</html>
+
