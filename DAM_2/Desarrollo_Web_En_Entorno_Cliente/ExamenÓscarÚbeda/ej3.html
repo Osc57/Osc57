@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej3 - Tabla Calendario</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+            user-select: none;
+            /* Evita que se seleccione el texto del número al hacer doble clic */
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            width: 80px;
+            height: 50px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .dia {
+            cursor: pointer;
+        }
+
+        /* Hover verde al pasar el ratón */
+        .dia:hover {
+            background-color: #90ee90;
+        }
+
+        .festivo {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Un clic: fondo amarillo */
+        .seleccionado {
+            background-color: yellow;
+        }
+
+        /* Doble clic: fondo rojo */
+        .doble-seleccionado {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="miDesplegable">Elige un mes: </label>
+        <select id="miDesplegable"></select>
+    </div>
+
+    <h2 id="nombre-mes">Calendario</h2>
+    <div id="contenedor-calendario"></div>
+
+    <script>
+        const select = document.getElementById('miDesplegable');
+        const contenedor = document.getElementById("contenedor-calendario");
+        const tituloMes = document.getElementById("nombre-mes");
+
+        const nombreMeses = [
+            "ENERO", "FEBRERO", "MARZO", "ABRIL",
+            "MAYO", "JUNIO", "JULIO", "AGOSTO",
+            "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+        ];
+
+        var festivos = [[1, 6], [], [], [3], [1], [], [], [15], [], [12], [1], [8, 25]];
+
+        const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
+        const opcionDefecto = new Option("Selecciona un mes...", "", true, true);
+        opcionDefecto.disabled = true;
+        select.add(opcionDefecto);
+
+        nombreMeses.forEach((mes, indice) => {
+            select.add(new Option(mes, indice));
+        });
+
+        select.addEventListener("change", function () {
+            if (select.value === "") return;
+
+            const numMes = Number(select.value);
+            contenedor.innerHTML = "";
+            tituloMes.innerText = nombreMeses[numMes];
+
+            const tabla = document.createElement("table");
+            const thead = document.createElement("thead");
+            const filaCabecera = document.createElement("tr");
+
+            diasSemana.forEach(function (dia) {
+                const th = document.createElement("th");
+                th.innerText = dia;
+                filaCabecera.appendChild(th);
+            });
+
+            thead.appendChild(filaCabecera);
+            tabla.appendChild(thead);
+
+            const tbody = document.createElement("tbody");
+            let filaActual = document.createElement("tr");
+
+            const primerDia = new Date(2026, numMes, 1).getDay();
+            const indiceInicio = (primerDia === 0) ? 6 : primerDia - 1;
+            const totalDias = new Date(2026, numMes + 1, 0).getDate();
+
+            for (let i = 0; i < indiceInicio; i++) {
+                const tdVacio = document.createElement("td");
+                filaActual.appendChild(tdVacio);
+            }
+
+            const festivosDelMes = festivos[numMes] || [];
+
+            for (let dia = 1; dia <= totalDias; dia++) {
+                if (filaActual.children.length === 7) {
+                    tbody.appendChild(filaActual);
+                    filaActual = document.createElement("tr");
+                }
+
+                const celdaDia = document.createElement("td");
+                celdaDia.className = "dia";
+                celdaDia.innerText = dia;
+
+                if (festivosDelMes.includes(dia)) {
+                    celdaDia.classList.add("festivo");
+                }
+
+                // Clic simple -> Amarillo
+                celdaDia.addEventListener("click", function () {
+                    celdaDia.classList.remove("doble-seleccionado");
+                    celdaDia.classList.toggle("seleccionado");
+                });
+
+                // Doble clic -> Rojo
+                celdaDia.addEventListener("dblclick", function () {
+                    celdaDia.classList.remove("seleccionado");
+                    celdaDia.classList.toggle("doble-seleccionado");
+                });
+
+                filaActual.appendChild(celdaDia);
+            }
+
+            while (filaActual.children.length < 7) {
+                const tdVacioFinal = document.createElement("td");
+                filaActual.appendChild(tdVacioFinal);
+            }
+            tbody.appendChild(filaActual);
+
+            tabla.appendChild(tbody);
+            contenedor.appendChild(tabla);
+        });
+    </script>
+</body>
+
+</html>

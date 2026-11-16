@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej1 - Parte 2</title>
+    <style>
+        div {
+            background-color: aquamarine;
+            max-width: 500px;
+            border-radius: 15px;
+            border-color: black;
+            border-style: solid;
+            padding-left: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .clase {
+            display: grid;
+            grid-auto-rows: 80px;
+            gap: 5px;
+            margin-top: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        p {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Crear y eliminar elementos DIV</h2>
+    <button type="button" id="btnCrearDiv">Crear DIV</button>
+    <button type="button" id="btnContar">Contar</button>
+    <div class="clase" id="container"></div>
+
+    <script>
+        const btnCrearDiv = document.getElementById('btnCrearDiv');
+        const btnContar = document.getElementById('btnContar');
+        const contenedor = document.getElementById('container');
+
+        // Solo sirve para dar el número correlativo (nunca baja)
+        let contador = 1;
+
+        btnCrearDiv.addEventListener('click', () => {
+            const divRellenable = document.createElement("div");
+            divRellenable.textContent = "Soy el DIV número " + contador;
+
+            // Al hacer clic, solo se elimina del HTML
+            divRellenable.addEventListener('click', () => {
+                divRellenable.remove();
+            });
+
+            contenedor.appendChild(divRellenable);
+            contador++;
+        });
+
+        btnContar.addEventListener('click', () => {
+            // Cuenta exactamente cuántos elementos quedan dentro del container
+            const totalDivs = contenedor.children.length;
+            alert("Hay " + totalDivs + " elementos DIV en el contenedor.");
+        });
+    </script>
+</body>
+
+</html>
+
+
