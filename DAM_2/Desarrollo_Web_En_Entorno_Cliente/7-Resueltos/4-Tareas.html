@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mostrar tareas APIREST</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 65%; margin-top: 15px; margin-bottom: 15px; }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    th { background: #f0f0f0; }
+    .col-check { text-align: center; width: 40px; }
+    button { padding: 8px 14px; cursor: pointer; margin-right: 5px; }
+    #btnEliminar { background-color: #d9534f; color: white; border: none; border-radius: 4px; }
+    #btnEliminar:hover { background-color: #c9302c; }
+</style>
+</head>
+<body>
+
+<h2>Mostrar tareas APIREST</h2>
+
+<button id="btnMostrar">Mostrar Datos</button>
+<button id="btnEliminar" onclick="eliminarSeleccionados()">Eliminar Seleccionados</button>
+
+<div id="resultado"></div>
+
+<script>
+  const URL = "http://192.168.50.120:8069";
+  let datos = [];
+
+  function actualizarTabla() {
+    fetch(URL + '/listartareas')
+      .then(res => res.json())
+      .then(json => {
+        datos = json;
+        mostrarTabla(datos);
+      })
+      .catch(err => console.error("Error cargando JSON:", err));
+  }
+
+  // Asignamos el evento una sola vez fuera de actualizarTabla para evitar duplicados
+  document.getElementById("btnMostrar").addEventListener("click", () => {
+    actualizarTabla();
+  });
+
+  // Cargar al iniciar
+  actualizarTabla();
+
+  function mostrarTabla(arr) {
+    let html = `
+      <table>
+        <thead>
+          <tr>
+            <th class="col-check">
+              <input type="checkbox" id="checkTodos" onclick="seleccionarTodos(this)" title="Seleccionar todos">
+            </th>
+            <th>ID</th>
+            <th>Tarea</th>
+            <th>Prioridad</th>
+            <th>Urgente</th>
+            <th>Realizada</th>
+            <th>Responsable</th>                
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    arr.forEach(item => {
+      html += `
+        <tr>
+          <td class="col-check">
+            <input type="checkbox" class="check-tarea" value="${item[0]}">
+          </td>
+          <td>${item[0]}</td>
+          <td>${item[1]}</td>
+          <td>${item[2]}</td>
+          <td>${item[3]}</td>
+          <td>${item[4]}</td>
+          <td>${item[5]}</td>
+        </tr>
+      `;
+    });
+
+    html += `
+        </tbody>
+      </table>
+    `;
+
+    document.getElementById("resultado").innerHTML = html;
+  }
+
+  // Marca o desmarca todos los checkboxes de las filas
+  function seleccionarTodos(checkboxMaster) {
+    const checkboxes = document.querySelectorAll('.check-tarea');
+    checkboxes.forEach(cb => {
+      cb.checked = checkboxMaster.checked;
+    });
+  }
+
+  // Elimina todas las tareas marcadas
+  async function eliminarSeleccionados() {
+    const checkboxesMarcados = document.querySelectorAll('.check-tarea:checked');
+
+    if (checkboxesMarcados.length === 0) {
+      alert("Por favor, selecciona al menos una tarea para eliminar.");
+      return;
+    }
+
+    const confirmar = confirm(`¿Seguro que deseas eliminar ${checkboxesMarcados.length} tarea(s)?`);
+    if (!confirmar) return;
+
+    // Creamos un array de peticiones DELETE por cada ID seleccionado
+    const peticiones = Array.from(checkboxesMarcados).map(cb => {
+      const idTarea = cb.value;
+      return fetch(`${URL}/gestion/lista_tareas.lista_tareas?data={"id":"${idTarea}"}`, {
+        method: 'DELETE',
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error(`Error al eliminar la tarea con ID ${idTarea}`);
+        }
+        return idTarea;
+      });
+    });
+
+    try {
+      // Esperamos a que todas las eliminaciones terminen antes de refrescar la tabla
+      await Promise.all(peticiones);
+      console.log('Tareas eliminadas correctamente');
+      actualizarTabla();
+    } catch (error) {
+      console.error('Hubo un problema eliminando las tareas:', error.message);
+      alert("Ocurrió un error al eliminar alguna de las tareas. Revisa la consola.");
+      actualizarTabla();
+    }
+  }
+</script>
+
+</body>
+</html>
+

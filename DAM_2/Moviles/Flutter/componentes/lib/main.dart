@@ -2,6 +2,7 @@
 import 'package:componentes/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
+
 import 'presentation/screens.dart';
 
 void main() => runApp(const MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         "Snack":(context) => SnackBarScreen(),
         "Animated":(context) => AnimatedScreen(),
         "Formulario":(context) => FormularioScreen(),
+        "Checkbox": (context) => const CheckBoxScreen(),
       },
       // onGenerateRoute gestiona donde vamos cuando la ruta con nombre no existe
       onGenerateRoute: (settings) =>
@@ -37,3 +39,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
