@@ -71,7 +71,7 @@ class _SliderScreenState extends State<SliderScreen> {
             value: _activado,
             onChanged: (value) {
               setState(() {
-                _activado = value ?? true;
+                _activado = value;
               });
             },
           ),

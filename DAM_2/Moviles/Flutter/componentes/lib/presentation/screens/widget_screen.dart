@@ -1,43 +1,49 @@
 import 'package:flutter/material.dart';
 
-class CheckBoxScreen extends StatefulWidget {
-  const CheckBoxScreen({super.key});
+class ThemeSwitchScreen extends StatefulWidget {
+  const ThemeSwitchScreen({super.key});
 
   @override
-  State<CheckBoxScreen> createState() => _CheckBoxScreenState();
+  State<ThemeSwitchScreen> createState() => _ThemeSwitchScreenState();
 }
 
-class _CheckBoxScreenState extends State<CheckBoxScreen> {
-  bool isChecked = false;
+class _ThemeSwitchScreenState extends State<ThemeSwitchScreen> {
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
-    Color getColor(Set<WidgetState> states) {
-      const Set<WidgetState> interactiveStates = <WidgetState>{
-        WidgetState.pressed,
-        WidgetState.hovered,
-        WidgetState.focused,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.red;
-    }
+    final Color backgroundColor = isDarkMode ? const Color(0xFF121212) : Colors.white;
+    final Color textColor = isDarkMode ? Colors.white : Colors.black87;
+    final Color appBarColor = isDarkMode ? const Color(0xFF1F1F1F) : Colors.blue;
 
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: const Text('CheckBoxScreen'),
+        title: Text(
+          isDarkMode ? 'Tema Oscuro' : 'Tema Claro',
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: appBarColor,
       ),
       body: Center(
-        child: Checkbox(
-          checkColor: Colors.white,
-          fillColor: WidgetStateProperty.resolveWith(getColor),
-          value: isChecked,
-          onChanged: (bool? value) {
-            setState(() {
-              isChecked = value!;
-            });
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              isDarkMode ? 'Modo Oscuro Activado' : 'Modo Claro Activado',
+              style: TextStyle(fontSize: 18, color: textColor),
+            ),
+            const SizedBox(height: 16),
+            Switch(
+              value: isDarkMode,
+              activeThumbColor: Colors.blueAccent,
+              onChanged: (bool value) {
+                setState(() {
+                  isDarkMode = value;
+                });
+              },
+            ),
+          ],
         ),
       ),
     );

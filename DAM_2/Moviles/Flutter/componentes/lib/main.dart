@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         "Snack":(context) => SnackBarScreen(),
         "Animated":(context) => AnimatedScreen(),
         "Formulario":(context) => FormularioScreen(),
-        "Checkbox": (context) => const CheckBoxScreen(),
+        "Checkbox": (context) => ThemeSwitchScreen(),
       },
       // onGenerateRoute gestiona donde vamos cuando la ruta con nombre no existe
       onGenerateRoute: (settings) =>
