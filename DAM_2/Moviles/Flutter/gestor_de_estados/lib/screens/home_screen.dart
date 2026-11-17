@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gestor_de_estados/pages/pagina1.dart';
 import 'package:gestor_de_estados/pages/pagina2.dart';
 import 'package:gestor_de_estados/pages/pagina3.dart';
+import 'package:gestor_de_estados/providers/contador_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
    
@@ -20,7 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
  
     return Scaffold(
-      appBar: AppBar(title: Text('Gestor de estados'),),
+      appBar: AppBar(title: Text('Gestor de estados'),
+      actions: [
+        Text(context.watch<ContadorProvider>().contador.toString())
+      ],),
       body: _paginas[ _paginaSeleccionada],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.grey,

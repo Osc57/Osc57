@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gestor_de_estados/providers/contador_provider.dart';
+import 'package:provider/provider.dart';
 
 class Pagina1 extends StatelessWidget {
   const new({super.key});
@@ -9,13 +11,21 @@ class Pagina1 extends StatelessWidget {
       backgroundColor: Colors.lightGreenAccent,
       body: Column(
         children: [
-          Center(
-            child: Text('7', style: TextStyle(fontSize: 120),),
+          Center(child: Text(context.watch<ContadorProvider>().contador.toString(), style: TextStyle(fontSize: 120))),
+          ElevatedButton(
+            onPressed: () {
+              //Aquí vamos a acceder al provider y llamar a la función incrementar()
+              context.read<ContadorProvider>().incrementar();
+            }, 
+            child: Text('Incrementar')
           ),
-          ElevatedButton(onPressed: (){
-
-          },
-          child: Text('Incrementar'))
+           ElevatedButton(
+            onPressed: () {
+              //Aquí vamos a acceder al provider y llamar a la función decrementar()
+              context.read<ContadorProvider>().decrementar();
+            }, 
+            child: Text('Decrementar')
+          ),
         ],
       ),
     );
