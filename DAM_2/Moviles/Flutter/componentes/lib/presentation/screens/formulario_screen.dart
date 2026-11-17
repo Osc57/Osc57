@@ -6,6 +6,18 @@ class FormularioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //GlobalKey nos permite controlar y validar el formulario completo
+    final GlobalKey<FormState> _forKey = GlobalKey<FormState>();
+
+    final Map<String, String> formValues = {
+      'first_name': 'Óscar',
+      'last_name': 'Úbeda',
+      'tfno': '654321321',
+      'email': 'oubedaf@iesch.org',
+      'password': '123456',
+      'role': 'Developer',
+    };
+
     return Scaffold(
       appBar: AppBar(title: Text('Formularios')),
       body: SingleChildScrollView(
@@ -17,18 +29,24 @@ class FormularioScreen extends StatelessWidget {
                 CustomInputField(
                   labelText: 'Nombre',
                   hintText: 'Nombre del usuario',
+                  formValues: formValues,
+                  fomrProperty: 'first_name',
                   icon: Icons.person,
                 ),
                 SizedBox(height: 20),
                 CustomInputField(
                   labelText: 'Apellidos',
                   hintText: 'Apellidos del usuario',
+                  formValues: formValues,
+                  fomrProperty: 'last_name',
                   icon: Icons.person,
                 ),
                 SizedBox(height: 20),
                 CustomInputField(
                   labelText: 'Teléfono',
                   hintText: 'Teléfono del usuario',
+                  formValues: formValues,
+                  fomrProperty: 'tfno',
                   icon: Icons.phone,
                   keyboardType: .phone,
                 ),
@@ -36,6 +54,8 @@ class FormularioScreen extends StatelessWidget {
                 CustomInputField(
                   labelText: 'Email',
                   hintText: 'Correo del usuario',
+                  formValues: formValues,
+                  fomrProperty: 'email',
                   icon: Icons.mail,
                   keyboardType: .emailAddress,
                 ),
@@ -43,11 +63,13 @@ class FormularioScreen extends StatelessWidget {
                 CustomInputField(
                   labelText: 'Contraseña',
                   hintText: 'Contraseña del usuario',
+                  formValues: formValues,
+                  fomrProperty: 'password',
                   icon: Icons.password,
                   obscureText: true,
                 ),
                 SizedBox(height: 20),
-            
+
                 DropdownButtonFormField(
                   items: [
                     DropdownMenuItem(child: Text('Admin'), value: 'Admin'),
@@ -65,12 +87,17 @@ class FormularioScreen extends StatelessWidget {
                     ),
                   ],
                   onChanged: (value) {
-                    print(value);
+                    formValues['role'] = value ?? 'Developer';
                   },
                 ),
-            
+
                 SizedBox(height: 20),
-                ElevatedButton(onPressed: null, child: Text('Guardar')),
+                ElevatedButton(
+                  onPressed: () {
+                    print(formValues);
+                  },
+                  child: Text('Guardar'),
+                ),
               ],
             ),
           ),
