@@ -1,0 +1,10 @@
+python -m venv App
+cd App
+cd Scripts
+.\activate
+pip install PyQt6
+
+pip install PySide6
+pyside6-designer
+
+pyuic6 .\ejercicio10.ui -o ejercicio10_ui.py 
