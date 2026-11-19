@@ -11,7 +11,7 @@ public class Lavadero {
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        Thread[] coches = new Thread[random.nextInt(15, 30)];
+        Thread[] coches = new Thread[random.nextInt(30, 100)];
         Thread[] puestos = new Thread[random.nextInt(2, 5)];
 
         System.out.println("Abriendo lavadero con " + puestos.length + " puestos y " + coches.length + " coches.\n");
