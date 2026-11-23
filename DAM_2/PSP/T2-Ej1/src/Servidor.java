@@ -3,7 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Servidor {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         int puerto = 5000;
         String carpetaTrabajo = "./archivos_servidor";
 
