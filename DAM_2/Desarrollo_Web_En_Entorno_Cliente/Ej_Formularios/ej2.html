@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .exito {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Registro de Correo Electrónico</h2>
+
+    <!-- Usamos type="text" en lugar de type="email" para que sea nuestro JS quien haga la validación y no el navegador -->
+    <form id="formularioEmail">
+        <label for="email">Introduce tu email:</label>
+        <input type="text" id="email" name="email" placeholder="ejemplo@google.com">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script>
+        // Ejer 2-b: Array de servidores admitidos definido a mano
+        const listaServidores = ["terra.es", "google.com", "marca.es", "yahoo.es"];
+
+        const formulario = document.getElementById("formularioEmail");
+        const inputEmail = document.getElementById("email");
+        const mensaje = document.getElementById("mensaje");
+
+        formulario.addEventListener("submit", function(evento) {
+            // Evitamos que el formulario se envíe por defecto
+            evento.preventDefault();
+
+            // Obtenemos el valor limpio de espacios y en minúsculas
+            const email = inputEmail.value.trim().toLowerCase();
+
+            // Ejer 2-a: Validar el formato texto@servidor.loquesea
+            // Expresión regular: algo sin espacios ni @ + "@" + algo sin espacios ni @ + "." + algo sin espacios ni @
+            const regexFormato = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!regexFormato.test(email)) {
+                mostrarMensaje("Error (2-a): El email no cumple el formato texto@servidor.loquesea", "error");
+                return;
+            }
+
+            // Ejer 2-b: Extraer la parte "servidor.loquesea" y comprobar si está en listaServidores
+            const partesEmail = email.split("@");
+            const servidor = partesEmail[1]; // Todo lo que va después de la @
+
+            if (!listaServidores.includes(servidor)) {
+                mostrarMensaje(`Error (2-b): El servidor "${servidor}" no está admitido. Usa: ${listaServidores.join(", ")}`, "error");
+                return;
+            }
+
+            // Si pasa ambas validaciones
+            mostrarMensaje("¡Email válido y servidor admitido! Enviando formulario...", "exito");
+            
+            // Si quisieras que el formulario se enviara realmente a un servidor tras validar, descomenta la siguiente línea:
+            // formulario.submit();
+        });
+
+        function mostrarMensaje(texto, tipo) {
+            mensaje.textContent = texto;
+            mensaje.className = tipo;
+        }
+    </script>
+
+</body>
+</html>
