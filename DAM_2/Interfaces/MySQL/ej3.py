@@ -12,7 +12,7 @@ class MainWindow(ConexionBD):
 
         #ComboBox
         comboBoxHolder = QHBoxLayout()
-        label = QLabel("Seleccione una autonimía: ")
+        label = QLabel("Seleccione una autonomía: ")
         self.comboBox = QComboBox()
 
         comboBoxHolder.addWidget(label)
