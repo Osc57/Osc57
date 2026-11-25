@@ -4,7 +4,7 @@ cd App
 cd Scripts
 .\activate
 pip install PyQt6
-pip install mysql-connector-python (instalar SQL)
+pip install mysql-connector-python
 
 pip install PySide6 (instalar Qt Designer)
 pyside6-designer (ejecutar Qt Designer)
