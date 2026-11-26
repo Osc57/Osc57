@@ -1,5 +1,5 @@
 package Ejemplo1;
 
-public class HiloCliente {
-    
+public class HiloCliente extends Thread{
+
 }
