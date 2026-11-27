@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import QApplication, QComboBox, QHBoxLayout, QLabel, QVBoxLayout, QWidget, QTableWidget, QTableWidgetItem
-from conexion import ConexionBD
+from PyQt6.QtWidgets import QApplication, QVBoxLayout, QWidget, QTableWidget, QTableWidgetItem
+from bbddProvincias.conexion import ConexionBD
 
 class MainWindow(ConexionBD):
     def __init__(self):
@@ -9,19 +9,8 @@ class MainWindow(ConexionBD):
 
         globalHolder = QVBoxLayout()
 
-
-        #ComboBox
-        comboBoxHolder = QHBoxLayout()
-        label = QLabel("Seleccione una autonomía: ")
-        self.comboBox = QComboBox()
-
-        comboBoxHolder.addWidget(label)
-        comboBoxHolder.addWidget(self.comboBox)
-        
         # Tabla
         self.tabla = QTableWidget()
-
-        globalHolder.addLayout(comboBoxHolder)
         globalHolder.addWidget(self.tabla)
 
         widget = QWidget()

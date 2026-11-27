@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QLabel, QLineEdit, QMainWindow, QApplication, QHBoxLayout, QPushButton, QTextEdit, QVBoxLayout, QWidget
-from conexion import ConexionBD
+from bbddProvincias.conexion import ConexionBD
 
 class MainWindow(ConexionBD):
     def __init__(self):
