@@ -19,7 +19,7 @@ class MainWindow(ConexionBD):
 
         # Fila Nombre
         nombreHolder = QHBoxLayout()
-        nombre = QLabel("Autonomía:")
+        nombre = QLabel("Nombre:")
         self.nombreText = QLineEdit()
         nombreHolder.addWidget(nombre)
         nombreHolder.addWidget(self.nombreText)
@@ -82,6 +82,8 @@ class MainWindow(ConexionBD):
         widget.setLayout(globalHolder)
         self.setCentralWidget(widget)
 
+        self.cargarDatosTipo()
+
         self.cargarDatos()
 
     def cargarDatos(self):
@@ -96,15 +98,19 @@ class MainWindow(ConexionBD):
             self.mostrar_registros()
 
     def cargarDatosTipo(self):
-            cursor = self.con.cursor()
-            sql = "SELECT * FROM tipo"
+        cursor = self.con.cursor()
+        sql = "SELECT * FROM tipo"
     
-            cursor.execute(sql)
-            self.resultado = cursor.fetchall()
-            self.indice = 0
+        cursor.execute(sql)
+        self.resultado = cursor.fetchall()
+        cursor.close()
     
-            if self.resultado:
-                self.mostrar_registros()
+        self.comboBox.clear()
+    
+        if self.resultado:
+            for fila in self.resultado:
+                self.comboBox.addItem(str(fila[1]))
+
 
 
     def primero(self):
@@ -132,13 +138,7 @@ class MainWindow(ConexionBD):
         self.nombreText.setText(self.registro[1]) 
         self.precioText.setText(str(self.registro[2])) 
         self.unidadesText.setText(str(self.registro[3])) 
-        self.comboBox.setCurrentIndex(self.registro[4])
-
-    
-
-    
-    
-
+        # self.comboBox.setCurrentIndex(self.registro[4])
 
 
 app = QApplication([])
